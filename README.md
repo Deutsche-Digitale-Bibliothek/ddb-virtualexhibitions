@@ -2,8 +2,8 @@
 
 ## Repository for DDB Omeka Updates
 
-Repository contents should be placed under /lib path in all installations.
-To initialy clone the repository, delete delete all files in /lib and then issue the command:
+Repository contents should be placed under ```/lib``` path in all installations.
+To initially clone the repository, delete all files under /lib and then issue the command:
 ```
 git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-va.git .
 ```
