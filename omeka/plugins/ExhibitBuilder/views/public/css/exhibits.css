@@ -1,0 +1,55 @@
+.exhibit-item-caption {
+    font-size: 0.8em;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.exhibit-item-caption p {
+    text-align: center;
+    margin: 0;
+}
+.exhibit-item-caption h1, 
+.exhibit-item-caption h2, 
+.exhibit-item-caption h3, 
+.exhibit-item-caption h4, 
+.exhibit-item-caption h5 {
+    font-family: Calibri,Arial,sans-serif;
+    font-size: 1em;
+    margin: 0;
+}
+#exhibit-pages ul {
+/*    margin-left: 1em;*/
+}
+
+#exhibit-page-navigation {
+    clear: both;
+    width: 100%;
+    /*display: block;*/
+    /*width: 100%;*/
+/*    margin: 1em 0;
+    line-height: 1.2;*/
+    text-align: center;
+}
+
+#exhibit-page-navigation div {
+    display: inline-block;
+/*    width: 33%;*/
+}
+
+#exhibit-nav-prev {
+    /*float: left;*/
+    /*text-align: left;*/
+    padding: 0 10px 0 0;
+}
+
+#exhibit-nav-next {
+    /*float: right;*/
+    /*text-align: right;*/
+    padding: 0 0 0 10px;
+}
+
+#exhibit-nav-up {
+    padding: 0 10px;
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+}
