@@ -62,7 +62,6 @@ class ExhibitDdbHelper
                     $videoInfo = self::getVideoVimeoInfo($videoId);
                     $currentThumbnailsize = 'thumbnail_' . $thumbnailsize;
                     if (isset($videoInfo[0][$currentThumbnailsize]) && !empty($videoInfo[0][$currentThumbnailsize])) {
-                    // var_dump($currentThumbnailsize);
                         $output = '<div class="external-thumbnail" style="background-image:url(\''
                             . $videoInfo[0][$currentThumbnailsize] . '\');"><img src="'
                             . img('thnplaceholder.gif') . '" alt="video" style="visibility:hidden;">'
@@ -106,7 +105,6 @@ class ExhibitDdbHelper
                     $videoInfo = self::getVideoVimeoInfo($videoId);
                     $currentThumbnailsize = 'thumbnail_' . $thumbnailsize;
                     if (isset($videoInfo[0][$currentThumbnailsize]) && !empty($videoInfo[0][$currentThumbnailsize])) {
-                    // var_dump($currentThumbnailsize);
                         $output = '<img src="'
                             . $videoInfo[0][$currentThumbnailsize] . '" alt="video" >';
                     }
@@ -819,8 +817,9 @@ class ExhibitDdbHelper
         $html = '';
         $colCount = 0;
         for ($i = (int)$start; $i <= (int)$end; $i++) {
-            $colCount++;
             if ($attachment = exhibit_builder_page_attachment($i)) {
+
+                $colCount++;
 
                 if (($colCount % 3) === 0) {
                     $addExhibitItemClass = ' last-item-in-line';
@@ -873,8 +872,12 @@ class ExhibitDdbHelper
                     if (!empty($attachmentTitle)) {
                         $props['title'] = $attachmentTitle;
                     }
-                    $thumbnail = file_image($thumbnailType, $props, $attachment['file'])
-                        . '<div class="blurb">Video</div>';
+                    $thumbnail = file_image($thumbnailType, $props, $attachment['file']);
+
+                    if($videoSrc) {
+                        $thumbnail .= '<div class="blurb">Video</div>';
+                    }
+
                     $html .= exhibit_builder_link_to_exhibit_item($thumbnail, $currentLinkOptions, $attachment['item']);
 
                 }

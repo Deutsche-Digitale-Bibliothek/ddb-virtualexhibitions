@@ -222,7 +222,8 @@ if (!empty($imagemap)) {
             var checkWidth = 0;
             var videoWidth = <?php echo $videoWidth; ?>;
             var videoHeight = <?php echo $videoHeight; ?>;
-            var isIframe = <?php echo (empty($x3dMarkup))? '\'no\'' : '\'yes\''; ?>
+            var isIframe = <?php echo (empty($x3dMarkup))? '\'no\'' : '\'yes\''; ?>;
+            var minWidth = <?php echo $containerMinWidth; ?>;
 
             if (isIframe == 'yes') { return; };
 
@@ -250,12 +251,15 @@ if (!empty($imagemap)) {
             if (checkWidth < newWidth && countFiles == 1) {
                 newWidth = checkWidth;
             }
+            if (newWidth > minWidth) {
+                minWidth = newWidth;
+            }
 
-            // set conatainer
+            // set container
             if (withType == 'window') {
-                $('.inline-lightbox-container').css({'width': newWidth, 'min-width': newWidth, margin: '0 auto'});
+                $('.inline-lightbox-container').css({'width': newWidth, 'min-width': minWidth, margin: '0 auto'});
             } else {
-                $('.inline-lightbox-container').css({'width': newWidth, 'min-width': newWidth, margin: '0 auto'});
+                $('.inline-lightbox-container').css({'width': newWidth, 'min-width': minWidth, margin: '0 auto'});
             }
             $('.inline-lightbox-container').css({'height': newHeight});
 
