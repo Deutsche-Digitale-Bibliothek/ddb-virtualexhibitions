@@ -31,6 +31,11 @@ class ExhibitDdbHelper
     public static $videoDdbInfo = array();
 
     /**
+     * @var int Counter for DDB Video ID
+     */
+    public static $videoDdbCount = 0;
+
+    /**
      * Main shortcode parser
      *
      * @param string $subject String to parse for shortcodes
@@ -194,7 +199,12 @@ class ExhibitDdbHelper
                     break;
                 case 'ddb':
                     self::setVideoDdbInfo($videoId);
-                    // get $videoId, $offsetStart, $offsetStop:
+                    $videoPalyerId = str_replace('=', '-', $videoId);
+
+                    /**
+                     * get $videoId, $offsetStart, $offsetStop
+                     * $videoId egts overwriten!
+                     */
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
 
@@ -202,8 +212,10 @@ class ExhibitDdbHelper
                         $videoImage = 'http://www.deutsche-digitale-bibliothek.de/binary/' . $videoId . '/mvpr/1.jpg';
                     }
 
+                    self::$videoDdbCount = self::$videoDdbCount + 1;
+
                     $output = '
-                    <div id="ddb-jwp-' . $videoId . '">Lade den Player ...</div>
+                    <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
                     <script>
 
 
@@ -224,7 +236,7 @@ class ExhibitDdbHelper
                         //     stop: false
                         // };
 
-                        jwplayer("ddb-jwp-' . $videoId . '").setup({
+                        jwplayer("ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '").setup({
                             "flashplayer" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '",
                             "html5player" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.html5.js') . '",
                             "modes" : [{
@@ -802,8 +814,8 @@ class ExhibitDdbHelper
      * - ddb-full-right-carousel
      * - ddb-gallery-thumbnais
      *
-     * @param int $start Start with image No from the list of attachments
-     * @param int $end Stop at image No from the list of attachments
+     * @param int $start Start with image No. from the list of attachments
+     * @param int $end Stop at image No. from the list of attachments
      * @param array $props Array of image attributes like (class, alt, title etc.)
      * @param string $thumbnailType Size or type of the thumbnail like (thumbnail, square_thumbnail, fullsize)
      * @param array $linkOptions Array of link attributes like (class, alt etc.)
