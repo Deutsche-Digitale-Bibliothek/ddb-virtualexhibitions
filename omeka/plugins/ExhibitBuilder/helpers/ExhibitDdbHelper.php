@@ -1053,10 +1053,11 @@ class ExhibitDdbHelper
             if (isset($file)) {
                 $imgAttributes = array('alt' => $attachmentTitle, 'class' => 'full');
                 $uri = html_escape($file->getWebPath('fullsize'));
-                $thumbnail = '<img src="' . $uri . '" ' . tag_attributes($imgAttributes) . '/>' . "\n"
-                    . '<div class="blurb-main-image">Video</div>';
+                $thumbnail = '<div class="exhibit-item-inner-container"><img src="' . $uri . '" ' . tag_attributes($imgAttributes) . '/>' . "\n"
+                    . '<div class="blurb-main-image">Video</div></div>';
             } else {
-                $thumbnail = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large');
+                $thumbnail = '<div class="exhibit-item-inner-container">' . self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large')
+                    . '<div class="blurb-main-image">Video</div></div>';
             }
 
             if (!empty($thumbnail)) {

@@ -219,6 +219,18 @@ h3 { line-height: 1; }
     position: relative;
     display: block;
 }
+
+.ddb-omeka-gallery-large-size .exhibit-item-link,
+.ddb-omeka-gallery-medium-size .exhibit-item-link,
+.ddb-omeka-main-exhibit-item .exhibit-item-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.exhibit-item-inner-container {
+    text-align: center;
+    position: relative;
+}
 .blurb, .blurb-main-image {
     position:absolute;
     width: 100%;
@@ -1097,13 +1109,14 @@ audio {
     width: 100%;
 }
 .ddb-omeka-gallery-medium-size img {
-    margin: 0 auto 16px auto;
+    /*margin: 0 auto 16px auto;*/
+    margin: 0 auto;
     padding: 0;
     max-height: 300px;
     display: block;
 }
 .ddb-omeka-gallery-medium-size .exhibit-item-caption {
-    margin: -10px 0 16px 0;
+    /*margin: -10px 0 16px 0;*/
 }
 
 /* large sized image gallery */
@@ -1112,13 +1125,14 @@ audio {
     width: 100%;
 }
 .ddb-omeka-gallery-large-size img {
-    margin: 0 auto 16px auto;
+    /*margin: 0 auto 16px auto;*/
+    margin: 0 auto;
     padding: 0;
     max-height: 900px;
     display: block;
 }
 .ddb-omeka-gallery-large-size .exhibit-item-caption {
-    margin: -10px 0 16px 0;
+    /*margin: -10px 0 16px 0;*/
 }
 
 .ddb-omeka-exhibit-list {
