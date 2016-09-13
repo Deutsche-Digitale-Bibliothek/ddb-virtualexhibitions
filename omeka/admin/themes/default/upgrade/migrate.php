@@ -11,7 +11,7 @@
     queue_css_file('media/768min', 'only screen and (min-width: 768px) and (max-width: 959px)');
     queue_css_file('media/767max', 'only screen and (max-width: 767px)');
     queue_css_file('media/479max', 'only screen and (max-width: 479px)');
-    queue_css_url('https://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Cabin:400,700,400italic,700italic');
+    queue_css_url('//fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Cabin:400,700,400italic,700italic');
 
     queue_js_file(array('vendor/respond', 'vendor/modernizr', 'vendor/selectivizr', 'globals'));
 ?>
@@ -26,7 +26,7 @@
 <body id="upgrade">
 
     <div class="container container-sixteen">
-    
+
         <section id="content" class="eight columns offset-by-four">
             <?php if(!$success): ?>
                 <h1><?php echo __('Omeka encountered an error when upgrading your installation.'); ?></h1>
@@ -40,7 +40,7 @@
                     </p>
                 <?php else: ?>
                     <h1><?php echo __('Omeka has upgraded successfully.'); ?></h1>
-                    <p><?php echo link_to_admin_home_page(__('Return to Dashboard')); ?></p>    
+                    <p><?php echo link_to_admin_home_page(__('Return to Dashboard')); ?></p>
             <?php endif; ?>
         </section>
     </div>
