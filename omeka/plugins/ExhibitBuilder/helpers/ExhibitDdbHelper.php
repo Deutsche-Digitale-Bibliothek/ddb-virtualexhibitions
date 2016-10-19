@@ -876,9 +876,9 @@ class ExhibitDdbHelper
                     if($videoSrc) {
                         $videoType = self::getVideotypeFromShortcode($videoSrc);
                         if ($videoType === 'vimeo') {
-                            unset($currentLinkOptions['data-title']);
-                            unset($currentLinkOptions['data-subtitle']);
-                            unset($currentLinkOptions['data-description']);
+                            // unset($currentLinkOptions['data-title']);
+                            // unset($currentLinkOptions['data-subtitle']);
+                            // unset($currentLinkOptions['data-description']);
                         }
                     }
                     if (!empty($attachmentTitle)) {
@@ -1064,9 +1064,9 @@ class ExhibitDdbHelper
 
                 $videoType = self::getVideotypeFromShortcode($videoSrc);
                 if ($videoType === 'vimeo') {
-                    unset($linkAttributes['data-title']);
-                    unset($linkAttributes['data-subtitle']);
-                    unset($linkAttributes['data-description']);
+                    // unset($linkAttributes['data-title']);
+                    // unset($linkAttributes['data-subtitle']);
+                    // unset($linkAttributes['data-description']);
                 }
 
                 $currentLinkOptions = array();
