@@ -925,7 +925,7 @@ class ExhibitDdbHelper
                         ));
 
                         $videoType = self::getVideotypeFromShortcode($videoSrc);
-                        if ($videoType == 'ddb') {
+                        if ($videoType == 'ddb' || $videoType == 'vimeo') {
                             $currentLinkOptions = array_merge($currentLinkOptions, array(
                                 'data-title' => $attachmentTitle,
                                 'data-subtitle' => $attachmentSubtitle,
