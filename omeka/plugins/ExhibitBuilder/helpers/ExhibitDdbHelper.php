@@ -519,12 +519,12 @@ class ExhibitDdbHelper
             'CC-BY-SA-3.0-DEU' => array(
                 'name' => 'Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Deutschland',
                 'link' => 'http://creativecommons.org/licenses/by-sa/3.0/de/',
-                'icon' => '<i class="license license-by"> </i><i class="license license-nc"> </i>'
+                'icon' => '<i class="license license-by"> </i><i class="license license-sa"> </i>'
             ),
             'CC-BY-SA-4.0-INT' => array(
                 'name' => 'Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International',
                 'link' => 'http://creativecommons.org/licenses/by-sa/4.0/deed.de',
-                'icon' => '<i class="license license-by"> </i><i class="license license-nc"> </i>'
+                'icon' => '<i class="license license-by"> </i><i class="license license-sa"> </i>'
             ),
             'CC-BY-ND-3.0-DEU' => array(
                 'name' => 'Namensnennung - Keine Bearbeitung 3.0 Deutschland',
