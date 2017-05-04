@@ -1,0 +1,56 @@
+/* thumbnail gallery carousel */
+#thumbnail-gallery-carousel-elements {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    min-height: 132px;
+}
+#thumbnail-gallery-carousel-elements .disabled img {
+    display: none;
+}
+#thumbnail-gallery-carousel-container {
+    position: absolute;
+    overflow: hidden;
+    right: 27px;
+    left: 37px;
+    top: 0;
+}
+#ddb-omeka-carousel-gallery_prev, #ddb-omeka-carousel-gallery_next {
+    background: url('../../../../../../themes/ddb/css/ddb-arrows-small.png') no-repeat transparent;
+    width: 22px;
+    height: 31px;
+}
+/*#ddb-omeka-carousel-gallery_prev img, #ddb-omeka-carousel-gallery_next img {
+    margin: 0;
+    padding: 0;
+}*/
+#ddb-omeka-carousel-gallery_prev {
+    float: left;
+    background-position: -3px -3px;
+}
+#ddb-omeka-carousel-gallery_prev:hover {
+    background-position: -3px -41px;
+}
+#ddb-omeka-carousel-gallery_next {
+    float: right;
+    background-position: -3px -116px;
+}
+#ddb-omeka-carousel-gallery_next:hover {
+    background-position: -3px -154px;
+}
+#thumbnail-gallery-carousel-elements #ddb-omeka-carousel-gallery_next.disabled,
+#thumbnail-gallery-carousel-elements #ddb-omeka-carousel-gallery_next.disabled:hover {
+    background-position: -3px -191px;
+}
+#thumbnail-gallery-carousel-elements #ddb-omeka-carousel-gallery_prev.disabled,
+#thumbnail-gallery-carousel-elements #ddb-omeka-carousel-gallery_prev.disabled:hover {
+    background-position: -3px -79px;
+}
+/*#thumbnail-gallery-carousel-elements .disabled {
+    background-position: -3px -225px !important;
+}*/
+#thumbnail-gallery-carousel-wrapper {
+    width: 100%;
+}
+.exhibit-item-link { display:block; overflow: hidden; text-decoration: none; }

@@ -1,0 +1,343 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Omeka\n"
+"Report-Msgid-Bugs-To: https://github.com/omeka/Omeka/issues\n"
+"POT-Creation-Date: 2013-01-23 21:49-0500\n"
+"PO-Revision-Date: 2014-03-15 16:45+0100\n"
+"Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/omeka/"
+"language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "A layout must be provided for each exhibit page."
+msgstr "Jeder Ausstellungsseite muss ein Layout zugewiesen werden."
+
+msgid "A slug must be 30 characters or less."
+msgstr "Ein Slug darf höchstens 30 Zeichen lang sein."
+
+msgid "A slug must be given for each page of an exhibit."
+msgstr "Jede Seite einer Ausstellung benötigt einen Slug."
+
+msgid "Add Exhibit"
+msgstr "Ausstellung hinzufügen"
+
+msgid "Add Page"
+msgstr "Seite hinzufügen"
+
+msgid "Add an Exhibit"
+msgstr "Ausstellung hinzufügen"
+
+msgid "An exhibit must be given a title."
+msgstr "Eine Ausstellung benötigt einen Titel."
+
+msgid "Attach Selected Item"
+msgstr "Ausgewähltes Objekt hinzufügen"
+
+msgid "Attach an Item"
+msgstr "Objekt hinzufügen"
+
+msgid "Browse Exhibits"
+msgstr "Ausstellungen durchstöbern"
+
+msgid "Browse Exhibits by Tag"
+msgstr "Ausstellungen nach Schlagwörtern durchsuchen"
+
+msgid "Cannot add a child to a record that does not exist yet!"
+msgstr ""
+"Es kann kein abhängiger Datensatz hinzugefügt werden, wenn der Datensatz "
+"noch nicht existiert."
+
+msgid "Caption"
+msgstr "Legende"
+
+msgid "Child must be an instance of \"%s\""
+msgstr "Der abhängige Datensatz muss eine Instanz von \"%s\" sein."
+
+msgid "Choose a layout by selecting a thumbnail on the right."
+msgstr ""
+"Wählen Sie ein Layout, indem Sie rechts auf die Miniaturansicht klicken."
+
+msgid "Configure the &#8220;%s&#8221; Theme"
+msgstr "Das Theme &#8220;%s&#8221; konfigurieren"
+
+msgid "Credits"
+msgstr "Credits"
+
+msgid "Current Public Theme"
+msgstr "Aktuelles öffentliches Theme"
+
+msgid "Displays a block of text above a gallery of up to 12 items."
+msgstr ""
+"Zeigt einen Textblock oberhalb einer Galerie mit bis zu 12 Objekten an."
+
+msgid "Displays a block of text below a gallery of up to 12 items."
+msgstr ""
+"Zeigt einen Textblock unterhalb einer Miniaturbilder-Galerie mit 12 Objekten "
+"an."
+
+msgid "Displays a full page of text without items."
+msgstr "Zeigt eine reine Textseite ohne Objekte."
+
+msgid "Displays a full page of text, with a full-size image floated left."
+msgstr ""
+"Zeigt eine Textseite mit einem links angeschlagenen Bild in Grossansicht"
+
+msgid "Displays a full page of text, with a full-size image floated right."
+msgstr ""
+"Zeigt eine Textseite mit einem rechts angeschlagenen Bild in Grossansicht"
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size "
+"image and text block."
+msgstr ""
+"Zeigt eine Galerie mit 8 Miniaturbildern mit einer erweiterten linken Spalte "
+"für 1 Bild in Grossansicht und einen Textblock."
+
+msgid ""
+"Displays a gallery of 8 thumbnails, with a wider right column for 1 full-"
+"size image and text block."
+msgstr ""
+"Zeigt eine Galerie mit 8 Miniaturbildern mit einer erweiterten rechten "
+"Spalte für 1 Bild in Grossansicht und einen Textblock."
+
+msgid "Displays a gallery of up to 16 items."
+msgstr "Zeigt eine Galerie mit bis zu 16 Objekten."
+
+msgid ""
+"Displays up to 8 full-size images on the left with up to 8 text blocks on "
+"the right."
+msgstr ""
+"Zeigt bis zu 8 Bilder in Grossansicht links mit bis zu 8 Textblöcken rechts."
+
+msgid ""
+"Displays up to 8 full-size images on the right with up to 8 text blocks on "
+"the left."
+msgstr ""
+"Zeigt bis zu 8 Bilder in Grossansicht rechts mit bis zu 8 Textblöcken links."
+
+msgid ""
+"Displays up to 8 thumbnails on the left with up to 8 text blocks on the "
+"right."
+msgstr ""
+"Zeigt bis zu 8 Miniaturansichten links mit bis zu 8 Textblöcken rechts."
+
+msgid ""
+"Displays up to 8 thumbnails on the right with up to 8 text blocks on the "
+"left."
+msgstr ""
+"Zeigt bis zu 8 Miniaturansichten rechts mit bis zu 8 Textblöcken links."
+
+msgid "Edit Exhibit \"%s\""
+msgstr "Ausstellung \"%s\" bearbeiten"
+
+msgid "Edit Page"
+msgstr "Seite bearbeiten"
+
+msgid "Edit Page \"%s\""
+msgstr "Seite \"%s\" bearbeiten"
+
+msgid "Edit Page Content: \"%s\""
+msgstr "Inhalt der Seite \"%s\" bearbeiten"
+
+msgid "Exhibit"
+msgstr "Ausstellung"
+
+msgid "Exhibit Metadata"
+msgstr "Metadaten der Ausstellung"
+
+msgid "Exhibit Page"
+msgstr "Ausstellungsseite"
+
+msgid "Exhibit pages must be given a title."
+msgstr "Ausstellungsseiten benötigen einen Titel."
+
+msgid "Exhibits"
+msgstr "Ausstellungen"
+
+msgid "Exhibits must be given a valid slug."
+msgstr "Ausstellungen benötigen einen gültigen Slug."
+
+msgid "Featured Exhibit"
+msgstr "Hervorgehobene Ausstellung"
+
+msgid "Gallery Full Left"
+msgstr "Galerie ganz links"
+
+msgid "Gallery Full Right"
+msgstr "Galerie ganz rechts"
+
+msgid "Gallery Thumbnails"
+msgstr "Miniaturbilder der Galerie"
+
+msgid "Gallery Thumbnails Text Bottom"
+msgstr "Text für Miniaturbilder-Galerie unten"
+
+msgid "Gallery Thumbnails Text Top"
+msgstr "Text für Miniaturbilder-Galerie oben"
+
+msgid "Image List Left"
+msgstr "Bilderliste links"
+
+msgid "Image List Left Thumbs"
+msgstr "Miniaturansichten der Bilderliste links"
+
+msgid "Image List Right"
+msgstr "Bilderliste rechts"
+
+msgid "Image List Right Thumbs"
+msgstr "Miniaturansichten der Bilderliste rechts"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Layouts"
+msgstr "Layouts"
+
+msgid "No spaces or special characters allowed"
+msgstr "Es sind keine Leerzeichen oder Sonderzeichen erlaubt"
+
+msgid "Page Content"
+msgstr "Seiteninhalt"
+
+msgid "Page Layout"
+msgstr "Seitenlayout"
+
+msgid "Page Metadata"
+msgstr "Metadaten der Seite"
+
+msgid "Pages"
+msgstr "Seiten"
+
+msgid "Primary"
+msgstr "Primär"
+
+msgid "Remove This Item"
+msgstr "Dieses Objekt entfernen"
+
+msgid "Save and Add Another Page"
+msgstr "Speichern und Seite hinzufügen"
+
+msgid "Search by Exhibit"
+msgstr "Suche nach Ausstellungen"
+
+msgid "Secondary"
+msgstr "Sekundär"
+
+msgid "Select a File"
+msgstr "Datei auswählen"
+
+msgid "Show Search Form"
+msgstr "Suchformular anzeigen"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Sorting Exhibits"
+msgstr "Ausstellungen sortieren"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Text Image Left"
+msgstr "Text mit Bild links"
+
+msgid "Text Image Right"
+msgstr "Text mit Bild rechts"
+
+msgid ""
+"The default method by which you wish to sort the listing of exhibits on the "
+"exhibits/browse page. Default is 'Date Added'."
+msgstr ""
+"Die Sortiermethode für die Liste der Ausstellungen auf der Seite \"Exhibits/"
+"Browse\". Die Standardeinstellung ist \"Datum hinzugefügt\"."
+
+msgid "The name of your theme must be 30 characters or less."
+msgstr "Der Name Ihres Themes darf höchstens 30 Zeichen lang sein."
+
+msgid "The title for an exhibit must be 255 characters or less."
+msgstr "Der Titel für eine Ausstellung darf höchstens 255 Zeichen lang sein."
+
+msgid "Theme"
+msgstr "Theme"
+
+msgid "There are no exhibits available yet."
+msgstr "Es sind keine Ausstellungen vorhanden."
+
+msgid "There are no exhibits yet."
+msgstr "Es sind keine Ausstellungen vorhanden."
+
+msgid "There are no items to choose from.  Please refine your search or %s."
+msgstr ""
+"Es stehen keine Objekte zur Auswahl. Bitte verfeinern Sie Ihre Suche oder %s."
+
+msgid "There are no pages."
+msgstr "Es existieren keine Seiten."
+
+msgid "There are no tags to display. You must first tag some exhibits."
+msgstr ""
+"Es können keine Schlagwörter angezeigt werden. Bitte weisen Sie zuerst den "
+"Ausstellungen Schlagwörter zu."
+
+msgid "There is no item attached."
+msgstr "Es wurde kein Objekt hinzugefügt."
+
+msgid "This item is not used within this exhibit."
+msgstr "Dieses Objekt wird in dieser Ausstellung nicht verwendet."
+
+msgid ""
+"This page slug has already been used.  Please modify the slug so that it is "
+"unique."
+msgstr ""
+"Dieser Slug wird bereits für eine andere Seite verwendet. Bitte ändern Sie "
+"den Slug, damit er eindeutig ist."
+
+msgid ""
+"To reorder pages, click and drag the page up or down to the preferred "
+"location."
+msgstr ""
+"Um die Seitenreihenfolge zu ändern klicken Sie auf eine Seite und ziehen sie "
+"auf- bzw. abwärts auf die gewünschte Position."
+
+msgid "You have no featured exhibits."
+msgstr "Sie haben keine hervorgehobenen Ausstellungen."
+
+msgid "You must specifically select a theme in order to configure it."
+msgstr "Sie müssen explizit ein Theme auswählen um es konfigurieren zu können."
+
+msgid ""
+"Your URL slug is already in use by another exhibit.  Please choose another."
+msgstr ""
+"Ihr URL Slug wird bereits für eine andere Ausstellung benutzt. Bitte wählen "
+"Sie einen anderen Slug."
+
+msgid "add some items"
+msgstr "fügen Sie einige Objekte hinzu"
+
+msgid "exhibits"
+msgstr "Ausstellungen"
+
+msgid "Widget Bottom Content"
+msgstr "Inhaltswidget unten"
+
+msgid "Widget Top First Content"
+msgstr "Erstes Inhaltswidget oben"
+
+msgid "Widget Top Second Content"
+msgstr "Zweites Inhaltswidget oben"
+
+msgid "Exhibit Banner"
+msgstr "Logo der Ausstellung"
+
+msgid "Exhibit Cover"
+msgstr "Cover der Ausstellung"
+
+msgid "Page Navigation Thumbnail"
+msgstr "Thumbnail für die Seitennavigation"
+
+msgid "Minimum size for image (width x height) is %d x %d pixel"
+msgstr "Mindestgröße des Bildes (Breite x Höhe) ist %d x %d Pixel"
