@@ -2,7 +2,7 @@
 /**
  * Admin Modifications
  *
- * Keeps original names of files and put them in a hierarchical structure.
+ * Modify the Admin UI of Omeka to suit our needs
  *
  * @see http://omeka.readthedocs.io/en/latest/Reference/filters/index.html
  * @see http://omeka.readthedocs.io/en/latest/Reference/hooks/index.html
