@@ -6,6 +6,7 @@
  *
  * @see http://omeka.readthedocs.io/en/latest/Reference/filters/index.html
  * @see http://omeka.readthedocs.io/en/latest/Reference/hooks/index.html
+ * @see http://omeka.readthedocs.io/en/latest/Reference/filters/Element_Save_Filter.html
  *
  * @copyright Copyright Grandgeorg Websolutions 2017
  * @license GPLv3
@@ -50,7 +51,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 
                 if ($nav['label'] === __('Exhibits') && substr($nav['uri'], -9) === '/exhibits') {
                     $new[$counter] = array(
-                        'label' => 'Ausstellung',
+                        'label' => __('Exhibit'),
                         'uri' => $nav['uri'] . '/edit/1',
                         'resource' => $nav['resource'],
                         'privilege' => 'edit',
@@ -118,8 +119,8 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Tabs in Admin Item Edit
      *
-     * @param array $tabs
-     * @param array $args
+     * @param array $tabs Array of admin edit Tabs
+     * @param array $args Args with Item
      * @return array
      */
     public function filterAdminItemsFormTabs($tabs, $args)
@@ -143,8 +144,8 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 
     /**
      * @param $text input element text
-     * @param array $args
-     * @return strinf The new value for the element text
+     * @param array $args Args
+     * @return string The new value for the element text
      */
     public function addItemTypeTitleToDcTitle($text, $args)
     {
