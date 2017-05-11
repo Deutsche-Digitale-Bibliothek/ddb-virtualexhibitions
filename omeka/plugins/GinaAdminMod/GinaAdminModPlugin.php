@@ -130,7 +130,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                 $key !== 'Dublin Core' &&
                 $key !== 'Tags'
             ) {
-                if ($key !== 'Item Type Metadata') {
+                if ($key === 'Item Type Metadata') {
                     $new[$key] = $tab
                         . '<input type="hidden" name="Elements[50][0][text]" value="">';
                 } else {
