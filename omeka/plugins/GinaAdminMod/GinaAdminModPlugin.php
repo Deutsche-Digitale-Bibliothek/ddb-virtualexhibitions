@@ -37,7 +37,6 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterAdminNavigationMain($navArray)
     {
-        var_dump($navArray);
         $counter = 0;
         $new     = array();
         foreach ($navArray as $nav) {
@@ -149,10 +148,6 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function addItemTypeTitleToDcTitle($text, $args)
     {
-        // $foo = var_export($text, true) . "\n\n\n";
-        // $foo .= var_export($args, true) . "\n\n\n";
-        // $foo .= var_export($_POST, true) . "\n\n\n";
-        // file_put_contents(__DIR__ . '/test.txt', $foo);
         return $_POST['Elements'][52][0]['text'];
     }
 
