@@ -37,7 +37,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterAdminNavigationMain($navArray)
     {
-        // var_dump($navArray);
+        var_dump($navArray);
         $counter = 0;
         $new     = array();
         foreach ($navArray as $nav) {
@@ -46,7 +46,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                 &&
                 ($nav['label'] !== __('Tags') && substr($nav['uri'], -5) !== '/tags')
                 &&
-                ($nav['label'] !== __('Tags') && substr($nav['uri'], -11) !== '/item-types')
+                ($nav['label'] !== __('Item Types') && substr($nav['uri'], -11) !== '/item-types')
             ) {
 
                 if ($nav['label'] === __('Exhibits') && substr($nav['uri'], -9) === '/exhibits') {
