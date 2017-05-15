@@ -19,7 +19,9 @@
  */
 class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 {
-    protected $_hooks = array();
+    protected $_hooks = array(
+        'define_acl'
+    );
 
     protected $_filters = array(
         'admin_navigation_main',
@@ -149,6 +151,16 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     public function addItemTypeTitleToDcTitle($text, $args)
     {
         return $_POST['Elements'][52][0]['text'];
+    }
+
+    /**
+     * @param $args array Array with ACL-Object in $args['acl']
+     * @return void
+     */
+    public function hookDefineAcl($args)
+    {
+        $acl = $args['acl'];
+        $acl->deny(null, 'Items', 'makeFeatured');
     }
 
 }
