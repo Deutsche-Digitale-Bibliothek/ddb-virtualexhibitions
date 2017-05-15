@@ -124,17 +124,19 @@
         <?php echo $this->formSubmit('save_exhibit', __('Save Changes'), array('class'=>'submit big green button')); ?>
         <?php if ($exhibit->exists()): ?>
             <?php echo exhibit_builder_link_to_exhibit($exhibit, __('View Public Page'), array('class' => 'big blue button', 'target' => '_blank')); ?>
-            <?php echo link_to($exhibit, 'delete-confirm', __('Delete'), array('class' => 'big red button delete-confirm')); ?>
+            <?php // echo link_to($exhibit, 'delete-confirm', __('Delete'), array('class' => 'big red button delete-confirm')); ?>
         <?php endif; ?>
         <div id="public-featured">
             <div class="public">
                 <label for="public"><?php echo __('Public'); ?>:</label>
                 <?php echo $this->formCheckbox('public', $exhibit->public, array(), array('1', '0')); ?>
             </div>
+            <!--
             <div class="featured">
-                <label for="featured"><?php echo __('Featured'); ?>:</label>
-                <?php echo $this->formCheckbox('featured', $exhibit->featured, array(), array('1', '0')); ?>
+                <label for="featured"><?php // echo __('Featured'); ?>:</label>
+                <?php // echo $this->formCheckbox('featured', $exhibit->featured, array(), array('1', '0')); ?>
             </div>
+            // -->
         </div>
     </div>
 </form>
