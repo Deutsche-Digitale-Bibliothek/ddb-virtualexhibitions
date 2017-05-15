@@ -4,7 +4,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  * @package ExhibitBuilder
  */
- 
+
 /**
  * ExhibitPage model.
  *
@@ -40,7 +40,7 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
      * 1) must have a layout
      * 2) Must have a title
      * 3) must be properly ordered
-     * 
+     *
      * @return void
      */
     protected function _validate()
@@ -54,7 +54,7 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
         }
 
     }
-    
+
     protected function afterSave($args)
     {
         $exhibit = $this->getExhibit();
@@ -67,22 +67,27 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
             $this->addSearchText($entry->text);
             $this->addSearchText($entry->caption);
         }
-        
+
         if ($args['post']) {
             $post = $args['post'];
-            
+
             $textCount = count(@$post['Text']);
             $itemCount = count(@$post['Item']);
             $highCount = ($textCount > $itemCount) ? $textCount : $itemCount;
 
             $entries = $this->ExhibitPageEntry;
-            for ($i=1; $i <= $highCount; $i++) {
-                $ip = $entries[$i];
 
-                if (!$ip) {
-                    $ip = new ExhibitPageEntry;
+            for ($i=1; $i <= $highCount; $i++) {
+
+                 // Begin Grandgeorg Websolutions
+                if (isset($entries) && isset($entries[$i]) && !empty($entries[$i])) {
+                    $ip = $entries[$i];
+                } else {
+                    $ip = new ExhibitPageEntry();
                     $ip->page_id = $this->id;
                 }
+                // End Grandgeorg Websolutions
+
                 $text = @$post['Text'][$i];
                 $item_id = (int) @$post['Item'][$i];
                 $file_id = (int) @$post['File'][$i];
@@ -215,13 +220,13 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
     {
         return $this->ExhibitPageEntry;
     }
-    
+
     public function getRecordUrl($action = 'show')
     {
         if ('show' == $action) {
             return exhibit_builder_exhibit_uri($this->getExhibit(), $this);
         }
-        return array('module' => 'exhibit-builder', 'controller' => 'exhibits', 
+        return array('module' => 'exhibit-builder', 'controller' => 'exhibits',
                      'action' => $action, 'id' => $this->id);
     }
 }
