@@ -19,6 +19,8 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
         'before_save_file'
     );
 
+    protected static $convertedFiles = array();
+
 
     public function hookBeforeSaveFile($args)
     {
@@ -31,32 +33,62 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
             // $file = $dir . '/' . $args{'record'}->filename;
             $file = $args{'record'}->getPath('original');
             if (isset($file) && !empty($file)) {
-                $this->removeExif($file);
+                $this->removeExif($file, false);
             }
         }
     }
 
 
     /**
-     * @param $file absolute path to file
+     * @param $file string absolute path to file
+     * @param $log boolean Log / Debug on or off
      * @return void
      */
-    public function removeExif($file)
+    public function removeExif($file, $log = false)
     {
-        if (is_readable($file)) {
-            $allowedExtensions = array('jpg', 'jpeg');
-            if (in_array(pathinfo($file, PATHINFO_EXTENSION), $allowedExtensions)) {
-                $img = new Imagick($file);
-                $profiles = $img->getImageProfiles('icc', true);
-                $img->stripImage();
-                if (isset($profiles) && !empty($profiles) && isset($profiles['icc'])) {
-                    $img->profileImage('icc', $profiles['icc']);
+        if (!in_array($file, self::$convertedFiles)) {
+            if (is_readable($file)) {
+                $allowedExtensions = array('jpg', 'jpeg');
+                if (in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), $allowedExtensions)) {
+
+                    if(extension_loaded('imagick')) {
+                        $img = new Imagick($file);
+                        $profiles = $img->getImageProfiles('icc', true);
+                        $img->stripImage();
+                        if (isset($profiles) && !empty($profiles) && isset($profiles['icc'])) {
+                            $img->profileImage('icc', $profiles['icc']);
+                        }
+                        $img->writeImage($file);
+                        $img->clear();
+                        $img->destroy();
+                        self::$convertedFiles[] = $file;
+
+                        if ($log === true) {
+                            $this->_log($file, 'INFO', ' File successfully converted');
+                        }
+                    } elseif ($log === true) {
+                        $this->_log($file, 'WARNING', 'imagick extension not loaded');
+                    }
+                } elseif ($log === true) {
+                    $this->_log($file, 'WARNING', 'Extension not allowed');
                 }
-                $img->writeImage($file);
-                $img->clear();
-                $img->destroy();
+            } elseif ($log === true) {
+                $this->_log($file, 'ERROR', 'File is not readable');
             }
+        } elseif ($log === true) {
+            $this->_log($file, 'INFO', 'File already converted');
         }
+    }
+
+    /**
+     * @param $file string absolute path to file
+     * @param $type string INFO | WARNING | ERROR
+     * @param $file msg Log messsage
+     * @return void
+     */
+    protected function _log($file, $type, $msg)
+    {
+        file_put_contents(__DIR__ . '/log.txt', date('Y-m-d H.i:s') . ' ' . $type . ': ' . $file . ' ' . $msg . "\n", FILE_APPEND);
     }
 
 
