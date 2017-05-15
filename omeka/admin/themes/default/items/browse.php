@@ -99,19 +99,20 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                     </ul>
 
                     <?php fire_plugin_hook('admin_items_browse_simple_each', array('item' => $item, 'view' => $this)); ?>
-
+                    <!--
                     <div class="details">
-                        <?php echo snippet_by_word_count(metadata('item', array('Dublin Core', 'Description')), 40); ?>
+                        <?php // echo snippet_by_word_count(metadata('item', array('Dublin Core', 'Description')), 40); ?>
                         <p>
                             <strong><?php echo __('Collection'); ?>:</strong>
-                            <?php echo link_to_collection_for_item(); ?>
+                            <?php // echo link_to_collection_for_item(); ?>
                         </p>
                         <p>
-                            <strong><?php echo __('Tags'); ?>:</strong>
-                            <?php if ($tags = tag_string('items')) echo $tags; else echo __('No Tags'); ?>
+                            <strong><?php // echo __('Tags'); ?>:</strong>
+                            <?php if ($tags = tag_string('items')) // echo $tags; else echo __('No Tags'); ?>
                         </p>
-                        <?php fire_plugin_hook('admin_items_browse_detailed_each', array('item' => $item, 'view' => $this)); ?>
+                        <?php // fire_plugin_hook('admin_items_browse_detailed_each', array('item' => $item, 'view' => $this)); ?>
                     </div>
+                    //-->
                 </td>
                 <!-- <td><?php // echo strip_formatting(metadata('item', array('Dublin Core', 'Creator'))); ?></td> -->
 
@@ -161,11 +162,11 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
     </div>
 
     <script type="text/javascript">
-    Omeka.addReadyCallback(Omeka.ItemsBrowse.setupDetails, [
-        <?php echo js_escape(__('Details')); ?>,
-        <?php echo js_escape(__('Show Details')); ?>,
-        <?php echo js_escape(__('Hide Details')); ?>
-    ]);
+    // Omeka.addReadyCallback(Omeka.ItemsBrowse.setupDetails, [
+    //     <?php echo js_escape(__('Details')); ?>,
+    //     <?php echo js_escape(__('Show Details')); ?>,
+    //     <?php echo js_escape(__('Hide Details')); ?>
+    // ]);
     Omeka.addReadyCallback(Omeka.ItemsBrowse.setupBatchEdit);
     </script>
 
