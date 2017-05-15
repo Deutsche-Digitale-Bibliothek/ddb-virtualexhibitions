@@ -24,6 +24,11 @@ jQuery(window).load(function () {
 
     Omeka.Items.enableAddFiles(<?php echo js_escape(__('Add Another File')); ?>);
     Omeka.Items.changeItemType(<?php echo js_escape(url("items/change-type")) ?><?php if ($id = metadata('item', 'id')) echo ', '.$id; ?>);
+
+    // Grandgeorg Websolutions BEGIN
+    jQuery('#item-type').val(18).trigger('change');
+    // Grandgeorg Websolutions END
+
 });
 
 jQuery(document).bind('omeka:elementformload', function (event) {
@@ -36,16 +41,16 @@ jQuery(document).bind('omeka:elementformload', function (event) {
 <section class="seven columns alpha" id="edit-form">
 
     <?php echo flash(); ?>
-    
+
     <div id="item-metadata">
     <?php foreach ($tabs as $tabName => $tabContent): ?>
         <?php if (!empty($tabContent)): ?>
             <div id="<?php echo text_to_id(html_escape($tabName)); ?>-metadata">
             <fieldset class="set">
                 <h2><?php echo html_escape(__($tabName)); ?></h2>
-                <?php echo $tabContent; ?>        
+                <?php echo $tabContent; ?>
             </fieldset>
-            </div>     
+            </div>
         <?php endif; ?>
     <?php endforeach; ?>
     </div>
