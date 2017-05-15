@@ -9,7 +9,7 @@ if ($exhibit->title) {
 <?php echo js_tag('themes'); ?>
 <?php echo flash(); ?>
 <div id="exhibits-breadcrumb">
-    <a href="<?php echo html_escape(url('exhibits')); ?>">Exhibits</a> &gt; <?php echo html_escape('Configure Theme for Exhibit'); ?>
+    <!-- <a href="<?php // echo html_escape(url('exhibits')); ?>">Exhibits</a> &gt;  --><?php echo html_escape('Configure Theme for Exhibit'); ?>
 </div>
 <form method="post" action="" enctype="multipart/form-data">
     <section class="seven columns alpha">

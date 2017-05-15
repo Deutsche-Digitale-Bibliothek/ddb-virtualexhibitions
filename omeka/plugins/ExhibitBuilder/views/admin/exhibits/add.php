@@ -3,7 +3,7 @@
     echo head(array('title' => html_escape($title), 'bodyclass' => 'exhibits'));
 ?>
     <div id="exhibits-breadcrumb">
-        <a href="<?php echo html_escape(url('exhibits')); ?>"><?php echo __('Exhibits'); ?></a> &gt;
+        <!-- <a href="<?php //echo html_escape(url('exhibits')); ?>"><?php // echo __('Exhibits'); ?></a> &gt; -->
         <?php echo html_escape($title); ?>
     </div>
 

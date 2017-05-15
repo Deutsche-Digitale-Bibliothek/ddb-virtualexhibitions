@@ -6,7 +6,7 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
 <?php echo flash(); ?>
 
 <div id="exhibits-breadcrumb">
-    <a href="<?php echo html_escape(url('exhibits')); ?>"><?php echo __('Exhibits'); ?></a> &gt;
+    <!-- <a href="<?php // echo html_escape(url('exhibits')); ?>"><?php // echo __('Exhibits'); ?></a> &gt; -->
     <a href="<?php echo html_escape(url('exhibits/edit/' . $exhibit['id']));?>"><?php echo html_escape($exhibit['title']); ?></a>  &gt;
     <?php echo html_escape($title); ?>
 </div>
