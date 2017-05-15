@@ -102,6 +102,11 @@
                 <?php if ($theme && $theme->hasConfig): ?>
                     <a href="<?php echo html_escape(url("exhibits/theme-config/$exhibit->id")); ?>" class="configure-button button"><?php echo __('Configure'); ?></a>
                 <?php endif;?>
+                <script>
+                    jQuery(document).ready(function () {
+                        jQuery('#theme').val('ddb').trigger('change');
+                    });
+                </script>
             </div>
         </div>
     </fieldset>
