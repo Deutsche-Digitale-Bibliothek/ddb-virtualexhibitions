@@ -41,6 +41,9 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $counter = 0;
         $new     = array();
+
+        $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+
         foreach ($navArray as $nav) {
             if (
                 ($nav['label'] !== __('Collections') && substr($nav['uri'], -12) !== '/collections')
@@ -60,6 +63,12 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                 } else {
                     $new[$counter] = $nav;
                 }
+                $counter++;
+            } elseif ($nav['label'] === __('Item Types')
+                && substr($nav['uri'], -11) === '/item-types'
+                && $currentuser->role === 'super')
+            {
+                $new[$counter] = $nav;
                 $counter++;
             }
         }
