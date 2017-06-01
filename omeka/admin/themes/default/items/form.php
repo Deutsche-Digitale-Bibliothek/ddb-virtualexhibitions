@@ -26,7 +26,13 @@ jQuery(window).load(function () {
     Omeka.Items.changeItemType(<?php echo js_escape(url("items/change-type")) ?><?php if ($id = metadata('item', 'id')) echo ', '.$id; ?>);
 
     // Grandgeorg Websolutions BEGIN
+    var ginaItemId = 0;
+    <?php if (isset($id) && false !== $id && $id > 0): ?>
+    // nothing to do for existing items so far
+    <?php else: ?>
     jQuery('#item-type').val(18).trigger('change');
+    jQuery('#public').prop('checked', true);
+    <?php endif; ?>
     // Grandgeorg Websolutions END
 
 });
