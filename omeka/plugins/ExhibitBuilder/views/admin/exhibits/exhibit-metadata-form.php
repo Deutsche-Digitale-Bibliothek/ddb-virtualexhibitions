@@ -96,7 +96,7 @@
                 <?php echo $this->formFile('cover'); ?>
             </div>
         </div>
-        <div class="field">
+        <div class="field" id="gina_exhibit_metadata_theme_container">
             <div class="two columns alpha">
                 <?php echo $this->formLabel('theme', __('Theme')); ?>
             </div>
