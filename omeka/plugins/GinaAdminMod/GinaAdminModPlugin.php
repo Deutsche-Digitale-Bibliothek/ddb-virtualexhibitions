@@ -123,6 +123,23 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                 $counter++;
             }
         }
+        $new[$counter] = '
+            <h2>Kontakt und Support</h2>
+            <p><a href="#">Benutzerhandbuch online</a></p>
+            <h3>Team</h3>
+            <p>
+            <strong>Koordination</strong><br>
+            Stephan Bartholmei<br>
+            <a href="mailto:S.Bartholmei@dnb.de">S.Bartholmei@dnb.de</a><br>
+            Tel.: 123456
+            </p>
+            <p>
+            <strong>Musterrolle</strong><br>
+            Max Mustermann<br>
+            <a href="mailto:max@example.com">max@example.com</a><br>
+            Tel.: 123456
+            </p>
+        ';
         return $new;
     }
 
