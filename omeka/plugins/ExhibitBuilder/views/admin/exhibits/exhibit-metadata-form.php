@@ -35,15 +35,19 @@
                 <?php echo $this->formTextarea('description', $exhibit->description, array('rows'=>'8','cols'=>'40')); ?>
             </div>
         </div>
+
+        <!--
         <div class="field">
             <div class="two columns alpha">
-                <?php echo $this->formLabel('tags', __('Tags')); ?>
+                <?php // echo $this->formLabel('tags', __('Tags')); ?>
             </div>
             <div class="five columns omega inputs">
-                <?php $exhibitTagList = join(', ', pluck('name', $exhibit->Tags)); ?>
-                <?php echo $this->formText('tags', $exhibitTagList); ?>
+                <?php // $exhibitTagList = join(', ', pluck('name', $exhibit->Tags)); ?>
+                <?php // echo $this->formText('tags', $exhibitTagList); ?>
             </div>
         </div>
+        //-->
+
         <div class="field">
             <div class="two columns alpha">
                 <?php echo $this->formLabel('widget_top_first', __('Widget Top First Content')); ?>
