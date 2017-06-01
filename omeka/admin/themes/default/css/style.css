@@ -2455,3 +2455,14 @@ button.remove_search {
     float: left;
     margin: 0;
 }
+
+
+/* DDB cutom mods
+================================================== */
+#item-type-metadata-metadata #type-select {
+    display: none;
+}
+
+#item-type-metadata-metadata .element-set-description {
+    display: none;
+}
