@@ -1,8 +1,8 @@
-<div class="item-relations panel">
-    <h4><?php echo __('X3D Element'); ?></h4>
+<div class="x3d-elements panel">
+    <h4><?php echo __('3D-Dateien'); ?></h4>
     <div>
     <?php if (!$x3d): ?>
-        <p><?php echo __('Es ist kein X3D Element zugewiesen.'); ?></p>
+        <p><?php echo __('Es ist keine 3D-Dateien zugewiesen.'); ?></p>
     <?php else: ?>
         <?php $x3dDir = FILES_DIR . DIRECTORY_SEPARATOR . 'x3d' . DIRECTORY_SEPARATOR . $x3d->directory; ?>
         <?php $x3dWebdir = WEB_FILES . '/x3d/' . $x3d->directory; ?>
