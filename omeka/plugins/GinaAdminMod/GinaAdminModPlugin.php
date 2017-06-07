@@ -20,7 +20,12 @@
 class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
-        'define_acl'
+        'define_acl',
+        'initialize',
+        'admin_head',
+        'config_form',
+        'config',
+        // 'admin_items_browse_simple_each'
     );
 
     protected $_filters = array(
@@ -124,22 +129,10 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             }
         }
         $new[$counter] = '
-            <h2>Kontakt und Support</h2>
-            <p><a href="#">Benutzerhandbuch online</a></p>
-            <h3>Team</h3>
-            <p>
-            <strong>Koordination</strong><br>
-            Stephan Bartholmei<br>
-            <a href="mailto:S.Bartholmei@dnb.de">S.Bartholmei@dnb.de</a><br>
-            Tel.: 123456
-            </p>
-            <p>
-            <strong>Musterrolle</strong><br>
-            Max Mustermann<br>
-            <a href="mailto:max@example.com">max@example.com</a><br>
-            Tel.: 123456
-            </p>
-        ';
+            <h2>' . get_option('gina_admin_mod_dashboard_panel_title') . '</h2>
+            <div class="gina_admin_mod_dashboard_panel_content">'
+                . get_option('gina_admin_mod_dashboard_panel_content')
+            . '</div>';
         return $new;
     }
 
@@ -180,6 +173,14 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     }
 
     /**
+     * Add the translations.
+     */
+    public function hookInitialize()
+    {
+        add_translation_source(dirname(__FILE__) . '/languages');
+    }
+
+    /**
      * @param $args array Array with ACL-Object in $args['acl']
      * @return void
      */
@@ -188,5 +189,51 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         $acl = $args['acl'];
         $acl->deny(null, 'Items', 'makeFeatured');
     }
+
+    /**
+     * Display the CSS style and javascript for the exhibit in the admin head
+     */
+    public function hookAdminHead()
+    {
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $pluginName = $request->getParam('name');
+        if ($pluginName == 'GinaAdminMod') {
+            queue_js_file(array('vendor/tiny_mce/tiny_mce', 'config'));
+        }
+    }
+
+    /**
+     * Display the plugin config form.
+     */
+    public function hookConfigForm()
+    {
+        require dirname(__FILE__) . '/config_form.php';
+    }
+
+    /**
+     * Processes the configuration form.
+     *
+     * @return void
+     */
+    public function hookConfig($args)
+    {
+        $post = $args['post'];
+        set_option('gina_admin_mod_dashboard_panel_title', $post['gina_admin_mod_dashboard_panel_title']);
+        set_option('gina_admin_mod_dashboard_panel_content', $post['gina_admin_mod_dashboard_panel_content']);
+    }
+
+    /**
+     * Admin items browse
+     * @param array array with item and view object
+     * @return void
+     */
+    // public function hookAdminItemsBrowseSimpleEach($args)
+    // {
+        // echo '<ul class="action-links group">'
+        //     . '<li>'
+                // . '<a href="/dublicate/id/' . $args['item']->id . '">' . __('Duplizieren') . '</a>'
+        //     . '</li>'
+        //     . '</ul>';
+    // }
 
 }
