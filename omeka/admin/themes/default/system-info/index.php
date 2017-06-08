@@ -13,7 +13,7 @@ echo head(array('title' => $title, 'bodyclass' => 'system-info')); ?>
     </tr>
     <?php endforeach; ?>
 <?php endforeach; ?>
-    <tr><th colspan="2">PHP Kofiguration</th></tr>
+    <tr><th colspan="2">PHP Konfiguration</th></tr>
     <tr>
         <td>upload_max_filesize</td>
         <td><?php echo ini_get('upload_max_filesize'); ?></td>
