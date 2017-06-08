@@ -260,13 +260,11 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookAdminItemsBrowseSimpleEach($args)
     {
 
-        echo '<ul class="action-links group">'
-            . '<li>'
+        echo '<li>'
                 . '<a href="'
                 . url(array('duplicateitem', 'index', 'gina-admin-mod'), 'gina-admin-mod') . '/'
                 . $args['item']->id . '">' . __('Duplizieren') . '</a>'
-            . '</li>'
-            . '</ul>';
+            . '</li>';
     }
 
 }

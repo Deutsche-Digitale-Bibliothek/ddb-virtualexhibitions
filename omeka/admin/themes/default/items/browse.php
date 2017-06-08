@@ -96,19 +96,19 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                         <?php if (is_allowed($item, 'delete')): ?>
                         <li><?php echo link_to_item(__('Delete'), array('class' => 'delete-confirm'), 'delete-confirm'); ?></li>
                         <?php endif; ?>
+                        <?php fire_plugin_hook('admin_items_browse_simple_each', array('item' => $item, 'view' => $this)); ?>
                     </ul>
 
-                    <?php fire_plugin_hook('admin_items_browse_simple_each', array('item' => $item, 'view' => $this)); ?>
                     <!--
                     <div class="details">
                         <?php // echo snippet_by_word_count(metadata('item', array('Dublin Core', 'Description')), 40); ?>
                         <p>
-                            <strong><?php echo __('Collection'); ?>:</strong>
+                            <strong><?php // echo __('Collection'); ?>:</strong>
                             <?php // echo link_to_collection_for_item(); ?>
                         </p>
                         <p>
                             <strong><?php // echo __('Tags'); ?>:</strong>
-                            <?php if ($tags = tag_string('items')) // echo $tags; else echo __('No Tags'); ?>
+                            <?php // if ($tags = tag_string('items')) // echo $tags; else echo __('No Tags'); ?>
                         </p>
                         <?php // fire_plugin_hook('admin_items_browse_detailed_each', array('item' => $item, 'view' => $this)); ?>
                     </div>
