@@ -21,11 +21,12 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
         'define_acl',
+        'define_routes',
         'initialize',
         'admin_head',
         'config_form',
         'config',
-        // 'admin_items_browse_simple_each'
+        'admin_items_browse_simple_each'
     );
 
     protected $_filters = array(
@@ -191,6 +192,35 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
     }
 
     /**
+     * Add the routes
+     *
+     * @param Zend_Controller_Router_Rewrite $router
+     */
+    public function hookDefineRoutes($args)
+    {
+        // Don't add these routes on the public side to avoid conflicts.
+        if (!is_admin_theme()) {
+            return;
+        }
+
+        $router = $args['router'];
+
+        $router->addRoute(
+            'gina-admin-mod',
+            new Zend_Controller_Router_Route(
+                '/gina-admin-mod/duplicateitem/:id',
+                array(
+                    'module'     => 'gina-admin-mod',
+                    'controller' => 'index',
+                    'action'     => 'duplicateitem',
+                    'id'         => null
+                )
+            )
+        );
+
+    }
+
+    /**
      * Display the CSS style and javascript for the exhibit in the admin head
      */
     public function hookAdminHead()
@@ -227,13 +257,16 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
      * @param array array with item and view object
      * @return void
      */
-    // public function hookAdminItemsBrowseSimpleEach($args)
-    // {
-        // echo '<ul class="action-links group">'
-        //     . '<li>'
-                // . '<a href="/dublicate/id/' . $args['item']->id . '">' . __('Duplizieren') . '</a>'
-        //     . '</li>'
-        //     . '</ul>';
-    // }
+    public function hookAdminItemsBrowseSimpleEach($args)
+    {
+
+        echo '<ul class="action-links group">'
+            . '<li>'
+                . '<a href="'
+                . url(array('duplicateitem', 'index', 'gina-admin-mod'), 'gina-admin-mod') . '/'
+                . $args['item']->id . '">' . __('Duplizieren') . '</a>'
+            . '</li>'
+            . '</ul>';
+    }
 
 }
