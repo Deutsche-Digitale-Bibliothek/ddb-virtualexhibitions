@@ -43,9 +43,9 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
         !empty($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0])) {
 
         $institution = '<a href="'
-            . $itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0]
+            . strip_tags($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0])
             . '" target="_blank">'
-            . html_escape($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0])
+            . html_escape(strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]))
             . '</a>';
     }
 
