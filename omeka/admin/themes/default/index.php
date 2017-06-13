@@ -1,7 +1,7 @@
 <?php
 $pageTitle = __('Dashboard');
 echo head(array('bodyclass'=>'index primary-secondary', 'title'=>$pageTitle)); ?>
-    
+
 <?php
 $total_items = total_records('Item');
 $total_collections = total_records('Collection');
@@ -57,12 +57,12 @@ endif; ?>
     <div class="recent-row">
         <p class="recent"><?php echo link_to_item(); ?></p>
         <?php if (is_allowed($item, 'edit')): ?>
-        <p class="dash-edit"><?php echo link_to_item(__('Edit'), array(), 'edit'); ?></p>
+        <p class="dash-edit"><?php echo link_to_item(__('Edit'), array('class' => 'small blue button'), 'edit'); ?></p>
         <?php endif; ?>
     </div>
 <?php endforeach; ?>
     <?php if (is_allowed('Items', 'add')): ?>
-    <div class="add-new-link"><p><a class="add-new-item" href="<?php echo html_escape(url('items/add')); ?>"><?php echo __('Add a new item'); ?></a></p></div>
+    <div class="add-new-link"><p><a class="add-new-item button small green" href="<?php echo html_escape(url('items/add')); ?>"><?php echo __('Add a new item'); ?></a></p></div>
     <?php endif; ?>
 <?php $panels[] = ob_get_clean(); ?>
 
