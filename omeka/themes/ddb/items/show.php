@@ -9,7 +9,7 @@ if (empty($title)) { $title = metadata('item', array('Dublin Core', 'Title')); }
 <?php
 $itemMetadata = all_element_texts('item', array('return_type' => 'array'));
 
-// var_dump($metadata);
+// var_dump($itemMetadata);
 
 // $metadataDisplayFields = array(
 //     'Weiterer Titel', 'Institution', 'Link zum Objekt',
@@ -25,8 +25,8 @@ $itemMetadata = all_element_texts('item', array('return_type' => 'array'));
  * Display DDB style Metadata
  */
 $metadataDisplayFields = array(
-    'Weiterer Titel', 'Institution', 'Link zum Objekt',
-    'Link zum Objekt bei der datenliefernden Einrichtung',
+    'Weiterer Titel', 'Link zum Objekt',
+    'Link zum Objekt bei der datengebenden Institution',
     'Typ', 'Teil von', 'Beschreibung', 'Kurzbeschreibung',
     'Thema', 'Beteiligte Personen und Organisationen',
     'Zeit', 'Ort', 'Maße/Umfang', 'Material/Technik',
@@ -35,6 +35,20 @@ $metadataDisplayFields = array(
 );
 
 if (isset($itemMetadata['VA DDB Item Type Metadata'])):
+
+    $institution = '';
+    if (isset($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
+        !empty($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
+        isset($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0]) &&
+        !empty($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0])) {
+
+        $institution = '<a href="'
+            . $itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0]
+            . '" target="_blank">'
+            . html_escape($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0])
+            . '</a>';
+    }
+
     foreach ($itemMetadata['VA DDB Item Type Metadata'] as $metaName => $metaValue):
         if(in_array($metaName, $metadataDisplayFields)): ?>
         <div id="<?php echo text_to_id(html_escape('VA DDB Item Type Metadata' . $metaName)); ?>" class="element">
@@ -46,6 +60,11 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
             <div class="element-text"><?php echo $metaText; ?></div>
             <?php endif; ?>
             <?php endforeach; ?>
+        </div>
+    <?php elseif (!empty($institution) && $metaName == 'Name der Institution'): ?>
+        <div id="<?php echo text_to_id(html_escape('VA DDB Item Type Metadata' . $metaName)); ?>" class="element">
+            <h3>Institution</h3>
+            <div class="element-text"><?php echo $institution; ?></div>
         </div>
 <?php endif; endforeach; endif; ?>
 
