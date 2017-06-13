@@ -9,7 +9,10 @@
                     <?php echo link_to($file, 'show', html_escape($file->original_filename), array()); ?>
                     <?php echo $this->formHidden("order[{$file->id}]", $file->order, array('class' => 'file-order')); ?>
                     <ul class="action-links">
+                    <?php $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser'); ?>
+                    <?php if ($currentuser->role === 'super'): ?>
                         <li><?php echo link_to($file, 'edit', __('Edit'), array('class'=>'edit')); ?></li>
+                    <?php endif; ?>
                         <li><a href="#" class="delete"><?php echo __('Delete '); ?></a> <?php echo $this->formCheckbox('delete_files[]', $file->id, array('checked' => false)); ?></li>
                     </ul>
                 </div>
@@ -22,7 +25,7 @@
 <div class="add-new"><?php echo __('Add New Files'); ?></div>
 <div class="drawer-contents">
     <p><?php echo __('The maximum file size is %s.', max_file_size()); ?></p>
-    
+
     <div class="field two columns alpha" id="file-inputs">
         <label><?php echo __('Find a File'); ?></label>
     </div>

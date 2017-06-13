@@ -94,7 +94,7 @@ function exhibit_builder_upgrade($args)
     $newVersion = $args['new_version'];
 
     $db = get_db();
-    
+
     // Transition to upgrade model for EB
     if (version_compare($oldVersion, '0.6', '<') )
     {
@@ -130,7 +130,7 @@ function exhibit_builder_upgrade($args)
         // Remove any broken pages or artifacts from a failed upgrade
         $sql = "DELETE FROM `{$db->prefix}exhibit_pages` WHERE section_id = 0";
         $db->query($sql);
-        
+
         // Get all the data about sections to turn them into ExhibitPages
         $sql = "SELECT * FROM `{$db->prefix}sections` ";
         $result = $db->query($sql);
@@ -150,7 +150,7 @@ function exhibit_builder_upgrade($args)
             );
             $db->getAdapter()->insert($db->ExhibitPage, $newPageData);
             $pageId = (int) $db->lastInsertId();
-            
+
             $sectionIdMap[$section['id']] = array('pageId' => $pageId, 'exhibitId' => $section['exhibit_id']);
 
             //slap the section's description into a text entry for the page
@@ -189,7 +189,7 @@ function exhibit_builder_upgrade($args)
 
         $sql = "ALTER TABLE `{$db->prefix}exhibit_pages` ADD INDEX `exhibit_id_order` (`exhibit_id`, `order`)";
         $db->query($sql);
-        
+
         delete_option('exhibit_builder_use_browse_exhibits_for_homepage');
     }
 
@@ -290,7 +290,7 @@ function exhibit_builder_admin_head()
 
 /**
  * Append an Exhibits section to admin dashboard
- * 
+ *
  * @param array $stats Array of "statistics" displayed on dashboard
  * @return array
  */
@@ -482,13 +482,8 @@ function exhibit_builder_items_browse_sql($args)
  */
 function exhibit_builder_items_search()
 {
-    $view = get_view();
-    $html = '<div class="field"><div class="two columns alpha">'
-          . $view->formLabel('exhibit', __('Search by Exhibit'))
-          . '</div><div class="five columns omega inputs">'
-          . $view->formSelect('exhibit', @$_GET['exhibit'], array(), get_table_options('Exhibit'))
-          . '</div></div>';
-    echo $html;
+    // Grandgeorg Websolutions: we do not need extra search,
+    // as there is only one exhibition per instance.
 }
 
 function exhibit_builder_search_record_types($recordTypes)
@@ -517,21 +512,21 @@ function exhibit_builder_item_search_filters($displayArray, $args)
 function exhibit_builder_api_resources($apiResources)
 {
     $apiResources['exhibits'] = array(
-        'record_type' => 'Exhibit', 
-        'actions' => array('get', 'index'), 
+        'record_type' => 'Exhibit',
+        'actions' => array('get', 'index'),
         'index_params' => array('tag', 'tags', 'sort', 'public', 'featured')
     );
     $apiResources['exhibit_pages'] = array(
             'record_type' => 'ExhibitPage',
             'actions' => array('get', 'index'),
             'index_params' => array('parent', 'exhibit', 'order', 'topOnly')
-    );    
-    
+    );
+
     $apiResources['exhibit_page_entries'] = array(
             'record_type' => 'ExhibitPageEntry',
             'actions' => array('get', 'index'),
             'index_params' => array('page_id', 'item_id')
-    );    
-    
-    return $apiResources;    
+    );
+
+    return $apiResources;
 }

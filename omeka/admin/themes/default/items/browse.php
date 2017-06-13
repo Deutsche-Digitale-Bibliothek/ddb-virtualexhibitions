@@ -28,9 +28,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                 <div class="selected"><span class="count">0</span> <?php echo __('items selected'); ?></div>
                 <input type="hidden" name="batch-all" value="1" id="batch-all" disabled>
                 <?php echo $this->formHidden('params', json_encode(Zend_Controller_Front::getInstance()->getRequest()->getParams())); ?>
-                <?php if (is_allowed('Items', 'edit')): ?>
-                <input type="submit" class="edit-items small batch-action button" name="submit-batch-edit" value="<?php echo __('Edit'); ?>" />
-                <?php endif; ?>
                 <?php if (is_allowed('Items', 'delete')): ?>
                 <input type="submit" class="small batch-action button" name="submit-batch-delete" value="<?php echo __('Delete'); ?>">
                 <?php endif; ?>
