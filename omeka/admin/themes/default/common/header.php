@@ -35,6 +35,18 @@
 <!-- JavaScripts -->
 <?php echo head_js(); ?>
 
+<?php
+$usrPriv = 'usr-priv-normal';
+$currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+if (isset($currentuser) && !empty($currentuser) && $currentuser->role === 'super') {
+    $usrPriv = 'usr-priv-super';
+}
+if (!isset($bodyclass)) {
+    $bodyclass = '';
+}
+$bodyclass = (empty($bodyclass))? $usrPriv : $usrPriv . ' ' . $bodyclass
+?>
+
 </head>
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
@@ -47,7 +59,7 @@
 
         <nav>
             <?php echo common('global-nav'); ?>
-            
+
             <ul id="user-nav">
             <?php if ($user = current_user()): ?>
                 <?php

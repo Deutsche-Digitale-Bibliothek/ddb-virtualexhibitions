@@ -31,12 +31,6 @@ echo flash();
                         <?php echo $this->formCheckbox('public', $item->public, array(), array('1', '0')); ?>
                     </div>
                 <?php endif; ?>
-                <?php if ( is_allowed('Items', 'makeFeatured') ): ?>
-                    <div class="featured">
-                        <label for="featured"><?php echo __('Featured'); ?>:</label>
-                        <?php echo $this->formCheckbox('featured', $item->featured, array(), array('1', '0')); ?>
-                    </div>
-                <?php endif; ?>
             </div> <!-- end public-featured  div -->
             <!-- end collection-form div -->
             <?php fire_plugin_hook("admin_items_panel_fields", array('view'=>$this, 'record'=>$item)); ?>

@@ -1955,7 +1955,12 @@ header nav {
     line-height: 2.125em;
 }
 
-    .field .use-html input[type=checkbox] { margin-left: 5px; }
+.field .use-html input[type=checkbox] { margin-left: 5px; }
+
+.usr-priv-normal .field .use-html {
+    display: none;
+}
+.usr-priv-normal .field .use-html input[type=checkbox] { display: none; }
 
 #section-nav, #section-nav ul {
     font-family: "Arvo", sans-serif;
@@ -2465,4 +2470,8 @@ button.remove_search {
 
 #item-type-metadata-metadata .element-set-description {
     display: none;
+}
+.usr-priv-normal #item-type-metadata-metadata button.add-element,
+.usr-priv-normal #item-type-metadata-metadata input.remove-element {
+    display: none !important;
 }

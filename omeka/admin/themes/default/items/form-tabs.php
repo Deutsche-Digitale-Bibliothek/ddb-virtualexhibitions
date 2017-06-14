@@ -1,8 +1,8 @@
-<?php 
+<?php
 $tabs = array();
 foreach ($elementSets as $key => $elementSet) {
     $tabName = $elementSet->name;
-        
+
     switch ($tabName) {
         case ElementSet::ITEM_TYPE_NAME:
             // Output buffer this form instead of displaying it right away.
@@ -11,7 +11,7 @@ foreach ($elementSets as $key => $elementSet) {
             $tabs[$tabName] = ob_get_contents();
             ob_end_clean();
             break;
-        
+
         default:
             $tabContent  = '<p class="element-set-description" id="';
             $tabContent .= html_escape(text_to_id($elementSet->name) . '-description') . '">';
@@ -39,6 +39,6 @@ $tabs = apply_filters('admin_items_form_tabs', $tabs, array('item' => $item));
     <?php foreach ($tabs as $tabName => $tabContent): ?>
         <?php if (!empty($tabContent)): // Don't display tabs with no content. '?>
             <li><a href="#<?php echo html_escape(text_to_id($tabName) . '-metadata'); ?>"><?php echo html_escape(__($tabName)); ?></a></li>
-        <?php endif; ?> 
+        <?php endif; ?>
     <?php endforeach; ?>
 </ul>
