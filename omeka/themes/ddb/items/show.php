@@ -40,10 +40,19 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
     if (isset($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
         !empty($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
         isset($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0]) &&
-        !empty($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0])) {
-
+        !empty($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0]))
+    {
         $institution = '<a href="'
             . strip_tags($itemMetadata['VA DDB Item Type Metadata']['URL der Institution'][0])
+            . '" target="_blank">'
+            . html_escape(strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]))
+            . '</a>';
+    } elseif (isset($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
+        !empty($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
+        1 === preg_match('|href="([^"]*)|', $itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0], $matches))
+    {
+        $institution = '<a href="'
+            . $matches[1]
             . '" target="_blank">'
             . html_escape(strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]))
             . '</a>';
