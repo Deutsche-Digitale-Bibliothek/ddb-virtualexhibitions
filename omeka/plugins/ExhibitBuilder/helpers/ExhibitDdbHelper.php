@@ -653,8 +653,21 @@ class ExhibitDdbHelper
     {
         $output = '';
         if (null !== $attachment['item']) {
-            $output = metadata($attachment['item'],
-                array('Item Type Metadata', 'Institution'));
+            $institutionNameLegacy = metadata($attachment['item'], array('Item Type Metadata', 'Name der Institution'));
+            $institutionName = strip_tags($institutionNameLegacy);
+            $institutionUrl = strip_tags(metadata($attachment['item'], array('Item Type Metadata', 'URL der Institution')));
+            if (!empty($institutionName) && !empty($institutionUrl)) {
+                $output = '<a href="' . $institutionUrl . '" target="_blank">'
+                    . $institutionName . '</a>';
+            } elseif (!empty($institutionName) && isset($institutionNameLegacy) && !empty($institutionNameLegacy) &&
+                1 === preg_match('|href="([^"]*)|', $institutionNameLegacy, $matches))
+            {
+                $output = '<a href="'
+                . $matches[1]
+                . '" target="_blank">'
+                . $institutionName
+                . '</a>';
+            }
         }
         return $output;
     }
@@ -722,11 +735,11 @@ class ExhibitDdbHelper
         $attachmenLinkText = '';
         if (null !== $attachment['item']) {
             $attachmenLinkText = strip_tags(metadata($attachment['item'],
-                array('Item Type Metadata', 'Link zum Objekt')));
+                array('Item Type Metadata', 'Link zum Objekt in der DDB')));
         }
         if (null !== $attachment['item'] && empty($attachmenLinkText)) {
             $attachmenLinkText = strip_tags(metadata($attachment['item'],
-                array('Item Type Metadata', 'Link zum Objekt bei der datenliefernden Einrichtung')));
+                array('Item Type Metadata', 'Link zum Objekt bei der datengebenden Institution')));
         }
 
         if (null !== $attachment['item'] && empty($attachmenLinkText)) {
@@ -751,13 +764,13 @@ class ExhibitDdbHelper
     {
         $attachmenLinkTitle = '';
         if (null !== $attachment['item'] && 1 === preg_match('@title="([^"]*)@',
-            metadata($attachment['item'], array('Item Type Metadata', 'Link zum Objekt')),
+            metadata($attachment['item'], array('Item Type Metadata', 'Link zum Objekt in der DDB')),
                 $matches)) {
             $attachmenLinkTitle = $matches[1];
         }
         if (null !== $attachment['item'] && empty($attachmenLinkTitle) &&
             1 === preg_match('@title="([^"]*)@', metadata($attachment['item'],
-                array('Item Type Metadata', 'Link zum Objekt bei der datenliefernden Einrichtung')),
+                array('Item Type Metadata', 'Link zum Objekt bei der datengebenden Institution')),
                 $matches)) {
             $attachmenLinkTitle = $matches[1];
         }
@@ -784,13 +797,13 @@ class ExhibitDdbHelper
     {
         $attachmentLinkUrl = '';
         if (null !== $attachment['item'] && 1 === preg_match('|href="([^"]*)|',
-            metadata($attachment['item'], array('Item Type Metadata', 'Link zum Objekt')),
+            metadata($attachment['item'], array('Item Type Metadata', 'Link zum Objekt in der DDB')),
                 $matches)) {
             $attachmentLinkUrl = $matches[1];
         }
         // if (null !== $attachment['item'] && empty($attachmentLinkUrl) &&
         //     1 === preg_match('@href="([^"]*)@', metadata($attachment['item'],
-        //         array('Item Type Metadata', 'Link zum Objekt bei der datenliefernden Einrichtung')),
+        //         array('Item Type Metadata', 'Link zum Objekt bei der datengebenden Institution')),
         //         $matches)) {
         //     $attachmentLinkUrl = $matches[1];
         // }
