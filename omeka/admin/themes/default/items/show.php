@@ -1,4 +1,4 @@
-<?php    
+<?php
 $itemTitle = metadata('item', 'display_title');
 if ($itemTitle != '' && $itemTitle != __('[Untitled]')) {
     $itemTitle = ': &quot;' . $itemTitle . '&quot; ';
@@ -19,7 +19,11 @@ echo flash();
         array('linkWrapper' => array('class' => 'admin-thumb panel')),
         'square_thumbnail', true);
     ?>
-    <?php echo all_element_texts('item'); ?>
+    <?php echo all_element_texts('item', array(
+        'show_element_sets' => 'Item Type Metadata',
+        'show_element_set_headings' => false,
+        'show_empty_elements' => false
+    )); ?>
     <?php fire_plugin_hook('admin_items_show', array('item' => $item, 'view' => $this)); ?>
 </section>
 
@@ -36,10 +40,10 @@ echo flash();
         </li>
         <?php endif; ?>
     </ul>
-    
+
     <div id="edit" class="panel">
         <?php if (is_allowed($item, 'edit')): ?>
-        <?php 
+        <?php
         echo link_to_item(__('Edit'), array('class'=>'big green button'), 'edit'); ?>
         <?php endif; ?>
         <a href="<?php echo html_escape(public_url('items/show/'.metadata('item', 'id'))); ?>" class="big blue button" target="_blank"><?php echo __('View Public Page'); ?></a>
@@ -47,28 +51,11 @@ echo flash();
         <?php echo link_to_item(__('Delete'), array('class' => 'delete-confirm big red button'), 'delete-confirm'); ?>
         <?php endif; ?>
     </div>
-    
+
     <div class="public-featured panel">
         <p><span class="label"><?php echo __('Public'); ?>:</span> <?php echo ($item->public) ? __('Yes') : __('No'); ?></p>
-        <p><span class="label"><?php echo __('Featured'); ?>:</span> <?php echo ($item->featured) ? __('Yes') : __('No'); ?></p>
     </div>
 
-    <div class="collection panel">
-        <h4><?php echo __('Collection'); ?></h4>
-        <div>
-           <p><?php echo link_to_collection_for_item(); ?></p>
-        </div>
-    </div>
-
-    <?php if (metadata('item', 'has tags')): ?>
-    <div class="tags panel">
-        <h4><?php echo __('Tags'); ?></h4>
-        <div id="tag-cloud">
-            <?php echo common('tag-list', compact('item'), 'items'); ?>
-        </div>
-     </div>
-    <?php endif; ?>
-    
     <div class="file-metadata panel">
         <h4><?php echo __('File Metadata'); ?></h4>
         <div id="file-list">
@@ -84,11 +71,6 @@ echo flash();
         </div>
     </div>
 
-    <div class="panel">
-        <h4><?php echo __('Output Formats'); ?></h4>
-        <div><?php echo output_format_list(); ?></div>
-    </div>
-    
     <div class="info panel">
         <h4><?php echo __('Bibliographic Citation'); ?></h4>
         <div>
