@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-14 10:40+0200\n"
-"Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
+"PO-Revision-Date: 2017-06-13 19:29+0200\n"
+"Last-Translator: John Flatness <john@zerocrates.org>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #. Dublin Core description
 msgid "The Dublin Core metadata element set is common to all Omeka records, including items, files, and collections. For more information see, http://dublincore.org/documents/dces/."
-msgstr "Das Dublin Core Metadata Element Set gilt für alle Datensätze in Omeka, inklusive Objekte, Dateien und Sammlungen. Für mehr Informationen vgl. http://dublincore.org/documents/dces/."
+msgstr "Das Dublin Core Metadata Element Set gilt für alle Datensätze in Omeka, inklusive Objekte, Dateien und Sammlungen. Weitere Informationen unter vgl. http://dublincore.org/documents/dces/."
 
 #. Dublin Core: Title element name
 #: admin/themes/default/collections/browse.php:29
@@ -48,7 +48,7 @@ msgstr "Ersteller"
 
 #. Dublin Core: Creator element description
 msgid "An entity primarily responsible for making the resource"
-msgstr "Organisation, welche in erster Linie für die Herstellung der Ressource verantwortlich ist"
+msgstr "Organisation, die vorrangig für die Herstellung der Ressource verantwortlich ist"
 
 #. Dublin Core: Subject element name
 msgid "Subject"
@@ -69,7 +69,7 @@ msgstr "Beschreibung"
 
 #. Dublin Core: Description element description
 msgid "An account of the resource"
-msgstr "Konto für die Ressource"
+msgstr "Darstellung der Ressource"
 
 #. Dublin Core: Publisher element name
 msgid "Publisher"
@@ -77,7 +77,7 @@ msgstr "Herausgeber"
 
 #. Dublin Core: Publisher element description
 msgid "An entity responsible for making the resource available"
-msgstr "Organisation, welche für die Zurverfügungstellung der Ressource verantwortlich ist"
+msgstr "Organisation, die dafür verantwortlich ist, dass die Ressource zur Verfügung steht "
 
 #. Dublin Core: Contributor element name
 #. User role: contributor
@@ -86,7 +86,7 @@ msgstr "Mitarbeiter"
 
 #. Dublin Core: Contributor element description
 msgid "An entity responsible for making contributions to the resource"
-msgstr "Organisation, welche für Beiträge an diese Ressource verantwortlich ist"
+msgstr "Organisation, die Beiträge zu dieser Ressource geleistet hat"
 
 #. Dublin Core: Date element name
 msgid "Date"
@@ -94,7 +94,7 @@ msgstr "Datum"
 
 #. Dublin Core: Date element description
 msgid "A point or period of time associated with an event in the lifecycle of the resource"
-msgstr "Zeitpunkt oder Zeitperiode, welche(r) mit einem Ereignis im Lebenszyklus der Ressource verknüpft ist"
+msgstr "Zeitpunkt oder Zeitspanne, der/die mit einem Ereignis im Lebenszyklus der Ressource verknüpft ist"
 
 #. Dublin Core: Type element name
 #: admin/themes/default/items/browse.php:48
@@ -111,7 +111,7 @@ msgstr "Format"
 
 #. Dublin Core: Format element description
 msgid "The file format, physical medium, or dimensions of the resource"
-msgstr "Dateiformat, physisches Medium oder Masse der Ressource"
+msgstr "Dateiformat, physisches Medium oder Maße der Ressource"
 
 #. Dublin Core: Identifier element name
 msgid "Identifier"
@@ -119,7 +119,7 @@ msgstr "Identifikator"
 
 #. Dublin Core: Identifier element description
 msgid "An unambiguous reference to the resource within a given context"
-msgstr "Eindeutige Referenz zu dieser Ressource innerhalb eines bestimmten Kontexts"
+msgstr "Eindeutige Bezugnahme auf diese Ressource innerhalb eines bestimmten Kontexts"
 
 #. Dublin Core: Source element name
 msgid "Source"
@@ -127,7 +127,7 @@ msgstr "Quelle"
 
 #. Dublin Core: Source element description
 msgid "A related resource from which the described resource is derived"
-msgstr "Verwandte Ressource, von welcher die beschriebene Ressource abgeleitet ist"
+msgstr "Verwandte Ressource, von der sich die beschriebene Ressource ableitet"
 
 #. Dublin Core: Language element name
 msgid "Language"
@@ -151,7 +151,7 @@ msgstr "Abdeckung"
 
 #. Dublin Core: Coverage element description
 msgid "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant"
-msgstr "Räumliches oder zeitliches Thema der Ressource, räumliche Anwendbarkeit der Ressource, oder Rechtssprechung, unter welche die Ressource relevant ist"
+msgstr "Räumliches oder zeitliches Thema der Ressource, räumliche Anwendbarkeit der Ressource, oder Rechtssprechung, innerhalb derer die Ressource relevant ist"
 
 #. Dublin Core: Rights element name
 msgid "Rights"
@@ -159,23 +159,23 @@ msgstr "Rechte"
 
 #. Dublin Core: Rights element description
 msgid "Information about rights held in and over the resource"
-msgstr "Informationen über Rechte, welche bezüglich der Ressource bestehen"
+msgstr "Informationen über Rechte, die bezüglich der Ressource bestehen"
 
 #. Item Type Metadata
 msgid "Item Type Metadata"
-msgstr "Metadaten"
+msgstr "Metadaten des Objekts"
 
 #. Item Type Metadata description
 msgid "The item type metadata element set, consisting of all item type elements bundled with Omeka and all item type elements created by an administrator."
-msgstr "Der Satz der Metadaten-Elemente für Objekte, bestehend aus allen Elementen für Objekte, welche entweder mit Omeka ausgeliefert oder durch einen Administrator angelegt wurden."
+msgstr "Ein Satz von Metadaten-Elementen für Objekt-Typen, der aus allen Elementen für Objekt-Typen besteht, die entweder mit Omeka ausgeliefert oder durch einen Administrator angelegt wurden."
 
 #. Omeka Legacy File
 msgid "Omeka Legacy File"
-msgstr "Omeka Legacy File"
+msgstr "Archivierte Omeka-Daten"
 
 #. Omeka Legacy File description
 msgid "The metadata element set that, in addition to the Dublin Core element set, was included in the `files` table in previous versions of Omeka. These elements are common to all Omeka files. This set may be deprecated in future versions."
-msgstr "Das Set der Metadaten-Elemente, welches in früheren Omeka-Versionen zusätzlich zum Set der Dublin-Core-Elemente in der Tabelle `files` enthalten war. Diese Elemente sind allen Omeka-Dateien gemeinsam. Dieses Set kann in zukünftigen Omeka-Versionen entfallen."
+msgstr "Das Set der Metadaten-Elementen, das in früheren Omeka-Versionen zusätzlich zum Set der Dublin-Core-Elemente in der Tabelle „files“ enthalten war. Alle Omeka-Dateien haben diese Elemente gemeinsam. Dieses Set kann in zukünftigen Omeka-Versionen wegfallen."
 
 #. Omeka Legacy File: Additional Creator element
 msgid "Additional Creator"
@@ -183,7 +183,7 @@ msgstr "Weiterer Urheber"
 
 #. Omeka Legacy File: Transcriber element
 msgid "Transcriber"
-msgstr "Transkribierer"
+msgstr "Umsetzer"
 
 #. Omeka Legacy File: Producer element
 msgid "Producer"
@@ -235,7 +235,7 @@ msgstr "Omeka Bilddatei"
 
 #. Omeka Image File description
 msgid "The metadata element set that was included in the `files_images` table in previous versions of Omeka. These elements are common to all image files."
-msgstr "Der Satz der Metadatenelemente war in früheren Omeka-Versionen in der Tabelle `files_images` integriert. Diese Elemente sind allen Bilddateien gemeinsam."
+msgstr "Dieser Satz der Meta-Datenelemente war in früheren Omeka-Versionen in der Tabelle „files_images“ integriert. Alle Bilddateien haben diese Elemente gemeinsam."
 
 #. Omeka Image File: Width element
 msgid "Width"
@@ -275,7 +275,7 @@ msgstr "Omeka Video-Datei"
 
 #. Omeka Video File description
 msgid "The metadata element set that was included in the `files_videos` table in previous versions of Omeka. These elements are common to all video files."
-msgstr "Der Satz der Metadatenelemente war in früheren Omeka-Versionen in der Tabelle `files_videos` integriert. Diese Elemente sind allen Videodateien gemeinsam."
+msgstr "Dieser Satz der Meta-Datenelemente war in früheren Omeka-Versionen in der Tabelle „files_videos“ integriert. Alle Videodateien haben diese Elemente gemeinsam."
 
 #. Omeka Video File: Bitrate element
 msgid "Bitrate"
@@ -295,7 +295,7 @@ msgstr "Codec"
 
 #. Format (Legacy) Metadata element set
 msgid "Format (Legacy) Metadata"
-msgstr "Format-Metadaten (Legacy)"
+msgstr "(archivierte) Format-Metadaten"
 
 #. User role: Super
 msgid "Super"
@@ -319,7 +319,7 @@ msgstr "Aussehen"
 
 #: admin/themes/default/appearance/edit-navigation.php:14
 msgid "Check the links to display them in the main navigation. Click and drag the links into the preferred display order."
-msgstr "Prüfen Sie die Links, um Sie in der Hauptnavigation anzuzeigen. Klicken Sie die Links an und ziehen Sie sie in die gewünschte Darstellungsreihenfolge."
+msgstr "Prüfen Sie die Links, um Sie in der Hauptnavigation anzuzeigen. Ziehen Sie die Links per Drag & Drop in die gewünschte Darstellungsreihenfolge."
 
 #: admin/themes/default/appearance/edit-navigation.php:19
 msgid "Add a Link to the Navigation"
@@ -376,7 +376,7 @@ msgstr "Navigation zurücksetzen"
 #: admin/themes/default/items/show.php:45
 #: application/libraries/Omeka/Form/Decorator/SavePanelAction.php:79
 msgid "View Public Page"
-msgstr "Öffentliche Seite anzeigen"
+msgstr "Seite anzeigen"
 
 #: admin/themes/default/appearance/edit-navigation.php:44
 #: admin/themes/default/collections/edit.php:25
@@ -481,7 +481,7 @@ msgstr ""
 #: admin/themes/default/collections/show.php:51
 #: application/views/scripts/collections/browse.php:35
 msgid "Contributors"
-msgstr "Mitarbeiter"
+msgstr "Beteiligte"
 
 #: admin/themes/default/collections/browse.php:31
 #: admin/themes/default/files/show.php:66
@@ -521,7 +521,7 @@ msgstr "Bearbeiten"
 
 #: admin/themes/default/collections/browse.php:59
 msgid "No contributors"
-msgstr "Keine Mitarbeiter"
+msgstr "Keine Beteiligten"
 
 #: admin/themes/default/collections/browse.php:79
 msgid "There are no collections on this page."
@@ -618,7 +618,7 @@ msgstr "Hauptmenü"
 #: admin/themes/default/common/content-nav.php:5
 #: admin/themes/default/index.php:2
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Übersicht"
 
 #: admin/themes/default/common/content-nav.php:9
 #: admin/themes/default/items/batch-delete.php:15
@@ -723,7 +723,7 @@ msgstr "Sicherheit"
 #: application/views/scripts/search/index.php:2
 #: application/views/scripts/search/search-form.php:2
 msgid "Search"
-msgstr "Suchen"
+msgstr "Suchergebnisse"
 
 #: admin/themes/default/common/settings-nav.php:20
 msgid "Element Sets"
@@ -758,7 +758,7 @@ msgstr "Element-Set bearbeiten"
 
 #: admin/themes/default/element-sets/edit.php:17
 msgid "Click and drag the elements into the preferred display order. Click the right arrows to add customized comments to element descriptions."
-msgstr "Klicken und ziehen Sie die Elemente in die gewünschte Darstellungsreihenfolge. Klicken Sie die Rechtspfeile, um individuelle Kommentare zu den Elementbeschreibungen hinzuzufügen."
+msgstr "Ziehen Sie die die Elemente per Drag & Drop in die gewünschte Darstellungsreihenfolge. Klicken Sie die Pfeile rechts an, um individuelle Kommentare zu den Elementbeschreibungen hinzuzufügen."
 
 #: admin/themes/default/element-sets/edit.php:29
 msgid "Comment"
@@ -793,11 +793,11 @@ msgstr "Sie haben versucht, eine Seite aufzurufen, die offenbar nicht existiert.
 #: admin/themes/default/error/404.php:10
 #, php-format
 msgid "If this does not help, try contacting the %s."
-msgstr "Falls dies nicht hilft kontaktieren Sie bitte den %s."
+msgstr "Falls dies nicht hilft, kontaktieren Sie bitte den %s."
 
 #: admin/themes/default/error/404.php:16 admin/themes/default/index.php:52
 msgid "Recent Items"
-msgstr "Neuste Objekte"
+msgstr "Neueste Objekte"
 
 #: admin/themes/default/error/404.php:29 admin/themes/default/index.php:65
 msgid "Add a new item"
@@ -1052,7 +1052,7 @@ msgstr "Es gibt keine kürzlich hinzugefügten Objekte."
 #: admin/themes/default/items/browse.php:141
 #: admin/themes/default/items/browse.php:168
 msgid "Add an Item"
-msgstr "Ein Objekt hinzufügen"
+msgstr "Neues Objekt hinzufügen"
 
 #: admin/themes/default/items/add.php:12
 msgid "Add Item"
@@ -1171,7 +1171,7 @@ msgstr "Liste der Schlagwörter, welche allen markierten Objekten hinzugefügt w
 
 #: admin/themes/default/items/batch-edit.php:2
 msgid "Batch Edit Items"
-msgstr "Objekte im Bacht-Verfahren bearbeiten"
+msgstr "Objekte im Batch-Verfahren (mehrer Objekte nach den gleichen Regeln) bearbeiten"
 
 #: admin/themes/default/items/batch-edit.php:37
 msgid "Changes will be applied to checked items."
@@ -1220,7 +1220,7 @@ msgstr "Auswählen um markierte Objekte zu löschen."
 #: application/views/scripts/items/browse.php:2
 #: application/views/scripts/items/tags.php:2
 msgid "Browse Items"
-msgstr "Objekte durchsuchen"
+msgstr "Objekte"
 
 #: admin/themes/default/items/browse.php:21
 #: admin/themes/default/items/browse.php:143
@@ -1235,21 +1235,21 @@ msgstr "Objekte suchen"
 #: admin/themes/default/items/browse.php:129
 #, php-format
 msgid "Select all %s results"
-msgstr ""
+msgstr "alle %s Ergebnisse markieren"
 
 #: admin/themes/default/items/browse.php:27
 #: admin/themes/default/items/browse.php:130
 msgid "items selected"
-msgstr ""
+msgstr "markierte Ergebnisse"
 
 #: admin/themes/default/items/browse.php:43
 msgid "Select all rows"
-msgstr ""
+msgstr "alle Zeilen markieren"
 
 #: admin/themes/default/items/browse.php:64
 #, php-format
 msgid "Select item \"%s\""
-msgstr ""
+msgstr "Objekt %s markieren"
 
 #: admin/themes/default/items/browse.php:109
 msgid "No Tags"
@@ -1265,7 +1265,7 @@ msgstr "Details anzeigen"
 
 #: admin/themes/default/items/browse.php:157
 msgid "Hide Details"
-msgstr "Verberge Details"
+msgstr "Details ausblenden"
 
 #: admin/themes/default/items/browse.php:165
 msgid "You have no items."
@@ -1298,7 +1298,7 @@ msgstr "Objekt #%s bearbeiten"
 
 #: admin/themes/default/items/files-form.php:2
 msgid "Click and drag the files into the preferred display order."
-msgstr "Klicken und ziehen Sie die Dateien in die gewünschte Darstellungsreihenfolge."
+msgstr "Ziehen Sie die die Dateien per Drag & Drop in die gewünschte Darstellungsreihenfolge."
 
 #: admin/themes/default/items/files-form.php:13
 msgid "Delete "
@@ -1311,11 +1311,16 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr "Die maximale Dateigrösse ist %s."
+msgstr ""
+"Bitte beachten:\n"
+"Die maximale Dateigröße ist %s.\n"
+"Bitte ausschließlich Bilddateien (.png, .jpg, .tiff, .raw) und Audiodateien (.wav, .mp3, .wma, .aac, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.\n"
+"Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.\n"
+"3D-Dateien unter dem Reiter „3D-Dateien “ einbinden."
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
-msgstr "Datei finden"
+msgstr "Datei hochladen"
 
 #: admin/themes/default/items/form.php:25
 msgid "Add Another File"
@@ -1341,12 +1346,12 @@ msgstr "Privat"
 #: admin/themes/default/items/search-form.php:14
 #: application/views/scripts/items/search-form.php:13
 msgid "Search for Keywords"
-msgstr "Nach Stichwörtern suchen"
+msgstr "In allen Feldern suchen"
 
 #: admin/themes/default/items/search-form.php:27
 #: application/views/scripts/items/search-form.php:25
 msgid "Narrow by Specific Fields"
-msgstr "Über bestimmte Felder eingrenzen"
+msgstr "Suche auf bestimmte Felder eingrenzen"
 
 #: admin/themes/default/items/search-form.php:28
 #: application/views/scripts/items/search-form.php:105
@@ -1397,7 +1402,7 @@ msgstr "ist genau"
 
 #: admin/themes/default/items/search-form.php:88
 msgid "is not exactly"
-msgstr ""
+msgstr "ist genau nicht"
 
 #: admin/themes/default/items/search-form.php:89
 #: application/views/scripts/items/search-form.php:84
@@ -1412,25 +1417,25 @@ msgstr "ist nicht leer"
 #: admin/themes/default/items/search-form.php:91
 #: application/views/scripts/items/search-form.php:86
 msgid "starts with"
-msgstr ""
+msgstr "beginnt mit"
 
 #: admin/themes/default/items/search-form.php:92
 #: application/views/scripts/items/search-form.php:87
 msgid "ends with"
-msgstr ""
+msgstr "endet mit"
 
 #: admin/themes/default/items/search-form.php:93
 msgid "matches"
-msgstr ""
+msgstr "stimmt überein mit"
 
 #: admin/themes/default/items/search-form.php:94
 msgid "does not match"
-msgstr ""
+msgstr "stimmt nicht überein mit"
 
 #: admin/themes/default/items/search-form.php:102
 #: application/views/scripts/items/search-form.php:95
 msgid "Search Terms"
-msgstr "Worte suchen"
+msgstr "Begriffe suchen"
 
 #: admin/themes/default/items/search-form.php:108
 #: application/views/scripts/items/search-form.php:101
@@ -1450,7 +1455,7 @@ msgstr "Nach Sammlungen suchen"
 #: admin/themes/default/items/search-form.php:146
 #: application/views/scripts/items/search-form.php:134
 msgid "Search By Type"
-msgstr "Nach Typen suchen"
+msgstr "Nach Objekt-Typen suchen"
 
 #: admin/themes/default/items/search-form.php:163
 #: application/views/scripts/items/search-form.php:150
@@ -1528,7 +1533,7 @@ msgstr "Datei-Metadaten anzeigen"
 
 #: admin/themes/default/items/show.php:93
 msgid "Bibliographic Citation"
-msgstr "Bibliografische Zitierform"
+msgstr "Bibliografische Angaben"
 
 #: admin/themes/default/items/tag-form.php:10
 #, php-format
@@ -1655,7 +1660,7 @@ msgstr "API aktivieren"
 
 #: admin/themes/default/settings/edit-api.php:15
 msgid "Enable or disable the API by checking or unchecking the box below."
-msgstr "API durch anhaken der Box ein- oder ausschalten"
+msgstr "API durch Anhaken der Box ein- oder ausschalten"
 
 #: admin/themes/default/settings/edit-api.php:22
 msgid "Filter Element Texts"
@@ -1667,7 +1672,7 @@ msgstr "Den Text des Elements durch anhaken der Box aktivieren. Ist das Feld ang
 
 #: admin/themes/default/settings/edit-api.php:35
 msgid "Results per Page"
-msgstr "Ergebnisse pro Seite."
+msgstr "Ergebnisse pro Seite"
 
 #: admin/themes/default/settings/edit-api.php:39
 msgid "Maximum number of API results displayed per page."
@@ -1714,7 +1719,7 @@ msgstr "Datensätze indexieren"
 
 #: admin/themes/default/settings/edit-search.php:26
 msgid "Click on the \"Index Records\" button to re-index your records."
-msgstr "Klicken Sie den Button \"Datensätze indexieren\", um Ihre Datensätze neu zu indexieren."
+msgstr "Klicken Sie den Button „Datensätze indexieren“, um Ihre Datensätze neu zu indexieren."
 
 #: admin/themes/default/settings/edit-search.php:28
 msgid "Indexing means to collect, parse, and store data to facilitate fast and accurate searches. Omeka will automatically index individual records as they are saved, but there are circumstances when your records are not indexed; for instance, when updating from an earlier version of Omeka or after you customize which records will be searchable."
@@ -1832,7 +1837,7 @@ msgstr "Ihre Omeka-Datenbank ist nicht kompatibel mit Ihrer aktuellen Omeka-Vers
 
 #: admin/themes/default/upgrade/index.php:35
 msgid "Please back up your existing database and then click the button to upgrade."
-msgstr "Bitte erstellen Sie eine Sicherheitskopie Ihrer bestehenden Datenbank und klicken Sie anschliessend den Button für die Aktualisierung."
+msgstr "Bitte erstellen Sie eine Sicherheitskopie Ihrer bestehenden Datenbank und klicken Sie anschließend den Button für die Aktualisierung."
 
 #: admin/themes/default/upgrade/index.php:37
 msgid "Upgrade Database"
@@ -1902,16 +1907,16 @@ msgstr "Label des neuen Schlüssels"
 
 #: admin/themes/default/users/api-keys.php:21
 msgid "To create a new API key, enter a label for the key below. For example, describe for what purpose it will be used. This key will have all your permissions; treat it as you would your password."
-msgstr "Um einen neuen API Schlüssel zu erzeugen geben Sie untenstehend ein Label für diesen Schlüssel ein. Beschreiben Sie zum Beispiel, für welchen Zweick er eingesetzt werden soll. Dieser Schlüssel hat alle Ihre Rechte; Behandeln Sie ihn also woe ein eigenes Passwort."
+msgstr "Um einen neuen API-Key zu erzeugen, geben Sie untenstehend ein Label für diesen Key ein. Beschreiben Sie zum Beispiel, für welchen Zweck er eingesetzt werden soll. Dieser Key hat alle Ihre Rechte, behandeln Sie ihn also wie ein eigenes Passwort."
 
 #: admin/themes/default/users/api-keys.php:31
 msgid "You have no API keys. Use the form above to create one."
-msgstr "Sie haben keine API Keys. Bitte verwenden Sie das obenstehende Formular, um einen zu erzeugen."
+msgstr "Sie haben keinen API-Key. Bitte verwenden Sie das obenstehende Formular, um einen zu erzeugen."
 
 #: admin/themes/default/users/api-keys.php:33
 #, php-format
 msgid "%s has no API keys. Use the form above to create one."
-msgstr "%s hat keine API Keys. Bitte verwenden Sie das obenstehende Formular, um einen zu erzeugen. "
+msgstr "%s hat keine API-Key. Bitte verwenden Sie das obenstehende Formular, um einen zu erzeugen. "
 
 #: admin/themes/default/users/api-keys.php:41
 msgid "Key"
@@ -2084,16 +2089,16 @@ msgstr "Die Sammlung #%s wurde erfolgreich gelöscht!"
 #: application/controllers/CollectionsController.php:106
 #, php-format
 msgid "This will delete the collection \"%s\" and its associated metadata. This will not delete any items in this collection, but will delete the reference to this collection in each item."
-msgstr "Dadurch werden die Sammlung \"%s\" und die ihr zugeordneten Metadaten gelöscht. Die Objekte in dieser Sammlung werden nicht gelöscht, jedoch die Zuordnung der Objekte zu dieser Sammlung."
+msgstr "Dadurch werden die Sammlung \"%s\" und die ihr zugeordneten Metadaten gelöscht. Die Objekte in dieser Sammlung werden dadurch nicht gelöscht, aber die Zuordnung der Objekte zu dieser Sammlung."
 
 #: application/controllers/CollectionsController.php:110
 #, php-format
 msgid "This will delete the collection #%s and its associated metadata. This will not delete any items in this collection, but will delete the reference to this collection in each item."
-msgstr "Dadurch werden die Sammlung #%s und die ihr zugeordneten Metadaten gelöscht. Die Objekte in dieser Sammlung werden nicht gelöscht, jedoch die Zuordnung der Objekte zu dieser Sammlung."
+msgstr "Dadurch werden die Sammlung #%s und die ihr zugeordneten Metadaten gelöscht. Die Objekte in dieser Sammlung werden dadurch nicht gelöscht, aber die Zuordnung der Objekte zu dieser Sammlung."
 
 #: application/controllers/ElementSetsController.php:21
 msgid "This will delete the element set and all elements assigned to the element set. Items will lose all metadata that is specific to this element set."
-msgstr "Dadurch wird der Elementsatz gelöscht sowie alle Elemente, welche diesem Satz zugewiesen sind. Objekte werden alle Metadaten verlieren, welche mit diesem Elementsatz verbunden sind."
+msgstr "Dadurch wird der Elementsatz gelöscht sowie alle Elemente, die diesem Satz zugewiesen sind. Objekte verlieren dadurch alle Metadaten, die mit diesem Elementsatz verbunden sind."
 
 #: application/controllers/ElementSetsController.php:53
 #: application/controllers/PluginsController.php:51
@@ -2144,7 +2149,7 @@ msgstr "Der Objekttyp \"%s\" wurde erfolgreich aktualisiert."
 #: application/controllers/ItemTypesController.php:150
 #, php-format
 msgid "This will delete the \"%s\" item type but will not delete the elements assigned to the item type. Items that are assigned to this item type will lose all metadata that is specific to the item type."
-msgstr "Dadurch wird der Objekttyp \"%s\" gelöscht, nicht aber die Elemente, welche diesem Objekttyp zugeordnet sind. Objekte, welche diesem Objekttyp zugeordnet sind, verlieren alle Metadaten, welche zu diesem Objekttyp gehören."
+msgstr "Dadurch wird der Objekttyp \"%s\" gelöscht, nicht aber die Elemente, die diesem Objekttyp zugeordnet sind. Objekte, die diesem Objekttyp zugeordnet sind, verlieren dadurch alle Metadaten, die zu diesem Objekttyp gehören."
 
 #: application/controllers/ItemTypesController.php:158
 #, php-format
@@ -2189,12 +2194,12 @@ msgstr "Das Objekt #%s wurde erfolgreich gelöscht!"
 #: application/controllers/ItemsController.php:128
 #, php-format
 msgid "This will delete the item \"%s\" and its associated metadata. It will also delete all files and file metadata associated with this item."
-msgstr "Dadurch werden das Objekt \"%s\" und die ihm zugeordneten Metadaten gelöscht. Ausserdem werden alle Dateien und deren Metadaten gelöscht, welche zu diesem Objekt gehören."
+msgstr "Dadurch werden das Objekt \"%s\" und die ihm zugeordneten Metadaten gelöscht. Außerdem werden alle Dateien und deren Metadaten gelöscht, die zu diesem Objekt gehören."
 
 #: application/controllers/ItemsController.php:132
 #, php-format
 msgid "This will delete the item #%s and its associated metadata. It will also delete all files and file metadata associated with this item."
-msgstr "Dadurch werden das Objekt #%s und die ihm zugeordneten Metadaten gelöscht. Ausserdem werden alle Dateien und deren Metadaten gelöscht, welche zu diesem Objekt gehören."
+msgstr "Dadurch werden das Objekt #%s und die ihm zugeordneten Metadaten gelöscht. Außerdem werden alle Dateien und deren Metadaten gelöscht, die zu diesem Objekt gehören."
 
 #: application/controllers/ItemsController.php:241
 #: application/controllers/ItemsController.php:376
@@ -2601,7 +2606,7 @@ msgstr "Das Passwort muss mindest 6 Zeichen lang sein."
 
 #: application/forms/ChangePassword.php:28
 msgid "Invalid current password"
-msgstr "Bisheriges Passwort ist ungültig"
+msgstr "Bisheriges Passwort ist ungültig."
 
 #: application/forms/ChangePassword.php:34
 msgid "New Password"
@@ -2658,7 +2663,7 @@ msgstr "Pfad zum ImageMagick-Verzeichnis"
 
 #: application/forms/Install.php:31
 msgid "must be 30 characters or fewer with no whitespace"
-msgstr "darf 30 Zeichen lang oder kürzer sein. Keine Leerzeichen verwenden"
+msgstr "Darf 30 Zeichen lang oder kürzer sein. Keine Leerzeichen verwenden."
 
 #: application/forms/Install.php:39 application/forms/User.php:46
 #: application/models/User.php:189
@@ -2672,7 +2677,7 @@ msgstr "Passwort"
 
 #: application/forms/Install.php:49
 msgid "must be at least 6 characters"
-msgstr "muss mindestens 6 Zeichen lang sein"
+msgstr "Muss mindestens 6 Zeichen lang sein."
 
 #: application/forms/Install.php:72
 msgid "Confirm your password."
@@ -2724,11 +2729,11 @@ msgstr "Website-Einstellungen"
 
 #: application/forms/ItemTypes.php:142
 msgid "The name of the item type."
-msgstr "Name des Objekttyps."
+msgstr "Name des Objekttyps"
 
 #: application/forms/ItemTypes.php:151
 msgid "The description of the item type."
-msgstr "Beschreibung des Objekttyps."
+msgstr "Beschreibung des Objekttyps"
 
 #: application/forms/ItemTypes.php:173 application/forms/ItemTypes.php:182
 #, php-format
@@ -3028,7 +3033,7 @@ msgstr "Omeka Atom Feed"
 
 #: application/libraries/globals.php:2297
 msgid "No recent items available."
-msgstr " Es sind keine neuen Objekte vorhanden."
+msgstr "Es sind keine neuen Objekte vorhanden."
 
 #: application/libraries/globals.php:2323
 msgid "No featured items are available."
@@ -3070,7 +3075,7 @@ msgstr "Es sind keine Schlagwörter vorhanden."
 
 #: application/models/Builder/Item.php:263
 msgid "Must specify a file transfer type when attaching files to an item!"
-msgstr "Wenn Dateien zu einem Objekt hinzugefügt werden muss ein Dateitransfertyp angegeben werden!"
+msgstr "Wenn Dateien zu einem Objekt hinzugefügt werden, muss ein Dateitransfertyp angegeben werden!"
 
 #: application/models/Collection.php:119
 msgid "Cannot associate the collection with an unsaved user."
@@ -3149,15 +3154,15 @@ msgstr "%s et al."
 #: application/models/Item.php:493
 #, php-format
 msgid "accessed %1$s, %2$s."
-msgstr "accessed %1$s, %2$s."
+msgstr "zuletzt aufgerufen am %1$s, %2$s."
 
 #: application/models/Item.php:510
 msgid "Cannot add an existing file to an item!"
-msgstr "Einem Objekt konnte eine existierende Datei nicht hinzugefügt werden."
+msgstr "Dem Objekt konnte keine existierende Datei hinzugefügt werden!"
 
 #: application/models/Item.php:514
 msgid "File must be valid before it can be associated with an item!"
-msgstr "Eine Datei muss gültig sein bevor sie mit einem Objekt zugewiesen werden kann."
+msgstr "Eine Datei muss gültig sein, bevor sie mit einem Objekt verbunden werden kann."
 
 #: application/models/Item.php:538
 msgid "Invalid item type."
@@ -3186,7 +3191,7 @@ msgstr "Es gibt zu wenig Werte im Elementsortierungs-Array."
 
 #: application/models/ItemType.php:222
 msgid "Invalid element data. To add elements, you must either pass an element objects or an array of element metadata."
-msgstr "Ungültige Elementdaten. Um Elemente hinzuzufügen müssen entweder Elementobjekte oder ein Array mit Element-Metadaten übergeben werden."
+msgstr "Ungültige Elementdaten. Um Elemente hinzuzufügen, müssen entweder Element-Objekte oder ein Bereich von Element-Metadaten übergeben werden."
 
 #: application/models/ItemType.php:286
 msgid "Cannot remove elements from an item type that is not persistent in the database!"
@@ -3204,7 +3209,7 @@ msgstr "Der Objekttyp enthält kein Element mit der ID %s!"
 
 #: application/models/ItemType.php:357
 msgid "Invalid parameter. The hasElement function requires either an element object or an element id to determine if an item type has an element."
-msgstr "Ungültiger Parameter. Die Funktion hasElement verlangt entweder ein Elementobjekt oder eine Element-ID um entscheiden zu können, ob ein Objekttyp ein Element besetzt."
+msgstr "Ungültiger Parameter. Die Funktion „hasElement“ verlangt entweder ein Elementobjekt oder eine Element-ID, um entscheiden zu können, ob ein Objekt-Typ ein Element besetzt."
 
 #: application/models/Job/ItemBatchEditAll.php:41
 msgid "Batch Edit All Items: No item matches the specified filters."
@@ -3275,7 +3280,7 @@ msgstr "Kein Element mit der ID '%s' gefunden!"
 
 #: application/models/Mixin/ElementText.php:431
 msgid "Element texts are not formatted correctly!"
-msgstr "Die Elementtexte sind nicht korrekt formatiert!"
+msgstr "Die Element-Texte sind nicht korrekt formatiert!"
 
 #: application/models/Mixin/ElementText.php:579
 #, php-format
@@ -3529,7 +3534,7 @@ msgstr "Nächste Seite"
 
 #: application/views/scripts/error/403.php:2
 msgid "403 Page Forbidden"
-msgstr "403 Seite verboten"
+msgstr "403 – Seite verboten"
 
 #: application/views/scripts/error/403.php:8
 msgid "You do not have permission to access this page."
@@ -3539,7 +3544,7 @@ msgstr "Sie sind nicht berechtigt, auf diese Seite zuzugreifen."
 #: application/views/scripts/error/404.php:2
 #: application/views/scripts/error/404.xml.php:1
 msgid "404 Page Not Found"
-msgstr "404 Seite nicht gefunden"
+msgstr "404 – Seite nicht gefunden"
 
 #: application/views/scripts/error/404.php:6
 #, php-format
@@ -3552,7 +3557,7 @@ msgstr "Rss2.0 Feed nicht gefunden!"
 
 #: application/views/scripts/error/405.php:2
 msgid "405 Method Not Allowed"
-msgstr "405 Methode nicht erlaubt"
+msgstr "405 – Methode nicht erlaubt"
 
 #: application/views/scripts/error/405.php:6
 #, php-format
