@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Omeka\n"
 "POT-Creation-Date: 2017-06-07 12:04+0200\n"
-"PO-Revision-Date: 2017-06-07 12:05+0200\n"
+"PO-Revision-Date: 2017-06-12 19:30+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeorg.de>\n"
 "Language-Team: German (Germany) (http://www.ddb.de)\n"
 "Language: de_DE\n"
@@ -17,23 +17,23 @@ msgstr ""
 
 #: X3dPlugin.php:506 views/admin/common/admin-sidebar.php:2
 msgid "3D-Dateien"
-msgstr "3D-Dateien"
+msgstr "X3D-Dateien"
 
 #: admin_select_x3d_form.php:1
 msgid ""
 "Sie können hier dem Objekt ein 3D Element zuweisen oder das zugewiesene "
 "Element ändern."
 msgstr ""
-"Sie können hier dem Objekt ein 3D Element zuweisen oder das zugewiesene "
-"Element ändern."
+"Sie können hier dem Objekt ein X3D-Element zuweisen oder das zugewiesene "
+"Element ändern. "
 
 #: admin_select_x3d_form.php:6
 msgid "Aktuelle 3D Dateien"
-msgstr "Aktuelle 3D Dateien"
+msgstr "Aktuelle X3D-Dateien"
 
 #: admin_select_x3d_form.php:10
 msgid "X3D Datei"
-msgstr "3D Datei"
+msgstr "X3D-Datei"
 
 #: admin_select_x3d_form.php:18
 msgid "Texturdatei"
@@ -45,11 +45,11 @@ msgstr "Vorschaubild"
 
 #: admin_select_x3d_form.php:35
 msgid "Aktuelle X3D dateien löschen"
-msgstr "Aktuelle 3D-Dateien löschen"
+msgstr "Aktuelle X3D-Dateien löschen"
 
 #: admin_select_x3d_form.php:44
 msgid "X3D Dateien Hochladen"
-msgstr "3D-Dateien Hochladen"
+msgstr "X3D-Dateien hochladen"
 
 #: admin_select_x3d_form.php:45
 msgid ""
@@ -57,9 +57,9 @@ msgid ""
 "jpg-Datei). Laden Sie zusätzlich ein Vorschaubild hoch, um das Objekt in "
 "Übersichten repräsentieren zu können."
 msgstr ""
-"Das 3D Objekt besteht aus der x3d-Datei und der Textturdatei (i.d.R. eine "
-"jpg-Datei). Laden Sie zusätzlich ein Vorschaubild hoch, um das Objekt in "
-"Übersichten repräsentieren zu können."
+"Das 3D-Objekt besteht aus der X3D-Datei und der Textur-Datei (meist eine "
+"jpg-Datei). Laden Sie zusätzlich ein Vorschaubild hoch, damit das Objekt "
+"in Übersichtsdarstellungen mit einem Thumbnail-Bild dargestellt wird."
 
 #: admin_select_x3d_form.php:47
 #, php-format
@@ -68,7 +68,7 @@ msgstr "Die maximale Dateigröße ist %s."
 
 #: admin_select_x3d_form.php:50
 msgid "3D Datei auswählen (.x3d)"
-msgstr "3D Datei auswählen (.x3d)"
+msgstr "X3D-Datei auswählen (.x3d)"
 
 #: admin_select_x3d_form.php:56
 msgid "Textur-Datei auswählen (.jpg)"
@@ -80,4 +80,4 @@ msgstr "Vorschaubild auswählen (.jpg)"
 
 #: views/admin/common/admin-sidebar.php:5
 msgid "Es ist keine 3D-Dateien zugewiesen."
-msgstr "Es ist keine 3D-Dateien zugewiesen."
+msgstr "Es ist keine 3D-Datei zugewiesen."
