@@ -659,7 +659,7 @@ footer {
         }
 
         #search-form.with-advanced button {
-            right: 27px;
+            /* right: 27px; */
         }
 
     #advanced-search {
@@ -2474,4 +2474,11 @@ button.remove_search {
 .usr-priv-normal #item-type-metadata-metadata button.add-element,
 .usr-priv-normal #item-type-metadata-metadata input.remove-element {
     display: none !important;
+}
+
+#search-form #advanced-search {
+    display: none;
+}
+#search-form.with-advanced button {
+    right: 0;
 }
