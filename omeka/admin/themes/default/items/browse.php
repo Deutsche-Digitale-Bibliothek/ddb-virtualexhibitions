@@ -43,7 +43,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                 <?php
                 $browseHeadings[__('Title')] = 'Dublin Core,Title';
                 $browseHeadings[__('Creator')] = 'owner_id';
-                $browseHeadings[__('Type')] = null;
                 $browseHeadings[__('Date Added')] = 'added';
                 $browseHeadings[__('Date Modified')] = 'modified';
                 echo browse_sort_links($browseHeadings, array('link_tag' => 'th scope="col"', 'list_tag' => ''));
@@ -119,13 +118,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                     echo $currentUser->name;
                 }
                 ?></td>
-                <td>
-                    <?php
-                    echo ($typeName = metadata('item', 'Item Type Name'))
-                        ? $typeName
-                        : metadata('item', array('Dublin Core', 'Type'), array('snippet' => 35));
-                    ?>
-                </td>
                 <td><?php echo format_date(metadata('item', 'added')); ?></td>
                 <td><?php echo format_date(metadata('item', 'modified')); ?></td>
             </tr>
