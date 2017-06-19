@@ -234,10 +234,10 @@ class ExhibitDdbHelper
                             return maxWidth;
                         };
 
-                        // var os' . $videoId . ' = {
-                        //     start: false,
-                        //     stop: false
-                        // };
+                        var os' . $videoId . ' = {
+                            start: false,
+                            stop: false
+                        };
 
                         jwplayer("ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '").setup({
                             "flashplayer" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '",
@@ -269,15 +269,15 @@ class ExhibitDdbHelper
 
                     if (!is_null($offsetStart)) {
                         $output .= '.onTime(function(e){
-                            // if (e.position < ' . $offsetStart . ' && os' . $videoId . '.start === false) {
-                            if (e.position < ' . $offsetStart . ') {
-                                // os' . $videoId . '.start  = true;
+                            if (e.position < ' . $offsetStart . ' && os' . $videoId . '.start === false) {
+                            // if (e.position < ' . $offsetStart . ') {
+                                os' . $videoId . '.start  = true;
                                 this.seek(' . $offsetStart . ');
                             }';
                         if (!is_null($offsetStop)) {
-                            // $output .= 'if (e.position > ' . $offsetStop . ' && os' . $videoId . '.stop === false) {
-                            $output .= 'if (e.position > ' . $offsetStop . ') {
-                                // os' . $videoId . '.stop  = true;
+                            // $output .= 'if (e.position > ' . $offsetStop . ') {
+                            $output .= 'if (e.position > ' . $offsetStop . ' && os' . $videoId . '.stop === false) {
+                                os' . $videoId . '.stop  = true;
                                 this.pause(true);
                                 this.stop();
                             }
