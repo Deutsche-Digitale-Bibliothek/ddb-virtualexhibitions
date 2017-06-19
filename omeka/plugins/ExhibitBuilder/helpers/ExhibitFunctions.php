@@ -187,7 +187,7 @@ function exhibit_builder_layout_form_text($order)
 {
     $html = '<div class="textfield exhibit-form-element">';
     $html .= get_view()->formTextarea("Text[$order]",
-        exhibit_builder_page_text($order), array('rows' => '15','cols' => '70'));
+        exhibit_builder_page_text($order), array('rows' => '20','cols' => '70'));
     $html .= '</div>';
     $html = apply_filters('exhibit_builder_layout_form_text', $html,
         array('order' => $order));

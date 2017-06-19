@@ -1,12 +1,57 @@
-body, td, pre {color:#000; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; margin:8px;}
+@font-face {
+  font-family: KarbidWeb;
+  src: url("fonts/karbidWeb.eot")
+}
+
+@font-face {
+  font-family: KarbidWeb;
+  src: url("fonts/karbidWeb.woff") format("woff")
+}
+
+@font-face {
+  font-family: KarbidWeb;
+  src: url("fonts/karbidWebBold.woff") format("woff");
+  font-weight: bold
+}
+
+body, td, pre {
+    color:#3e3a37;
+    font-family:Calibri, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height: 20px;
+    margin:8px;
+    text-rendering: optimizelegibility;
+}
 body {background:#FFF;}
-body.mceForceColors {background:#FFF; color:#000;}
+body.mceForceColors {background:#FFF; color:#3e3a37;}
 body.mceBrowserDefaults {background:transparent; color:inherit; font-size:inherit; font-family:inherit;}
-h1 {font-size: 2em}
-h2 {font-size: 1.5em}
-h3 {font-size: 1.17em}
-h4 {font-size: 1em}
-h5 {font-size: .83em}
+h1, h2, h3, h4, h5, h6 {
+    font-family: KarbidWeb, Calibri, Arial, sans-serif;
+}
+h1 {
+    font-size: 1.75em;
+    line-height: 1.5em;
+    font-weight: normal;
+}
+h2 {
+    font-size: 1.375em;
+    line-height: 1.5em;
+    color: #a5003b;
+    font-weight: bold;
+}
+h3 {
+    font-size: 1.125em;
+    font-weight: bold;
+    line-height: 1;
+}
+h4 {
+    font-size: 1.75em;
+    line-height: 1.5em;
+}
+h5 {
+    font-size: 14px;
+    line-height: 20px;
+}
 h6 {font-size: .75em}
 .mceItemTable, .mceItemTable td, .mceItemTable th, .mceItemTable caption, .mceItemVisualAid {border: 1px dashed #BBB;}
 a.mceItemAnchor {display:inline-block; -webkit-user-select:all; -webkit-user-modify:read-only; -moz-user-select:all; -moz-user-modify:read-only; width:11px !important; height:11px !important; background:url(img/items.gif) no-repeat center center}
@@ -17,9 +62,47 @@ table, img, hr, .mceItemAnchor {cursor:default}
 table td, table th {cursor:text}
 ins {border-bottom:1px solid green; text-decoration: none; color:green}
 del {color:red; text-decoration:line-through}
-cite {border-bottom:1px dashed blue}
+/*cite {border-bottom:1px dashed blue}*/
 acronym {border-bottom:1px dotted #CCC; cursor:help}
 abbr {border-bottom:1px dashed #CCC; cursor:help}
+
+
+/* custom styles*/
+blockquote {
+    /*font-family: Georgia, serif;*/
+    font-size: 18px;
+    font-style: italic;
+    /*width: 450px;*/
+    margin: 20px 0 10px 0;
+    padding: 10px 40px;
+    /*line-height: 1.45;*/
+    position: relative;
+    color: #383838;
+    /*background:#ececec;*/
+    border: 0 none transparent;
+}
+
+blockquote:before {
+    font-family: Georgia, serif;
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    color: #7a7a7a;
+}
+
+blockquote cite {
+    color: #666;
+    font-size: 16px;
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+
+}
+
+
 
 /* IE */
 * html body {
