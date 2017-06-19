@@ -146,11 +146,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
     </form>
 
 
-    <div id="outputs">
-    <span class="outputs-label"><?php echo __('Output Formats'); ?></span>
-    <?php echo output_format_list(false); ?>
-    </div>
-
     <script type="text/javascript">
     // Omeka.addReadyCallback(Omeka.ItemsBrowse.setupDetails, [
     //     <?php echo js_escape(__('Details')); ?>,

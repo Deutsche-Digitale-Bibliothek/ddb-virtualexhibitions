@@ -28,15 +28,15 @@ $collectionTitle = __('Collection #%s', metadata('collection', 'id')) . $collect
 
 <section class="three columns omega">
     <div id="edit" class="panel">
-        <?php if (is_allowed(get_current_record('collection'), 'edit')): ?>    
+        <?php if (is_allowed(get_current_record('collection'), 'edit')): ?>
             <?php echo link_to_collection(__('Edit'), array('class'=>'big green button'), 'edit'); ?>
         <?php endif; ?>
         <a href="<?php echo html_escape(public_url('collections/show/'.metadata('collection', 'id'))); ?>" class="big blue button" target="_blank"><?php echo __('View Public Page'); ?></a>
-        <?php if (is_allowed(get_current_record('collection'), 'delete')): ?>    
+        <?php if (is_allowed(get_current_record('collection'), 'delete')): ?>
             <?php echo link_to_collection(__('Delete'), array('class'=>'big red button delete-confirm'), 'delete-confirm'); ?>
         <?php endif; ?>
-    </div>       
-    
+    </div>
+
     <div class="public-featured panel">
         <p><span class="label"><?php echo __('Public'); ?>:</span> <?php echo ($collection->public) ? __('Yes') : __('No'); ?></p>
         <p><span class="label"><?php echo __('Featured'); ?>:</span> <?php echo ($collection->featured) ? __('Yes') : __('No'); ?></p>
@@ -50,17 +50,12 @@ $collectionTitle = __('Collection #%s', metadata('collection', 'id')) . $collect
     <div class="contributors panel">
         <h4><?php echo __('Contributors'); ?></h4>
         <ul id="contributor-list">
-            <?php if ($collection->hasContributor()): ?> 
+            <?php if ($collection->hasContributor()): ?>
             <li><?php echo metadata('collection', array('Dublin Core', 'Contributor'), array('all'=>true, 'delimiter'=>'</li><li>')); ?></li>
             <?php else: ?>
             <li><?php echo __('No contributors.'); ?></li>
-            <?php endif; ?> 
+            <?php endif; ?>
         </ul>
-    </div>
-
-    <div class="panel">
-        <h4><?php echo __('Output Formats'); ?></h4>
-        <div><?php echo output_format_list(); ?></div>
     </div>
     <?php fire_plugin_hook('admin_collections_show_sidebar', array('view'=>$this, 'collection'=>$collection)); ?>
 </section>

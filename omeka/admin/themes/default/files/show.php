@@ -14,9 +14,9 @@ echo flash();
 
 <section class="seven columns alpha">
     <?php echo file_markup($file); ?>
-    
+
     <?php echo all_element_texts('file'); ?>
-    
+
     <?php fire_plugin_hook('admin_files_show', array('file' => $file, 'view' => $this)); ?>
 </section>
 
@@ -30,7 +30,7 @@ echo flash();
             <?php echo link_to($file, 'delete-confirm', __('Delete'), array('class' => 'big red button delete-confirm')); ?>
         <?php endif; ?>
     </div>
-    
+
     <div id="item-metadata" class="panel">
         <h4><?php echo __('Item'); ?></h4>
         <p><?php echo link_to_item(null, array(), 'show', $file->getItem()); ?></p>
@@ -65,9 +65,9 @@ echo flash();
         <dl>
         <dt><?php echo __('Date Added'); ?></dt>
         <dd><?php echo format_date(metadata('file', 'Added'), Zend_Date::DATE_MEDIUM); ?></dd>
-        <dt><?php echo __('Date Modified'); ?></dt> 
+        <dt><?php echo __('Date Modified'); ?></dt>
         <dd><?php echo format_date(metadata('file', 'Modified'), Zend_Date::DATE_MEDIUM); ?></dd>
-        <dt><?php echo __('Authentication'); ?></dt> 
+        <dt><?php echo __('Authentication'); ?></dt>
         <dd><?php echo metadata('file', 'Authentication'); ?></dd>
         </dl>
     </div>
@@ -89,12 +89,7 @@ echo flash();
     </div>
     <?php endif; ?>
 
-    <div class="panel">
-        <h4><?php echo __('Output Formats'); ?></h4>
-        <?php echo output_format_list(); ?>
-    </div>
-
     <?php fire_plugin_hook('admin_files_show_sidebar', array('file' => $file, 'view' => $this)); ?>
 </section>
-    
+
 <?php echo foot();?>
