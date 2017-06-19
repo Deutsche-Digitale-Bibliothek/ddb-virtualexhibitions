@@ -48,6 +48,8 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
+        $('a[href^="http://"], a[href^="https://"]').not('a[href*="<?php echo $_SERVER['SERVER_NAME']; ?>"], a[href*="deutsche-digitale-bibliothek.de"]').attr('target','_blank');
+
         /* GINA Grandgeorg Internet Application object */
         if ($.Gina) {
             $.Gina = $.Gina;
