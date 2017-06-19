@@ -273,7 +273,7 @@ Omeka.ExhibitBuilder.enableSorting = function () {
         containment: 'document',
         maxLevels: 1,
         disableNesting: 'page',
-        tabSize: 200
+        tabSize: 500
     });
 };
 
