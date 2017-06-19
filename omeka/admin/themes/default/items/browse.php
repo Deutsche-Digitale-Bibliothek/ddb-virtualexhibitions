@@ -129,9 +129,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
             <?php if (is_allowed('Items', 'edit') || is_allowed('Items', 'delete')): ?>
                 <button class="batch-all-toggle" type="button" data-records-count="<?php echo $total_results; ?>"><?php echo __('Select all %s results', $total_results); ?></button>
                 <div class="selected"><span class="count">0</span> <?php echo __('items selected'); ?></div>
-                <?php if (is_allowed('Items', 'edit')): ?>
-                <input type="submit" class="edit-items small batch-action button" name="submit-batch-edit" value="<?php echo __('Edit'); ?>" />
-                <?php endif; ?>
                 <?php if (is_allowed('Items', 'delete')): ?>
                 <input type="submit" class="small batch-action button" name="submit-batch-delete" value="<?php echo __('Delete'); ?>">
                 <?php endif; ?>
