@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -19,7 +19,11 @@ class UsersController extends Omeka_Controller_AbstractActionController
     protected $_publicActions = array('login', 'activate', 'forgot-password');
 
     protected $_browseRecordsPerPage = self::RECORDS_PER_PAGE_SETTING;
-        
+
+    // Begin Grandgeorg Websolutions
+    protected $_mailAdminName = 'DDB-Servicestelle';
+    // End Grandgeorg Websolutions
+
     public function init() {
         $this->_helper->db->setDefaultModelName('User');
         $this->_auth = $this->getInvokeArg('bootstrap')->getResource('Auth');
@@ -29,7 +33,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     /**
      * Peform common processing for the publicly accessible actions.
-     * 
+     *
      * Set a view script variable for header and footer view scripts and
      * don't allow logged-in users access.
      *
@@ -57,7 +61,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
         $this->view->header = $header;
         $this->view->footer = $footer;
     }
-    
+
     /**
      * Send an email providing a link that allows the user to reset their password.
      */
@@ -68,16 +72,16 @@ class UsersController extends Omeka_Controller_AbstractActionController
         }
 
         $errorMessage = __('Unable to reset password. Please verify that the information is correct and contact an administrator if necessary.');
-        
+
         $email = $_POST['email'];
-        
+
         if (!Zend_Validate::is($email, 'EmailAddress')) {
             $this->_helper->flashMessenger($errorMessage, 'error');
             return;
         }
-        
+
         $user = $this->_helper->db->findByEmail($email);
-        
+
         if (!$user || $user->active != 1) {
             $this->_helper->flashMessenger($errorMessage, 'error');
             return;
@@ -87,18 +91,18 @@ class UsersController extends Omeka_Controller_AbstractActionController
         $ua = new UsersActivations;
         $ua->user_id = $user->id;
         $ua->save();
-        
+
         $this->_sendResetPasswordEmail($email, $ua->url);
     }
-    
+
     private function _sendResetPasswordEmail($toEmail, $activationCode)
     {
         $siteTitle = get_option('site_title');
-        
+
         $mail = new Zend_Mail('UTF-8');
-        $mail->addTo($toEmail);                
+        $mail->addTo($toEmail);
         $mail->addHeader('X-Mailer', 'PHP/' . phpversion());
-        
+
         //Send the email with the activation url
         $url = $this->view->serverUrl() . $this->view->url(array(
             'controller' => 'users',
@@ -107,21 +111,27 @@ class UsersController extends Omeka_Controller_AbstractActionController
         ), 'default');
         $body  = __("Please follow this link to reset your password:") . "\n\n";
         $body .= $url."\n\n";
-        $body .= __("%s Administrator", $siteTitle);
+        // Begin Grandgeorg Websolutions
+        // $body .= __("%s Administrator", $siteTitle);
+        $body .= $this->_mailAdminName;
+        // End Grandgeorg Websolutions
 
         $mail->setBodyText($body);
-        $mail->setFrom(get_option('administrator_email'), __("%s Administrator", $siteTitle));
+        // Begin Grandgeorg Websolutions
+        // $mail->setFrom(get_option('administrator_email'), __("%s Administrator", $siteTitle));
+        $mail->setFrom(get_option('administrator_email'), $this->_mailAdminName);
+        // End Grandgeorg Websolutions
         $mail->setSubject(__("[%s] Reset Your Password", $siteTitle));
 
         $mail->send();
         $this->_helper->flashMessenger(__('Please check your email for a link to reset your password.'), 'success');
     }
-    
+
     public function activateAction()
     {
         $hash = $this->_getParam('u');
         $ua = $this->_helper->db->getTable('UsersActivations')->findBySql("url = ?", array($hash), true);
-            
+
         if (!$ua) {
             $this->_helper->flashMessenger(__('Invalid activation code given.'), 'error');
             return $this->_helper->redirector('forgot-password', 'users');
@@ -129,13 +139,13 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
         $user = $ua->User;
         $this->view->user = $user;
-        
+
         if ($this->getRequest()->isPost()) {
             if ($_POST['new_password1'] != $_POST['new_password2']) {
                 $this->_helper->flashMessenger(__('Password: The passwords do not match.'), 'error');
                 return;
             }
-            
+
             $user->setPassword($_POST['new_password1']);
             $user->active = 1;
             if ($user->save(false)) {
@@ -147,7 +157,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
             }
         }
     }
-    
+
     /**
      *
      * @return void
@@ -155,11 +165,11 @@ class UsersController extends Omeka_Controller_AbstractActionController
     public function addAction()
     {
         $user = new User();
-        
+
         $form = $this->_getUserForm($user);
         $this->view->form = $form;
         $this->view->user = $user;
-        
+
         if (!$this->getRequest()->isPost()) {
             return;
         }
@@ -168,7 +178,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
             $this->_helper->flashMessenger(__('There was an invalid entry on the form. Please try again.'), 'error');
             return;
         }
-        
+
         $user->setPostData($_POST);
         if ($user->save(false)) {
             if ($this->sendActivationEmail($user)) {
@@ -189,7 +199,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     /**
      * Similar to 'add' action, except this requires a pre-existing record.
-     * 
+     *
      * The ID For this record must be passed via the 'id' parameter.
      *
      * @return void
@@ -325,7 +335,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
             $this->_helper->redirector->gotoRoute();
         }
     }
-    
+
     public function browseAction()
     {
         if(isset($_GET['search'])) {
@@ -333,7 +343,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
         }
         parent::browseAction();
     }
-    
+
     public function deleteAction()
     {
         $user = $this->_helper->db->findById();
@@ -343,13 +353,13 @@ class UsersController extends Omeka_Controller_AbstractActionController
         }
         parent::deleteAction();
     }
-    
+
     protected function _getDeleteSuccessMessage($record)
     {
         $user = $record;
         return __('The user "%s" was successfully deleted!', $user->username);
     }
-    
+
     protected function _getDeleteConfirmMessage($record)
     {
         $user = $record;
@@ -367,7 +377,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
      */
     protected function sendActivationEmail($user)
     {
-        
+
         $ua = $this->_helper->db->getTable('UsersActivations')->findByUser($user);
         if($ua) {
             $ua->delete();
@@ -382,12 +392,18 @@ class UsersController extends Omeka_Controller_AbstractActionController
                     ."\n\n"
                     . __('Your account for the %s repository has been created. Please click the following link to activate your account:',$siteTitle)."\n\n"
                     . WEB_ROOT . "/admin/users/activate?u={$ua->url}\n\n"
-                    . __('%s Administrator', $siteTitle);
+                    // Begin Grandgeorg Websolutions
+                    // . __('%s Administrator', $siteTitle);
+                    . $this->_mailAdminName;
+                    // End Grandgeorg Websolutions
         $subject    = __('Activate your account with the %s repository', $siteTitle);
-        
+
         $mail = new Zend_Mail('UTF-8');
         $mail->setBodyText($body);
-        $mail->setFrom($from, "$siteTitle Administrator");
+        // Begin Grandgeorg Websolutions
+        // $mail->setFrom($from, "$siteTitle Administrator");
+        $mail->setFrom($from, $this->_mailAdminName);
+        // End Grandgeorg Websolutions
         $mail->addTo($user->email, $user->name);
         $mail->setSubject($subject);
         $mail->addHeader('X-Mailer', 'PHP/' . phpversion());
@@ -402,30 +418,30 @@ class UsersController extends Omeka_Controller_AbstractActionController
             return false;
         }
     }
-        
+
     public function loginAction()
     {
         // require_once is necessary because lacking form autoloading.
         require_once APP_DIR . '/forms/Login.php';
         $loginForm = new Omeka_Form_Login;
         $loginForm = apply_filters('login_form', $loginForm);
-        
+
         $this->view->form = $loginForm;
-        
+
         if (!$this->getRequest()->isPost()) {
-            return;            
-        }    
+            return;
+        }
 
         if (($loginForm instanceof Zend_Form) && !$loginForm->isValid($_POST)) {
             return;
         }
-        
-        User::upgradeHashedPassword($loginForm->getValue('username'), 
+
+        User::upgradeHashedPassword($loginForm->getValue('username'),
                                     $loginForm->getValue('password'));
-        
+
         $authAdapter = new Omeka_Auth_Adapter_UserTable($this->_helper->db->getDb());
         $pluginBroker = $this->getInvokeArg('bootstrap')->getResource('Pluginbroker');
-        // If there are no plugins filtering the login adapter, set the 
+        // If there are no plugins filtering the login adapter, set the
         // credentials for the default adapter.
         if (!$pluginBroker || !$pluginBroker->getFilters('login_adapter')) {
             $authAdapter->setIdentity($loginForm->getValue('username'))
@@ -440,11 +456,11 @@ class UsersController extends Omeka_Controller_AbstractActionController
                 $log->info("Failed login attempt from '$ip'.");
             }
             $this->_helper->flashMessenger($this->getLoginErrorMessages($authResult), 'error');
-            return;   
+            return;
         }
-        
+
         if ($loginForm && $loginForm->getValue('remember')) {
-            // Remember that a user is logged in for the default amount of 
+            // Remember that a user is logged in for the default amount of
             // time (2 weeks).
             Zend_Session::rememberMe();
         } else {
@@ -452,7 +468,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
             // soon as the browser is terminated.
             Zend_Session::forgetMe();
         }
-        
+
         $session = new Zend_Session_Namespace;
         if ($session->redirect) {
             $this->_helper->redirector->gotoUrl($session->redirect);
@@ -460,13 +476,13 @@ class UsersController extends Omeka_Controller_AbstractActionController
             $this->_helper->redirector->gotoUrl('/');
         }
     }
-        
+
     /**
      * This exists to customize the messages that people see when their attempt
      * to login fails. ZF has some built-in default messages, but it seems like
      * those messages may not make sense to a majority of people using the
      * software.
-     * 
+     *
      * @param Zend_Auth_Result
      * @return string
      */
@@ -489,9 +505,9 @@ class UsersController extends Omeka_Controller_AbstractActionController
             default:
                 return implode("\n", $result->getMessages());
                 break;
-        }        
+        }
     }
-    
+
     public function logoutAction()
     {
         $auth = $this->_auth;
@@ -501,7 +517,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
         Zend_Session::destroy();
         $this->_helper->redirector->gotoUrl('');
     }
-    
+
     protected function _getUserForm(User $user, $ua = null)
     {
         $hasActiveElement = $user->exists()
