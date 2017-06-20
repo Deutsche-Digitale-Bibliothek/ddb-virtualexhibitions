@@ -344,8 +344,17 @@
                 link = img.parents('a.expand-image-link'),
                 icon = $('.expand-image-icon', link);
                 // link = img.parent('a.expand-image-link');
-                link.css({width: img[0].width});
+                link.css({"max-width": img[0].width});
                 icon.addClass('expand-image-icon-visible', 500);
+            });
+
+            $(window).resize(function() {
+                $('a.expand-image-link').each(function(){
+                    var link = $(this);
+                    link.css({"max-width": "100%"});
+                    img = $('img', link);
+                    link.css({"max-width": img[0].width});
+                });
             });
 
             $('#cookie-notice').each(function () {
