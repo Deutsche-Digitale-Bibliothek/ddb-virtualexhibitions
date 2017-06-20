@@ -1430,6 +1430,11 @@ footer .social-icons .twitter-icon {
     border-radius: 100px;
     vertical-align: middle;
     line-height: 1.5;
+    opacity: 0;
+}
+.expand-image-link .expand-image-icon-visible {
+    opacity: 1;
+
 }
 .expand-image-link .expand-image-icon:hover {
     fill: #000000;

@@ -341,9 +341,11 @@
 
             $('a.expand-image-link img').each(function(){
                 var img = $(this),
-                link = img.parents('a.expand-image-link');
+                link = img.parents('a.expand-image-link'),
+                icon = $('.expand-image-icon', link);
                 // link = img.parent('a.expand-image-link');
                 link.css({width: img[0].width});
+                icon.addClass('expand-image-icon-visible', 500);
             });
 
             $('#cookie-notice').each(function () {
