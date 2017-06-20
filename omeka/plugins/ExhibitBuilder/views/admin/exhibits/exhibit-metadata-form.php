@@ -19,21 +19,21 @@
                 <?php echo $this->formText('slug', $exhibit->slug); ?>
             </div>
         </div>
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('credits', __('Credits')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <?php echo $this->formText('credits', $exhibit->credits); ?>
-            </div>
-        </div>
         <!--
         <div class="field">
             <div class="two columns alpha">
-                <?php echo $this->formLabel('description', __('Description')); ?>
+                <?php // echo $this->formLabel('credits', __('Credits')); ?>
             </div>
             <div class="five columns omega inputs">
-                <?php echo $this->formTextarea('description', $exhibit->description, array('rows'=>'8','cols'=>'40')); ?>
+                <?php // echo $this->formText('credits', $exhibit->credits); ?>
+            </div>
+        </div>
+        <div class="field">
+            <div class="two columns alpha">
+                <?php // echo $this->formLabel('description', __('Description')); ?>
+            </div>
+            <div class="five columns omega inputs">
+                <?php // echo $this->formTextarea('description', $exhibit->description, array('rows'=>'8','cols'=>'40')); ?>
             </div>
         </div>
         -->
