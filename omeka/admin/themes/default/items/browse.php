@@ -43,9 +43,9 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                 <?php endif; ?>
                 <?php
                 $browseHeadings[__('Title')] = 'Dublin Core,Title';
-                $browseHeadings[__('Creator')] = 'owner_id';
+                $browseHeadings[__('erstellt von')] = 'owner_id';
                 $browseHeadings[__('Date Added')] = 'added';
-                $browseHeadings[__('Date Modified')] = 'modified';
+                $browseHeadings[__('geändert am')] = 'modified';
                 echo browse_sort_links($browseHeadings, array('link_tag' => 'th scope="col"', 'list_tag' => ''));
                 ?>
             </tr>
