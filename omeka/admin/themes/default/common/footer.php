@@ -17,6 +17,6 @@ jQuery(document).ready(function () {
     Omeka.runReadyCallbacks();
 });
 </script>
+<?php fire_plugin_hook("admin_footer_last"); ?>
 </body>
-
 </html>

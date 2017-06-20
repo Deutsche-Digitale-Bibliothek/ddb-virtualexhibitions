@@ -26,7 +26,10 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_head',
         'config_form',
         'config',
-        'admin_items_browse_simple_each'
+        'admin_items_browse_simple_each',
+        'admin_items_form_item_types',
+        // 'admin_items_panel_fields',
+        'admin_footer_last'
     );
 
     protected $_filters = array(
@@ -267,4 +270,74 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             . '</li>';
     }
 
+    /**
+     *
+     * @param array array with item and view object
+     * @return void
+     */
+    // public function hookAdminItemsPanelFields($args)
+    // {
+    //     // $args['view'];
+    //     // $args['record'];
+    //     // echo '<h1>fun</h1>';
+    // }
+
+    /**
+     *
+     * @param array array with item and view object
+     * @return void
+     */
+    public function hookAdminItemsFormItemTypes($args)
+    {
+        // $view = $args['view'];
+        // $item = $args['item'];
+        echo '<script type="text/javascript" src="'
+            . WEB_PLUGIN
+            . '/GinaAdminMod/views/admin/javascripts/video-shortcode-helper.js"></script>';
+        return;
+
+    }
+
+    public function hookAdminFooterLast()
+    {
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $currentUrl = $request->getRequestUri();
+
+        if (strpos($currentUrl, 'admin/items/edit') !== false
+            || strpos($currentUrl, 'admin/items/add') !== false) {
+
+            echo '
+            <div id="video-shortcode-dialog-form" title="Video Shortcode bearbeien">
+            <p class="validateTips"></p>
+            <form>
+            <fieldset style="padding:0; border:0; margin-top:25px;">
+                <label for="video-shortcode-type" style="display:block;">Typ</label>
+                <select name="video-shortcode-type" id="video-shortcode-type"
+                    style="display:block; margin-bottom:12px;">
+                    <option value=""></option>
+                    <option value="ddb">DDB</option>
+                    <option value="vimeo">Vimeo</option>
+                </select>
+
+                <label for="video-shortcode-id" style="display:block;">Video ID</label>
+                <input type="text" name="video-shortcode-id" id="video-shortcode-id"
+                    value="" class="text ui-widget-content ui-corner-all"
+                    style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
+
+                <label for="video-shortcode-start" style="display:block;">Startzeit (in Sekunden)</label>
+                <input type="text" name="video-shortcode-start" id="video-shortcode-start"
+                    value="" class="text ui-widget-content ui-corner-all"
+                    style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
+
+                <label for="video-shortcode-stop" style="display:block;">Stopzeit (in Sekunden)</label>
+                <input type="text" name="video-shortcode-stop" id="video-shortcode-stop"
+                    value="" class="text ui-widget-content ui-corner-all"
+                    style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
+            </fieldset>
+            </form>
+            </div>
+            ';
+
+        }
+    }
 }
