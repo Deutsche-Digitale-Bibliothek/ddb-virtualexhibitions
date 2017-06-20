@@ -1404,3 +1404,47 @@ footer .social-icons .facebook-icon {
 footer .social-icons .twitter-icon {
     background: url("../images/icons/twitter.png") no-repeat scroll 0 0 transparent;
 }
+
+
+
+/* imeage lightbox (maximise) icons */
+.expand-image-link {
+    position: relative;
+    display: block;
+    /*display: inline-block;*/
+    margin: 0 auto;
+}
+
+.expand-image-link .expand-image-icon {
+    display: inline-block;
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    margin: 15px;
+    height: 44px;
+    width: 44px;
+    background-color: rgba(51,51,51,0.6);
+    fill: #ffffff;
+    border-radius: 100px;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+.expand-image-link .expand-image-icon:hover {
+    fill: #000000;
+    background-color: #E6183C;
+}
+.expand-image-link .expand-image-icon svg {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    overflow: visible;
+    transform-origin: 50% 50% 0px;
+    fill: #FFFFFF;
+}

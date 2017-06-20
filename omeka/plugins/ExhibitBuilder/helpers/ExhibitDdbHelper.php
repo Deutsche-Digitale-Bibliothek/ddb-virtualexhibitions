@@ -1158,7 +1158,7 @@ class ExhibitDdbHelper
                 $thumbnail = '<img src="' . WEB_FILES . '/x3d/' . $x3d->directory . '/or_' . $x3d->thumbnail . '" alt="' . $attachmentTitle . '">';
                 // $attachmentLinkUrl = record_url($attachment['item'], 'show', false);
                 $attachmentLinkUrl = exhibit_builder_exhibit_item_uri($attachment['item']);
-                $link = '<a href="' . $attachmentLinkUrl . '" class="permalink iframe" '
+                $link = '<a href="' . $attachmentLinkUrl . '" class="permalink iframe expand-image-link" '
                     . tag_attributes($linkAttributes)
                     . '>' . $thumbnail . '</a>';
                 $link .= exhibit_builder_attachment_caption($attachment);
@@ -1192,11 +1192,14 @@ class ExhibitDdbHelper
                 $currentLinkOptions = array_merge($linkAttributes, array(
                     'title' => $attachmentTitle,
                     'alt' => $attachmentTitle,
+                    'class' => 'exhibit-item-link expand-image-link'
                 ));
                 $caption = exhibit_builder_attachment_caption($attachment);
                 return exhibit_builder_link_to_exhibit_item($thumbnail, $currentLinkOptions, $attachment['item']) . $caption;
             }
         }
+
+        $linkAttributes['class'] = (isset($linkAttributes['class']))? $linkAttributes['class'] . ' expand-image-link' : 'expand-image-link';
 
         return exhibit_builder_attachment_markup(
             $attachment,

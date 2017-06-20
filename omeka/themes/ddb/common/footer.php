@@ -50,6 +50,8 @@
 
         $('a[href^="http://"], a[href^="https://"]').not('a[href*="<?php echo $_SERVER['SERVER_NAME']; ?>"], a[href*="deutsche-digitale-bibliothek.de"]').attr('target','_blank');
 
+        $('a.expand-image-link').append('<span class="expand-image-icon"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3.4 20.2L9 14.5 7.5 13l-5.7 5.6L1 14H0v7.5l.5.5H8v-1l-4.6-.8M18.7 1.9L13 7.6 14.4 9l5.7-5.7.5 4.7h1.2V.6l-.5-.5H14v1.2l4.7.6"></path></svg></span>');
+
         /* GINA Grandgeorg Internet Application object */
         if ($.Gina) {
             $.Gina = $.Gina;
@@ -336,6 +338,12 @@
 
     <script type="text/javascript">
         $(window).on('load', function () {
+
+            $('a.expand-image-link img').each(function(){
+                var img = $(this),
+                link = img.parent();
+                link.css({width: img[0].width});
+            });
 
             $('#cookie-notice').each(function () {
                 var cookieBar = $(this),
