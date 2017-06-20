@@ -341,7 +341,8 @@
 
             $('a.expand-image-link img').each(function(){
                 var img = $(this),
-                link = img.parent();
+                link = img.parents('a.expand-image-link');
+                // link = img.parent('a.expand-image-link');
                 link.css({width: img[0].width});
             });
 
