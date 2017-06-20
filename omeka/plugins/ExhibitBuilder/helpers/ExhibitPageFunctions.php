@@ -129,7 +129,6 @@ function exhibit_builder_page_nav($exhibitPage = null)
         $pageExhibit = $page->getExhibit();
         $pageParent = $page->getParent();
         $pageSiblings = ($pageParent ? exhibit_builder_child_pages($pageParent) : $pageExhibit->getTopPages());
-
         $pageCounter = 1;
         $pageThumbnailPath = FILES_DIR . '/layout/pagethumbnail/';
         foreach ($pageSiblings as $pageSibling) {
@@ -144,6 +143,11 @@ function exhibit_builder_page_nav($exhibitPage = null)
                       . 'alt="page-' . $pageCounter . '" '
                       . 'src="' . WEB_FILES . '/layout/pagethumbnail/'
                       . $pageSibling->pagethumbnail . '">';
+            } elseif ($pageSibling->layout == 'ddb-summary') {
+                $html .= '<img class="ddb-omeka-navigation-background-image" alt="page-'
+                      . $pageCounter . '" src="' . WEB_FILES
+                      . '/layout/pagethumbnail/'
+                      . 'default-summary-icon.jpg">';
             } else {
                 $html .= '<img class="ddb-omeka-navigation-background-image" alt="page-'
                       . $pageCounter . '" src="' . WEB_FILES

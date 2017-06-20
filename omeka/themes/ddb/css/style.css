@@ -612,6 +612,15 @@ h1 {
     min-height: 1px;
 }
 
+.fullcol {
+    width:98.5%;
+    margin: 0 1.3% 0 0;
+    overflow:hidden;
+    zoom:1;
+    float: left;
+    min-height: 1px;
+}
+
 
 @media (min-width: 801px) and (max-width: 960px) {
     .ddb-omeka-two-col-wrapper {
