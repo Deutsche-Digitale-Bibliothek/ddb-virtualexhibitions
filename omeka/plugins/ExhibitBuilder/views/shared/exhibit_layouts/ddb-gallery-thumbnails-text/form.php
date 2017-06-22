@@ -1,7 +1,7 @@
 <fieldset class="<?php echo html_escape($layout); ?>">
 
 <div class="primary">
-    <h3><?php echo 'Zweisplatiger Text oberhalb'; ?></h3>
+    <h3><?php echo 'Zweispaltiger Text oberhalb'; ?></h3>
     <?php echo exhibit_builder_layout_form_text(1); ?>
 </div>
 <div class="secondary gallery">
