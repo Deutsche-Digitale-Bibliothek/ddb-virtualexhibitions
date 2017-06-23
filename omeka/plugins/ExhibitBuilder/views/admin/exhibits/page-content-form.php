@@ -82,9 +82,9 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
                 var showHideLink = jQuery(this);
                 showHideLink.toggleClass('show-form');
                 if (showHideLink.hasClass('show-form')) {
-                    showHideLink.text('Show Search Form');
+                    showHideLink.text(<?php echo js_escape(__('Show Search Form')); ?>);
                 } else {
-                    showHideLink.text('Hide Search Form');
+                    showHideLink.text(<?php echo js_escape(__('Hide Search Form')); ?>);
                 }
                 return false;
             });
