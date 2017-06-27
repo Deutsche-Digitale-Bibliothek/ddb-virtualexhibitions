@@ -1,14 +1,14 @@
-<?php 
+<?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
 /**
  * An item and its metadata.
- * 
+ *
  * @package Omeka\Record
  */
 class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Interface
@@ -68,8 +68,8 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      * @var array
      */
     protected $_related = array(
-        'Collection' => 'getCollection', 
-        'TypeMetadata' => 'getTypeMetadata', 
+        'Collection' => 'getCollection',
+        'TypeMetadata' => 'getTypeMetadata',
         'Type' => 'getItemType',
         'Tags' => 'getTags',
         'Files' => 'getFiles',
@@ -77,12 +77,12 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         'ItemTypeElements' => 'getItemTypeElements',
         'ElementTexts' => 'getAllElementTexts'
     );
-    
+
     /**
      * Set of non-persistent File objects to attach to the item.
-     * 
-     * @var array 
-     * @see Item::addFile()  
+     *
+     * @var array
+     * @see Item::addFile()
      */
     private $_files = array();
 
@@ -98,23 +98,23 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         $this->_mixins[] = new Mixin_Timestamp($this);
         $this->_mixins[] = new Mixin_Search($this);
     }
-    
+
     // Accessor methods
-        
+
     /**
      * Get this Item's Collection, if any.
-     * 
+     *
      * @return Collection|null
      */
     public function getCollection()
     {
         $lk_id = (int) $this->collection_id;
-        return $this->getTable('Collection')->find($lk_id);            
+        return $this->getTable('Collection')->find($lk_id);
     }
-    
+
     /**
      * Get the ItemType record associated with this Item.
-     * 
+     *
      * @return ItemType|null
      */
     public function getItemType()
@@ -124,10 +124,10 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             return $itemType;
         }
     }
-    
+
     /**
      * Get the set of File records associated with this Item.
-     * 
+     *
      * @return array
      */
     public function getFiles()
@@ -147,16 +147,16 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     {
         return $this->getTable('File')->findOneByItem($this->id, $index);
     }
-    
+
     /**
      * Get a set of Elements associated with this Item's ItemType.
      *
-     * Each one of the Element records that is retrieved should contain all the 
+     * Each one of the Element records that is retrieved should contain all the
      * element text values associated with it.
      *
      * @uses ElementTable::findByItemType()
      * @return array Element records that are associated with the item type of
-     * the item.  This array will be empty if the item does not have an 
+     * the item.  This array will be empty if the item does not have an
      * associated type.
      */
     public function getItemTypeElements()
@@ -209,7 +209,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     }
 
     // End accessor methods
-    
+
     // ActiveRecord callbacks
 
     /**
@@ -221,13 +221,13 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     {
         if ($args['post']) {
             $post = $args['post'];
-            
+
             $this->beforeSaveElements($post);
-            
+
             if (!empty($post['change_type'])) {
                 return false;
             }
-            
+
             try {
                 $this->_uploadFiles();
             } catch (Omeka_File_Ingest_InvalidException $e) {
@@ -235,7 +235,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             }
         }
     }
-    
+
     /**
      * After-save hook.
      *
@@ -246,12 +246,12 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         if (!$this->public) {
             $this->setSearchTextPrivate();
         }
-        
+
         $this->saveFiles();
-        
+
         if ($args['post']) {
             $post = $args['post'];
-            
+
             // Update file order for this item.
             if (isset($post['order'])) {
                 foreach ($post['order'] as $fileId => $fileOrder) {
@@ -266,13 +266,13 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
                     $file->save();
                 }
             }
-            
-            // Delete files that have been designated by passing an array of IDs 
+
+            // Delete files that have been designated by passing an array of IDs
             // through the form.
             if (isset($post['delete_files']) && ($files = $post['delete_files'])) {
                 $this->_deleteFiles($files);
             }
-            
+
             // Save/delete the tags.
             if (array_key_exists('tags-to-add', $post)) {
                 $this->addTags($post['tags-to-add']);
@@ -285,30 +285,30 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      * All of the custom code for deleting an item.
      */
     protected function _delete()
-    {    
+    {
         $this->_deleteFiles();
         $this->deleteElementTexts();
     }
-    
+
     /**
      * Delete files associated with the item.
-     * 
+     *
      * If the IDs of specific files are passed in, this will delete only those
-     * files (e.g. form submission).  Otherwise, it will delete all files 
+     * files (e.g. form submission).  Otherwise, it will delete all files
      * associated with the item.
-     * 
+     *
      * @uses FileTable::findByItem()
      * @param array $fileIds Optional
      */
     protected function _deleteFiles(array $fileIds = array())
-    {           
+    {
         $filesToDelete = $this->getTable('File')->findByItem($this->id, $fileIds, 'id');
-        
+
         foreach ($filesToDelete as $fileRecord) {
             $fileRecord->delete();
         }
     }
-    
+
     /**
      * Iterate through the $_FILES array for files that have been uploaded
      * to Omeka and attach each of those files to this Item.
@@ -322,7 +322,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             $files = insert_files_for_item($this, 'Upload', 'file', array('ignoreNoFile' => true));
         }
      }
-    
+
     /**
      * Save all the files that have been associated with this item.
      */
@@ -331,7 +331,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         if (!$this->exists()) {
             throw new Omeka_Record_Exception(__("Files cannot be attached to an item that is not persistent in the database!"));
         }
-        
+
         foreach ($this->_files as $key => $file) {
             $file->item_id = $this->id;
             $file->save();
@@ -339,10 +339,10 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             unset($this->_files[$key]);
         }
     }
-    
+
     /**
-     * Filter post data from form submissions.  
-     * 
+     * Filter post data from form submissions.
+     *
      * @param array Dirty post data
      * @return array Clean post data
      */
@@ -357,7 +357,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             // Booleans
             'public'   =>'Boolean',
             'featured' =>'Boolean'
-        );  
+        );
         $filter = new Zend_Filter_Input($filters, null, $post, $options);
         $post = $filter->getUnescaped();
 
@@ -371,25 +371,25 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         if (!$acl->isAllowed($currentUser, 'Items', 'makeFeatured')) {
             unset($post['featured']);
         }
-        
+
         return $post;
     }
-    
+
     /**
      * Get the number of files assigned to this item.
-     * 
+     *
      * @return int
      */
     public function fileCount()
     {
         $db = $this->getDb();
         $sql = "
-        SELECT COUNT(f.id) 
-        FROM $db->File f 
+        SELECT COUNT(f.id)
+        FROM $db->File f
         WHERE f.item_id = ?";
         return (int) $db->fetchOne($sql, array((int) $this->id));
     }
-    
+
     /**
      * Get the previous Item in the database.
      *
@@ -404,10 +404,10 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         }
         return $this->getDb()->getTable('Item')->findPrevious($this);
     }
-    
+
     /**
      * Get the next Item in the database.
-     * 
+     *
      * @uses ItemTable::findNext()
      * @return Item|false
      */
@@ -423,29 +423,29 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     /**
      * Determine whether or not the Item has a File with a thumbnail image
      * (or any derivative image).
-     * 
+     *
      * @return bool
      */
     public function hasThumbnail()
     {
         $db = $this->getDb();
-        
+
         $sql = "
-        SELECT COUNT(f.id) 
-        FROM $db->File f 
-        WHERE f.item_id = ? 
+        SELECT COUNT(f.id)
+        FROM $db->File f
+        WHERE f.item_id = ?
         AND f.has_derivative_image = 1";
-        
+
         $count = $db->fetchOne($sql, array((int) $this->id));
-            
+
         return $count > 0;
     }
-    
+
     /**
      * Return a valid citation for this item.
      *
-     * Generally follows Chicago Manual of Style note format for webpages. 
-     * Implementers can use the item_citation filter to return a customized 
+     * Generally follows Chicago Manual of Style note format for webpages.
+     * Implementers can use the item_citation filter to return a customized
      * citation.
      *
      * @return string
@@ -453,7 +453,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     function getCitation()
     {
         $citation = '';
-        
+
         $creators = metadata($this, array('Dublin Core', 'Creator'), array('all' => true));
         // Strip formatting and remove empty creator elements.
         $creators = array_filter(array_map('strip_formatting', $creators));
@@ -476,31 +476,34 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             }
             $citation .= "$creator, ";
         }
-        
+
         $title = metadata($this, 'display_title');
         if ($title) {
-            $citation .= "&#8220;$title,&#8221; ";
+            // Begin Grandgeorg Websolutions
+            // $citation .= "&#8220;$title,&#8221; ";
+            $citation .= "&bdquo;$title,&rdquo; ";
+            // End Grandgeorg Websolutions
         }
-        
+
         $siteTitle = option('site_title');
         if ($siteTitle) {
             $citation .= "<em>$siteTitle</em>, ";
         }
-        
+
         $accessed = format_date(time(), Zend_Date::DATE_LONG);
         $url = '<span class="citation-url">'.html_escape(record_url($this, null, true)).'</span>';
         /// Chicago-style item citation: access date and URL
         $citation .= __('accessed %1$s, %2$s.', $accessed, $url);
-        
+
         return apply_filters('item_citation', $citation, array('item' => $this));
     }
-    
+
     /**
      * Associate an unsaved (new) File record with this Item.
-     * 
+     *
      * These File records will not be persisted in the database until the item
      * is saved or saveFiles() is invoked.
-     * 
+     *
      * @see Item::saveFiles()
      * @param File $file
      */
@@ -509,11 +512,11 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         if ($file->exists()) {
             throw new Omeka_Record_Exception(__("Cannot add an existing file to an item!"));
         }
-        
+
         if (!$file->isValid()) {
             throw new Omeka_Record_Exception(__("File must be valid before it can be associated with an item!"));
         }
-        
+
         $this->_files[] = $file;
     }
 
@@ -528,7 +531,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     {
         return 'Items';
     }
-    
+
     /**
      * Validate this item.
      */
