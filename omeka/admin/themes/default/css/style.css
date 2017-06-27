@@ -296,7 +296,7 @@ img { border: 0; }
 
         .inputs .input-block {
             margin: 0 0 20px 0;
-            float: left;
+            /*float: left;*/
         }
 
         .inputs select {
@@ -1929,6 +1929,19 @@ header nav {
 .explanation {
     clear: both;
     margin: 0 0 10px 0;
+    background-color: #eff0eb;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dfe0dc;
+    /*border: 1px solid #d8d9d4;*/
+}
+
+.explanation-comment {
+    margin: -20px 0 10px 0;
+    background-color: #e6e5e2;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dfe0dc;
 }
 
 #public-featured {
@@ -1951,8 +1964,9 @@ header nav {
 }
 
 .field .use-html {
-    clear: none !important;
+    /*clear: none !important;*/
     line-height: 2.125em;
+    float: none;
 }
 
 .field .use-html input[type=checkbox] { margin-left: 5px; }
