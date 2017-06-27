@@ -1,6 +1,3 @@
-# Translation template for Omeka.
-# Copyright (C) 2011 Roy Rosenzweig Center for History and New Media
-# This file is distributed under the same license as the Omeka package.
 #
 # Translators:
 # E, 2016
@@ -12,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-13 19:29+0200\n"
-"Last-Translator: John Flatness <john@zerocrates.org>\n"
+"PO-Revision-Date: 2017-06-27 14:09+0200\n"
+"Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -500,7 +497,7 @@ msgstr "Anzahl Objekte total"
 #: admin/themes/default/collections/browse.php:47
 #: admin/themes/default/items/browse.php:86
 msgid "(Private)"
-msgstr "(Privat)"
+msgstr "(Nicht im Frontend sichtbar)"
 
 #: admin/themes/default/collections/browse.php:50
 #: admin/themes/default/collections/show.php:32
@@ -632,7 +629,7 @@ msgstr "Sammlungen"
 
 #: admin/themes/default/common/content-nav.php:17
 msgid "Item Types"
-msgstr "Objekttypen"
+msgstr "Objekt-Typen"
 
 #: admin/themes/default/common/content-nav.php:21
 #: admin/themes/default/items/browse.php:108
@@ -731,7 +728,7 @@ msgstr "Elementsätze"
 
 #: admin/themes/default/common/settings-nav.php:26
 msgid "Item Type Elements"
-msgstr "Elemente des Objekttyps"
+msgstr "Elemente des Objekt-Typs"
 
 #: admin/themes/default/common/settings-nav.php:32
 msgid "API"
@@ -974,16 +971,16 @@ msgstr "Elementbeschreibung"
 #: admin/themes/default/item-types/add.php:2
 #: admin/themes/default/item-types/add.php:11
 msgid "Add Item Type"
-msgstr "Objekttyp hinzufügen"
+msgstr "Objekt-Typ hinzufügen"
 
 #: admin/themes/default/item-types/browse.php:2
 msgid "Browse Item Types"
-msgstr "Objekttypen durchsuchen"
+msgstr "Objekt-Typen durchsuchen"
 
 #: admin/themes/default/item-types/browse.php:7
 #: admin/themes/default/item-types/browse.php:40
 msgid "Add an Item Type"
-msgstr "Einen Objekttyp hinzufügen"
+msgstr "Einen Objekt-Typ hinzufügen"
 
 #: admin/themes/default/item-types/browse.php:14
 msgid "Type Name"
@@ -996,11 +993,11 @@ msgstr "Total Objekte"
 #: admin/themes/default/item-types/edit.php:8
 #, php-format
 msgid "Edit Item Type #%s"
-msgstr "Objekttyp #%s bearbeiten"
+msgstr "Objekt-Typ #%s bearbeiten"
 
 #: admin/themes/default/item-types/form.php:14
 msgid "Item Type Information"
-msgstr "Objekttyp-Information"
+msgstr "Informationen zum Objekt-Typ"
 
 #: admin/themes/default/item-types/form.php:15
 #: admin/themes/default/users/add.php:7
@@ -1037,7 +1034,7 @@ msgstr "Neu"
 #: admin/themes/default/item-types/show.php:8
 #, php-format
 msgid "Item Type #%s"
-msgstr "Objekttyp #%s"
+msgstr "Objekt-Typ #%s"
 
 #: admin/themes/default/item-types/show.php:25
 msgid "There are no elements."
@@ -1093,7 +1090,7 @@ msgstr "Objekte löschen"
 
 #: admin/themes/default/items/batch-delete.php:2
 msgid "Batch Delete Items"
-msgstr "Objekte im Batch-Verfahren löschen"
+msgstr "Objekte im Stapel-Verfahren löschen"
 
 #: admin/themes/default/items/batch-delete.php:36
 msgid "Some items were excluded because you do not have permission to delete them."
@@ -1127,7 +1124,7 @@ msgstr "Objekt-Metadaten"
 
 #: admin/themes/default/items/batch-edit-common.php:6
 msgid "Public?"
-msgstr "Öffentlich?"
+msgstr "Im Frontend sichtbar?"
 
 #: admin/themes/default/items/batch-edit-common.php:9
 #: admin/themes/default/items/batch-edit-common.php:23
@@ -1138,7 +1135,7 @@ msgstr "Unten auswählen"
 
 #: admin/themes/default/items/batch-edit-common.php:11
 msgid "Not Public"
-msgstr "Nicht öffentlich"
+msgstr "Nicht im Frontend sichtbar"
 
 #: admin/themes/default/items/batch-edit-common.php:20
 msgid "Featured?"
@@ -1151,7 +1148,7 @@ msgstr "Nicht hervorgehoben"
 #: admin/themes/default/items/batch-edit-common.php:33
 #: admin/themes/default/items/item-type-form.php:3
 msgid "Item Type"
-msgstr "Objekttyp"
+msgstr "Objekt-Typ"
 
 #: admin/themes/default/items/batch-edit-common.php:42
 #: admin/themes/default/items/batch-edit-common.php:57
@@ -1171,7 +1168,7 @@ msgstr "Liste der Schlagwörter, welche allen markierten Objekten hinzugefügt w
 
 #: admin/themes/default/items/batch-edit.php:2
 msgid "Batch Edit Items"
-msgstr "Objekte im Batch-Verfahren (mehrer Objekte nach den gleichen Regeln) bearbeiten"
+msgstr "Objekte im Stapel-Verfahren (mehrere Objekte nach den gleichen Regeln) bearbeiten"
 
 #: admin/themes/default/items/batch-edit.php:37
 msgid "Changes will be applied to checked items."
@@ -1179,7 +1176,7 @@ msgstr "Änderungen werden auf die markierten Objekte angewendet."
 
 #: admin/themes/default/items/batch-edit.php:48
 msgid "Check if you wish to delete selected items."
-msgstr "Auswählen um markierte Objekte zu löschen."
+msgstr "Auswählen, um markierte Objekte zu löschen"
 
 #: admin/themes/default/items/browse.php:3
 #: application/libraries/Omeka/Navigation.php:142
@@ -1311,16 +1308,11 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr ""
-"Bitte beachten:\n"
-"Die maximale Dateigröße ist %s.\n"
-"Bitte ausschließlich Bilddateien (.png, .jpg, .tiff, .raw) und Audiodateien (.wav, .mp3, .wma, .aac, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.\n"
-"Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.\n"
-"3D-Dateien unter dem Reiter „3D-Dateien “ einbinden."
+msgstr "Die maximale Dateigröße ist %s. <br>Bitte ausschließlich Bilddateien (.png, .jpg, .tiff, .raw) und Audiodateien (.wav, .mp3, .wma, .aac, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.<br>Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.<br>3D-Dateien unter dem Reiter „3D-Dateien “ einbinden."
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
-msgstr "Datei hochladen"
+msgstr "Datei auswählen"
 
 #: admin/themes/default/items/form.php:25
 msgid "Add Another File"
@@ -1341,7 +1333,7 @@ msgstr "Alle anzeigen"
 
 #: admin/themes/default/items/quick-filters.php:7
 msgid "Private"
-msgstr "Privat"
+msgstr "Nicht im Frontend sichtbar"
 
 #: admin/themes/default/items/search-form.php:14
 #: application/views/scripts/items/search-form.php:13
@@ -1470,17 +1462,17 @@ msgstr "Nach Schlagwörtern durchsuchen"
 #: admin/themes/default/items/search-form.php:195
 #: application/views/scripts/items/search-form.php:178
 msgid "Public/Non-Public"
-msgstr "Öffentlich / Nicht-öffentlich"
+msgstr "Im Frontend sichtbar/Nicht im Frontend sichtbar"
 
 #: admin/themes/default/items/search-form.php:204
 #: application/views/scripts/items/search-form.php:186
 msgid "Only Public Items"
-msgstr "Nur öffentliche Objekte"
+msgstr "Nur im Frontend sichtbare Objekte"
 
 #: admin/themes/default/items/search-form.php:205
 #: application/views/scripts/items/search-form.php:187
 msgid "Only Non-Public Items"
-msgstr "Nur nicht-öffentliche Objekte"
+msgstr "Nur nicht im Frontend sichtbare Objekte"
 
 #: admin/themes/default/items/search-form.php:215
 #: application/views/scripts/items/search-form.php:196
@@ -1685,7 +1677,7 @@ msgstr "Durch die Aktivierung der API aktiviert wurde, können Anwendungen Resso
 
 #: admin/themes/default/settings/edit-item-type-elements.php:12
 msgid "edit a specific item type"
-msgstr "einen bestimmten Objekttyp bearbeiten"
+msgstr "einen bestimmten Objekt-Typ bearbeiten"
 
 #: admin/themes/default/settings/edit-item-type-elements.php:11
 #, php-format
@@ -1698,7 +1690,7 @@ msgstr "Löschen bestätigen"
 
 #: admin/themes/default/settings/edit-item-type-elements.php:44
 msgid "Are you sure you want to delete the selected item type elements from the database? You will lose all text related to the selected elements. This cannot be undone."
-msgstr "Sind Sie sicher, dass Sie die angewählten Objekttyp-Elemente aus der Datenbank löschen wollen? Sie werden sämtliche Texte verlieren, welche den gewählten Elementen zugeordnet sind. Dies kann nicht rückgängig gemacht werden."
+msgstr "Sind Sie sicher, dass Sie die angewählten Elemente des Objekt-Typs aus der Datenbank löschen wollen? Sie werden sämtliche Texte verlieren, die den gewählten Elementen zugeordnet sind. Dies kann nicht rückgängig gemacht werden."
 
 #: admin/themes/default/settings/edit-item-type-elements.php:51
 msgid "Ok"
@@ -2059,7 +2051,7 @@ msgstr "Die Navigation wurde zurückgesetzt."
 #: application/controllers/CollectionsController.php:76
 #, php-format
 msgid "The collection \"%s\" was successfully added!"
-msgstr "Die Sammlung \"%s\" wurde erfolgreich hinzugefügt!"
+msgstr "Die Sammlung „%s“ wurde erfolgreich hinzugefügt!"
 
 #: application/controllers/CollectionsController.php:78
 #, php-format
@@ -2069,7 +2061,7 @@ msgstr "Die Sammlung #%s wurde erfolgreich angelegt!"
 #: application/controllers/CollectionsController.php:86
 #, php-format
 msgid "The collection \"%s\" was successfully changed!"
-msgstr "Die Sammlung \"%s\" wurde erfolgreich geändert!"
+msgstr "Die Sammlung „%s“ wurde erfolgreich geändert!"
 
 #: application/controllers/CollectionsController.php:88
 #, php-format
@@ -2079,7 +2071,7 @@ msgstr "Die Sammlung #%s wurde erfolgreich geändert!"
 #: application/controllers/CollectionsController.php:96
 #, php-format
 msgid "The collection \"%s\" was successfully deleted!"
-msgstr "Die Sammlung \"%s\" wurde erfolgreich gelöscht!"
+msgstr "Die Sammlung „%s“ wurde erfolgreich gelöscht!"
 
 #: application/controllers/CollectionsController.php:98
 #, php-format
@@ -2139,22 +2131,22 @@ msgstr "Datei erfolgreich gelöscht."
 #: application/controllers/ItemTypesController.php:28
 #, php-format
 msgid "The item type \"%s\" was successfully added."
-msgstr "Der Objekttyp \"%s\" wurde erfolgreich hinzugefügt."
+msgstr "Der Objekt-Typ „%s“ wurde erfolgreich hinzugefügt."
 
 #: application/controllers/ItemTypesController.php:55
 #, php-format
 msgid "The item type \"%s\" was successfully updated."
-msgstr "Der Objekttyp \"%s\" wurde erfolgreich aktualisiert."
+msgstr "Der Objekt-Typ „%s“ wurde erfolgreich aktualisiert."
 
 #: application/controllers/ItemTypesController.php:150
 #, php-format
 msgid "This will delete the \"%s\" item type but will not delete the elements assigned to the item type. Items that are assigned to this item type will lose all metadata that is specific to the item type."
-msgstr "Dadurch wird der Objekttyp \"%s\" gelöscht, nicht aber die Elemente, die diesem Objekttyp zugeordnet sind. Objekte, die diesem Objekttyp zugeordnet sind, verlieren dadurch alle Metadaten, die zu diesem Objekttyp gehören."
+msgstr "Dadurch wird der Objekt-Typ „%s“ gelöscht, nicht aber die Elemente, die diesem Objekt-Typ zugeordnet sind. Objekte, die diesem Objekt-Typ zugeordnet sind, verlieren dadurch alle Metadaten, die zu diesem Objekt-Typ gehören."
 
 #: application/controllers/ItemTypesController.php:158
 #, php-format
 msgid "The item type \"%s\" was successfully added!  You may now add elements to your new item type."
-msgstr "Der Objekttyp \"%s\" wurde erfolgreich hinzugefügt!  Sie können nun Elemente zu Ihrem neuen Objekttyp hinzufügen."
+msgstr "Der Objekt-Typ „%s“ wurde erfolgreich hinzugefügt!  Sie können nun Elemente zu Ihrem neuen Objekt-Typ hinzufügen."
 
 #: application/controllers/ItemsController.php:89
 #: application/controllers/ItemsController.php:149
@@ -2164,7 +2156,7 @@ msgstr "Der Pfad zu ImageMagick wurde nicht gesetzt. Es werden keine Derivate vo
 #: application/controllers/ItemsController.php:98
 #, php-format
 msgid "The item \"%s\" was successfully added!"
-msgstr "Das Objekt \"%s\" wurde erfolgreich hinzugefügt!"
+msgstr "Das Objekt „%s“ wurde erfolgreich hinzugefügt!"
 
 #: application/controllers/ItemsController.php:100
 #, php-format
@@ -2174,7 +2166,7 @@ msgstr "Das Objekt #%s wurde erfolgreich hinzugefügt!"
 #: application/controllers/ItemsController.php:108
 #, php-format
 msgid "The item \"%s\" was successfully changed!"
-msgstr "Das Objekt \"%s\" wurde erfolgreich geändert!"
+msgstr "Das Objekt „%s“ wurde erfolgreich geändert!"
 
 #: application/controllers/ItemsController.php:110
 #, php-format
@@ -2184,7 +2176,7 @@ msgstr "Das Objekt #%s wurde erfolgreich geändert!"
 #: application/controllers/ItemsController.php:118
 #, php-format
 msgid "The item \"%s\" was successfully deleted!"
-msgstr "Das Objekt \"%s\" wurde erfolgreich gelöscht!"
+msgstr "Das Objekt „%s“ wurde erfolgreich gelöscht!"
 
 #: application/controllers/ItemsController.php:120
 #, php-format
@@ -2194,7 +2186,7 @@ msgstr "Das Objekt #%s wurde erfolgreich gelöscht!"
 #: application/controllers/ItemsController.php:128
 #, php-format
 msgid "This will delete the item \"%s\" and its associated metadata. It will also delete all files and file metadata associated with this item."
-msgstr "Dadurch werden das Objekt \"%s\" und die ihm zugeordneten Metadaten gelöscht. Außerdem werden alle Dateien und deren Metadaten gelöscht, die zu diesem Objekt gehören."
+msgstr "Dadurch werden das Objekt „%s“ und die ihm zugeordneten Metadaten gelöscht. Außerdem werden alle Dateien und deren Metadaten gelöscht, die zu diesem Objekt gehören."
 
 #: application/controllers/ItemsController.php:132
 #, php-format
@@ -2223,7 +2215,7 @@ msgstr "Der Benutzer darf die Sichtbarkeit von Objekten nicht verändern."
 #: application/controllers/ItemsController.php:319
 #: application/controllers/ItemsController.php:417
 msgid "User is not allowed to modify featured status of items."
-msgstr "Der Benutzer ist nicht berechtigt, den Status \"Hervorgehoben\" von Objekten zu verändern."
+msgstr "Der Benutzer ist nicht berechtigt, den Status „Hervorgehoben“ von Objekten zu verändern."
 
 #: application/controllers/ItemsController.php:326
 msgid "User is not allowed to delete selected items."
@@ -2260,7 +2252,7 @@ msgstr ""
 #: application/controllers/PluginsController.php:45
 #, php-format
 msgid "Error in configuring plugin named \"%s\". Missing config and/or config_form hook(s)."
-msgstr "Fehler beim Konfigurieren des Plugins \"%s\". Fehlende config und/oder config_form Hook(s)."
+msgstr "Fehler beim Konfigurieren des Plugins „%s“. Fehlende config und/oder config_form Hook(s)."
 
 #: application/controllers/PluginsController.php:59
 #, php-format
@@ -2366,7 +2358,7 @@ msgstr "Die Datensätze werden jetzt indexiert. Dies kann eine Weile dauern. Sie
 
 #: application/controllers/SettingsController.php:156
 msgid "The item type elements were successfully changed!"
-msgstr "Die Objekttyp-Elemente wurden erfolgreich geändert!"
+msgstr "Die Elemente des Objekt-Typs wurden erfolgreich geändert!"
 
 #: application/controllers/SettingsController.php:183
 msgid "The API configuration was successfully changed!"
@@ -2459,12 +2451,12 @@ msgstr "Dieses Formular enthält eine ungültige Eingabe. Bitte versuchen Sie es
 #: application/controllers/UsersController.php:176
 #, php-format
 msgid "The user \"%s\" was successfully added!"
-msgstr "Der Benutzer \"%s\" wurde erfolgreich hinzugefügt!"
+msgstr "Der Benutzer „%s“ wurde erfolgreich hinzugefügt!"
 
 #: application/controllers/UsersController.php:180
 #, php-format
 msgid "The user \"%s\" was added, but the activation email could not be sent."
-msgstr "Der Benutzer \"%s\" wurde hinzugefügt, aber das Aktivierungs-E-Mail konnte nicht verschickt werden."
+msgstr "Der Benutzer „%s“ wurde hinzugefügt, aber das Aktivierungs-E-Mail konnte nicht verschickt werden."
 
 #: application/controllers/UsersController.php:218
 msgid "User activation email has been sent."
@@ -2494,7 +2486,7 @@ msgstr "Ein vorhandener API Key wurd erfolgreich zurückgezogen."
 #: application/controllers/UsersController.php:350
 #, php-format
 msgid "The user \"%s\" was successfully deleted!"
-msgstr "Der Benutzer \"%s\" wurde erfolgreich gelöscht!"
+msgstr "Der Benutzer „%s“ wurde erfolgreich gelöscht!"
 
 #: application/controllers/UsersController.php:356
 #, php-format
@@ -2564,7 +2556,7 @@ msgstr "Begrenzen Sie die Anzahl der pro Seite angezeigten Resultate im Administ
 
 #: application/forms/AppearanceSettings.php:56
 msgid "Results Per Page (public)"
-msgstr "Resultate pro Seite (öffentlich)"
+msgstr "Resultate pro Seite (im Frontend sichtbar)"
 
 #: application/forms/AppearanceSettings.php:57
 msgid "Limit the number of results displayed per page in the public interface."
@@ -2729,16 +2721,16 @@ msgstr "Website-Einstellungen"
 
 #: application/forms/ItemTypes.php:142
 msgid "The name of the item type."
-msgstr "Name des Objekttyps"
+msgstr "Name des Objekt-Typs"
 
 #: application/forms/ItemTypes.php:151
 msgid "The description of the item type."
-msgstr "Beschreibung des Objekttyps"
+msgstr "Beschreibung des Objekt-Typs"
 
 #: application/forms/ItemTypes.php:173 application/forms/ItemTypes.php:182
 #, php-format
 msgid "The item type cannot have more than one \"%s\" element."
-msgstr "Der Objekttyp kann nicht mehr als ein \"%s\"-Element besitzen."
+msgstr "Der Objekt-Typ kann nicht mehr als ein „%s“-Element besitzen."
 
 #: application/forms/Login.php:27
 msgid "Username cannot be empty."
@@ -2758,7 +2750,7 @@ msgstr "[Default]"
 
 #: application/forms/Navigation.php:168
 msgid "Select a Homepage"
-msgstr "Homepage auswählen"
+msgstr "Website auswählen"
 
 #: application/forms/Navigation.php:250
 msgid "Cannot find parent navigation page."
@@ -2775,7 +2767,7 @@ msgstr "Alle Navigations-Links müssen eine unterschiedliche URI haben."
 #: application/forms/Navigation.php:350
 #, php-format
 msgid "Invalid URI for \"%s\" navigation link:  \"%s\""
-msgstr "Ungültige URI für \"%s\" Navigations-Link: \"%s\""
+msgstr "Ungültige URI für „%s“ Navigations-Link: „%s“"
 
 #: application/forms/Navigation.php:383
 msgid "Navigation links that have undeleteable sublinks cannot be deleted."
@@ -2973,12 +2965,12 @@ msgstr "Ungültige URI für das Objekt Omeka_Navigation_Page_Uri: %s"
 #: application/libraries/Omeka/Plugin/Ini.php:63
 #, php-format
 msgid "Path to plugin.ini for \"%s\" is not correct."
-msgstr "Der Pfad zu plugin.ini für \"%s\" ist nicht korrekt."
+msgstr "Der Pfad zu plugin.ini für „%s“ ist nicht korrekt."
 
 #: application/libraries/Omeka/Plugin/Installer.php:79
 #, php-format
 msgid "The \"%s\" plugin must be installed and have newer files to upgrade it."
-msgstr "Das Plugin \"%s\" muss installiert sein und neuere Dateien für die Aktualisierung bereitstellen."
+msgstr "Das Plugin „%s“ muss installiert sein und neuere Dateien für die Aktualisierung bereitstellen."
 
 #: application/libraries/Omeka/Plugin/Installer.php:116
 msgid "Plugin must have a valid directory name before it can be installed."
@@ -3092,12 +3084,12 @@ msgstr "Falsches Element-Set."
 #: application/models/Element.php:185
 #, php-format
 msgid "An element named \"%s\" already exists for the \"%s\" element set."
-msgstr "Es existiert bereits ein Element mit dem Namen \"%s\" im Element-Set \"%s\"."
+msgstr "Es existiert bereits ein Element mit dem Namen „%s“ im Element-Set „%s“."
 
 #: application/models/Element.php:216
 #, php-format
 msgid "Cannot set element set ID: set named \"%s\" does not exist."
-msgstr "Die Elementsatz-ID kann nicht erstellt werden: Der Satz mit Namen \"%s\" existiert nicht."
+msgstr "Die Elementsatz-ID kann nicht erstellt werden: Der Satz mit Namen „%s“ existiert nicht."
 
 #: application/models/ElementSet.php:146
 msgid "Name of element set must be unique."
@@ -3126,7 +3118,7 @@ msgstr "Der lokale Pfad für eine gespeicherte Datei konnte nicht gefunden werde
 #: application/models/File.php:452
 #, php-format
 msgid "\"%s\" is not a valid file derivative."
-msgstr "\"%s\" ist kein gültiges File Derivative."
+msgstr "„%s“ ist kein gültiges File Derivative."
 
 #: application/models/Item.php:332
 msgid "Files cannot be attached to an item that is not persistent in the database!"
@@ -3166,7 +3158,7 @@ msgstr "Eine Datei muss gültig sein, bevor sie mit einem Objekt verbunden werde
 
 #: application/models/Item.php:538
 msgid "Invalid item type."
-msgstr "Ungültiger Objekttyp."
+msgstr "Ungültiger Objekt-Typ."
 
 #: application/models/Item.php:541
 msgid "Invalid collection."
@@ -3175,11 +3167,11 @@ msgstr "Ungültige Kollektion."
 #: application/models/ItemType.php:102
 #, php-format
 msgid "The item type name must have between %1$s and %2$s characters."
-msgstr "Der Name des Objekttyps muss zwischen %1$s und %2$s Zeichen lang sein."
+msgstr "Der Name des Objekt-Typs muss zwischen %1$s und %2$s Zeichen lang sein."
 
 #: application/models/ItemType.php:106
 msgid "The item type name must be unique."
-msgstr "Der Name des Objekttyps muss eindeutig sein."
+msgstr "Der Name des Objekt-Typs muss eindeutig sein."
 
 #: application/models/ItemType.php:183
 msgid "There are too many values in the element ordering array."
@@ -3195,7 +3187,7 @@ msgstr "Ungültige Elementdaten. Um Elemente hinzuzufügen, müssen entweder Ele
 
 #: application/models/ItemType.php:286
 msgid "Cannot remove elements from an item type that is not persistent in the database!"
-msgstr "Von einem Objekttyp, der nicht persistent in der Datenbank ist, können keine Elemente entfernt werden!"
+msgstr "Von einem Objekt-Typ, der nicht persistent in der Datenbank ist, können keine Elemente entfernt werden!"
 
 #: application/models/ItemType.php:295
 #, php-format
@@ -3205,7 +3197,7 @@ msgstr "Das Element mit der ID %s wurde nicht gefunden!"
 #: application/models/ItemType.php:336
 #, php-format
 msgid "Item type does not contain an element with the ID %s!"
-msgstr "Der Objekttyp enthält kein Element mit der ID %s!"
+msgstr "Der Objekt-Typ enthält kein Element mit der ID %s!"
 
 #: application/models/ItemType.php:357
 msgid "Invalid parameter. The hasElement function requires either an element object or an element id to determine if an item type has an element."
@@ -3271,7 +3263,7 @@ msgstr ""
 #: application/models/Mixin/ElementText.php:293
 #, php-format
 msgid "There is no element \"%1$s\", \"%2$s\"!"
-msgstr "Es existiert kein Element \"%1$s\", \"%2$s\"!"
+msgstr "Es existiert kein Element „%1$s“, „%2$s“!"
 
 #: application/models/Mixin/ElementText.php:312
 #, php-format
@@ -3285,7 +3277,7 @@ msgstr "Die Element-Texte sind nicht korrekt formatiert!"
 #: application/models/Mixin/ElementText.php:579
 #, php-format
 msgid "The \"%s\" field has at least one invalid value!"
-msgstr "Das Feld \"%s\" enthält mindestens einen ungültigen Wert!"
+msgstr "Das Feld „%s“ enthält mindestens einen ungültigen Wert!"
 
 #: application/models/Mixin/ElementText.php:649
 msgid "Cannot save element text for records that are not yet persistent!"
@@ -3331,7 +3323,7 @@ msgstr "Dem Benutzer muss eine Rolle zugewiesen werden."
 #: application/models/User.php:187
 #, php-format
 msgid "The username \"%1$s\" must be between %2$s and %3$s characters."
-msgstr "Der Benutzername \"%1$s\" muss zwischen %2$s und %3$s Zeichen lang sein."
+msgstr "Der Benutzername „%1$s“ muss zwischen %2$s und %3$s Zeichen lang sein."
 
 #: application/models/User.php:191
 #, php-format
@@ -3675,3 +3667,168 @@ msgstr "Öffentliche Website"
 #: install/views/scripts/index/installed.phtml:3
 msgid "Admin Dashboard"
 msgstr "Administrations-Dashboard"
+
+msgid "Beschreibung Metadatenfeld Titel"
+msgstr "<strong>Pflichtfeld</strong><br><em>Im Unterschied zum Inhalt von „Weiterer Titel“ im Frontend sichtbar: im Mouseover – in der Lightbox – auf der Objekt-Seite</em>"
+
+msgid "Beschreibung Metadatenfeld Weiterer Titel"
+msgstr "<em>Im Unterschied zum Inhalt von „Titel“ im Frontend sichtbar: nur auf der Objekt-Seite</em><br>Untertitel, Originaltitel in anderer Sprache (welcher?), gleichwertiger Titel, ursprünglicher Titel (z. B. Mona Lisa/La Joconde), ..."
+
+msgid "Beschreibung Metadatenfeld Beschreibung"
+msgstr "<em>Im Unterschied zum Inhalt von „Kurzbeschreibung“ im Frontend sichtbar: auf der Objekt-Seite</em>"
+
+msgid "Beschreibung Metadatenfeld Kurzbeschreibung"
+msgstr "<em>Im Unterschied zum Inhalt von „Beschreibung“ im Frontend sichtbar: in der Lightbox NUR dann, wenn keine Bildunterschrift auf der Ausstellungs-Seite angelegt ist – auf der Objekt-Seite</em>"
+
+msgid "Beschreibung Metadatenfeld Name der Institution"
+msgstr "<strong>Pflichtfeld</strong><br>Institution, die das Original besitzt"
+
+msgid "Beschreibung Metadatenfeld URL der Institution"
+msgstr "Dieses Feld NUR dann ausfüllen, wenn auch das Feld „Name der Institution“ ausgefüllt ist"
+
+msgid "Beschreibung Metadatenfeld Link zum Objekt in der DDB"
+msgstr "Wenn das Objekt in der Deutschen Digitalen Bibliothek zu finden ist, bitte unbedingt dieses Feld benutzen (und NICHT das Feld „Link zum Objekt bei der datengebenden Institution“).<br>Verwenden Sie dabei bitte immer die stabile URL, die stets in etwa so aussieht: https://www.deutsche-digitale-bibliothek.de/item/XNVHWXKSHKH6O5SYXM22ZBW25PQG4JFE"
+
+msgid "Beschreibung Metadatenfeld Link zum Objekt bei der datengebenden Institution"
+msgstr "Bitte NUR dann ausfüllen, wenn das Objekt NICHT in der Deutschen Digitalen Bibliothek zu finden ist. Andernfalls unbedingt leer lassen!"
+
+msgid "Beschreibung Metadatenfeld Videoquelle"
+msgstr "Sie können Videos von den Plattformen DDB, Vimeo und YouTube nutzen. Optional können Sie einen Ausschnitt des Videos zeigen.<br>Bitte nutzen Sie den Video-Shortcode-Helfer (Button links)."
+
+msgid "Beschreibung Metadatenfeld Rechtsstatus"
+msgstr "<strong>Pflichtfeld</strong><br>Angabe der Lizenzen als Shortcode"
+
+msgid "Beschreibung Metadatenfeld Typ"
+msgstr "Objektbezeichnung, Archivalientyp, Dokumententyp, Strukturtyp, ..."
+
+msgid "Beschreibung Metadatenfeld Teil von"
+msgstr "Zeitschrift/Anthologie (welche? z. B. „in: Süddeutsche Zeitung“), Bestand, Reihe, ..."
+
+msgid "Beschreibung Metadatenfeld Thema"
+msgstr "Thema, Kontext, Indexbegriff, Ort, ..."
+
+msgid "Beschreibung Metadatenfeld Beteiligte Personen und Organisationen"
+msgstr "Hergestellt von (Name?), geschaffen von (Name?), Provenienz, Hersteller, ..."
+
+msgid "Beschreibung Metadatenfeld Zeit"
+msgstr "Hergestellt (wann?), Laufzeit von (Beginn?) bis (Ende?), erschienen um (Jahreszahl?), ..."
+
+msgid "Beschreibung Metadatenfeld Ort"
+msgstr "Herstellungs-/Erscheinungsort, nicht der dargestellte Ort, frühere Bezeichnung des Ortes, ..."
+
+msgid "Beschreibung Metadatenfeld Maße/Umfang"
+msgstr "Abmessungen, Seitenzahl, Länge von Ton- oder Filmaufnahmen, ..."
+
+msgid "Beschreibung Metadatenfeld Material/Technik"
+msgstr "z. B. Holz, Grisaille, mp3, ..."
+
+msgid "Beschreibung Metadatenfeld Sprache"
+msgstr "Originalsprache (welche?), übersetzt aus (Sprache?) von (Name?), übersetzt ins (Sprache?) von (Name?)"
+
+msgid "Beschreibung Metadatenfeld Identifikator"
+msgstr "Information, die nötig ist, um das Objekt im Bestand der datengebenden Institution zu finden: Signatur, Inventarnummer, ..."
+
+msgid "Beschreibung Metadatenfeld Anmerkungen"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Förderung"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Imagemap"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Alternativer Titel"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Rechteinformation"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Aufnahmejahr"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Aufnahmeort"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Hergestellt (wann und wo)"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Fotograf"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Hersteller"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Material"
+msgstr ""
+
+msgid "Beschreibung Metadatenfeld Rechtestatus"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Titel"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Material/Technik"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Maße/Umfang"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Ort"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Identifikator"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Beschreibung"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Typ"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Thema"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Zeit"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Sprache"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Rechtsstatus"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Videoquelle"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Weiterer Titel"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Name der Institution"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Link zum Objekt in der DDB"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Link zum Objekt bei der datengebenden Institution"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Teil von"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Kurzbeschreibung"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Beteiligte Personen und Organisationen"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Anmerkungen"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Förderung"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld Imagemap"
+msgstr ""
+
+msgid "Zusatzvermerk Metadatenfeld URL der Institution"
+msgstr ""

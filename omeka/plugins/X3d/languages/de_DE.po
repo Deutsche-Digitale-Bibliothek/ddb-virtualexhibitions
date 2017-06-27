@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Omeka\n"
 "POT-Creation-Date: 2017-06-07 12:04+0200\n"
-"PO-Revision-Date: 2017-06-12 19:30+0200\n"
+"PO-Revision-Date: 2017-06-22 18:24+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeorg.de>\n"
 "Language-Team: German (Germany) (http://www.ddb.de)\n"
 "Language: de_DE\n"
@@ -17,19 +17,20 @@ msgstr ""
 
 #: X3dPlugin.php:506 views/admin/common/admin-sidebar.php:2
 msgid "3D-Dateien"
-msgstr "X3D-Dateien"
+msgstr "3D-Dateien"
 
 #: admin_select_x3d_form.php:1
 msgid ""
 "Sie können hier dem Objekt ein 3D Element zuweisen oder das zugewiesene "
 "Element ändern."
 msgstr ""
-"Sie können hier dem Objekt ein X3D-Element zuweisen oder das zugewiesene "
-"Element ändern. "
+"Sie können hier 3D-Objekte im X3D-Dateiformat einstellen und auf den "
+"Ausstellungsseiten mit Hilfe des eingebetteten X3D-Viewers interaktiv "
+"darstellen lassen."
 
 #: admin_select_x3d_form.php:6
 msgid "Aktuelle 3D Dateien"
-msgstr "Aktuelle X3D-Dateien"
+msgstr "Aktuelle 3D-Dateien"
 
 #: admin_select_x3d_form.php:10
 msgid "X3D Datei"
@@ -37,7 +38,7 @@ msgstr "X3D-Datei"
 
 #: admin_select_x3d_form.php:18
 msgid "Texturdatei"
-msgstr "Texturdatei"
+msgstr "Textur-Bilddatei"
 
 #: admin_select_x3d_form.php:28 views/admin/common/admin-sidebar.php:24
 msgid "Vorschaubild"
@@ -45,11 +46,11 @@ msgstr "Vorschaubild"
 
 #: admin_select_x3d_form.php:35
 msgid "Aktuelle X3D dateien löschen"
-msgstr "Aktuelle X3D-Dateien löschen"
+msgstr "Aktuelle 3D-Dateien löschen"
 
 #: admin_select_x3d_form.php:44
 msgid "X3D Dateien Hochladen"
-msgstr "X3D-Dateien hochladen"
+msgstr "Neue oder geänderte 3D-Dateien hinzufügen"
 
 #: admin_select_x3d_form.php:45
 msgid ""
@@ -57,9 +58,12 @@ msgid ""
 "jpg-Datei). Laden Sie zusätzlich ein Vorschaubild hoch, um das Objekt in "
 "Übersichten repräsentieren zu können."
 msgstr ""
-"Das 3D-Objekt besteht aus der X3D-Datei und der Textur-Datei (meist eine "
-"jpg-Datei). Laden Sie zusätzlich ein Vorschaubild hoch, damit das Objekt "
-"in Übersichtsdarstellungen mit einem Thumbnail-Bild dargestellt wird."
+"Wählen Sie die X3D-Datei aus, <br>fügen Sie die für die Darstellung der "
+"Oberflächen notwendige Textur-Bilddatei hinzu <br>und suchen Sie ein "
+"passendes Vorschaubild. Auf Ihrer Ausstellungsseite erscheint dieses "
+"Vorschaubild, in der Lightbox und im X3D-Viewer sehen Sie das 3D-Modell. "
+"<br>Laden Sie abschließend Ihre Auswahl durch Klick auf „Änderungen "
+"übernehmen“ hoch."
 
 #: admin_select_x3d_form.php:47
 #, php-format
@@ -72,7 +76,7 @@ msgstr "X3D-Datei auswählen (.x3d)"
 
 #: admin_select_x3d_form.php:56
 msgid "Textur-Datei auswählen (.jpg)"
-msgstr "Textur-Datei auswählen (.jpg)"
+msgstr "Textur-Bilddatei auswählen (.jpg)"
 
 #: admin_select_x3d_form.php:62
 msgid "Vorschaubild auswählen (.jpg)"

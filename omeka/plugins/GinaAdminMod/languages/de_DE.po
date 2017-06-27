@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Omeka\n"
 "POT-Creation-Date: 2017-06-07 20:50+0200\n"
-"PO-Revision-Date: 2017-06-12 19:30+0200\n"
+"PO-Revision-Date: 2017-06-22 14:16+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
 "Language-Team: German (Germany) (http://www.ddb.de)\n"
 "Language: de_DE\n"
@@ -18,20 +18,20 @@ msgstr ""
 
 #: GinaAdminModPlugin.php:234
 msgid "Duplizieren"
-msgstr ""
+msgstr "Duplizieren"
 
 #: config_form.php:4
 msgid "Dashboard-Panel Titel"
-msgstr ""
+msgstr "Inhalt der Übersichts-Ansicht"
 
 #: config_form.php:8
 msgid "Geben Sie einen Titel für das Dashboard-Panel an."
-msgstr ""
+msgstr "Geben Sie einen Titel für die Übersichts-Ansicht ein."
 
 #: config_form.php:21
 msgid "Dashboard-Panel Inhalt"
-msgstr ""
+msgstr "Inhalt der Übersichts-Ansicht"
 
 #: config_form.php:25
 msgid "Geben Sie den Inhalt für das Dashboard-Panel ein."
-msgstr "Geben Sie den Inhalt für das Dashboard-Panel ein."
+msgstr "Geben Sie den Inhalt für die Übersichts-Ansicht ein."

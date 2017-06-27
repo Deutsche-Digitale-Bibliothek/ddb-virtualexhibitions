@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: https://github.com/omeka/Omeka/issues\n"
 "POT-Creation-Date: 2013-01-23 21:49-0500\n"
-"PO-Revision-Date: 2017-06-12 20:45+0200\n"
+"PO-Revision-Date: 2017-06-23 15:38+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/omeka/"
 "language/de_DE/)\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.2\n"
 
 msgid "A layout must be provided for each exhibit page."
-msgstr "Jeder Ausstellungsseite muss ein Layout zugewiesen werden."
+msgstr "Jeder Ausstellungs-Seite muss ein Layout zugewiesen werden."
 
 msgid "A slug must be 30 characters or less."
 msgstr "Ein Slug darf höchstens 30 Zeichen lang sein."
@@ -53,13 +53,13 @@ msgstr ""
 "noch nicht existiert."
 
 msgid "Caption"
-msgstr "Legende"
+msgstr "Bildunterschrift"
 
 msgid "Child must be an instance of \"%s\""
-msgstr "Der abhängige Datensatz muss eine Instanz von \"%s\" sein."
+msgstr "Der abhängige Datensatz muss eine Instanz von „%s“ sein."
 
 msgid "Choose a layout by selecting a thumbnail on the right."
-msgstr "Wählen Sie ein Layout, indem Sie auf die Miniaturansicht klicken."
+msgstr "Wählen Sie ein Layout, indem Sie auf das Vorschaubild klicken."
 
 msgid "Configure the &#8220;%s&#8221; Theme"
 msgstr "Das Theme &#8220;%s&#8221; konfigurieren"
@@ -73,38 +73,34 @@ msgid "Current Public Theme"
 msgstr "Aktuelles öffentliches Theme"
 
 msgid "Displays a block of text above a gallery of up to 12 items."
-msgstr ""
-"Zeigt einen Textblock oberhalb einer Galerie mit bis zu 12 Objekten an."
+msgstr "Zeigt einen Text oberhalb einer Galerie mit bis zu 12 Objekten."
 
 msgid "Displays a block of text below a gallery of up to 12 items."
 msgstr ""
-"Zeigt einen Textblock unterhalb einer Miniaturbilder-Galerie mit 12 Objekten "
-"an."
+"Zeigt einen Text unterhalb einer  Vorschaubilder-Galerie mit 12 Objekten."
 
 msgid "Displays a full page of text without items."
 msgstr "Zeigt eine reine Textseite ohne Objekte."
 
 msgid "Displays a full page of text, with a full-size image floated left."
-msgstr ""
-"Zeigt eine Textseite mit einem links angeschlagenen Bild in Grossansicht"
+msgstr "Zeigt eine Textseite mit einem Bild links in voller Größe."
 
 msgid "Displays a full page of text, with a full-size image floated right."
-msgstr ""
-"Zeigt eine Textseite mit einem rechts angeschlagenen Bild in Grossansicht"
+msgstr "Zeigt eine Textseite mit einem Bild rechts in voller Größe."
 
 msgid ""
 "Displays a gallery of 8 thumbnails, with a wider left column for 1 full-size "
 "image and text block."
 msgstr ""
-"Zeigt eine Galerie mit 8 Miniaturbildern mit einer erweiterten linken Spalte "
-"für 1 Bild in Grossansicht und einen Textblock."
+"Zeigt eine Galerie mit 8 Vorschaubildern, eine breitere linke Spalte für ein "
+"Bild in voller Größe und Text."
 
 msgid ""
 "Displays a gallery of 8 thumbnails, with a wider right column for 1 full-"
 "size image and text block."
 msgstr ""
-"Zeigt eine Galerie mit 8 Miniaturbildern mit einer erweiterten rechten "
-"Spalte für 1 Bild in Grossansicht und einen Textblock."
+"Zeigt eine Galerie mit 8 Vorschaubildern, eine breitere rechte Spalte für "
+"ein Bild in voller Größe und Text."
 
 msgid "Displays a gallery of up to 16 items."
 msgstr "Zeigt eine Galerie mit bis zu 16 Objekten."
@@ -113,35 +109,35 @@ msgid ""
 "Displays up to 8 full-size images on the left with up to 8 text blocks on "
 "the right."
 msgstr ""
-"Zeigt bis zu 8 Bilder in Großansicht links mit bis zu 8 Textblöcken rechts."
+"Zeigt bis zu 8 Bilder in voller Größe links mit bis zu 8 Texten rechts."
 
 msgid ""
 "Displays up to 8 full-size images on the right with up to 8 text blocks on "
 "the left."
 msgstr ""
-"Zeigt bis zu 8 Bilder in Großansicht rechts mit bis zu 8 Textblöcken links."
+"Zeigt bis zu 8 Bilder  in voller Größe rechts mit bis zu 8 Texten links."
 
 msgid ""
 "Displays up to 8 thumbnails on the left with up to 8 text blocks on the "
 "right."
-msgstr "Zeigt bis zu 8 Miniaturbilder links mit bis zu 8 Textblöcken rechts."
+msgstr "Zeigt bis zu 8  Vorschaubilder links mit bis zu 8 Texten rechts."
 
 msgid ""
 "Displays up to 8 thumbnails on the right with up to 8 text blocks on the "
 "left."
-msgstr "Zeigt bis zu 8 Miniaturbilder rechts mit bis zu 8 Textblöcken links."
+msgstr "Zeigt bis zu 8  Vorschaubilder rechts mit bis zu 8 Texten links."
 
 msgid "Edit Exhibit \"%s\""
-msgstr "Ausstellung \"%s\" bearbeiten"
+msgstr "Ausstellung „%s“ bearbeiten"
 
 msgid "Edit Page"
 msgstr "Layout und Metadaten der Seite bearbeiten"
 
 msgid "Edit Page \"%s\""
-msgstr "Seite \"%s\" bearbeiten"
+msgstr "Seite „%s“ bearbeiten"
 
 msgid "Edit Page Content: \"%s\""
-msgstr "Inhalt der Seite \"%s\" bearbeiten"
+msgstr "Inhalt der Seite „%s“ bearbeiten"
 
 msgid "Exhibit"
 msgstr "Ausstellung"
@@ -150,10 +146,10 @@ msgid "Exhibit Metadata"
 msgstr "Metadaten der Ausstellung"
 
 msgid "Exhibit Page"
-msgstr "Ausstellungsseite"
+msgstr "Ausstellungs-Seite"
 
 msgid "Exhibit pages must be given a title."
-msgstr "Ausstellungsseiten benötigen einen Titel."
+msgstr "Ausstellungs-Seiten benötigen einen Titel."
 
 msgid "Exhibits"
 msgstr "Ausstellungen"
@@ -171,25 +167,25 @@ msgid "Gallery Full Right"
 msgstr "Galerie ganz rechts"
 
 msgid "Gallery Thumbnails"
-msgstr "Miniaturbilder der Galerie"
+msgstr "Vorschaubilder der Galerie"
 
 msgid "Gallery Thumbnails Text Bottom"
-msgstr "Text für Miniaturbilder-Galerie unten"
+msgstr "Text für Vorschaubilder-Galerie unten"
 
 msgid "Gallery Thumbnails Text Top"
-msgstr "Text für Miniaturbilder-Galerie oben"
+msgstr "Text für Vorschaubilder-Galerie oben"
 
 msgid "Image List Left"
 msgstr "Bilderliste links"
 
 msgid "Image List Left Thumbs"
-msgstr "Miniaturansichten der Bilderliste links"
+msgstr "Vorschaubilder-Ansichten der Bilderliste links"
 
 msgid "Image List Right"
 msgstr "Bilderliste rechts"
 
 msgid "Image List Right Thumbs"
-msgstr "Miniaturansichten der Bilderliste rechts"
+msgstr "Vorschaubilder-Ansichten der Bilderliste rechts"
 
 msgid "Layout"
 msgstr "Layout"
@@ -198,7 +194,10 @@ msgid "Layouts"
 msgstr "Layouts"
 
 msgid "No spaces or special characters allowed"
-msgstr "Es sind keine Leerzeichen oder Sonderzeichen erlaubt"
+msgstr ""
+"Der Slug ist ein Teil der URL – ein Beispiel: <br>URL: …de/tanz/exhibits/"
+"show/das-gedaechtnis-des-tanzes/notationen <br>Slug: das-gedaechtnis-des-"
+"tanzes <br>Keine Leerzeichen oder Sonderzeichen verwenden! "
 
 msgid "Page Content"
 msgstr "Seiteninhalt"
@@ -252,8 +251,8 @@ msgid ""
 "The default method by which you wish to sort the listing of exhibits on the "
 "exhibits/browse page. Default is 'Date Added'."
 msgstr ""
-"Die Sortiermethode für die Liste der Ausstellungen auf der Seite „Exhibits/"
-"Browse“. Die Standardeinstellung ist „Datum hinzugefügt“."
+"Die Sortiermethode für die Liste der Ausstellungen. Die Standardeinstellung "
+"ist „Datum hinzugefügt“."
 
 msgid "The name of your theme must be 30 characters or less."
 msgstr "Der Name Ihres Themes darf höchstens 30 Zeichen lang sein."
@@ -325,13 +324,13 @@ msgid "exhibits"
 msgstr "Ausstellungen"
 
 msgid "Widget Bottom Content"
-msgstr "Inhaltswidget unten"
+msgstr "Unterster Kasten in der rechten Marginalspalte"
 
 msgid "Widget Top First Content"
-msgstr "Erstes Inhaltswidget oben"
+msgstr "Oberster Kasten in der rechten Marginalspalte"
 
 msgid "Widget Top Second Content"
-msgstr "Zweites Inhaltswidget oben"
+msgstr "Mittlerer Kasten in der rechten Marginalspalte"
 
 msgid "Exhibit Banner"
 msgstr "Logo der Ausstellung"
@@ -340,7 +339,13 @@ msgid "Exhibit Cover"
 msgstr "Cover der Ausstellung"
 
 msgid "Page Navigation Thumbnail"
-msgstr "Miniaturansicht für die Seitennavigation"
+msgstr "Vorschauvilder-Ansicht für die Seitennavigation"
 
 msgid "Minimum size for image (width x height) is %d x %d pixel"
 msgstr "Mindestgröße des Bildes (Breite x Höhe) ist %d x %d Pixel"
+
+msgid "Changes to the exhibit's page were successfully saved!"
+msgstr "Die Änderungen der Ausstellungs-Seite wurden erfolgreich gespeichert!"
+
+msgid "Hide Search Form "
+msgstr "Suchformular ausblenden"
