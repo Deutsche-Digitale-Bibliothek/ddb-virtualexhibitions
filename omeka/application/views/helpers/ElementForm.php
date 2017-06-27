@@ -249,8 +249,18 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
     protected function _getDescriptionComponent()
     {
         // Begin Grandgeorg Websolutions
-        if (__($this->_getFieldDescription())) {
-            return '<p class="explanation">' . __($this->_getFieldDescription()) .'</p>';
+        $description = $this->_getFieldDescription();
+        $descriptionTranslated = __($description);
+        if (!empty($descriptionTranslated)) {
+            if (strstr($description, 'Beschreibung Metadatenfeld') !== false) {
+                if ($description !== $descriptionTranslated) {
+                    return '<p class="explanation">' . $descriptionTranslated .'</p>';
+                } else {
+                    return '';
+                }
+            } else {
+                return '<p class="explanation">' . $descriptionTranslated .'</p>';
+            }
         }
         // End Grandgeorg Websolutions
     }
@@ -258,9 +268,13 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
     protected function _getCommentComponent()
     {
         // Begin Grandgeorg Websolutions
-        if (__($this->_getFieldComment())) {
+        $comment = $this->_getFieldComment();
+        $commentTranslated = __($comment);
+        // var_dump(__($this->_getFieldComment()));
+        // var_dump($this->_getFieldComment());
+        if (!empty($commentTranslated) && $commentTranslated !== $comment) {
             // return '<p class="explanation">' . $this->_getFieldComment() .'</p>';
-            return '<p class="explanation-comment">' . __($this->_getFieldComment()) .'</p>';
+            return '<p class="explanation-comment">' . $commentTranslated .'</p>';
         }
         // End Grandgeorg Websolutions
         return '';
