@@ -1944,6 +1944,17 @@ header nav {
     border: 1px solid #dfe0dc;
 }
 
+.item-meta-field-required {
+    clear: both;
+    margin: 0 0 10px 0;
+    /*background-color: #ffd0bf;*/
+    background-color: #fff1ed;
+    padding: 10px;
+    border-radius: 4px;
+    /*border: 1px solid #ffa88c;*/
+    border: 1px solid #ffd2c4;
+}
+
 #public-featured {
     margin: 0 0 10px 0;
     padding: 0;

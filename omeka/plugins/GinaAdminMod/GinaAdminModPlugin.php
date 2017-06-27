@@ -29,7 +29,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_items_browse_simple_each',
         'admin_items_form_item_types',
         // 'admin_items_panel_fields',
-        'admin_footer_last'
+        'admin_footer_last',
     );
 
     protected $_filters = array(
@@ -294,6 +294,9 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         echo '<script type="text/javascript" src="'
             . WEB_PLUGIN
             . '/GinaAdminMod/views/admin/javascripts/video-shortcode-helper.js"></script>';
+        echo '<script type="text/javascript" src="'
+            . WEB_PLUGIN
+            . '/GinaAdminMod/views/admin/javascripts/item-meta-fields.js"></script>';
         return;
 
     }
