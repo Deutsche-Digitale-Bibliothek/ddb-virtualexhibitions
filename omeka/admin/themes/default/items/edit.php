@@ -25,11 +25,17 @@ echo flash();
             <?php fire_plugin_hook("admin_items_panel_buttons", array('view'=>$this, 'record'=>$item)); ?>
 
             <div id="public-featured">
-                <?php if ( is_allowed('Items', 'makePublic') ): ?>
+                <?php $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser'); ?>
+                <?php if ($currentuser->role === 'super'): ?>
                     <div class="public">
                         <label for="public"><?php echo __('Public'); ?>:</label>
                         <?php echo $this->formCheckbox('public', $item->public, array(), array('1', '0')); ?>
                     </div>
+                <?php elseif ( is_allowed('Items', 'makePublic') ): ?>
+                    <?php echo $this->formHidden('public', $item->public); ?>
+                    <?php if ($item->public != 1): ?>
+                        <span class="title"><?php echo __('(Private)');  ?></span>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div> <!-- end public-featured  div -->
             <!-- end collection-form div -->
