@@ -120,7 +120,10 @@ class SimpleVocab_Controller_Plugin_SelectFilter extends Zend_Controller_Plugin_
         $components['input'] = get_view()->formSelect(
             $args['input_name_stem'] . '[text]',
             $args['value'],
-            array('style' => 'width: 300px;'),
+        // START Grandgeorg Websolutions
+            // array('style' => 'width: 300px;'),
+            array(),
+        // END Grandgeorg Websolutions
             $selectTerms
         );
         $components['html_checkbox'] = false;
