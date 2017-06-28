@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
         valid = valid && checkRegexp(videoShortcodeType, /^ddb|vimeo$/i, "Wählen Sie einen Video-Typ aus!");
         valid = valid && checkRegexp(videoShortcodeId, /^[a-zA-Z0-9]+$/i, "Bei der ID sind nur alphanummerische Zeichen erlaubt!");
         valid = valid && checkRegexp(videoShortcodeStart, /^[0-9]*$/i, "Bei der Startzeit sind nur Zahlen erlaubt!");
-        valid = valid && checkRegexp(videoShortcodeStop, /^[0-9]*$/i, "Bei der Stoptzeit sind nur Zahlen erlaubt!");
+        valid = valid && checkRegexp(videoShortcodeStop, /^[0-9]*$/i, "Bei der Stopptzeit sind nur Zahlen erlaubt!");
         if (valid) {
             var updateValue = '[[video:' + videoShortcodeType.val() + ':' + videoShortcodeId.val();
             var videoShortcodeStartVal = videoShortcodeStart.val();
@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
     });
 
     setTimeout(function() {
-        $('#element-74 .columns:first-child').append('<button class=\"green\" id=\"video-shortcode-helper\">Video Shortcode Helfer</button>');
+        $('#element-74 .columns:first-child').append('<button class=\"green\" id=\"video-shortcode-helper\">Video-Shortcode-Helfer</button>');
         $('#video-shortcode-helper').click(function(e) {
             e.preventDefault();
             populateDialog();

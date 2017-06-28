@@ -310,11 +310,11 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             || strpos($currentUrl, 'admin/items/add') !== false) {
 
             echo '
-            <div id="video-shortcode-dialog-form" title="Video Shortcode bearbeien">
+            <div id="video-shortcode-dialog-form" title="' . __('Video-Shortcode bearbeiten') . '">
             <p class="validateTips"></p>
             <form>
             <fieldset style="padding:0; border:0; margin-top:25px;">
-                <label for="video-shortcode-type" style="display:block;">Typ</label>
+                <label for="video-shortcode-type" style="display:block;">' . __('Typ') . '</label>
                 <select name="video-shortcode-type" id="video-shortcode-type"
                     style="display:block; margin-bottom:12px;">
                     <option value=""></option>
@@ -322,17 +322,17 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                     <option value="vimeo">Vimeo</option>
                 </select>
 
-                <label for="video-shortcode-id" style="display:block;">Video ID</label>
+                <label for="video-shortcode-id" style="display:block;">' . __('Video-ID') . '</label>
                 <input type="text" name="video-shortcode-id" id="video-shortcode-id"
                     value="" class="text ui-widget-content ui-corner-all"
                     style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
 
-                <label for="video-shortcode-start" style="display:block;">Startzeit (in Sekunden)</label>
+                <label for="video-shortcode-start" style="display:block;">' . __('Startzeit in Sekunden (optional)') . '</label>
                 <input type="text" name="video-shortcode-start" id="video-shortcode-start"
                     value="" class="text ui-widget-content ui-corner-all"
                     style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
 
-                <label for="video-shortcode-stop" style="display:block;">Stopzeit (in Sekunden)</label>
+                <label for="video-shortcode-stop" style="display:block;">' . __('Stoppzeit in Sekunden (optional)') . '</label>
                 <input type="text" name="video-shortcode-stop" id="video-shortcode-stop"
                     value="" class="text ui-widget-content ui-corner-all"
                     style="display:block; margin-bottom:12px; width:95%; padding: .4em;">
