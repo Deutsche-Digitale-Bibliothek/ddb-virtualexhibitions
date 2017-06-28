@@ -47,7 +47,11 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
                 <?php if (!empty($exhibit_page->pagethumbnail) &&
                     is_file(FILES_DIR . '/layout/pagethumbnail/' . $exhibit_page->pagethumbnail)): ?>
                 <a href="<?php echo WEB_FILES . '/layout/pagethumbnail/' . $exhibit_page->pagethumbnail; ?>" target="_blank">
-                    <img src="<?php echo WEB_FILES . '/layout/pagethumbnail/' . $exhibit_page->pagethumbnail; ?>" style="diplay:block; float:left; height:80px; margin:0 10px 0 0;"></a>
+                    <img src="<?php echo WEB_FILES . '/layout/pagethumbnail/' . $exhibit_page->pagethumbnail; ?>" class="exhibit-page-layout-icon"></a>
+                <?php elseif($exhibit_page->layout == 'ddb-summary'): ?>
+                    <img src="<?php echo WEB_FILES; ?>/layout/pagethumbnail/default-summary-icon.jpg" class="exhibit-page-layout-icon exhibit-page-layout-default-icon">
+                <?php else: ?>
+                    <img src="<?php echo WEB_FILES; ?>/layout/pagethumbnail/default-page-icon.jpg" class="exhibit-page-layout-icon exhibit-page-layout-default-icon">
                 <?php endif; ?>
                 <?php echo $this->formFile('pagethumbnail'); ?>
             </div>
@@ -98,7 +102,7 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
             jQuery(this).addClass('current-layout');
 
             // Remove the old chosen layout
-            jQuery('#chosen_layout').find('div.layout').remove()
+            jQuery('#chosen_layout').find('div.layout').remove();
             jQuery('#chosen_layout').find('p').remove();
 
             // Copy the chosen layout
@@ -115,6 +119,18 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
 
             // Check the radio input for the layout
             jQuery(this).find('input').attr('checked', true);
+
+            // Grandgeorg Websolutions: add default icon switch
+            var pageLayoutIcon = jQuery('.exhibit-page-layout-default-icon');
+            if (pageLayoutIcon.length > 0) {
+                if (jQuery(this).attr('id') == 'ddb-summary') {
+                    pageLayoutIcon.attr('src', '<?php echo WEB_FILES; ?>/layout/pagethumbnail/default-summary-icon.jpg');
+                } else {
+                    pageLayoutIcon.attr('src', '<?php echo WEB_FILES; ?>/layout/pagethumbnail/default-page-icon.jpg');
+                }
+            }
+
+
         });
     }
 

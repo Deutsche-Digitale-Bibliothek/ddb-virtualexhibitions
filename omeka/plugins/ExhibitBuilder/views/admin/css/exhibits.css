@@ -281,3 +281,10 @@ button#page_metadata_form {
 #gina_exhibit_metadata_theme_container {
     display: none;
 }
+
+.exhibit-page-layout-icon {
+    diplay:block;
+    float:left;
+    height:80px;
+    margin:0 10px 0 0;
+}
