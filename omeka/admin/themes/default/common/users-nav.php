@@ -13,12 +13,12 @@
             'resource' => $user,
             'privilege' => 'change-password'
         ),
-        array(
-            'label' => __('API Keys'),
-            'uri' => record_url($user, 'api-keys'),
-            'resource' => $user,
-            'privilege' => 'api-keys'
-        ),
+        // array(
+        //     'label' => __('API Keys'),
+        //     'uri' => record_url($user, 'api-keys'),
+        //     'resource' => $user,
+        //     'privilege' => 'api-keys'
+        // ),
     );
     echo nav($navArray, 'admin_navigation_users', array('user' => $user));
 ?>
