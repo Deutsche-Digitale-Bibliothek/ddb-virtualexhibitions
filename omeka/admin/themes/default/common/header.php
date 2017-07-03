@@ -65,12 +65,13 @@ $bodyclass = (empty($bodyclass))? $usrPriv : $usrPriv . ' ' . $bodyclass
                 <?php
                     $name = html_escape($user->name);
                     if (is_allowed($user, 'edit')) {
-                        $userLink = '<a href="' . html_escape(url('users/edit/' . $user->id)) . '">' . $name . '</a>';
+                        $userLink = '<a href="' . html_escape(url('users/edit/' . $user->id)) . '">' . __('Mein Konto') . '</a>';
                     } else {
-                        $userLink = $name;
+                        $userLink = '';
                     }
                 ?>
-                <li><?php echo __('Welcome, %s', $userLink); ?></li>
+                <li><?php echo __('Angemeldet als %s', $name); ?></li>
+                <?php if(!empty($userLink)): ?><li><?php echo $userLink; ?></li><?php endif; ?>
                 <li><a href="<?php echo html_escape(url('users/logout'));?>" id="logout"><?php echo __('Log Out'); ?></a></li>
             <?php endif; ?>
             </ul>
