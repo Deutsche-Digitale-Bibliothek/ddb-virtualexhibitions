@@ -5,7 +5,8 @@ if ($userTitle != '') {
 } else {
     $userTitle = '';
 }
-$userTitle = __('Edit User #%s', $user->id) . $userTitle;
+// $userTitle = __('Edit User #%s', $user->id) . $userTitle;
+$userTitle = __('Konto-Einstellungen') . $userTitle;
 echo head(array('title' => $userTitle, 'bodyclass' => 'users'));
 echo common('users-nav', array('user' => $user));
 echo flash();
