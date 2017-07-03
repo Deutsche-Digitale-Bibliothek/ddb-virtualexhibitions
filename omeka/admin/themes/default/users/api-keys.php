@@ -10,6 +10,8 @@ echo head(array('title' => $userTitle, 'bodyclass' => 'users'));
 echo common('users-nav', array('user' => $user));
 echo flash();
 ?>
+<p>API-Schlüssel werden in dieser Version nicht unterstützt.</p>
+<!--
 <form method="post" action="">
 <h3><?php echo __('API Keys'); ?></h3>
 <div class="field">
@@ -18,8 +20,8 @@ echo flash();
     </div>
     <div class="inputs five columns omega">
         <p class="explanation"><?php echo __(
-            'To create a new API key, enter a label for the key below. For example, ' 
-          . 'describe for what purpose it will be used. This key will have all your ' 
+            'To create a new API key, enter a label for the key below. For example, '
+          . 'describe for what purpose it will be used. This key will have all your '
           . 'permissions; treat it as you would your password.'
         ); ?></p>
         <?php echo $this->formText('api_key_label'); ?>
@@ -59,5 +61,6 @@ echo flash();
 <?php endif; ?>
 <?php echo $this->formSubmit('update_api_keys', __('Update API Keys')); ?>
 </form>
+-->
 
 <?php echo foot();?>
