@@ -1,4 +1,3 @@
-#
 # Translators:
 # E, 2016
 # Martin Sauter <martin.sauter@gmx.ch>, 2011-2012
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-27 14:09+0200\n"
-"Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
+"PO-Revision-Date: 2017-06-30 11:55+0200\n"
+"Last-Translator: John Flatness <john@zerocrates.org>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -426,7 +425,7 @@ msgstr "Sammlung hinzufügen"
 #: admin/themes/default/items/quick-filters.php:6
 #: admin/themes/default/items/show.php:52
 msgid "Public"
-msgstr "Öffentlich"
+msgstr "Im Frontend sichtbar"
 
 #: admin/themes/default/collections/add.php:19
 #: admin/themes/default/collections/edit.php:37
@@ -1308,7 +1307,7 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr "Die maximale Dateigröße ist %s. <br>Bitte ausschließlich Bilddateien (.png, .jpg, .tiff, .raw) und Audiodateien (.wav, .mp3, .wma, .aac, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.<br>Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.<br>3D-Dateien unter dem Reiter „3D-Dateien “ einbinden."
+msgstr "Die maximale Dateigröße ist %s. <br>Bitte ausschließlich Bilddateien (.jpg, .png, .tiff) und Audiodateien (.mp3, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.<br>Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.<br>3D-Dateien unter dem Reiter „3D-Dateien“ einbinden."
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
@@ -1652,7 +1651,7 @@ msgstr "API aktivieren"
 
 #: admin/themes/default/settings/edit-api.php:15
 msgid "Enable or disable the API by checking or unchecking the box below."
-msgstr "API durch Anhaken der Box ein- oder ausschalten"
+msgstr "API durch Anhaken des Kästchens ein- oder ausschalten"
 
 #: admin/themes/default/settings/edit-api.php:22
 msgid "Filter Element Texts"
@@ -1660,7 +1659,7 @@ msgstr "Text des Elements filtern"
 
 #: admin/themes/default/settings/edit-api.php:26
 msgid "Filter element texts by checking the box below. When checked, the API will respect the display element and element text filters when outputting element text representations."
-msgstr "Den Text des Elements durch anhaken der Box aktivieren. Ist das Feld angehakt wird die API das Anzeige Element und Textfilter beachten, when der Taext ausgegeben wird."
+msgstr "Den Text des Elements durch Anhaken des Kästchens aktivieren. Ist das Feld angehakt, wird die API das Anzeige-Element und Textfilter beachten, wenn der Text ausgegeben wird."
 
 #: admin/themes/default/settings/edit-api.php:35
 msgid "Results per Page"
@@ -2709,7 +2708,7 @@ msgstr "Beschränken Sie die Anzahl der Objekte pro Seite, welche im öffentlich
 
 #: application/forms/Install.php:170
 msgid "Check box to show metadata elements with no text."
-msgstr "Box anwählen, um Metadaten-Elemente ohne Text anzuzeigen."
+msgstr "Kästchen anwählen, um Metadaten-Elemente ohne Text anzuzeigen."
 
 #: application/forms/Install.php:185
 msgid "Default Superuser Account"
@@ -3669,13 +3668,13 @@ msgid "Admin Dashboard"
 msgstr "Administrations-Dashboard"
 
 msgid "Beschreibung Metadatenfeld Titel"
-msgstr "<strong>Pflichtfeld</strong><br><em>Im Unterschied zum Inhalt von „Weiterer Titel“ im Frontend sichtbar: im Mouseover – in der Lightbox – auf der Objekt-Seite</em>"
+msgstr "<strong>Pflichtfeld</strong><br>"
 
 msgid "Beschreibung Metadatenfeld Weiterer Titel"
-msgstr "<em>Im Unterschied zum Inhalt von „Titel“ im Frontend sichtbar: nur auf der Objekt-Seite</em><br>Untertitel, Originaltitel in anderer Sprache (welcher?), gleichwertiger Titel, ursprünglicher Titel (z. B. Mona Lisa/La Joconde), ..."
+msgstr "Untertitel, Originaltitel in anderer Sprache (welcher?), gleichwertiger Titel, ursprünglicher Titel (z. B. Mona Lisa/La Joconde), ..."
 
 msgid "Beschreibung Metadatenfeld Beschreibung"
-msgstr "<em>Im Unterschied zum Inhalt von „Kurzbeschreibung“ im Frontend sichtbar: auf der Objekt-Seite</em>"
+msgstr ""
 
 msgid "Beschreibung Metadatenfeld Kurzbeschreibung"
 msgstr "<em>Im Unterschied zum Inhalt von „Beschreibung“ im Frontend sichtbar: in der Lightbox NUR dann, wenn keine Bildunterschrift auf der Ausstellungs-Seite angelegt ist – auf der Objekt-Seite</em>"
@@ -3684,7 +3683,7 @@ msgid "Beschreibung Metadatenfeld Name der Institution"
 msgstr "<strong>Pflichtfeld</strong><br>Institution, die das Original besitzt"
 
 msgid "Beschreibung Metadatenfeld URL der Institution"
-msgstr "Dieses Feld NUR dann ausfüllen, wenn auch das Feld „Name der Institution“ ausgefüllt ist"
+msgstr ""
 
 msgid "Beschreibung Metadatenfeld Link zum Objekt in der DDB"
 msgstr "Wenn das Objekt in der Deutschen Digitalen Bibliothek zu finden ist, bitte unbedingt dieses Feld benutzen (und NICHT das Feld „Link zum Objekt bei der datengebenden Institution“).<br>Verwenden Sie dabei bitte immer die stabile URL, die stets in etwa so aussieht: https://www.deutsche-digitale-bibliothek.de/item/XNVHWXKSHKH6O5SYXM22ZBW25PQG4JFE"
@@ -3696,13 +3695,13 @@ msgid "Beschreibung Metadatenfeld Videoquelle"
 msgstr "Sie können Videos von den Plattformen DDB, Vimeo und YouTube nutzen. Optional können Sie einen Ausschnitt des Videos zeigen.<br>Bitte nutzen Sie den Video-Shortcode-Helfer (Button links)."
 
 msgid "Beschreibung Metadatenfeld Rechtsstatus"
-msgstr "<strong>Pflichtfeld</strong><br>Angabe der Lizenzen als Shortcode"
+msgstr "<strong>Pflichtfeld</strong><br>Angabe von Lizenz oder Rechtehinweis"
 
 msgid "Beschreibung Metadatenfeld Typ"
 msgstr "Objektbezeichnung, Archivalientyp, Dokumententyp, Strukturtyp, ..."
 
 msgid "Beschreibung Metadatenfeld Teil von"
-msgstr "Zeitschrift/Anthologie (welche? z. B. „in: Süddeutsche Zeitung“), Bestand, Reihe, ..."
+msgstr "Zeitschrift/Zeitung/Sammelpublikation u. ä. (welche? z. B. „in: Süddeutsche Zeitung“), Bestand, Reihe, ..."
 
 msgid "Beschreibung Metadatenfeld Thema"
 msgstr "Thema, Kontext, Indexbegriff, Ort, ..."
