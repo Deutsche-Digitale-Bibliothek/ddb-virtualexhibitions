@@ -139,6 +139,8 @@
             <?php // echo exhibit_builder_link_to_exhibit($exhibit, __('View Public Page'), array('class' => 'big blue button', 'target' => '_blank')); ?>
             <?php // echo link_to($exhibit, 'delete-confirm', __('Delete'), array('class' => 'big red button delete-confirm')); ?>
         <?php // endif; ?>
+        <?php $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser'); ?>
+        <?php if($currentuser->role === 'super'): ?>
         <div id="public-featured">
             <div class="public">
                 <label for="public"><?php echo __('Public'); ?>:</label>
@@ -151,6 +153,7 @@
             </div>
             // -->
         </div>
+    <?php endif; ?>
     </div>
 </form>
 
