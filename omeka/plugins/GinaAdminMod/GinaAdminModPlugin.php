@@ -158,7 +158,9 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             ) {
                 if ($key === 'Item Type Metadata') {
                     $new[$key] = $tab
-                        . '<input type="hidden" name="Elements[50][0][text]" value="">';
+                        . '<input type="hidden" name="Elements[50][0][text]" value="">' // DC title
+                        . '<input type="hidden" name="tags" id="tags" value="">' // Tags
+                        ;
                 } else {
                     $new[$key] = $tab;
                 }
