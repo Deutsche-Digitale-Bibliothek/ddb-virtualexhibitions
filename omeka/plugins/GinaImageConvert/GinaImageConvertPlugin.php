@@ -21,7 +21,10 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
 
     protected static $convertedFiles = array();
 
-
+    /**
+     * @param array $args Args with (File-) Record
+     * @return void
+     */
     public function hookBeforeSaveFile($args)
     {
         if (isset($args['record'])
@@ -33,11 +36,47 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
             // $file = $dir . '/' . $args{'record'}->filename;
             $file = $args{'record'}->getPath('original');
             if (isset($file) && !empty($file)) {
+                $this->validateSize($file, $args);
                 $this->removeExif($file, false);
             }
         }
     }
 
+    /**
+     * @param $file string absolute path to file
+     * @param array $args Args with (File-) Record
+     * @return void
+     */
+    public function validateSize($file, $args)
+    {
+        $helperMaxFileSize = new Omeka_View_Helper_MaxFileSize;
+        $record = $args['record'];
+
+        // We assume MB here:
+        $maxFileSize = (int) preg_replace('/[^0-9]/', '', $helperMaxFileSize->maxFileSize());
+        $maxFileSize = $maxFileSize * 1048576; // 1024 * 1024 = 1048576 | MB to Byte
+
+        $filesize = filesize($file);
+
+        if ($filesize > $maxFileSize) {
+
+            $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
+
+            $msg = __('Die Datei "%s" übersteigt die maximale Dateigrösse von %s.',
+                    $record->original_filename, $helperMaxFileSize->maxFileSize())
+                . ' '
+                . __('Speichervorgang für das gesamte Objekt wurde abgebrochen!');
+
+            unlink($file);
+
+            // The record will not be saved anyway, so skip this:
+            // $record->delete();
+
+            $flashMessenger->addMessage($msg, 'error');
+            $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
+            $redirector->gotoSimpleAndExit('show', 'items', null, array('id' => $record->item_id));
+        }
+    }
 
     /**
      * @param $file string absolute path to file
