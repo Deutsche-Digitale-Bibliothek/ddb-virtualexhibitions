@@ -55,6 +55,7 @@
                 <?php echo $this->formLabel('widget_top_first', __('Widget Top First Content')); ?>
             </div>
             <div class="five columns omega inputs">
+                <p class="explanation"><?php echo __('Beschreibung Oberster Kasten in der rechten Marginalspalte'); ?></p>
                 <?php echo $this->formTextarea('widget_top_first', $exhibit->widget_top_first, array('rows'=>'8','cols'=>'40')); ?>
             </div>
         </div>
@@ -63,6 +64,7 @@
                 <?php echo $this->formLabel('widget_top_second', __('Widget Top Second Content')); ?>
             </div>
             <div class="five columns omega inputs">
+                <p class="explanation"><?php echo __('Beschreibung Mittlerer Kasten in der rechten Marginalspalte'); ?></p>
                 <?php echo $this->formTextarea('widget_top_second', $exhibit->widget_top_second, array('rows'=>'8','cols'=>'40')); ?>
             </div>
         </div>
@@ -71,6 +73,7 @@
                 <?php echo $this->formLabel('banner', __('Exhibit Banner')); ?>
             </div>
             <div class="five columns omega inputs">
+                <p class="explanation"><?php echo __('Beschreibung Logo der Ausstellung'); ?></p>
                 <?php if (!empty($exhibit->banner) && is_file(FILES_DIR . '/layout/banner/' . $exhibit->banner)): ?>
                 <a href="<?php echo WEB_FILES . '/layout/banner/' . $exhibit->banner; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/banner/' . $exhibit->banner; ?>" style="diplay:block; float:left; height:80px; margin:0 10px 0 0;"></a>
                 <?php endif; ?>
@@ -82,6 +85,7 @@
                 <?php echo $this->formLabel('widget', __('Widget Bottom Content')); ?>
             </div>
             <div class="five columns omega inputs">
+                <p class="explanation"><?php echo __('Beschreibung Unterster Kasten in der rechten Marginalspalte'); ?></p>
                 <?php echo $this->formTextarea('widget', $exhibit->widget, array('rows'=>'8','cols'=>'40')); ?>
             </div>
         </div>
