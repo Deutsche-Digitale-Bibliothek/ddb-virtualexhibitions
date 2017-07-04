@@ -73,13 +73,14 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
                     $new[$counter] = $nav;
                 }
                 $counter++;
-            } elseif ($nav['label'] === __('Item Types')
-                && substr($nav['uri'], -11) === '/item-types'
-                && $currentuser->role === 'super')
-            {
-                $new[$counter] = $nav;
-                $counter++;
             }
+            // elseif ($nav['label'] === __('Item Types')
+            //     && substr($nav['uri'], -11) === '/item-types'
+            //     && $currentuser->role === 'super')
+            // {
+            //     $new[$counter] = $nav;
+            //     $counter++;
+            // }
         }
         return $new;
     }
