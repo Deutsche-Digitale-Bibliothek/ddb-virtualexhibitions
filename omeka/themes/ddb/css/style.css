@@ -461,7 +461,7 @@ h3 { line-height: 1; }
 /*    -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;*/
-    /*border: 2px solid #e6183c;*/
+    /*border: 2px solid #EC0A3C;*/
     border: 1px solid #A5003B;
 
 
@@ -471,7 +471,7 @@ h3 { line-height: 1; }
 }
 #secondary-nav .current a {
     /*border-color: #ab102d;*/
-    border-color: #e6183c;
+    border-color: #EC0A3C;
     width: 92px;
     height:71px;
     margin: 6px 4px 6px 0;
@@ -499,7 +499,7 @@ h3 { line-height: 1; }
     /*background-color: #ab102d;*/
     color: #fff;
     text-decoration: none;
-    border-color: #e6183c;
+    border-color: #EC0A3C;
 }
 
 #secondary-nav a .ddb-omeka-navigation-background-image {
@@ -549,7 +549,7 @@ h3 { line-height: 1; }
     margin: 0;
     padding: 2px 0 0 0;
 
-    /*background-color: #e6183c;*/
+    /*background-color: #EC0A3C;*/
     background-color: #A5003B;
     line-height: 1;
 
@@ -566,7 +566,7 @@ h3 { line-height: 1; }
 #secondary-nav .nav-carusel-item a:hover .ddb-omeka-pagecounter,
 #secondary-nav .nav-carusel-item.current .ddb-omeka-pagecounter {
     /*background-color: #ab102d;*/
-    background-color: #e6183c;
+    background-color: #EC0A3C;
 }
 
 #secondary-nav .nav-carusel-item.current .ddb-omeka-pagecounter {
@@ -1447,7 +1447,7 @@ footer .social-icons .twitter-icon {
 }
 .expand-image-link .expand-image-icon:hover {
     fill: #000000;
-    background-color: #E6183C;
+    background-color: #EC0A3C;
 }
 .expand-image-link .expand-image-icon svg {
     width: 50%;
