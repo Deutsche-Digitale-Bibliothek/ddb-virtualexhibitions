@@ -1463,3 +1463,21 @@ footer .social-icons .twitter-icon {
     transform-origin: 50% 50% 0px;
     fill: #FFFFFF;
 }
+.ddb-exhibit-topnav-status-bar {
+    height:20px
+}
+.ddb-exhibit-topnav-search-container::-webkit-input-placeholder {
+  color: #999;
+}
+.ddb-exhibit-topnav-search-container::-moz-placeholder {
+  color: #999;
+}
+.ddb-exhibit-topnav-search-container:-ms-input-placeholder {
+  color: #999;
+}
+.ddb-exhibit-topnav-search-container:-moz-placeholder {
+  color: #999;
+}
+.admin-bar .navigation li span {
+    padding-right: 1em;
+}

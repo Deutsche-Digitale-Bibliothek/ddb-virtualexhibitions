@@ -4,7 +4,8 @@
     echo $this->formText('query', $filters['query'], array(
             'class' => 'query',
             'autocomplete' => 'off',
-            'id' => 'search-small'
+            'id' => 'search-small',
+            'placeholder' => __('Suchen in Ausstellung')
     ));
     ?>
     <?php if ($options['show_advanced']): ?>
@@ -27,5 +28,5 @@
     </fieldset>
     <?php endif; ?>
     <?php echo $this->formButton('submit', __('Search'), array('type' => 'submit')); ?>
-    <div style="text-align:left; padding-left:2px;"><a href="https://www.deutsche-digitale-bibliothek.de/">Suche im DDB-Portal</a></div>
+    <div style="text-align:left; padding-left:2px;"><a href="https://www.deutsche-digitale-bibliothek.de/">zur Suche im DDB-Portal</a></div>
 </form>
