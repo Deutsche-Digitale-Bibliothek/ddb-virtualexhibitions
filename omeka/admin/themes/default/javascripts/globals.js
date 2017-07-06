@@ -34,17 +34,20 @@ if (!Omeka) {
             convert_urls: false,
             mode: "textareas", // All textareas
             theme: "advanced",
-            theme_advanced_styles: "Osterei=osterei",
+            // theme_advanced_styles: "Osterei=osterei",
             theme_advanced_toolbar_location: "top",
             theme_advanced_statusbar_location: "none",
             theme_advanced_toolbar_align: "left",
             // theme_advanced_blockformats : "p,address,pre,h1,h2,h3,h4,h5",
             theme_advanced_buttons1: "bold,italic,underline,|,justifyleft,justifycenter,justifyright,|,bullist,numlist,|,link,code,fullscreen",
-            theme_advanced_buttons2: "blockquote,cite,formatselect,styleselect,image",
+            // theme_advanced_buttons2: "blockquote,cite,formatselect,styleselect,image",
+            theme_advanced_buttons2: "blockquote,cite,formatselect",
             theme_advanced_buttons3: "",
-            plugins: "paste,inlinepopups,media,fullscreen,xhtmlxtras,advimage", //
+            // plugins: "paste,inlinepopups,media,fullscreen,xhtmlxtras,advimage",
+            plugins: "paste,inlinepopups,media,fullscreen,xhtmlxtras", //
             media_strict: false,
-            width: "100%"
+            width: "100%",
+            entity_encoding : "raw"
         };
 
         tinyMCE.init($.extend(initParams, params));
