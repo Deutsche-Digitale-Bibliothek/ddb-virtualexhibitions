@@ -21,7 +21,7 @@
     queue_css_file('bootstrap-responsive.min');
     queue_css_file('ddb-01');
     queue_css_file('ddb-02');
-    queue_css_url('//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
+    // queue_css_url('//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
     queue_css_file('style');
     echo head_css();
     ?>
@@ -32,11 +32,11 @@
     <?php
     queue_js_file('vendor/jquery.min');
     queue_js_file('vendor/bootstrap.min');
-    queue_js_file('ddbtooltip');
-    queue_js_file('globals');
+    queue_js_file('ddbtooltip.min');
+    queue_js_file('globals.min');
     queue_js_file('vendor/colorbox/jquery.colorbox-min');
     queue_js_file('vendor/colorbox/i18n/jquery.colorbox-de');
-    queue_js_url('//code.jquery.com/ui/1.10.3/jquery-ui.js');
+    // queue_js_url('//code.jquery.com/ui/1.10.3/jquery-ui.js');
     queue_js_file('vendor/caroufredsel/jquery.carouFredSel-6.2.1-packed');
     queue_js_file('vendor/jwplayer/jwplayer');
     queue_js_file('vendor/jwplayer/key');
