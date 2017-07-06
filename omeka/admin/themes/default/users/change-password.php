@@ -1,7 +1,7 @@
 <?php
 $userTitle = $user->username;
 if ($userTitle != '') {
-    $userTitle = ': &quot;' . html_escape($userTitle) . '&quot; ';
+    $userTitle = ': ' . html_escape($userTitle) . ' ';
 } else {
     $userTitle = '';
 }
