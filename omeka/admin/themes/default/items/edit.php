@@ -1,7 +1,7 @@
 <?php
 $itemTitle = metadata('item', 'display_title');
 if ($itemTitle != '' && $itemTitle != __('[Untitled]')) {
-    $itemTitle = ': &quot;' . $itemTitle . '&quot; ';
+    $itemTitle = ': ' . $itemTitle . ' ';
 } else {
     $itemTitle = '';
 }
