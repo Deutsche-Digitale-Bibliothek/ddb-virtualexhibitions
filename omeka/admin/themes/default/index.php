@@ -66,25 +66,6 @@ endif; ?>
     <?php endif; ?>
 <?php $panels[] = ob_get_clean(); ?>
 
-<?php ob_start(); ?>
-<h2><?php echo __('Recent Collections'); ?></h2>
-<?php
-    $collections = get_recent_collections(5);
-    set_loop_records('collections', $collections);
-    foreach (loop('collections') as $collection):
-?>
-    <div class="recent-row">
-        <p class="recent"><?php echo link_to_collection(); ?></p>
-        <?php if (is_allowed($collection, 'edit')): ?>
-        <p class="dash-edit"><?php echo link_to_collection(__('Edit'), array(), 'edit'); ?></p>
-        <?php endif; ?>
-    </div>
-<?php endforeach; ?>
-    <?php if (is_allowed('Collections', 'add')): ?>
-    <div class="add-new-link"><p><a class="add-collection" href="<?php echo html_escape(url('collections/add')); ?>"><?php echo __('Add a new collection'); ?></a></p></div>
-    <?php endif; ?>
-<?php $panels[] = ob_get_clean(); ?>
-
 <?php $panels = apply_filters('admin_dashboard_panels', $panels, array('view' => $this)); ?>
 <?php for ($i = 0; $i < count($panels); $i++): ?>
 <section class="five columns <?php echo ($i & 1) ? 'omega' : 'alpha'; ?>">
