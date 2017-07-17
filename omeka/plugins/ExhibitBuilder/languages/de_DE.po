@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: https://github.com/omeka/Omeka/issues\n"
 "POT-Creation-Date: 2013-01-23 21:49-0500\n"
-"PO-Revision-Date: 2017-07-04 16:55+0200\n"
+"PO-Revision-Date: 2017-07-11 16:47+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/omeka/language/"
 "de_DE/)\n"
@@ -291,7 +291,7 @@ msgstr "Sie haben keine hervorgehobenen Ausstellungen."
 msgid "You must specifically select a theme in order to configure it."
 msgstr "Sie müssen explizit ein Theme auswählen, um es konfigurieren zu können."
 
-msgid "Your URL slug is already in use by another exhibit.  Please choose another."
+msgid "Your URL slug is already in use by another exhibit. Please choose another."
 msgstr ""
 "Ihr URL-Slug wird bereits für eine andere Ausstellung benutzt. Bitte wählen Sie einen "
 "anderen Slug."
@@ -301,6 +301,29 @@ msgstr "Fügen Sie mehrere Objekte hinzu."
 
 msgid "exhibits"
 msgstr "Ausstellungen"
+
+msgid "Widget Bottom Content"
+msgstr "Unterster Kasten in der rechten Marginalspalte"
+
+msgid "Widget Top First Content"
+msgstr "Oberster Kasten in der rechten Marginalspalte "
+
+msgid "Widget Top Second Content"
+msgstr "Mittlerer Kasten in der rechten Marginalspalte"
+
+msgid "Beschreibung Oberster Kasten in der rechten Marginalspalte"
+msgstr "Angaben zu den beteiligten Institutionen"
+
+msgid "Beschreibung Mittlerer Kasten in der rechten Marginalspalte"
+msgstr "weiterführende Informationen zur Ausstellung, z. B. externe Seiten, Bookviewer, ..."
+
+msgid "Beschreibung Logo der Ausstellung"
+msgstr ""
+"Falls die Ausstellung kein eigenes Logo hat: Feld freilassen ODER das Logo der "
+"ausstellenden Institution ODER ein sprechendes Bild aus der Ausstellung verwenden"
+
+msgid "Beschreibung Unterster Kasten in der rechten Marginalspalte"
+msgstr "Links zu einzelnen Seiten der Ausstellung, z. B. Inhalts- oder Literaturverzeichnis"
 
 msgid "Exhibit Banner"
 msgstr "Logo der Ausstellung"
@@ -317,26 +340,5 @@ msgstr "Mindestgröße des Bildes (Breite x Höhe) ist %d x %d Pixel"
 msgid "Changes to the exhibit's page were successfully saved!"
 msgstr "Die Änderungen der Ausstellungs-Seite wurden erfolgreich gespeichert!"
 
-msgid "Hide Search Form "
+msgid "Hide Search Form"
 msgstr "Suchformular ausblenden"
-
-msgid "Beschreibung Oberster Kasten in der rechten Marginalspalte"
-msgstr "Angaben zu den beteiligten Institutionen"
-
-msgid "Beschreibung Mittlerer Kasten in der rechten Marginalspalte"
-msgstr "weiterführende Informationen zur Ausstellung, z. B. externe Seiten, Bookviewer, ..."
-
-msgid "Beschreibung Logo der Ausstellung"
-msgstr ""
-
-msgid "Beschreibung Unterster Kasten in der rechten Marginalspalte"
-msgstr "Links zu einzelnen Seiten der Ausstellung, z. B. Inhalts- oder Literaturverzeichnis"
-
-msgid "Widget Top First Content"
-msgstr "Oberster Kasten in der rechten Marginalspalte"
-
-msgid "Widget Top Second Content"
-msgstr "Mittlerer Kasten in der rechten Marginalspalte"
-
-msgid "Widget Bottom Content"
-msgstr "Unterster Kasten in der rechten Marginalspalte"

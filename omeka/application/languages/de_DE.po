@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-30 11:55+0200\n"
+"PO-Revision-Date: 2017-07-05 13:10+0200\n"
 "Last-Translator: John Flatness <john@zerocrates.org>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -1307,7 +1307,7 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr "Die maximale Dateigröße ist %s. <br>Bitte ausschließlich Bilddateien (.jpg, .png, .tiff) und Audiodateien (.mp3, .ogg) verwenden. Das heißt: Bitte keine pdf-Dateien verwenden.<br>Videodateien per Shortcode unter dem Reiter „Metadaten“ einbinden.<br>3D-Dateien unter dem Reiter „3D-Dateien“ einbinden."
+msgstr "Die maximale Dateigröße ist %s. <br>Hier bitte ausschließlich Bild-Dateien (.jpg, .png, .tiff) und Audio-Dateien (.mp3, .ogg) einbinden. Keine pdf-Dateien verwenden.<br>Beachten Sie die weiteren Vorgaben für Medien-Dateien im Kuratoren-Handbuch!"
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
@@ -2007,7 +2007,7 @@ msgstr "Anmelden"
 
 #: admin/themes/default/users/login.php:8
 msgid "Go to the public site"
-msgstr ""
+msgstr "Zum Frontend der Ausstellung wechseln."
 
 #: admin/themes/default/users/login.php:17
 msgid "(Lost your password?)"
@@ -2593,7 +2593,7 @@ msgstr "Aktuelles Passwort"
 #: application/forms/ChangePassword.php:26
 #: application/forms/ChangePassword.php:36
 msgid "Password must be at least 6 characters long."
-msgstr "Das Passwort muss mindest 6 Zeichen lang sein."
+msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
 
 #: application/forms/ChangePassword.php:28
 msgid "Invalid current password"
@@ -2878,7 +2878,7 @@ msgstr "HTML-Filter"
 
 #: application/forms/User.php:30
 msgid "Username must be 30 characters or fewer. Whitespace is not allowed."
-msgstr "Benutzername darf 30 Zeichen lang oder kürzer sein. Keine Leerzeichen verwenden."
+msgstr "Der Benutzername darf 30 Zeichen lang oder kürzer sein. Erlaubte Sonderzeichen: Bindestrich (-), Unterstrich (_) und At-Zeichen (@). Keine Leerzeichen doer andere Sonderzeichen verwenden! "
 
 #: application/forms/User.php:37
 msgid "Username is required."
@@ -2898,7 +2898,7 @@ msgstr "Dieser Benutzername ist bereits vergeben."
 
 #: application/forms/User.php:82
 msgid "Name as it should be displayed on the site"
-msgstr "Name, der auf der Website angezeigt wird"
+msgstr "Name, der auf der Website angezeigt wird."
 
 #: application/forms/User.php:88 application/models/User.php:169
 msgid "Real Name is required."
