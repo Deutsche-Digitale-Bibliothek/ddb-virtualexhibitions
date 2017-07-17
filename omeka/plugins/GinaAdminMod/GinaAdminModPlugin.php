@@ -30,6 +30,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_items_form_item_types',
         // 'admin_items_panel_fields',
         'admin_footer_last',
+        'admin_items_show_sidebar'
     );
 
     protected $_filters = array(
@@ -345,5 +346,19 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             ';
 
         }
+    }
+
+    public function hookAdminItemsShowSidebar($args)
+    {
+        $item = $args['item'];
+        echo '
+            <div class="info panel">
+                <h4>' . __('Bookviewer-Link') . '</h4>
+                <div>
+                    <p style="font-family: monospace;">' . PUBLIC_BASE_URL . '/viewer/show/' . $item->id . '/#page/n0/mode/2up</p>
+                    <p style="font-size:12px; text-align:right;"><a href="' . PUBLIC_BASE_URL . '/viewer/show/' . $item->id . '/#page/n0/mode/2up" target="_blank">anzeigen</a></p>
+                </div>
+            </div>
+        ';
     }
 }
