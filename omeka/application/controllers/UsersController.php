@@ -22,6 +22,16 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     // Begin Grandgeorg Websolutions
     protected $_mailAdminName = 'DDB-Servicestelle';
+    protected $_mailSignature = 'Bei Rückfragen oder Problemen wenden Sie sich bitte an die DDB-Servicestelle:'
+        . "\n"
+        . 'service@deutsche-digitale-bibliothek.de'
+        . "\n"
+        . 'Tel: 069 1525-1080'
+        . "\n\n"
+        . 'Mit freundlichen Grüßen'
+        . "\n"
+        . 'Ihre'
+        . "\n";
     // End Grandgeorg Websolutions
 
     public function init() {
@@ -388,12 +398,13 @@ class UsersController extends Omeka_Controller_AbstractActionController
         // send the user an email telling them about their new user account
         $siteTitle  = get_option('site_title');
         $from       = get_option('administrator_email');
-        $body       = __('Welcome!')
+        $body       = __('Liebe Kuratorin, lieber Kurator,')
                     ."\n\n"
                     . __('Your account for the %s repository has been created. Please click the following link to activate your account:',$siteTitle)."\n\n"
                     . WEB_ROOT . "/admin/users/activate?u={$ua->url}\n\n"
                     // Begin Grandgeorg Websolutions
                     // . __('%s Administrator', $siteTitle);
+                    . $this->_mailSignature
                     . $this->_mailAdminName;
                     // End Grandgeorg Websolutions
         $subject    = __('Activate your account with the %s repository', $siteTitle);
