@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2017-07-26 11:23+0200\n"
+"PO-Revision-Date: 2017-09-08 19:44+0200\n"
 "Last-Translator: John Flatness <john@zerocrates.org>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -1294,7 +1294,7 @@ msgstr "Objekt #%s bearbeiten"
 
 #: admin/themes/default/items/files-form.php:2
 msgid "Click and drag the files into the preferred display order."
-msgstr "Ziehen Sie die die Dateien per Drag & Drop in die gewünschte Darstellungsreihenfolge."
+msgstr "Ziehen Sie die Dateien per Drag & Drop in die gewünschte Darstellungsreihenfolge."
 
 #: admin/themes/default/items/files-form.php:13
 msgid "Delete "
@@ -1307,7 +1307,7 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr "Die maximale Dateigröße ist %s. <br>Hier bitte ausschließlich Bild-Dateien (.jpg, .png, .tiff) und Audio-Dateien (.mp3, .ogg) einbinden. Keine pdf-Dateien verwenden.<br>Beachten Sie die weiteren Vorgaben für Medien-Dateien im Kuratoren-Handbuch!"
+msgstr "Die maximale Dateigröße ist %s. <br>Hier bitte ausschließlich Bild-Dateien (.jpg, .png, .tiff) und Audio-Dateien (.mp3, .ogg) einbinden. Keine pdf-Dateien verwenden."
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
@@ -2508,7 +2508,7 @@ msgstr "Aktivieren Sie Ihr Konto im %s Repository"
 
 #: application/controllers/UsersController.php:481
 msgid "Login information incorrect. Please try again."
-msgstr "Die Login-Informationen sind nicht korrekt oder Ihr Konto wurde deaktiviert. <br>Bitte versuchen Sie es erneut bzw. setzen Sie sich mit der Servicestelle der Deutschen Digitalen Bibliothek in Verbindung."
+msgstr "Die Login-Informationen sind nicht korrekt oder Ihr Konto wurde deaktiviert. Bitte versuchen Sie es erneut bzw. setzen Sie sich mit der Servicestelle der Deutschen Digitalen Bibliothek in Verbindung."
 
 #: application/forms/AppearanceSettings.php:22
 msgid "Use Square Thumbnails"
