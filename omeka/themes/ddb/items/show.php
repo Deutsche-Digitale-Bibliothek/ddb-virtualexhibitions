@@ -25,7 +25,7 @@ $itemMetadata = all_element_texts('item', array('return_type' => 'array'));
  * Display DDB style Metadata
  */
 $metadataDisplayFields = array(
-    'Weiterer Titel', 'Link zum Objekt',
+    'Weiterer Titel', 'Link zum Objekt in der DDB',
     'Link zum Objekt bei der datengebenden Institution',
     'Typ', 'Teil von', 'Beschreibung', 'Kurzbeschreibung',
     'Thema', 'Beteiligte Personen und Organisationen',
@@ -65,6 +65,18 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
             <?php foreach ($metaValue as $metaText): ?>
             <?php if ($metaName == 'Rechtsstatus'): ?>
             <div class="element-text"><?php echo ExhibitDdbHelper::getLicenseFromShortcode($metaText); ?></div>
+            <?php elseif($metaName == 'Link zum Objekt bei der datengebenden Institution' || $metaName == 'Link zum Objekt in der DDB'): ?>
+            <?php
+            $href = strip_tags($metaText);
+            $dom = new DOMDocument();
+            @$dom->loadHTML($metaText);
+            @$tags = $dom->getElementsByTagName('a');
+            foreach ($tags as $tag) {
+               $href =  $tag->getAttribute('href');
+               break;
+            }
+            ?>
+            <div class="element-text"><a href="<?php echo $href; ?>"><?php echo $href; ?></a></div>
             <?php else: ?>
             <div class="element-text"><?php echo $metaText; ?></div>
             <?php endif; ?>
