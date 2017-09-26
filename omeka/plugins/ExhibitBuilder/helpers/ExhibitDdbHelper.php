@@ -710,6 +710,8 @@ class ExhibitDdbHelper
                     . '" target="_blank">'
                     . $institutionName
                     . '</a>';
+                } elseif (!empty($institutionName)) {
+                    $output = $institutionName;
                 }
             }
         }

@@ -932,6 +932,7 @@ body .ui-tooltip {
     /*text-align: center;*/
     font-size: 12px;
     overflow: hidden;
+    line-height: 1.25;
 }
 .ddb-omkea-colorbox-title {
     text-align: left;

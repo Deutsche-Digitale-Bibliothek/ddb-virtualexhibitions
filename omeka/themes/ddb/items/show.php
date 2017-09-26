@@ -56,6 +56,10 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
             . '" target="_blank">'
             . html_escape(strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]))
             . '</a>';
+    } elseif (isset($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]) &&
+        !empty(strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]))
+    ) {
+        $institution = strip_tags($itemMetadata['VA DDB Item Type Metadata']['Name der Institution'][0]);
     }
 
     foreach ($itemMetadata['VA DDB Item Type Metadata'] as $metaName => $metaValue):
