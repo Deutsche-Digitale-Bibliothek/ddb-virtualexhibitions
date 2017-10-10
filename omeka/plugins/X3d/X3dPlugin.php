@@ -158,14 +158,14 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
                 unlink($x3dDir . DIRECTORY_SEPARATOR . 'pr_' .  $x3d->thumbnail);
                 unlink($x3dDir . DIRECTORY_SEPARATOR . 'sq_' .  $x3d->thumbnail);
 
-                $thnInfo = new SplFileInfo($_FILES['x3d_texture_file']['name']);
+                $thnInfo = new SplFileInfo($_FILES['x3d_thn_file']['name']);
                 $thnFile = $x3dDir . DIRECTORY_SEPARATOR . 'or_' . $uniqid . '.' . $thnInfo->getExtension();
                 move_uploaded_file($_FILES['x3d_thn_file']['tmp_name'], $thnFile);
 
-                $Omeka_File_Derivative_Image_Creator = new Omeka_File_Derivative_Image_Creator('/usr/bin');
+                $Omeka_File_Derivative_Image_Creator = Zend_Registry::get('file_derivative_creator');
                 $Omeka_File_Derivative_Image_Creator->addDerivative('pr', 360, false);
                 $Omeka_File_Derivative_Image_Creator->addDerivative('sq', 360, true);
-                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension());
+                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension(), 'image/jpeg');
 
                 $x3d->thumbnail = $uniqid . '.' . $thnInfo->getExtension();
                 $modified = true;
@@ -176,12 +176,13 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
             }
 
         } else {
-            // var_dump($_FILES);
+
             //It's a new record, so we need all three files
             if (!isset($_FILES['x3d_file']) || !isset($_FILES['x3d_texture_file']) || !isset($_FILES['x3d_thn_file']) ||
                 (empty($_FILES['x3d_file']['tmp_name']) && empty($_FILES['x3d_texture_file']['tmp_name']) && empty($_FILES['x3d_thn_file']['tmp_name']))) {
                 return;
             }
+
             $x3dDir = FILES_DIR . DIRECTORY_SEPARATOR . 'x3d' . DIRECTORY_SEPARATOR . $uniqid;
             mkdir($x3dDir, 0775, true);
             if (is_uploaded_file($_FILES['x3d_file']['tmp_name'])) {
@@ -196,10 +197,11 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
                 $thnFile = $x3dDir . DIRECTORY_SEPARATOR . 'or_' . $uniqid . '.' . $thnInfo->getExtension();
                 move_uploaded_file($_FILES['x3d_thn_file']['tmp_name'], $thnFile);
 
-                $Omeka_File_Derivative_Image_Creator = new Omeka_File_Derivative_Image_Creator('/usr/bin');
+                $Omeka_File_Derivative_Image_Creator = Zend_Registry::get('file_derivative_creator');
                 $Omeka_File_Derivative_Image_Creator->addDerivative('pr', 360, false);
                 $Omeka_File_Derivative_Image_Creator->addDerivative('sq', 360, true);
-                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension());
+                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension(), 'image/jpeg');
+
             }
 
             $newEntry = new X3d;
