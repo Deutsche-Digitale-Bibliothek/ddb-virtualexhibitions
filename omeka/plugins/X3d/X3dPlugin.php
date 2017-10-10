@@ -158,14 +158,7 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
                 unlink($x3dDir . DIRECTORY_SEPARATOR . 'pr_' .  $x3d->thumbnail);
                 unlink($x3dDir . DIRECTORY_SEPARATOR . 'sq_' .  $x3d->thumbnail);
 
-                $thnInfo = new SplFileInfo($_FILES['x3d_thn_file']['name']);
-                $thnFile = $x3dDir . DIRECTORY_SEPARATOR . 'or_' . $uniqid . '.' . $thnInfo->getExtension();
-                move_uploaded_file($_FILES['x3d_thn_file']['tmp_name'], $thnFile);
-
-                $Omeka_File_Derivative_Image_Creator = Zend_Registry::get('file_derivative_creator');
-                $Omeka_File_Derivative_Image_Creator->addDerivative('pr', 360, false);
-                $Omeka_File_Derivative_Image_Creator->addDerivative('sq', 360, true);
-                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension(), 'image/jpeg');
+                $thnInfo = $this->_handleThumbnails($x3dDir, $uniqid);
 
                 $x3d->thumbnail = $uniqid . '.' . $thnInfo->getExtension();
                 $modified = true;
@@ -193,14 +186,7 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
             }
             if (is_uploaded_file($_FILES['x3d_thn_file']['tmp_name'])) {
 
-                $thnInfo = new SplFileInfo($_FILES['x3d_texture_file']['name']);
-                $thnFile = $x3dDir . DIRECTORY_SEPARATOR . 'or_' . $uniqid . '.' . $thnInfo->getExtension();
-                move_uploaded_file($_FILES['x3d_thn_file']['tmp_name'], $thnFile);
-
-                $Omeka_File_Derivative_Image_Creator = Zend_Registry::get('file_derivative_creator');
-                $Omeka_File_Derivative_Image_Creator->addDerivative('pr', 360, false);
-                $Omeka_File_Derivative_Image_Creator->addDerivative('sq', 360, true);
-                $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension(), 'image/jpeg');
+                $thnInfo = $this->_handleThumbnails($x3dDir, $uniqid);
 
             }
 
@@ -215,6 +201,35 @@ class X3dPlugin extends Omeka_Plugin_AbstractPlugin
             $newEntry->save();
         }
 
+    }
+
+    /**
+     * Move Original file to X3D directory.
+     * Create derivate images.
+     *
+     * @param string $x3dDir
+     * @param string $uniqid
+     * @return object $thnInfo SplFileInfo object
+     */
+    protected function _handleThumbnails($x3dDir, $uniqid)
+    {
+        $thnInfo = new SplFileInfo($_FILES['x3d_texture_file']['name']);
+        $thnFile = $x3dDir . DIRECTORY_SEPARATOR . 'or_' . $uniqid . '.' . $thnInfo->getExtension();
+        move_uploaded_file($_FILES['x3d_thn_file']['tmp_name'], $thnFile);
+
+        $Omeka_File_Derivative_Image_Creator = Zend_Registry::get('file_derivative_creator');
+        $Omeka_File_Derivative_Image_Creator->addDerivative('pr', 360, false);
+        $Omeka_File_Derivative_Image_Creator->addDerivative('square_thumbnail', 360, true);
+        $Omeka_File_Derivative_Image_Creator->create($thnFile, $uniqid . '.' . $thnInfo->getExtension(), 'image/jpeg');
+
+        $squareThumbnail = $x3dDir . DIRECTORY_SEPARATOR . 'square_thumbnail_' .  $uniqid . '.' . $thnInfo->getExtension();
+        if (is_file($squareThumbnail) && is_readable($squareThumbnail)) {
+            rename(
+                $squareThumbnail,
+                $x3dDir . DIRECTORY_SEPARATOR . 'sq_' .  $uniqid . '.' . $thnInfo->getExtension()
+            );
+        }
+        return $thnInfo;
     }
 
     /**
