@@ -14,6 +14,7 @@
             <div class="inner">
                 <ul>
                     <li><a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung/">Datenschutz</a></li>
+                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/nutzungsbedingungen">Nutzungsbedingungen</a></li>
                     <li><a href="https://www.deutsche-digitale-bibliothek.de/content/impressum/">Impressum</a></li>
                     <li><a href="https://www.deutsche-digitale-bibliothek.de/content/sitemap/">Sitemap</a></li>
                     <li><a href="https://www.deutsche-digitale-bibliothek.de/content/presse-medien/">Presse</a></li>
