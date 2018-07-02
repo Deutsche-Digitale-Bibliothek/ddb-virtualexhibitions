@@ -1,11 +1,8 @@
 <?php
 $title = metadata('item', array('Item Type Metadata', 'Titel'));
 if (empty($title)) { $title = metadata('item', array('Dublin Core', 'Title')); } ?>
-
 <?php echo head(array('title' => $title, 'bodyclass' => 'item show ddb-full-item')); ?>
-
 <h1><?php echo $title ?></h1>
-
 <?php
 $itemMetadata = all_element_texts('item', array('return_type' => 'array'));
 
@@ -93,7 +90,6 @@ if (isset($itemMetadata['VA DDB Item Type Metadata'])):
         </div>
 <?php endif; endforeach; endif; ?>
 
-
 <?php
 /**
  * Display files
@@ -178,7 +174,6 @@ if (!empty($imagemap)) {
     $imgAttributes = array_merge($imgAttributes, $usemap);
 }
 ?>
-
 <?php
 /**
  * echo the output if any
@@ -187,8 +182,12 @@ if (metadata('item', 'has files') || !empty($embedVideo)): ?>
 <div id="itemfiles" class="element">
     <h3><?php echo __('Files'); ?></h3>
     <div class="element-text ddb-omeka-itempage-full-item-container">
-        <?php echo $embedVideo; ?>
-        <?php if(empty($embedVideo)): ?>
+    <?php if (!empty($imagemap)): ?>
+    <?php echo $imagemap; ?>
+    <?php echo js_tag('vendor/jquery.rwdImageMaps'); ?>
+    <?php endif; ?>
+    <?php echo $embedVideo; ?>
+    <?php if(empty($embedVideo)): ?>
         <?php echo $additionalWrapperOpen; ?>
         <?php
         if (isset($wrapperAttributes)) {
@@ -206,7 +205,7 @@ if (metadata('item', 'has files') || !empty($embedVideo)): ?>
         }
         ?>
         <?php echo $additionalWrapperClose; ?>
-        <?php endif; ?>
+    <?php endif; ?>
     </div>
 </div>
 <?php elseif (($x3d = get_db()->getTable('X3d')->findByItemId($item->id))):
@@ -223,71 +222,29 @@ if (metadata('item', 'has files') || !empty($embedVideo)): ?>
 </div>
 <div>Verwenden Sie das Mausrad oder die rechte Maustaste, um das Objekt zu zoomen</div>
 <?php endif; ?>
-
-<?php
-/**
- * echo imagemap if any
- */
-if (!empty($imagemap)) {
-    echo $imagemap;
-    // echo '<script src="/themes/ddb/javascripts/vendor/jquery.rwdImageMaps.js" type="text/javascript"></script>';
-    echo js_tag('vendor/jquery.rwdImageMaps');
-}
-?>
-
-<?php
-/**
- * If the item belongs to a collection, the following creates a link to that collection.
- */
-// if (metadata('item', 'Collection Name')): ?>
-<!-- <div id="collection" class="element">
-    <h3><?php // echo __('Collection'); ?></h3>
-    <div class="element-text"><p><?php // echo link_to_collection_for_item(); ?></p></div>
-</div> -->
-<?php // endif; ?>
-
-
-<?php
-/**
- *  The following prints a list of all tags associated with the item
- */
-// if (metadata('item', 'has tags')): ?>
-<!-- <div id="item-tags" class="element">
-    <h3><?php // echo __('Tags'); ?></h3>
-    <div class="element-text"><?php // echo tag_string('item'); ?></div>
-</div> -->
-<?php // endif; ?>
-
-<?php
-/**
- * The following prints a citation for this item.
- */
-?>
 <div id="item-citation" class="element">
     <h3>Quellenangabe</h3>
     <div class="element-text"><?php echo metadata('item', 'citation', array('no_escape' => true)); ?></div>
 </div>
-
 <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
-
 <nav>
 <ul class="omeka-item-pagination navigation inline">
     <li id="previous-item" class="omeka-item-previous"><?php echo link_to_previous_item_show(); ?></li>
     <li id="next-item" class="omeka-item-next"><?php echo link_to_next_item_show(); ?></li>
 </ul>
 </nav>
-
-<script type="text/javascript">
+<?php if (!empty($imagemap)): ?>
+<script>
+$(window).load(function() {
+    $('map').imgmapinfo();
+});
+</script>
+<?php endif; ?>
+<script>
     $(document).ready(function() {
-
         <?php if (!empty($imagemap)): ?>
-        $("area").tooltip({
-            track: true,
-            items: "[data-imgmap]",
-            content: function() {
-                return this.dataset.imgmap;
-            }
-        });
+            // $('map').imgmapinfo();
+            // console.log('xxx');
         <?php endif; ?>
 
         /* GINA Grandgeorg Internet Application object */
@@ -358,25 +315,6 @@ if (!empty($imagemap)) {
                 newWidth = checkWidth;
             }
 
-            // set conatainer
-            /*
-            if (withType == 'window') {
-                $('.inline-lightbox-container').css({'width': newWidth, margin: '0 auto'});
-            } else {
-                $('.inline-lightbox-container').css({'width': newWidth, margin: '0 auto'});
-            }
-            $('.inline-lightbox-container').css({'height': newHeight});
-
-            // set img & extarnal media
-            if ($('.inline-lightbox-element img').get(0)) {
-                $('.inline-lightbox-element img').css({'max-height': newHeight, 'max-width': newWidth});
-            }
-            if ($('.inline-lightbox-container iframe').get(0)) {
-                $('.inline-lightbox-container iframe').attr({'width': newWidth, 'height' : newHeight});
-                // $('.inline-lightbox-container iframe')[0].setAttribute({'width': newWidth, 'height' : newHeight});
-            }
-            */
-
             if(!loaded) {
                 $(window).resize(function() {
                     $.Gina.sizeColorBoxItem(!loaded);
@@ -387,16 +325,9 @@ if (!empty($imagemap)) {
 
             <?php if (!empty($imagemap)): ?>
             $('#ddb-imagemap-image').rwdImageMaps(newWidth, newHeight);
-            // imagemap.rwdImageMap;
-            // console.log('called gina window ready');
             <?php endif; ?>
         }
         $.Gina.sizeColorBoxItem();
-
-
     });
-
 </script>
-
-
 <?php echo foot(array(), 'item-footer'); ?>

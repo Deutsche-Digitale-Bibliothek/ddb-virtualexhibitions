@@ -6,7 +6,6 @@
     <!--[if lt IE 9]>
   <div class="footer container" role="contentinfo">
 <![endif]-->
-
 <footer class="container">
     <div class="row">
         <h1 class="invisible-but-readable">Website-Fußzeile</h1>
@@ -49,9 +48,11 @@
         de.ddb.next = {};
     }
 </script>
-
 <?php echo js_tag('searchCookie'); ?>
 <script type="text/javascript">
+
+var GinaConfig = {server: {server_name: '<?php echo $_SERVER['SERVER_NAME']; ?>'}};
+
 $(window).on('load', function () {
 
   $('#cookie-notice').each(function () {
@@ -81,6 +82,9 @@ $(window).on('load', function () {
   });
 });
 </script>
+<?php $currentTheme = Theme::getTheme('ddb'); ?>
+
+<script type="text/javascript" src="<?php echo $currentTheme->getAssetPath(); ?>/javascripts/imgmapinfo.min.js"></script>
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];

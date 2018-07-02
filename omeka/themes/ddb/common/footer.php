@@ -54,6 +54,7 @@
     ?>
 
     <script type="text/javascript" src="<?php echo $currentTheme->getAssetPath(); ?>/javascripts/footer.min.js"></script>
+    <script type="text/javascript" src="<?php echo $currentTheme->getAssetPath(); ?>/javascripts/imgmapinfo.min.js"></script>
 
     <!-- Piwik -->
     <script type="text/javascript">

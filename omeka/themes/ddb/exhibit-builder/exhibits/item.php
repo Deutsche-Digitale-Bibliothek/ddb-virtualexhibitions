@@ -192,14 +192,6 @@ if (!empty($imagemap)) {
 <?php
 if (!empty($imagemap)) {
     echo $imagemap;
-    // queue_js_file('vendor/jquery.rwdImageMaps');
-    // echo head_js();
-    // echo '<ul>'
-    // . '<li>' . public_url() . '</li>'
-    // . '<li>' . absolute_url() . '</li>'
-    // . '<li>' . current_url() . '</li>'
-    // . '<li>' . js_tag('vendor/jquery.rwdImageMaps') . '</li>'
-    // . '</ul>';
     echo js_tag('vendor/jquery.rwdImageMaps');
 }
 ?>
@@ -207,15 +199,9 @@ if (!empty($imagemap)) {
 <script type="text/javascript">
     $(document).ready(function() {
 
-        <?php if (!empty($imagemap)): ?>
-        $("area").tooltip({
-            track: true,
-            items: "[data-imgmap]",
-            content: function() {
-                return this.dataset.imgmap;
-            }
-        });
-        <?php endif; ?>
+    <?php if (!empty($imagemap)): ?>
+        $('map').imgmapinfo();
+    <?php endif; ?>
 
         if (typeof $.Gina == 'undefined') {
             $.Gina = {};
