@@ -87,19 +87,20 @@ $(window).on('load', function () {
 <script type="text/javascript" src="<?php echo $currentTheme->getAssetPath(); ?>/javascripts/imgmapinfo.min.js"></script>
 <!-- Piwik -->
 <script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
+var _paq = _paq || [];
 
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://report.deutsche-digitale-bibliothek.de/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "5"]);
-    _paq.push(['setVisitorCookieTimeout', '604800']);
-    _paq.push(['setSessionCookieTimeout', '0']);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
+_paq.push(['setVisitorCookieTimeout', '604800']);
+_paq.push(['setSessionCookieTimeout', '0']);
+_paq.push(["trackPageView"]);
+_paq.push(["enableLinkTracking"]);
+
+(function() {
+var u=(("https:" == document.location.protocol) ? "https" : "http") + "://report.deutsche-digitale-bibliothek.de/";
+_paq.push(["setTrackerUrl", u+"piwik.php"]);
+_paq.push(["setSiteId", "5"]);
+var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+})();
 </script>
 <noscript><img src="https://report.deutsche-digitale-bibliothek.de/piwik.php?idsite=5&amp;rec=1" style="border:0" alt="" /></noscript>
 <!-- End Piwik Code -->
