@@ -2,7 +2,7 @@
 /**
  * Omeka Exhibit Extension and Helper for DDB - Deutsche Digitale Bibliothek
  *
- * @copyright Copyright 2014 Viktor Grandgeorg, Grandgeorg Websolutions
+ * @copyright Copyright 2018 Viktor Grandgeorg, Grandgeorg Websolutions
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  * @author Viktor Grandgeorg, viktor@grandgeorg.de
  */
@@ -35,22 +35,40 @@ class ExhibitDdbHelper
      */
     public static $videoDdbCount = 0;
 
-
+    /**
+     * Omeka DDB elements version
+     *
+     * @var int
+     */
     public static $elementsVersion = null;
 
+    /**
+     * Container for all requested DDB video object source and metadata
+     *
+     * @var array
+     */
     public static $ddbVideoXml = array();
 
-    # https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/0ad1809a-1fec-4cf7-92f4-3e20ad540b2b/full/!116,87/0/default.jpg
+    /**
+     * DDB Helper configuration
+     *
+     * Change ddbXmlSrv to get XML data from another server
+     * Change ddbIIFResHelperSrvPrefix to get image resolution data from another server
+     * Change ddbIIIFSrvPrefix to get video image files from another server
+     * Change ddbVideoSrvPrefix to get video files from another server
+     *
+     * @var array
+     */
     public static $config = array(
-        // 'ddbXmlSrv' => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
-        'ddbXmlSrv' => 'https://dev-ddb.fiz-karlsruhe.de/ddb-current/item/xml/',
-        'ddbIIFResHelperSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        // 'ddbXmlSrv'              => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
+        'ddbXmlSrv'                 => 'https://dev-ddb.fiz-karlsruhe.de/ddb-current/item/xml/',
+        'ddbIIFResHelperSrvPrefix'  => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
         'ddbIIFResHelperSrvPostfix' => '/info.json',
-        // 'ddbIIIFSrvPrefix' => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
-        'ddbIIIFSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
-        'ddbIIIFSrvMiddfix' => '/full/!',
-        'ddbIIIFSrvPostfix' => '/0/default.jpg',
-        'ddbVideoSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/binary/'
+        // 'ddbIIIFSrvPrefix'       => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
+        'ddbIIIFSrvPrefix'          => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        'ddbIIIFSrvMiddfix'         => '/full/!',
+        'ddbIIIFSrvPostfix'         => '/0/default.jpg',
+        'ddbVideoSrvPrefix'         => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/binary/'
     );
 
     /**
@@ -65,6 +83,12 @@ class ExhibitDdbHelper
         return $matches;
     }
 
+    /**
+     * Main method to get ddb video data
+     *
+     * @param string $id DDB object ID (from the shortcode)
+     * @return void
+     */
     public static function getDdbVideoXml($id)
     {
         if (isset(self::$ddbVideoXml[$id])) {
@@ -90,6 +114,13 @@ class ExhibitDdbHelper
         }
     }
 
+    /**
+     * Get image rsolution for video images.
+     *
+     * @param int $id $id DDB object ID
+     * @param string $ref Hash from XML for the image file
+     * @return void
+     */
     public static function getDdbVideoImgResolution($id, $ref)
     {
 
@@ -123,6 +154,14 @@ class ExhibitDdbHelper
         return false;
     }
 
+    /**
+     * Recursively loop XML nodes and get binary tags for video and video img.
+     * Set self::$ddbVideoXml foreach video id.
+     *
+     * @param DOMNode $domNode The XML DOMNode for the DDB object
+     * @param sting $id DDB object ID
+     * @return void
+     */
     public static function getDdbVideoXmlBin(DOMNode $domNode, $id)
     {
         $mimes = array(
@@ -186,34 +225,17 @@ class ExhibitDdbHelper
                             . '<div class="blurb">Video</div></div>';
                     }
                     break;
-                // case 'ddb':
-                //     self::setVideoDdbInfo($videoId);
-                //     // get $videoId, $offsetStart, $offsetStop:
-                //     $extended = self::getDdbVideoTimeOffset($videoId);
-                //     extract($extended, EXTR_OVERWRITE);
-                //     $output = '<div class="external-thumbnail" style="background-image:url(\'http://www.deutsche-digitale-bibliothek.de/binary/'
-                //             . $videoId . '/mvpr/1.jpg\');"><img src="'
-                //             . img('thnplaceholder.gif') . '" alt="video" style="visibility:hidden;">'
-                //             . '<div class="blurb">Video</div></div>';
-                //     break;
                 case 'ddb':
                     self::setVideoDdbInfo($videoId);
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
-
                     if (!array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::getDdbVideoXml($videoId);
-                        // var_dump(self::$ddbVideoXml);
                     }
-
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<div class="external-thumbnail" '
                             . 'style="background-image:url(\''
-                            . self::$config['ddbIIIFSrvPrefix']
-                            . self::$ddbVideoXml[$videoId]['img']['ref']
-                            . self::$config['ddbIIIFSrvMiddfix']
-                            . self::$ddbVideoXml[$videoId]['img']['res']
-                            . self::$config['ddbIIIFSrvPostfix']
+                            . self::$ddbVideoXml[$id]['img']['src']
                             . '\');"><img src="'
                             . img('thnplaceholder.gif')
                             . '" alt="video" style="'
@@ -258,18 +280,12 @@ class ExhibitDdbHelper
                     // get $videoId, $offsetStart, $offsetStop:
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
-
                     if (!array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::getDdbVideoXml($videoId);
                     }
-
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<img src="'
-                            . self::$config['ddbIIIFSrvPrefix']
-                            . self::$ddbVideoXml[$videoId]['img']['ref']
-                            . self::$config['ddbIIIFSrvMiddfix']
-                            . self::$ddbVideoXml[$videoId]['img']['res']
-                            . self::$config['ddbIIIFSrvPostfix']
+                            . self::$ddbVideoXml[$id]['img']['src']
                             . '" alt="video">';
                     }
                     break;
@@ -351,26 +367,19 @@ class ExhibitDdbHelper
                 case 'ddb':
                     self::setVideoDdbInfo($videoId);
                     $videoPalyerId = str_replace('=', '-', $videoId);
-
                     /**
                      * get $videoId, $offsetStart, $offsetStop
                      * $videoId egts overwriten!
                      */
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
-
                     if (!array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::getDdbVideoXml($videoId);
                     }
-
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<div class="external-thumbnail" '
                             . 'style="background-image:url(\''
-                            . self::$config['ddbIIIFSrvPrefix']
-                            . self::$ddbVideoXml[$videoId]['img']['ref']
-                            . self::$config['ddbIIIFSrvMiddfix']
-                            . self::$ddbVideoXml[$videoId]['img']['res']
-                            . self::$config['ddbIIIFSrvPostfix']
+                            . self::$ddbVideoXml[$id]['img']['src']
                             . '\');"><img src="'
                             . img('thnplaceholder.gif')
                             . '" alt="video" style="'
@@ -378,8 +387,6 @@ class ExhibitDdbHelper
                             . '">'
                             . '<div class="blurb">Video</div></div>';
                     }
-
-
                     if (empty($videoImage) && array_key_exists($videoId, self::$ddbVideoXml)) {
                         $videoImage = self::$config['ddbIIIFSrvPrefix']
                         . self::$ddbVideoXml[$videoId]['img']['ref']
@@ -387,13 +394,8 @@ class ExhibitDdbHelper
                         . self::$ddbVideoXml[$videoId]['img']['res']
                         . self::$config['ddbIIIFSrvPostfix'];
                     }
-
-
-
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
-
                         self::$videoDdbCount = self::$videoDdbCount + 1;
-
                         $output = '
                         <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
                         <script>
@@ -437,16 +439,12 @@ class ExhibitDdbHelper
                                 "primary" : "html5",
                                 "startparam" : "starttime",
                                 "image": "' . $videoImage . '",
-                                "type": "' . substr(
-                                    self::$ddbVideoXml[$videoId]['video']['mimetype'],
-                                    (strpos(self::$ddbVideoXml[$videoId]['video']['mimetype'], '/') + 1)
-                                ) . '",
-                                "file": "' .  self::$config['ddbVideoSrvPrefix'] . self::$ddbVideoXml[$videoId]['video']['ref'] . '",
+                                "type": "' . self::$ddbVideoXml[$id]['video']['mime'] . '",
+                                "file": "' .  self::$ddbVideoXml[$id]['video']['src'] . '",
                                 "width": $.Gina.calcColorboxVideoWidth(500),
                                 "height": 281,
 
                             })';
-
 
                         if (!is_null($offsetStart)) {
                             $output .= '.onTime(function(e){
@@ -472,8 +470,6 @@ class ExhibitDdbHelper
 
                     }
 
-
-
                     /**
                      * Für JWP Version > 7.0
                      */
@@ -494,9 +490,6 @@ class ExhibitDdbHelper
                     // }
 
                     $output .= ';</script>';
-
-
-
                     break;
                 default:
                     break;
@@ -831,6 +824,13 @@ class ExhibitDdbHelper
         return $attachmentSubtitle;
     }
 
+    /**
+     * Set the DDB elementset version $elementsVersion (to 1 or 2)
+     *
+     * Dectect version depending on present element names
+     *
+     * @return void
+     */
     public static function setElementVersion()
     {
         if (!isset(self::$elementsVersion)) {
@@ -854,6 +854,11 @@ class ExhibitDdbHelper
         }
     }
 
+    /**
+     * Get $elementsVersion
+     *
+     * @return int self::$elementsVersion
+     */
     public static function getElementVersion()
     {
         if (!isset(self::$elementsVersion)) {
