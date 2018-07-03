@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <?php $ddbBaseDomain = 'https://www.deutsche-digitale-bibliothek.de'; ?>
     <?php
     if (isset($title)) {
         $titleParts[] = strip_formatting($title);
@@ -83,7 +84,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar" style="visibility: hidden;"></span>
       </button>
-      <a href="https://www.deutsche-digitale-bibliothek.de/" class="brand" title="Zur Startseite" tabindex="-1">
+      <a href="<?php echo $ddbBaseDomain; ?>/" class="brand" title="Zur Startseite" tabindex="-1">
         <img src="<?php echo img('logo-phone.png'); ?>" alt="Logo: Deutsche Digitale Bibliothek">
       </a>
       <div class="nav-collapse navbar-collapse collapse">
@@ -92,39 +93,39 @@
             <form action="/search" method="get" class="navbar-search pull-left" role="search" id="form-search-header-mobile">
               <input class="query" name="query" placeholder="Suche" type="search">
               <button type="submit">Suche</button>
-              <a href="https://www.deutsche-digitale-bibliothek.de/">Suche im DDB-Portal</a>
+              <a href="<?php echo $ddbBaseDomain; ?>/">Suche im DDB-Portal</a>
             </form>
           </li>
-          <li><a href="https://www.deutsche-digitale-bibliothek.de/">Startseite</a></li>
+          <li><a href="<?php echo $ddbBaseDomain; ?>/">Startseite</a></li>
           <li>
-            <a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Über uns</a>
+            <a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns">Über uns</a>
             <div class="arrow-container"><div class="arrow-up"></div></div>
             <ul class="nav">
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Übersicht</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/mitmachen">Mitmachen</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/ddbpro">DDBPro</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/institutions">Institutionen</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/collections">Aus den Sammlungen</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/termine">Termine</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns">Übersicht</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/mitmachen">Mitmachen</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/ddbpro">DDBPro</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/about-us/institutions">Institutionen</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/about-us/collections">Aus den Sammlungen</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/termine">Termine</a></li>
             </ul>
           </li>
           <li class="keep-in-front">
-            <a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Journal</a>
+            <a href="<?php echo $ddbBaseDomain; ?>/content/journal">Journal</a>
             <div class="arrow-container"><div class="arrow-up"></div></div>
             <ul class="nav">
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Übersicht</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/aktuell">Aktuell</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/entdecken">Entdecken</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/hintergrund">Hintergrund</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen">Ausstellungen</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/daily">Kalenderblatt</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/persons">Personen</a></li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/archiv">Archiv</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal">Übersicht</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/aktuell">Aktuell</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/entdecken">Entdecken</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/hintergrund">Hintergrund</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/ausstellungen">Ausstellungen</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/journal/daily">Kalenderblatt</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/journal/persons">Personen</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/archiv">Archiv</a></li>
             </ul>
           </li>
-          <li><a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a></li>
+          <li><a href="<?php echo $ddbBaseDomain; ?>/content/help">Hilfe</a></li>
         </ul>
       </div>
     </div>
@@ -144,43 +145,43 @@
       <nav class="widget span12" data-widget="NavigationWidget">
         <div class="row">
           <div class="span7">
-            <a href="https://www.deutsche-digitale-bibliothek.de/" class="navigation-header-logo" title="Zur Startseite" tabindex="-1">
+            <a href="<?php echo $ddbBaseDomain; ?>/" class="navigation-header-logo" title="Zur Startseite" tabindex="-1">
               <img src="<?php echo img('logo.png'); ?>" alt="Logo: Deutsche Digitale Bibliothek">
             </a>
             <div role="navigation">
               <ul class="navigation inline">
                 <li class="root">
-                  <a href="https://www.deutsche-digitale-bibliothek.de/">Startseite</a>
+                  <a href="<?php echo $ddbBaseDomain; ?>/">Startseite</a>
                 </li>
                 <li class="keep-in-front">
-                  <a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Über uns</a>
+                  <a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns">Über uns</a>
                   <div class="arrow-container"><div class="arrow-up"></div></div>
                   <ul>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Übersicht</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/mitmachen">Mitmachen</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/ddbpro">DDBPro</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/institutions">Institutionen</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/collections">Aus den Sammlungen</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/termine">Termine</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns">Übersicht</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/mitmachen">Mitmachen</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/ddbpro">DDBPro</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/about-us/institutions">Institutionen</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/about-us/collections">Aus den Sammlungen</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/ueber-uns/termine">Termine</a></li>
                   </ul>
                 </li>
                 <li class="keep-in-front">
-                  <a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Journal</a>
+                  <a href="<?php echo $ddbBaseDomain; ?>/content/journal">Journal</a>
                   <div class="arrow-container"><div class="arrow-up"></div></div>
                   <ul>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Übersicht</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/aktuell">Aktuell</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/entdecken">Entdecken</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/hintergrund">Hintergrund</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen">Ausstellungen</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/daily">Kalenderblatt</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/persons">Personen</a></li>
-                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/archiv">Archiv</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal">Übersicht</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/aktuell">Aktuell</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/entdecken">Entdecken</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/hintergrund">Hintergrund</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/ausstellungen">Ausstellungen</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/journal/daily">Kalenderblatt</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/journal/persons">Personen</a></li>
+                      <li><a href="<?php echo $ddbBaseDomain; ?>/content/journal/archiv">Archiv</a></li>
                   </ul>
                 </li>
-                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a></li>
+                <li><a href="<?php echo $ddbBaseDomain; ?>/content/help">Hilfe</a></li>
               </ul>
             </div>
           </div>

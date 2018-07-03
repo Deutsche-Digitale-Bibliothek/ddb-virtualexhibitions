@@ -6,21 +6,21 @@
     <!--[if lt IE 9]>
   <div class="footer container" role="contentinfo">
 <![endif]-->
-
+<?php $ddbBaseDomain = 'https://www.deutsche-digitale-bibliothek.de'; ?>
 <footer class="container">
     <div class="row">
         <h1 class="invisible-but-readable">Website-Fußzeile</h1>
         <div class="span12 legal">
             <div class="inner">
                 <ul>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung/">Datenschutz</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/nutzungsbedingungen">Nutzungsbedingungen</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/impressum/">Impressum</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/sitemap/">Sitemap</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/presse-medien/">Presse</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/downloads/">Downloads</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/user/newsletter/">Newsletter</a></li>
-                    <li><a href="https://www.deutsche-digitale-bibliothek.de/content/kontakt/">Kontakt</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/datenschutzerklaerung/">Datenschutz</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/nutzungsbedingungen">Nutzungsbedingungen</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/impressum/">Impressum</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/sitemap/">Sitemap</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/presse-medien/">Presse</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/downloads/">Downloads</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/user/newsletter/">Newsletter</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/kontakt/">Kontakt</a></li>
                 </ul>
                 <div class="social-icons pull-right">
                     Folgen:
