@@ -7425,7 +7425,7 @@ header .navigation ul,.header .navigation ul {
   left: 5px;
   text-transform: none;
   width: auto;
-  min-width: 600px;
+  /* min-width: 600px; */
 }
 
 header .navigation ul li,.header .navigation ul li {
@@ -13846,4 +13846,175 @@ header .navigation-header-logo img  {
   padding-left:10px!important;
   padding-right:10px!important;
   margin-right: 3px;
+}
+
+
+
+/** ddb navigtion header additions - 2018 */
+
+header .navigation,
+.header .navigation {
+    text-transform: uppercase;
+    clear: left;
+    height: 40px;
+    padding-top: 10px;
+}
+
+header .navigation li,
+.header .navigation li {
+    padding-right: 20px;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+header .navigation li li {
+    padding-bottom: 0;
+}
+
+header .navigation li.keep-in-front {
+    background: url(../images/nav_arrows.png) no-repeat;
+    background-position: 100.6% -127px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+header .navigation li.active ul,
+.header .navigation li.active ul,
+header .navigation li:hover ul,
+.header .navigation li:hover ul {
+    display: block;
+}
+
+header ul li.active-default>a,
+.header ul li.active-default>a {
+    color: #a5003b !important;
+    font-weight: bold !important;
+}
+
+header ul li.active-closed>a,
+.header ul li.active-closed>a {
+    color: #a5003b;
+    font-weight: bold;
+}
+header .navigation ul {
+    position: absolute;
+    display: none;
+    top: 22px;
+    left: 5px;
+    text-transform: none;
+    width: auto;
+    background: #fff;
+    padding: 10px 0 10px;
+    border: #bbb 1px solid;
+    box-shadow: #999 0px 11px 25px -4px;
+}
+header .navigation ul li,
+.header .navigation ul li {
+    padding-left: 15px;
+    padding-right: 15px;
+    float: none;
+    white-space: nowrap;
+    line-height: 23px;
+    border: 0 none transparent;
+    display: list-item;
+}
+
+header .navigation ul li:hover,
+.header .navigation ul li:hover {
+    background-color: #efebe8;
+}
+
+header .navigation ul li a {
+    display: block;
+}
+
+header .navigation ul li a:hover,
+.header .navigation ul a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.navigation .active .arrow-container,
+.navigation>li:hover .arrow-container,
+.status-bar .language-wrapper:hover .arrow-container,
+.status-bar .login-wrapper:hover .arrow-container {
+    position: absolute;
+    height: 20px;
+    width: 40px;
+    top: 3px;
+    right: -11%;
+    z-index: 1;
+}
+
+.navigation .active .arrow-up,
+.navigation>li:hover .arrow-up,
+.status-bar .arrow-container:hover .arrow-up,
+.status-bar .language-wrapper:hover .arrow-up,
+.status-bar .login-wrapper:hover .arrow-up {
+    background: url("../images/nav_arrow_up.png") -14px -10px no-repeat;
+    width: 11px;
+    height: 9px;
+    margin-top: 11px;
+    background-color: #fff;
+    margin-left: 14px;
+}
+
+
+header .navigation ul li.active a,
+.header .navigation ul li.active a {
+    color: #a5003b;
+    font-weight: bold;
+}
+
+header ul.navigation ul a,
+.header ul.navigation ul a {
+    color: #3e3a37;
+    font-weight: normal;
+    font-size: 0.938em;
+    text-transform: uppercase;
+}
+
+header ul.navigation a:hover,
+.header ul.navigation a:hover,
+header ul.navigation a:active,
+.header ul.navigation a:active,
+header ul.navigation a:focus,
+.header ul.navigation a:focus {
+    color: #a5003b;
+}
+
+.navbar-collapse .nav {
+    float: none;
+    margin: 0 0 10px;
+}
+
+.navbar-collapse .nav > .highlight > a:hover, .navbar-collapse .dropdown-menu a:hover {
+  color: #a5003b;
+}
+
+.navbar-collapse .nav > .highlight > hr {
+  border: 0;
+  height: 1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-collapse .navbar-form, .navbar-collapse .navbar-search {
+    float: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navbar-collapse .nav > li {
+    float: none;
+}
+
+.nav-list ul > li {
+    line-height: 35px;
+    padding-left: 18px;
 }

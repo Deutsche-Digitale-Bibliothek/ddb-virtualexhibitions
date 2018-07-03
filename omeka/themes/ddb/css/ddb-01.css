@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 
 @font-face {
   font-family: KarbidWeb;
@@ -348,7 +348,7 @@ header .navigation ul,.header .navigation ul {
   left: 5px;
   text-transform: none;
   width: auto;
-  min-width: 600px;
+  /* min-width: 600px; */
 }
 
 header .navigation ul li,.header .navigation ul li {
@@ -1174,7 +1174,7 @@ select {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
  .back-to-list-greyed-out {
   color: #878380;
   padding-left: 16px;
@@ -1400,7 +1400,7 @@ select {
   background-position: -3px -247px;
 }
 @media (max-width: 979px) {
-  .object-controls .inline .first-item, 
+  .object-controls .inline .first-item,
   .object-controls .inline .last-item {
     display: none;
   }
@@ -1602,10 +1602,10 @@ div.sector-facet>label:hover {
   display: none;
 }
 
-.sector-facet .checkbox input[type="checkbox"] { 
-  float: none; 
-  margin-top: -3px; 
-  margin-left: -10px; 
+.sector-facet .checkbox input[type="checkbox"] {
+  float: none;
+  margin-top: -3px;
+  margin-left: -10px;
 }
 
 .sector-facet .checkbox {
@@ -1673,11 +1673,11 @@ div.sector-facet>label:hover {
 }
 
 .institutionlist .pagination ul > li > a:hover, .institutionlist .pagination ul > li > span:hover {
-  text-decoration: underline;  
+  text-decoration: underline;
 }
 
 .institutionlist .pagination ul > .disabled > a:hover, .institutionlist .pagination ul > .disabled > span:hover {
-  text-decoration: none !important;  
+  text-decoration: none !important;
 }
 
 .institutionlist .pagination ul > li:last-child > a, .institutionlist .pagination ul> li:last-child > span:hover {
@@ -1984,7 +1984,7 @@ div.sector-facet>label:hover {
 }
 
 .results-paginator-view .group-actions input.disabled {
-  cursor: default;  
+  cursor: default;
 }
 
 .view-type-switch #view-list {
@@ -2581,7 +2581,7 @@ input[type="checkbox"],input[type="radio"] {
   background: url("NDpXxdwb7yrCCOCfRLMUpLftzG6eAhXV3GoAkBHwVSB.png") no-repeat 0px -10px;
 }
 
-.role-facet .role-facet-value {  
+.role-facet .role-facet-value {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2591,7 +2591,7 @@ input[type="checkbox"],input[type="radio"] {
   background: #fff;
   padding-left: 10px;
 }
-.role-facet .role-facet-checkbox {    
+.role-facet .role-facet-checkbox {
   position: absolute;
   right: -8px;
   top: 2px;
@@ -2635,7 +2635,7 @@ input[type="checkbox"],input[type="radio"] {
    .search-results .results-list .thumbnail .persist {
      display: inline;
    }
-  .page-info-nav .first-page, 
+  .page-info-nav .first-page,
   .page-info-nav .last-page {
      display: none;
    }
@@ -2657,7 +2657,7 @@ input[type="checkbox"],input[type="radio"] {
 
 @media (max-width: 767px) {
   .summary .extra,
-  .results-paginator-options, 
+  .results-paginator-options,
   .results-paginator-view .group-actions,
   .results-paginator-view,
   .page-nav {
@@ -2690,24 +2690,24 @@ input[type="checkbox"],input[type="radio"] {
   .page-info-nav .page-info {
     margin-top: 5px;
   }
-  
+
   .search-results .results-list li:first-child {
     border-top: none;
   }
-  
+
   .search-results .summary-main {
     margin-right: 40px;
   }
-  
+
   .item-options .hovercard-info-item {
     width: 373px;
   }
-  
+
   .item-options .hovercard-info-item .fieldContent {
     width: 240px;
     margin-left: 20px;
   }
-  
+
   .item-options .hovercard-info-item .fieldName{
     margin-left: 13px;
     width: 100px;
@@ -2724,12 +2724,12 @@ input[type="checkbox"],input[type="radio"] {
   .item-options .hovercard-info-item {
     width: 213px;
   }
-  
+
   .item-options .hovercard-info-item .fieldContent {
     width: 119px;
     margin-left: 7px;
   }
-  
+
     .item-options .hovercard-info-item .fieldName {
     width: 70px;
     margin-left: 10px;
@@ -2812,7 +2812,7 @@ color: #a5003b;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 /* Displaying only the logo as header*/
 .print-logo {
   display: block !important;
@@ -2826,7 +2826,7 @@ color: #a5003b;
 
 /* Removing unwanted elements */
 
-header, .header, 
+header, .header,
 footer, .footer,
 .facets-container, .results-paginator-options, .page-info-nav .page-nav, .results-paginator-view, .information, #print-nav,
 .object-controls, .origin, .slide-viewer .tabs, .sibling-count,
@@ -2836,7 +2836,7 @@ footer, .footer,
 #articles-prev, #articles-next, .link-adv-search, .contextual-help,
 #divOSM .sliderStyle-vertical, #divOSM .mapHome,
 #mapContainerDiv .sliderStyle-vertical, #mapContainerDiv .mapHome,
-.favorites-results-container .bookmarks-container, .favorites-results-content .results-pagination, 
+.favorites-results-container .bookmarks-container, .favorites-results-content .results-pagination,
 .favorites-results-content .remove-item-check, .favorites-results-content .select-all, .favorites-results-head > .span8,
 .favorites-results-head hr, #favorite-confirmation, .item-detail .favorite, #favoritesModal, #msDeleteFavorites,
  #favoritesDeleteConfirmDialog, .favorites-results-controls, #sendSavedSearchesModal, #deleteSavedSearchesModal,
@@ -2865,7 +2865,7 @@ footer, .footer,
 .results-list.grid {
   width: 650px !important;
   padding: 0 !important;
-  margin-left: 5px !important;  
+  margin-left: 5px !important;
 }
 
 .results-list.grid .item {
@@ -2936,7 +2936,7 @@ footer, .footer,
 }
 .results-list .extra ul {
   list-style: none outside none;
-  margin-left: -40px; 
+  margin-left: -40px;
 }
 .page-info-nav .page-info {
   margin-top: 15px;
@@ -3042,7 +3042,7 @@ footer, .footer,
   border-color: #efebe8;
   border-style: solid;
   border-width: 2px 0 0 0;
-  
+
 }
 .item-detail .item-hierarchy .field-header {
   font-weight: bold;
@@ -3057,7 +3057,7 @@ footer, .footer,
 .item-detail .item-hierarchy-result li .current-node {
   font-weight: bold;
 }
- 
+
 .item-detail .item-hierarchy .branch-type, .item-hierarchy .leaf-indicator {
   display: none;
 }
@@ -3231,7 +3231,7 @@ footer, .footer,
 .dynamic-slider-control .line div {
 	width:		1px;
 	height:		1px;
-	
+
 	border:		1px solid;
 	border-color:	rgb(230,230,230) rgb(189,190,189)
 			rgb(189,190,189) rgb(230,230,230);
@@ -3310,7 +3310,7 @@ footer, .footer,
     padding: 1px;
     text-align: center;
     background-color: #FFCCCC;
-    z-index: 1000;    
+    z-index: 1000;
 }
 
 .range-box {
@@ -3325,7 +3325,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 .popup-click-div {
     display: none;
     z-index: 1010;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .left-feather {
@@ -3364,7 +3364,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 .featherSlider {
     position: absolute;
     top: 9px;
-    right: 64px;		
+    right: 64px;
 }
 
 .timeOverview {
@@ -3376,13 +3376,13 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 	opacity: 0.5;
 filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-	overflow: hidden; 
+	overflow: hidden;
 	border-bottom: 1px solid rgb(100,100,100);
 }
 
 .plotLabels {
 	position: absolute;
-	overflow: hidden; 
+	overflow: hidden;
 	top: 0px;
 	left: 0px;
 	height: 12px;
@@ -3394,7 +3394,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	font-size: 9px;
 	height: 10px;
 	padding: 1px 2px;
-	border-left: solid 1px rgb(214,214,214);	
+	border-left: solid 1px rgb(214,214,214);
 }
 
 .overviewRange {
@@ -3409,7 +3409,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	font-size: 9px;
 	height: 10px;
 	padding: 1px 2px;
-	border-left: solid 1px black;	
+	border-left: solid 1px black;
 }
 
 .shiftLeft {
@@ -3423,12 +3423,12 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	opacity: 0.8;
 	background-image: url(lMPM7oQfxVpJ6q6Bpfq3NA92i53Uzpp0Lo6ZGHWBWZc.png);
 	visibility: hidden;
-}	
+}
 
 .shiftLeft:hover {
 	cursor: pointer;
 	background-image: url(fybUtTqO07GEwXsU2GhdCeuiTdKXrS4YPVdRZwF1sMP.png);
-}	
+}
 
 .shiftRight {
 	position: absolute;
@@ -3544,26 +3544,26 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	width: 100%;
 	height: 100%;
 	z-index: 1008;
-	visibility: hidden; 	
+	visibility: hidden;
 }
 
 /*
   sti toolbar settings
 */
 .toolbarTop {
-	top: 0px;	
+	top: 0px;
 }
 
 .toolbarBottom {
-	bottom: 0px;	
+	bottom: 0px;
 }
 
 .toolbarLeft {
-	left: 0px;	
+	left: 0px;
 }
 
 .toolbarRight {
-	right: 0px;	
+	right: 0px;
 }
 
 /*
@@ -3580,19 +3580,19 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 .zoomSliderContainer {
 	position: absolute;
 	top: 10px;
-	left: 0px;	
+	left: 0px;
 }
 
 .zoomSliderIn {
 	position: absolute;
 	top: 0px;
-	left: 2px;	
+	left: 2px;
 }
 
 .zoomSliderOut {
 	position: absolute;
 	top: 84px;
-	left: 2px;	
+	left: 2px;
 }
 
 /*
@@ -3618,7 +3618,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	position: absolute;
 	top: 3px;
 	font-size: 18px;
-	padding: 3px;		
+	padding: 3px;
 }
 
 /*
@@ -3723,7 +3723,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	color: #56524f;
 }
 
-.geotemcoLink a:hover, a:active, a:focus { 
+.geotemcoLink a:hover, a:active, a:focus {
         text-decoration: underline;
         color: #A5003B;
 }
@@ -3747,7 +3747,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	color: #56524f;
 }
 
-.osmLink a:hover, a:active, a:focus { 
+.osmLink a:hover, a:active, a:focus {
         text-decoration: underline;
         color: #A5003B;
 }
@@ -3763,7 +3763,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	width: 100%;
 	background-color: #878380;
 	position: relative;
-	opacity: 0.85;		
+	opacity: 0.85;
 	filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	border-spacing: 0px;
@@ -3784,7 +3784,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 
 .ddbTooltip {
 	position: absolute;
-	width: 20px;	
+	width: 20px;
 	height: 20px;
 	background-image: url(2yFU6wNkxBKvGBmF6lrvZz73xEbCpKdTW7DNX7H1hso.png);
 	top: 5px;
@@ -3800,7 +3800,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 
 .dropdownLeft {
 	display: table-cell;
-	width: 5px;	
+	width: 5px;
 	height: 25px;
 	background-image: url(WOXsexd2MbZ6249cIQqpQ6yZzxgxsfxtvzMkqFuVVIJ.png);
 }
@@ -3812,14 +3812,14 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	font-style: italic;
 	font-weight: normal;
 	font-size: 13px;
-	display: table-cell;	
+	display: table-cell;
 	vertical-align: middle;
 	background-image: url(KdEorgDzQsNyQKLQdHGd9rd1POz44Vy6MeArPYh3Lxh.png);
 }
 
 .dropdownButtonEnabled {
 	display: table-cell;
-	width: 25px;	
+	width: 25px;
 	height: 25px;
 	background-image: url(8tR3uRq4VtCbrvYw0pf1lMmYaN9e8IgfGRvfOTjI1a3.png);
 	cursor: pointer;
@@ -3827,7 +3827,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 
 .dropdownButtonDisabled {
 	display: table-cell;
-	width: 25px;	
+	width: 25px;
 	height: 25px;
 	background-image: url(pmDOQieayCcMZltj57N0nqQRwKS4FPSkxyufZMKAHkC.png);
 	cursor: pointer;
@@ -3943,7 +3943,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 
 .dynamic-slider-control .line div {
 	width:		0px;
-	height:		0px;	
+	height:		0px;
 	border:		none;
 }
 
@@ -3974,7 +3974,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	position: absolute;
 	top: 2px;
 	left: 22px;
-	height: 16px;	
+	height: 16px;
 }
 
 .zoomSliderContainer-vertical {
@@ -4049,7 +4049,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
     right: 0px;
     float: right;
     background-image: url("uk9WKy3NBJdLrhYXROFqt2PsBf9PXh9zWiuIW3TRnw9.png") ;
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 1003;
 }
 
@@ -4116,7 +4116,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	bottom: -14px;
 	left: -10px;
 	background-image: url("KLyOT3smBp3JZ5lHEpkDy8yPXaQu9QZdpY8HC6cFvZl.png");
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 4;
 }
 
@@ -4127,7 +4127,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	bottom: -14px;
 	left: -10px;
 	background-image: url("KLyOT3smBp3JZ5lHEpkDy8yPXaQu9QZdpY8HC6cFvZl.png");
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 4;
 }
 
@@ -4138,7 +4138,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	top: -14px;
 	left: -10px;
 	background-image: url("XMXBGUuuB9euSk2QmMsGil9ZlB78S8GxPrV28HcKsb5.png");
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 4;
 }
 
@@ -4149,7 +4149,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	top: -14px;
 	right: -10px;
 	background-image: url("RnzOocN01t8RRghxhdWH7ey9w3Uz1dI2prVD0IM3X0F.png");
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 4;
 }
 
@@ -4160,7 +4160,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	bottom: -14px;
 	right: -10px;
 	background-image: url("9dGbwOeDCzjXxPadyzGXqc7JlfCfjXrFfX2sQGsHNMk.png");
-	cursor: pointer;	
+	cursor: pointer;
 	z-index: 4;
 }
 
@@ -4169,7 +4169,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	font-weight: bold;
 	font-size: 12px;
 	color: #3e3a37;
-	cursor: default;	
+	cursor: default;
 	padding-bottom: 10px;
 }
 
@@ -4181,7 +4181,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 
 
-.descriptions {	
+.descriptions {
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -4318,7 +4318,7 @@ filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 
 .tableTabs {
 	text-align: left;
-	opacity: 0.85;		
+	opacity: 0.85;
 	filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	border-spacing: 0px;
@@ -4458,7 +4458,7 @@ nselectAll {
 	z-index: 2;
 	width: 100%;
 	background-color: #878380;
-	opacity: 0.85;		
+	opacity: 0.85;
 	filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
 	border-spacing: 0px;
@@ -4550,7 +4550,7 @@ nselectAll {
  *
  * Within the popup-window  the list holds clickable items for the institutes in
  * a cluster. For better information this list is extended by corresponding
- * parent-institutes which are not member of the cluster. 
+ * parent-institutes which are not member of the cluster.
  *
  * Items that are member of the selected sectors are shown in bold face.
  */

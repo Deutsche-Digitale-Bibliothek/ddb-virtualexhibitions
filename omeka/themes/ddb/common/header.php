@@ -86,27 +86,45 @@
       <a href="https://www.deutsche-digitale-bibliothek.de/" class="brand" title="Zur Startseite" tabindex="-1">
         <img src="<?php echo img('logo-phone.png'); ?>" alt="Logo: Deutsche Digitale Bibliothek">
       </a>
-      <div class="nav-collapse collapse">
+      <div class="nav-collapse navbar-collapse collapse">
         <ul class="nav nav-list">
-          <li class=""><form action="/search" method="get" class="navbar-search pull-left" role="search" id="form-search-header-mobile">
-              <input class="query" name="query" placeholder="Suche" type="search">
-              <button type="submit">
-                Suche
-              </button>
-              <a href="https://www.deutsche-digitale-bibliothek.de/">Suche im DDB-Portal</a>
-            </form></li>
-
-          <li class="">
-            <a href="https://www.deutsche-digitale-bibliothek.de/content/about">
-              Über uns
-            </a>
-          </li>
           <li>
-            <a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a>
+            <form action="/search" method="get" class="navbar-search pull-left" role="search" id="form-search-header-mobile">
+              <input class="query" name="query" placeholder="Suche" type="search">
+              <button type="submit">Suche</button>
+              <a href="https://www.deutsche-digitale-bibliothek.de/">Suche im DDB-Portal</a>
+            </form>
           </li>
-          <li class="active">
-            <a href="https://www.deutsche-digitale-bibliothek.de/content/exhibits/">Entdecken</a>
+          <li><a href="https://www.deutsche-digitale-bibliothek.de/">Startseite</a></li>
+          <li>
+            <a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Über uns</a>
+            <div class="arrow-container"><div class="arrow-up"></div></div>
+            <ul class="nav">
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Übersicht</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/mitmachen">Mitmachen</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/ddbpro">DDBPro</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/institutions">Institutionen</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/collections">Aus den Sammlungen</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/termine">Termine</a></li>
+            </ul>
           </li>
+          <li class="keep-in-front">
+            <a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Journal</a>
+            <div class="arrow-container"><div class="arrow-up"></div></div>
+            <ul class="nav">
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Übersicht</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/aktuell">Aktuell</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/entdecken">Entdecken</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/hintergrund">Hintergrund</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen">Ausstellungen</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/daily">Kalenderblatt</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/persons">Personen</a></li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/archiv">Archiv</a></li>
+            </ul>
+          </li>
+          <li><a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a></li>
         </ul>
       </div>
     </div>
@@ -132,17 +150,37 @@
             <div role="navigation">
               <ul class="navigation inline">
                 <li class="root">
-                  <a href="https://www.deutsche-digitale-bibliothek.de/">Startseite</a><br>
+                  <a href="https://www.deutsche-digitale-bibliothek.de/">Startseite</a>
                 </li>
-                <li>
-                  <a href="https://www.deutsche-digitale-bibliothek.de/content/about">Über uns</a>
+                <li class="keep-in-front">
+                  <a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Über uns</a>
+                  <div class="arrow-container"><div class="arrow-up"></div></div>
+                  <ul>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns">Übersicht</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/mitmachen">Mitmachen</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/ddbpro">DDBPro</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/kompetenznetzwerk">Kompetenznetzwerk</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/fragen-antworten">Fragen &amp; Antworten</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/institutions">Institutionen</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/about-us/collections">Aus den Sammlungen</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/ueber-uns/termine">Termine</a></li>
+                  </ul>
                 </li>
-                <li>
-                  <a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a>
+                <li class="keep-in-front">
+                  <a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Journal</a>
+                  <div class="arrow-container"><div class="arrow-up"></div></div>
+                  <ul>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal">Übersicht</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/aktuell">Aktuell</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/entdecken">Entdecken</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/hintergrund">Hintergrund</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen">Ausstellungen</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/daily">Kalenderblatt</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/journal/persons">Personen</a></li>
+                      <li><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/archiv">Archiv</a></li>
+                  </ul>
                 </li>
-                <li class="keep-in-front active-default">
-                    <a href="https://www.deutsche-digitale-bibliothek.de/content/exhibits/">Entdecken</a>
-                </li>
+                <li><a href="https://www.deutsche-digitale-bibliothek.de/content/help">Hilfe</a></li>
               </ul>
             </div>
           </div>
