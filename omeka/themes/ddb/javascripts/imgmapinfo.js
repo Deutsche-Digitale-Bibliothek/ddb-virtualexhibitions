@@ -12,6 +12,7 @@
         this._defaults = defaults;
         this._name = pluginName;
         this.msg = null;
+        this.focusLevel = 0;
 
         this.init();
     }
@@ -25,17 +26,45 @@
                     class: 'imgmapinfo'
                 });
             $(this.element).parent().append(this.msg);
+            this.bindMsg();
             this.bindArea();
         },
 
+        bindMsg: function() {
+            var plugin = this;
+            this.msg.on('mouseenter', function (event) {
+                plugin.focusLevel = 2;
+            });
+            this.msg.on('mouseleave', function (event) {
+                setTimeout(function () {
+                    if (plugin.focusLevel === 2) {
+                        plugin.msg.hide().html('');
+                        plugin.focusLevel = 0;
+                    } else {
+                        plugin.focusLevel = 1;
+                    }
+                }, 80);
+            });
+        },
+
         bindArea: function() {
-            var msg = this.msg;
+            var plugin = this;
             $('area', this.element).on('mouseenter', function (event) {
-                msg.html($(this).data('imgmap')).show();
+                if (plugin.focusLevel === 0) {
+                    plugin.msg.html($(this).data('imgmap')).show();
+                    plugin.focusLevel = 1;
+                } else if (plugin.focusLevel === 2) {
+                    plugin.focusLevel = 1;
+                }
             });
 
             $('area', this.element).on('mouseleave', function (event) {
-                msg.hide().html('');
+                setTimeout(function () {
+                    if (plugin.focusLevel === 1) {
+                        plugin.msg.hide().html('');
+                        plugin.focusLevel = 0;
+                    }
+                }, 80);
             });
         },
     });
