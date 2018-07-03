@@ -19,11 +19,12 @@
     <?php echo auto_discovery_link_tags(); ?>
     <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
     <?php
-    queue_css_file('bootstrap-responsive.min');
-    queue_css_file('ddb-01');
-    queue_css_file('ddb-02');
+    // queue_css_file('bootstrap-responsive.min');
+    // queue_css_file('ddb-01');
+    // queue_css_file('ddb-02');
+    // queue_css_file('style');
+    queue_css_file('bundle');
     // queue_css_url('//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css');
-    queue_css_file('style');
     echo head_css();
     ?>
     <!--[if lt IE 9]>
