@@ -38,6 +38,21 @@ class ExhibitDdbHelper
 
     public static $elementsVersion = null;
 
+    public static $ddbVideoXml = array();
+
+    # https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/0ad1809a-1fec-4cf7-92f4-3e20ad540b2b/full/!116,87/0/default.jpg
+    public static $config = array(
+        // 'ddbXmlSrv' => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
+        'ddbXmlSrv' => 'https://dev-ddb.fiz-karlsruhe.de/ddb-current/item/xml/',
+        'ddbIIFResHelperSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        'ddbIIFResHelperSrvPostfix' => '/info.json',
+        // 'ddbIIIFSrvPrefix' => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
+        'ddbIIIFSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        'ddbIIIFSrvMiddfix' => '/full/!',
+        'ddbIIIFSrvPostfix' => '/0/default.jpg',
+        'ddbVideoSrvPrefix' => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/binary/'
+    );
+
     /**
      * Main shortcode parser
      *
@@ -48,6 +63,101 @@ class ExhibitDdbHelper
     {
         preg_match_all('|(\[\[)([^\]\:]+):([^\]]+)(\]\])|', $subject, $matches, PREG_SET_ORDER);
         return $matches;
+    }
+
+    public static function getDdbVideoXml($id)
+    {
+        if (isset(self::$ddbVideoXml[$id])) {
+            return;
+        }
+        $ch = curl_init();
+        curl_setopt(
+            $ch,
+            CURLOPT_URL,
+            self::$config['ddbXmlSrv'] . $id
+        );
+        // curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if ($httpCode === 200) {
+            $doc = new DOMDocument();
+            $doc->loadXML($response);
+            self::getDdbVideoXmlBin($doc, $id);
+        }
+    }
+
+    public static function getDdbVideoImgResolution($id, $ref)
+    {
+
+        if (isset(self::$ddbVideoXml[$id]['img']['res'])) {
+            return false;
+        }
+        $ch = curl_init();
+        curl_setopt(
+            $ch,
+            CURLOPT_URL,
+            self::$config['ddbIIFResHelperSrvPrefix'] . $ref . self::$config['ddbIIFResHelperSrvPostfix']
+        );
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        // return '800,600';
+        if ($response) {
+            $sizes = json_decode($response);
+            if (isset($sizes->sizes) && !empty($sizes->sizes) && is_array($sizes->sizes) && isset($sizes->width) && isset($sizes->height)) {
+                foreach ($sizes->sizes as $size) {
+                    if ($size->width <= $sizes->width && $size->height <= $sizes->height) {
+                        return $size->width . ',' . $size->height;
+                    }
+                }
+            }
+            // return json_decode($response);
+        }
+        return false;
+    }
+
+    public static function getDdbVideoXmlBin(DOMNode $domNode, $id)
+    {
+        $mimes = array(
+            'img' => array(
+                'image/jpeg'
+            ),
+            'video' => array(
+                'video/mp4'
+            )
+        );
+        foreach ($domNode->childNodes as $node) {
+            if ('tag0:binary' === $node->nodeName) {
+                $ref = $node->getAttribute('ref');
+                $mimetype = $node->getAttribute('mimetype');
+                if (in_array($mimetype, $mimes['video'])) {
+                    self::$ddbVideoXml[$id]['video']['ref'] = $ref;
+                    self::$ddbVideoXml[$id]['video']['mimetype'] = $mimetype;
+                    self::$ddbVideoXml[$id]['video']['mime'] = substr($mimetype, (strpos($mimetype, '/') + 1));
+                    self::$ddbVideoXml[$id]['video']['src'] =  self::$config['ddbVideoSrvPrefix'] . $ref;
+                }
+                if (in_array($mimetype, $mimes['img']) && $node->getAttribute('primary') === 'true') {
+                    self::$ddbVideoXml[$id]['img']['ref'] = $ref;
+                    self::$ddbVideoXml[$id]['img']['mimetype'] = $mimetype;
+                    self::$ddbVideoXml[$id]['img']['res'] = self::getDdbVideoImgResolution($id, $ref);
+                    self::$ddbVideoXml[$id]['img']['src'] = self::$config['ddbIIIFSrvPrefix']
+                        . $ref
+                        . self::$config['ddbIIIFSrvMiddfix']
+                        . self::$ddbVideoXml[$id]['img']['res']
+                        . self::$config['ddbIIIFSrvPostfix'];
+                }
+            }
+            if ($node->hasChildNodes()) {
+                self::getDdbVideoXmlBin($node, $id);
+            }
+        }
     }
 
     /**
@@ -76,15 +186,41 @@ class ExhibitDdbHelper
                             . '<div class="blurb">Video</div></div>';
                     }
                     break;
+                // case 'ddb':
+                //     self::setVideoDdbInfo($videoId);
+                //     // get $videoId, $offsetStart, $offsetStop:
+                //     $extended = self::getDdbVideoTimeOffset($videoId);
+                //     extract($extended, EXTR_OVERWRITE);
+                //     $output = '<div class="external-thumbnail" style="background-image:url(\'http://www.deutsche-digitale-bibliothek.de/binary/'
+                //             . $videoId . '/mvpr/1.jpg\');"><img src="'
+                //             . img('thnplaceholder.gif') . '" alt="video" style="visibility:hidden;">'
+                //             . '<div class="blurb">Video</div></div>';
+                //     break;
                 case 'ddb':
                     self::setVideoDdbInfo($videoId);
-                    // get $videoId, $offsetStart, $offsetStop:
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
-                    $output = '<div class="external-thumbnail" style="background-image:url(\'http://www.deutsche-digitale-bibliothek.de/binary/'
-                            . $videoId . '/mvpr/1.jpg\');"><img src="'
-                            . img('thnplaceholder.gif') . '" alt="video" style="visibility:hidden;">'
+
+                    if (!array_key_exists($videoId, self::$ddbVideoXml)) {
+                        self::getDdbVideoXml($videoId);
+                        // var_dump(self::$ddbVideoXml);
+                    }
+
+                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
+                        $output = '<div class="external-thumbnail" '
+                            . 'style="background-image:url(\''
+                            . self::$config['ddbIIIFSrvPrefix']
+                            . self::$ddbVideoXml[$videoId]['img']['ref']
+                            . self::$config['ddbIIIFSrvMiddfix']
+                            . self::$ddbVideoXml[$videoId]['img']['res']
+                            . self::$config['ddbIIIFSrvPostfix']
+                            . '\');"><img src="'
+                            . img('thnplaceholder.gif')
+                            . '" alt="video" style="'
+                            . 'visibility:hidden;'
+                            . '">'
                             . '<div class="blurb">Video</div></div>';
+                    }
                     break;
                 default:
                     break;
@@ -122,8 +258,20 @@ class ExhibitDdbHelper
                     // get $videoId, $offsetStart, $offsetStop:
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
-                    $output = '<img src="http://www.deutsche-digitale-bibliothek.de/binary/'
-                            . $videoId . '/mvpr/1.jpg" alt="video" >';
+
+                    if (!array_key_exists($videoId, self::$ddbVideoXml)) {
+                        self::getDdbVideoXml($videoId);
+                    }
+
+                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
+                        $output = '<img src="'
+                            . self::$config['ddbIIIFSrvPrefix']
+                            . self::$ddbVideoXml[$videoId]['img']['ref']
+                            . self::$config['ddbIIIFSrvMiddfix']
+                            . self::$ddbVideoXml[$videoId]['img']['res']
+                            . self::$config['ddbIIIFSrvPostfix']
+                            . '" alt="video">';
+                    }
                     break;
                 default:
                     break;
@@ -211,82 +359,120 @@ class ExhibitDdbHelper
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
 
-                    if (empty($videoImage)) {
-                        $videoImage = 'http://www.deutsche-digitale-bibliothek.de/binary/' . $videoId . '/mvpr/1.jpg';
+                    if (!array_key_exists($videoId, self::$ddbVideoXml)) {
+                        self::getDdbVideoXml($videoId);
                     }
 
-                    self::$videoDdbCount = self::$videoDdbCount + 1;
+                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
+                        $output = '<div class="external-thumbnail" '
+                            . 'style="background-image:url(\''
+                            . self::$config['ddbIIIFSrvPrefix']
+                            . self::$ddbVideoXml[$videoId]['img']['ref']
+                            . self::$config['ddbIIIFSrvMiddfix']
+                            . self::$ddbVideoXml[$videoId]['img']['res']
+                            . self::$config['ddbIIIFSrvPostfix']
+                            . '\');"><img src="'
+                            . img('thnplaceholder.gif')
+                            . '" alt="video" style="'
+                            . 'visibility:hidden;'
+                            . '">'
+                            . '<div class="blurb">Video</div></div>';
+                    }
 
-                    $output = '
-                    <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
-                    <script>
+
+                    if (empty($videoImage) && array_key_exists($videoId, self::$ddbVideoXml)) {
+                        $videoImage = self::$config['ddbIIIFSrvPrefix']
+                        . self::$ddbVideoXml[$videoId]['img']['ref']
+                        . self::$config['ddbIIIFSrvMiddfix']
+                        . self::$ddbVideoXml[$videoId]['img']['res']
+                        . self::$config['ddbIIIFSrvPostfix'];
+                    }
 
 
-                        // We assume jquery is loaded as we get this in colorbox
-                        if (typeof $.Gina == "undefined") {
-                            $.Gina = {};
-                        };
 
-                        $.Gina.calcColorboxVideoWidth = function(maxWidth) {
-                            if ($.Gina.winW < maxWidth) {
-                                maxWidth = $.Gina.winW;
+                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
+
+                        self::$videoDdbCount = self::$videoDdbCount + 1;
+
+                        $output = '
+                        <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
+                        <script>
+
+
+                            // We assume jquery is loaded as we get this in colorbox
+                            if (typeof $.Gina == "undefined") {
+                                $.Gina = {};
+                            };
+
+                            $.Gina.calcColorboxVideoWidth = function(maxWidth) {
+                                if ($.Gina.winW < maxWidth) {
+                                    maxWidth = $.Gina.winW;
+                                }
+                                return maxWidth;
+                            };
+
+                            var os' . $videoId . ' = {
+                                start: false,
+                                stop: false
+                            };
+
+                            jwplayer("ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '").setup({
+                                "flashplayer" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '",
+                                "html5player" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.html5.js') . '",
+                                "modes" : [{
+                                    type : "html5",
+                                    src : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.html5.js') . '"
+                                }, {
+                                    type : "flash",
+                                    src : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '"
+                                }, {
+                                    type : "download"
+                                }],
+                                "fallback" : true,
+                                "autostart" : false,
+                                "skin" : "' . web_path_to('javascripts/vendor/jwplayer/skins/five.xml') . '",
+                                "controls" : true,
+                                "controlbar" : "bottom",
+                                "stretching" : "uniform",
+                                "primary" : "html5",
+                                "startparam" : "starttime",
+                                "image": "' . $videoImage . '",
+                                "type": "' . substr(
+                                    self::$ddbVideoXml[$videoId]['video']['mimetype'],
+                                    (strpos(self::$ddbVideoXml[$videoId]['video']['mimetype'], '/') + 1)
+                                ) . '",
+                                "file": "' .  self::$config['ddbVideoSrvPrefix'] . self::$ddbVideoXml[$videoId]['video']['ref'] . '",
+                                "width": $.Gina.calcColorboxVideoWidth(500),
+                                "height": 281,
+
+                            })';
+
+
+                        if (!is_null($offsetStart)) {
+                            $output .= '.onTime(function(e){
+                                if (e.position < ' . $offsetStart . ' && os' . $videoId . '.start === false) {
+                                // if (e.position < ' . $offsetStart . ') {
+                                    os' . $videoId . '.start  = true;
+                                    this.seek(' . $offsetStart . ');
+                                }';
+                            if (!is_null($offsetStop)) {
+                                // $output .= 'if (e.position > ' . $offsetStop . ') {
+                                $output .= 'if (e.position > ' . $offsetStop . ' && os' . $videoId . '.stop === false) {
+                                    os' . $videoId . '.stop  = true;
+                                    this.pause(true);
+                                    this.stop();
+                                }
+                            })';
+                            } else {
+                                $output .= '
+                            })';
                             }
-                            return maxWidth;
-                        };
-
-                        var os' . $videoId . ' = {
-                            start: false,
-                            stop: false
-                        };
-
-                        jwplayer("ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '").setup({
-                            "flashplayer" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '",
-                            "html5player" : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.html5.js') . '",
-                            "modes" : [{
-                                type : "html5",
-                                src : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.html5.js') . '"
-                            }, {
-                                type : "flash",
-                                src : "' . web_path_to('javascripts/vendor/jwplayer/jwplayer.flash.swf') . '"
-                            }, {
-                                type : "download"
-                            }],
-                            "fallback" : true,
-                            "autostart" : false,
-                            "skin" : "' . web_path_to('javascripts/vendor/jwplayer/skins/five.xml') . '",
-                            "controls" : true,
-                            "controlbar" : "bottom",
-                            "stretching" : "uniform",
-                            "primary" : "html5",
-                            "startparam" : "starttime",
-                            image: "' . $videoImage . '",
-                            file: "http://www.deutsche-digitale-bibliothek.de/binary/' . $videoId . '/full/1.mp4",
-                            width: $.Gina.calcColorboxVideoWidth(500),
-                            height: 281,
-
-                        })';
-
-
-                    if (!is_null($offsetStart)) {
-                        $output .= '.onTime(function(e){
-                            if (e.position < ' . $offsetStart . ' && os' . $videoId . '.start === false) {
-                            // if (e.position < ' . $offsetStart . ') {
-                                os' . $videoId . '.start  = true;
-                                this.seek(' . $offsetStart . ');
-                            }';
-                        if (!is_null($offsetStop)) {
-                            // $output .= 'if (e.position > ' . $offsetStop . ') {
-                            $output .= 'if (e.position > ' . $offsetStop . ' && os' . $videoId . '.stop === false) {
-                                os' . $videoId . '.stop  = true;
-                                this.pause(true);
-                                this.stop();
-                            }
-                        })';
-                        } else {
-                            $output .= '
-                        })';
                         }
+
+
                     }
+
+
 
                     /**
                      * Für JWP Version > 7.0
