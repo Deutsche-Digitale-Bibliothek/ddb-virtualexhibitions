@@ -235,7 +235,7 @@ class ExhibitDdbHelper
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<div class="external-thumbnail" '
                             . 'style="background-image:url(\''
-                            . self::$ddbVideoXml[$id]['img']['src']
+                            . self::$ddbVideoXml[$videoId]['img']['src']
                             . '\');"><img src="'
                             . img('thnplaceholder.gif')
                             . '" alt="video" style="'
@@ -285,7 +285,7 @@ class ExhibitDdbHelper
                     }
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<img src="'
-                            . self::$ddbVideoXml[$id]['img']['src']
+                            . self::$ddbVideoXml[$videoId]['img']['src']
                             . '" alt="video">';
                     }
                     break;
@@ -379,7 +379,7 @@ class ExhibitDdbHelper
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         $output = '<div class="external-thumbnail" '
                             . 'style="background-image:url(\''
-                            . self::$ddbVideoXml[$id]['img']['src']
+                            . self::$ddbVideoXml[$videoId]['img']['src']
                             . '\');"><img src="'
                             . img('thnplaceholder.gif')
                             . '" alt="video" style="'
@@ -388,11 +388,7 @@ class ExhibitDdbHelper
                             . '<div class="blurb">Video</div></div>';
                     }
                     if (empty($videoImage) && array_key_exists($videoId, self::$ddbVideoXml)) {
-                        $videoImage = self::$config['ddbIIIFSrvPrefix']
-                        . self::$ddbVideoXml[$videoId]['img']['ref']
-                        . self::$config['ddbIIIFSrvMiddfix']
-                        . self::$ddbVideoXml[$videoId]['img']['res']
-                        . self::$config['ddbIIIFSrvPostfix'];
+                        $videoImage = self::$ddbVideoXml[$videoId]['img']['src']
                     }
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::$videoDdbCount = self::$videoDdbCount + 1;
@@ -439,8 +435,8 @@ class ExhibitDdbHelper
                                 "primary" : "html5",
                                 "startparam" : "starttime",
                                 "image": "' . $videoImage . '",
-                                "type": "' . self::$ddbVideoXml[$id]['video']['mime'] . '",
-                                "file": "' .  self::$ddbVideoXml[$id]['video']['src'] . '",
+                                "type": "' . self::$ddbVideoXml[$videoId]['video']['mime'] . '",
+                                "file": "' .  self::$ddbVideoXml[$videoId]['video']['src'] . '",
                                 "width": $.Gina.calcColorboxVideoWidth(500),
                                 "height": 281,
 
