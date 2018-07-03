@@ -388,7 +388,7 @@ class ExhibitDdbHelper
                             . '<div class="blurb">Video</div></div>';
                     }
                     if (empty($videoImage) && array_key_exists($videoId, self::$ddbVideoXml)) {
-                        $videoImage = self::$ddbVideoXml[$videoId]['img']['src']
+                        $videoImage = self::$ddbVideoXml[$videoId]['img']['src'];
                     }
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::$videoDdbCount = self::$videoDdbCount + 1;
