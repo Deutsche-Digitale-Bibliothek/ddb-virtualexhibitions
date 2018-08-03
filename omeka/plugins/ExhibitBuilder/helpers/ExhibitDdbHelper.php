@@ -504,6 +504,7 @@ class ExhibitDdbHelper
     public static function setVideoVimeoInfo($videoId)
     {
         $ch = curl_init();
+        curl_setopt($ch, CURLOPT_PROXY, 'ddbproxy.deutsche-digitale-bibliothek.de:8888');
         curl_setopt($ch, CURLOPT_URL, 'http://vimeo.com/api/v2/video/' . $videoId . '.php');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $info = curl_exec($ch);
