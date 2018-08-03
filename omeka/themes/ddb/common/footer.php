@@ -20,7 +20,7 @@
                     <li><a href="<?php echo $ddbBaseDomain; ?>/content/presse-medien/">Presse</a></li>
                     <li><a href="<?php echo $ddbBaseDomain; ?>/content/downloads/">Downloads</a></li>
                     <li><a href="<?php echo $ddbBaseDomain; ?>/user/newsletter/">Newsletter</a></li>
-                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/kontakt/">Kontakt</a></li>
+                    <li><a href="<?php echo $ddbBaseDomain; ?>/content/das-ddb-team/">Kontakt</a></li>
                 </ul>
                 <div class="social-icons pull-right">
                     Folgen:

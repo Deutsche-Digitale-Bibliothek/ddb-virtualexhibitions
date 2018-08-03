@@ -61,14 +61,14 @@ class ExhibitDdbHelper
      */
     public static $config = array(
         // 'ddbXmlSrv'              => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
-        'ddbXmlSrv'                 => 'https://dev-ddb.fiz-karlsruhe.de/ddb-current/item/xml/',
-        'ddbIIFResHelperSrvPrefix'  => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        'ddbXmlSrv'                 => 'hhttps://www.deutsche-digitale-bibliothek.de/item/xml/',
+        'ddbIIFResHelperSrvPrefix'  => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIFResHelperSrvPostfix' => '/info.json',
         // 'ddbIIIFSrvPrefix'       => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
-        'ddbIIIFSrvPrefix'          => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/image/2/',
+        'ddbIIIFSrvPrefix'          => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIIFSrvMiddfix'         => '/full/!',
         'ddbIIIFSrvPostfix'         => '/0/default.jpg',
-        'ddbVideoSrvPrefix'         => 'https://dev-ddb.fiz-karlsruhe.de/binaries-service/binary/'
+        'ddbVideoSrvPrefix'         => 'https://iiif.deutsche-digitale-bibliothek.de/binary/'
     );
 
     /**
