@@ -61,7 +61,7 @@ class ExhibitDdbHelper
      */
     public static $config = array(
         // 'ddbXmlSrv'              => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
-        'ddbXmlSrv'                 => 'hhttps://www.deutsche-digitale-bibliothek.de/item/xml/',
+        'ddbXmlSrv'                 => 'https://www.deutsche-digitale-bibliothek.de/item/xml/',
         'ddbIIFResHelperSrvPrefix'  => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIFResHelperSrvPostfix' => '/info.json',
         // 'ddbIIIFSrvPrefix'       => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
