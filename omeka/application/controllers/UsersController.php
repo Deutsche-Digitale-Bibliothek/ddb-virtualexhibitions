@@ -22,16 +22,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     // Begin Grandgeorg Websolutions
     protected $_mailAdminName = 'DDB-Servicestelle';
-    protected $_mailSignature = 'Bei Rückfragen oder Problemen wenden Sie sich bitte an die DDB-Servicestelle:'
-        . "\n"
-        . 'service@deutsche-digitale-bibliothek.de'
-        . "\n"
-        . 'Tel: 069 1525-1080'
-        . "\n\n"
-        . 'Mit freundlichen Grüßen'
-        . "\n"
-        . 'Ihre'
-        . "\n";
+    protected $_mailSignature = "Bei Rückfragen oder Problemen wenden Sie sich bitte an die DDB-Servicestelle:\nservice@deutsche-digitale-bibliothek.de\nTel: 069 1525-1080\n\nMit freundlichen Grüßen\nIhre\n";
     // End Grandgeorg Websolutions
 
     public function init() {
