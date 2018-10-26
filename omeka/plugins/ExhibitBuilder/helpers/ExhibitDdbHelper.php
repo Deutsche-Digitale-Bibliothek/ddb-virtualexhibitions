@@ -60,11 +60,9 @@ class ExhibitDdbHelper
      * @var array
      */
     public static $config = array(
-        // 'ddbXmlSrv'              => 'https://www-p.deutsche-digitale-bibliothek.de/item/xml/',
         'ddbXmlSrv'                 => 'https://www.deutsche-digitale-bibliothek.de/item/xml/',
         'ddbIIFResHelperSrvPrefix'  => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIFResHelperSrvPostfix' => '/info.json',
-        // 'ddbIIIFSrvPrefix'       => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIIFSrvPrefix'          => 'https://iiif.deutsche-digitale-bibliothek.de/image/2/',
         'ddbIIIFSrvMiddfix'         => '/full/!',
         'ddbIIIFSrvPostfix'         => '/0/default.jpg',
@@ -173,7 +171,7 @@ class ExhibitDdbHelper
             )
         );
         foreach ($domNode->childNodes as $node) {
-            if ('tag0:binary' === $node->nodeName) {
+            if ('tag0:binary' === $node->nodeName || 'ns2:binary' === $node->nodeName) {
                 $ref = $node->getAttribute('ref');
                 $mimetype = $node->getAttribute('mimetype');
                 if (in_array($mimetype, $mimes['video'])) {
