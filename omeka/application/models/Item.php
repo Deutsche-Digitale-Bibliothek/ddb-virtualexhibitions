@@ -140,7 +140,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      *
      * The default is to get the first file.
      *
-     * @param integer $index
+     * @param int $index
      * @return File
      */
     public function getFile($index = 0)
@@ -450,7 +450,7 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      *
      * @return string
      */
-    function getCitation()
+    public function getCitation()
     {
         $citation = '';
 
@@ -535,7 +535,8 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     /**
      * Validate this item.
      */
-    protected function _validate() {
+    protected function _validate()
+    {
         $db = $this->getDb();
         if (null !== $this->item_type_id && !$db->getTable('ItemType')->exists($this->item_type_id)) {
             $this->addError('item_type_id', __('Invalid item type.'));

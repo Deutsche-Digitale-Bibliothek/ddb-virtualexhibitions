@@ -144,7 +144,7 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
     /**
      * How many form inputs to display for a given element.
      *
-     * @return integer
+     * @return int
      */
     protected function _getFormFieldCount()
     {
@@ -160,7 +160,7 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
 
     /**
      * @uses ActsAsElementText::getTextStringFromFormPost()
-     * @param integer
+     * @param int
      * @return mixed
      */
     protected function _getPostValueForField($index)
@@ -198,7 +198,7 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
     /**
      * Retrieve the form value for the field.
      *
-     * @param integer
+     * @param int
      * @return string
      */
     protected function _getValueForField($index)
@@ -219,7 +219,6 @@ class Omeka_View_Helper_ElementForm extends Zend_View_Helper_Abstract
      * If index is not given, return all texts.
      *
      * @param string
-     * @return void
      */
     public function getElementTexts($index=null)
     {

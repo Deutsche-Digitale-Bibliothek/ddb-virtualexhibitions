@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- *
+ * 
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -20,12 +20,8 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     protected $_browseRecordsPerPage = self::RECORDS_PER_PAGE_SETTING;
 
-    // Begin Grandgeorg Websolutions
-    protected $_mailAdminName = 'DDB-Servicestelle';
-    protected $_mailSignature = "Bei Rückfragen oder Problemen wenden Sie sich bitte an die DDB-Servicestelle:\nservice@deutsche-digitale-bibliothek.de\nTel: 069 1525-1080\n\nMit freundlichen Grüßen\nIhre\n";
-    // End Grandgeorg Websolutions
-
-    public function init() {
+    public function init()
+    {
         $this->_helper->db->setDefaultModelName('User');
         $this->_auth = $this->getInvokeArg('bootstrap')->getResource('Auth');
 
@@ -34,14 +30,15 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     /**
      * Peform common processing for the publicly accessible actions.
-     *
+     * 
      * Set a view script variable for header and footer view scripts and
      * don't allow logged-in users access.
      *
      * The script variables are set for actions in $_publicActions, so
      * the scripts for those actions should use these variables.
      */
-    protected function _handlePublicActions() {
+    protected function _handlePublicActions()
+    {
         $action = $this->_request->getActionName();
         if (!in_array($action, $this->_publicActions)) {
             return;
@@ -110,18 +107,12 @@ class UsersController extends Omeka_Controller_AbstractActionController
             'action' => 'activate',
             'u' => $activationCode
         ), 'default');
-        $body  = __("Please follow this link to reset your password:") . "\n\n";
+        $body = __("Please follow this link to reset your password:") . "\n\n";
         $body .= $url."\n\n";
-        // Begin Grandgeorg Websolutions
-        // $body .= __("%s Administrator", $siteTitle);
-        $body .= $this->_mailAdminName;
-        // End Grandgeorg Websolutions
+        $body .= __("%s Administrator", $siteTitle);
 
         $mail->setBodyText($body);
-        // Begin Grandgeorg Websolutions
-        // $mail->setFrom(get_option('administrator_email'), __("%s Administrator", $siteTitle));
-        $mail->setFrom(get_option('administrator_email'), $this->_mailAdminName);
-        // End Grandgeorg Websolutions
+        $mail->setFrom(get_option('administrator_email'), __("%s Administrator", $siteTitle));
         $mail->setSubject(__("[%s] Reset Your Password", $siteTitle));
 
         $mail->send();
@@ -161,7 +152,6 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     /**
      *
-     * @return void
      */
     public function addAction()
     {
@@ -200,10 +190,8 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     /**
      * Similar to 'add' action, except this requires a pre-existing record.
-     *
+     * 
      * The ID For this record must be passed via the 'id' parameter.
-     *
-     * @return void
      */
     public function editAction()
     {
@@ -224,8 +212,8 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             //handle resending activation email
-            if(isset($_POST['resend_activation_email'])) {
-                if($this->sendActivationEmail($user)) {
+            if (isset($_POST['resend_activation_email'])) {
+                if ($this->sendActivationEmail($user)) {
                     $this->_helper->flashMessenger(__('User activation email has been sent.'), 'success');
                 } else {
                     $this->_helper->flashMessenger(__('User activation email could not be sent.'), 'error');
@@ -248,16 +236,16 @@ class UsersController extends Omeka_Controller_AbstractActionController
                 return;
             }
             //check to see if user has been manually deactivated. if so, delete ua (if exists)
-            if($user->active == 1 && ($form->getValue('active') == 0)) {
+            if ($user->active == 1 && ($form->getValue('active') == 0)) {
                 //couldn't really do a migration to remove useless ua's, so just to be safe double-check
                 //that the ua exists
-                if($ua) {
+                if ($ua) {
                     $ua->delete();
                 }
             }
             //reverse situation from above. If manually activating, also delete the ua
-            if($user->active == 0 && ($form->getValue('active') == 1)) {
-                if($ua) {
+            if ($user->active == 0 && ($form->getValue('active') == 1)) {
+                if ($ua) {
                     $ua->delete();
                 }
             }
@@ -312,11 +300,18 @@ class UsersController extends Omeka_Controller_AbstractActionController
         $user = $this->_helper->db->findById();
         $keyTable = $this->_helper->db->getTable('Key');
 
+        $csrf = new Omeka_Form_SessionCsrf;
+
         $this->view->user = $user;
         $this->view->currentUser = $this->getCurrentUser();
         $this->view->keys = $keyTable->findBy(array('user_id' => $user->id));
+        $this->view->csrf = $csrf;
 
         if ($this->getRequest()->isPost()) {
+            if (!$csrf->isValid($_POST)) {
+                $this->_helper->_flashMessenger(__('There was an error on the form. Please try again.'), 'error');
+                return;
+            }
             // Create a new API key.
             if ($this->getParam('api_key_label')) {
                 $key = new Key;
@@ -339,7 +334,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
 
     public function browseAction()
     {
-        if(isset($_GET['search'])) {
+        if (isset($_GET['search'])) {
             $this->setParam($_GET['search-type'], $_GET['search']);
         }
         parent::browseAction();
@@ -349,7 +344,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
     {
         $user = $this->_helper->db->findById();
         $ua = $this->_helper->db->getTable('UsersActivations')->findByUser($user);
-        if($ua) {
+        if ($ua) {
             $ua->delete();
         }
         parent::deleteAction();
@@ -374,38 +369,30 @@ class UsersController extends Omeka_Controller_AbstractActionController
      * their account.
      *
      * @param User $user
-     * @return boolean True if the email was successfully sent, false otherwise.
+     * @return bool True if the email was successfully sent, false otherwise.
      */
     protected function sendActivationEmail($user)
     {
-
         $ua = $this->_helper->db->getTable('UsersActivations')->findByUser($user);
-        if($ua) {
+        if ($ua) {
             $ua->delete();
         }
         $ua = new UsersActivations;
         $ua->user_id = $user->id;
         $ua->save();
         // send the user an email telling them about their new user account
-        $siteTitle  = get_option('site_title');
-        $from       = get_option('administrator_email');
-        $body       = __('Liebe Kuratorin, lieber Kurator,')
+        $siteTitle = get_option('site_title');
+        $from = get_option('administrator_email');
+        $body = __('Welcome!')
                     ."\n\n"
-                    . __('Your account for the %s repository has been created. Please click the following link to activate your account:',$siteTitle)."\n\n"
+                    . __('Your account for the %s repository has been created. Please click the following link to activate your account:', $siteTitle)."\n\n"
                     . WEB_ROOT . "/admin/users/activate?u={$ua->url}\n\n"
-                    // Begin Grandgeorg Websolutions
-                    // . __('%s Administrator', $siteTitle);
-                    . $this->_mailSignature
-                    . $this->_mailAdminName;
-                    // End Grandgeorg Websolutions
-        $subject    = __('Activate your account with the %s repository', $siteTitle);
+                    . __('%s Administrator', $siteTitle);
+        $subject = __('Activate your account with the %s repository', $siteTitle);
 
         $mail = new Zend_Mail('UTF-8');
         $mail->setBodyText($body);
-        // Begin Grandgeorg Websolutions
-        // $mail->setFrom($from, "$siteTitle Administrator");
-        $mail->setFrom($from, $this->_mailAdminName);
-        // End Grandgeorg Websolutions
+        $mail->setFrom($from, "$siteTitle Administrator");
         $mail->addTo($user->email, $user->name);
         $mail->setSubject($subject);
         $mail->addHeader('X-Mailer', 'PHP/' . phpversion());
@@ -484,7 +471,7 @@ class UsersController extends Omeka_Controller_AbstractActionController
      * to login fails. ZF has some built-in default messages, but it seems like
      * those messages may not make sense to a majority of people using the
      * software.
-     *
+     * 
      * @param Zend_Auth_Result
      * @return string
      */
@@ -526,10 +513,10 @@ class UsersController extends Omeka_Controller_AbstractActionController
             && $this->_helper->acl->isAllowed('change-status', $user);
 
         $form = new Omeka_Form_User(array(
-            'hasRoleElement'    => $this->_helper->acl->isAllowed('change-role', $user),
-            'hasActiveElement'  => $hasActiveElement,
-            'user'              => $user,
-            'usersActivations'  => $ua
+            'hasRoleElement' => $this->_helper->acl->isAllowed('change-role', $user),
+            'hasActiveElement' => $hasActiveElement,
+            'user' => $user,
+            'usersActivations' => $ua
         ));
         $form->removeDecorator('Form');
         fire_plugin_hook('users_form', array('form' => $form, 'user' => $user));

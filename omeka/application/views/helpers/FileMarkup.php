@@ -30,7 +30,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      *
      * @var array
      */
-    static protected $_callbacks = array(
+    protected static $_callbacks = array(
         'audio/ogg'         => 'audio',
         'audio/x-ogg'       => 'audio',
         'audio/aac'         => 'audio',
@@ -66,7 +66,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      *
      * @var array
      */
-    static private $_fileExtensionCallbacks = array(
+    private static $_fileExtensionCallbacks = array(
         // application/ogg
         'ogx' => 'audio',
         // audio/x-aac
@@ -111,7 +111,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      *
      * @var array
      */
-    static protected $_callbackOptions = array(
+    protected static $_callbackOptions = array(
         'defaultDisplay'=>array(
             'linkToFile'=>true,
             'linkToMetadata'=>false,
@@ -153,7 +153,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      *
      * @var array
      */
-    static protected $_fallbackImages = array(
+    protected static $_fallbackImages = array(
         'audio' => 'fallback-audio.png',
         'image' => 'fallback-image.png',
         'video' => 'fallback-video.png',
@@ -210,7 +210,6 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      * containing valid XHTML, which will be used to display the file.
      * @param array $defaultOptions
      * @param array $fileExtensions
-     * @return void
      */
     public static function addMimeTypes($fileIdentifiers, $callback, array $defaultOptions = array())
     {
