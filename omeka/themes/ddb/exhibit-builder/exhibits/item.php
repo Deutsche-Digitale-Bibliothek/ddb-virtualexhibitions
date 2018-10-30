@@ -27,15 +27,15 @@ foreach ($files as $file) {
         }
         if (isset($metadata->mime_type) &&
             ($metadata->mime_type == 'audio/mpeg' ||
-                $metadata->mime_type == 'application/ogg')) {
-                $additionalWrapperOpen = '<audio controls>';
-                $additionalWrapperClose = '</audio>';
-                $wrapperAttributes = array();
-                $width = 540;
+                $metadata->mime_type == 'application/ogg'))
+        {
+            $additionalWrapperOpen = '<audio controls>';
+            $additionalWrapperClose = '</audio>';
+            $wrapperAttributes = array();
+            $width = 540;
         }
     }
 }
-
 $x3dMarkup = '';
 $x3dMarkupIframeOpen = '';
 $x3dMarkupIframeClose = '';
