@@ -10,49 +10,6 @@ if (!Omeka) {
      * @param {Object} [params] Parameters to pass to TinyMCE, these override the
      * defaults.
      */
-    // Omeka.wysiwyg = function (params) {
-    //     // Default parameters
-    //     initParams = {
-    //         // convert_urls: false,
-    //         // mode: "textareas", // All textareas
-    //         // theme: "advanced",
-    //         // theme_advanced_toolbar_location: "top",
-    //         // theme_advanced_statusbar_location: "none",
-    //         // theme_advanced_toolbar_align: "left",
-    //         // theme_advanced_buttons1: "bold,italic,underline,|,justifyleft,justifycenter,justifyright,|,bullist,numlist,|,link,formatselect,code",
-    //         // theme_advanced_buttons2: "",
-    //         // theme_advanced_buttons3: "",
-    //         // theme_advanced_blockformats: "p,address,pre,h1,h2,h3,h4,h5,h6,blockquote,address,div",
-    //         // plugins: "paste,inlinepopups,media,autoresize",
-    //         // media_strict: false,
-    //         // width: "100%",
-    //         // autoresize_max_height: 500,
-    //         // entities: "160,nbsp,173,shy,8194,ensp,8195,emsp,8201,thinsp,8204,zwnj,8205,zwj,8206,lrm,8207,rlm",
-    //         // verify_html: false,
-    //         // add_unload_trigger: false
-    //         language : 'de',
-    //         convert_urls: false,
-    //         mode: "textareas", // All textareas
-    //         theme: "advanced",
-    //         // theme_advanced_styles: "Osterei=osterei",
-    //         theme_advanced_toolbar_location: "top",
-    //         theme_advanced_statusbar_location: "none",
-    //         theme_advanced_toolbar_align: "left",
-    //         // theme_advanced_blockformats : "p,address,pre,h1,h2,h3,h4,h5",
-    //         theme_advanced_buttons1: "bold,italic,underline,|,justifyleft,justifycenter,justifyright,|,bullist,numlist,|,link,code,fullscreen",
-    //         // theme_advanced_buttons2: "blockquote,cite,formatselect,styleselect,image",
-    //         theme_advanced_buttons2: "blockquote,cite,formatselect",
-    //         theme_advanced_buttons3: "",
-    //         // plugins: "paste,inlinepopups,media,fullscreen,xhtmlxtras,advimage",
-    //         plugins: "paste,inlinepopups,media,fullscreen,xhtmlxtras", //
-    //         media_strict: false,
-    //         width: "100%",
-    //         entity_encoding : "raw"
-    //     };
-
-    //     tinyMCE.init($.extend(initParams, params));
-    // };
-
     Omeka.wysiwyg = function (params) {
         // Default parameters
         initParams = {
@@ -61,12 +18,19 @@ if (!Omeka) {
             menubar: false,
             statusbar: false,
             toolbar_items_size: "small",
-            toolbar: "bold italic underline | alignleft aligncenter alignright | bullist numlist | link formatselect code",
-            plugins: "lists,link,code,paste,media,autoresize",
+            // toolbar: "blockquote formatselect ",
+            toolbar: "bold italic underline | alignleft aligncenter alignright | bullist numlist | link styleselect | code fullscreen",
+            plugins: "lists,link,code,paste,media,autoresize,fullscreen",
+            style_formats: [
+                { title: 'blockquote', block: 'blockquote' },
+                { title: 'cite', inline: 'cite' },
+                // { title: 'Red header', block: 'h1', classes: 'example1', styles: { color: '#ff0000', border: '1px solid #ff3300' } },
+            ],
             autoresize_max_height: 500,
             entities: "160,nbsp,173,shy,8194,ensp,8195,emsp,8201,thinsp,8204,zwnj,8205,zwj,8206,lrm,8207,rlm",
             verify_html: false,
-            add_unload_trigger: false
+            add_unload_trigger: false,
+            language: 'de'
         };
 
         tinymce.init($.extend(initParams, params));

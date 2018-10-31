@@ -554,7 +554,7 @@ header {
     overflow: auto;
     padding:  .625em 0;
     text-shadow: 1px 1px 1px #000000;
-    z-index: 999;
+    z-index: 99;
 }
 
 header a:link, header a:visited {
