@@ -243,7 +243,10 @@ Omeka.ExhibitBuilder = function() {
 }
 
 Omeka.ExhibitBuilder.wysiwyg = function() {
-    Omeka.wysiwyg();
+    Omeka.wysiwyg({
+        selector: false,
+        forced_root_block: false
+    });
 }
 
 

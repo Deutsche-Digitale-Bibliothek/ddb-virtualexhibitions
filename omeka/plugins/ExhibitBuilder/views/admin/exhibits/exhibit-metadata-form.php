@@ -160,11 +160,8 @@
     <?php endif; ?>
     </div>
 </form>
-
 <script type="text/javascript" charset="utf-8">
-//<![CDATA[
-    jQuery(window).load(function() {
-        Omeka.ExhibitBuilder.wysiwyg();
-    });
-//]]>
+jQuery(window).load(function() {
+    Omeka.ExhibitBuilder.wysiwyg();
+});
 </script>
