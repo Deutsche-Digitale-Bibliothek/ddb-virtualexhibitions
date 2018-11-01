@@ -235,7 +235,7 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $pluginName = $request->getParam('name');
         if ($pluginName == 'GinaAdminMod') {
-            queue_js_file(array('vendor/tiny_mce/tiny_mce', 'config'));
+            queue_js_file(array('vendor/tinymce/tinymce.min', 'config'));
         }
     }
 
@@ -307,6 +307,12 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function hookAdminFooterLast()
     {
+
+        $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+        if ($currentuser->confirm_use !== 1) {
+            $this->confirmUse($currentuser);
+        }
+
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $currentUrl = $request->getRequestUri();
 
@@ -346,6 +352,22 @@ class GinaAdminModPlugin extends Omeka_Plugin_AbstractPlugin
             ';
 
         }
+    }
+
+    public function confirmUse($currentuser)
+    {
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $params = $request->getParams();
+        if (isset($params['confirm_use_Nutzungsbedingungen']) && $params['confirm_use_Nutzungsbedingungen'] === '1' &&
+            isset($params['confirm_use_Datenschutzhinweise']) && $params['confirm_use_Datenschutzhinweise'] === '1' &&
+            isset($params['sumbit_confirm_use']) && $params['sumbit_confirm_use'] === 'Speichern'
+        ) {
+            $currentuser->confirm_use = 1;
+            $currentuser->save();
+            $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+            $redirector->gotoSimple('index', 'index', 'index');
+        }
+        require dirname(__FILE__) . '/confirm_use_form.php';
     }
 
     public function hookAdminItemsShowSidebar($args)

@@ -1,14 +1,14 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
 /**
  * A user and its metadata.
- * 
+ *
  * @package Omeka\Record
  */
 class User extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Interface, Zend_Acl_Role_Interface
@@ -25,8 +25,8 @@ class User extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      *
      * This field should never contain the plain-text password.  Always
      * use setPassword() to change the user password.
-     * 
-     * @var string 
+     *
+     * @var string
      */
     public $password;
 
@@ -64,6 +64,15 @@ class User extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      * @var string
      */
     public $email;
+
+    // Begin Grandgeorg Websolutions
+    /**
+     * This user's email address.
+     *
+     * @var string
+     */
+    public $confirm_use;
+    // End Grandgeorg Websolutions
 
     /**
      * Minimum username length.
@@ -194,9 +203,9 @@ class User extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     /**
      * Upgrade the hashed password.
      *
-     * Does nothing if the user/password is 
+     * Does nothing if the user/password is
      * incorrect, or if same has been upgraded already.
-     * 
+     *
      * @since 1.3
      * @param string $username
      * @param string $password
