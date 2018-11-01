@@ -244,7 +244,7 @@ Omeka.ExhibitBuilder = function() {
 
 Omeka.ExhibitBuilder.wysiwyg = function() {
     Omeka.wysiwyg({
-        selector: false,
+        selector: 'textarea',
         forced_root_block: false
     });
 }
