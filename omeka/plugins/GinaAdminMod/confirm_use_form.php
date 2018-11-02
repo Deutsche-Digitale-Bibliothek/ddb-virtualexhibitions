@@ -48,7 +48,7 @@
                 );
                 ?>
             </div>
-            <div style="text-align:right;">Ich bin <strong>nicht</strong> einverstanden und möchte mich lieber <a href="/preuss/admin/users/logout">abmelden!</a></div>
+            <div style="text-align:right;">Ich bin <strong>nicht</strong> einverstanden und möchte mich lieber <a href="<?php echo WEB_DIR ?>/users/logout">abmelden!</a></div>
         </form>
     </div>
 </div>
