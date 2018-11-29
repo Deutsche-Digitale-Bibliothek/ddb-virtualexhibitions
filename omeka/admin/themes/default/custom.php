@@ -32,4 +32,9 @@ class AdminThemeHelper
         }
         return false;
     }
+
+    static function findItemInExhibitPage($itemId)
+    {
+        return ExhibitDdbHelper::findItemInExhibitPage($itemId);
+    }
 }
