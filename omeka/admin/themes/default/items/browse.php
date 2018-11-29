@@ -96,8 +96,19 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                         <?php fire_plugin_hook('admin_items_browse_simple_each', array('item' => $item, 'view' => $this)); ?>
                     </ul>
 
-                    <!--
+                    <?php $exhibitPages = ExhibitDdbHelper::findItemInExhibitPage($item->id); ?>
+                    <?php if (is_array($exhibitPages) && !empty($exhibitPages)): ?>
                     <div class="details">
+                            <p style="margin: 0.2em 0 0 0;">Objekt in Ausstellungsseiten:</p>
+                            <ul style="margin:0;padding: 0 0 0 16px;">
+                            <?php foreach ($exhibitPages as $page): ?>
+                                <?php echo ExhibitDdbHelper::getEditPageEntry($page); ?>
+                            <?php endforeach; ?>
+                            </ul>
+                    </div>
+                    <?php endif; ?>
+
+                    <!--
                         <?php // echo snippet_by_word_count(metadata('item', array('Dublin Core', 'Description')), 40); ?>
                         <p>
                             <strong><?php // echo __('Collection'); ?>:</strong>
@@ -108,7 +119,6 @@ $omekaUsers = AdminThemeHelper::getAllUsers();
                             <?php // if ($tags = tag_string('items')) // echo $tags; else echo __('No Tags'); ?>
                         </p>
                         <?php // fire_plugin_hook('admin_items_browse_detailed_each', array('item' => $item, 'view' => $this)); ?>
-                    </div>
                     //-->
                 </td>
                 <!-- <td><?php // echo strip_formatting(metadata('item', array('Dublin Core', 'Creator'))); ?></td> -->
