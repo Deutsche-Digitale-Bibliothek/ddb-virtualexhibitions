@@ -1,0 +1,145 @@
+// fonts
+// @import url("https://fonts.googleapis.com/css?family=Archivo:400,500,500i,600|Poppins:400,500,500i,600,700");
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Archivo Regular"),
+    local("Archivo-Regular"),
+    url("../fonts/archivo-regular-webfont.woff2") format("woff2"),
+    url("../fonts/archivo-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    local("Archivo Medium"),
+    local("Archivo-Medium"),
+    url("../fonts/archivo-medium-webfont.woff2") format("woff2"),
+    url("../fonts/archivo-medium-webfont.woff") format("woff");
+
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 600;
+  src:
+    local("Archivo SemiBold"),
+    local("Archivo-SemiBold"),
+    url("../fonts/archivo-semibold-webfont.woff2") format("woff2"),
+    url("../fonts/archivo-semibold-webfont.woff") format("woff");
+
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Poppins Regular"),
+    local("Poppins-Regular"),
+    url("../fonts/poppins-regular-webfont.woff2") format("woff2"),
+    url("../fonts/poppins-regular-webfont.woff") format("woff");
+
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    local("Poppins Medium"),
+    local("Poppins-Medium"),
+    url("../fonts/poppins-medium-webfont.woff2") format("woff2"),
+    url("../fonts/poppins-medium-webfont.woff") format("woff");
+
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  src:
+    local("Poppins SemiBold"),
+    local("Poppins-SemiBold"),
+    url("../fonts/poppins-semibold-webfont.woff2") format("woff2"),
+    url("../fonts/poppins-semibold-webfont.woff") format("woff");
+
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local("Poppins Bold"),
+    local("Poppins-Bold"),
+    url("../fonts/poppins-bold-webfont.woff2") format("woff2"),
+    url("../fonts/poppins-bold-webfont.woff") format("woff");
+
+}
+
+// overrides
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+// stylelint-disable-next-line value-keyword-case
+$font-family-headings: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+$font-size-base: 1rem !default;
+$font-size-base-lg: ($font-size-base * 1.125) !default;
+$font-weight-medium: 500 !default;
+$font-weight-semi-bold: 600 !default;
+
+$line-height-base: 1.555 !default;
+
+$h1-font-size:                $font-size-base * 3.125 !default;
+$h2-font-size:                $font-size-base * 2.125 !default;
+$h3-font-size:                $font-size-base * 1.875 !default;
+$h4-font-size:                $font-size-base * 1.625 !default;
+$h5-font-size:                $font-size-base * 1.375 !default;
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/images";
+@import "node_modules/bootstrap/scss/code";
+@import "node_modules/bootstrap/scss/grid";
+
+// @import "node_modules/bootstrap/scss/tables";
+// @import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/transitions";
+// @import "node_modules/bootstrap/scss/dropdown";
+// @import "node_modules/bootstrap/scss/button-group";
+// @import "node_modules/bootstrap/scss/input-group";
+// @import "node_modules/bootstrap/scss/custom-forms";
+// @import "node_modules/bootstrap/scss/nav";
+// @import "node_modules/bootstrap/scss/navbar";
+// @import "node_modules/bootstrap/scss/card";
+// @import "node_modules/bootstrap/scss/breadcrumb";
+// @import "node_modules/bootstrap/scss/pagination";
+// @import "node_modules/bootstrap/scss/badge";
+// @import "node_modules/bootstrap/scss/jumbotron";
+// @import "node_modules/bootstrap/scss/alert";
+// @import "node_modules/bootstrap/scss/progress";
+// @import "node_modules/bootstrap/scss/media";
+// @import "node_modules/bootstrap/scss/list-group";
+// @import "node_modules/bootstrap/scss/close";
+// @import "node_modules/bootstrap/scss/modal";
+// @import "node_modules/bootstrap/scss/tooltip";
+// @import "node_modules/bootstrap/scss/popover";
+// @import "node_modules/bootstrap/scss/carousel";
+@import "node_modules/bootstrap/scss/utilities";
+// @import "node_modules/bootstrap/scss/print";
+
+
+@import "theme";
