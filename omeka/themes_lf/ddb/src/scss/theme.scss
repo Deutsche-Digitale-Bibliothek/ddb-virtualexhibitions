@@ -38,20 +38,65 @@ h6 {
   font-weight: $font-weight-semi-bold;
 }
 
+h1 {
+  margin-bottom: 60px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 40px;
+  }
+}
+
+h2 {
+  margin-bottom: 55px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 40px;
+  }
+}
+
+h3 {
+  margin-bottom: 50px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 30px;
+  }
+}
+
+h4 {
+  margin-bottom: 45px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 30px;
+  }
+}
+
+h5 {
+  margin-bottom: 40px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 30px;
+  }
+}
+
 // header
 .header {
   position: fixed;
   top: 0;
   z-index: 10;
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: flex-end;
   width: 100%;
   // height: 48px;
+  min-height: 40px;
   padding: .5rem 0;
   font-family: $font-family-headings;
   font-size: $font-size-base;
   color: #f2f2f2;
   text-align: center;
   background: #333;
+  .icon-expand {
+    margin-right: 26px;
+  }
+  .icon-menu {
+    margin-right: 10px;
+  }
 }
 
 // menu
@@ -94,16 +139,12 @@ h6 {
   height: 100%;
 }
 @include media-breakpoint-down(sm) {
-  // .fullpage {
-
-  // }
   .fp-section {
     /* stylelint-disable-next-line declaration-no-important */
     height: auto !important;
     min-height: 100vh;
   }
   .fp-tableCell {
-    // height: auto !important;
     min-height: 100vh;
   }
 }
@@ -167,7 +208,6 @@ h6 {
 }
 
 // text content scroll
-
 .scroll-controllers {
   .scroll-arrow-up {
     margin-bottom: 3px;
@@ -183,5 +223,37 @@ h6 {
   }
   @include media-breakpoint-down(sm) {
     display: none;
+  }
+}
+
+// media col
+.col-media {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .container-media {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    @include media-breakpoint-down(sm) {
+      padding-top: 60px;
+    }
+    .content-controlls {
+      padding-right: .5rem;
+    }
+  }
+}
+.media-item {
+  max-width: 100%;
+}
+
+// icons
+.icon-info {
+  cursor: pointer;
+  &:hover {
+    background-color: #000;
+    .icon-info-i line {
+      stroke: #fff;
+    }
   }
 }

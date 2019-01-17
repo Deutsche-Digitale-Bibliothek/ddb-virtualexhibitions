@@ -2,40 +2,42 @@
 
   'use strict';
 
-  var pubsub = (function () {
+  var menuProps;
 
-    var events = {};
+  // var pubsub = (function () {
 
-    function subscribe(eventName, fn) {
-      events[eventName] = events[eventName] || [];
-      events[eventName].push(fn);
-    }
+  //   var events = {};
 
-    function unsubscribe(eventName, fn) {
-      if (events[eventName]) {
-        for (var i = events[eventName].length; i >= 0; i--) {
-          if (events[eventName][i] === fn) {
-            events[eventName].splice(i, 1);
-          }
-        }
-      }
-    }
+  //   function subscribe(eventName, fn) {
+  //     events[eventName] = events[eventName] || [];
+  //     events[eventName].push(fn);
+  //   }
 
-    function emit(eventName, data) {
-      if (events[eventName]) {
-        events[eventName].forEach(function (fn) {
-          fn(data);
-        });
-      }
-    }
+  //   function unsubscribe(eventName, fn) {
+  //     if (events[eventName]) {
+  //       for (var i = events[eventName].length; i >= 0; i--) {
+  //         if (events[eventName][i] === fn) {
+  //           events[eventName].splice(i, 1);
+  //         }
+  //       }
+  //     }
+  //   }
 
-    return Object.freeze({
-      subscribe: subscribe,
-      unsubscribe: unsubscribe,
-      emit: emit
-    });
+  //   function emit(eventName, data) {
+  //     if (events[eventName]) {
+  //       events[eventName].forEach(function (fn) {
+  //         fn(data);
+  //       });
+  //     }
+  //   }
 
-  })();
+  //   return Object.freeze({
+  //     subscribe: subscribe,
+  //     unsubscribe: unsubscribe,
+  //     emit: emit
+  //   });
+
+  // })();
 
   function initFullPage() {
     $('#fullpage').fullpage({
@@ -45,7 +47,7 @@
       // Navigation
       menu: '#menu',
       // lockAnchors: false,
-      anchors: ['s1', 's2', 's3', 's4', 's5'],
+      anchors: ['s0', 's2', 's3'],
       // navigation: false,
       // navigationPosition: 'right',
       // navigationTooltips: ['firstSlide', 'secondSlide'],
@@ -89,8 +91,8 @@
       // Design
       // controlArrows: true,
       // verticalCentered: true,
-      sectionsColor: ['#fcc', '#cfc', '#ccf', '#ffc', '#cff'],
-      paddingTop: '40px',
+      sectionsColor: ['#fcc', '#ccf', '#ffc'],
+      paddingTop: '38px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu',
       responsiveWidth: 768,
@@ -106,52 +108,64 @@
       // lazyLoading: true,
 
       // events
-      onLeave: onLeave,
-      afterLoad: afterLoad,
-      afterRender: afterRender,
-      afterResize: afterResize,
-      afterResponsive: afterResponsive,
-      afterSlideLoad: afterSlideLoad,
-      onSlideLeave: onSlideLeave
+      onLeave: fpOnLeave,
+      afterLoad: fpAfterLoad,
+      afterRender: fpAfterRender,
+      afterResize: fpAfterResize,
+      afterResponsive: fpAfterResponsive,
+      afterSlideLoad: fpAfterSlideLoad,
+      onSlideLeave: fpOnSlideLeave
 
 
     });
     // $.fn.fullpage.setAllowScrolling(false);
   }
 
-  function onLeave(origin, destination, direction) {
+  function fpOnLeave(origin, destination, direction) {
     // console.log(origin, destination, direction);
   }
 
-  function afterLoad(origin, destination, direction) {
+  function fpAfterLoad(origin, destination, direction) {
     // console.log('loaded');
   }
 
-  function afterRender() {
+  function fpAfterRender() {
 
   }
 
-  function afterResize(width, height) {
-    console.log('resize', width);
+  function fpAfterResize(width, height) {
+    // console.log('resize - height is wrong somehow', width, height);
     setScrollElementMaxHeight();
     toggleScrollControlls();
+    setMediaItemProps();
   }
 
-  function afterResponsive(isResponsive) {
+  function fpAfterResponsive(isResponsive) {
 
+    // console.log('responsive', isResponsive);
+    setTableCellHeight(isResponsive);
     if (isResponsive) {
-      $('.fp-tableCell').removeAttr('style');
+      // $('.fp-tableCell').removeAttr('style');
+      $('.fp-tableCell').attr('style', 'height: 100%');
     } else {
       $('.fp-tableCell').attr('style', 'height: ' + $('.fp-tableCell').parent('.section').height() + 'px');
     }
   }
 
-  function afterSlideLoad(section, origin, destination, direction) {
+  function fpAfterSlideLoad(section, origin, destination, direction) {
 
   }
 
-  function onSlideLeave(section, origin, destination, direction) {
+  function fpOnSlideLeave(section, origin, destination, direction) {
 
+  }
+
+  function setTableCellHeight(isResponsive) {
+    if (isResponsive) {
+      $('.fp-tableCell').removeAttr('style');
+    } else {
+      $('.fp-tableCell').attr('style', 'height: ' + $('.fp-tableCell').parent('.section').height() + 'px');
+    }
   }
 
   function setScrollElementMaxHeight() {
@@ -164,6 +178,7 @@
       });
     } else {
       scrollElement.css({
+        // 'max-height': scrollElement.parents('.scroll-container').height() + 'px', // parent is misscalleced by fullpage.js
         'max-height': scrollElement.parents('.scroll-container').height() + 'px',
         'padding-right': (scrollElement[0].offsetWidth - scrollElement[0].clientWidth) + 'px'
       });
@@ -250,12 +265,31 @@
     });
   }
 
+  function setMediaItemProps(height) {
+    if (typeof height === 'undefined') {
+      height = ($(window).height() - menuProps.height) + 'px';
+    } else {
+      height = (height - menuProps.height) + 'px';
+    }
+    $('.media-item').css({
+      'max-height': height
+    });
+  }
+
+  function setMenuProps() {
+    menuProps = {
+      height: $('#menu').height()
+    };
+  }
+
   function init() {
     $(function () {
+      setMenuProps();
       initFullPage();
       setScrollElementMaxHeight();
       bindSCrollControlls();
       toggleScrollControlls();
+      setMediaItemProps();
     });
   }
 
