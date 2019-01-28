@@ -1,4 +1,4 @@
-(function ($) {
+(function ($, options) {
 
   'use strict';
 
@@ -47,7 +47,8 @@
       // Navigation
       menu: '#menu',
       // lockAnchors: false,
-      anchors: ['s0', 's2', 's3'],
+      // anchors: ['s0', 's1', 's2', 's3'],
+      anchors: options.anchors,
       // navigation: false,
       // navigationPosition: 'right',
       // navigationTooltips: ['firstSlide', 'secondSlide'],
@@ -91,7 +92,8 @@
       // Design
       // controlArrows: true,
       // verticalCentered: true,
-      sectionsColor: ['#fcc', '#ccf', '#ffc'],
+      // sectionsColor: ['#fcc', '#006', '#ccf', '#ffc'],
+      sectionsColor: options.sectionsColor,
       paddingTop: '38px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu',
@@ -136,8 +138,8 @@
   function fpAfterResize(width, height) {
     // console.log('resize - height is wrong somehow', width, height);
     setScrollElementMaxHeight();
-    toggleScrollControlls();
-    setMediaItemProps();
+    toggleScrollControls();
+    setMediaProps();
   }
 
   function fpAfterResponsive(isResponsive) {
@@ -207,7 +209,7 @@
     }
   }
 
-  function bindSCrollControlls() {
+  function bindSCrollControls() {
     // mouse events
     $('.scroll-arrow-down').bind('mousedown', function (event) {
       event.preventDefault();
@@ -253,27 +255,45 @@
     });
   }
 
-  function toggleScrollControlls() {
+  function toggleScrollControls() {
     // we could also use .text-content instead of .scroll-element
     $('.scroll-container').each(function (index) {
       var scrollContainer = $(this);
       if ($('.scroll-element', scrollContainer).height() < scrollContainer.height()) {
-        $('.scroll-controllers', scrollContainer).addClass('d-none');
+        $('.scroll-controls', scrollContainer).addClass('d-none');
       } else {
-        $('.scroll-controllers', scrollContainer).removeClass('d-none');
+        $('.scroll-controls', scrollContainer).removeClass('d-none');
       }
     });
   }
 
-  function setMediaItemProps(height) {
+  function setMediaProps(height) {
+
     if (typeof height === 'undefined') {
       height = ($(window).height() - menuProps.height) + 'px';
     } else {
       height = (height - menuProps.height) + 'px';
     }
+
     $('.media-item').css({
       'max-height': height
     });
+
+    var mediaMetaScroll = $('.media-meta-scroll');
+
+    if ($(window).width() < 768) {
+      mediaMetaScroll.css({
+        'max-height': '100%',
+        'padding-right': '0'
+      });
+    } else {
+      mediaMetaScroll.css({
+        'max-height': height,
+        // 'padding-right': (mediaMetaScroll[0].offsetWidth - mediaMetaScroll[0].clientWidth) + 'px'
+        'padding-right': '17px',
+        'fun': $(window)[0].offsetWidth -  $(window)[0].clientWidth
+      });
+    }
   }
 
   function setMenuProps() {
@@ -282,17 +302,39 @@
     };
   }
 
+  function bindMediaInfo() {
+    $('.icon-info').bind('click', function (event) {
+      var iconInfo = $(this);
+      var controlInfo = iconInfo.parent('.control-info');
+      var mediaMeta = $('.media-meta', iconInfo.parents('.container-media'));
+      var mediaItem = $('.media-item', iconInfo.parents('.container-media'));
+      event.preventDefault();
+      if (iconInfo.hasClass('active')) {
+        iconInfo.removeClass('active');
+        controlInfo.removeClass('active');
+        mediaMeta.addClass('d-none');
+        mediaItem.removeClass('d-none');
+      } else {
+        iconInfo.addClass('active');
+        controlInfo.addClass('active');
+        mediaMeta.removeClass('d-none');
+        mediaItem.addClass('d-none');
+      }
+    });
+  }
+
   function init() {
     $(function () {
       setMenuProps();
       initFullPage();
       setScrollElementMaxHeight();
-      bindSCrollControlls();
-      toggleScrollControlls();
-      setMediaItemProps();
+      bindSCrollControls();
+      toggleScrollControls();
+      setMediaProps();
+      bindMediaInfo();
     });
   }
 
   init();
 
-})(jQuery);
+})(jQuery, litfassOptions);

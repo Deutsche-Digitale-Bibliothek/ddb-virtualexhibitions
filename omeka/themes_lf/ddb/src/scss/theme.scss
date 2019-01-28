@@ -73,6 +73,7 @@ h5 {
   }
 }
 
+
 // header
 .header {
   position: fixed;
@@ -208,7 +209,7 @@ h5 {
 }
 
 // text content scroll
-.scroll-controllers {
+.scroll-controls {
   .scroll-arrow-up {
     margin-bottom: 3px;
     cursor: pointer;
@@ -225,6 +226,9 @@ h5 {
     display: none;
   }
 }
+.scroll-controls-left {
+  padding-right: 17px;
+}
 
 // media col
 .col-media {
@@ -235,25 +239,201 @@ h5 {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    @include media-breakpoint-down(xs) {
+      display: block;
+      .control-icon {
+        display: inline-block;
+      }
+      .control-icon-left {
+        display: inline-block;
+      }
+    }
     @include media-breakpoint-down(sm) {
       padding-top: 60px;
     }
-    .content-controlls {
-      padding-right: .5rem;
-    }
+    // .content-controls {
+    // }
   }
 }
 .media-item {
   max-width: 100%;
 }
+.media-meta {
+  padding: 32px 0 32px 15px;
+  overflow: hidden;
+  // background-color: #fff;
+  background-color: rgba(255, 255, 255, .6);
+  .media-meta-scroll {
+    box-sizing: initial;
+    width: 100%;
+    overflow-y: scroll;
+    p,
+    li,
+    td,
+    div {
+      font-size: $font-size-base;
+    }
+    h3 {
+      margin-bottom: 0;
+      font-size: 1.375rem;
+    }
+    h4 {
+      font-size: $font-size-base;
+    }
+  }
+}
 
-// icons
-.icon-info {
-  cursor: pointer;
-  &:hover {
-    background-color: #000;
-    .icon-info-i line {
-      stroke: #fff;
+// controls & icons
+.control-icon {
+  padding-right: .5rem;
+  margin-bottom: .25rem;
+}
+.control-icon-left {
+  padding-left: .5rem;
+  margin-bottom: .25rem;
+}
+.control-info {
+  .icon-info {
+    cursor: pointer;
+    .icon-info-x {
+      display: none;
+    }
+    .icon-info-x-line {
+      fill: none;
+      stroke: #000;
+      stroke-width: 3px;
+    }
+    &:hover {
+      background-color: #000;
+      // background-color: rgba(255, 255, 255, .6);
+      .icon-info-i line {
+        stroke: #fff;
+      }
+    }
+    &.active,
+    &.active:hover {
+      // background-color: #fff;
+      background-color: transparent;
+      .icon-info-frame {
+        display: none;
+      }
+      .icon-info-x {
+        display: block;
+      }
+    }
+  }
+  &.active {
+    // background-color: #fff;
+    background-color: rgba(255, 255, 255, .6);
+  }
+}
+
+.control-zoom {
+  .icon-zoom {
+    cursor: pointer;
+    .icon-zoom-1,
+    .icon-zoom-2,
+    .icon-zoom-4 {
+      fill: none;
+    }
+
+    .icon-zoom-1,
+    .icon-zoom-2 {
+      stroke: #000;
+      stroke-width: 3px;
+    }
+
+    .icon-zoom-2 {
+      stroke-linecap: square;
+    }
+
+    .icon-zoom-3 {
+      stroke: none;
+    }
+    &:hover {
+      background-color: #000;
+      .icon-zoom-1 {
+        stroke: #fff;
+      }
+    }
+  }
+}
+
+// dark
+.dark {
+  color: #fff;
+  p,
+  li,
+  td,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+  }
+  .media-meta {
+    // color: #000;
+    // background-color: #000;
+    background-color: rgba(0, 0, 0, .2);
+    // p,
+    // li,
+    // td,
+    // div,
+    // h1,
+    // h2,
+    // h3,
+    // h4,
+    // h5,
+    // h6 {
+    //   // color: #000;
+    // }
+  }
+  .control-zoom {
+    .icon-zoom {
+      .icon-zoom-1,
+      .icon-zoom-2 {
+        stroke: #fff;
+        stroke-width: 3px;
+      }
+      &:hover {
+        background-color: #fff;
+        .icon-zoom-1 {
+          stroke: #000;
+        }
+      }
+    }
+  }
+  .control-info {
+    .icon-info {
+      .icon-info-x-line {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 3px;
+      }
+      &:hover {
+        background-color: #fff;
+        .icon-info-i line {
+          stroke: #000;
+        }
+      }
+      &.active,
+      &.active:hover {
+        // background-color: #000;
+        background-color: transparent;
+        .icon-info-frame {
+          display: none;
+        }
+        .icon-info-x {
+          display: block;
+        }
+      }
+    }
+    &.active {
+      // background-color: #000;
+      background-color: rgba(0, 0, 0, .2);
     }
   }
 }
