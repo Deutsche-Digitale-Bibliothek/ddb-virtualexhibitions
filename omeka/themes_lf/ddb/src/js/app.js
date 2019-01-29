@@ -312,18 +312,24 @@
       var iconInfo = $(this);
       var controlInfo = iconInfo.parent('.control-info');
       var mediaMeta = $('.media-meta', iconInfo.parents('.container-media'));
-      var mediaItem = $('.media-item', iconInfo.parents('.container-media'));
+      // var mediaItem = $('.media-item', iconInfo.parents('.container-media'));
+      var mediaCol = iconInfo.parents('.col-media');
+      var textCol = $('.col-text', iconInfo.parents('.row'));
       event.preventDefault();
       if (iconInfo.hasClass('active')) {
         iconInfo.removeClass('active');
         controlInfo.removeClass('active');
         mediaMeta.addClass('d-none');
-        mediaItem.removeClass('d-none');
+        // mediaItem.removeClass('d-none');
+        textCol.removeClass('d-none');
+        mediaCol.removeClass('active');
       } else {
         iconInfo.addClass('active');
         controlInfo.addClass('active');
         mediaMeta.removeClass('d-none');
-        mediaItem.addClass('d-none');
+        // mediaItem.addClass('d-none');
+        textCol.addClass('d-none');
+        mediaCol.addClass('active');
       }
     });
   }

@@ -5035,6 +5035,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  transition: all .5s;
 }
 
 .col-media .container-media {
@@ -5061,8 +5062,24 @@ h5 {
   }
 }
 
+.col-media.active {
+  flex-basis: auto !important;
+  max-width: 100%;
+}
+
+.col-media.active .content-media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.col-media.active .content-media .media-meta,
+.col-media.active .content-media .media-item-container {
+  flex-basis: 50%;
+}
+
 .media-item {
   max-width: 100%;
+  transition: all .5s;
 }
 
 .media-item-caption {
