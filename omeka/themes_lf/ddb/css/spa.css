@@ -4906,7 +4906,7 @@ h5 {
 
 .section-container {
   display: flex;
-  align-content: center;
+  align-content: stretch;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -4914,7 +4914,12 @@ h5 {
 }
 
 .section-container .row {
+  flex-basis: 100%;
   height: 100%;
+}
+
+.section-container .row.auto {
+  height: auto;
 }
 
 .fp-section {
@@ -5194,6 +5199,18 @@ h5 {
 
 .control-zoom .icon-zoom:hover .icon-zoom-1 {
   stroke: #fff;
+}
+
+.chapter-num h3 {
+  font-size: 3.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.chapter-title h2 {
+  font-size: 3.125rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .dark {

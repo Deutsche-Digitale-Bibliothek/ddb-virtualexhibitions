@@ -115,13 +115,19 @@ h5 {
 .section-container {
   display: flex;
   // flex-direction:
-  align-content: center;
+  // align-content: center;
+  // if we use stretch, we could unset row { height: 100% }
+  align-content: stretch;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
   .row {
+    flex-basis: 100%;
     height: 100%;
+    &.auto {
+      height: auto;
+    }
   }
 }
 
@@ -379,6 +385,25 @@ h5 {
   }
 }
 
+// chapter
+.chapter-num {
+  h3 {
+    font-size: 3.75rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+}
+.chapter-title {
+  h2 {
+    font-size: 3.125rem;
+    font-weight: 600;
+    // line-height: .8;
+    line-height: 1;
+    // letter-spacing: -.5rem;
+  }
+}
+
+
 // dark
 .dark {
   color: #fff;
@@ -450,3 +475,4 @@ h5 {
   //   }
   // }
 }
+
