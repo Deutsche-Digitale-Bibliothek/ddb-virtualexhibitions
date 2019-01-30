@@ -176,7 +176,8 @@
     if ($(window).width() < 768) {
       scrollElement.css({
         'max-height': '100%',
-        'padding-right': '0'
+        // 'padding-right': '0'
+        'padding-right': '17px' // let there be a minimum padding, if detection goes wrong ...
       });
     } else {
       scrollElement.css({
@@ -296,7 +297,8 @@
       mediaMetaScroll.css({
         'max-height': height,
         // 'padding-right': (mediaMetaScroll[0].offsetWidth - mediaMetaScroll[0].clientWidth) + 'px'
-        'padding-right': '17px',
+        // 'padding-right': '17px',
+        'padding-right': '32px',
       });
     }
   }
@@ -321,14 +323,14 @@
         controlInfo.removeClass('active');
         mediaMeta.addClass('d-none');
         // mediaItem.removeClass('d-none');
-        textCol.removeClass('d-none');
+        textCol.removeClass('hidden');
         mediaCol.removeClass('active');
       } else {
         iconInfo.addClass('active');
         controlInfo.addClass('active');
         mediaMeta.removeClass('d-none');
         // mediaItem.addClass('d-none');
-        textCol.addClass('d-none');
+        textCol.addClass('hidden');
         mediaCol.addClass('active');
       }
     });
