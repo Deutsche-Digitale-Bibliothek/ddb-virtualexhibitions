@@ -5252,13 +5252,37 @@ h5 {
 .chapter-num h3 {
   font-size: 3.75rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.4;
+}
+
+.chapter-num h3 span {
+  padding: .25rem 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .chapter-title h2 {
   font-size: 3.125rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.4;
+}
+
+.chapter-title h2 span {
+  padding: .25rem 0;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .chapter-num h2,
+.dark .chapter-num h3,
+.dark .chapter-title h2,
+.dark .chapter-title h3 {
+  color: #fff;
+}
+
+.dark .chapter-num h2 span,
+.dark .chapter-num h3 span,
+.dark .chapter-title h2 span,
+.dark .chapter-title h3 span {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .title-container {
@@ -5319,6 +5343,70 @@ h5 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.section-text-special-01 .col-title h1 {
+  margin-top: 140px;
+}
+
+@media (max-width: 991.98px) {
+  .section-text-special-01 .col-title h1 {
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-text-special-01 .col-title h1 {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-text-special-01 .col-title h1 {
+    margin-top: 35px;
+  }
+}
+
+.section-text-special-01 .col-text .scroll-container {
+  align-content: flex-start;
+  align-items: flex-start;
+  margin-top: 270px;
+}
+
+@media (max-width: 991.98px) {
+  .section-text-special-01 .col-text .scroll-container {
+    margin-top: 200px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-text-special-01 .col-text .scroll-container {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-text-special-01 .col-text .scroll-container {
+    margin-top: 0;
+  }
+}
+
+.dark h1,
+.dark h2 {
+  color: #fff;
+}
+
+.dark h1 span,
+.dark h2 span {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dark .title-container .title-bottom .credits {
+  color: #000;
+}
+
+.dark .title-container .title-bottom .credits span {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .icon-next-page {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.6);
@@ -5333,6 +5421,14 @@ h5 {
 
 .icon-next-page .cls-1 {
   stroke-linecap: square;
+}
+
+.icon-next-page:hover {
+  background-color: black;
+}
+
+.icon-next-page:hover .cls-2 {
+  stroke: #fff;
 }
 
 .dark {
@@ -5398,5 +5494,29 @@ h5 {
 
 .dark .control-info.active {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .icon-next-page {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark .icon-next-page .cls-1,
+.dark .icon-next-page .cls-2 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3px;
+}
+
+.dark .icon-next-page .cls-1 {
+  stroke-linecap: square;
+}
+
+.dark .icon-next-page:hover {
+  background-color: white;
+}
+
+.dark .icon-next-page:hover .cls-2 {
+  stroke: #000;
 }
 /*# sourceMappingURL=spa.css.map */

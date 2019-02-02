@@ -448,7 +448,12 @@ h5 {
   h3 {
     font-size: 3.75rem;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.4;
+    // line-height: 4.25rem;
+    span {
+      padding: .25rem 0;
+      background-color: rgba(255, 255, 255, .8);
+    }
   }
 }
 .chapter-title {
@@ -456,8 +461,25 @@ h5 {
     font-size: 3.125rem;
     font-weight: 600;
     // line-height: .8;
-    line-height: 1;
+    line-height: 1.4;
     // letter-spacing: -.5rem;
+    span {
+      padding: .25rem 0;
+      background-color: rgba(255, 255, 255, .8);
+    }
+  }
+}
+
+.dark {
+  .chapter-num,
+  .chapter-title {
+    h2,
+    h3 {
+      color: #fff;
+      span {
+        background-color: rgba(0, 0, 0, .8);
+      }
+    }
   }
 }
 
@@ -513,6 +535,55 @@ h5 {
   }
 }
 
+// section-text-special-01 template
+
+.section-text-special-01 {
+  .col-title h1 {
+    margin-top: 140px;
+    @include media-breakpoint-down(md) {
+      margin-top: 75px;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 50px;
+    }
+    @include media-breakpoint-down(xs) {
+      margin-top: 35px;
+    }
+  }
+  .col-text .scroll-container {
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-top: 270px;
+    @include media-breakpoint-down(md) {
+      margin-top: 200px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 50px;
+    }
+
+    @include media-breakpoint-down(xs) {
+      margin-top: 0;
+    }
+  }
+}
+
+.dark {
+  h1,
+  h2 {
+    color: #fff;
+    span {
+      background-color: rgba(0, 0, 0, .8);
+    }
+  }
+  .title-container .title-bottom .credits {
+    color: #000;
+    span {
+      background-color: rgba(255, 255, 255, .8);
+    }
+  }
+}
+
 
 .icon-next-page {
   cursor: pointer;
@@ -526,6 +597,13 @@ h5 {
 
   .cls-1 {
     stroke-linecap: square;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 1);
+    // .cls-1,
+    .cls-2 {
+      stroke: #fff;
+    }
   }
 }
 
@@ -599,5 +677,29 @@ h5 {
   //     }
   //   }
   // }
+  .icon-next-page {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .6);
+
+    .cls-1,
+    .cls-2 {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 3px;
+    }
+
+    .cls-1 {
+      stroke-linecap: square;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 1);
+
+      // .cls-1,
+      .cls-2 {
+        stroke: #000;
+      }
+    }
+  }
 }
 

@@ -339,7 +339,8 @@
   function bindTitlePageNextLink(params) {
     $('.title-page-next-link').bind('click', function (event) {
       event.preventDefault();
-      $.fn.fullpage.moveTo(2);
+      // $.fn.fullpage.moveTo(2);
+      $.fn.fullpage.moveSectionDown();
     });
   }
 
