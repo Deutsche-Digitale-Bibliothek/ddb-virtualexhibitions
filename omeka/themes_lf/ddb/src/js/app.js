@@ -336,6 +336,13 @@
     });
   }
 
+  function bindTitlePageNextLink(params) {
+    $('.title-page-next-link').bind('click', function (event) {
+      event.preventDefault();
+      $.fn.fullpage.moveTo(2);
+    });
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -345,6 +352,7 @@
       toggleScrollControls();
       setMediaProps();
       bindMediaInfo();
+      bindTitlePageNextLink();
     });
   }
 
