@@ -171,21 +171,30 @@
   }
 
   function setScrollElementMaxHeight() {
-    var scrollElement = $('.scroll-element');
-    // console.log($(window).width());
-    if ($(window).width() < 768) {
-      scrollElement.css({
-        'max-height': '100%',
-        // 'padding-right': '0'
-        'padding-right': '17px' // let there be a minimum padding, if detection goes wrong ...
-      });
-    } else {
-      scrollElement.css({
-        // 'max-height': scrollElement.parents('.scroll-container').height() + 'px', // parent is misscalleced by fullpage.js
-        'max-height': scrollElement.parents('.scroll-container').height() + 'px',
-        'padding-right': (scrollElement[0].offsetWidth - scrollElement[0].clientWidth) + 'px'
-      });
-    }
+    $('.scroll-element').each(function (index) {
+      var scrollElement = $(this);
+      // var scrollFrame = scrollElement.parent('.scroll-frame');
+      if ($(window).width() < 768) {
+        scrollElement.css({
+          'max-height': '100%',
+          // let there be a minimum padding, if detection goes wrong ...
+          'padding-right': '17px'
+        });
+        // scrollFrame.css({
+        //   'max-height': '100%',
+        // });
+      } else {
+        var scrollContainer = scrollElement.parents('.scroll-container');
+        var marginTop = parseInt(scrollContainer.css('marginTop'));
+        scrollElement.css({
+          'max-height': (scrollContainer.height() - marginTop) + 'px',
+          'padding-right': (scrollElement[0].offsetWidth - scrollElement[0].clientWidth) + 'px'
+        });
+        // scrollFrame.css({
+        //   'max-height': (scrollContainer.height() - marginTop) + 'px',
+        // });
+      }
+    });
   }
 
   function containerScrollDown(direction, element, scrollPos) {
@@ -260,7 +269,8 @@
     // we could also use .text-content instead of .scroll-element
     $('.scroll-container').each(function (index) {
       var scrollContainer = $(this);
-      if ($('.scroll-element', scrollContainer).height() < scrollContainer.height()) {
+      // if ($('.scroll-element', scrollContainer).height() < scrollContainer.height()) {
+      if ($('.scroll-element', scrollContainer).prop('scrollHeight') < scrollContainer.height()) {
         $('.scroll-controls', scrollContainer).addClass('d-none');
       } else {
         $('.scroll-controls', scrollContainer).removeClass('d-none');

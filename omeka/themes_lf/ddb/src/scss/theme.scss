@@ -262,6 +262,15 @@ h5 {
   }
 }
 
+.fader {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 60px;
+}
+
 // media col
 .col-media {
   display: flex;
@@ -607,6 +616,7 @@ h5 {
   }
 }
 
+
 // dark
 .dark {
   color: #fff;
@@ -703,3 +713,29 @@ h5 {
   }
 }
 
+// color palettes
+.palette-c-powder-grey {
+  .fader {
+    background: linear-gradient(to bottom, rgba(61, 79, 88, 0) 0%, rgba(61, 79, 88, 1) 75%, rgba(61, 79, 88, 1) 100%);
+  }
+}
+.palette-c-powder-green {
+  .fader {
+    background: linear-gradient(to bottom, rgba(204, 218, 214, 0) 0%, rgba(204, 218, 214, 1) 75%, rgba(204, 218, 214, 1) 100%);
+  }
+}
+.palette-c-powder-blue {
+  .fader {
+    background: linear-gradient(to bottom, rgba(227, 243, 254, 0) 0%, rgba(227, 243, 254, 1) 75%, rgba(227, 243, 254, 1) 100%);
+  }
+}
+.palette-c-powder-sand {
+  .fader {
+    background: linear-gradient(to bottom, rgba(246, 249, 234, 0) 0%, rgba(246, 249, 234, 1) 75%, rgba(246, 249, 234, 1) 100%);
+  }
+}
+.palette-c-powder-rose {
+  .fader {
+    background: linear-gradient(to bottom, rgba(232, 180, 180, 0) 0%, rgba(232, 180, 180, 1) 75%, rgba(232, 180, 180, 1) 100%);
+  }
+}
