@@ -4914,6 +4914,7 @@ h5 {
 .header-section-bar > div {
   flex-grow: 1;
   height: 3px;
+  transition: all 1s;
 }
 
 .header-section-bar .visited {
