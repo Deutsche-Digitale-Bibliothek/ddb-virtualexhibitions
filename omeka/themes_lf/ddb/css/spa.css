@@ -4887,6 +4887,7 @@ h5 {
   color: #f2f2f2;
   text-align: center;
   background: #333;
+  box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.22);
 }
 
 .header .icon-expand {
@@ -4895,6 +4896,28 @@ h5 {
 
 .header .icon-menu {
   margin-right: 10px;
+}
+
+.header-section-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  height: 3px;
+}
+
+.header-section-bar > div {
+  flex-grow: 1;
+  height: 3px;
+}
+
+.header-section-bar .visited {
+  background-color: #fff;
 }
 
 .menu {
@@ -5327,6 +5350,14 @@ h5 {
 .title-container .title-bottom .credits span {
   padding: .125rem 0;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.section-title {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
 }
 
 .section-title h1 {

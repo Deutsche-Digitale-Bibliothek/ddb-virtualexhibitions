@@ -127,9 +127,10 @@
     // console.log(origin, destination, direction);
   }
 
-  function fpAfterLoad(origin, destination, direction) {
+  function fpAfterLoad(from, current, direction) {
     // fires every time a section is loaded
-    // console.log('loaded');
+    // console.log('loaded', from, current, direction);
+    setVisitedSectionsInHeaderSectionBar(current.index);
   }
 
   function fpAfterRender() {
@@ -173,6 +174,19 @@
 
   }
 
+  function setVisitedSectionsInHeaderSectionBar(index) {
+    // console.log(index);
+    $('#header-section-bar > div').each(function (i) {
+      var section = $(this);
+      // console.log(index, section.data('headeranchor'));
+      if (index >= section.data('headeranchor')) {
+        section.addClass('visited');
+      } else {
+        section.removeClass('visited');
+      }
+    });
+  }
+
   function setTableCellHeight(isResponsive) {
     if (isResponsive) {
       $('.fp-tableCell').removeAttr('style');
@@ -184,32 +198,21 @@
   function setScrollElementMaxHeight() {
     $('.scroll-element').each(function (index) {
       var scrollElement = $(this);
-      // var scrollFrame = scrollElement.parent('.scroll-frame');
+      var tableCell = scrollElement.parents('.fp-tableCell');
+      var paddingTop = parseInt(scrollElement.css('paddingTop'));
+      var paddingRight = scrollElement[0].offsetWidth - scrollElement[0].clientWidth;
       if ($(window).width() < 768) {
         scrollElement.css({
           'max-height': '100%',
           // let there be a minimum padding, if detection goes wrong ...
           'padding-right': '17px'
         });
-        // scrollFrame.css({
-        //   'max-height': '100%',
-        // });
       } else {
-        var scrollContainer = scrollElement.parents('.scroll-container');
-        var tableCell = scrollElement.parents('.fp-tableCell');
-        // var marginTop = parseInt(scrollContainer.css('marginTop'));
-        var paddingTop = parseInt(scrollElement.css('paddingTop'));
+        paddingRight = (paddingRight <= 17) ? 17 : paddingRight;
         scrollElement.css({
-          // 'max-height': (scrollContainer.height() - marginTop) + 'px',
-          // 'max-height': scrollContainer.height() + 'px',
-          // 'max-height': '450px',
-          // 'max-height': scrollElement.parents('.scroll-container').height() + 'px',
           'max-height': (tableCell.height() - paddingTop) + 'px',
-          'padding-right': (scrollElement[0].offsetWidth - scrollElement[0].clientWidth) + 'px'
+          'padding-right': paddingRight + 'px'
         });
-        // scrollFrame.css({
-        //   'max-height': (scrollContainer.height() - marginTop) + 'px',
-        // });
       }
     });
   }
