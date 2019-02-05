@@ -128,11 +128,22 @@
   }
 
   function fpAfterLoad(origin, destination, direction) {
+    // fires every time a section is loaded
     // console.log('loaded');
   }
 
   function fpAfterRender() {
+    // fires only once on page load
 
+    // we could put functioncalls from init() here e.g.
+    // setScrollElementMaxHeight();
+    // bindSCrollControls();
+    // toggleScrollControls();
+    // setMediaProps();
+    // bindMediaInfo();
+    // bindTitlePageNextLink();
+
+    // console.log('renderd');
   }
 
   function fpAfterResize(width, height) {
@@ -185,9 +196,15 @@
         // });
       } else {
         var scrollContainer = scrollElement.parents('.scroll-container');
-        var marginTop = parseInt(scrollContainer.css('marginTop'));
+        var tableCell = scrollElement.parents('.fp-tableCell');
+        // var marginTop = parseInt(scrollContainer.css('marginTop'));
+        var paddingTop = parseInt(scrollElement.css('paddingTop'));
         scrollElement.css({
-          'max-height': (scrollContainer.height() - marginTop) + 'px',
+          // 'max-height': (scrollContainer.height() - marginTop) + 'px',
+          // 'max-height': scrollContainer.height() + 'px',
+          // 'max-height': '450px',
+          // 'max-height': scrollElement.parents('.scroll-container').height() + 'px',
+          'max-height': (tableCell.height() - paddingTop) + 'px',
           'padding-right': (scrollElement[0].offsetWidth - scrollElement[0].clientWidth) + 'px'
         });
         // scrollFrame.css({
