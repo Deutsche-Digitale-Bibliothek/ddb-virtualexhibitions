@@ -91,6 +91,8 @@ $font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI
 // stylelint-disable-next-line value-keyword-case
 $font-family-headings: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
+$litfassTextColor: #1d1d1b !default;
+
 $font-size-base: 1rem !default;
 $font-size-base-lg: ($font-size-base * 1.125) !default;
 $font-weight-medium: 500 !default;
@@ -105,6 +107,8 @@ $h4-font-size:                $font-size-base * 1.625 !default;
 $h5-font-size:                $font-size-base * 1.375 !default;
 
 $paragraph-margin-bottom:   2.5rem !default;
+
+$body-color: $litfassTextColor !default;
 
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";

@@ -609,6 +609,56 @@ h5 {
   }
 }
 
+
+// section-cite template
+.section-cite {
+  blockquote {
+    padding-bottom: 10px;
+    font-family: $font-family-headings;
+    font-size: 2.125rem;
+    font-style: italic;
+    font-weight: 500;
+    // &laquo; &raquo;
+    quotes: "»" "«";
+    p,
+    div,
+    li,
+    td {
+      font-size: 2.125rem;
+    }
+    p:last-of-type {
+      margin-bottom: 2.5rem !important;
+    }
+    &::before {
+      display: block;
+      font-family: $font-family-headings;
+      font-size: 8.75rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+      // color: #ccc;
+      content: open-quote;
+      // line-height: 0.1em;
+      // margin-right: 0.25em;
+      // vertical-align: -0.4em;
+    }
+  }
+  cite {
+    display: block;
+    text-align: center;
+    // border-top: 3px solid #1d1d1b;
+    &::before {
+      display: block;
+      width: 68px;
+      height: 3px;
+      margin: 0 auto 16px;
+      content: " ";
+      background-color: $litfassTextColor;
+    }
+  }
+}
+
 .dark {
   h1,
   h2 {
@@ -746,31 +796,37 @@ h5 {
 }
 
 // color palettes
+// #3d4f58
 .palette-c-powder-grey {
   .fader {
     background: linear-gradient(to bottom, rgba(61, 79, 88, 0) 0%, rgba(61, 79, 88, 1) 75%, rgba(61, 79, 88, 1) 100%);
   }
 }
+// #ccdad6
 .palette-c-powder-green {
   .fader {
     background: linear-gradient(to bottom, rgba(204, 218, 214, 0) 0%, rgba(204, 218, 214, 1) 75%, rgba(204, 218, 214, 1) 100%);
   }
 }
+// #e3f3fe
 .palette-c-powder-blue {
   .fader {
     background: linear-gradient(to bottom, rgba(227, 243, 254, 0) 0%, rgba(227, 243, 254, 1) 75%, rgba(227, 243, 254, 1) 100%);
   }
 }
+// f6f9ea
 .palette-c-powder-sand {
   .fader {
     background: linear-gradient(to bottom, rgba(246, 249, 234, 0) 0%, rgba(246, 249, 234, 1) 75%, rgba(246, 249, 234, 1) 100%);
   }
 }
+// f7cbba
 .palette-c-powder-apricot {
   .fader {
     background: linear-gradient(to bottom, rgba(247, 203, 186, 0) 0%, rgba(247, 203, 186, 1) 75%, rgba(247, 203, 186, 1) 100%);
   }
 }
+// e8b4b4
 .palette-c-powder-rose {
   .fader {
     background: linear-gradient(to bottom, rgba(232, 180, 180, 0) 0%, rgba(232, 180, 180, 1) 75%, rgba(232, 180, 180, 1) 100%);
