@@ -36,7 +36,8 @@
     "css-main": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
     "watch-css-main": "nodemon --watch src/scss/ --ext scss --exec \"npm run css-main\"",
     "js-lint": "eslint -c src/build/.eslintrc.js src/js",
-    "js-minify": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/bundle.min.js node_modules/jquery/dist/jquery.js node_modules/fullpage.js/dist/fullpage.extensions.min.js src/js//app.js",
-    "js-main": "npm-run-all js-lint js-minify"
+    "js-minify": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/bundle.min.js node_modules/jquery/dist/jquery.js node_modules/fullpage.js/dist/fullpage.extensions.min.js src/js/app.js",
+    "js-minify-options": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/options.min.js src/js/options.js",
+    "js-main": "npm-run-all js-lint js-minify js-minify-options"
   }
 }

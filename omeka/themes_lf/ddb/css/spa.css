@@ -4872,6 +4872,10 @@ h5 {
   }
 }
 
+.container-fluid {
+  max-width: 1140px;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -4924,10 +4928,6 @@ h5 {
 
 .menu {
   display: none;
-}
-
-.container-fluid {
-  max-width: 1140px;
 }
 
 .section-container {
@@ -4999,6 +4999,10 @@ h5 {
   display: table;
   width: 100%;
   table-layout: fixed;
+}
+
+.section {
+  min-height: 100vh;
 }
 
 .scroll-container {
@@ -5624,29 +5628,5 @@ h5 {
 
 .dark .icon-next-page:hover .cls-2 {
   stroke: #000;
-}
-
-.palette-c-powder-grey .fader {
-  background: linear-gradient(to bottom, rgba(61, 79, 88, 0) 0%, #3d4f58 75%, #3d4f58 100%);
-}
-
-.palette-c-powder-green .fader {
-  background: linear-gradient(to bottom, rgba(204, 218, 214, 0) 0%, #ccdad6 75%, #ccdad6 100%);
-}
-
-.palette-c-powder-blue .fader {
-  background: linear-gradient(to bottom, rgba(227, 243, 254, 0) 0%, #e3f3fe 75%, #e3f3fe 100%);
-}
-
-.palette-c-powder-sand .fader {
-  background: linear-gradient(to bottom, rgba(246, 249, 234, 0) 0%, #f6f9ea 75%, #f6f9ea 100%);
-}
-
-.palette-c-powder-apricot .fader {
-  background: linear-gradient(to bottom, rgba(247, 203, 186, 0) 0%, #f7cbba 75%, #f7cbba 100%);
-}
-
-.palette-c-powder-rose .fader {
-  background: linear-gradient(to bottom, rgba(232, 180, 180, 0) 0%, #e8b4b4 75%, #e8b4b4 100%);
 }
 /*# sourceMappingURL=spa.css.map */

@@ -75,6 +75,11 @@ h5 {
 }
 
 
+// bootstrap
+.container-fluid {
+  max-width: 1140px;
+}
+
 // header
 .header {
   position: fixed;
@@ -130,12 +135,6 @@ h5 {
 .menu {
   display: none;
 }
-
-// bootstrap
-.container-fluid {
-  max-width: 1140px;
-}
-
 
 // fullpage
 .section-container {
@@ -206,6 +205,11 @@ h5 {
   display: table;
   width: 100%;
   table-layout: fixed;
+}
+
+// section
+.section {
+  min-height: 100vh;
 }
 
 // scroll-container
@@ -818,39 +822,74 @@ h5 {
 }
 
 // color palettes
+// palette a
 // #3d4f58
-.palette-c-powder-grey {
-  .fader {
-    background: linear-gradient(to bottom, rgba(61, 79, 88, 0) 0%, rgba(61, 79, 88, 1) 75%, rgba(61, 79, 88, 1) 100%);
-  }
-}
-// #ccdad6
-.palette-c-powder-green {
-  .fader {
-    background: linear-gradient(to bottom, rgba(204, 218, 214, 0) 0%, rgba(204, 218, 214, 1) 75%, rgba(204, 218, 214, 1) 100%);
-  }
-}
-// #e3f3fe
-.palette-c-powder-blue {
-  .fader {
-    background: linear-gradient(to bottom, rgba(227, 243, 254, 0) 0%, rgba(227, 243, 254, 1) 75%, rgba(227, 243, 254, 1) 100%);
-  }
-}
-// f6f9ea
-.palette-c-powder-sand {
-  .fader {
-    background: linear-gradient(to bottom, rgba(246, 249, 234, 0) 0%, rgba(246, 249, 234, 1) 75%, rgba(246, 249, 234, 1) 100%);
-  }
-}
-// f7cbba
-.palette-c-powder-apricot {
-  .fader {
-    background: linear-gradient(to bottom, rgba(247, 203, 186, 0) 0%, rgba(247, 203, 186, 1) 75%, rgba(247, 203, 186, 1) 100%);
-  }
-}
-// e8b4b4
-.palette-c-powder-rose {
-  .fader {
-    background: linear-gradient(to bottom, rgba(232, 180, 180, 0) 0%, rgba(232, 180, 180, 1) 75%, rgba(232, 180, 180, 1) 100%);
-  }
-}
+// dark
+// .palette-a-powder-grey {
+//   background-color: #3d4f58;
+// }
+// // #e73235
+// // dark
+// .palette-a-powder-red {
+//   background-color: #e73235;
+// }
+// // #ed6d3f
+// // dark
+// .palette-a-powder-orange {
+//   background-color: #ed6d3f;
+// }
+// // #f0e63d
+// .palette-a-powder-yellow {
+//   background-color: #f0e63d;
+// }
+// // #4ea643
+// // dark
+// .palette-a-powder-green {
+//   background-color: #4ea643;
+// }
+// // #18b5d9
+// // dark
+// .palette-a-powder-blue {
+//   background-color: #18b5d9;
+// }
+
+// // palette b all dark
+// // #3d4f58
+// .palette-b-powder-grey {
+//   background-color: #3d4f58;
+// }
+
+// // palette c
+// // #3d4f58
+// // dark
+// .palette-c-powder-grey {
+//   background-color: #3d4f58;
+// }
+// // #ccdad6
+// .palette-c-powder-green {
+//   background-color: #ccdad6;
+// }
+// // #e3f3fe
+// .palette-c-powder-blue {
+//   background-color: #e3f3fe;
+// }
+// // f6f9ea
+// .palette-c-powder-sand {
+//   background-color: #f6f9ea;
+// }
+// // f7cbba
+// .palette-c-powder-apricot {
+//   background-color: #f7cbba;
+// }
+// // e8b4b4
+// .palette-c-powder-rose {
+//   background-color: #e8b4b4;
+// }
+
+// // palette d
+// .palette-d-powder-grey {
+//   background-color: #3d4f58;
+// }
+// palette e
+// palette f
+// palette g

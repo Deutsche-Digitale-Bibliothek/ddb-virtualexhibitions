@@ -1,4 +1,4 @@
-(function ($, options) {
+(function ($, options, litfassColorPalettes) {
 
   'use strict';
 
@@ -339,6 +339,49 @@
     };
   }
 
+  function setColors() {
+    $('.section').each(function (i) {
+      var section = $(this);
+      var palette = section.data('colorPalette');
+      var color = section.data('colorSection');
+      var fader = $('.fader', section);
+      if (typeof litfassColorPalettes[palette] !== 'undefined' &&
+          typeof litfassColorPalettes[palette][color] !== 'undefined' &&
+          fader.length > 0)
+      {
+        fader.css({
+          background: 'linear-gradient(to bottom, rgba(' +
+          litfassColorPalettes[palette][color]['rgb']['r'] + ', ' +
+          litfassColorPalettes[palette][color]['rgb']['g'] + ', ' +
+          litfassColorPalettes[palette][color]['rgb']['b'] + ', 0) 0, ' +
+          litfassColorPalettes[palette][color]['hex'] + ' 75%, ' +
+          litfassColorPalettes[palette][color]['hex'] + ' 100%)'
+        });
+      }
+    });
+  }
+
+  function setRGBColorInPalettes() {
+    for (var palette in litfassColorPalettes) {
+      if (litfassColorPalettes.hasOwnProperty(palette)) {
+        for (var color in litfassColorPalettes[palette]) {
+          if (litfassColorPalettes[palette].hasOwnProperty(color)) {
+            litfassColorPalettes[palette][color]['rgb'] = hexToRgb(litfassColorPalettes[palette][color]['hex']);
+          }
+        }
+      }
+    }
+  }
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
   function bindMediaInfo() {
     $('.icon-info').bind('click', function (event) {
       var iconInfo = $(this);
@@ -377,6 +420,8 @@
   function init() {
     $(function () {
       setMenuProps();
+      setRGBColorInPalettes();
+      setColors();
       initFullPage();
       setScrollElementMaxHeight();
       bindSCrollControls();
@@ -389,4 +434,4 @@
 
   init();
 
-})(jQuery, litfassOptions);
+})(jQuery, litfassOptions, litfassColorPalettes);
