@@ -5089,7 +5089,7 @@ h5 {
   bottom: 0;
   left: 0;
   z-index: 1;
-  height: 60px;
+  height: 90px;
 }
 
 .col-media {
@@ -5290,7 +5290,7 @@ h5 {
 }
 
 .chapter-num h3 span {
-  padding: .25rem 0;
+  padding: .125rem 0;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -5301,7 +5301,7 @@ h5 {
 }
 
 .chapter-title h2 span {
-  padding: .25rem 0;
+  padding: .125rem 0;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -5370,7 +5370,7 @@ h5 {
 }
 
 .section-title h1 span {
-  padding: .25rem 0;
+  padding: .125rem 0;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -5381,7 +5381,7 @@ h5 {
 }
 
 .section-title h2 span {
-  padding: .25rem 0;
+  padding: .125rem 0;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -5427,6 +5427,27 @@ h5 {
   .section-text-special-01 .col-text .scroll-container .scroll-element {
     padding-top: 0;
   }
+}
+
+.section-text-special-02 .col-title h2 {
+  margin: 2rem 0;
+}
+
+.section-text-special-02 .col-top {
+  padding-top: 2.25rem;
+}
+
+.section-text-special-02 .col-center {
+  align-self: center;
+}
+
+.section-text-special-02 .col-bottom {
+  align-self: flex-end;
+  padding-bottom: 4.25rem;
+}
+
+.section-text-special-02 .scroll-container .scroll-element {
+  padding-top: 4.25rem;
 }
 
 .section-cite blockquote {

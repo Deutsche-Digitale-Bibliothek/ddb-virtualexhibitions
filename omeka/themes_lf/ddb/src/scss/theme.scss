@@ -293,7 +293,7 @@ h5 {
   bottom: 0;
   left: 0;
   z-index: 1;
-  height: 60px;
+  height: 90px;
 }
 
 // media col
@@ -485,7 +485,7 @@ h5 {
     line-height: 1.4;
     // line-height: 4.25rem;
     span {
-      padding: .25rem 0;
+      padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }
   }
@@ -498,7 +498,7 @@ h5 {
     line-height: 1.4;
     // letter-spacing: -.5rem;
     span {
-      padding: .25rem 0;
+      padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }
   }
@@ -559,7 +559,7 @@ h5 {
     font-size: 3.625rem;
     line-height: 4.25rem;
     span {
-      padding: .25rem 0;
+      padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }
   }
@@ -568,7 +568,7 @@ h5 {
     font-size: 1.75rem;
     line-height: 2.375rem;
     span {
-      padding: .25rem 0;
+      padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }
   }
@@ -609,6 +609,28 @@ h5 {
   }
 }
 
+.section-text-special-02 {
+  .col-title {
+    h2 {
+      margin: 2rem 0;
+    }
+  }
+  .col-top {
+    padding-top: 2.25rem;
+  }
+  .col-center {
+    align-self: center;
+  }
+  .col-bottom {
+    align-self: flex-end;
+    padding-bottom: 4.25rem;
+  }
+  .scroll-container {
+    .scroll-element {
+      padding-top: 4.25rem;
+    }
+  }
+}
 
 // section-cite template
 .section-cite {

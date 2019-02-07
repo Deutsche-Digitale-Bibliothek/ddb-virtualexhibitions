@@ -42,7 +42,7 @@
   function initFullPage() {
     $('#fullpage').fullpage({
 
-      licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+      licenseKey: '8B69A3A7-6EE14CEB-AB786AF1-5C9D1AB6',
 
       // Navigation
       menu: '#menu',
