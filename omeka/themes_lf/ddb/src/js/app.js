@@ -301,16 +301,35 @@
       height = (height - menuProps.height);
     }
 
+    var mediaItemMaxHeight = height;
+
     // subtract individual media-item-caption height
     $('.media-item').each(function () {
       var $mediaItem = $(this);
       var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
       var captionHeight= $caption.height();
       if (captionHeight) {
-        height -= captionHeight;
+        mediaItemMaxHeight -= captionHeight;
       }
-      $mediaItem.css({ 'max-height': height + 'px' });
+      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
+
+    // make media meta scroll
+    // this will not work, we would have to wait for image load events
+    // https://stackoverflow.com/questions/3877027/jquery-callback-on-image-load-even-when-the-image-is-cached
+    // and also if we do, image height can change on window resize event ...
+
+    // $('.section-text-media .media-meta').each(function () {
+    //   var mediaMeta = $(this);
+    //   var maxHeight = (mediaMeta.height() / 2) + (mediaMeta.prev('.media-item-container').height() / 2);
+    //   var marginTop = mediaMeta.height() - maxHeight;
+    //   $('.media-meta-scroll', mediaMeta).css({
+    //     'max-height': maxHeight + 'px',
+    //     'margin-top': marginTop + 'px'
+    //   });
+
+    // });
+
 
     var mediaMetaScroll = $('.media-meta-scroll');
     if ($(window).width() < 768) {

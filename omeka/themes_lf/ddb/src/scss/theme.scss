@@ -368,6 +368,22 @@ h5 {
     justify-content: center;
   }
 }
+
+// the full col height scroll from image top aproach (will not work)
+// .col-media {
+//   display: flex;
+//   transition: all .5s;
+//   .container-media {
+//     display: flex;
+//     .content-media {
+//       display: flex;
+//     }
+//     .media-item-container {
+//       align-self: center;
+//     }
+//   }
+// }
+
 .media-item {
   display: block;
   max-width: 100%;
