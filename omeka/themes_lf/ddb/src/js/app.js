@@ -3,6 +3,7 @@
   'use strict';
 
   var menuProps;
+  var headerHeight = 38;
 
   // var pubsub = (function () {
 
@@ -94,7 +95,7 @@
       // verticalCentered: true,
       // sectionsColor: ['#fcc', '#006', '#ccf', '#ffc'],
       sectionsColor: options.sectionsColor,
-      paddingTop: '38px',
+      paddingTop: headerHeight + 'px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu',
       responsiveWidth: 768,
