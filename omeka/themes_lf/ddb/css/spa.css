@@ -5143,7 +5143,7 @@ h5 {
 
 .col-media.active .content-media {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .col-media.active .content-media .media-meta,

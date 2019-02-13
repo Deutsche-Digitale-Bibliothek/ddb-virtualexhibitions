@@ -156,15 +156,7 @@
   }
 
   function fpAfterResponsive(isResponsive) {
-
-    // console.log('responsive', isResponsive);
     setTableCellHeight(isResponsive);
-    if (isResponsive) {
-      // $('.fp-tableCell').removeAttr('style');
-      $('.fp-tableCell').attr('style', 'height: 100%');
-    } else {
-      $('.fp-tableCell').attr('style', 'height: ' + $('.fp-tableCell').parent('.section').height() + 'px');
-    }
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -190,9 +182,11 @@
 
   function setTableCellHeight(isResponsive) {
     if (isResponsive) {
-      $('.fp-tableCell').removeAttr('style');
+      $('.fp-tableCell').css('height', '100%');
     } else {
-      $('.fp-tableCell').attr('style', 'height: ' + $('.fp-tableCell').parent('.section').height() + 'px');
+      $('.fp-tableCell').css('height', function () {
+        return ($(this).parent('.section').height() - headerHeight) + 'px';
+      });
     }
   }
 
