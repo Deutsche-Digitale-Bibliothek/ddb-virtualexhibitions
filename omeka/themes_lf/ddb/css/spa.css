@@ -5033,6 +5033,9 @@ h5 {
   }
   .fp-tableCell {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: calc(100vh - 40px);
   }
 }
@@ -5636,6 +5639,42 @@ h5 {
 .pos-box-br {
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.section-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.section-item > div {
+  flex-grow: 1;
+  max-width: 768px;
+  padding: 0 30px;
+}
+
+.section-item .control-icon {
+  margin-bottom: 0;
+}
+
+.section-item .media-title {
+  margin-top: 2rem;
+}
+
+.section-item .media-title h2 {
+  margin-bottom: 0;
+}
+
+.section-item .media-audio-image {
+  width: 264px;
+  height: 264px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-origin: content-box;
+  background-size: contain;
 }
 
 .dark h1,
