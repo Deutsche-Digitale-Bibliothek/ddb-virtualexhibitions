@@ -99,6 +99,9 @@ h5 {
   text-align: center;
   background: #333;
   box-shadow: 0 7px 6px 0 rgba(0, 0, 0, .22);
+  .icon {
+    cursor: pointer;
+  }
   .icon-expand {
     margin-right: 26px;
   }
@@ -132,8 +135,59 @@ h5 {
 }
 
 // menu
-.menu {
-  display: none;
+.menu-container {
+  position: fixed;
+  top: 40px;
+  right: -430px;
+  bottom: 0;
+  z-index: 5;
+  display: block;
+  width: 420px;
+  padding: 10px 15px 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgba(93, 93, 93, .95);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+  transition: right .25s ease-in-out;
+  &.active {
+    right: 0;
+  }
+  div,
+  li,
+  p {
+    font-size: 1rem;
+  }
+  ul {
+    padding: 0 0 0 4rem;
+    list-style: none;
+  }
+  a {
+    color: #fff;
+  }
+  .menu-header {
+    h2,
+    p {
+      padding: 0 0 0 4rem;
+      margin-bottom: 0;
+    }
+    border-bottom: 1px solid #ccc;
+  }
+  .menu {
+    line-height: 1;
+    a {
+      display: block;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    li {
+      border-bottom: 1px solid #999;
+    }
+    li.active {
+      // background-color: rgba(168, 168, 168, .6);
+      background-color: #447494;
+    }
+  }
 }
 
 // fullpage
@@ -217,6 +271,12 @@ h5 {
   background-size: cover;
 }
 
+// audio
+.audio-controls {
+  display: block;
+  margin: 0 auto;
+}
+
 // scroll-container
 .scroll-container {
   display: flex;
@@ -274,15 +334,15 @@ h5 {
   }
 }
 
-.section-text-media-left {
-  .col-media {
-    .container-media {
-      @include media-breakpoint-down(sm) {
-        padding-top: 60px;
-      }
-    }
-  }
-}
+// .section-text-media-left {
+//   .col-media {
+//     .container-media {
+//       @include media-breakpoint-down(sm) {
+//         padding-top: 60px;
+//       }
+//     }
+//   }
+// }
 
 // text col
 .col-text {
@@ -317,7 +377,7 @@ h5 {
     justify-content: flex-start;
     @include media-breakpoint-down(sm) {
       display: block;
-      // padding-top: 60px;
+      padding-top: 60px;
       .control-icon {
         display: inline-block;
         padding-bottom: .25rem;
@@ -325,7 +385,9 @@ h5 {
       }
       .control-icon-right {
         display: inline-block;
-        margin-bottom: 1.5rem;
+        // margin-bottom: 1.5rem;
+        padding-bottom: .25rem;
+        margin-bottom: 0;
       }
       .control-icon-right:first-child {
         padding-left: 0;

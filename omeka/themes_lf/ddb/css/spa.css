@@ -4895,6 +4895,10 @@ h5 {
   box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.22);
 }
 
+.header .icon {
+  cursor: pointer;
+}
+
 .header .icon-expand {
   margin-right: 26px;
 }
@@ -4926,8 +4930,68 @@ h5 {
   background-color: #fff;
 }
 
-.menu {
-  display: none;
+.menu-container {
+  position: fixed;
+  top: 40px;
+  right: -430px;
+  bottom: 0;
+  z-index: 5;
+  display: block;
+  width: 420px;
+  padding: 10px 15px 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgba(93, 93, 93, 0.95);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  transition: right .25s ease-in-out;
+}
+
+.menu-container.active {
+  right: 0;
+}
+
+.menu-container div,
+.menu-container li,
+.menu-container p {
+  font-size: 1rem;
+}
+
+.menu-container ul {
+  padding: 0 0 0 4rem;
+  list-style: none;
+}
+
+.menu-container a {
+  color: #fff;
+}
+
+.menu-container .menu-header {
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-container .menu-header h2,
+.menu-container .menu-header p {
+  padding: 0 0 0 4rem;
+  margin-bottom: 0;
+}
+
+.menu-container .menu {
+  line-height: 1;
+}
+
+.menu-container .menu a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.menu-container .menu li {
+  border-bottom: 1px solid #999;
+}
+
+.menu-container .menu li.active {
+  background-color: #447494;
 }
 
 .section-container {
@@ -5010,6 +5074,11 @@ h5 {
   background-size: cover;
 }
 
+.audio-controls {
+  display: block;
+  margin: 0 auto;
+}
+
 .scroll-container {
   display: flex;
   flex-direction: row;
@@ -5076,12 +5145,6 @@ h5 {
   padding: 0 2.5rem 0 0;
 }
 
-@media (max-width: 767.98px) {
-  .section-text-media-left .col-media .container-media {
-    padding-top: 60px;
-  }
-}
-
 .col-text.hidden {
   display: none;
 }
@@ -5117,6 +5180,7 @@ h5 {
 @media (max-width: 767.98px) {
   .col-media .container-media {
     display: block;
+    padding-top: 60px;
   }
   .col-media .container-media .control-icon {
     display: inline-block;
@@ -5125,7 +5189,8 @@ h5 {
   }
   .col-media .container-media .control-icon-right {
     display: inline-block;
-    margin-bottom: 1.5rem;
+    padding-bottom: .25rem;
+    margin-bottom: 0;
   }
   .col-media .container-media .control-icon-right:first-child {
     padding-left: 0;

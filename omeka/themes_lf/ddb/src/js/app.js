@@ -46,11 +46,11 @@
       licenseKey: '8B69A3A7-6EE14CEB-AB786AF1-5C9D1AB6',
 
       // Navigation
-      menu: '#menu',
+      menu: '#menu-container',
       // lockAnchors: false,
       // anchors: ['s0', 's1', 's2', 's3'],
       anchors: options.anchors,
-      // navigation: false,
+      // navigation: true,
       // navigationPosition: 'right',
       // navigationTooltips: ['firstSlide', 'secondSlide'],
       // showActiveTooltip: false,
@@ -59,7 +59,7 @@
 
       // Scrolling
       // css3: true,
-      // scrollingSpeed: 700,
+      // scrollingSpeed: 1500,
       autoScrolling: false,
       // fitToSection: true,
       fitToSectionDelay: 500,
@@ -97,7 +97,7 @@
       sectionsColor: options.sectionsColor,
       paddingTop: headerHeight + 'px',
       // paddingBottom: '10px',
-      fixedElements: '#header, #menu',
+      fixedElements: '#header, #menu-container',
       responsiveWidth: 768,
       // responsiveHeight: 0,
       // responsiveSlides: false,
@@ -148,15 +148,30 @@
     // console.log('renderd');
   }
 
+  function fpAfterResponsive(isResponsive) {
+    // console.log('is responsive (< 768)? - ' +
+    // 'responsive, width-jq, height-jq:',
+    // isResponsive, $(window).width(), $(window).height());
+    setTableCellHeight(isResponsive);
+    if (!isResponsive) {
+      // Fix fullpage.js setFitToSection after moving to desktop
+      $.fn.fullpage.setFitToSection(true);
+    }
+  }
+
+  // @TODO check if resize fires each time ...
   function fpAfterResize(width, height) {
-    // console.log('resize - height is wrong somehow', width, height);
+    var isResponsive = ($(window).width() < 768)? true : false;
+    // console.log('resize - ' +
+    // 'width, width-jq, height, height-jq:',
+    // width, $(window).width(), height, $(window).height());
+
+    // Fix fullpage.js will reset height to pixel instead of 100% after fpAfterResponsive
+    setTableCellHeight(isResponsive);
+
     setScrollElementMaxHeight();
     toggleScrollControls();
     setMediaProps();
-  }
-
-  function fpAfterResponsive(isResponsive) {
-    setTableCellHeight(isResponsive);
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -301,6 +316,8 @@
       height = (height - menuProps.height);
     }
 
+    // console.log($(window).height(), menuProps.height, height);
+
     var mediaItemMaxHeight = height;
 
     // subtract individual media-item-caption height
@@ -339,7 +356,7 @@
       });
     } else {
       mediaMetaScroll.css({
-        'max-height': height,
+        'max-height': (height - 64), // 64 for the padding top and bottom from parent .media-meta
         // 'padding-right': (mediaMetaScroll[0].offsetWidth - mediaMetaScroll[0].clientWidth) + 'px'
         // 'padding-right': '17px',
         'padding-right': '32px',
@@ -349,7 +366,9 @@
 
   function setMenuProps() {
     menuProps = {
-      height: $('#menu').height()
+      // this is to early as menu css will not be loaded in this state:
+      // height: $('#menu').height()
+      height: headerHeight
     };
   }
 
@@ -431,12 +450,29 @@
     });
   }
 
+  function bindMenu() {
+    $('#toggle-menu').click(function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var menuContainer = $('#menu-container');
+      var menuControll = $(this);
+      if (menuContainer.hasClass('active')) {
+        menuControll.removeClass('active');
+        menuContainer.removeClass('active');
+      } else {
+        menuControll.addClass('active');
+        menuContainer.addClass('active');
+      }
+    });
+  }
+
   function init() {
     $(function () {
       setMenuProps();
       setRGBColorInPalettes();
       setColors();
       initFullPage();
+      bindMenu();
       setScrollElementMaxHeight();
       bindSCrollControls();
       toggleScrollControls();
