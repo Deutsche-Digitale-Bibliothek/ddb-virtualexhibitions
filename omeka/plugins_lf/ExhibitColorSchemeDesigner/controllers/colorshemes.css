@@ -1,0 +1,36 @@
+
+                    .colorscheme_1 {
+                        background-color: #333333;
+                        color: #eeeeee;
+                    }
+                    .colorscheme_1 .bg_content {
+                        background-color: rgba(51, 51, 51, 0.8);
+                    }
+                
+
+                    .colorscheme_2 {
+                        background-color: #ffffff;
+                        color: #333333;
+                    }
+                    .colorscheme_2 .bg_content {
+                        background-color: rgba(255, 255, 255, 0.8);
+                    }
+                
+
+                    .colorscheme_4 {
+                        background-color: #006600;
+                        color: #ffffff;
+                    }
+                    .colorscheme_4 .bg_content {
+                        background-color: rgba(0, 102, 0, 0.8);
+                    }
+                
+
+                    .colorscheme_5 {
+                        background-color: #000000;
+                        color: #ffffff;
+                    }
+                    .colorscheme_5 .bg_content {
+                        background-color: rgba(0, 0, 0, 0.8);
+                    }
+                

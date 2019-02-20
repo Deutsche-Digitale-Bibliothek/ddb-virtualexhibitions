@@ -1405,7 +1405,7 @@ class ExhibitDdbHelper
      * @param int $itemId Object Item ID
      * @return array Array of ExhibitPage objects
      */
-    static function findItemInExhibitPage($itemId)
+    public static function findItemInExhibitPage($itemId)
     {
         $pages = array();
         $entries = get_db()->getTable('ExhibitPageEntry')->findBy(array('item_id' => $itemId));
@@ -1423,7 +1423,7 @@ class ExhibitDdbHelper
      * @param ExhibitPage $page An ExhibitPage object
      * @return String HTML output
      */
-    static function getEditPageEntry($page)
+    public static function getEditPageEntry($page)
     {
         $pageId = html_escape($page->id);
         $html = '<li class="page" id="page_' . $pageId . '">'
