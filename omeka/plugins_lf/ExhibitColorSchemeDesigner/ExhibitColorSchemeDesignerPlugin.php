@@ -49,7 +49,7 @@ class ExhibitColorSchemeDesignerPlugin extends Omeka_Plugin_AbstractPlugin
             `created_by_user_id` int(10) unsigned NOT NULL,
             `modified_by_user_id` int(10) unsigned NOT NULL,
             `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            `inserted` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+            `inserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (`id`),
             KEY `inserted` (`inserted`),
             KEY `updated` (`updated`),
