@@ -31,7 +31,7 @@
   "scripts": {
     "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 src/scss/custom.scss css/spa.css",
     "css-lint": "stylelint --config src/build/.stylelintrc --syntax scss \"src/scss/**/*.scss\"",
-    "css-prefix": "postcss --config src/build/postcss.config.js --replace \"css/*.css\" \"!css/*.min.css\"",
+    "css-prefix": "postcss --config src/build/postcss.config.js --replace \"css/*spa.css\" \"!css/*.min.css\"",
     "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output css/spa.min.css css/spa.css",
     "css-main": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
     "watch-css-main": "nodemon --watch src/scss/ --ext scss --exec \"npm run css-main\"",

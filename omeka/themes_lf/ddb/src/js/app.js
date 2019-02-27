@@ -484,4 +484,4 @@
 
   init();
 
-})(jQuery, litfassOptions, litfassColorPalettes);
+})(jQuery, window.litfassOptions, window.litfassColorPalettes);

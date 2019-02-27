@@ -5280,6 +5280,23 @@ h5 {
   font-size: 1rem;
 }
 
+.scroll-controls path,
+.scroll-controls line {
+  fill: none;
+  stroke: #1d1d1b;
+  stroke-width: 3px;
+}
+
+.control-info g line {
+  fill: none;
+  stroke: #1d1d1b;
+  stroke-width: 3px;
+}
+
+.control-info .icon-info-i g line {
+  stroke-width: 4px;
+}
+
 .control-icon {
   padding-right: .5rem;
   margin-bottom: .25rem;
@@ -5300,12 +5317,12 @@ h5 {
 
 .control-info .icon-info .icon-info-x-line {
   fill: none;
-  stroke: #000;
+  stroke: #1d1d1b;
   stroke-width: 3px;
 }
 
 .control-info .icon-info:hover {
-  background-color: #000;
+  background-color: #1d1d1b;
 }
 
 .control-info .icon-info:hover .icon-info-i line {
@@ -5340,7 +5357,7 @@ h5 {
 
 .control-zoom .icon-zoom .icon-zoom-1,
 .control-zoom .icon-zoom .icon-zoom-2 {
-  stroke: #000;
+  stroke: #1d1d1b;
   stroke-width: 3px;
 }
 
@@ -5353,7 +5370,7 @@ h5 {
 }
 
 .control-zoom .icon-zoom:hover {
-  background-color: #000;
+  background-color: #1d1d1b;
 }
 
 .control-zoom .icon-zoom:hover .icon-zoom-1 {
@@ -5688,7 +5705,7 @@ h5 {
 }
 
 .dark .title-container .title-bottom .credits {
-  color: #000;
+  color: #1d1d1b;
 }
 
 .dark .title-container .title-bottom .credits span {
@@ -5703,7 +5720,7 @@ h5 {
 .icon-next-page .cls-1,
 .icon-next-page .cls-2 {
   fill: none;
-  stroke: #000;
+  stroke: #1d1d1b;
   stroke-width: 3px;
 }
 
@@ -5740,6 +5757,18 @@ h5 {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.dark .scroll-controls path,
+.dark .scroll-controls line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3px;
+}
+
+.dark .scroll-controls .scroll-arrow-up:hover path,
+.dark .scroll-controls .scroll-arrow-down:hover path {
+  stroke: rgba(0, 0, 0, 0.6);
+}
+
 .dark .control-zoom .icon-zoom .icon-zoom-1,
 .dark .control-zoom .icon-zoom .icon-zoom-2 {
   stroke: #fff;
@@ -5751,7 +5780,13 @@ h5 {
 }
 
 .dark .control-zoom .icon-zoom:hover .icon-zoom-1 {
-  stroke: #000;
+  stroke: #1d1d1b;
+}
+
+.dark .control-info .icon-info g line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3px;
 }
 
 .dark .control-info .icon-info .icon-info-x-line {
@@ -5765,7 +5800,7 @@ h5 {
 }
 
 .dark .control-info .icon-info:hover .icon-info-i line {
-  stroke: #000;
+  stroke: #1d1d1b;
 }
 
 .dark .control-info .icon-info.active, .dark .control-info .icon-info.active:hover {
@@ -5805,6 +5840,6 @@ h5 {
 }
 
 .dark .icon-next-page:hover .cls-2 {
-  stroke: #000;
+  stroke: #1d1d1b;
 }
 /*# sourceMappingURL=spa.css.map */

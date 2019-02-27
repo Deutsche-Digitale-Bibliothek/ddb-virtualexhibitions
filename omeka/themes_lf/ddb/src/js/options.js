@@ -1,4 +1,4 @@
-var litfassColorPalettes = {
+window.litfassColorPalettes = {
   a: {
     grey: {
       hex: '#3d4f58',
@@ -208,23 +208,4 @@ var litfassColorPalettes = {
       menu: false
     }
   }
-};
-
-var litfassOptions = {
-  anchors: ['s0', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12'],
-  sectionsColor: [
-    litfassColorPalettes.c.rose.hex,
-    litfassColorPalettes.c.grey.hex,
-    litfassColorPalettes.c.green.hex,
-    litfassColorPalettes.c.grey.hex,
-    litfassColorPalettes.c.apricot.hex,
-    litfassColorPalettes.c.blue.hex,
-    litfassColorPalettes.c.sand.hex,
-    litfassColorPalettes.c.rose.hex,
-    litfassColorPalettes.c.green.hex,
-    litfassColorPalettes.c.blue.hex,
-    litfassColorPalettes.c.sand.hex,
-    litfassColorPalettes.c.grey.hex,
-    litfassColorPalettes.c.blue.hex
-  ]
 };

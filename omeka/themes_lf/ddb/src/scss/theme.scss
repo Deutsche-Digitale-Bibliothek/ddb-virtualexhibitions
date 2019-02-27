@@ -490,11 +490,27 @@ h5 {
 }
 
 // controls & icons
-// @include media-breakpoint-down(sm) {
-//   .content-controls {
-//     margin-top: 0;
-//   }
-// }
+.scroll-controls {
+  path,
+  line {
+    fill: none;
+    stroke: $body-color;
+    stroke-width: 3px;
+  }
+}
+
+
+.control-info {
+  g line {
+    fill: none;
+    stroke: $body-color;
+    stroke-width: 3px;
+  }
+  .icon-info-i g line {
+    stroke-width: 4px;
+  }
+}
+
 .control-icon {
   padding-right: .5rem;
   margin-bottom: .25rem;
@@ -511,11 +527,11 @@ h5 {
     }
     .icon-info-x-line {
       fill: none;
-      stroke: #000;
+      stroke: $body-color;
       stroke-width: 3px;
     }
     &:hover {
-      background-color: #000;
+      background-color: $body-color;
       // background-color: rgba(255, 255, 255, .6);
       .icon-info-i line {
         stroke: #fff;
@@ -550,7 +566,7 @@ h5 {
 
     .icon-zoom-1,
     .icon-zoom-2 {
-      stroke: #000;
+      stroke: $body-color;
       stroke-width: 3px;
     }
 
@@ -562,7 +578,7 @@ h5 {
       stroke: none;
     }
     &:hover {
-      background-color: #000;
+      background-color: $body-color;
       .icon-zoom-1 {
         stroke: #fff;
       }
@@ -875,7 +891,7 @@ h5 {
     }
   }
   .title-container .title-bottom .credits {
-    color: #000;
+    color: $body-color;
     span {
       background-color: rgba(255, 255, 255, .8);
     }
@@ -889,7 +905,7 @@ h5 {
   .cls-1,
   .cls-2 {
     fill: none;
-    stroke: #000;
+    stroke: $body-color;
     stroke-width: 3px;
   }
 
@@ -924,6 +940,18 @@ h5 {
   .media-meta {
     background-color: rgba(0, 0, 0, .2);
   }
+  .scroll-controls {
+    path,
+    line {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 3px;
+    }
+    .scroll-arrow-up:hover path,
+    .scroll-arrow-down:hover path {
+      stroke: rgba(0, 0, 0, .6);
+    }
+  }
   .control-zoom {
     .icon-zoom {
       .icon-zoom-1,
@@ -934,13 +962,18 @@ h5 {
       &:hover {
         background-color: #fff;
         .icon-zoom-1 {
-          stroke: #000;
+          stroke: $body-color;
         }
       }
     }
   }
   .control-info {
     .icon-info {
+      g line {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 3px;
+      }
       .icon-info-x-line {
         fill: none;
         stroke: #fff;
@@ -949,12 +982,12 @@ h5 {
       &:hover {
         background-color: #fff;
         .icon-info-i line {
-          stroke: #000;
+          stroke: $body-color;
         }
       }
       &.active,
       &.active:hover {
-        // background-color: #000;
+        // background-color: $body-color;
         background-color: transparent;
         .icon-info-frame {
           display: none;
@@ -965,7 +998,7 @@ h5 {
       }
     }
     &.active {
-      // background-color: #000;
+      // background-color: $body-color;
       background-color: rgba(0, 0, 0, .2);
     }
   }
@@ -996,7 +1029,7 @@ h5 {
 
       // .cls-1,
       .cls-2 {
-        stroke: #000;
+        stroke: $body-color;
       }
     }
   }
