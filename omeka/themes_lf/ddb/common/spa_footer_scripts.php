@@ -1,6 +1,4 @@
 <?php
-echo js_tag('vendor/jwplayer/jwplayer') . "\n";
-echo js_tag('vendor/jwplayer/key') . "\n";
 echo js_tag('options.min') . "\n";
 echo '<script type="text/javascript">' . "\n";
 echo 'window.litfassOptions = {';

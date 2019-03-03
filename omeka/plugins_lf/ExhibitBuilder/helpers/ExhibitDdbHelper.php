@@ -254,9 +254,10 @@ class ExhibitDdbHelper
      *
      * @param string $metaDataVideoSource
      * @param string $thumbnailsize
+     * @param string $outputType Output type HTML or URL
      * @return string
      */
-    public static function getVideoThumbnailFromShortcodeForMainItem($metaDataVideoSource, $thumbnailsize = 'large')
+    public static function getVideoThumbnailFromShortcodeForMainItem($metaDataVideoSource, $thumbnailsize = 'large', $outputType = null)
     {
         $output = '';
         $matches = self::parseShortcode($metaDataVideoSource);
@@ -269,8 +270,13 @@ class ExhibitDdbHelper
                     $videoInfo = self::getVideoVimeoInfo($videoId);
                     $currentThumbnailsize = 'thumbnail_' . $thumbnailsize;
                     if (isset($videoInfo[0][$currentThumbnailsize]) && !empty($videoInfo[0][$currentThumbnailsize])) {
-                        $output = '<img src="'
-                            . $videoInfo[0][$currentThumbnailsize] . '" alt="video" >';
+                        if (isset($outputType) && $outputType === 'URL') {
+                            $output = $videoInfo[0][$currentThumbnailsize];
+                        } else {
+                            $output = '<img src="'
+                                . $videoInfo[0][$currentThumbnailsize] . '" alt="video" >';
+
+                        }
                     }
                     break;
                 case 'ddb':
@@ -282,9 +288,13 @@ class ExhibitDdbHelper
                         self::getDdbVideoXml($videoId);
                     }
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
-                        $output = '<img src="'
-                            . self::$ddbVideoXml[$videoId]['img']['src']
-                            . '" alt="video">';
+                        if (isset($outputType) && $outputType === 'URL') {
+                            $output = self::$ddbVideoXml[$videoId]['img']['src'];
+                        } else {
+                            $output = '<img src="'
+                                . self::$ddbVideoXml[$videoId]['img']['src']
+                                . '" alt="video">';
+                        }
                     }
                     break;
                 default:
@@ -393,16 +403,13 @@ class ExhibitDdbHelper
                         $output = '
                         <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
                         <script>
-
-
-                            // We assume jquery is loaded as we get this in colorbox
-                            if (typeof $.Gina == "undefined") {
-                                $.Gina = {};
+                            if (typeof window.Gina == "undefined") {
+                                window.Gina = {};
                             };
 
-                            $.Gina.calcColorboxVideoWidth = function(maxWidth) {
-                                if ($.Gina.winW < maxWidth) {
-                                    maxWidth = $.Gina.winW;
+                            window.Gina.calcVideoWidth = function(maxWidth) {
+                                if (typeof window.Gina.hasOwnProperty("winW") && window.Gina.winW < maxWidth) {
+                                    maxWidth = window.Gina.winW;
                                 }
                                 return maxWidth;
                             };
@@ -435,7 +442,7 @@ class ExhibitDdbHelper
                                 "image": "' . $videoImage . '",
                                 "type": "' . self::$ddbVideoXml[$videoId]['video']['mime'] . '",
                                 "file": "' .  self::$ddbVideoXml[$videoId]['video']['src'] . '",
-                                "width": $.Gina.calcColorboxVideoWidth(500),
+                                "width": window.Gina.calcVideoWidth(500),
                                 "height": 281,
 
                             })';
@@ -1358,35 +1365,17 @@ class ExhibitDdbHelper
 
         // Video
         if($videoSrc) {
-
+            // return '<p>Video ist noch nicht implementiert.</p>';
             if (isset($file)) {
-                $imgAttributes = array('alt' => $attachmentTitle, 'class' => 'full');
-                $uri = html_escape($file->getWebPath('fullsize'));
-                $thumbnail = '<div class="exhibit-item-inner-container"><img src="' . $uri . '" ' . tag_attributes($imgAttributes) . '/>' . "\n"
-                    . '<div class="blurb-main-image">Video</div></div>';
+                $videoImage = html_escape($file->getWebPath('fullsize'));
             } else {
-                $thumbnail = '<div class="exhibit-item-inner-container">' . self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large')
-                    . '<div class="blurb-main-image">Video</div></div>';
+                $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large');
             }
+            $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
+            // '<img src="https://iiif.deutsche-digitale-bibliothek.de/image/2/35653250-38af-495d-8b2b-a7273d7832ba/full/!140,105/0/default.jpg" alt="video">'
+            // var_dump($videoImage);
 
-            if (!empty($thumbnail)) {
-
-                $videoType = self::getVideotypeFromShortcode($videoSrc);
-                if ($videoType === 'vimeo') {
-                    // unset($linkAttributes['data-title']);
-                    // unset($linkAttributes['data-subtitle']);
-                    // unset($linkAttributes['data-description']);
-                }
-
-                $currentLinkOptions = array();
-                $currentLinkOptions = array_merge($linkAttributes, array(
-                    'title' => $attachmentTitle,
-                    'alt' => $attachmentTitle,
-                    'class' => 'exhibit-item-link expand-image-link'
-                ));
-                $caption = exhibit_builder_attachment_caption($attachment);
-                return exhibit_builder_link_to_exhibit_item($thumbnail, $currentLinkOptions, $attachment['item']) . $caption;
-            }
+            return self::getVideoFromShortcode($videoSrc, $videoImage);
         }
 
         // add s_options

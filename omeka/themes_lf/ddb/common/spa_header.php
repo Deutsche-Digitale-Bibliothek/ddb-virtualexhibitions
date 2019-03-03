@@ -13,6 +13,10 @@
     <?php if ( $description = option('description')): ?>
     <meta name="description" content="<?php echo $description; ?>">
     <?php endif; ?>
+    <?php
+    echo js_tag('vendor/jwplayer/jwplayer') . "\n";
+    echo js_tag('vendor/jwplayer/key') . "\n";
+    ?>
     <?php queue_css_file('spa.min'); ?>
     <?php echo head_css(); ?>
 </head>
