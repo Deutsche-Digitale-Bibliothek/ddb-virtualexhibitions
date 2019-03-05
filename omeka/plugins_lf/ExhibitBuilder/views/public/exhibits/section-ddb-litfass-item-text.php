@@ -73,12 +73,17 @@ $attachment = exhibit_builder_page_attachment(1);
                         </div>
                         <div class="media-item-container order-md-first">
                             <?php
-                            echo ExhibitDdbHelper::getAttachmentMarkup(
+                            $attachmentMarkup = ExhibitDdbHelper::getAttachmentMarkup(
                                 $attachment,
                                 array('class' => 'media-item'),
                                 true
                             );
                             ?>
+                            <?php if (empty($attachmentMarkup)): ?>
+                            <h4 style="margin: 1rem 2rem;"><i>Bitte Objekt einfügen ...</i></h4>
+                            <?php else: ?>
+                            <?php echo $attachmentMarkup; ?>
+                            <?php endif; ?>
                             <div class="media-item-caption media-item-caption-right">
                                 <?php //echo ExhibitDdbHelper::getItemDescription($attachment, null); ?>
                                 <?php echo ($attachment['caption'])? strip_tags($attachment['caption']) : ''; ?>
@@ -116,7 +121,12 @@ $attachment = exhibit_builder_page_attachment(1);
                         <div class="scroll-frame">
                             <div class="scroll-element">
                                 <h1><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h1>
-                                <?php echo exhibit_builder_page_text(1); ?>
+                                <?php $pageText = exhibit_builder_page_text(1); ?>
+                                <?php if (empty($pageText)): ?>
+                                <h4><i>Bitte Text eingeben ...</i></h4>
+                                <?php else: ?>
+                                <?php echo $pageText; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

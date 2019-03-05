@@ -5510,6 +5510,7 @@ h5 {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  width: 100%;
 }
 
 @media (max-width: 767.98px) {
@@ -5544,6 +5545,10 @@ h5 {
 .col-media.active .content-media {
   display: flex;
   align-items: flex-start;
+}
+
+.col-media.active .content-media .media-item-container {
+  min-width: 50%;
 }
 
 .col-media.active .content-media .media-item-caption-left {
