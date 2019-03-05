@@ -359,7 +359,7 @@
         'max-height': (height - 64), // 64 for the padding top and bottom from parent .media-meta
         // 'padding-right': (mediaMetaScroll[0].offsetWidth - mediaMetaScroll[0].clientWidth) + 'px'
         // 'padding-right': '17px',
-        'padding-right': '32px',
+        'padding-right': '34px',
       });
     }
   }

@@ -149,7 +149,7 @@
                     <div class="five columns omega inputs">
                         <p class="explanation">
                             <?php echo __('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'); ?></p>
-                        <?php echo $this->formText('institution[' . $instKey . '][pos]', $institution['pos']); ?>
+                        <?php echo str_replace('type="text"', 'type="number"', $this->formText('institution[' . $instKey . '][pos]', $institution['pos'])); ?>
                     </div>
                 </div>
                 <div class="field">
@@ -274,7 +274,7 @@ jQuery(document).ready(function($) {
                     '</div>' +
                     '<div class="five columns omega inputs">' +
                         '<p class="explanation">' + window.Gina.institutionStrings.posExpl + '</p>' +
-                        '<input type="text" name="institution[' +
+                        '<input type="number" step="1" name="institution[' +
                             window.Gina.institutionCounter + '][pos]" id="institution-' +
                             window.Gina.institutionCounter + '-pos" value="">' +
                     '</div>' +

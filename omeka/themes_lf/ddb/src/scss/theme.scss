@@ -552,10 +552,14 @@ h5 {
       // align-items: center;
       align-items: flex-start;
       // background-color: rgba(255, 255, 255, .6);
-      .media-meta,
-      .media-item-container {
-        flex-basis: 50%;
-      }
+
+      // .media-meta,
+      // .media-item-container {
+      //   // @TODO: check if it is OK to remove this:
+      //   // flex-basis: 50%;
+      //   // otherwhise there will be some spacing to the control i-icon ...
+      // }
+
       .media-item-caption-left {
         padding: 0 0 0 1rem;
       }
@@ -1044,7 +1048,6 @@ h5 {
   }
 }
 
-
 .icon-next-page {
   cursor: pointer;
   background-color: rgba(255, 255, 255, .6);
@@ -1067,8 +1070,103 @@ h5 {
   }
 }
 
+// shariff
+.shariff {
+  margin-top: 5rem;
+  &::after,
+  &::before {
+    display: table;
+    content: " ";
+  }
+  .orientation-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    li {
+      display: block;
+      margin-right: .5rem;
+      a {
+        display: block;
+      }
+    }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .fab {
+    display: block;
+  }
+  .fab::before {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    background-size: cover;
+  }
+  .fa-twitter::before {
+    content: "";
+    background-image: url("../images/icons/icon_twitter.svg");
+  }
+  .fa-facebook-f::before {
+    content: "";
+    background-image: url("../images/icons/icon_facebook.svg");
+  }
+  .fa-pinterest-p::before {
+    content: "";
+    background-image: url("../images/icons/icon_pinterest.svg");
+  }
+  .fa-tumblr::before {
+    content: "";
+    background-image: url("../images/icons/icon_tumblr.svg");
+  }
+}
 
-// dark
+// licenses
+i.license {
+  display: block;
+  float: left;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  background-image: url("../images/licenses.png");
+  background-repeat: no-repeat;
+  background-position: -154px 0;
+}
+i.license-by {
+  background-position: 0 0;
+}
+i.license-nd {
+  background-position: -22px 0;
+}
+i.license-nc {
+  background-position: -44px 0;
+}
+i.license-sa {
+  background-position: -66px 0;
+}
+i.license-pd {
+  background-position: -88px 0;
+}
+i.license-pdzero {
+  background-position: -110px 0;
+}
+i.license-rr {
+  background-position: -132px 0;
+}
+i.license-or {
+  background-position: -154px 0;
+}
+
+// --------------------------- +++ dark +++ ---------------------------
 .dark {
   color: #fff;
   p,
@@ -1179,43 +1277,23 @@ h5 {
       }
     }
   }
-}
-
-// licenses
-
-i.license {
-  display: block;
-  float: left;
-  width: 22px;
-  height: 22px;
-  overflow: hidden;
-  background-image: url("../images/licenses.png");
-  background-repeat: no-repeat;
-  background-position: -154px 0;
-}
-i.license-by {
-  background-position: 0 0;
-}
-i.license-nd {
-  background-position: -22px 0;
-}
-i.license-nc {
-  background-position: -44px 0;
-}
-i.license-sa {
-  background-position: -66px 0;
-}
-i.license-pd {
-  background-position: -88px 0;
-}
-i.license-pdzero {
-  background-position: -110px 0;
-}
-i.license-rr {
-  background-position: -132px 0;
-}
-i.license-or {
-  background-position: -154px 0;
+  .shariff {
+    .fa-twitter::before {
+      background-image: url("../images/icons/icon_twitter_dark.svg");
+    }
+    .fa-facebook-f::before {
+      background-image: url("../images/icons/icon_facebook_dark.svg");
+    }
+    .fa-pinterest-p::before {
+      background-image: url("../images/icons/icon_pinterest_dark.svg");
+    }
+    .fa-tumblr::before {
+      background-image: url("../images/icons/icon_tumblr_dark.svg");
+    }
+  }
+  i.license {
+    background-image: url("../images/licenses_dark.png");
+  }
 }
 
 // color palettes

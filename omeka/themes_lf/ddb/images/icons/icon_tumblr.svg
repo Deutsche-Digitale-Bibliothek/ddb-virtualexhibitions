@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #1d1d1b;
+        stroke-linecap: square;
+        stroke-width: 3px;
+      }
+      .cls-2 {
+        fill: #1d1d1b;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_92_1" data-name="Symbol 92 – 1" transform="translate(-689.5 -844.5)">
+    <g id="Gruppe_2273" data-name="Gruppe 2273" transform="translate(648.5 813.5)">
+      <g id="Gruppe_579" data-name="Gruppe 579">
+        <line id="Linie_78" data-name="Linie 78" class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)"/>
+        <line id="Linie_79" data-name="Linie 79" class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)"/>
+        <line id="Linie_80" data-name="Linie 80" class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)"/>
+      </g>
+      <g id="Gruppe_580" data-name="Gruppe 580" transform="translate(130 110) rotate(180)">
+        <line id="Linie_78-2" data-name="Linie 78" class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)"/>
+        <line id="Linie_79-2" data-name="Linie 79" class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)"/>
+        <line id="Linie_80-2" data-name="Linie 80" class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)"/>
+      </g>
+    </g>
+    <g id="iconfinder_203-Tumblr_192161" transform="translate(593.938 857.637)">
+      <path id="Pfad_1317" data-name="Pfad 1317" class="cls-2" d="M115.955,19.242V9.257h-2.894V5.617s4.669-.467,4.669-6.254h3.358V5.247h5.873V8.7h-5.873v8.675s2.429,4.015,5.973.467v3.828S118.1,25.591,115.955,19.242Z"/>
+    </g>
+  </g>
+</svg>

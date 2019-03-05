@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.5" height="48.5" viewBox="0 0 48.5 48.5">
+  <defs>
+    <style>
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: square;
+        stroke-width: 3px;
+      }
+      .cls-3 path {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="icon_twitter_weiss" transform="translate(-117 -177)">
+    <g id="Gruppe_601" data-name="Gruppe 601">
+      <g id="Gruppe_600" data-name="Gruppe 600" transform="translate(76.5 146.5)">
+        <g id="Gruppe_579" data-name="Gruppe 579">
+          <line id="Linie_78" data-name="Linie 78" class="cls-2" x2="10" transform="translate(52.5 32.5) rotate(180)"/>
+          <line id="Linie_79" data-name="Linie 79" class="cls-2" x2="10" transform="translate(52.5 77.5) rotate(180)"/>
+          <line id="Linie_80" data-name="Linie 80" class="cls-2" y1="45" transform="translate(42.5 77.5) rotate(180)"/>
+        </g>
+        <g id="Gruppe_580" data-name="Gruppe 580" transform="translate(130 110) rotate(180)">
+          <line id="Linie_78-2" data-name="Linie 78" class="cls-2" x2="10" transform="translate(52.5 32.5) rotate(180)"/>
+          <line id="Linie_79-2" data-name="Linie 79" class="cls-2" x2="10" transform="translate(52.5 77.5) rotate(180)"/>
+          <line id="Linie_80-2" data-name="Linie 80" class="cls-2" y1="45" transform="translate(42.5 77.5) rotate(180)"/>
+        </g>
+      </g>
+    </g>
+    <g id="twitter-logo-silhouette" class="cls-3" transform="translate(128.999 133.559)">
+      <g id="Gruppe_311" data-name="Gruppe 311" transform="translate(0.001 57.441)">
+        <path id="Pfad_173" data-name="Pfad 173" d="M23.538,59.7a9.642,9.642,0,0,1-2.772.76,4.848,4.848,0,0,0,2.122-2.67,9.734,9.734,0,0,1-3.068,1.172,4.832,4.832,0,0,0-8.228,4.4,13.708,13.708,0,0,1-9.951-5.045,4.834,4.834,0,0,0,1.494,6.445,4.829,4.829,0,0,1-2.187-.606v.06a4.833,4.833,0,0,0,3.873,4.735,4.891,4.891,0,0,1-1.272.169,4.634,4.634,0,0,1-.909-.09,4.831,4.831,0,0,0,4.51,3.353,9.688,9.688,0,0,1-6,2.064A10.262,10.262,0,0,1,0,74.388,13.648,13.648,0,0,0,7.4,76.56,13.643,13.643,0,0,0,21.139,62.823l-.016-.625A9.642,9.642,0,0,0,23.538,59.7Z" transform="translate(-0.001 -57.441)"/>
+      </g>
+    </g>
+  </g>
+</svg>

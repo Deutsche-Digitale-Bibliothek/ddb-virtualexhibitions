@@ -989,6 +989,24 @@ class ExhibitDdbHelper
             $markup .= '</div>';
         }
 
+        // shariff
+        $mediaUrl = '';
+        if (isset($attachment['file'])) {
+            $mediaUrl = 'data-media-url="' . $attachment['file']->getWebPath('fullsize') . '"';
+        }
+        $markup .= '<div class="shariff"
+            data-backend-url="null"
+            data-button-style="icon"
+            data-lang="de"'
+            . $mediaUrl .
+            'data-orientation="horizontal"
+            data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;pinterest&quot;,&quot;tumblr&quot;]"
+            data-theme="white"
+            data-title="' . htmlentities($metadata['Titel']) . '"
+            data-url="' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+                . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '"
+        ></div>';
+
         // var_dump($attachment);
         return $markup;
     }
@@ -1449,9 +1467,9 @@ class ExhibitDdbHelper
             if (isset($file)) {
                 $videoImage = html_escape($file->getWebPath('fullsize'));
             } else {
-                $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large');
+                $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
             }
-            $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
+            // $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
             // '<img src="https://iiif.deutsche-digitale-bibliothek.de/image/2/35653250-38af-495d-8b2b-a7273d7832ba/full/!140,105/0/default.jpg" alt="video">'
             // var_dump($videoImage);
 
