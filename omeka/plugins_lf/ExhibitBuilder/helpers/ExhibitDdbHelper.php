@@ -771,7 +771,7 @@ class ExhibitDdbHelper
         $matchesSize = count($matches);
         for ($i=0; $i < $matchesSize; $i++) {
             if (isset($matches[$i][2]) && 'license' == $matches[$i][2] && isset($licenses[$matches[$i][3]])) {
-                $output .= '<a target="_blank" href="'
+                $output .= '<a target="_blank" rel="noopener" href="'
                     . $licenses[$matches[$i][3]]['link'] . '" title="'
                     . $licenses[$matches[$i][3]]['name'] . '">'
                     . $licenses[$matches[$i][3]]['icon']
@@ -911,6 +911,86 @@ class ExhibitDdbHelper
 
 
         return $output;
+    }
+
+    public static function getItemInfo($attachment)
+    {
+        $markup = '';
+        if (!$attachment) { return $markup; }
+        $item = $attachment['item'];
+        if (!$item) { return $markup; }
+        $metadata = item_type_elements($item);
+
+        // Titel
+        if (isset($metadata['Titel']) && !empty($metadata['Titel'])) {
+            $markup .= '<h3>' . $metadata['Titel'] . '</h3>';
+        }
+        // Untertitel
+        $subtitle = '';
+        if (isset($metadata['Beteiligte Personen und Organisationen']) && !empty($metadata['Beteiligte Personen und Organisationen'])) {
+            $subtitle .= $metadata['Beteiligte Personen und Organisationen'];
+        }
+        if (isset($metadata['Typ']) && !empty($metadata['Typ'])) {
+            if (!empty($subtitle)) {
+                $subtitle .= ', ';
+            }
+            $subtitle .= $metadata['Typ'];
+        }
+        if (isset($metadata['Zeit']) && !empty($metadata['Zeit'])) {
+            if (!empty($subtitle)) {
+                $subtitle .= ', ';
+            }
+            $subtitle .= $metadata['Zeit'];
+        }
+        if (isset($metadata['Ort']) && !empty($metadata['Ort'])) {
+            if (!empty($subtitle)) {
+                $subtitle .= ', ';
+            }
+            $subtitle .= $metadata['Ort'];
+        }
+        if (!empty($subtitle)) {
+            $markup .= '<h4>' . $subtitle . '</h4>';
+        }
+
+        // Sammlung
+        if (isset($metadata['Name der Institution']) && !empty($metadata['Name der Institution'])) {
+            $markup .= '<h5>Aus der Sammlung von</h5><p>';
+            if (isset($metadata['URL der Institution']) && !empty($metadata['URL der Institution'])) {
+                $markup .= '<a target="_blank" rel="noopener" href="' . strip_tags($metadata['URL der Institution']) . '">';
+            }
+            $markup .= $metadata['Name der Institution'];
+            if (isset($metadata['URL der Institution']) && !empty($metadata['URL der Institution'])) {
+                $markup .= '</a>';
+            }
+            $markup .= '</p>';
+        }
+
+        // copyright
+        $markup .= '<h5>Wie darf ich das Objekt nutzen?</h5><p>';
+        $markup .= self::getItemRights($attachment, null);
+        $markup .= '</p>';
+
+        // Quelle
+        if (isset($metadata['Copyright']) && !empty($metadata['Copyright'])) {
+            $markup .= '<h5>Quelle</h5><p>';
+            $markup .= strip_tags($metadata['Copyright']);
+            $markup .= '</p>';
+        }
+
+        // Link zum Objekt
+        $markup .= '<p><a target="_blank" rel="noopener" href="' .
+            self::getItemLinkUrl($attachment, null) .
+            '">Zum Objekt &gt;&gt;</a></p>';
+
+        // Kurzbeschreibung
+        if (isset($metadata['Kurzbeschreibung']) && !empty($metadata['Kurzbeschreibung'])) {
+            $markup .= '<h5>Kurzbeschreibung</h5><div class="info-kurzbeschreibung">';
+            $markup .= $metadata['Kurzbeschreibung'];
+            $markup .= '</div>';
+        }
+
+        // var_dump($attachment);
+        return $markup;
     }
 
     /**
@@ -1693,5 +1773,29 @@ class ExhibitDdbHelper
               . get_view()->formText("s_options[$order]", $options)
               . '</div>';
         return $html;
+    }
+
+    public static function getInstitutions($raw)
+    {
+        $institutions = unserialize($raw);
+        if (!$institutions) {
+            $institutions = [];
+        }
+        uasort($institutions, array('self', 'cmpInstitutions'));
+        return $institutions;
+    }
+
+    public static function cmpInstitutions($a, $b)
+    {
+        if (!isset($a['pos'])) {
+            return -1;
+        }
+        if (!isset($b['pos'])) {
+            return 1;
+        }
+        if ($a['pos'] == $b['pos']) {
+            return 0;
+        }
+        return ($a['pos'] < $b['pos']) ? -1 : 1;
     }
 }

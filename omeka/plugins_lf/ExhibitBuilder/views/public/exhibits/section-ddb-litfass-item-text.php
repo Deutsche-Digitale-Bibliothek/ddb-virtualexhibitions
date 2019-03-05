@@ -67,51 +67,7 @@ $attachment = exhibit_builder_page_attachment(1);
                         <div class="media-meta d-none order-md-last">
                             <div class="media-meta-scroll">
                                 <div class="media-meta-scroll-content">
-                                    <h3>Unbekannter Herr im roten Rock</h3>
-                                    <h4>Max Mustermann, Gemälde, 1740-1750. Musterstadt</h4>
-                                    <p>
-                                        Aus der Sammlung von<br>
-                                        <a href="#">Gleimhaus - Museum der deutschen Aufklärung</a>
-                                    </p>
-                                    <p>
-                                        Wie darf ich das Objekt nutzen?
-                                    </p>
-                                    <p>
-                                        Quelle <br>
-                                        © GLEIMHAUS Museum der deutschen Aufklärung
-                                    </p>
-                                    <p>
-                                        <a href="#">Zum Objekt >></a>
-                                    </p>
-                                    <p>
-                                        Kurzbeschreibung<br>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
-                                        eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                                        eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-                                        fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-                                        imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                                        pretium.
-                                    </p>
-                                    <p>
-                                        Esse hic, libero harum ex corporis amet voluptatibus sapiente molestiae velit
-                                        voluptatem ullam deleniti excepturi fugit minima cum quo, et architecto
-                                        voluptate.
-                                        Officia accusantium exercitationem iure voluptas nesciunt excepturi vel
-                                        repudiandae sint qui? Perferendis accusantium incidunt quod, cum eligendi
-                                        magnam nihil excepturi vero in nesciunt. Fugit cum optio harum? Quasi, cumque
-                                        voluptatum.
-                                        Nam dolore obcaecati eos, facere recusandae doloribus nobis incidunt libero
-                                        veritatis non optio eaque tenetur maxime repellat mollitia reiciendis vel
-                                        ratione sunt odio harum vitae magnam earum. Ducimus, dolorum molestiae?
-                                        Tempore repellendus minus qui itaque voluptatibus. Itaque, nobis reprehenderit
-                                        quis veniam perspiciatis laudantium recusandae cupiditate quas! Voluptas
-                                        similique molestiae, aliquid velit in ab qui officiis dolores accusamus esse
-                                        dicta voluptatem!
-                                        Quidem esse quisquam, ducimus vero, quos, eius soluta voluptates unde illo
-                                        ullam provident sapiente eos laudantium. In minus eligendi earum alias est
-                                        distinctio error, officia rerum, quia, tempore animi quos?
-                                    </p>
+                                    <?php echo ExhibitDdbHelper::getItemInfo($attachment); ?>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +80,8 @@ $attachment = exhibit_builder_page_attachment(1);
                             );
                             ?>
                             <div class="media-item-caption media-item-caption-right">
-                                <?php echo ExhibitDdbHelper::getItemDescription($attachment, null); ?>
+                                <?php //echo ExhibitDdbHelper::getItemDescription($attachment, null); ?>
+                                <?php echo ($attachment['caption'])? strip_tags($attachment['caption']) : ''; ?>
                             </div>
                         </div>
                     </div>

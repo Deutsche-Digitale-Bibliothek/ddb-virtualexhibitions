@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="37.467" viewBox="0 0 38 37.467">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.6;
+      }
+
+      .cls-2, .cls-4, .cls-6 {
+        fill: none;
+      }
+
+      .cls-2, .cls-4 {
+        stroke: #fff;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        stroke-width: 3px;
+      }
+
+      .cls-5 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_107_1" data-name="Symbol 107 – 1" transform="translate(-29.5 -705.5)">
+    <g id="Gruppe_2307" data-name="Gruppe 2307">
+      <g id="inhalt_video" transform="translate(-705 -500)">
+        <g id="Gruppe_443" data-name="Gruppe 443" class="cls-1" transform="translate(-164.5 327.323)">
+          <g id="Gruppe_436" data-name="Gruppe 436" transform="translate(906.332 885.372)">
+            <g id="Ellipse_23" data-name="Ellipse 23" class="cls-2">
+              <circle class="cls-5" cx="11.665" cy="11.665" r="11.665"/>
+              <circle class="cls-6" cx="11.665" cy="11.665" r="10.665"/>
+            </g>
+            <path id="Pfad_268" data-name="Pfad 268" class="cls-3" d="M8,0l2.489,10.492L0,8Z" transform="translate(2.916 11.685) rotate(-45)"/>
+          </g>
+          <path id="Pfad_269" data-name="Pfad 269" class="cls-4" d="M8665.5,2679.677h-14v34.467h14" transform="translate(-7751 -1800)"/>
+          <path id="Pfad_270" data-name="Pfad 270" class="cls-4" d="M14,0H0V34.467H14" transform="translate(935.5 914.145) rotate(180)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

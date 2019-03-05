@@ -4799,6 +4799,194 @@ a.text-dark:hover, a.text-dark:focus {
   visibility: hidden !important;
 }
 
+[data-simplebar] {
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.simplebar-wrapper {
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.simplebar-mask {
+  direction: inherit;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: auto !important;
+  height: auto !important;
+  z-index: 0;
+}
+
+.simplebar-offset {
+  direction: inherit !important;
+  box-sizing: inherit !important;
+  resize: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.simplebar-content {
+  direction: inherit;
+  box-sizing: border-box !important;
+  position: relative;
+  display: block;
+  height: 100%;
+  /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+  width: auto;
+  visibility: visible;
+  overflow: scroll;
+  /* Scroll on this element otherwise element can't have a padding applied properly */
+  max-width: 100%;
+  /* Not required for horizontal scroll to trigger */
+  max-height: 100%;
+  /* Needed for vertical scroll to trigger */
+}
+
+.simplebar-placeholder {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer-wrapper {
+  box-sizing: inherit !important;
+  height: 100%;
+  width: inherit;
+  max-width: 1px;
+  position: relative;
+  float: left;
+  max-height: 1px;
+  overflow: hidden;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+  flex-grow: inherit;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+
+.simplebar-height-auto-observer {
+  box-sizing: inherit;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1000%;
+  width: 1000%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.simplebar-track {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.simplebar-scrollbar {
+  position: absolute;
+  right: 2px;
+  width: 7px;
+  min-height: 10px;
+}
+
+.simplebar-scrollbar:before {
+  position: absolute;
+  content: "";
+  background: black;
+  border-radius: 7px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.simplebar-track .simplebar-scrollbar.simplebar-visible:before {
+  /* When hovered, remove all transitions from drag handle */
+  opacity: 0.5;
+  transition: opacity 0s linear;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 11px;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  top: 2px;
+  bottom: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  left: 0;
+  height: 11px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before {
+  height: 100%;
+  left: 2px;
+  right: 2px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+  right: auto;
+  left: 0;
+  top: 2px;
+  height: 7px;
+  min-height: 0;
+  min-width: 10px;
+  width: auto;
+}
+
+/* Rtl support */
+[data-simplebar-direction="rtl"] .simplebar-track.simplebar-vertical {
+  right: auto;
+  left: 0;
+}
+
+.hs-dummy-scrollbar-size {
+  direction: rtl;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  height: 500px;
+  width: 500px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
 p,
 li,
 td,
@@ -4907,6 +5095,14 @@ h5 {
   margin-right: 10px;
 }
 
+.header .icon-menu#toggle-menu g {
+  opacity: 0;
+}
+
+.header .icon-menu#toggle-menu g.active {
+  opacity: 1;
+}
+
 .header-section-bar {
   position: absolute;
   right: 0;
@@ -4938,13 +5134,19 @@ h5 {
   z-index: 5;
   display: block;
   width: 420px;
-  padding: 10px 15px 0;
+  height: 100%;
   margin: 0;
   font-size: 1rem;
   color: #fff;
-  background-color: rgba(93, 93, 93, 0.95);
+  background-color: #5d5d5d;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   transition: right .25s ease-in-out;
+}
+
+@media (max-width: 419.98px) {
+  .menu-container {
+    width: 360px;
+  }
 }
 
 .menu-container.active {
@@ -4958,7 +5160,6 @@ h5 {
 }
 
 .menu-container ul {
-  padding: 0 0 0 4rem;
   list-style: none;
 }
 
@@ -4967,27 +5168,158 @@ h5 {
 }
 
 .menu-container .menu-header {
-  border-bottom: 1px solid #ccc;
+  padding: 15px 15px 20px 40px;
+  color: #5d5d5d;
+  background-color: #fff;
 }
 
-.menu-container .menu-header h2,
 .menu-container .menu-header p {
-  padding: 0 0 0 4rem;
-  margin-bottom: 0;
+  margin-bottom: .75rem;
+}
+
+.menu-container .menu-header a {
+  font-size: .85rem;
+  color: #5d5d5d;
+  text-decoration: underline;
+}
+
+.menu-container .menu-header ul {
+  padding: 0;
+}
+
+.menu-container .menu-header .menu-text {
+  font-size: .85rem;
+}
+
+.menu-container .menu-header .menu-text-red {
+  color: #a5003b;
+}
+
+.menu-container .menu-header .menu-text-blue {
+  color: #447494;
+}
+
+.menu-container .menu-body {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.menu-container .menu-body .simplebar-track.simplebar-vertical {
+  width: 10px;
+  background: #fff;
+}
+
+.menu-container .menu-body .simplebar-track.simplebar-vertical .simplebar-scrollbar {
+  right: 0;
+  width: 10px;
+}
+
+.menu-container .menu-body .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+  top: 0;
+  bottom: -1px;
+  background: #aaa;
+  border-radius: 0;
+  opacity: 1;
 }
 
 .menu-container .menu {
+  padding: 0;
+  margin-bottom: 0;
   line-height: 1;
 }
 
 .menu-container .menu a {
   display: block;
-  padding: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem 1rem 7.25rem;
   text-decoration: none;
 }
 
 .menu-container .menu li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 66px;
   border-bottom: 1px solid #999;
+}
+
+.menu-container .menu li.background-light {
+  background: #aaa;
+  border-color: #5d5d5d;
+}
+
+.menu-container .menu li .menu-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-width: 95px;
+  max-width: 95px;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+}
+
+.menu-container .menu li .menu-box.menu-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.125rem;
+  font-weight: 600;
+  background-color: #447494;
+}
+
+.menu-container .menu li .menu-box.menu-icon.menu-icon-transparent {
+  background-color: #5d5d5d;
+}
+
+.menu-container .menu li .menu-box.menu-icon.menu-icon-transparent::before {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.menu-container .menu li .menu-box.menu-icon::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-home::before {
+  background-image: url("../images/menu_icon_home.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-legal::before {
+  background-image: url("../images/menu_icon_legal.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-privacy::before {
+  background-image: url("../images/menu_icon_privacy.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-team::before {
+  background-image: url("../images/menu_icon_team.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-text::before {
+  background-image: url("../images/menu_icon_text.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-video::before {
+  background-image: url("../images/menu_icon_video.svg");
+}
+
+.menu-container .menu li:last-child {
+  margin-bottom: 40px;
 }
 
 .menu-container .menu li.active {
@@ -5211,7 +5543,7 @@ h5 {
 
 .col-media.active .content-media {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .col-media.active .content-media .media-meta,
@@ -5278,6 +5610,14 @@ h5 {
 
 .media-meta .media-meta-scroll h4 {
   font-size: 1rem;
+}
+
+.media-meta .media-meta-scroll h5 {
+  margin-bottom: 0;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.555;
 }
 
 .scroll-controls path,
@@ -5841,5 +6181,48 @@ h5 {
 
 .dark .icon-next-page:hover .cls-2 {
   stroke: #1d1d1b;
+}
+
+i.license {
+  display: block;
+  float: left;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  background-image: url("../images/licenses.png");
+  background-repeat: no-repeat;
+  background-position: -154px 0;
+}
+
+i.license-by {
+  background-position: 0 0;
+}
+
+i.license-nd {
+  background-position: -22px 0;
+}
+
+i.license-nc {
+  background-position: -44px 0;
+}
+
+i.license-sa {
+  background-position: -66px 0;
+}
+
+i.license-pd {
+  background-position: -88px 0;
+}
+
+i.license-pdzero {
+  background-position: -110px 0;
+}
+
+i.license-rr {
+  background-position: -132px 0;
+}
+
+i.license-or {
+  background-position: -154px 0;
 }
 /*# sourceMappingURL=spa.css.map */

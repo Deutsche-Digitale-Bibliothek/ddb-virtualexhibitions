@@ -15,7 +15,7 @@ $itemMetadata = all_element_texts('item', array('return_type' => 'array'));
 //     'Thema', 'Beteiligte Personen und Organisationen',
 //     'Zeit', 'Ort', 'Maße/Umfang', 'Material/Technik',
 //     'Sprache', 'Identifikator', 'Anmerkungen', 'Förderung',
-//     'Rechtsstatus', 'Videoquelle', 'Imagemap'
+//     'Rechtsstatus', 'Videoquelle'
 // );
 
 /**
@@ -161,18 +161,6 @@ if (!empty($metaDataVideoSource)) {
 // imgAttributes
 $imgAttributes = array();
 
-// set image map
-$imagemap = metadata($item, array('Item Type Metadata', 'Imagemap'), array('no_escape' => true, 'no_filter' => true));
-$usemap = array();
-if (!empty($imagemap)) {
-    $usemap = array(
-        'data-mediawidth' => (string) $width,
-        'data-mediaheight' => (string) $height,
-        'usemap' => "#imageMap",
-        'id' => 'ddb-imagemap-image'
-    );
-    $imgAttributes = array_merge($imgAttributes, $usemap);
-}
 ?>
 <?php
 /**
@@ -182,10 +170,6 @@ if (metadata('item', 'has files') || !empty($embedVideo)): ?>
 <div id="itemfiles" class="element">
     <h3><?php echo __('Files'); ?></h3>
     <div class="element-text ddb-omeka-itempage-full-item-container">
-    <?php if (!empty($imagemap)): ?>
-    <?php echo $imagemap; ?>
-    <?php echo js_tag('vendor/jquery.rwdImageMaps'); ?>
-    <?php endif; ?>
     <?php echo $embedVideo; ?>
     <?php if(empty($embedVideo)): ?>
         <?php echo $additionalWrapperOpen; ?>
@@ -233,20 +217,8 @@ if (metadata('item', 'has files') || !empty($embedVideo)): ?>
     <li id="next-item" class="omeka-item-next"><?php echo link_to_next_item_show(); ?></li>
 </ul>
 </nav>
-<?php if (!empty($imagemap)): ?>
-<script>
-$(window).load(function() {
-    $('map').imgmapinfo();
-});
-</script>
-<?php endif; ?>
 <script>
     $(document).ready(function() {
-        <?php if (!empty($imagemap)): ?>
-            // $('map').imgmapinfo();
-            // console.log('xxx');
-        <?php endif; ?>
-
         /* GINA Grandgeorg Internet Application object */
         if ($.Gina) {
             $.Gina = $.Gina;
@@ -322,10 +294,6 @@ $(window).load(function() {
             } else {
                 $.colorbox.resize({width: (newWidth + 63), height: (newHeight + 95)});
             }
-
-            <?php if (!empty($imagemap)): ?>
-            $('#ddb-imagemap-image').rwdImageMaps(newWidth, newHeight);
-            <?php endif; ?>
         }
         $.Gina.sizeColorBoxItem();
     });

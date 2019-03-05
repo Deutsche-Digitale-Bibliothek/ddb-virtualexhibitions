@@ -57,7 +57,14 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
                 <?php else: ?>
                     <img src="<?php echo WEB_FILES; ?>/layout/pagethumbnail/default-page-icon.jpg" class="exhibit-page-layout-icon exhibit-page-layout-default-icon">
                 <?php endif; ?>
+                <div style="clear:both; padding-top:10px;">
                 <?php echo $this->formFile('pagethumbnail'); ?>
+                </div>
+                <div style="margin-top:10px;">
+                    <?php echo $this->formCheckbox('deletePagethumbnail', 1); ?>
+                    <?php echo $this->formLabel('deletePagethumbnail', __('Vorschaubild entfernen'),
+                        array('style' => 'float:none;font-weight:normal;padding-left:4px;')); ?>
+                </div>
             </div>
         </div>
     </fieldset>

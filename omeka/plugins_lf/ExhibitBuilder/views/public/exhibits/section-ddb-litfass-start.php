@@ -1,6 +1,5 @@
 <?php
 $subtitle = metadata('exhibit', 'subtitle');
-$institutions = metadata('exhibit', 'institutions', array('no_escape' => true));
 $titlebackground = metadata('exhibit', 'titlebackground');
 $titlebackgroundcolor = metadata('exhibit', 'titlebackgroundcolor');
 ?>
@@ -22,7 +21,11 @@ $titlebackgroundcolor = metadata('exhibit', 'titlebackgroundcolor');
                 <div class="row">
                     <div class="col-6">
                         <div class="credits">
-                            <span><?php echo $institutions; ?></span>
+                            <span>
+                                <?php foreach ($institutions as $institution): ?>
+                                <?php echo $institution['name']; ?><br>
+                                <?php endforeach; ?>
+                            </span>
                         </div>
                     </div>
                     <div class="col-6">

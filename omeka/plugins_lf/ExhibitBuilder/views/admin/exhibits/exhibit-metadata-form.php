@@ -19,15 +19,9 @@
                 <?php echo $this->formText('subtitle', $exhibit->subtitle); ?>
             </div>
         </div>
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('institutions', __('Teilhabende Institutionen')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <p class="explanation"><?php echo __('Liste der teilhabenden Institutionen'); ?></p>
-                <?php echo $this->formTextarea('institutions', $exhibit->institutions, array('rows'=>'8','cols'=>'40')); ?>
-            </div>
-        </div>
+    </fieldset>
+    <fieldset>
+        <legend><?php echo __('Startkachel'); ?></legend>
         <div class="field">
             <div class="two columns alpha">
                 <?php echo $this->formLabel('titlebackgroundcolor', __('Hintergrundfarbe Startkachel')); ?>
@@ -58,10 +52,21 @@
             </div>
             <div class="five columns omega inputs">
                 <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startkachel hochalden'); ?></p>
-                <?php if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)): ?>
-                <a href="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" style="display:block; height:80px; margin-bottom:10px;"></a>
+                <?php
+                    $hasTitlebackground = false;
+                    if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
+                    $hasTitlebackground = true;
+                ?>
+                <a href="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" class="img-sm"></a>
                 <?php endif; ?>
                 <?php echo $this->formFile('titlebackground'); ?>
+                <?php if ($hasTitlebackground): ?>
+                <div class="mt-10">
+                    <?php echo $this->formCheckbox('deleteTitlebackground', 1); ?>
+                    <?php echo $this->formLabel('deleteTitlebackground', __('Hintergrundbild entfernen'),
+                        array('class' => 'deleteCheckbox')); ?>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="field" id="gina_exhibit_metadata_theme_container">
@@ -81,6 +86,92 @@
                 </script>
             </div>
         </div>
+    </fieldset>
+    <?php
+        $institutions = [[
+            'name' => '',
+            'url' => '',
+            'logo' => '',
+            'pos' => ''
+        ]];
+        if (!empty($exhibit->institutions)) {
+            $institutions = ExhibitDdbHelper::getInstitutions($exhibit->institutions);
+            // var_dump($institutions);
+        }
+        $institutionCounter = count($institutions);
+    ?>
+    <fieldset>
+        <legend><?php echo __('Teilhabende Institutionen'); ?></legend>
+        <div id="institutionRepeaters">
+        <?php foreach ($institutions as $instKey => $institution): ?>
+            <div class="repeaterfield clearfix">
+                <div class="field">
+                    <div class="two columns alpha">
+                        <?php echo $this->formLabel('institution[' . $instKey . '][name]', __('Name der Institution')); ?>
+                    </div>
+                    <div class="five columns omega inputs">
+                        <p class="explanation"><?php echo __('Name der teilhabenden Institution'); ?></p>
+                        <?php echo $this->formText('institution[' . $instKey . '][name]', $institution['name']); ?>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="two columns alpha">
+                        <?php echo $this->formLabel('institution[' . $instKey . '][url]', __('URL der Institution')); ?>
+                    </div>
+                    <div class="five columns omega inputs">
+                        <p class="explanation"><?php echo __('URL / Website der teilhabenden Institution'); ?></p>
+                        <?php echo $this->formText('institution[' . $instKey . '][url]', $institution['url']); ?>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="two columns alpha">
+                        <?php echo $this->formLabel('institution[' . $instKey . '][logo]', __('Logo der Institution')); ?>
+                    </div>
+                    <div class="five columns omega inputs">
+                        <p class="explanation"><?php echo __('Logo der teilhabenden Institution hochalden'); ?></p>
+                        <?php if (!empty($institution['logo']) && is_file(FILES_DIR . '/layout/institutionlogo/' . $institution['logo'])): ?>
+                        <a href="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" target="_blank">
+                            <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" class="img-sm">
+                        </a>
+                        <?php endif; ?>
+                        <?php echo $this->formFile('institution[' . $instKey . '][logo]'); ?>
+                        <div class="mt-10">
+                            <?php echo $this->formCheckbox('institution[' . $instKey . '][deletelogo]', 1); ?>
+                            <?php echo $this->formLabel('institution[' . $instKey . '][deletelogo]', __('Logo entfernen'),
+                                array('class' => 'deleteCheckbox')); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="two columns alpha">
+                        <?php echo $this->formLabel('institution[' . $instKey . '][pos]', __('Position der Institution')); ?>
+                    </div>
+                    <div class="five columns omega inputs">
+                        <p class="explanation">
+                            <?php echo __('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'); ?></p>
+                        <?php echo $this->formText('institution[' . $instKey . '][pos]', $institution['pos']); ?>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="two columns alpha">
+                        <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen')); ?>
+                    </div>
+                    <div class="five columns omega inputs">
+                        <p class="explanation">
+                            <?php echo __('Diese Institution komplett entfernen.'); ?>
+                        </p>
+                        <?php echo $this->formCheckbox('institution[' . $instKey . '][delete]', 1); ?>
+                        <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen'),
+                                array('class' => 'deleteCheckbox')); ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+        <div>
+            <button class="submit green button" id="addInstitution"><?php echo __('+ Institution hinzufügen'); ?></button>
+        </div>
+
     </fieldset>
     <fieldset>
         <legend><?php echo __('Seitenkacheln'); ?></legend>
@@ -111,6 +202,88 @@
     </div>
 </form>
 <script type="text/javascript" charset="utf-8">
+jQuery(document).ready(function($) {
+    if (typeof window.Gina === 'undefined') {
+        window.Gina = {};
+    }
+    window.Gina.institutionCounter = <?php echo $institutionCounter; ?>;
+    window.Gina.institutionStrings = {
+        name: '<?php echo htmlentities(__('Name der Institution'), ENT_QUOTES); ?>',
+        nameExpl: '<?php echo htmlentities(__('Name der teilhabenden Institution'), ENT_QUOTES); ?>',
+        url: '<?php echo htmlentities(__('URL der Institution'), ENT_QUOTES); ?>',
+        urlExpl: '<?php echo htmlentities(__('URL / Website der teilhabenden Institution'), ENT_QUOTES); ?>',
+        logo: '<?php echo htmlentities(__('Logo der Institution'), ENT_QUOTES); ?>',
+        logoExpl: '<?php echo htmlentities(__('Logo der teilhabenden Institution hochalden'), ENT_QUOTES); ?>',
+        logoDel: '<?php echo htmlentities(__('Logo entfernen'), ENT_QUOTES); ?>',
+        pos: '<?php echo htmlentities(__('Position der Institution'), ENT_QUOTES); ?>',
+        posExpl: '<?php echo htmlentities(__('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'), ENT_QUOTES); ?>'
+    }
+    $('#addInstitution').bind('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.Gina.institutionCounter > 5) {
+            $(this).html('Maximale Anzahl erreicht');
+            return;
+        }
+        $('#institutionRepeaters').append(
+            '<div class="repeaterfield clearfix">' +
+                '<div class="field">' +
+                    '<div class="two columns alpha">' +
+                        '<label for="institution-' + window.Gina.institutionCounter + '-name">' +
+                            window.Gina.institutionStrings.name +
+                        '</label>' +
+                    '</div>' +
+                    '<div class="five columns omega inputs">' +
+                        '<p class="explanation">' + window.Gina.institutionStrings.nameExpl + '</p>' +
+                        '<input type="text" name="institution[' +
+                            window.Gina.institutionCounter + '][name]" id="institution-' +
+                            window.Gina.institutionCounter + '-name" value="">' +
+                    '</div>' +
+                '</div>' +
+                '<div class="field">' +
+                    '<div class="two columns alpha">' +
+                        '<label for="institution-' + window.Gina.institutionCounter + '-url">' +
+                            window.Gina.institutionStrings.url +
+                        '</label>' +
+                    '</div>' +
+                    '<div class="five columns omega inputs">' +
+                        '<p class="explanation">' + window.Gina.institutionStrings.urlExpl + '</p>' +
+                        '<input type="text" name="institution[' +
+                            window.Gina.institutionCounter + '][url]" id="institution-' +
+                            window.Gina.institutionCounter + '-url" value="">' +
+                    '</div>' +
+                '</div>' +
+                '<div class="field">' +
+                    '<div class="two columns alpha">' +
+                        '<label for="institution-' + window.Gina.institutionCounter + '-logo">' +
+                            window.Gina.institutionStrings.logo +
+                        '</label>' +
+                    '</div>' +
+                    '<div class="five columns omega inputs">' +
+                        '<p class="explanation">' + window.Gina.institutionStrings.logoExpl + '</p>' +
+                        '<input type="file" name="institution[' +
+                            window.Gina.institutionCounter + '][logo]" id="institution-' +
+                            window.Gina.institutionCounter + '-logo">' +
+                    '</div>' +
+                '</div>' +
+                '<div class="field">' +
+                    '<div class="two columns alpha">' +
+                        '<label for="institution-' + window.Gina.institutionCounter + '-pos">' +
+                            window.Gina.institutionStrings.pos +
+                        '</label>' +
+                    '</div>' +
+                    '<div class="five columns omega inputs">' +
+                        '<p class="explanation">' + window.Gina.institutionStrings.posExpl + '</p>' +
+                        '<input type="text" name="institution[' +
+                            window.Gina.institutionCounter + '][pos]" id="institution-' +
+                            window.Gina.institutionCounter + '-pos" value="">' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+        );
+        window.Gina.institutionCounter++;
+    });
+});
 jQuery(window).load(function() {
     Omeka.ExhibitBuilder.wysiwyg();
 });

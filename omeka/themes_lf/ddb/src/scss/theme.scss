@@ -147,15 +147,22 @@ h5 {
   right: -430px;
   bottom: 0;
   z-index: 5;
+  // display: flex;
+  // flex: 0 0 auto;
+  // flex-direction: column;
   display: block;
   width: 420px;
-  padding: 10px 15px 0;
+  height: 100%;
+  // padding: 10px 15px 0;
   margin: 0;
   font-size: 1rem;
   color: #fff;
-  background-color: rgba(93, 93, 93, .95);
+  background-color: rgb(93, 93, 93);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
   transition: right .25s ease-in-out;
+  @media (max-width: 419.98px){
+    width: 360px;
+  }
   &.active {
     right: 0;
   }
@@ -165,33 +172,158 @@ h5 {
     font-size: 1rem;
   }
   ul {
-    padding: 0 0 0 4rem;
+    // padding: 0 0 0 4rem;
     list-style: none;
   }
   a {
     color: #fff;
   }
   .menu-header {
-    h2,
+    // h2,
     p {
-      padding: 0 0 0 4rem;
-      margin-bottom: 0;
+      margin-bottom: .75rem;
     }
-    border-bottom: 1px solid #ccc;
+    a {
+      font-size: .85rem;
+      color: rgb(93, 93, 93);
+      text-decoration: underline;
+    }
+    ul {
+      padding: 0;
+    }
+    padding: 15px 15px 20px 40px;
+    color: rgb(93, 93, 93);
+    background-color: #fff;
+    .menu-text {
+      font-size: .85rem;
+      &-red {
+        color: #a5003b;
+      }
+      &-blue {
+        color: #447494;
+      }
+    }
+  }
+  .menu-body {
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+    overflow-y: hidden;
+    .simplebar-track.simplebar-vertical {
+      width: 10px;
+      background: #fff;
+      .simplebar-scrollbar {
+        right: 0;
+        width: 10px;
+        &::before {
+          top: 0;
+          bottom: -1px;
+          background: #aaa;
+          border-radius: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .menu-scrollable {
+    // min-height: calc(100% - 40px);
+    // max-height: calc(100% - 40px);
+    // max-height: 100%;
+    // max-height: calc(100% - 1px);
+    // border-bottom: 1px solid #999;
   }
   .menu {
+    padding: 0;
+    margin-bottom: 0;
     line-height: 1;
     a {
+      // display: block;
+      // padding: 1rem;
       display: block;
-      padding: 1rem;
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 7.25rem;
       text-decoration: none;
     }
     li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 66px;
       border-bottom: 1px solid #999;
+      &.background-light {
+        background: #aaa;
+        border-color: rgb(93, 93, 93);
+      }
+      .menu-box {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        min-width: 95px;
+        max-width: 95px;
+        height: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-origin: content-box;
+        background-size: cover;
+        &.menu-number {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: $h2-font-size;
+          font-weight: $font-weight-semi-bold;
+          background-color: #447494;
+        }
+        &.menu-icon {
+          &.menu-icon-transparent {
+            background-color: rgb(93, 93, 93);
+            &::before {
+              background-color: rgba(0, 0, 0, .6);
+            }
+          }
+          &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            content: "";
+            background-repeat: no-repeat;
+            background-position: center center;
+          }
+          &.icon-home::before {
+            background-image: url("../images/menu_icon_home.svg");
+          }
+          &.icon-legal::before {
+            background-image: url("../images/menu_icon_legal.svg");
+          }
+          &.icon-privacy::before {
+            background-image: url("../images/menu_icon_privacy.svg");
+          }
+          &.icon-team::before {
+            background-image: url("../images/menu_icon_team.svg");
+          }
+          &.icon-text::before {
+            background-image: url("../images/menu_icon_text.svg");
+          }
+          &.icon-video::before {
+            background-image: url("../images/menu_icon_video.svg");
+          }
+        }
+      }
+    }
+    li:last-child {
+      margin-bottom: 40px;
+      // border-bottom: 2px solid #999;
     }
     li.active {
       // background-color: rgba(168, 168, 168, .6);
       background-color: #447494;
+      .menu-box.menu-icon.menu-icon-transparent:not(.menu-has-image)::before {
+        // background-color: rgba(0, 0, 0, 1);
+      }
     }
   }
 }

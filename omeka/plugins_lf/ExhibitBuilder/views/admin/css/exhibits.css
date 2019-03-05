@@ -305,3 +305,33 @@ button#page_metadata_form {
     padding: 4px;
     border: 1px solid #000;
 }
+
+.field label.deleteCheckbox,
+.deleteCheckbox {
+    float:none;
+    font-weight:normal;
+    padding-left:4px;
+}
+.mt-10 {
+    margin-top:10px;
+}
+.img-sm {
+    display:block;
+    height:80px;
+    margin-bottom:10px;
+}
+.repeaterfield {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dfe0dc;
+}
+@media only screen and (min-width: 1200px) {
+    .container-twelve .repeaterfield .two.columns {
+        width: auto;
+        min-width: 140px;
+    }
+    .container-twelve .repeaterfield .five.columns {
+        /* width: auto; */
+    }
+}

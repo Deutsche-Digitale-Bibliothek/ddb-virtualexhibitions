@@ -63,7 +63,146 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
                 }
             }
         }
+        $exhibit = $this->_helper->db->findById();
+        if (isset($_POST['deleteTitlebackground']) && $_POST['deleteTitlebackground'] === '1') {
+            $_POST['titlebackground'] = '';
+            if (is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)) {
+                unlink(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground);
+            }
+        }
+        $_POST['institutions'] = $this->setInstitutions($exhibit);
         parent::editAction();
+    }
+
+    protected function setInstitutions($exhibit)
+    {
+        $institutions = [];
+        if (!isset($_POST['institution']) ||
+            empty($_POST['institution']) ||
+            !$this->getRequest()->isPost()
+        ) {
+            return '';
+        }
+
+        if (!is_dir(FILES_DIR . '/layout/institutionlogo')) {
+            mkdir(FILES_DIR . '/layout/institutionlogo', 0755, true);
+        }
+
+        $storedInstitutions = unserialize($exhibit->institutions);
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
+
+        // var_dump($storedInstitutions);
+        // var_dump($_FILES['institution']);
+        // var_dump($_POST['institution']);
+        // die();
+
+        foreach ($_POST['institution'] as $instKey => $institution) {
+
+            if (isset($institution['delete']) && $institution['delete'] === '1') {
+                $storedInstitutions = $this->deleteInstitutionLogo($storedInstitutions, $instKey);
+                continue;
+            }
+            if (isset($institution['name']) && !empty($institution['name'])) {
+                $institutions[$instKey]['name'] = strip_tags($institution['name']);
+            } else {
+                $institutions[$instKey]['name'] = '';
+            }
+            if (isset($institution['url']) && !empty($institution['url'])) {
+                $institutions[$instKey]['url'] = strip_tags($institution['url']);
+            } else {
+                $institutions[$instKey]['url'] = '';
+            }
+            if (isset($institution['deletelogo']) && $institution['deletelogo'] === '1') {
+                $storedInstitutions = $this->deleteInstitutionLogo($storedInstitutions, $instKey);
+            }
+            if (isset($_FILES['institution']) &&
+                isset($_FILES['institution']['name']) &&
+                isset($_FILES['institution']['name'][$instKey]) &&
+                isset($_FILES['institution']['name'][$instKey]['logo']) &&
+                isset($_FILES['institution']['error']) &&
+                isset($_FILES['institution']['error'][$instKey]) &&
+                isset($_FILES['institution']['error'][$instKey]['logo']) &&
+                $_FILES['institution']['error'][$instKey]['logo'] == 0 &&
+                isset($_FILES['institution']['type']) &&
+                isset($_FILES['institution']['type'][$instKey]) &&
+                isset($_FILES['institution']['type'][$instKey]['logo']) &&
+                in_array($_FILES['institution']['type'][$instKey]['logo'], $allowedTypes)
+            ) {
+                $fileName = preg_replace('/[^a-zA-Z0-9\-_\.]/', '-',
+                    str_replace('.', '', microtime(true)) .
+                    '-' .
+                    trim($_FILES['institution']['name'][$instKey]['logo'])
+                );
+                if (move_uploaded_file(
+                    $_FILES['institution']['tmp_name'][$instKey]['logo'],
+                    FILES_DIR . '/layout/institutionlogo/' . $fileName)
+                ) {
+                    $institutions[$instKey]['logo'] = $fileName;
+                }
+            } elseif (isset($storedInstitutions) &&
+                isset($storedInstitutions[$instKey]) &&
+                isset($storedInstitutions[$instKey]['logo'])
+            ) {
+                $institutions[$instKey]['logo'] = $storedInstitutions[$instKey]['logo'];
+            } else {
+                $institutions[$instKey]['logo'] = '';
+            }
+            if (isset($institution['pos']) && !empty($institution['pos'])) {
+                $institutions[$instKey]['pos'] = (int) $institution['pos'];
+            } else {
+                $institutions[$instKey]['pos'] = '';
+            }
+        }
+        return (empty($institutions))? '' : serialize($institutions);
+    }
+
+    public function deleteInstitutionLogo($storedInstitutions, $instKey)
+    {
+        if (isset($storedInstitutions) &&
+            isset($storedInstitutions[$instKey]) &&
+            isset($storedInstitutions[$instKey]['logo']) &&
+            !empty($storedInstitutions[$instKey]['logo'])
+        ) {
+            if (is_file(FILES_DIR . '/layout/institutionlogo/' . $storedInstitutions[$instKey]['logo'])) {
+                unlink(FILES_DIR . '/layout/institutionlogo/' . $storedInstitutions[$instKey]['logo']);
+            }
+            $storedInstitutions[$instKey]['logo'] = '';
+        }
+        return $storedInstitutions;
+    }
+
+    public function resizeImage($sourcePath, $targetPath, $targetWidth, $targetHeight, $quality = '80')
+    {
+        $sourcePath = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $sourcePath);
+        $targetPath = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $targetPath);
+
+        if (!is_file($sourcePath)) {
+            return false;
+        }
+        $sourcePathParts = pathinfo($sourcePath);
+        if (!in_array(strtolower($sourcePathParts['extension']), array('jpg', 'jpeg', 'png')) ||
+            !is_dir($sourcePathParts['dirname'])
+        ) {
+            return false;
+        }
+        list($sourceWidth, $sourceHeight) = @getimagesize($sourcePath);
+        $newHeight = round(($sourceHeight/$sourceWidth)*$targetWidth);
+        if ($newHeight > $targetHeight) {
+            $newHeight = $targetHeight;
+            $newWidth = round(($sourceWidth/$sourceHeight)*$targetHeight);
+        } else {
+            $newWidth = $targetWidth;
+        }
+        if (strtolower($sourcePathParts['extension']) === 'png') {
+            $newImage = imagecreatefrompng($sourcePath);
+        } else {
+            $newImage = imagecreatefromjpeg($sourcePath);
+        }
+        $newTarget = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($newTarget, $newImage, 0, 0, 0, 0, $newWidth, $newHeight, $sourceWidth, $sourceHeight);
+        imagejpeg($newTarget, $targetPath, $quality);
+        imagedestroy($newTarget);
+        return true;
     }
 
     protected function _findByExhibitSlug($exhibitSlug = null)
@@ -411,6 +550,16 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
                     if (move_uploaded_file($uploadedFile['tmp_name'], FILES_DIR . '/layout/' . $fileField . '/' . $fileName)) {
                         $_POST[$fileField] = $fileName;
                     }
+                    if ($fileField === 'pagethumbnail') {
+                        $pagethumbnail = FILES_DIR . '/layout/' . $fileField . '/' . $fileName;
+                        $this->resizeImage($pagethumbnail, $pagethumbnail, 300, 200);
+                    }
+                }
+            }
+            if (isset($_POST['deletePagethumbnail']) && $_POST['deletePagethumbnail'] === '1') {
+                $_POST['pagethumbnail'] = '';
+                if (is_file(FILES_DIR . '/layout/pagethumbnail/' . $exhibitPage->pagethumbnail)) {
+                    unlink(FILES_DIR . '/layout/pagethumbnail/' . $exhibitPage->pagethumbnail);
                 }
             }
             //  END Grandgeorg Websolutions

@@ -454,6 +454,7 @@
     $('#toggle-menu').click(function (e) {
       e.preventDefault();
       e.stopPropagation();
+      $(this).find('g').toggleClass('active');
       var menuContainer = $('#menu-container');
       var menuControll = $(this);
       if (menuContainer.hasClass('active')) {

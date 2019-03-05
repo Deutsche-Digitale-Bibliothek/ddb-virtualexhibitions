@@ -9,6 +9,8 @@ $sectionAnchors = '';
 $sectionColors = '';
 $sectionTitles = array();
 echo head(array('title' => $title), 'spa_header');
+$institutions = ExhibitDdbHelper::getInstitutions(
+    metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
 ?>
 <div id="fullpage" class="fullpage">
 <?php
@@ -18,7 +20,10 @@ $sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
 $sectionAnchors .= "'s" . $sectionCounter . "'";
 $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
 $sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $titlebackgroundcolor . '.hex';
-$sectionTitles[] = htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5);
+$sectionTitles[] = [
+    'title' => htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5),
+    'pagethumbnail' => ''
+];
 $sectionCounter++;
 // Sections
 set_exhibit_pages_for_loop_by_exhibit();
@@ -31,7 +36,10 @@ $sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
 $sectionAnchors .= "'s" . $sectionCounter . "'";
 $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
 $sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex';
-$sectionTitles[] = htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5);
+$sectionTitles[] = [
+    'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
+    'pagethumbnail' => $exhibitSection['pagethumbnail']
+];
 $sectionCounter++;
 ?>
 <?php endforeach; ?>
