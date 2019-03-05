@@ -913,7 +913,7 @@ class ExhibitDdbHelper
         return $output;
     }
 
-    public static function getItemInfo($attachment)
+    public static function getItemInfo($attachment, $sectionCounter)
     {
         $markup = '';
         if (!$attachment) { return $markup; }
@@ -1004,7 +1004,7 @@ class ExhibitDdbHelper
             data-theme="white"
             data-title="' . htmlentities($metadata['Titel']) . '"
             data-url="' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
-                . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '"
+                . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '#s' . $sectionCounter . '"
         ></div>';
 
         // var_dump($attachment);

@@ -67,7 +67,7 @@ $attachment = exhibit_builder_page_attachment(1);
                         <div class="media-meta d-none order-md-last">
                             <div class="media-meta-scroll">
                                 <div class="media-meta-scroll-content">
-                                    <?php echo ExhibitDdbHelper::getItemInfo($attachment); ?>
+                                    <?php echo ExhibitDdbHelper::getItemInfo($attachment, $sectionCounter); ?>
                                 </div>
                             </div>
                         </div>
