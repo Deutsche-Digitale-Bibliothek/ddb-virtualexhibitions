@@ -1,5 +1,8 @@
+<?php $attachment = exhibit_builder_page_attachment(1); ?>
 <?php
-$attachment = exhibit_builder_page_attachment(1);
+if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align'])) {
+    $pageoptions['align'] = 'right';
+}
 ?>
 <section
     data-color-palette="<?php echo $colorpalette; ?>"
@@ -8,10 +11,10 @@ $attachment = exhibit_builder_page_attachment(1);
     id="se<?php echo $sectionCounter; ?>">
     <div class="section-container container-fluid">
         <div class="row">
-            <div class="col-md-6 col-media order-md-last">
+            <div class="col-md-6 col-media<?php echo ($pageoptions['align'] === 'left')? ' order-md-last' : ''; ?>">
                 <div class="container-media">
-                    <div class="content-controls order-md-last">
-                        <div class="control-info control-icon-right">
+                    <div class="content-controls<?php echo ($pageoptions['align'] === 'left')? ' order-md-last' : ''; ?>">
+                        <div class="control-info control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info">
                                 <g class="icon-info-frame" transform="translate(-98 -31)">
                                     <g transform="translate(57)">
@@ -37,7 +40,7 @@ $attachment = exhibit_builder_page_attachment(1);
                                 </g>
                             </svg>
                         </div>
-                        <div class="control-zoom control-icon-right">
+                        <div class="control-zoom control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom">
                                 <g transform="translate(-21 -84)">
                                     <g transform="translate(-216.5 -429.5)">
@@ -63,15 +66,15 @@ $attachment = exhibit_builder_page_attachment(1);
                             </svg>
                         </div>
                     </div>
-                    <div class="content-media order-md-first">
-                        <div class="media-meta d-none order-md-last">
+                    <div class="content-media<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
+                        <div class="media-meta d-none<?php echo ($pageoptions['align'] === 'left')? '  order-md-last' : ''; ?>">
                             <div class="media-meta-scroll">
                                 <div class="media-meta-scroll-content">
                                     <?php echo ExhibitDdbHelper::getItemInfo($attachment, $sectionCounter); ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="media-item-container order-md-first">
+                        <div class="media-item-container<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
                             <?php
                             $attachmentMarkup = ExhibitDdbHelper::getAttachmentMarkup(
                                 $attachment,
@@ -84,7 +87,7 @@ $attachment = exhibit_builder_page_attachment(1);
                             <?php else: ?>
                             <?php echo $attachmentMarkup; ?>
                             <?php endif; ?>
-                            <div class="media-item-caption media-item-caption-right">
+                            <div class="media-item-caption<?php echo ($pageoptions['align'] === 'left')? ' media-item-caption-right' : ' media-item-caption-left'; ?>">
                                 <?php //echo ExhibitDdbHelper::getItemDescription($attachment, null); ?>
                                 <?php echo ($attachment['caption'])? strip_tags($attachment['caption']) : ''; ?>
                             </div>
@@ -92,9 +95,10 @@ $attachment = exhibit_builder_page_attachment(1);
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-text order-md-first">
+            <div class="col-md-6 col-text<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
                 <div class="scroll-container">
-                    <div class="scroll-controls scroll-controls-left">
+                    <?php ob_start(); ?>
+                    <div class="scroll-controls<?php echo ($pageoptions['align'] === 'left')? ' scroll-controls-left' : ''; ?>">
                         <svg version="1.1" class="scroll-arrow-up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             x="0px" y="0px" width="22px" height="13px" viewBox="0 0 22 13" enable-background="new 0 0 22 13"
                             xml:space="preserve">
@@ -116,6 +120,8 @@ $attachment = exhibit_builder_page_attachment(1);
                             <path d="M1.05,2.13l9.65,9.91l9.91-9.91" />
                         </svg>
                     </div>
+                    <?php $scrollControls = ob_get_clean(); ?>
+                    <?php if ($pageoptions['align'] === 'left') { echo $scrollControls; } ?>
                     <div class="text-content">
                         <div class="fader"></div>
                         <div class="scroll-frame">
@@ -130,6 +136,7 @@ $attachment = exhibit_builder_page_attachment(1);
                             </div>
                         </div>
                     </div>
+                    <?php if ($pageoptions['align'] === 'right') { echo $scrollControls; } ?>
                 </div>
             </div>
         </div>

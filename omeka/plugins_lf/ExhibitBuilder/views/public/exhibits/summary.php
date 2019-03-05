@@ -28,6 +28,7 @@ $sectionCounter++;
 // Sections
 set_exhibit_pages_for_loop_by_exhibit();
 foreach (loop('exhibit_page') as $exhibitSection):
+    $pageoptions = unserialize($exhibitSection->pageoptions);
     require  $dir . '/section-' . $exhibitSection->layout  . '.php';
 ?>
 

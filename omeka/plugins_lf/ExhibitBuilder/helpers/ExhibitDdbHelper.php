@@ -367,7 +367,7 @@ class ExhibitDdbHelper
                     self::setVideoVimeoInfo($videoId);
                     if (!empty(self::$videoVimeoInfo)) {
                         $output = '<iframe src="//player.vimeo.com/video/' . $videoId
-                            . '?portrait=0&amp;byline=0&amp;color=E6183C" width="500" height="281" '
+                            . '?portrait=0&amp;byline=0&amp;color=E6183C" width="469" height="264" '
                             . 'frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>'
                             . '</iframe>';
                     }
@@ -442,7 +442,7 @@ class ExhibitDdbHelper
                                 "image": "' . $videoImage . '",
                                 "type": "' . self::$ddbVideoXml[$videoId]['video']['mime'] . '",
                                 "file": "' .  self::$ddbVideoXml[$videoId]['video']['src'] . '",
-                                "width": window.Gina.calcVideoWidth(500),
+                                "width": window.Gina.calcVideoWidth(469),
                                 "height": 281,
 
                             })';
@@ -544,8 +544,8 @@ class ExhibitDdbHelper
     {
         self::$videoDdbInfo = array(
             0 => array(
-                'width' => 500,
-                'height' => 281,
+                'width' => 469,
+                'height' => 264,
             )
         );
     }
