@@ -7,7 +7,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
 <section
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
-    class="section section-text-media section-text-media-right <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?>"
+    class="section section-text-media <?php echo ($pageoptions['align'] === 'left')? 'section-text-media-right' : 'section-text-media-right'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?>"
     id="se<?php echo $sectionCounter; ?>">
     <div class="section-container container-fluid">
         <div class="row">

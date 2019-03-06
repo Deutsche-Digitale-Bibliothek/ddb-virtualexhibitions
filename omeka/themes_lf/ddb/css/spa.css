@@ -5537,6 +5537,18 @@ h5 {
   }
 }
 
+.col-media .content-media {
+  width: 100%;
+}
+
+.col-media .content-media .media-item-container {
+  width: 100%;
+}
+
+.col-media .content-media .media-item-container .jwplayer {
+  width: 100% !important;
+}
+
 .col-media.active {
   flex-basis: auto !important;
   max-width: 100%;
@@ -5547,8 +5559,16 @@ h5 {
   align-items: flex-start;
 }
 
+.col-media.active .content-media .media-meta,
 .col-media.active .content-media .media-item-container {
-  min-width: 50%;
+  width: 50%;
+}
+
+@media (max-width: 767.98px) {
+  .col-media.active .content-media .media-meta,
+  .col-media.active .content-media .media-item-container {
+    width: auto;
+  }
 }
 
 .col-media.active .content-media .media-item-caption-left {

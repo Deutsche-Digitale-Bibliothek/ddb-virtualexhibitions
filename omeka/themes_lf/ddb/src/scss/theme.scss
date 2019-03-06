@@ -547,6 +547,17 @@ h5 {
     //   align-self: flex-start;
     // }
   }
+  .content-media {
+    // BEGIN TEST
+    width: 100%;
+    .media-item-container {
+      width: 100%;
+      .jwplayer {
+        width: 100% !important;
+      }
+    }
+    // END TEST
+  }
   &.active {
     flex-basis: auto !important;
     max-width: 100%;
@@ -556,13 +567,19 @@ h5 {
       align-items: flex-start;
       // background-color: rgba(255, 255, 255, .6);
 
-      // .media-meta,
+      .media-meta,
       .media-item-container {
         // @TODO: check if it is OK to remove this:
         // flex-basis: 50%;
         // otherwhise there will be some spacing to the control i-icon ...
         // Let's try this one for .media-item-container only:
-        min-width: 50%;
+        // min-width: 50%;
+        // max-width: 50%;
+        width: 50%;
+        @include media-breakpoint-down(sm) {
+          width: auto;
+        }
+        // end test
       }
 
       .media-item-caption-left {
