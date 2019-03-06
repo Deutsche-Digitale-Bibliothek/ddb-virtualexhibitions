@@ -8,7 +8,7 @@ $sectionCounter = 0;
 $sectionAnchors = '';
 $sectionColors = '';
 $sectionTitles = array();
-echo head(array('title' => $title), 'spa_header');
+echo head(compact('title', 'colors'), 'spa_header');
 $institutions = ExhibitDdbHelper::getInstitutions(
     metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
 ?>
@@ -45,8 +45,8 @@ $sectionCounter++;
 ?>
 <?php endforeach; ?>
 </div>
-<?php echo foot(compact('sectionAnchors', 'sectionColors'), 'spa_footer_scripts'); ?>
+<?php echo foot(compact('sectionAnchors', 'sectionColors', 'colorpalette'), 'spa_footer_scripts'); ?>
 <?php require  $dir . '/summary_header.php'; ?>
 <?php require  $dir . '/summary_menu.php'; ?>
-<?php echo foot(null, 'spa_footer'); ?>
+<?php echo foot(NULL, 'spa_footer'); ?>
 

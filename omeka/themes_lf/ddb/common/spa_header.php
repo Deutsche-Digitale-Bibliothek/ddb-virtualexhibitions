@@ -19,5 +19,6 @@
     ?>
     <?php queue_css_file('spa.min'); ?>
     <?php echo head_css(); ?>
+    <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors)); ?>
 </head>
 <body>

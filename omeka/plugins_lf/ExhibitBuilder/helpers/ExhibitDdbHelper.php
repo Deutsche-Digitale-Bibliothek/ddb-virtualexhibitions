@@ -1604,6 +1604,35 @@ class ExhibitDdbHelper
         return $colors;
     }
 
+    public static function getMenuColor($colors)
+    {
+        $menuColor = ['type' => 'dark', 'hex' => '#447494'];
+        if (is_array($colors)) {
+            foreach ($colors as $color) {
+                if ($color['menu'] === 1) {
+                    $menuColor = [
+                        'type' => $color['type'],
+                        'hex' => $color['hex']
+                    ];
+                }
+            }
+        }
+        return $menuColor;
+    }
+
+    public static function getSpaCss($menuColor)
+    {
+        $markup = '<style type="text/css">';
+        $markup .= '.menu-container .menu li.active {background-color:' . $menuColor['hex'] . '}';
+        if ($menuColor['type'] === 'dark') {
+            $markup .= '.menu-container .menu li.active a {color:#fff}';
+        } else {
+            $markup .= '.menu-container .menu li.active a {color:#1d1d1b;font-weight:500}';
+        }
+        $markup .= '</style>';
+        return $markup;
+    }
+
     /**
      * Get available colornames of a palette
      *
