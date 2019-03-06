@@ -73,8 +73,19 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
         if ($args['post']) {
             $post = $args['post'];
 
-            $textCount = count(@$post['Text']);
-            $itemCount = count(@$post['Item']);
+            // Begin Grandgeorg Websolutions
+            if (isset($post['Text'])) {
+                $textCount = count(@$post['Text']);
+            } else {
+                $textCount = 0;
+            }
+            if (isset($post['Item'])) {
+                $itemCount = count(@$post['Item']);
+            } else {
+                $itemCount = 0;
+            }
+            // End Grandgeorg Websolutions
+
             $highCount = ($textCount > $itemCount) ? $textCount : $itemCount;
 
             $entries = $this->ExhibitPageEntry;

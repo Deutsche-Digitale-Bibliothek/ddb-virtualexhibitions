@@ -27,33 +27,12 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
 
             <button id="page_metadata_form" name="page_metadata_form" type="submit"><?php echo __('Edit Page'); ?></button>
         </div>
-        <div class="page-options-list clearfix">
-            <h2><?php echo __('Optionen'); ?></h2>
-            <div class="field">
-                <div class="two columns alpha">
-                    <?php echo $this->formLabel('options-align', __('Textposition')); ?>
-                </div>
-                <div class="five columns omega inputs">
-                <?php
-                    $value = '';
-                    $pageoptions = unserialize($exhibit_page->pageoptions);
-                    if (isset($pageoptions['align'])) {
-                        $value = $pageoptions['align'];
-                    }
-                    echo $this->formSelect(
-                        'pageoptions[align]',        // name
-                        $value,                      // value
-                        null,                        // attribs
-                        array(
-                            'left' => 'links',
-                            'right' => 'rechts'
-                        ),                           // options
-                        "<br />\n"                   // listsep
-                    );
-                ?>
-                </div>
-            </div>
-        </div>
+        <?php
+        $optionsForm = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'page-options-form-' . $exhibit_page->layout . '.php';
+        if (is_file($optionsForm)) {
+            require $optionsForm;
+        }
+        ?>
         <div id="layout-all">
             <h2><?php echo __('Page Content'); ?></h2>
             <div id="layout-form">
