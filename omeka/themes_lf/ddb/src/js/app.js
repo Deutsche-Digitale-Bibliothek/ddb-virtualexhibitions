@@ -4,6 +4,7 @@
 
   var menuProps;
   var headerHeight = 38;
+  var menuScroll;
 
   // var pubsub = (function () {
 
@@ -131,7 +132,9 @@
   function fpAfterLoad(from, current, direction) {
     // fires every time a section is loaded
     // console.log('loaded', from, current, direction);
+    // console.log(current.anchor, $('#menu .active').data('menuanchor'));
     setVisitedSectionsInHeaderSectionBar(current.index);
+    scrollMenu(current.anchor);
   }
 
   function fpAfterRender() {
@@ -172,6 +175,7 @@
     setScrollElementMaxHeight();
     toggleScrollControls();
     setMediaProps();
+    scrollMenu($('#menu .active').data('menuanchor'));
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -180,6 +184,19 @@
 
   function fpOnSlideLeave(section, origin, destination, direction) {
 
+  }
+
+  function initScrollMenu() {
+    new SimpleBar($('#menu-scrollable')[0], {
+      autoHide: true
+    });
+    menuScroll = $('#menu-scrollable .simplebar-content');
+  }
+
+  function scrollMenu(anchor) {
+    var pos = $('#menuanchor-' + anchor).position();
+    var scrollRange = menuScroll.scrollTop() + pos.top;
+    menuScroll.scrollTop(scrollRange);
   }
 
   function setVisitedSectionsInHeaderSectionBar(index) {
@@ -472,6 +489,7 @@
       setMenuProps();
       setRGBColorInPalettes();
       setColors();
+      initScrollMenu();
       initFullPage();
       bindMenu();
       setScrollElementMaxHeight();

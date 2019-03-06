@@ -18,10 +18,10 @@
         <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
     </div>
     <div class="menu-body">
-        <div class="menu-scrollable" data-simplebar data-simplebar-auto-hide="true">
+        <div id="menu-scrollable" class="menu-scrollable">
             <ul id="menu" class="menu">
             <?php foreach ($sectionTitles as $sectionKey => $sectionTitle): ?>
-                <li data-menuanchor="s<?php echo $sectionKey; ?>">
+                <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>">
                     <?php if($sectionKey == 0): ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-home"></div>
                     <?php else: ?>
