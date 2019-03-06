@@ -147,10 +147,10 @@ h5 {
   right: -430px;
   bottom: 0;
   z-index: 5;
-  // display: flex;
-  // flex: 0 0 auto;
-  // flex-direction: column;
-  display: block;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  // display: block;
   width: 420px;
   height: 100%;
   // padding: 10px 15px 0;
@@ -208,6 +208,8 @@ h5 {
     display: flex;
     flex: 0 1 auto;
     width: 100%;
+    // This may not be necessary:
+    // height: 100%;
     overflow-y: hidden;
     .simplebar-track.simplebar-vertical {
       width: 10px;

@@ -5132,7 +5132,9 @@ h5 {
   right: -430px;
   bottom: 0;
   z-index: 5;
-  display: block;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
   width: 420px;
   height: 100%;
   margin: 0;
