@@ -565,10 +565,8 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             //  END Grandgeorg Websolutions
             $exhibitPage->setPostData($_POST);
             // Grandgeorg Websolutions
-            if ($this->getRequest()->isPost() && isset($_POST['pageoptions'])) {
-                if (isset($_POST['pageoptions']['align'])) {
-                    $exhibitPage->pageoptions = serialize($_POST['pageoptions']);
-                }
+            if ($this->getRequest()->isPost() && isset($_POST['pageoptions']) && is_array($_POST['pageoptions'])) {
+                $exhibitPage->pageoptions = serialize($_POST['pageoptions']);
             }
             //  END Grandgeorg Websolutions
             try {

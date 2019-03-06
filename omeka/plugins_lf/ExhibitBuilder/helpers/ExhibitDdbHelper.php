@@ -1816,4 +1816,13 @@ class ExhibitDdbHelper
         }
         return ($a['pos'] < $b['pos']) ? -1 : 1;
     }
+
+    public static function getOriginalImageUrl($attachment)
+    {
+        $url = '';
+        if (isset($attachment['file']) && !empty($attachment['file'])) {
+            $url = $attachment['file']->getWebPath('original');
+        }
+        return $url;
+    }
 }
