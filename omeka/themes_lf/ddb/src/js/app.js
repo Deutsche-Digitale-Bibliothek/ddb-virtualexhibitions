@@ -196,6 +196,11 @@
   function scrollMenu(anchor) {
     var pos = $('#menuanchor-' + anchor).position();
     var scrollRange = menuScroll.scrollTop() + pos.top;
+    var maxScroll = $('#menu-scrollable .simplebar-wrapper').height() -
+      $('#menu-scrollable .simplebar-content').height();
+    if (scrollRange > maxScroll) {
+      scrollRange = maxScroll;
+    }
     menuScroll.scrollTop(scrollRange);
   }
 
