@@ -1401,6 +1401,26 @@ class ExhibitDdbHelper
             array('start' => $start, 'end' => $end, 'props' => $props, 'thumbnail_type' => $thumbnailType));
     }
 
+    public static function getZoomable($attachment)
+    {
+        if (!$attachment || !$attachment['item'] || !$attachment['file']) {
+            return false;
+        }
+        $allowedExtensions = 'image/gif,image/jpeg,image/pjpeg,image/png,image/tiff';
+        $videoSrc = metadata($attachment['item'], array('Item Type Metadata', 'Videoquelle'));
+        if(
+            in_array(
+                $attachment['file']['mime_type'],
+                explode(',', $allowedExtensions)
+            ) &&
+            !$videoSrc
+        ) {
+            // return true;
+            return $attachment['file']->getWebPath('original');
+        }
+        return false;
+    }
+
     /**
      * Get HTML (link to Colorbox and image) for attachments
      *

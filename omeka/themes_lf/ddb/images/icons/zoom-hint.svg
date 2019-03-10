@@ -1,0 +1,225 @@
+<svg id="Symbol_2_1" data-name="Symbol 2 – 1" xmlns="http://www.w3.org/2000/svg" width="613" height="487" viewBox="0 0 613 487">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.75;
+      }
+
+      .cls-10, .cls-2, .cls-3, .cls-5, .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 18px;
+      }
+
+      .cls-10, .cls-2, .cls-9 {
+        font-family: Poppins-SemiBold, Poppins;
+        font-weight: 600;
+      }
+
+      .cls-10, .cls-2, .cls-3, .cls-9 {
+        letter-spacing: 0.025em;
+      }
+
+      .cls-3 {
+        font-size: 13px;
+        font-family: Poppins-Regular, Poppins;
+        opacity: 0.65;
+      }
+
+      .cls-12, .cls-4, .cls-6, .cls-7, .cls-8 {
+        fill: none;
+      }
+
+      .cls-4, .cls-6, .cls-7, .cls-8 {
+        stroke: #fff;
+      }
+
+      .cls-4 {
+        stroke-width: 3px;
+      }
+
+      .cls-6 {
+        stroke-linecap: round;
+        stroke-width: 5px;
+      }
+
+      .cls-7 {
+        opacity: 0.45;
+      }
+
+      .cls-8 {
+        stroke-width: 2px;
+      }
+
+      .cls-9 {
+        font-size: 15px;
+      }
+
+      .cls-10 {
+        font-size: 12px;
+      }
+
+      .cls-11 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <rect id="Rechteck_168" data-name="Rechteck 168" class="cls-1" width="565" height="487"/>
+  <text id="IM_BILD_BEWEGEN_" data-name="IM BILD BEWEGEN
+" class="cls-2" transform="translate(12 26.23)"><tspan x="0" y="19">IM BILD BEWEGEN</tspan></text>
+  <text id="linke_Maustaste_gedrückt_halten_und_ziehen" data-name="linke Maustaste gedrückt halten und ziehen" class="cls-3" transform="translate(92.898 74)"><tspan x="0" y="14">linke Maustaste </tspan><tspan x="0" y="34">gedrückt halten </tspan><tspan x="0" y="54">und ziehen</tspan></text>
+  <g id="icon_hinweis_scroll_schwarz" transform="translate(-323 -155)">
+    <g id="Gruppe_538" data-name="Gruppe 538" transform="translate(334.5 217.391)">
+      <path id="Pfad_321" data-name="Pfad 321" class="cls-4" d="M7611.977-3334.543s-1.722-11.053,11.053-11.053,11.053,11.053,11.053,11.053v13.174s-.71,11.053-11.053,11.053-11.053-11.053-11.053-11.053Z" transform="translate(-7586.29 3366.264)"/>
+      <path id="Pfad_324" data-name="Pfad 324" class="cls-5" d="M11796.022-614.6v16.559h-10.8s-1.533-10.224,1.79-12.779S11796.022-614.6,11796.022-614.6Z" transform="translate(-11759.283 635.264)"/>
+    </g>
+    <g id="Gruppe_526" data-name="Gruppe 526" transform="translate(334.5 217.391)">
+      <path id="Pfad_322" data-name="Pfad 322" class="cls-4" d="M0,0,9.208,9.458,18.666,0" transform="translate(27.663 67.601)"/>
+      <path id="Pfad_323" data-name="Pfad 323" class="cls-4" d="M0,0,9.208,9.458,18.666,0" transform="translate(46.329 9.458) rotate(180)"/>
+      <path id="Pfad_325" data-name="Pfad 325" class="cls-4" d="M0,0,9.208,9.458,18.666,0" transform="translate(9.458 29.197) rotate(90)"/>
+      <path id="Pfad_326" data-name="Pfad 326" class="cls-4" d="M0,0,9.208,9.458,18.666,0" transform="translate(63.767 47.863) rotate(-90)"/>
+    </g>
+  </g>
+  <text id="EIN-_AUSZOOMEN_" data-name="EIN- &amp; AUSZOOMEN
+" class="cls-2" transform="translate(12 175.23)"><tspan x="0" y="19">EIN- &amp; AUSZOOMEN</tspan></text>
+  <g id="icon_scroll_klein_schwarz" transform="translate(-323 -155)">
+    <path id="Pfad_327" data-name="Pfad 327" class="cls-4" d="M7611.981-3333.878s-1.826-11.719,11.719-11.719,11.719,11.719,11.719,11.719v13.967s-.752,11.719-11.719,11.719-11.719-11.719-11.719-11.719Z" transform="translate(-7252.513 3739.12)"/>
+    <line id="Linie_78" data-name="Linie 78" class="cls-6" y2="6.503" transform="translate(371.256 404.17)"/>
+    <path id="Pfad_328" data-name="Pfad 328" class="cls-4" d="M0,0,11.151,11.454,22.605,0" transform="translate(360.396 444.296)"/>
+    <path id="Pfad_329" data-name="Pfad 329" class="cls-4" d="M0,0,11.151,11.454,22.605,0" transform="translate(383.002 382.586) rotate(180)"/>
+  </g>
+  <text id="Mausrad_bedienen" data-name="Mausrad 
+bedienen" class="cls-3" transform="translate(92.898 245)"><tspan x="0" y="14">Mausrad </tspan><tspan x="0" y="34">bedienen</tspan></text>
+  <line id="Linie_79" data-name="Linie 79" class="cls-7" x1="81" y2="81" transform="translate(147.724 110) rotate(-45)"/>
+  <text id="BILD_SCHLIESSEN_" data-name="BILD SCHLIESSEN
+" class="cls-2" transform="translate(13 335.23)"><tspan x="0" y="19">BILD SCHLIESSEN</tspan></text>
+  <g id="icon_tasten_schwarz" transform="translate(-425 -155)">
+    <g id="Gruppe_530" data-name="Gruppe 530" transform="translate(666.926 229)">
+      <g id="Rechteck_169" data-name="Rechteck 169" class="cls-8" transform="translate(0 0)">
+        <rect class="cls-11" width="24.074" height="24.074"/>
+        <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4" data-name="Pfad 4" class="cls-8" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4" data-name="Linie 4" class="cls-8" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_531" data-name="Gruppe 531" transform="translate(691 279) rotate(180)">
+      <g id="Rechteck_169-2" data-name="Rechteck 169" class="cls-8" transform="translate(0 0)">
+        <rect class="cls-11" width="24.074" height="24.074"/>
+        <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-2" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-2" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-2" data-name="Pfad 4" class="cls-8" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-2" data-name="Linie 4" class="cls-8" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_532" data-name="Gruppe 532" transform="translate(716.926 254.926) rotate(90)">
+      <g id="Rechteck_169-3" data-name="Rechteck 169" class="cls-8" transform="translate(0 0)">
+        <rect class="cls-11" width="24.074" height="24.074"/>
+        <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-3" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-3" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-3" data-name="Pfad 4" class="cls-8" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-3" data-name="Linie 4" class="cls-8" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_533" data-name="Gruppe 533" transform="translate(641 279) rotate(-90)">
+      <g id="Rechteck_169-4" data-name="Rechteck 169" class="cls-8" transform="translate(0 0)">
+        <rect class="cls-11" width="24.074" height="24.074"/>
+        <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-4" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-4" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-4" data-name="Pfad 4" class="cls-8" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-4" data-name="Linie 4" class="cls-8" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <text id="Pfeiltasten_benutzen" data-name="Pfeiltasten benutzen" class="cls-3" transform="translate(320.898 74)"><tspan x="0" y="14">Pfeiltasten </tspan><tspan x="0" y="34">benutzen</tspan></text>
+  <text id="Plus-_und_Minuszeichen_" data-name="Plus- und 
+Minuszeichen " class="cls-3" transform="translate(258.898 240)"><tspan x="0" y="14">Plus- und </tspan><tspan x="0" y="34">Minuszeichen </tspan></text>
+  <g id="Gruppe_2308" data-name="Gruppe 2308" transform="translate(-316 -165)">
+    <g id="Gruppe_536" data-name="Gruppe 536" transform="translate(582.426 402.426) rotate(90)">
+      <line id="Linie_81" data-name="Linie 81" class="cls-8" x2="10" transform="translate(6.574 38.426)"/>
+      <line id="Linie_82" data-name="Linie 82" class="cls-8" y2="10" transform="translate(11.574 33.426)"/>
+    </g>
+    <g id="Gruppe_2309" data-name="Gruppe 2309">
+      <g id="Rechteck_170" data-name="Rechteck 170" class="cls-8" transform="translate(556.074 426.074) rotate(180)">
+        <rect class="cls-11" width="24.074" height="24.074"/>
+        <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_537" data-name="Gruppe 537" transform="translate(-133 -69)">
+        <g id="Rechteck_171" data-name="Rechteck 171" class="cls-8" transform="translate(688.926 499.926) rotate(90)">
+          <rect class="cls-11" width="24.074" height="24.074"/>
+          <rect class="cls-12" x="1" y="1" width="22.074" height="22.074"/>
+        </g>
+        <line id="Linie_83" data-name="Linie 83" class="cls-8" y2="10" transform="translate(682 512) rotate(90)"/>
+      </g>
+    </g>
+  </g>
+  <text id="Doppelklick" class="cls-3" transform="translate(84.898 397)"><tspan x="0" y="14">Doppelklick</tspan></text>
+  <text id="am_Bildrand_" data-name="am Bildrand " class="cls-3" transform="translate(260.898 397)"><tspan x="0" y="14">am Bildrand </tspan></text>
+  <g id="icon_doppelklick_schwarz" transform="translate(-323 -155)">
+    <g id="Gruppe_539" data-name="Gruppe 539" transform="translate(335.5 522.391)">
+      <path id="Pfad_321-2" data-name="Pfad 321" class="cls-4" d="M7611.977-3334.543s-1.722-11.053,11.053-11.053,11.053,11.053,11.053,11.053v13.174s-.71,11.053-11.053,11.053-11.053-11.053-11.053-11.053Z" transform="translate(-7586.29 3366.264)"/>
+      <path id="Pfad_324-2" data-name="Pfad 324" class="cls-5" d="M11796.022-614.6v16.559h-10.8s-1.533-10.224,1.79-12.779S11796.022-614.6,11796.022-614.6Z" transform="translate(-11759.283 635.264)"/>
+    </g>
+    <text id="_2x" data-name="2x" class="cls-9" transform="translate(337.898 536)"><tspan x="0" y="16">2x</tspan></text>
+  </g>
+  <g id="icon_close_schwarz" transform="translate(-317 -155)">
+    <g id="Gruppe_542" data-name="Gruppe 542" transform="translate(-577 191)">
+      <g id="Gruppe_541" data-name="Gruppe 541" transform="translate(1109 354)">
+        <g id="Rechteck_112" data-name="Rechteck 112" class="cls-8">
+          <rect class="cls-11" width="33" height="33"/>
+          <rect class="cls-12" x="1" y="1" width="31" height="31"/>
+        </g>
+      </g>
+      <line id="Linie_64" data-name="Linie 64" class="cls-8" x2="12.375" y2="12.375" transform="translate(1119.313 364.313)"/>
+      <line id="Linie_65" data-name="Linie 65" class="cls-8" x2="12.375" y2="12.375" transform="translate(1131.688 364.313) rotate(90)"/>
+    </g>
+  </g>
+  <g id="icon_esc_schwarz" transform="translate(-372 -155)">
+    <g id="Gruppe_543" data-name="Gruppe 543" transform="translate(-370 176)">
+      <g id="Gruppe_542-2" data-name="Gruppe 542" transform="translate(0 15)">
+        <g id="Gruppe_541-2" data-name="Gruppe 541" transform="translate(1109 354)">
+          <g id="Rechteck_112-2" data-name="Rechteck 112" class="cls-8">
+            <rect class="cls-11" width="33" height="33"/>
+            <rect class="cls-12" x="1" y="1" width="31" height="31"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="Esc" class="cls-10" transform="translate(744.898 553)"><tspan x="0" y="13">Esc</tspan></text>
+  </g>
+  <text id="Taste" class="cls-3" transform="translate(412.898 397)"><tspan x="0" y="14">Taste</tspan></text>
+  <g id="Gruppe_525" data-name="Gruppe 525" transform="translate(-544 -354)">
+    <rect id="Rechteck_112-3" data-name="Rechteck 112" width="48" height="48" transform="translate(1109 354)"/>
+    <line id="Linie_64-2" data-name="Linie 64" class="cls-8" x2="18" y2="18" transform="translate(1124 369)"/>
+    <line id="Linie_65-2" data-name="Linie 65" class="cls-8" x2="18" y2="18" transform="translate(1142 369) rotate(90)"/>
+  </g>
+  <text id="Zwei_Finger_ge-drückt_zusam-menziehen_oder_spreizen." data-name="Zwei Finger ge-drückt zusam-menziehen oder spreizen." class="cls-3" transform="translate(441.898 239)"><tspan x="0" y="14">Zwei Finger ge-</tspan><tspan x="0" y="34">drückt zusam-</tspan><tspan x="0" y="54">menziehen oder </tspan></text>
+  <g id="navigationsanweisung_mobile_zoom" transform="translate(-56 34)">
+    <g id="Gruppe_2242" data-name="Gruppe 2242" transform="translate(77 -216)">
+      <path id="Pfad_1307" data-name="Pfad 1307" class="cls-4" d="M10355,3828.377V3803.2a3.532,3.532,0,0,1,3.708-3.708,3.394,3.394,0,0,1,3.576,3.708v19.682" transform="translate(-9979.637 -3376)"/>
+      <path id="Pfad_1308" data-name="Pfad 1308" class="cls-4" d="M10354.886,3803.2s-.634-3.708,3.2-3.708a3.4,3.4,0,0,1,3.577,3.708v9.2" transform="translate(-9972.11 -3363.731)"/>
+      <path id="Pfad_1309" data-name="Pfad 1309" class="cls-4" d="M10354.886,3803.2s-.634-3.708,3.2-3.708a3.4,3.4,0,0,1,3.577,3.708v9.2" transform="translate(-9965.209 -3361.686)"/>
+      <path id="Pfad_1310" data-name="Pfad 1310" class="cls-4" d="M10338.375,3884.829s-20.125-8-20.375-2.25,10.5,3.5,13,10,2.632,6.447,8,10.153,10.5,1.812,13.955,1.939,5.751-.639,7.668-2.939,3.323-9.585,3.707-11.63,0-10.735,0-10.735v-3.323s-.895-2.428-3.067-2.556-2.939,2.556-2.939,2.556" transform="translate(-9962 -3431.079)"/>
+    </g>
+    <path id="Pfad_1314" data-name="Pfad 1314" class="cls-4" d="M0,0,7.613,7.82,15.434,0" transform="translate(423.187 214.047) rotate(47)"/>
+    <path id="Pfad_1315" data-name="Pfad 1315" class="cls-4" d="M0,0,7.613,7.82,15.434,0" transform="translate(444.282 212.579) rotate(-135)"/>
+  </g>
+  <line id="Linie_182" data-name="Linie 182" class="cls-7" x1="81" y2="81" transform="translate(147.725 252) rotate(-45)"/>
+  <line id="Linie_183" data-name="Linie 183" class="cls-7" x1="81" y2="81" transform="translate(147.725 410) rotate(-45)"/>
+  <line id="Linie_184" data-name="Linie 184" class="cls-7" x1="81" y2="81" transform="translate(297.725 252) rotate(-45)"/>
+  <line id="Linie_185" data-name="Linie 185" class="cls-7" x1="81" y2="81" transform="translate(297.725 410) rotate(-45)"/>
+</svg>

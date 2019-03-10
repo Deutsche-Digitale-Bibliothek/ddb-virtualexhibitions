@@ -622,6 +622,7 @@ h5 {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+  cursor: pointer;
   transition: all .5s;
 }
 .media-item-caption {
@@ -1188,6 +1189,74 @@ i.license-rr {
 }
 i.license-or {
   background-position: -154px 0;
+}
+
+// Zoom
+.zoom-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: block;
+  overflow: hidden;
+  cursor: move;
+  cursor: grab;
+  background-color: rgba(0, 0, 0, .8);
+  &.active {
+    cursor: grabbing;
+  }
+}
+.zoom-spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .zoom-spinner {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+.zoom-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  // padding: .7rem .9rem 1.7rem 1.5rem;
+  padding: 12px 15px 16px;
+  line-height: 18px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .85);
+  // border-bottom-left-radius: 100%;
+}
+
+.zoom-hint-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000, $alpha: .8);
+  .zoom-hint {
+    width: 613px;
+    height: 487px;
+    background-image: url("../images/icons/zoom-hint.svg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
 }
 
 // --------------------------- +++ dark +++ ---------------------------

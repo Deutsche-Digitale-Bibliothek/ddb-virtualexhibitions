@@ -5,6 +5,7 @@
   var menuProps;
   var headerHeight = 38;
   var menuScroll;
+  var zoomHintShown = false;
 
   // var pubsub = (function () {
 
@@ -489,8 +490,99 @@
     });
   }
 
+  function generateZoomableImage() {
+    var panzoomInstance;
+    var caller = $(this);
+    // console.log(caller);
+    var container = $('<div id="zoom-container" class="zoom-container"></div>');
+    var spinner = $(
+      '<div class="zoom-spinner-container">' +
+        '<div class="spinner-border zoom-spinner text-white" role="status">' +
+          '<span class="sr-only">Lade ...</span>' +
+        '</div>' +
+      '</div>'
+    );
+    if (!zoomHintShown) {
+      var zoomHint = $(
+        '<div class="zoom-hint-container">' +
+          '<div class="zoom-hint"></div>' +
+        '</div>'
+      );
+    }
+    var closer = $(
+      '<div class="zoom-close">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
+          '<g>' +
+            '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
+            '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
+          '</g>' +
+        '</svg>' +
+      '</div>'
+    );
+    if (!zoomHintShown) {
+      container.append(closer, spinner, zoomHint);
+      zoomHintShown = true;
+      zoomHint.on('click', function() {
+        $(this).remove();
+      });
+    } else {
+      container.append(closer, spinner);
+    }
+    $('body').append(container);
+    $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '">')
+      .on('load', function() {
+        spinner.remove();
+        var image = $(this);
+        container.append(image);
+        panzoomInstance = panzoom(image[0], {
+          smoothScroll: false,
+          maxZoom: 1,
+          minZoom: 0.2,
+          onTouch: function(e) {
+            // `e` - is current touch event
+            // console.log(e.path);
+            for (var i = 0; i < e.path.length; i++) {
+              if ('zoom-close' === e.path[i]['className']) {
+                // if false, tells the library not to
+                // preventDefault and not to stopPropageation:
+                return false;
+              }
+            }
+            return true;
+          }
+        });
+      });
+    // container.on('mousedown', function (e) {
+    //   $(this).addClass('active');
+    // });
+    // container.on('mouseup', function (e) {
+    //   $(this).removeClass('active');
+    // });
+
+    container.trigger('click').trigger('focus');
+    closer.on('click', function(e) {
+      // console.log('click');
+      e.preventDefault();
+      e.stopPropagation();
+      panzoomInstance.dispose();
+      $(this).off('click');
+      container.remove();
+    });
+  }
+
+  function bindZoom() {
+    $('img.media-item').bind('click', generateZoomableImage);
+    $('.control-zoom').bind('click', function() {
+      $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
+    });
+    // $('.control-zoom').each(function() {
+    //   $('.content-media .media-item', $(this).parents('.container-media'))
+    // })
+  }
+
+
   function init() {
-    $(function () {
+    $(function() {
       setMenuProps();
       setRGBColorInPalettes();
       setColors();
@@ -503,6 +595,7 @@
       setMediaProps();
       bindMediaInfo();
       bindTitlePageNextLink();
+      bindZoom();
     });
   }
 

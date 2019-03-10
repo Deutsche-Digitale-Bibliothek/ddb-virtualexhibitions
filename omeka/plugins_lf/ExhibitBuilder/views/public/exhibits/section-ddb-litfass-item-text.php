@@ -40,6 +40,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                                 </g>
                             </svg>
                         </div>
+                        <?php if (false !== ($zoomImgUrl = ExhibitDdbHelper::getZoomable($attachment))): ?>
                         <div class="control-zoom control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom">
                                 <g transform="translate(-21 -84)">
@@ -65,6 +66,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                                 </g>
                             </svg>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="content-media<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
                         <div class="media-meta d-none<?php echo ($pageoptions['align'] === 'left')? '  order-md-last' : ''; ?>">
