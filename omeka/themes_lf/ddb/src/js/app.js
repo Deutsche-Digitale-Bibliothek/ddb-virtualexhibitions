@@ -490,6 +490,53 @@
     });
   }
 
+  function getMinZoom(caller) {
+    var minZoom = 0.2;
+    var calcMinZoom = minZoom;
+    var zoomImgWidth = caller.data('zoom-img-width');
+    var zoomImgHeight = caller.data('zoom-img-height');
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    if (zoomImgWidth > windowWidth) {
+      calcMinZoom = windowWidth / zoomImgWidth;
+      if (calcMinZoom >= 1) {
+        return 1;
+      }
+      minZoom = calcMinZoom;
+    }
+    if (zoomImgHeight > windowHeight) {
+      calcMinZoom = windowHeight / zoomImgHeight;
+      if (calcMinZoom < minZoom) {
+        minZoom = calcMinZoom;
+      }
+    }
+    return minZoom;
+  }
+
+  function getInitZoomPos(caller) {
+    var zoomImgWidth = caller.data('zoom-img-width');
+    var zoomImgHeight = caller.data('zoom-img-height');
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    var initX, initY;
+    initX = ((zoomImgWidth / 2) - (windowWidth / 2)) * -1;
+    initY = ((zoomImgHeight / 2) - (windowHeight / 2)) * -1;
+    return [initX, initY];
+  }
+
+  function getCustomZoomFactor(caller, minZoom) {
+    var zoomFactor = caller.data('zoomlevel');
+    if (typeof zoomFactor === 'undefined') {
+      return false;
+    }
+    if (zoomFactor > minZoom && zoomFactor < 1) {
+      return [($(window).width() / 2), ($(window).height() / 2), zoomFactor];
+    } else {
+      return [($(window).width() / 2), ($(window).height() / 2), minZoom];
+    }
+  }
+
+
   function generateZoomableImage() {
     var panzoomInstance;
     var caller = $(this);
@@ -529,20 +576,31 @@
       container.append(closer, spinner);
     }
     $('body').append(container);
+
+    // function initZoomPosX(caller) {
+    //   return initZoomPos(caller);
+    // }
+
     $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '">')
       .on('load', function() {
         spinner.remove();
         var image = $(this);
         container.append(image);
+        var initZoomPos = getInitZoomPos(caller);
+        var minZoom = getMinZoom(caller);
+        console.log(initZoomPos, minZoom);
         panzoomInstance = panzoom(image[0], {
           smoothScroll: false,
+          // autocenter: true,
+          // bounds: true,
           maxZoom: 1,
-          minZoom: 0.2,
+          minZoom: minZoom,
           onTouch: function(e) {
             // `e` - is current touch event
             // console.log(e.path);
+            var discardClasses = ['zoom-hint-container', 'zoom-close'];
             for (var i = 0; i < e.path.length; i++) {
-              if ('zoom-close' === e.path[i]['className']) {
+              if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
                 // if false, tells the library not to
                 // preventDefault and not to stopPropageation:
                 return false;
@@ -551,6 +609,21 @@
             return true;
           }
         });
+        // panzoomInstance.zoomAbs(
+        //   initZoomPos[0],
+        //   initZoomPos[1],
+        //   0.9
+        // );
+        panzoomInstance.moveTo(
+          initZoomPos[0],
+          initZoomPos[1]
+        );
+        var zoomFactor = getCustomZoomFactor(caller, minZoom);
+        console.log(zoomFactor);
+        if (false !== zoomFactor) {
+          panzoomInstance.zoomTo(zoomFactor[0], zoomFactor[1], zoomFactor[2]);
+        }
+        window.testzoom = panzoomInstance;
       });
     // container.on('mousedown', function (e) {
     //   $(this).addClass('active');

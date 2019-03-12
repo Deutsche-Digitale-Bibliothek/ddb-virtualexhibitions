@@ -335,3 +335,50 @@ button#page_metadata_form {
         /* width: auto; */
     }
 }
+
+/* zoom */
+
+input[type=text].zoom_s_option {
+    min-width: 350px;
+    margin-right: 10px;
+}
+
+.zoomhelper-container {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.zoomhelper-container .zoom-helper {
+    padding: 30px;
+    border: 1px solid #D8D8D8;
+    background-color: #eeede2;
+}
+.zoom-helper-image {
+    position: relative;
+    border: 1px solid #D8D8D8;
+}
+
+.zoomhelper-container img {
+    display: block;
+    max-width: 480px;
+    height: auto;
+}
+.zoom-helper-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.close-zoom-helper {
+    margin-top: 20px;
+}

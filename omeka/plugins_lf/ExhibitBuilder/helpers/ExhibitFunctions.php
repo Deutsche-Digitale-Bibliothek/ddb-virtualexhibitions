@@ -235,6 +235,10 @@ function exhibit_builder_form_attachment($item = null, $file = null, $caption = 
             $html .= exhibit_builder_form_caption($order, $caption);
         }
 
+        if ($file || $item->Files) {
+            $html .= ExhibitDdbHelper::exhibit_builder_form_s_options($order, $item, null);
+        }
+
         $html .= '</div>' . "\n";
     } else {
         $html = '<div class="item-select-outer exhibit-form-element">'

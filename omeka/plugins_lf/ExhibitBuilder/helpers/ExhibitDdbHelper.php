@@ -1702,7 +1702,7 @@ class ExhibitDdbHelper
             if ($attachment['s_options']) {
                 $s_options = $attachment['s_options'];
             } else {
-                $s_options = '1;0;0;';
+                $s_options = '';
             }
         }
 
@@ -1802,7 +1802,7 @@ class ExhibitDdbHelper
             }
 
             if ($s_options !== false) {
-                $html .= self::exhibit_builder_form_s_options($order, $s_options);
+                $html .= self::exhibit_builder_form_s_options($order, $item, $s_options);
             }
 
             $html .= '</div>' . "\n";
@@ -1832,13 +1832,14 @@ class ExhibitDdbHelper
      * @param string $options The existing options, if any
      * @return string
      */
-    public static function exhibit_builder_form_s_options($order, $options = null)
+    public static function exhibit_builder_form_s_options($order, $item, $options = null)
     {
-        $label = __('Zoomstufe');
-        $html = '<div class="options-container">'
-              . '<label for="s_options-' . $order.'">' . $label . '</label>&nbsp;'
-              . get_view()->formText("s_options[$order]", $options)
-              . '</div>';
+        $label = __('Zoom');
+        ob_start();
+        require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templates' .
+            DIRECTORY_SEPARATOR . 'tpl_s_options.php';
+        $html = ob_get_clean();
+        // $html =
         return $html;
     }
 
