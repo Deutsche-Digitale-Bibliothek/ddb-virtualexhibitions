@@ -524,16 +524,48 @@
     return [initX, initY];
   }
 
-  function getCustomZoomFactor(caller, minZoom) {
-    var zoomFactor = caller.data('zoomlevel');
-    if (typeof zoomFactor === 'undefined') {
+  function getCustomZoom(caller, minZoom) {
+    var
+      imgWidth = caller.data('zoom-img-width'),
+      imgHeight = caller.data('zoom-img-height'),
+      zoomDetail = caller.data('zoomdetail'),
+      zoom = 1;
+    if (typeof zoomDetail === 'undefined' || zoomDetail === '') {
       return false;
     }
-    if (zoomFactor > minZoom && zoomFactor < 1) {
-      return [($(window).width() / 2), ($(window).height() / 2), zoomFactor];
-    } else {
-      return [($(window).width() / 2), ($(window).height() / 2), minZoom];
+    var
+      windowWidth = $(window).width(),
+      halfWindowWidth = windowWidth / 2,
+      windowHeight = $(window).height(),
+      halfWindowHeight = windowHeight / 2,
+      imgWidthOneP = imgWidth / 100,
+      imgHeightOneP = imgHeight / 100,
+      realW = imgWidthOneP * zoomDetail.w,
+      realH = imgHeightOneP * zoomDetail.h,
+      zoomW = windowWidth / realW,
+      zoomH = windowHeight / realH;
+
+    if (zoomW < zoom) {
+      if (zoomW > minZoom) {
+        zoom = zoomW;
+      } else {
+        zoom = minZoom;
+      }
     }
+
+    if (zoomH < zoom && zoomH > minZoom && zoomH < 1) {
+      zoom = zoomH;
+    }
+
+    // var zoomPosX = (zoom * imgWidthOneP * zoomDetail.startX) + (zoom * realW / 2) - halfWindowWidth;
+    // var zoomPosY = (zoom * imgHeightOneP * zoomDetail.startY) + (zoom * realH / 2) - halfWindowHeight;
+    // console.log({'zoomW': zoomW, 'imgWidth': imgWidth, 'w': zoomDetail.w, 'zoom': zoom, 'zoomPosX': zoomPosX});
+
+    return {
+      'zoom': zoom,
+      'zoomPosX': (zoom * imgWidthOneP * zoomDetail.startX) + (zoom * realW / 2) - halfWindowWidth,
+      'zoomPosY': (zoom * imgHeightOneP * zoomDetail.startY) + (zoom * realH / 2) - halfWindowHeight
+    };
   }
 
 
@@ -577,10 +609,6 @@
     }
     $('body').append(container);
 
-    // function initZoomPosX(caller) {
-    //   return initZoomPos(caller);
-    // }
-
     $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '">')
       .on('load', function() {
         spinner.remove();
@@ -588,16 +616,11 @@
         container.append(image);
         var initZoomPos = getInitZoomPos(caller);
         var minZoom = getMinZoom(caller);
-        console.log(initZoomPos, minZoom);
         panzoomInstance = panzoom(image[0], {
           smoothScroll: false,
-          // autocenter: true,
-          // bounds: true,
           maxZoom: 1,
           minZoom: minZoom,
           onTouch: function(e) {
-            // `e` - is current touch event
-            // console.log(e.path);
             var discardClasses = ['zoom-hint-container', 'zoom-close'];
             for (var i = 0; i < e.path.length; i++) {
               if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
@@ -609,22 +632,33 @@
             return true;
           }
         });
-        // panzoomInstance.zoomAbs(
-        //   initZoomPos[0],
-        //   initZoomPos[1],
-        //   0.9
-        // );
         panzoomInstance.moveTo(
           initZoomPos[0],
           initZoomPos[1]
         );
-        var zoomFactor = getCustomZoomFactor(caller, minZoom);
-        console.log(zoomFactor);
-        if (false !== zoomFactor) {
-          panzoomInstance.zoomTo(zoomFactor[0], zoomFactor[1], zoomFactor[2]);
+        var customZoom = getCustomZoom(caller, minZoom);
+        if (customZoom !== false) {
+          if (customZoom.zoom !== 1) {
+            panzoomInstance.zoomTo(
+              ($(window).width() / 2),
+              ($(window).height() / 2),
+              customZoom.zoom
+            );
+            panzoomInstance.moveTo(
+              (customZoom.zoomPosX * -1),
+              (customZoom.zoomPosY * -1)
+            );
+          } else {
+            panzoomInstance.moveTo(
+              (customZoom.zoomPosX * -1),
+              (customZoom.zoomPosY * -1)
+            );
+          }
         }
-        window.testzoom = panzoomInstance;
+        // window.testzoom = panzoomInstance;
       });
+
+    // toggle cursor - does not work in chrome:
     // container.on('mousedown', function (e) {
     //   $(this).addClass('active');
     // });
@@ -634,7 +668,6 @@
 
     container.trigger('click').trigger('focus');
     closer.on('click', function(e) {
-      // console.log('click');
       e.preventDefault();
       e.stopPropagation();
       panzoomInstance.dispose();
@@ -648,11 +681,7 @@
     $('.control-zoom').bind('click', function() {
       $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
     });
-    // $('.control-zoom').each(function() {
-    //   $('.content-media .media-item', $(this).parents('.container-media'))
-    // })
   }
-
 
   function init() {
     $(function() {

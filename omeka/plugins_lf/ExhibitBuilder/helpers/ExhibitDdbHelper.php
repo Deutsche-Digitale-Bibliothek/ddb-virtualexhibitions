@@ -1526,19 +1526,7 @@ class ExhibitDdbHelper
                 // ZOOM OPTIONS
                 $s_options = array();
                 if ($attachment['s_options'] && !empty($attachment['s_options'])) {
-                    // values are: zoomlevel;x-pan;y-pan
-                    @list($s_options['zoom'], $s_options['xpan'], $s_options['ypan']) = explode(';', $attachment['s_options']);
-
-                    if (isset($s_options['zoom']) && !empty($s_options['zoom'])) {
-                        $imgAttributes['data-zoomlevel'] = (string)$s_options['zoom'];
-                    }
-                    if (isset($s_options['xpan']) && !empty($s_options['xpan'])) {
-                        $imgAttributes['data-xpan'] = (string)$s_options['xpan'];
-                    }
-                    if (isset($s_options['ypan']) && !empty($s_options['ypan'])) {
-                        $imgAttributes['data-ypan'] = (string)$s_options['ypan'];
-                    }
-
+                    $imgAttributes['data-zoomdetail'] = (string) $attachment['s_options'];
                 }
 
             }
