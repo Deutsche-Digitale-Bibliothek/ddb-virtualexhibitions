@@ -238,10 +238,10 @@
         scrollElement.css({
           'max-height': '100%',
           // let there be a minimum padding, if detection goes wrong ...
-          'padding-right': '17px'
+          'padding-right': '18px'
         });
       } else {
-        paddingRight = (paddingRight <= 17) ? 17 : paddingRight;
+        paddingRight = (paddingRight <= 18) ? 18 : paddingRight;
         scrollElement.css({
           'max-height': (tableCell.height() - paddingTop) + 'px',
           'padding-right': paddingRight + 'px'

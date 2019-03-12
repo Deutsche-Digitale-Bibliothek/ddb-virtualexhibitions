@@ -382,3 +382,13 @@ input[type=text].zoom_s_option {
 .close-zoom-helper {
     margin-top: 20px;
 }
+.d-none {
+    display: none;
+}
+.d-lonely-none {
+    display: none;
+}
+fieldset .d-lonely-none {
+    display: block;
+
+}
