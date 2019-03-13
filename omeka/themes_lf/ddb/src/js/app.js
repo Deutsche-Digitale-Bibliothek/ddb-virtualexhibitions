@@ -630,6 +630,12 @@
               }
             }
             return true;
+          },
+          onDoubleClick: function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            panzoomInstance.dispose();
+            container.remove();
           }
         });
         panzoomInstance.moveTo(
@@ -673,6 +679,15 @@
       panzoomInstance.dispose();
       $(this).off('click');
       container.remove();
+    });
+    $(document).on('keydown.zoom', function(e) {
+      if (e.keyCode === 27 || e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        $(document).off('.zoom');
+        panzoomInstance.dispose();
+        container.remove();
+      }
     });
   }
 
