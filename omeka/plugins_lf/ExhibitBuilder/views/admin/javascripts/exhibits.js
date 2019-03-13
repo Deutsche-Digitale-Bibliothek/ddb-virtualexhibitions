@@ -249,6 +249,13 @@ Omeka.ExhibitBuilder.wysiwyg = function() {
     });
 }
 
+Omeka.ExhibitBuilder.wysiwygSelector = function(selector) {
+    Omeka.wysiwyg({
+        selector: selector,
+        forced_root_block: false
+    });
+}
+
 
 Omeka.ExhibitBuilder.addNumbers = function() {
     jQuery('#layout-form .exhibit-form-element').each(function(i){

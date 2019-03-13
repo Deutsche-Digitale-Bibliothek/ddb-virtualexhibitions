@@ -22,26 +22,29 @@ $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
 $sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $titlebackgroundcolor . '.hex';
 $sectionTitles[] = [
     'title' => htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5),
-    'pagethumbnail' => ''
+    'pagethumbnail' => '',
+    'type' => 'ddb-litfass-start'
 ];
 $sectionCounter++;
 // Sections
+$chapterCounter = 0;
 set_exhibit_pages_for_loop_by_exhibit();
 foreach (loop('exhibit_page') as $exhibitSection):
+    // var_dump($exhibitSection);
     $pageoptions = unserialize($exhibitSection->pageoptions);
+    // get the section
     require  $dir . '/section-' . $exhibitSection->layout  . '.php';
-?>
-
-<?php
-$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-$sectionAnchors .= "'s" . $sectionCounter . "'";
-$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-$sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex';
-$sectionTitles[] = [
-    'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
-    'pagethumbnail' => $exhibitSection['pagethumbnail']
-];
-$sectionCounter++;
+    // set values for nav
+    $sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
+    $sectionAnchors .= "'s" . $sectionCounter . "'";
+    $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
+    $sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex';
+    $sectionTitles[] = [
+        'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
+        'pagethumbnail' => $exhibitSection->pagethumbnail,
+        'type' => $exhibitSection->layout
+    ];
+    $sectionCounter++;
 ?>
 <?php endforeach; ?>
 </div>

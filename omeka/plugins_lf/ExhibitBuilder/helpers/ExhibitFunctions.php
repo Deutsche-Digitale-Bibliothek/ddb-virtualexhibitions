@@ -183,14 +183,20 @@ function exhibit_builder_layout_form_item($order)
  * @param int $order The index of this layout element.
  * @return string
  */
-function exhibit_builder_layout_form_text($order)
+function exhibit_builder_layout_form_text($order, $rows = 20, $cols = 70)
 {
     $html = '<div class="textfield exhibit-form-element">';
-    $html .= get_view()->formTextarea("Text[$order]",
-        exhibit_builder_page_text($order), array('rows' => '20','cols' => '70'));
+    $html .= get_view()->formTextarea(
+        "Text[$order]",
+        exhibit_builder_page_text($order),
+        array('rows' => $rows,'cols' => $cols)
+    );
     $html .= '</div>';
-    $html = apply_filters('exhibit_builder_layout_form_text', $html,
-        array('order' => $order));
+    $html = apply_filters(
+        'exhibit_builder_layout_form_text',
+        $html,
+        array('order' => $order)
+    );
     return $html;
 }
 
@@ -273,7 +279,7 @@ function exhibit_builder_form_caption($order, $caption = null)
     $html = '<div class="caption-container">'
           . '<label for="Caption-' . $order.'">' . $label . '</label>'
           . get_view()->formTextarea("Caption[$order]", $caption,
-                array('rows'=>'4','cols'=>'30'))
+                array('rows'=>'4','cols'=>'30', 'class' => 'wysiwygable'))
           . '</div>';
 
     $html = apply_filters('exhibit_builder_form_caption', $html,

@@ -20,10 +20,18 @@
     <div class="menu-body">
         <div id="menu-scrollable" class="menu-scrollable">
             <ul id="menu" class="menu">
+            <?php $menuChapterCounter = 0; ?>
             <?php foreach ($sectionTitles as $sectionKey => $sectionTitle): ?>
-                <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>">
+                <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>"
+                <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : ''; ?>>
                     <?php if($sectionKey == 0): ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-home"></div>
+                    <?php
+                    elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'):
+                        $menuChapterCounter++;
+
+                    ?>
+                    <div class="menu-box menu-number"><?php echo ExhibitDdbHelper::getLeadingZeroNum($menuChapterCounter); ?></div>
                     <?php else: ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-text"
                     <?php echo (!empty($sectionTitle['pagethumbnail']))? 'style="background-image:url('

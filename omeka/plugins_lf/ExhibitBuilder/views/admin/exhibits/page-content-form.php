@@ -1,10 +1,7 @@
-<?php
-$title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('no_escape' => true)));
-?>
+<?php $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('no_escape' => true))); ?>
 <?php echo head(array('title'=> html_escape($title), 'bodyclass'=>'exhibits')); ?>
-
 <?php echo flash(); ?>
-
+<?php $wysiwygSelector = 'textarea'; ?>
 <script>
 (function($) {
     $.fn.ginaZoomSelector = function() {
@@ -203,14 +200,17 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
     };
 }(jQuery));
 </script>
-
 <div id="exhibits-breadcrumb">
     <a href="<?php echo html_escape(url('exhibits/edit/' . $exhibit['id']));?>"><?php echo html_escape($exhibit['title']); ?></a>  &gt;
     <?php echo html_escape($title); ?>
 </div>
-<form id="page-form" method="post" action="<?php echo html_escape(url(array('module'=>'exhibit-builder', 'controller'=>'exhibits', 'action'=>'edit-page-content', 'id' => metadata('exhibit_page', 'id')))); ?>">
-    <?php echo get_view()->formHidden('slug', $exhibit_page->slug); ?>
+<form id="page-form" method="post" action="<?php echo html_escape(url(array(
+    'module'=>'exhibit-builder',
+    'controller'=>'exhibits',
+    'action'=>'edit-page-content',
+    'id' => metadata('exhibit_page', 'id')))); ?>">
 
+    <?php echo get_view()->formHidden('slug', $exhibit_page->slug); ?>
     <div class="seven columns alpha">
         <div id="page-metadata-list">
             <h2><?php echo __('Page Layout'); ?></h2>
@@ -223,7 +223,6 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
                 <strong><?php echo __($layoutName); ?></strong>
                 <p><?php echo __($layoutDescription); ?></p>
             </div>
-
             <button id="page_metadata_form" name="page_metadata_form" type="submit"><?php echo __('Edit Page'); ?></button>
         </div>
         <?php
@@ -255,25 +254,18 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
 </div>
 <script type="text/javascript" charset="utf-8">
 //<![CDATA[
-
-    jQuery(document).ready(function(){
-
+    jQuery(document).ready(function() {
         var exhibitBuilder = new Omeka.ExhibitBuilder();
-
         // Set the exhibit item uri
         exhibitBuilder.itemContainerUri = <?php echo js_escape(url('exhibits/item-container')); ?>;
-
         // Set the paginated exhibit items uri
         exhibitBuilder.paginatedItemsUri = <?php echo js_escape(url('exhibit-builder/items/browse')); ?>;
-
         exhibitBuilder.removeItemText = <?php echo js_escape(__('Remove This Item')); ?>;
         // Get the paginated items
         exhibitBuilder.getItems();
-
         jQuery(document).bind('omeka:loaditems', function() {
-               // Hide the page search form
+            // Hide the page search form
             jQuery('#page-search-form').hide();
-
             jQuery('#show-or-hide-search').click( function(){
                 var searchForm = jQuery('#page-search-form');
                 if (searchForm.is(':visible')) {
@@ -292,7 +284,6 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
                 return false;
             });
         });
-
         // Search Items Dialog Box
          jQuery('#search-items').dialog({
              autoOpen: false,
@@ -310,16 +301,18 @@ $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('
              beforeClose: function() { jQuery('body').css('overflow', 'inherit'); }
          });
     });
-
-    Omeka.wysiwyg();
-
+    // Omeka.wysiwyg();
+    Omeka.ExhibitBuilder.wysiwygSelector('<?php echo $wysiwygSelector; ?>');
     jQuery(window).load(function() {
         Omeka.ExhibitBuilder.addNumbers();
     });
     jQuery(document).bind('exhibitbuilder:attachitem', function (event) {
         // Add tinyMCE to all textareas in the div where the item was attached.
-        jQuery(event.target).find('textarea').each(function () {
-            tinyMCE.execCommand('mceAddControl', false, this.id);
+        jQuery(event.target).find('<?php echo $wysiwygSelector; ?>').each(function () {
+            // We should remove tinyMCE in exhibit.js at removeItemLink.bind() line 173 ...
+            tinyMCE.execCommand('mceRemoveEditor', false, this.id);
+            tinyMCE.execCommand('mceAddEditor', false, this.id);
+            console.log(this.id);
         });
     });
 //]]>

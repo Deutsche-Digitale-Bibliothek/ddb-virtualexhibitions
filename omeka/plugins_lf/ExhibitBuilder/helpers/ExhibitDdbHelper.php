@@ -1630,12 +1630,16 @@ class ExhibitDdbHelper
 
     public static function getSpaCss($menuColor)
     {
+        $chapterRGB = implode(',', sscanf($menuColor['hex'], "#%02x%02x%02x"));
         $markup = '<style type="text/css">';
-        $markup .= '.menu-container .menu li.active {background-color:' . $menuColor['hex'] . '}';
+        $markup .= '.menu-container .menu li.chapter {background-color:rgba(' . $chapterRGB . ',0.4)}';
+        $markup .= '.menu-container .menu li.active,.menu-container .menu li.active.chapter {background-color:' . $menuColor['hex'] . '}';
         if ($menuColor['type'] === 'dark') {
             $markup .= '.menu-container .menu li.active a {color:#fff}';
+            $markup .= '.menu-container .menu li .menu-box.menu-number {background-color:' . $menuColor['hex'] . ';color:#fff}';
         } else {
             $markup .= '.menu-container .menu li.active a {color:#1d1d1b;font-weight:500}';
+            $markup .= '.menu-container .menu li .menu-box.menu-number {background-color:' . $menuColor['hex'] . ';color:#1d1d1b}';
         }
         $markup .= '</style>';
         return $markup;
@@ -1862,5 +1866,10 @@ class ExhibitDdbHelper
             $url = $attachment['file']->getWebPath('original');
         }
         return $url;
+    }
+
+    public static function getLeadingZeroNum(int $num)
+    {
+        return $num < 10 ? '0' . $num : $num;
     }
 }
