@@ -171,7 +171,10 @@ class ExhibitDdbHelper
             )
         );
         foreach ($domNode->childNodes as $node) {
-            if ('tag0:binary' === $node->nodeName || 'ns2:binary' === $node->nodeName) {
+            if ('cortex:binary' === $node->nodeName ||
+                'tag0:binary' === $node->nodeName ||
+                'ns2:binary' === $node->nodeName
+            ) {
                 $ref = $node->getAttribute('ref');
                 $mimetype = $node->getAttribute('mimetype');
                 if (in_array($mimetype, $mimes['video'])) {
