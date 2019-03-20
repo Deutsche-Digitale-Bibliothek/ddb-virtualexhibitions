@@ -50,6 +50,16 @@ class ExhibitDdbHelper
     public static $ddbVideoXml = array();
 
     /**
+     * DDB XML Root Element Name
+     *
+     * Shoud be something like e.g.
+     * ns2, ns4, tag0, cortex
+     *
+     * @var string
+     */
+    public static $ddbXmlRootName = '';
+
+    /**
      * DDB Helper configuration
      *
      * Change ddbXmlSrv to get XML data from another server
@@ -108,8 +118,15 @@ class ExhibitDdbHelper
         if ($httpCode === 200) {
             $doc = new DOMDocument();
             $doc->loadXML($response);
+            self::$ddbXmlRootName = self::getDdbVideoXmlRootName($doc, $id);
             self::getDdbVideoXmlBin($doc, $id);
         }
+    }
+
+    public static function getDdbVideoXmlRootName($doc, $id)
+    {
+        $root = $doc->documentElement;
+        return (substr($root->tagName, 0, strpos($root->tagName, ':')));
     }
 
     /**
@@ -171,10 +188,11 @@ class ExhibitDdbHelper
             )
         );
         foreach ($domNode->childNodes as $node) {
-            if ('cortex:binary' === $node->nodeName ||
-                'tag0:binary' === $node->nodeName ||
-                'ns2:binary' === $node->nodeName
-            ) {
+            // Some legacy checks:
+            // 'cortex:binary' === $node->nodeName ||
+            // 'tag0:binary' === $node->nodeName ||
+            // 'ns2:binary' === $node->nodeName ||
+            if ($node->nodeName === self::$ddbXmlRootName . ':binary') {
                 $ref = $node->getAttribute('ref');
                 $mimetype = $node->getAttribute('mimetype');
                 if (in_array($mimetype, $mimes['video'])) {
