@@ -6841,7 +6841,7 @@ i.license-or {
   cursor: move;
   cursor: -webkit-grab;
   cursor: grab;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #191919;
 }
 
 .zoom-container.active {
@@ -6894,11 +6894,15 @@ i.license-or {
 }
 
 .zoom-hint-container .zoom-hint {
-  width: 613px;
-  height: 487px;
-  background-image: url("../images/icons/zoom-hint.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
+  width: 100%;
+  max-width: 613px;
+  height: 100%;
+  max-height: 487px;
+}
+
+.zoom-hint-container .zoom-hint img {
+  width: 100%;
+  height: auto;
 }
 
 .dark {

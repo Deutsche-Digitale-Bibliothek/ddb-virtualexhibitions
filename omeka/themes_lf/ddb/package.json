@@ -41,6 +41,7 @@
     "js-lint": "eslint -c src/build/.eslintrc.js src/js",
     "js-minify": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/bundle.min.js node_modules/jquery/dist/jquery.js node_modules/fullpage.js/dist/fullpage.extensions.min.js node_modules/simplebar/dist/simplebar.js node_modules/shariff/dist/shariff.min.js node_modules/panzoom/dist/panzoom.js src/js/app.js",
     "js-minify-options": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/options.min.js src/js/options.js",
-    "js-main": "npm-run-all js-lint js-minify js-minify-options"
+    "js-main": "npm-run-all js-lint js-minify js-minify-options",
+    "watch-js-main": "nodemon --watch src/js/ --ext js --exec \"npm run js-main\""
   }
 }

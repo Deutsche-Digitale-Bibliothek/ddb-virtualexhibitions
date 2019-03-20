@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77.496" height="81.33" viewBox="0 0 77.496 81.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Gruppe_2310" data-name="Gruppe 2310" transform="translate(-8.365 -60.256)">
+    <g id="icon_hinweis_scroll_schwarz" transform="translate(-324 -155)">
+      <g id="Gruppe_538" data-name="Gruppe 538" transform="translate(334.5 217.391)">
+        <path id="Pfad_321" data-name="Pfad 321" class="cls-1" d="M7611.977-3334.543s-1.722-11.053,11.053-11.053,11.053,11.053,11.053,11.053v13.174s-.71,11.053-11.053,11.053-11.053-11.053-11.053-11.053Z" transform="translate(-7586.29 3366.264)"/>
+        <path id="Pfad_324" data-name="Pfad 324" class="cls-2" d="M11796.022-614.6v16.559h-10.8s-1.533-10.224,1.79-12.779S11796.022-614.6,11796.022-614.6Z" transform="translate(-11759.283 635.264)"/>
+      </g>
+      <g id="Gruppe_526" data-name="Gruppe 526" transform="translate(334.5 217.391)">
+        <path id="Pfad_322" data-name="Pfad 322" class="cls-1" d="M0,0,9.208,9.458,18.666,0" transform="translate(27.663 67.601)"/>
+        <path id="Pfad_323" data-name="Pfad 323" class="cls-1" d="M0,0,9.208,9.458,18.666,0" transform="translate(46.329 9.458) rotate(180)"/>
+        <path id="Pfad_325" data-name="Pfad 325" class="cls-1" d="M0,0,9.208,9.458,18.666,0" transform="translate(9.458 29.197) rotate(90)"/>
+        <path id="Pfad_326" data-name="Pfad 326" class="cls-1" d="M0,0,9.208,9.458,18.666,0" transform="translate(63.767 47.863) rotate(-90)"/>
+      </g>
+    </g>
+  </g>
+</svg>

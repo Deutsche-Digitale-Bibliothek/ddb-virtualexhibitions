@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="icon_close_schwarz" transform="translate(-532 -545)">
+    <g id="Gruppe_542" data-name="Gruppe 542" transform="translate(-577 191)">
+      <g id="Gruppe_541" data-name="Gruppe 541" transform="translate(1109 354)">
+        <g id="Rechteck_112" data-name="Rechteck 112" class="cls-1">
+          <rect class="cls-2" width="33" height="33"/>
+          <rect class="cls-3" x="1" y="1" width="31" height="31"/>
+        </g>
+      </g>
+      <line id="Linie_64" data-name="Linie 64" class="cls-1" x2="12.375" y2="12.375" transform="translate(1119.313 364.313)"/>
+      <line id="Linie_65" data-name="Linie 65" class="cls-1" x2="12.375" y2="12.375" transform="translate(1131.688 364.313) rotate(90)"/>
+    </g>
+  </g>
+</svg>

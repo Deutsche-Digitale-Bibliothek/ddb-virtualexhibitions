@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.223" height="53" viewBox="0 0 24.223 53">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Gruppe_2312" data-name="Gruppe 2312" transform="translate(-214.852 -237)">
+    <g id="Gruppe_536" data-name="Gruppe 536" transform="translate(265.426 237.426) rotate(90)">
+      <line id="Linie_81" data-name="Linie 81" class="cls-1" x2="10" transform="translate(6.574 38.426)"/>
+      <line id="Linie_82" data-name="Linie 82" class="cls-1" y2="10" transform="translate(11.574 33.426)"/>
+    </g>
+    <g id="Gruppe_2309" data-name="Gruppe 2309" transform="translate(-317 -165)">
+      <g id="Rechteck_170" data-name="Rechteck 170" class="cls-1" transform="translate(556.074 426.074) rotate(180)">
+        <rect class="cls-2" width="24.074" height="24.074"/>
+        <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_537" data-name="Gruppe 537" transform="translate(-133 -69)">
+        <g id="Rechteck_171" data-name="Rechteck 171" class="cls-1" transform="translate(688.926 499.926) rotate(90)">
+          <rect class="cls-2" width="24.074" height="24.074"/>
+          <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+        </g>
+        <line id="Linie_83" data-name="Linie 83" class="cls-1" y2="10" transform="translate(682 512) rotate(90)"/>
+      </g>
+    </g>
+  </g>
+</svg>

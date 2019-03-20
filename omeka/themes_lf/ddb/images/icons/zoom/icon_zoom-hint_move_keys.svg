@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="75.926" height="50" viewBox="0 0 75.926 50">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="icon_tasten_schwarz" transform="translate(-641 -229)">
+    <g id="Gruppe_530" data-name="Gruppe 530" transform="translate(666.926 229)">
+      <g id="Rechteck_169" data-name="Rechteck 169" class="cls-1" transform="translate(0 0)">
+        <rect class="cls-2" width="24.074" height="24.074"/>
+        <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4" data-name="Pfad 4" class="cls-1" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4" data-name="Linie 4" class="cls-1" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_531" data-name="Gruppe 531" transform="translate(691 279) rotate(180)">
+      <g id="Rechteck_169-2" data-name="Rechteck 169" class="cls-1" transform="translate(0 0)">
+        <rect class="cls-2" width="24.074" height="24.074"/>
+        <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-2" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-2" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-2" data-name="Pfad 4" class="cls-1" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-2" data-name="Linie 4" class="cls-1" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_532" data-name="Gruppe 532" transform="translate(716.926 254.926) rotate(90)">
+      <g id="Rechteck_169-3" data-name="Rechteck 169" class="cls-1" transform="translate(0 0)">
+        <rect class="cls-2" width="24.074" height="24.074"/>
+        <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-3" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-3" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-3" data-name="Pfad 4" class="cls-1" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-3" data-name="Linie 4" class="cls-1" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Gruppe_533" data-name="Gruppe 533" transform="translate(641 279) rotate(-90)">
+      <g id="Rechteck_169-4" data-name="Rechteck 169" class="cls-1" transform="translate(0 0)">
+        <rect class="cls-2" width="24.074" height="24.074"/>
+        <rect class="cls-3" x="1" y="1" width="22.074" height="22.074"/>
+      </g>
+      <g id="Gruppe_529-4" data-name="Gruppe 529" transform="translate(6.191 12.963) rotate(-45)">
+        <g id="Gruppe_305-4" data-name="Gruppe 305" transform="translate(8.498 0) rotate(90)">
+          <path id="Pfad_4-4" data-name="Pfad 4" class="cls-1" d="M0,7.436V0H7.436" transform="translate(0 0)"/>
+          <line id="Linie_4-4" data-name="Linie 4" class="cls-1" x2="8.498" y2="8.498" transform="translate(0 0)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

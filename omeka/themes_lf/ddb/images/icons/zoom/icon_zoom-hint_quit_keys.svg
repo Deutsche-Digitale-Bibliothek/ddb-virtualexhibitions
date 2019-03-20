@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-size: 12px;
+        font-family: Poppins-SemiBold, Poppins;
+        font-weight: 600;
+        letter-spacing: 0.025em;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="icon_esc_schwarz" transform="translate(-739 -545)">
+    <g id="Gruppe_543" data-name="Gruppe 543" transform="translate(-370 176)">
+      <g id="Gruppe_542" data-name="Gruppe 542" transform="translate(0 15)">
+        <g id="Gruppe_541" data-name="Gruppe 541" transform="translate(1109 354)">
+          <g id="Rechteck_112" data-name="Rechteck 112" class="cls-1">
+            <rect class="cls-3" width="33" height="33"/>
+            <rect class="cls-4" x="1" y="1" width="31" height="31"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="Esc" class="cls-2" transform="translate(744.898 553)"><tspan x="0" y="13">Esc</tspan></text>
+  </g>
+</svg>

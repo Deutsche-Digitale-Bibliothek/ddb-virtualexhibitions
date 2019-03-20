@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.686" height="88.889" viewBox="0 0 26.686 88.889">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-1 {
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="icon_scroll_klein_schwarz" transform="translate(-357.844 -368.996)">
+    <path id="Pfad_327" data-name="Pfad 327" class="cls-1" d="M7611.981-3333.878s-1.826-11.719,11.719-11.719,11.719,11.719,11.719,11.719v13.967s-.752,11.719-11.719,11.719-11.719-11.719-11.719-11.719Z" transform="translate(-7252.513 3739.12)"/>
+    <line id="Linie_78" data-name="Linie 78" class="cls-2" y2="6.503" transform="translate(371.256 404.17)"/>
+    <path id="Pfad_328" data-name="Pfad 328" class="cls-1" d="M0,0,11.151,11.454,22.605,0" transform="translate(360.396 444.296)"/>
+    <path id="Pfad_329" data-name="Pfad 329" class="cls-1" d="M0,0,11.151,11.454,22.605,0" transform="translate(383.002 382.586) rotate(180)"/>
+  </g>
+</svg>

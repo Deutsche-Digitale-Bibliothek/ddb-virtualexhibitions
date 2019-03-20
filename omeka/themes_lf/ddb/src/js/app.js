@@ -584,7 +584,7 @@
     if (!zoomHintShown) {
       var zoomHint = $(
         '<div class="zoom-hint-container">' +
-          '<div class="zoom-hint"></div>' +
+          '<div class="zoom-hint"><img src="' + options.path_images + '/icons/zoom-hint.svg" alt="HELP"></div>' +
         '</div>'
       );
     }

@@ -1203,7 +1203,7 @@ i.license-or {
   overflow: hidden;
   cursor: move;
   cursor: grab;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgb(25, 25, 25);
   &.active {
     cursor: grabbing;
   }
@@ -1251,11 +1251,21 @@ i.license-or {
   height: 100%;
   background-color: rgba($color: #000, $alpha: .8);
   .zoom-hint {
-    width: 613px;
-    height: 487px;
-    background-image: url("../images/icons/zoom-hint.svg");
-    background-repeat: no-repeat;
-    background-position: 0 0;
+    width: 100%;
+    max-width: 613px;
+    height: 100%;
+    max-height: 487px;
+    // @TODO: [Grandgeorg Websolutions:
+    // replace temporary styles and add new ones
+    img {
+      width: 100%;
+      height: auto;
+    }
+    // @TODO-END: Grandgeorg Websolutions]
+
+    // background-image: url("../images/icons/zoom-hint.svg");
+    // background-repeat: no-repeat;
+    // background-position: 0 0;
   }
 }
 

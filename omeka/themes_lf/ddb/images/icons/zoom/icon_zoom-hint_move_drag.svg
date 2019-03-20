@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="47.475" height="75.85" viewBox="0 0 47.475 75.85">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="navigationsanweisung_mobile_drag" transform="translate(-126.545 -183.254)">
+    <g id="Gruppe_2241" data-name="Gruppe 2241" transform="translate(-230 -216)">
+      <path id="Pfad_1307" data-name="Pfad 1307" class="cls-1" d="M10355,3828.377V3803.2a3.532,3.532,0,0,1,3.708-3.708,3.394,3.394,0,0,1,3.576,3.708v19.682" transform="translate(-9979.637 -3376)"/>
+      <path id="Pfad_1308" data-name="Pfad 1308" class="cls-1" d="M10354.886,3803.2s-.634-3.708,3.2-3.708a3.4,3.4,0,0,1,3.577,3.708v9.2" transform="translate(-9972.11 -3363.731)"/>
+      <path id="Pfad_1309" data-name="Pfad 1309" class="cls-1" d="M10354.886,3803.2s-.634-3.708,3.2-3.708a3.4,3.4,0,0,1,3.577,3.708v9.2" transform="translate(-9965.209 -3361.686)"/>
+      <path id="Pfad_1310" data-name="Pfad 1310" class="cls-1" d="M10337.362,3877.96s-2.938-.128-3.833,1.406-2.812,4.473-2.045,8.179,1.021,9.713,6.39,13.419,11.63,3.578,15.081,3.706,5.751-.639,7.668-2.939,3.323-9.585,3.707-11.63,0-10.735,0-10.735v-3.323s-.895-2.428-3.067-2.556-2.939,2.556-2.939,2.556" transform="translate(-9962 -3431.079)"/>
+    </g>
+    <path id="Pfad_1311" data-name="Pfad 1311" class="cls-1" d="M0,0,7.613,7.82,15.434,0" transform="translate(156.597 193.211) rotate(180)"/>
+    <path id="Pfad_1312" data-name="Pfad 1312" class="cls-1" d="M0,0,7.613,7.82,15.434,0" transform="translate(161.68 214.074) rotate(-90)"/>
+    <path id="Pfad_1313" data-name="Pfad 1313" class="cls-1" d="M0,0,7.613,7.82,15.434,0" transform="translate(136.5 197.641) rotate(90)"/>
+  </g>
+</svg>
