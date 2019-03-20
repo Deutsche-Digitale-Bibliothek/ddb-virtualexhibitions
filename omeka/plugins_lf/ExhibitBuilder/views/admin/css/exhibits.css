@@ -362,6 +362,7 @@ input[type=text].zoom_s_option {
     padding: 30px;
     border: 1px solid #D8D8D8;
     background-color: #eeede2;
+    overflow-y: scroll;
 }
 .zoom-helper-image {
     position: relative;
