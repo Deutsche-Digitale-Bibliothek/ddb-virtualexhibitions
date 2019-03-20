@@ -54,10 +54,11 @@ class ExhibitDdbHelper
      *
      * Shoud be something like e.g.
      * ns2, ns4, tag0, cortex
+     * For now we do not need to know this.
      *
      * @var string
      */
-    public static $ddbXmlRootName = '';
+    // public static $ddbXmlRootName = '';
 
     /**
      * DDB Helper configuration
@@ -118,7 +119,7 @@ class ExhibitDdbHelper
         if ($httpCode === 200) {
             $doc = new DOMDocument();
             $doc->loadXML($response);
-            self::$ddbXmlRootName = self::getDdbVideoXmlRootName($doc, $id);
+            // self::$ddbXmlRootName = self::getDdbVideoXmlRootName($doc, $id);
             self::getDdbVideoXmlBin($doc, $id);
         }
     }
@@ -187,33 +188,26 @@ class ExhibitDdbHelper
                 'video/mp4'
             )
         );
-        foreach ($domNode->childNodes as $node) {
-            // Some legacy checks:
-            // 'cortex:binary' === $node->nodeName ||
-            // 'tag0:binary' === $node->nodeName ||
-            // 'ns2:binary' === $node->nodeName ||
-            if ($node->nodeName === self::$ddbXmlRootName . ':binary') {
-                $ref = $node->getAttribute('ref');
-                $mimetype = $node->getAttribute('mimetype');
-                if (in_array($mimetype, $mimes['video'])) {
-                    self::$ddbVideoXml[$id]['video']['ref'] = $ref;
-                    self::$ddbVideoXml[$id]['video']['mimetype'] = $mimetype;
-                    self::$ddbVideoXml[$id]['video']['mime'] = substr($mimetype, (strpos($mimetype, '/') + 1));
-                    self::$ddbVideoXml[$id]['video']['src'] =  self::$config['ddbVideoSrvPrefix'] . $ref;
-                }
-                if (in_array($mimetype, $mimes['img']) && $node->getAttribute('primary') === 'true') {
-                    self::$ddbVideoXml[$id]['img']['ref'] = $ref;
-                    self::$ddbVideoXml[$id]['img']['mimetype'] = $mimetype;
-                    self::$ddbVideoXml[$id]['img']['res'] = self::getDdbVideoImgResolution($id, $ref);
-                    self::$ddbVideoXml[$id]['img']['src'] = self::$config['ddbIIIFSrvPrefix']
-                        . $ref
-                        . self::$config['ddbIIIFSrvMiddfix']
-                        . self::$ddbVideoXml[$id]['img']['res']
-                        . self::$config['ddbIIIFSrvPostfix'];
-                }
+        $root = $domNode->documentElement;
+
+        foreach ($domNode->getElementsByTagNameNS($root->namespaceURI, 'binary') as $node) {
+            $ref = $node->getAttribute('ref');
+            $mimetype = $node->getAttribute('mimetype');
+            if (in_array($mimetype, $mimes['video'])) {
+                self::$ddbVideoXml[$id]['video']['ref'] = $ref;
+                self::$ddbVideoXml[$id]['video']['mimetype'] = $mimetype;
+                self::$ddbVideoXml[$id]['video']['mime'] = substr($mimetype, (strpos($mimetype, '/') + 1));
+                self::$ddbVideoXml[$id]['video']['src'] =  self::$config['ddbVideoSrvPrefix'] . $ref;
             }
-            if ($node->hasChildNodes()) {
-                self::getDdbVideoXmlBin($node, $id);
+            if (in_array($mimetype, $mimes['img']) && $node->getAttribute('primary') === 'true') {
+                self::$ddbVideoXml[$id]['img']['ref'] = $ref;
+                self::$ddbVideoXml[$id]['img']['mimetype'] = $mimetype;
+                self::$ddbVideoXml[$id]['img']['res'] = self::getDdbVideoImgResolution($id, $ref);
+                self::$ddbVideoXml[$id]['img']['src'] = self::$config['ddbIIIFSrvPrefix']
+                    . $ref
+                    . self::$config['ddbIIIFSrvMiddfix']
+                    . self::$ddbVideoXml[$id]['img']['res']
+                    . self::$config['ddbIIIFSrvPostfix'];
             }
         }
     }
