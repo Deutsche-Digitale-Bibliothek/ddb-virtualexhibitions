@@ -1380,6 +1380,13 @@ i.license-or {
       }
     }
   }
+  &.section-cite {
+    cite {
+      &::before {
+        background-color: #fff;
+      }
+    }
+  }
   .shariff {
     .fa-twitter::before {
       background-image: url("../images/icons/icon_twitter_dark.svg");

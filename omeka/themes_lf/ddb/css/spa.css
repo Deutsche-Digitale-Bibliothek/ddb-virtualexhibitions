@@ -7012,6 +7012,10 @@ i.license-or {
   stroke: #1d1d1b;
 }
 
+.dark.section-cite cite::before {
+  background-color: #fff;
+}
+
 .dark .shariff .fa-twitter::before {
   background-image: url("../images/icons/icon_twitter_dark.svg");
 }
