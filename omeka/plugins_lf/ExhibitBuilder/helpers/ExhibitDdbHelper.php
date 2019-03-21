@@ -124,16 +124,24 @@ class ExhibitDdbHelper
         }
     }
 
-    public static function getDdbVideoXmlRootName($doc, $id)
+    /**
+     * Get root tag name
+     *
+     * This is unused for now
+     *
+     * @param DOMDocument object $doc
+     * @return stirng root element tag name
+     */
+    public static function getDdbVideoXmlRootName($doc)
     {
         $root = $doc->documentElement;
         return (substr($root->tagName, 0, strpos($root->tagName, ':')));
     }
 
     /**
-     * Get image rsolution for video images.
+     * Get image resolution for video images.
      *
-     * @param int $id $id DDB object ID
+     * @param int $id DDB object ID
      * @param string $ref Hash from XML for the image file
      * @return void
      */
@@ -171,7 +179,7 @@ class ExhibitDdbHelper
     }
 
     /**
-     * Recursively loop XML nodes and get binary tags for video and video img.
+     * Iterate over binary nodes and get attribs for video and video img.
      * Set self::$ddbVideoXml foreach video id.
      *
      * @param DOMNode $domNode The XML DOMNode for the DDB object
