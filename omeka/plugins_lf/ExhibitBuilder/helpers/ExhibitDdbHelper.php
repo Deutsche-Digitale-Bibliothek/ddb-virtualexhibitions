@@ -202,20 +202,25 @@ class ExhibitDdbHelper
             $ref = $node->getAttribute('ref');
             $mimetype = $node->getAttribute('mimetype');
             if (in_array($mimetype, $mimes['video'])) {
-                self::$ddbVideoXml[$id]['video']['ref'] = $ref;
-                self::$ddbVideoXml[$id]['video']['mimetype'] = $mimetype;
-                self::$ddbVideoXml[$id]['video']['mime'] = substr($mimetype, (strpos($mimetype, '/') + 1));
-                self::$ddbVideoXml[$id]['video']['src'] =  self::$config['ddbVideoSrvPrefix'] . $ref;
+                self::$ddbVideoXml[$id]['video'] = [
+                    'ref' => $ref,
+                    'mimetype' => $mimetype,
+                    'mime' => substr($mimetype, (strpos($mimetype, '/') + 1)),
+                    'src' => self::$config['ddbVideoSrvPrefix'] . $ref
+                ];
             }
             if (in_array($mimetype, $mimes['img']) && $node->getAttribute('primary') === 'true') {
-                self::$ddbVideoXml[$id]['img']['ref'] = $ref;
-                self::$ddbVideoXml[$id]['img']['mimetype'] = $mimetype;
-                self::$ddbVideoXml[$id]['img']['res'] = self::getDdbVideoImgResolution($id, $ref);
-                self::$ddbVideoXml[$id]['img']['src'] = self::$config['ddbIIIFSrvPrefix']
-                    . $ref
-                    . self::$config['ddbIIIFSrvMiddfix']
-                    . self::$ddbVideoXml[$id]['img']['res']
-                    . self::$config['ddbIIIFSrvPostfix'];
+                $res = self::getDdbVideoImgResolution($id, $ref);
+                self::$ddbVideoXml[$id]['img'] = [
+                    'ref' => $ref,
+                    'mimetype' => $mimetype,
+                    'res' => $res,
+                    'src' => self::$config['ddbIIIFSrvPrefix']
+                        . $ref
+                        . self::$config['ddbIIIFSrvMiddfix']
+                        . $res
+                        . self::$config['ddbIIIFSrvPostfix']
+                ];
             }
         }
     }
