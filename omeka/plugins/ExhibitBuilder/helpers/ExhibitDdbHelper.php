@@ -1420,4 +1420,41 @@ class ExhibitDdbHelper
             $thumbnail);
 
     }
+
+    /**
+     * Find an item in exhibit pages by item id
+     *
+     * @param int $itemId Object Item ID
+     * @return array Array of ExhibitPage objects
+     */
+    public static function findItemInExhibitPage($itemId)
+    {
+        $pages = array();
+        $entries = get_db()->getTable('ExhibitPageEntry')->findBy(array('item_id' => $itemId));
+        if (isset($entries) && is_array($entries)) {
+            foreach ($entries as $entry) {
+                $pages[] = get_db()->getTable('ExhibitPage')->find($entry->page_id);
+            }
+        }
+        return $pages;
+    }
+
+    /**
+     * Get HTML list link to edit an exhibit page
+     *
+     * @param ExhibitPage $page An ExhibitPage object
+     * @return String HTML output
+     */
+    public static function getEditPageEntry($page)
+    {
+        $pageId = html_escape($page->id);
+        $html = '<li class="page" id="page_' . $pageId . '">'
+            . '<a href="exhibits/edit-page-content/' . $pageId . '">'
+            . html_escape($page->title)
+            . '</a>'
+            . '</li>';
+        return $html;
+    }
+
+
 }
