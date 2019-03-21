@@ -10,6 +10,6 @@ git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-va.git .
 ```
 (Do not miss the dot at the end)
 
-## Omeka 2.5 Branch
+## Omeka Version 2.6.1
 
-This is built upon Omeka 2.5 Release
+This is built upon Omeka Version 2.6.1 Release
