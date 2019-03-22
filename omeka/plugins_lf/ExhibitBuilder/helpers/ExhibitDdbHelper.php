@@ -1449,6 +1449,20 @@ class ExhibitDdbHelper
         return false;
     }
 
+    public static function isX3d($attachment)
+    {
+        if (!$attachment || !$attachment['item']) {
+            return false;
+        }
+        $x3d = get_db()->getTable('X3d')->findByItemId($attachment{'item'}->id);
+        if ($x3d) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     /**
      * Get HTML (link to Colorbox and image) for attachments
      *
@@ -1496,31 +1510,29 @@ class ExhibitDdbHelper
             $item = $attachment['item'];
             $x3d = get_db()->getTable('X3d')->findByItemId($item->id);
             if (isset($x3d) && !empty($x3d)) {
-                $x3dDir = FILES_DIR . DIRECTORY_SEPARATOR . 'x3d' . DIRECTORY_SEPARATOR . $x3d->directory;
+                $x3dDir = FILES_DIR . DIRECTORY_SEPARATOR . 'x3d'
+                    . DIRECTORY_SEPARATOR . $x3d->directory;
                 $x3dWebdir = WEB_FILES . '/x3d/' . $x3d->directory;
-                $thumbnail = '<img src="' . WEB_FILES . '/x3d/' . $x3d->directory . '/or_' . $x3d->thumbnail . '" alt="' . $attachmentTitle . '">';
-                // $attachmentLinkUrl = record_url($attachment['item'], 'show', false);
+                $thumbnail = '<img class="media-item-3d-thumb" '
+                    . 'src="' . WEB_FILES . '/x3d/' . $x3d->directory
+                    . '/or_' . $x3d->thumbnail . '" '
+                    . 'alt="' . $attachmentTitle . '" '
+                    . 'data-3durl="' . $x3dWebdir . '/' . $x3d->x3d_file . '"'
+                    . '>';
+                $attachmentLinkUrl = record_url($attachment['item'], 'show', false);
                 $attachmentLinkUrl = exhibit_builder_exhibit_item_uri($attachment['item']);
-                $link = '<a href="' . $attachmentLinkUrl . '" class="permalink iframe expand-image-link" '
-                    . tag_attributes($linkAttributes)
-                    . '>' . $thumbnail . '</a>';
-                $link .= exhibit_builder_attachment_caption($attachment);
+                $link = $thumbnail;
                 return $link;
             }
         }
 
         // Video
         if($videoSrc) {
-            // return '<p>Video ist noch nicht implementiert.</p>';
             if (isset($file)) {
                 $videoImage = html_escape($file->getWebPath('fullsize'));
             } else {
                 $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
             }
-            // $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
-            // '<img src="https://iiif.deutsche-digitale-bibliothek.de/image/2/35653250-38af-495d-8b2b-a7273d7832ba/full/!140,105/0/default.jpg" alt="video">'
-            // var_dump($videoImage);
-
             return self::getVideoFromShortcode($videoSrc, $videoImage);
         }
 

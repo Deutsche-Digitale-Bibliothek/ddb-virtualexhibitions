@@ -354,6 +354,16 @@
       $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
 
+    $('.media-item-3d-thumb').each(function () {
+      var $mediaItem = $(this);
+      var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
+      var captionHeight= $caption.height();
+      if (captionHeight) {
+        mediaItemMaxHeight -= captionHeight;
+      }
+      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
+    });
+
     // make media meta scroll
     // this will not work, we would have to wait for image load events
     // https://stackoverflow.com/questions/3877027/jquery-callback-on-image-load-even-when-the-image-is-cached
@@ -698,6 +708,45 @@
     });
   }
 
+  function generate3D() {
+    var caller = $(this);
+    var url = caller.data('3durl');
+    var container = $('<div id="zoom-container" class="zoom-container"></div>');
+    var object3D = $(
+      '<x3d class="x3d" showLog="false" showStat="false">' +
+        '<scene>' +
+          '<inline url="' + caller.data('3durl') + '"> </inline>' +
+        '</scene>' +
+        '</x3d>');
+    var closer = $(
+      '<div class="zoom-close">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
+          '<g>' +
+            '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
+            '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
+          '</g>' +
+        '</svg>' +
+      '</div>'
+    );
+    container.append(object3D, closer);
+    $('body').append(container);
+    x3dom.reload();
+
+    closer.on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).off('click');
+      container.remove();
+    });
+  }
+
+  function bind3D() {
+    $('img.media-item-3d-thumb').bind('click', generate3D);
+    $('.control-zoom').bind('click', function() {
+      $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
+    });
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -713,6 +762,7 @@
       bindMediaInfo();
       bindTitlePageNextLink();
       bindZoom();
+      bind3D();
     });
   }
 
