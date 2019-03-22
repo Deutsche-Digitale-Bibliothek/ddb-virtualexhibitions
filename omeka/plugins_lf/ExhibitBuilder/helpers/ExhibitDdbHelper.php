@@ -1563,7 +1563,19 @@ class ExhibitDdbHelper
                 'linkToFile' => false,
                 'imgAttributes'=> $imgAttributes
             );
-            return file_markup($file, $fileOptions, null);
+
+            // audio
+            $audioTypes = ['audio/mpeg', 'audio/ogg'];
+            if (in_array($file->mime_type, $audioTypes)) {
+                $files = $item->getFiles();
+                $html = '<audio controls="" class="audio-controls">';
+                foreach ($files as $audio) {
+                    $html .= file_markup($audio, $fileOptions, null);
+                }
+                return $html . '</audio>';
+            } else {
+                return file_markup($file, $fileOptions, null);
+            }
         }
         // END add s_options
 

@@ -5677,6 +5677,12 @@ h5 {
   }
 }
 
+a,
+a:hover {
+  color: #1d1d1b;
+  text-decoration: underline;
+}
+
 .container-fluid {
   max-width: 1140px;
 }
@@ -6918,7 +6924,9 @@ i.license-or {
 .dark h3,
 .dark h4,
 .dark h5,
-.dark h6 {
+.dark h6,
+.dark a,
+.dark a:hover {
   color: #fff;
 }
 

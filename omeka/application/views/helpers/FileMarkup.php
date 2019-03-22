@@ -359,9 +359,9 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
     public function audio($file, array $options)
     {
         // Grandgeorg Websolutions
-        return $this->_ddbaudio($file, $options, $type);
+        return $this->_ddbaudio($file, $options);
         // END Grandgeorg Websolutions
-        return $this->_media('audio', $file, $options);
+        // return $this->_media('audio', $file, $options);
     }
 
     /**
@@ -374,13 +374,10 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      * @param string $type The Internet media type of the file
      * @return string
      */
-    private function _ddbaudio($file, array $options, $type)
+    private function _ddbaudio($file, array $options)
     {
         $path = html_escape($file->getWebPath('original'));
-        // $html = '<audio controls>';
-        $html = '<source src="' . $path . '" type="' . $type . '">';
-        // $html .= 'Your browser does not support the audio tag.';
-        // $html .= ' </audio>';
+        $html = '<source src="' . $path . '" type="' . $file->mime_type . '">';
         return $html;
     }
     // END Grandgeorg Websolutions

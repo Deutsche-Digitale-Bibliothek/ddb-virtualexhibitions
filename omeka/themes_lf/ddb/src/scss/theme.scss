@@ -74,6 +74,11 @@ h5 {
   }
 }
 
+a,
+a:hover {
+  color: $body-color;
+  text-decoration: underline;
+}
 
 // bootstrap
 .container-fluid {
@@ -1281,7 +1286,9 @@ i.license-or {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  a,
+  a:hover {
     color: #fff;
   }
   .media-meta {
