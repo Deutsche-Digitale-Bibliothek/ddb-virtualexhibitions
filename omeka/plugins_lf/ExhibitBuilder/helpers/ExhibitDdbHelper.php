@@ -317,11 +317,21 @@ class ExhibitDdbHelper
                     }
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         if (isset($outputType) && $outputType === 'URL') {
-                            $output = self::$ddbVideoXml[$videoId]['img']['src'];
+                            if (isset(self::$ddbVideoXml[$videoId]['img'])) {
+                                $output = self::$ddbVideoXml[$videoId]['img']['src'];
+                            } else {
+                                $output = img('video_placeholder.png');
+                            }
                         } else {
-                            $output = '<img src="'
-                                . self::$ddbVideoXml[$videoId]['img']['src']
-                                . '" alt="video">';
+                            if (isset(self::$ddbVideoXml[$videoId]['img'])) {
+                                $output = '<img src="'
+                                    . self::$ddbVideoXml[$videoId]['img']['src']
+                                    . '" alt="video">';
+                            } else {
+                                $output = '<img src="'
+                                    . img('video_placeholder.png')
+                                    . '" alt="video">';
+                            }
                         }
                     }
                     break;
@@ -405,27 +415,24 @@ class ExhibitDdbHelper
                     $videoPalyerId = str_replace('=', '-', $videoId);
                     /**
                      * get $videoId, $offsetStart, $offsetStop
-                     * $videoId egts overwriten!
+                     * $videoId gets overwriten!
                      */
                     $extended = self::getDdbVideoTimeOffset($videoId);
                     extract($extended, EXTR_OVERWRITE);
                     if (!array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::getDdbVideoXml($videoId);
                     }
-                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
-                        $output = '<div class="external-thumbnail" '
-                            . 'style="background-image:url(\''
-                            . self::$ddbVideoXml[$videoId]['img']['src']
-                            . '\');"><img src="'
-                            . img('thnplaceholder.gif')
-                            . '" alt="video" style="'
-                            . 'visibility:hidden;'
-                            . '">'
-                            . '<div class="blurb">Video</div></div>';
-                    }
-                    if (empty($videoImage) && array_key_exists($videoId, self::$ddbVideoXml)) {
+
+                    // Get Video Thumbnails
+                    if (empty($videoImage) &&
+                        array_key_exists($videoId, self::$ddbVideoXml) &&
+                        isset(self::$ddbVideoXml[$videoId]['img'])
+                    ) {
                         $videoImage = self::$ddbVideoXml[$videoId]['img']['src'];
+                    } elseif (empty($videoImage)) {
+                        $videoImage = img('video_placeholder.png');
                     }
+
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::$videoDdbCount = self::$videoDdbCount + 1;
                         $output = '
