@@ -1,12 +1,13 @@
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'spa_zoom_hint.php';  ?>
 <script type="text/javascript" src="<?php echo WEB_PLUGIN; ?>/X3d/views/shared/javascripts/x3dom.js"></script>
 <?php
 echo js_tag('options.min') . "\n";
 echo '<script type="text/javascript">' . "\n";
 echo 'window.litfassOptions = {';
-  echo 'anchors: [' . $sectionAnchors . '], ';
-  echo 'sectionsColor: [' . $sectionColors . '], ';
-  echo 'palette: \'' . $colorpalette . '\', ';
-  echo 'path_images: \'' . web_path_to('images') . '\', ';
+    echo 'anchors: [' . $sectionAnchors . '], ';
+    echo 'sectionsColor: [' . $sectionColors . '], ';
+    echo 'palette: \'' . $colorpalette . '\', ';
+    echo 'path_images: \'' . web_path_to('images') . '\', ';
 echo '};';
 echo '</script>'. "\n";
 echo js_tag('bundle.min');

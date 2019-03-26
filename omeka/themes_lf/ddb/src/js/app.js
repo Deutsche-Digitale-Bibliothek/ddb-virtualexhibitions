@@ -592,11 +592,10 @@
       '</div>'
     );
     if (!zoomHintShown) {
-      var zoomHint = $(
-        '<div class="zoom-hint-container">' +
-          '<div class="zoom-hint"><img src="' + options.path_images + '/icons/zoom-hint.svg" alt="HELP"></div>' +
-        '</div>'
-      );
+      var zoomHint = $('<div class="zoom-hint-container"></div>');
+      var zoomHintHelper = $('.zoom-hint-helper').clone();
+      zoomHintHelper.removeClass('zoom-hint-helper');
+      zoomHint.append(zoomHintHelper);
     }
     var closer = $(
       '<div class="zoom-close">' +

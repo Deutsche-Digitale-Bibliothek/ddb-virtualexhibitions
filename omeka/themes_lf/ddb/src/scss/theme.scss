@@ -1257,22 +1257,40 @@ i.license-or {
   height: 100%;
   background-color: rgba($color: #000, $alpha: .3);
   .zoom-hint {
-    width: 100%;
-    max-width: 613px;
-    height: 100%;
-    max-height: 487px;
-    // @TODO: [Grandgeorg Websolutions:
-    // replace temporary styles and add new ones
-    img {
-      width: 100%;
-      height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    color: #aaa;
+    cursor: pointer;
+    .zoom-hint-close {
+      padding: 12px 15px 16px;
+      line-height: 18px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, .85);
     }
-    // @TODO-END: Grandgeorg Websolutions]
-
-    // background-image: url("../images/icons/zoom-hint.svg");
-    // background-repeat: no-repeat;
-    // background-position: 0 0;
+    .zoom-hint-content {
+      background-color: rgba(0, 0, 0, .85);
+      span {
+        font-size: .9rem;
+        @include media-breakpoint-down(sm) {
+          font-size: .75rem;
+        }
+      }
+      .zoom-headline {
+        font-family: $font-family-headings;
+        font-size: 1rem;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      .row div.d-flex:not(:last-of-type) {
+        border-right: 1px solid rgb(93, 93, 93);
+      }
+    }
   }
+}
+
+.zoom-hint-helper {
+  display: none;
 }
 
 // --------------------------- +++ dark +++ ---------------------------
