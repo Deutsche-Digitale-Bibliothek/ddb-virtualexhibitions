@@ -274,12 +274,12 @@ function exhibit_builder_form_attachment($item = null, $file = null, $caption = 
  */
 function exhibit_builder_form_caption($order, $caption = null)
 {
-    $label = __('Caption');
+    $label = __('Caption') . ' ' . __('(maximal 150 Zeichen)');
 
     $html = '<div class="caption-container">'
           . '<label for="Caption-' . $order.'">' . $label . '</label>'
           . get_view()->formTextarea("Caption[$order]", $caption,
-                array('rows'=>'4','cols'=>'30', 'class' => 'wysiwygable'))
+                array('rows'=>'4','cols'=>'30', 'class' => 'notwysiwygable', 'maxlength' => '150'))
           . '</div>';
 
     $html = apply_filters('exhibit_builder_form_caption', $html,

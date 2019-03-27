@@ -109,8 +109,8 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
                 $s_options = @$post['s_options'][$i];
                 // End Grandgeorg Websolutions
                 $ip->text = $text ? $text : null;
-                $ip->caption = $caption ? $caption : null;
                 // Begin Grandgeorg Websolutions
+                $ip->caption = $caption ? substr($caption, 0, 150): null;
                 $ip->s_options = $s_options ? $s_options : null;
                 // End Grandgeorg Websolutions
                 $ip->item_id = $item_id ? $item_id : null;

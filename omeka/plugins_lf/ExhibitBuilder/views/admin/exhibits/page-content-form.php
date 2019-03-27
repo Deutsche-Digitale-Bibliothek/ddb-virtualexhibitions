@@ -1,7 +1,7 @@
 <?php $title = __('Edit Page Content: "%s"', metadata('exhibit_page', 'title', array('no_escape' => true))); ?>
 <?php echo head(array('title'=> html_escape($title), 'bodyclass'=>'exhibits')); ?>
 <?php echo flash(); ?>
-<?php $wysiwygSelector = 'textarea'; ?>
+<?php $wysiwygSelector = 'textarea:not(.notwysiwygable)'; ?>
 <script>
 (function($) {
     $.fn.ginaZoomSelector = function() {
@@ -312,7 +312,7 @@
             // We should remove tinyMCE in exhibit.js at removeItemLink.bind() line 173 ...
             tinyMCE.execCommand('mceRemoveEditor', false, this.id);
             tinyMCE.execCommand('mceAddEditor', false, this.id);
-            console.log(this.id);
+            // console.log(this.id);
         });
     });
 //]]>
