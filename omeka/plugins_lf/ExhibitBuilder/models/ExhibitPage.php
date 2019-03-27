@@ -110,7 +110,16 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
                 // End Grandgeorg Websolutions
                 $ip->text = $text ? $text : null;
                 // Begin Grandgeorg Websolutions
-                $ip->caption = $caption ? substr($caption, 0, 150): null;
+                $ip->caption = $caption ?
+                    // htmlspecialchars(
+                        substr(
+                            html_entity_decode(
+                                strip_tags($caption),
+                                ENT_COMPAT | ENT_HTML5,
+                                'UTF-8'),
+                            0, 153)
+                    // ENT_COMPAT | ENT_HTML5, 'UTF-8')
+                    : null;
                 $ip->s_options = $s_options ? $s_options : null;
                 // End Grandgeorg Websolutions
                 $ip->item_id = $item_id ? $item_id : null;

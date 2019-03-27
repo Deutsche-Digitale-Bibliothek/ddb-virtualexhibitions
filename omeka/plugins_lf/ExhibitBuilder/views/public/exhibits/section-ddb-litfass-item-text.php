@@ -91,7 +91,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                             <?php endif; ?>
                             <div class="media-item-caption<?php echo ($pageoptions['align'] === 'left')? ' media-item-caption-right' : ' media-item-caption-left'; ?>">
                                 <?php //echo ExhibitDdbHelper::getItemDescription($attachment, null); ?>
-                                <?php echo ($attachment['caption'])? strip_tags($attachment['caption']) : ''; ?>
+                                <?php echo ($attachment['caption'])? strip_tags(htmlentities($attachment['caption'], ENT_COMPAT | ENT_HTML5, 'UTF-8', false)) : ''; ?>
                             </div>
                         </div>
                     </div>
