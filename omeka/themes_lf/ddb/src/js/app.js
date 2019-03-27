@@ -63,7 +63,7 @@
       // css3: true,
       // scrollingSpeed: 1500,
       autoScrolling: false,
-      // fitToSection: true,
+      fitToSection: true,
       fitToSectionDelay: 500,
       // scrollBar: false,
       // easing: 'easeInOutCubic',
@@ -363,6 +363,17 @@
       }
       $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
+
+    $('.media-audio-image').each(function () {
+      var $mediaItem = $(this);
+      var $caption = $('.media-item-caption', $(this).parents('.media-item-container'));
+      var captionHeight= $caption.height();
+      if (captionHeight) {
+        mediaItemMaxHeight -= captionHeight;
+      }
+      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
+    });
+
 
     // make media meta scroll
     // this will not work, we would have to wait for image load events

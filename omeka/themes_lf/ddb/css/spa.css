@@ -6452,7 +6452,8 @@ a:hover {
 }
 
 .media-item,
-.media-item-3d-thumb {
+.media-item-3d-thumb,
+.media-audio-image {
   display: block;
   max-width: 100%;
   margin: 0 auto;
@@ -6906,14 +6907,12 @@ a:hover {
   margin-bottom: 0;
 }
 
-.section-item .media-audio-image {
-  width: 264px;
-  height: 264px;
-  margin: 0 auto;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-origin: content-box;
-  background-size: contain;
+.media-audio-image-container {
+  margin-bottom: 1rem;
+}
+
+.media-audio-image {
+  cursor: default;
 }
 
 .dark h1,

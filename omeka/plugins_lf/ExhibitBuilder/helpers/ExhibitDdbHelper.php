@@ -1436,24 +1436,38 @@ class ExhibitDdbHelper
             array('start' => $start, 'end' => $end, 'props' => $props, 'thumbnail_type' => $thumbnailType));
     }
 
+    /**
+     * Check if attachment-file is a zoomable image
+     *
+     * Will return the webpath to original file if there is
+     * a zoomable image, else it will return false.
+     *
+     * With mixed media items it will return false.
+     *
+     * @param [array] $attachment
+     * @return [String || boolean]
+     */
     public static function getZoomable($attachment)
     {
+        $result = false;
         if (!$attachment || !$attachment['item'] || !$attachment['file']) {
             return false;
         }
-        $allowedExtensions = 'image/gif,image/jpeg,image/pjpeg,image/png,image/tiff';
+        $item = $attachment['item'];
+        $files = $item->getFiles();
+        $allowedExtensions = explode(',', 'image/gif,image/jpeg,image/pjpeg,image/png,image/tiff');
         $videoSrc = metadata($attachment['item'], array('Item Type Metadata', 'Videoquelle'));
-        if(
-            in_array(
-                $attachment['file']['mime_type'],
-                explode(',', $allowedExtensions)
-            ) &&
-            !$videoSrc
-        ) {
-            // return true;
-            return $attachment['file']->getWebPath('original');
+        if (isset($videoSrc) && !empty($videoSrc)) {
+            return false;
         }
-        return false;
+        foreach ($files as $file) {
+            if (!in_array($file['mime_type'], $allowedExtensions)) {
+                return false;
+            } else {
+                $result = $file->getWebPath('original');
+            }
+        }
+        return $result;
     }
 
     public static function isX3d($attachment)
@@ -1545,10 +1559,11 @@ class ExhibitDdbHelper
 
         // add s_options
         if ($file) {
-            if ($imgZoom === true) {
-                $imgAttributes['title'] = false;
+            $files = $item->getFiles();
 
-                $files = $item->getFiles();
+            if ($imgZoom === true) {
+
+                $imgAttributes['title'] = false;
                 $imgAttributes['data-zoom'] = $files[0]->getWebPath();
 
                 // ZOOM ATTRIBS
@@ -1585,29 +1600,37 @@ class ExhibitDdbHelper
 
             // audio
             $audioTypes = ['audio/mpeg', 'audio/ogg'];
-            if (in_array($file->mime_type, $audioTypes)) {
-                $files = $item->getFiles();
+            $isAudio = false;
+            foreach ($files as $audio) {
+                if (in_array($audio->mime_type, $audioTypes)) {
+                    $isAudio = true;
+                    break;
+                }
+            }
+            if ($isAudio) {
+                $audioImage = '';
                 $html = '<audio controls="" class="audio-controls">';
                 foreach ($files as $audio) {
-                    $html .= file_markup($audio, $fileOptions, null);
+                    if (in_array($audio->mime_type, $audioTypes)) {
+                        $html .= file_markup($audio, $fileOptions, null);
+                    } else {
+                        $fileOptions['imgAttributes'] = [
+                            'class' => 'media-audio-image',
+                            'title' => false
+                        ];
+                        $audioImage = file_markup($audio, $fileOptions, ['class' => 'media-audio-image-container']);
+                    }
                 }
-                return $html . '</audio>';
-            } else {
-                return file_markup($file, $fileOptions, null);
+                return $audioImage. $html . '</audio>';
             }
+
+            return file_markup($file, $fileOptions, null);
+
         }
         // END add s_options
 
-        $linkAttributes['class'] = (isset($linkAttributes['class']))? $linkAttributes['class'] . ' expand-image-link' : 'expand-image-link';
-
-        return exhibit_builder_attachment_markup(
-            $attachment,
-            array(
-                'imageSize' => 'fullsize',
-                'linkAttributes' => $linkAttributes),
-            array('class' => 'permalink' . $addCssClass),
-            $thumbnail);
-
+        // empty object with no files attached
+        return link_to_item($attachmentTitle, ['target' => '_blank', 'rel' => 'noopener'], 'show', $item);
     }
 
     /**
