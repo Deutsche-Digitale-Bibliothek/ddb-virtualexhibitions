@@ -89,7 +89,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                             <?php else: ?>
                             <?php echo $attachmentMarkup; ?>
                             <?php endif; ?>
-                            <div class="media-item-caption<?php echo ($pageoptions['align'] === 'left')? ' media-item-caption-right' : ' media-item-caption-left'; ?>">
+                            <div class="media-item-caption media-item-caption-left text-center">
                                 <?php echo ($attachment['caption'])? strip_tags(htmlentities($attachment['caption'], ENT_COMPAT | ENT_HTML5, 'UTF-8', false)) : ''; ?>
                             </div>
                         </div>
