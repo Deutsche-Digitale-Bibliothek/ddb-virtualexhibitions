@@ -511,6 +511,16 @@
     });
   }
 
+  function bindEmptyClick() {
+    $(document).click(function(e) {
+      if($(e.target).closest('#menu-container').length <= 0 &&
+        $('#menu-container').hasClass('active')
+      ) {
+        $('#toggle-menu').trigger('click');
+      }
+    });
+  }
+
   function getMinZoom(caller) {
     var minZoom = 0.2;
     var calcMinZoom = minZoom;
@@ -773,6 +783,7 @@
       bindTitlePageNextLink();
       bindZoom();
       bind3D();
+      bindEmptyClick();
     });
   }
 
