@@ -15,7 +15,7 @@
         <?php endforeach; ?>
         </ul>
         <p class="menu-text menu-text-red">erstellt mit</p>
-        <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
+        <a href="#"><img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo"></a>
     </div>
     <div class="menu-body">
         <div id="menu-scrollable" class="menu-scrollable">
