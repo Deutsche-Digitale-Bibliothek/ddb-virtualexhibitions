@@ -762,6 +762,9 @@
 
   function bind3D() {
     $('img.media-item-3d-thumb').bind('click', generate3D);
+    $('img.item-3d-thumb-icon').bind('click', function() {
+      $(this).siblings('img.media-item-3d-thumb').trigger('click');
+    });
     $('.control-zoom').bind('click', function() {
       $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
     });

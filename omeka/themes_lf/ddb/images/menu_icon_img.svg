@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Symbol_112_1" data-name="Symbol 112 – 1" transform="translate(-31.5 -415.5)">
+    <line id="Linie_79" data-name="Linie 79" x2="10" transform="translate(43 462) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <line id="Linie_78" data-name="Linie 78" x2="10" transform="translate(43 417) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <line id="Linie_80" data-name="Linie 80" y1="45" transform="translate(33 462) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <line id="Linie_78-2" data-name="Linie 78" x2="10" transform="translate(68 462)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <line id="Linie_79-2" data-name="Linie 79" x2="10" transform="translate(68 417)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <line id="Linie_80-2" data-name="Linie 80" y1="45" transform="translate(78 417)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
+    <g id="Rechteck_345" data-name="Rechteck 345" transform="translate(43.543 429.2)" fill="none" stroke="#1d1d1b" stroke-width="2">
+      <rect width="23.914" height="21.257" stroke="none"/>
+      <rect x="1" y="1" width="21.914" height="19.257" fill="none"/>
+    </g>
+    <g id="Rechteck_346" data-name="Rechteck 346" transform="translate(40 425.657)" fill="none" stroke="#1d1d1b" stroke-width="2">
+      <rect width="31" height="28.343" stroke="none"/>
+      <rect x="1" y="1" width="29" height="26.343" fill="none"/>
+    </g>
+  </g>
+</svg>

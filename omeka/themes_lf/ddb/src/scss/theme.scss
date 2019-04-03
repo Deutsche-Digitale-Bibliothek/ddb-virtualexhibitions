@@ -623,6 +623,10 @@ a:hover {
 //   }
 // }
 
+.media-item-3d-thumb-container {
+  position: relative;
+}
+
 .media-item,
 .media-item-3d-thumb,
 .media-audio-image {
@@ -631,6 +635,14 @@ a:hover {
   margin: 0 auto;
   cursor: pointer;
   transition: all .5s;
+}
+.item-3d-thumb-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
 }
 .media-item-caption {
   // padding-right: .5rem;

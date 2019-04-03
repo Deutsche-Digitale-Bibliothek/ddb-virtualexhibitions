@@ -1534,16 +1534,20 @@ class ExhibitDdbHelper
                 $x3dDir = FILES_DIR . DIRECTORY_SEPARATOR . 'x3d'
                     . DIRECTORY_SEPARATOR . $x3d->directory;
                 $x3dWebdir = WEB_FILES . '/x3d/' . $x3d->directory;
-                $thumbnail = '<img class="media-item-3d-thumb" '
+                $thn = '<img class="media-item-3d-thumb" '
                     . 'src="' . WEB_FILES . '/x3d/' . $x3d->directory
                     . '/or_' . $x3d->thumbnail . '" '
                     . 'alt="' . $attachmentTitle . '" '
                     . 'data-3durl="' . $x3dWebdir . '/' . $x3d->x3d_file . '"'
                     . '>';
-                $attachmentLinkUrl = record_url($attachment['item'], 'show', false);
-                $attachmentLinkUrl = exhibit_builder_exhibit_item_uri($attachment['item']);
-                $link = $thumbnail;
-                return $link;
+                // $attachmentLinkUrl = record_url($attachment['item'], 'show', false);
+                // $attachmentLinkUrl = exhibit_builder_exhibit_item_uri($attachment['item']);
+                $x3dthn = '<div class="media-item-3d-thumb-container">' .
+                    $thn .
+                    '<img class="item-3d-thumb-icon" src="' .
+                    img('menu_icon_3d_bg.svg') .
+                    '" alt="3D"></div>';
+                return $x3dthn;
             }
         }
 
