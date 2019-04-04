@@ -80,6 +80,9 @@ class ExhibitDdbHelper
         'ddbVideoSrvPrefix'         => 'https://iiif.deutsche-digitale-bibliothek.de/binary/'
     );
 
+    public static $currentAttechmentMediaType = 'text';
+
+
     /**
      * Main shortcode parser
      *
@@ -1547,6 +1550,7 @@ class ExhibitDdbHelper
                     '<img class="item-3d-thumb-icon" src="' .
                     img('menu_icon_3d_bg.svg') .
                     '" alt="3D"></div>';
+                self::$currentAttechmentMediaType = '3d';
                 return $x3dthn;
             }
         }
@@ -1558,6 +1562,7 @@ class ExhibitDdbHelper
             } else {
                 $videoImage = self::getVideoThumbnailFromShortcodeForMainItem($videoSrc, 'large', 'URL');
             }
+            self::$currentAttechmentMediaType = 'video';
             return self::getVideoFromShortcode($videoSrc, $videoImage);
         }
 
@@ -1625,9 +1630,11 @@ class ExhibitDdbHelper
                         $audioImage = file_markup($audio, $fileOptions, ['class' => 'media-audio-image-container']);
                     }
                 }
+                self::$currentAttechmentMediaType = 'audio';
                 return $audioImage. $html . '</audio>';
             }
 
+            self::$currentAttechmentMediaType = 'image';
             return file_markup($file, $fileOptions, null);
 
         }

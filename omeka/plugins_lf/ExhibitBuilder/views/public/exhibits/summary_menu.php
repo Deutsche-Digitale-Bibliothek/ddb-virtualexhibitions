@@ -26,14 +26,10 @@
                 <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : ''; ?>>
                     <?php if($sectionKey == 0): ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-home"></div>
-                    <?php
-                    elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'):
-                        $menuChapterCounter++;
-
-                    ?>
+                    <?php elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'): $menuChapterCounter++; ?>
                     <div class="menu-box menu-number"><?php echo ExhibitDdbHelper::getLeadingZeroNum($menuChapterCounter); ?></div>
                     <?php else: ?>
-                    <div class="menu-box menu-icon menu-icon-transparent icon-text"
+                    <div class="menu-box menu-icon menu-icon-transparent icon-<?php echo $sectionTitle['menu_icon']; ?>"
                     <?php echo (!empty($sectionTitle['pagethumbnail']))? 'style="background-image:url('
                         . WEB_FILES . '/layout/pagethumbnail/' . $sectionTitle['pagethumbnail'] . ');"' : ''; ?>></div>
                     <?php endif; ?>

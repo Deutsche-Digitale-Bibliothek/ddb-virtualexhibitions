@@ -6178,6 +6178,18 @@ a:hover {
   background-image: url("../images/menu_icon_video.svg");
 }
 
+.menu-container .menu li .menu-box.menu-icon.icon-image::before {
+  background-image: url("../images/menu_icon_img.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-3d::before {
+  background-image: url("../images/menu_icon_3d.svg");
+}
+
+.menu-container .menu li .menu-box.menu-icon.icon-audio::before {
+  background-image: url("../images/menu_icon_audio.svg");
+}
+
 .menu-container .menu li:last-child {
   margin-bottom: 40px;
 }

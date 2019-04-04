@@ -318,6 +318,15 @@ a:hover {
           &.icon-video::before {
             background-image: url("../images/menu_icon_video.svg");
           }
+          &.icon-image::before {
+            background-image: url("../images/menu_icon_img.svg");
+          }
+          &.icon-3d::before {
+            background-image: url("../images/menu_icon_3d.svg");
+          }
+          &.icon-audio::before {
+            background-image: url("../images/menu_icon_audio.svg");
+          }
         }
       }
     }
