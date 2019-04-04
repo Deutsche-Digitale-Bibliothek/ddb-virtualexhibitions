@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="37.467" viewBox="0 0 38 37.467">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.6;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-3 {
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_111_1" data-name="Symbol 111 – 1" class="cls-1" transform="translate(-455.5 -361.5)">
+    <g id="Gruppe_2328" data-name="Gruppe 2328" class="cls-1" transform="translate(343 263)">
+      <g id="Gruppe_592" data-name="Gruppe 592" transform="translate(-572 -663)">
+        <path id="Pfad_107" data-name="Pfad 107" class="cls-2" d="M9773.369,2828.112l10.293,10.292-10.293,10.293Z" transform="translate(10479.031 3618.698) rotate(180)"/>
+        <rect id="Rechteck_90" data-name="Rechteck 90" class="cls-2" width="9" height="10" transform="translate(692 775)"/>
+      </g>
+      <line id="Linie_84" data-name="Linie 84" class="cls-3" y2="10" transform="translate(137.5 112.5)"/>
+      <line id="Linie_85" data-name="Linie 85" class="cls-3" y2="5" transform="translate(142.5 114.5)"/>
+    </g>
+    <path id="Pfad_1336" data-name="Pfad 1336" class="cls-1 cls-4" d="M8665.5,2679.677h-14v34.467h14" transform="translate(-8194.5 -2316.677)"/>
+    <path id="Pfad_1337" data-name="Pfad 1337" class="cls-1 cls-4" d="M14,0H0V34.467H14" transform="translate(492 397.467) rotate(180)"/>
+  </g>
+</svg>

@@ -1,18 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <g id="Symbol_112_1" data-name="Symbol 112 – 1" transform="translate(-31.5 -415.5)">
-    <line id="Linie_79" data-name="Linie 79" x2="10" transform="translate(43 462) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <line id="Linie_78" data-name="Linie 78" x2="10" transform="translate(43 417) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <line id="Linie_80" data-name="Linie 80" y1="45" transform="translate(33 462) rotate(180)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <line id="Linie_78-2" data-name="Linie 78" x2="10" transform="translate(68 462)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <line id="Linie_79-2" data-name="Linie 79" x2="10" transform="translate(68 417)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <line id="Linie_80-2" data-name="Linie 80" y1="45" transform="translate(78 417)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="3"/>
-    <g id="Rechteck_345" data-name="Rechteck 345" transform="translate(43.543 429.2)" fill="none" stroke="#1d1d1b" stroke-width="2">
-      <rect width="23.914" height="21.257" stroke="none"/>
-      <rect x="1" y="1" width="21.914" height="19.257" fill="none"/>
-    </g>
-    <g id="Rechteck_346" data-name="Rechteck 346" transform="translate(40 425.657)" fill="none" stroke="#1d1d1b" stroke-width="2">
-      <rect width="31" height="28.343" stroke="none"/>
-      <rect x="1" y="1" width="29" height="26.343" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="37.467" viewBox="0 0 38 37.467">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.6;
+      }
+
+      .cls-2, .cls-3, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #fff;
+      }
+
+      .cls-2 {
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_109_1" class="cls-1" data-name="Symbol 109 – 1" transform="translate(-456.5 -457.5)">
+    <g id="Gruppe_2326" data-name="Gruppe 2326" class="cls-1">
+      <path id="Pfad_269" data-name="Pfad 269" class="cls-2" d="M8665.5,2679.677h-14v34.467h14" transform="translate(-8193.5 -2220.677)"/>
+      <path id="Pfad_270" data-name="Pfad 270" class="cls-2" d="M14,0H0V34.467H14" transform="translate(493 493.467) rotate(180)"/>
+      <g id="Gruppe_2324" data-name="Gruppe 2324" transform="translate(24 52)">
+        <g id="Rechteck_358" data-name="Rechteck 358" class="cls-3" transform="translate(441.076 414.733)">
+          <rect class="cls-4" width="20.759" height="18.452"/>
+          <rect class="cls-5" x="1" y="1" width="18.759" height="16.452"/>
+        </g>
+        <g id="Rechteck_357" data-name="Rechteck 357" class="cls-3" transform="translate(438 411.657)">
+          <rect class="cls-4" width="26.91" height="24.603"/>
+          <rect class="cls-5" x="1" y="1" width="24.91" height="22.603"/>
+        </g>
+      </g>
     </g>
   </g>
 </svg>

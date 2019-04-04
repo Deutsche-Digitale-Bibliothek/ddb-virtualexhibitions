@@ -34,15 +34,15 @@
     <g id="Gruppe_2307" data-name="Gruppe 2307">
       <g id="inhalt_video" transform="translate(-705 -500)">
         <g id="Gruppe_443" data-name="Gruppe 443" class="cls-1" transform="translate(-164.5 327.323)">
-          <g id="Gruppe_436" data-name="Gruppe 436" transform="translate(906.332 885.372)">
+          <g id="Gruppe_436" data-name="Gruppe 436" class="cls-1" transform="translate(906.332 885.372)">
             <g id="Ellipse_23" data-name="Ellipse 23" class="cls-2">
               <circle class="cls-5" cx="11.665" cy="11.665" r="11.665"/>
               <circle class="cls-6" cx="11.665" cy="11.665" r="10.665"/>
             </g>
             <path id="Pfad_268" data-name="Pfad 268" class="cls-3" d="M8,0l2.489,10.492L0,8Z" transform="translate(2.916 11.685) rotate(-45)"/>
           </g>
-          <path id="Pfad_269" data-name="Pfad 269" class="cls-4" d="M8665.5,2679.677h-14v34.467h14" transform="translate(-7751 -1800)"/>
-          <path id="Pfad_270" data-name="Pfad 270" class="cls-4" d="M14,0H0V34.467H14" transform="translate(935.5 914.145) rotate(180)"/>
+          <path id="Pfad_269" data-name="Pfad 269" class="cls-1 cls-4" d="M8665.5,2679.677h-14v34.467h14" transform="translate(-7751 -1800)"/>
+          <path id="Pfad_270" data-name="Pfad 270" class="cls-1 cls-4" d="M14,0H0V34.467H14" transform="translate(935.5 914.145) rotate(180)"/>
         </g>
       </g>
     </g>
