@@ -74,6 +74,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         parent::editAction();
     }
 
+    public function teamAction()
+    {
+        if(isset($_POST) && isset($_POST['description']) && isset($_POST['team_list'])) {
+            $_POST['team'] = serialize(['description' => $_POST['description'], 'team_list' => $_POST['team_list']]);
+        }
+        parent::editAction();
+        $this->view->storedTeam = unserialize($this->view->exhibit->team);
+    }
+
     protected function setInstitutions($exhibit)
     {
         $institutions = [];

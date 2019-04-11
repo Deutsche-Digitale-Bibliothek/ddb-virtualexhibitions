@@ -257,7 +257,10 @@ a:hover {
       align-items: center;
       min-height: 66px;
       border-bottom: 1px solid #999;
-      &.background-light {
+      &.background-light,
+      &.type-team,
+      &.type-legal,
+      &.type-privacy {
         background: #aaa;
         border-color: rgb(93, 93, 93);
       }
@@ -303,14 +306,17 @@ a:hover {
           &.icon-home::before {
             background-image: url("../images/menu_icon_home.svg");
           }
+          &.icon-team::before {
+            background-color: rgb(255, 255, 255);
+            background-image: url("../images/menu_icon_team.svg");
+          }
           &.icon-legal::before {
+            background-color: rgb(255, 255, 255);
             background-image: url("../images/menu_icon_legal.svg");
           }
           &.icon-privacy::before {
+            background-color: rgb(255, 255, 255);
             background-image: url("../images/menu_icon_privacy.svg");
-          }
-          &.icon-team::before {
-            background-image: url("../images/menu_icon_team.svg");
           }
           &.icon-text::before {
             background-image: url("../images/menu_icon_text.svg");

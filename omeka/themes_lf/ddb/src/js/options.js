@@ -207,5 +207,12 @@ window.litfassColorPalettes = {
       type: 'light',
       menu: false
     }
+  },
+  base: {
+    white: {
+      hex: '#ffffff',
+      type: 'light',
+      menu: false
+    }
   }
 };

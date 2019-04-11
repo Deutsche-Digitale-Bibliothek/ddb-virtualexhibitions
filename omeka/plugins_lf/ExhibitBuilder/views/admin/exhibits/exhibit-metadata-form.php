@@ -1,192 +1,199 @@
 <form id="exhibit-metadata-form" method="post" class="exhibit-builder" enctype="multipart/form-data">
     <?php echo $this->formHidden('slug', $exhibit->slug); ?>
     <div class="seven columns alpha">
-    <fieldset>
-        <legend><?php echo __('Exhibit Metadata'); ?></legend>
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('title', __('Title')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <?php echo $this->formText('title', $exhibit->title); ?>
-            </div>
-        </div>
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('subtitle', __('Untertitel')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <?php echo $this->formText('subtitle', $exhibit->subtitle); ?>
-            </div>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend><?php echo __('Startkachel'); ?></legend>
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('titlebackgroundcolor', __('Hintergrundfarbe Startkachel')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <?php
-                    $colorpalette = metadata('exhibit', 'colorpalette');
-                    $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
-                    $values = ExhibitDdbHelper::getColornamesFromExhibitColorPalette($colorpalette);
-                ?>
-                <p class="explanation">
-                    <?php echo __('Hintergrundfarbe der Startkachel'); ?>
-                </p>
-                <div class="clearfix example-color-box-container">
-                <?php foreach ($colors as $color): ?>
-                    <div class="example-color-box" style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
-                        <?php echo $color['color']; ?>
-                    </div>
-                <?php endforeach; ?>
+        <fieldset>
+            <legend><?php echo __('Exhibit Metadata'); ?></legend>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('title', __('Title')); ?>
                 </div>
-                <?php echo $this->formSelect('titlebackgroundcolor', $exhibit->titlebackgroundcolor, array(), $values); ?>
+                <div class="five columns omega inputs">
+                    <?php echo $this->formText('title', $exhibit->title); ?>
+                </div>
             </div>
-        </div>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('subtitle', __('Untertitel')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <?php echo $this->formText('subtitle', $exhibit->subtitle); ?>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><?php echo __('Startkachel'); ?></legend>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titlebackgroundcolor', __('Hintergrundfarbe Startkachel')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <?php
+                        $colorpalette = metadata('exhibit', 'colorpalette');
+                        $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
+                        $values = ExhibitDdbHelper::getColornamesFromExhibitColorPalette($colorpalette);
+                    ?>
+                    <p class="explanation">
+                        <?php echo __('Hintergrundfarbe der Startkachel'); ?>
+                    </p>
+                    <div class="clearfix example-color-box-container">
+                    <?php foreach ($colors as $color): ?>
+                        <div class="example-color-box" style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
+                            <?php echo $color['color']; ?>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                    <?php echo $this->formSelect('titlebackgroundcolor', $exhibit->titlebackgroundcolor, array(), $values); ?>
+                </div>
+            </div>
 
-        <div class="field">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('titlebackground', __('Hintergrundbild Startkachel')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startkachel hochalden'); ?></p>
-                <?php
-                    $hasTitlebackground = false;
-                    if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
-                    $hasTitlebackground = true;
-                ?>
-                <a href="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" class="img-sm"></a>
-                <?php endif; ?>
-                <?php echo $this->formFile('titlebackground'); ?>
-                <?php if ($hasTitlebackground): ?>
-                <div class="mt-10">
-                    <?php echo $this->formCheckbox('deleteTitlebackground', 1); ?>
-                    <?php echo $this->formLabel('deleteTitlebackground', __('Hintergrundbild entfernen'),
-                        array('class' => 'deleteCheckbox')); ?>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titlebackground', __('Hintergrundbild Startkachel')); ?>
                 </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="field" id="gina_exhibit_metadata_theme_container">
-            <div class="two columns alpha">
-                <?php echo $this->formLabel('theme', __('Theme')); ?>
-            </div>
-            <div class="five columns omega inputs">
-                <?php $values = array('' => __('Current Public Theme')) + exhibit_builder_get_themes(); ?>
-                <?php echo get_view()->formSelect('theme', $exhibit->theme, array(), $values); ?>
-                <?php if ($theme && $theme->hasConfig): ?>
-                    <a href="<?php echo html_escape(url("exhibits/theme-config/$exhibit->id")); ?>" class="configure-button button"><?php echo __('Configure'); ?></a>
-                <?php endif;?>
-                <script>
-                    jQuery(document).ready(function () {
-                        jQuery('#theme').val('ddb').trigger('change');
-                    });
-                </script>
-            </div>
-        </div>
-    </fieldset>
-    <?php
-        $institutions = [[
-            'name' => '',
-            'url' => '',
-            'logo' => '',
-            'pos' => ''
-        ]];
-        if (!empty($exhibit->institutions)) {
-            $institutions = ExhibitDdbHelper::getInstitutions($exhibit->institutions);
-            // var_dump($institutions);
-        }
-        $institutionCounter = count($institutions);
-    ?>
-    <fieldset>
-        <legend><?php echo __('Teilhabende Institutionen'); ?></legend>
-        <div id="institutionRepeaters">
-        <?php foreach ($institutions as $instKey => $institution): ?>
-            <div class="repeaterfield clearfix">
-                <div class="field">
-                    <div class="two columns alpha">
-                        <?php echo $this->formLabel('institution[' . $instKey . '][name]', __('Name der Institution')); ?>
+                <div class="five columns omega inputs">
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startkachel hochalden'); ?></p>
+                    <?php
+                        $hasTitlebackground = false;
+                        if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
+                        $hasTitlebackground = true;
+                    ?>
+                    <a href="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" class="img-sm"></a>
+                    <?php endif; ?>
+                    <?php echo $this->formFile('titlebackground'); ?>
+                    <?php if ($hasTitlebackground): ?>
+                    <div class="mt-10">
+                        <?php echo $this->formCheckbox('deleteTitlebackground', 1); ?>
+                        <?php echo $this->formLabel('deleteTitlebackground', __('Hintergrundbild entfernen'),
+                            array('class' => 'deleteCheckbox')); ?>
                     </div>
-                    <div class="five columns omega inputs">
-                        <p class="explanation"><?php echo __('Name der teilhabenden Institution'); ?></p>
-                        <?php echo $this->formText('institution[' . $instKey . '][name]', $institution['name']); ?>
-                    </div>
+                    <?php endif; ?>
                 </div>
-                <div class="field">
-                    <div class="two columns alpha">
-                        <?php echo $this->formLabel('institution[' . $instKey . '][url]', __('URL der Institution')); ?>
-                    </div>
-                    <div class="five columns omega inputs">
-                        <p class="explanation"><?php echo __('URL / Website der teilhabenden Institution'); ?></p>
-                        <?php echo $this->formText('institution[' . $instKey . '][url]', $institution['url']); ?>
-                    </div>
+            </div>
+            <div class="field" id="gina_exhibit_metadata_theme_container">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('theme', __('Theme')); ?>
                 </div>
-                <div class="field">
-                    <div class="two columns alpha">
-                        <?php echo $this->formLabel('institution[' . $instKey . '][logo]', __('Logo der Institution')); ?>
+                <div class="five columns omega inputs">
+                    <?php $values = array('' => __('Current Public Theme')) + exhibit_builder_get_themes(); ?>
+                    <?php echo get_view()->formSelect('theme', $exhibit->theme, array(), $values); ?>
+                    <?php if ($theme && $theme->hasConfig): ?>
+                        <a href="<?php echo html_escape(url("exhibits/theme-config/$exhibit->id")); ?>" class="configure-button button"><?php echo __('Configure'); ?></a>
+                    <?php endif;?>
+                    <script>
+                        jQuery(document).ready(function () {
+                            jQuery('#theme').val('ddb').trigger('change');
+                        });
+                    </script>
+                </div>
+            </div>
+        </fieldset>
+        <?php
+            $institutions = [[
+                'name' => '',
+                'url' => '',
+                'logo' => '',
+                'pos' => ''
+            ]];
+            if (!empty($exhibit->institutions)) {
+                $institutions = ExhibitDdbHelper::getInstitutions($exhibit->institutions);
+                // var_dump($institutions);
+            }
+            $institutionCounter = count($institutions);
+        ?>
+        <fieldset>
+            <legend><?php echo __('Teilhabende Institutionen'); ?></legend>
+            <div id="institutionRepeaters">
+            <?php foreach ($institutions as $instKey => $institution): ?>
+                <div class="repeaterfield clearfix">
+                    <div class="field">
+                        <div class="two columns alpha">
+                            <?php echo $this->formLabel('institution[' . $instKey . '][name]', __('Name der Institution')); ?>
+                        </div>
+                        <div class="five columns omega inputs">
+                            <p class="explanation"><?php echo __('Name der teilhabenden Institution'); ?></p>
+                            <?php echo $this->formText('institution[' . $instKey . '][name]', $institution['name']); ?>
+                        </div>
                     </div>
-                    <div class="five columns omega inputs">
-                        <p class="explanation"><?php echo __('Logo der teilhabenden Institution hochalden'); ?></p>
-                        <?php if (!empty($institution['logo']) && is_file(FILES_DIR . '/layout/institutionlogo/' . $institution['logo'])): ?>
-                        <a href="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" target="_blank">
-                            <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" class="img-sm">
-                        </a>
-                        <?php endif; ?>
-                        <?php echo $this->formFile('institution[' . $instKey . '][logo]'); ?>
-                        <div class="mt-10">
-                            <?php echo $this->formCheckbox('institution[' . $instKey . '][deletelogo]', 1); ?>
-                            <?php echo $this->formLabel('institution[' . $instKey . '][deletelogo]', __('Logo entfernen'),
-                                array('class' => 'deleteCheckbox')); ?>
+                    <div class="field">
+                        <div class="two columns alpha">
+                            <?php echo $this->formLabel('institution[' . $instKey . '][url]', __('URL der Institution')); ?>
+                        </div>
+                        <div class="five columns omega inputs">
+                            <p class="explanation"><?php echo __('URL / Website der teilhabenden Institution'); ?></p>
+                            <?php echo $this->formText('institution[' . $instKey . '][url]', $institution['url']); ?>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two columns alpha">
+                            <?php echo $this->formLabel('institution[' . $instKey . '][logo]', __('Logo der Institution')); ?>
+                        </div>
+                        <div class="five columns omega inputs">
+                            <p class="explanation"><?php echo __('Logo der teilhabenden Institution hochalden'); ?></p>
+                            <?php if (!empty($institution['logo']) && is_file(FILES_DIR . '/layout/institutionlogo/' . $institution['logo'])): ?>
+                            <a href="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" target="_blank">
+                                <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" class="img-sm">
+                            </a>
+                            <?php endif; ?>
+                            <?php echo $this->formFile('institution[' . $instKey . '][logo]'); ?>
+                            <div class="mt-10">
+                                <?php echo $this->formCheckbox('institution[' . $instKey . '][deletelogo]', 1); ?>
+                                <?php echo $this->formLabel('institution[' . $instKey . '][deletelogo]', __('Logo entfernen'),
+                                    array('class' => 'deleteCheckbox')); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two columns alpha">
+                            <?php echo $this->formLabel('institution[' . $instKey . '][pos]', __('Position der Institution')); ?>
+                        </div>
+                        <div class="five columns omega inputs">
+                            <p class="explanation">
+                                <?php echo __('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'); ?></p>
+                            <?php echo str_replace('type="text"', 'type="number"', $this->formText('institution[' . $instKey . '][pos]', $institution['pos'])); ?>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="two columns alpha">
+                            <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen')); ?>
+                        </div>
+                        <div class="five columns omega inputs">
+                            <p class="explanation">
+                                <?php echo __('Diese Institution komplett entfernen.'); ?>
+                            </p>
+                            <?php echo $this->formCheckbox('institution[' . $instKey . '][delete]', 1); ?>
+                            <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen'),
+                                    array('class' => 'deleteCheckbox')); ?>
                         </div>
                     </div>
                 </div>
-                <div class="field">
-                    <div class="two columns alpha">
-                        <?php echo $this->formLabel('institution[' . $instKey . '][pos]', __('Position der Institution')); ?>
-                    </div>
-                    <div class="five columns omega inputs">
-                        <p class="explanation">
-                            <?php echo __('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'); ?></p>
-                        <?php echo str_replace('type="text"', 'type="number"', $this->formText('institution[' . $instKey . '][pos]', $institution['pos'])); ?>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="two columns alpha">
-                        <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen')); ?>
-                    </div>
-                    <div class="five columns omega inputs">
-                        <p class="explanation">
-                            <?php echo __('Diese Institution komplett entfernen.'); ?>
-                        </p>
-                        <?php echo $this->formCheckbox('institution[' . $instKey . '][delete]', 1); ?>
-                        <?php echo $this->formLabel('institution[' . $instKey . '][delete]', __('Institution löschen'),
-                                array('class' => 'deleteCheckbox')); ?>
-                    </div>
-                </div>
+            <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-        </div>
-        <div>
-            <button class="submit green button" id="addInstitution"><?php echo __('+ Institution hinzufügen'); ?></button>
-        </div>
-
-    </fieldset>
-    <fieldset>
-        <legend><?php echo __('Seitenkacheln'); ?></legend>
-        <div id="pages-list-container">
-            <?php if (!$exhibit->TopPages): ?>
-                <p><?php echo __('There are no pages.'); ?></p>
-            <?php else: ?>
-                <p id="reorder-instructions"><?php echo __('To reorder pages, click and drag the page up or down to the preferred location.'); ?></p>
-                <?php echo common('page-list', array('exhibit' => $exhibit), 'exhibits'); ?>
-            <?php endif; ?>
-        </div>
-        <div id="page-add">
-            <input type="submit" name="add_page" id="add-page" value="<?php echo __('Add Page'); ?>" />
-        </div>
-    </fieldset>
+            <div>
+                <button class="submit green button" id="addInstitution"><?php echo __('+ Institution hinzufügen'); ?></button>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><?php echo __('Seitenkacheln'); ?></legend>
+            <div id="pages-list-container">
+                <?php if (!$exhibit->TopPages): ?>
+                    <p><?php echo __('There are no pages.'); ?></p>
+                <?php else: ?>
+                    <p id="reorder-instructions"><?php echo __('To reorder pages, click and drag the page up or down to the preferred location.'); ?></p>
+                    <?php echo common('page-list', array('exhibit' => $exhibit), 'exhibits'); ?>
+                <?php endif; ?>
+            </div>
+            <div id="page-add">
+                <input type="submit" name="add_page" id="add-page" value="<?php echo __('Add Page'); ?>" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><?php echo __('Apparatkacheln'); ?></legend>
+            <ul class="apparatus-tiles">
+                <li><div class="tile"><a href="<?php echo $this->url('exhibits/team/' . $exhibit->id); ?>"><?php echo __('Team'); ?></a></div></li>
+                <li><div class="tile"><a href="<?php echo $this->url('exhibits/imprint/' . $exhibit->id); ?>"><?php echo __('Impressum'); ?></a></div></li>
+                <li><div class="tile"><a href="<?php echo $this->url('exhibits/legal/' . $exhibit->id); ?>"><?php echo __('Datenschutz'); ?></a></div></li>
+            </ul>
+        </fieldset>
     </div>
     <div id="save" class="three columns omega panel">
         <?php echo $this->formSubmit('save_exhibit', __('Save Changes'), array('class'=>'submit big green button')); ?>

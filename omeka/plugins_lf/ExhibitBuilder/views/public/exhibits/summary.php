@@ -31,8 +31,8 @@ $sectionCounter++;
 $chapterCounter = 0;
 set_exhibit_pages_for_loop_by_exhibit();
 foreach (loop('exhibit_page') as $exhibitSection):
+    // reset currentAttechmentMediaType
     ExhibitDdbHelper::$currentAttechmentMediaType = 'text';
-    // var_dump($exhibitSection);
     $pageoptions = unserialize($exhibitSection->pageoptions);
     // get the section
     require  $dir . '/section-' . $exhibitSection->layout  . '.php';
@@ -48,11 +48,47 @@ foreach (loop('exhibit_page') as $exhibitSection):
         'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType
     ];
     $sectionCounter++;
+endforeach;
+// apparatus
+require  $dir . '/section-ddb-litfass-team.php';
+$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
+$sectionAnchors .= "'s" . $sectionCounter . "'";
+$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
+$sectionColors .= 'litfassColorPalettes.base.white.hex';
+$sectionTitles[] = [
+    'title' => __('Team'),
+    'pagethumbnail' => '',
+    'type' => 'team',
+    'menu_icon' => 'team'
+];
+$sectionCounter++;
+require  $dir . '/section-ddb-litfass-impressum.php';
+$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
+$sectionAnchors .= "'s" . $sectionCounter . "'";
+$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
+$sectionColors .= 'litfassColorPalettes.base.white.hex';
+$sectionTitles[] = [
+    'title' => __('Impressum'),
+    'pagethumbnail' => '',
+    'type' => 'legal',
+    'menu_icon' => 'legal'
+];
+$sectionCounter++;
+require  $dir . '/section-ddb-litfass-datenschutz.php';
+$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
+$sectionAnchors .= "'s" . $sectionCounter . "'";
+$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
+$sectionColors .= 'litfassColorPalettes.base.white.hex';
+$sectionTitles[] = [
+    'title' => __('Dattenschutz'),
+    'pagethumbnail' => '',
+    'type' => 'privacy',
+    'menu_icon' => 'privacy'
+];
+$sectionCounter++;
 ?>
-<?php endforeach; ?>
 </div>
 <?php echo foot(compact('sectionAnchors', 'sectionColors', 'colorpalette'), 'spa_footer_scripts'); ?>
 <?php require  $dir . '/summary_header.php'; ?>
 <?php require  $dir . '/summary_menu.php'; ?>
 <?php echo foot(NULL, 'spa_footer'); ?>
-

@@ -25,6 +25,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $modified;
     public $owner_id;
     public $institutions;
+    public $team;
     public $titlebackground;
     public $titlebackgroundcolor;
     public $ctrl_colorscheme;

@@ -23,7 +23,7 @@
             <?php $menuChapterCounter = 0; ?>
             <?php foreach ($sectionTitles as $sectionKey => $sectionTitle): ?>
                 <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>"
-                <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : ''; ?>>
+                <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : 'class="type-' . $sectionTitle['type'] . '"'; ?>>
                     <?php if($sectionKey == 0): ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-home"></div>
                     <?php elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'): $menuChapterCounter++; ?>
