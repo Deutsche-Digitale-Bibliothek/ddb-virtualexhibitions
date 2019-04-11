@@ -57,7 +57,7 @@
                                     <strong>Erstellt mit:</strong><br>
                                     <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
                                 </div>
-                                <p><small>Diese Ausstellung wurde am <?php echo date('d.m.Y'); ?> veröffentlicht.</small></p>
+                                <p><small>Diese Ausstellung wurde am <?php echo $publishDate; ?> veröffentlicht.</small></p>
                             </div>
                         </div>
                     </div>

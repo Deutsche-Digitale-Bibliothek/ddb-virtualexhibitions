@@ -1,6 +1,12 @@
 <?php
 // ------------- MAIN SINGLE PAGE TEMPLATE -------------
 $title = metadata('exhibit', 'title');
+$publishDate = get_option('publish-date');
+if ($publishDate) {
+    $publishDate = date('d.m.Y', strtotime($publishDate));
+} else {
+    $publishDate = date('d.m.Y');
+}
 $colorpalette = metadata('exhibit', 'colorpalette');
 $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
 $dir = dirname(__FILE__);
