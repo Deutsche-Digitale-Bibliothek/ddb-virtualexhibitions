@@ -13,12 +13,16 @@ $chapterCounter++;
         <div class="row auto">
             <div class="col-sm-3 chapter-num">
                 <h3>
-                    <span><?php echo ExhibitDdbHelper::getLeadingZeroNum($chapterCounter); ?></span>
+                <?php echo (!empty($bgImgUrl))? '<span>' : ''; ?>
+                <?php echo ExhibitDdbHelper::getLeadingZeroNum($chapterCounter); ?>
+                <?php echo (!empty($bgImgUrl))? '</span>' : ''; ?>
                 </h3>
             </div>
             <div class="col-sm-9 chapter-title">
                 <h2>
-                    <span><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></span>
+                    <?php echo (!empty($bgImgUrl))? '<span>' : ''; ?>
+                    <?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?>
+                    <?php echo (!empty($bgImgUrl))? '</span>' : ''; ?>
                 </h2>
             </div>
         </div>
