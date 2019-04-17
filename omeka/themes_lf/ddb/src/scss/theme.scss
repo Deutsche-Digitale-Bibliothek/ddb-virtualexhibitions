@@ -869,6 +869,8 @@ a:hover {
       color: #fff;
       span {
         padding: .125rem 0;
+        font-family: $font-family-headings;
+        font-weight: 600;
         background-color: rgba(0, 0, 0, .8);
       }
     }

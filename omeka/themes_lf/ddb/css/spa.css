@@ -6943,6 +6943,8 @@ a:hover {
 
 .title-container .title-bottom .credits span {
   padding: .125rem 0;
+  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 600;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
