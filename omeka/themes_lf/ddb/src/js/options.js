@@ -26,7 +26,7 @@ window.litfassColorPalettes = {
       menu: false
     },
     blue: {
-      hex: '#4ea643',
+      hex: '#18b5d9',
       type: 'dark',
       menu: true
     }
@@ -184,7 +184,7 @@ window.litfassColorPalettes = {
   g: {
     rose: {
       hex: '#e2a1ab',
-      type: 'dark',
+      type: 'light',
       menu: false
     },
     creme: {
