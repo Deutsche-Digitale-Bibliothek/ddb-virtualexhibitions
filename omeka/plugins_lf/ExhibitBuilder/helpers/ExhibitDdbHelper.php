@@ -1004,7 +1004,7 @@ class ExhibitDdbHelper
         }
 
         // copyright
-        $markup .= '<h5>Wie darf ich das Objekt nutzen?</h5><p>';
+        $markup .= '<h5>Wie darf ich das Objekt nutzen?</h5><p class="licenses">';
         $markup .= self::getItemRights($attachment, null);
         $markup .= '</p>';
 
