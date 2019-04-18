@@ -134,6 +134,13 @@ class User extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      */
     protected function filterPostData($post)
     {
+        // BEGIN Grandgeorg Websolutions
+        if (!isset($post['confirm_use'])) {
+            $post['confirm_use'] = 0;
+            $_POST['confirm_use'] = 0;
+        }
+        // END Grandgeorg Websolutions
+
         $options = array('inputNamespace' => 'Omeka_Filter');
 
         // Alphanumeric with no whitespace allowed, lowercase
