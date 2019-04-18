@@ -184,26 +184,78 @@ window.litfassColorPalettes = {
   g: {
     rose: {
       hex: '#e2a1ab',
-      type: 'light',
+      type: 'dark',
       menu: false
     },
     creme: {
       hex: '#f5efb2',
-      type: 'dark',
+      type: 'light',
       menu: false
     },
     reed: {
       hex: '#7ba79a',
-      type: 'dark',
+      type: 'light',
       menu: false
     },
     iceblue: {
       hex: '#a6c9d9',
-      type: 'dark',
+      type: 'light',
       menu: true
     },
     green_grey: {
       hex: '#537883',
+      type: 'dark',
+      menu: false
+    }
+  },
+  ddb: {
+    grey_11: {
+      hex: '#1d1d1b',
+      type: 'dark',
+      menu: false
+    },
+    grey_50: {
+      hex: '#575756',
+      type: 'dark',
+      menu: false
+    },
+    grey_62: {
+      hex: '#9d9d9c',
+      type: 'dark',
+      menu: false
+    },
+    grey_78: {
+      hex: '#c6c6c6',
+      type: 'light',
+      menu: false
+    },
+    grey_93: {
+      hex: '#ececec',
+      type: 'light',
+      menu: false
+    },
+    red_80: {
+      hex: '#a5003b',
+      type: 'dark',
+      menu: true
+    },
+    red_38: {
+      hex: '#c77c87',
+      type: 'dark',
+      menu: false
+    },
+    red_16: {
+      hex: '#e2bec2',
+      type: 'light',
+      menu: false
+    },
+    red_4: {
+      hex: '#f5eaeb',
+      type: 'light',
+      menu: false
+    },
+    white: {
+      hex: '#ffffff',
       type: 'light',
       menu: false
     }
