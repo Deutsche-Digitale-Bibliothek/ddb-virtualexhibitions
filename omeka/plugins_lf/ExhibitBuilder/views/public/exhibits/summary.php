@@ -1,5 +1,9 @@
 <?php
 // ------------- MAIN SINGLE PAGE TEMPLATE -------------
+$exhibitType = metadata('exhibit', 'exhibit_type');
+if (!isset($exhibitType) || empty($exhibitType)) {
+    $exhibitType = 'litfass';
+}
 $title = metadata('exhibit', 'title');
 $publishDate = get_option('publish-date');
 if ($publishDate) {
@@ -14,7 +18,7 @@ $sectionCounter = 0;
 $sectionAnchors = '';
 $sectionColors = '';
 $sectionTitles = array();
-echo head(compact('title', 'colors'), 'spa_header');
+echo head(compact('title', 'colors', 'exhibitType'), 'spa_header');
 $institutions = ExhibitDdbHelper::getInstitutions(
     metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
 ?>

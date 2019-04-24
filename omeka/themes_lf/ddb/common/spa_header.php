@@ -21,4 +21,4 @@
     <?php echo head_css(); ?>
     <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors)); ?>
 </head>
-<body>
+<body class="exhibit-type-<?php echo $exhibitType; ?>">

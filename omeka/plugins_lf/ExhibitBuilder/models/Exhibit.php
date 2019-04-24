@@ -18,6 +18,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $credits;
     public $featured = 0;
     public $public = 1;
+    public $exhibit_type;
     public $theme;
     public $theme_options;
     public $slug;

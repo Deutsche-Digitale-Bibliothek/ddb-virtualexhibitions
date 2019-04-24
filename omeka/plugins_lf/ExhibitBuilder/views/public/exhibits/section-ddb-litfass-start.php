@@ -2,6 +2,9 @@
 $subtitle = metadata('exhibit', 'subtitle');
 $titlebackground = metadata('exhibit', 'titlebackground');
 $titlebackgroundcolor = metadata('exhibit', 'titlebackgroundcolor');
+if (null === $titlebackgroundcolor) {
+    $titlebackgroundcolor = key($colors);
+}
 ?>
 <section
     data-color-palette="<?php echo $colorpalette; ?>"

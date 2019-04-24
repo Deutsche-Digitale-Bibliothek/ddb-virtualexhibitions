@@ -37,7 +37,9 @@
                     </p>
                     <div class="clearfix example-color-box-container">
                     <?php foreach ($colors as $color): ?>
-                        <div class="example-color-box" style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
+                        <div class="example-color-box"
+                            data-name="<?php echo $color['color']; ?>"
+                            style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
                             <?php echo $color['color']; ?>
                         </div>
                     <?php endforeach; ?>
@@ -290,6 +292,12 @@ jQuery(document).ready(function($) {
         );
         window.Gina.institutionCounter++;
     });
+
+    $('.example-color-box').on('click', function() {
+        var name = $(this).data('name');
+        $('#titlebackgroundcolor').val(name);
+    })
+
 });
 jQuery(window).load(function() {
     Omeka.ExhibitBuilder.wysiwyg();

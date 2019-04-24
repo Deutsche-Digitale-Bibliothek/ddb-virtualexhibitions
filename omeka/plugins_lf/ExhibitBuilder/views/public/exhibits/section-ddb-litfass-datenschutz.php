@@ -1,4 +1,4 @@
-<?php $attachment = exhibit_builder_page_attachment(1); ?>
+<?php // $attachment = exhibit_builder_page_attachment(1); ?>
 <section
     data-color-palette="base"
     data-color-section="white"
