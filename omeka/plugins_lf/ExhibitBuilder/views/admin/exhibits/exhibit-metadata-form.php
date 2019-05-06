@@ -19,6 +19,14 @@
                     <?php echo $this->formText('subtitle', $exhibit->subtitle); ?>
                 </div>
             </div>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('shorttitle', __('Kurztitel')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <?php echo $this->formText('shorttitle', $exhibit->shorttitle); ?>
+                </div>
+            </div>
         </fieldset>
         <fieldset>
             <legend><?php echo __('Startkachel'); ?></legend>
@@ -71,6 +79,35 @@
                     <?php endif; ?>
                 </div>
             </div>
+
+            <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titleimage', __('Titelbild Startkachel')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titelbild im SVG-Format für die Startkachel hochalden'); ?></p>
+                    <?php
+                        $hasTitleimage = false;
+                        if (!empty($exhibit->titleimage) && is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titleimage)):
+                        $hasTitleimage = true;
+                    ?>
+                    <a href="<?php echo WEB_FILES . '/layout/titleimage/' . $exhibit->titleimage; ?>" target="_blank">
+                        <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $exhibit->titleimage; ?>" class="img-sm">
+                    </a>
+                    <?php endif; ?>
+                    <?php echo $this->formFile('titleimage'); ?>
+                    <?php if ($hasTitleimage): ?>
+                    <div class="mt-10">
+                        <?php echo $this->formCheckbox('deleteTitleimage', 1); ?>
+                        <?php echo $this->formLabel('deleteTitleimage', __('Titelbild entfernen'),
+                            array('class' => 'deleteCheckbox')); ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <div class="field" id="gina_exhibit_metadata_theme_container">
                 <div class="two columns alpha">
                     <?php echo $this->formLabel('theme', __('Theme')); ?>

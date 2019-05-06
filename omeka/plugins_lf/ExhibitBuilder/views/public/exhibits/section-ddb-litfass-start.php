@@ -5,13 +5,20 @@ $titlebackgroundcolor = metadata('exhibit', 'titlebackgroundcolor');
 if (null === $titlebackgroundcolor) {
     $titlebackgroundcolor = key($colors);
 }
+$titleimage = null;
+if ($exhibitType === 'litfass_ddb') {
+    $titleimage = metadata('exhibit', 'titleimage');
+}
 ?>
 <section
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $titlebackgroundcolor; ?>"
-    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; ?>"
-    style="background-image: url(<?php echo WEB_FILES . '/layout/titlebackground/' . $titlebackground; ?>)"
+    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; if ($titleimage): echo ' with-title-image'; endif;?>"
+    <?php echo ($titlebackground)? 'style="background-image: url(' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . ')"' . "\n" : "\n"; ?>
     id="se<?php echo $sectionCounter; ?>">
+    <?php if ($titleimage): ?>
+        <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $titleimage; ?>" alt="title" class="titleimage" style="position: absolute; width: 100%; overflow: hidden; height: 100vh; z-index: 3;">
+        <?php endif; ?>
     <div class="title-container">
         <div class="title-top">
             <div class="container-fluid">

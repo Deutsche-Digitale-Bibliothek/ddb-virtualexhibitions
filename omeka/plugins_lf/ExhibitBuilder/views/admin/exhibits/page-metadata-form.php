@@ -33,7 +33,9 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
             <p class="explanation"><?php echo __('Wählen Sie eine Hintergrundfarbe aus der Farbpalette.'); ?></p>
             <div class="clearfix example-color-box-container">
                 <?php foreach ($colors as $color): ?>
-                    <div class="example-color-box" style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
+                    <div class="example-color-box"
+                        data-name="<?php echo $color['color']; ?>"
+                        style="background-color:<?php echo $color['hex']; ?>;color:<?php echo ($color['type'] === 'dark')? '#fff' : '#1d1d1b'; ?>;">
                         <?php echo $color['color']; ?>
                     </div>
                 <?php endforeach; ?>
@@ -102,8 +104,12 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
 <script type="text/javascript" charset="utf-8">
 //<![CDATA[
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function($) {
         makeLayoutSelectable();
+        $('.example-color-box').on('click', function() {
+            var name = $(this).data('name');
+            $('#backgroundcolor').val(name);
+        });
     });
 
     function makeLayoutSelectable() {

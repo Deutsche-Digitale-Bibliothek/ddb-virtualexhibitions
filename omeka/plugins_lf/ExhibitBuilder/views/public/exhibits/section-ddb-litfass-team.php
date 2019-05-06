@@ -12,7 +12,15 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
+                            <?php if ($exhibitType === 'litfass_ddb'): ?>
+                                <div class="text-center">
+                                    <img src="<?php echo img('ddb-studio-logo-large.png') ?>" alt="DDB studio">
+                                    <h1><?php echo __('Eine virtuelle Ausstellung der Deutschen Digitalen Bibliothek'); ?></h1>
+                                </div>
+                                <h3><?php echo __('in Zusammenarbeit mit'); ?></h3>
+                            <?php else: ?>
                                 <h1><?php echo __('Eine virtuelle Ausstellung von'); ?></h1>
+                            <?php endif; ?>
                                 <div class="row align-items-stretch justify-content-start mb-4">
                                 <?php
                                     $institutionCount = 0;
@@ -54,7 +62,19 @@
                                 <?php echo $team['team_list']; ?>
                                 <?php endif; ?>
                                 <div class="created-width mb-5">
-                                    <strong>Erstellt mit:</strong><br>
+                                    <strong>
+                                    <?php
+                                    switch ($exhibitType) {
+                                        case 'litfass_featured':
+                                            echo __('Unterstützt von');
+                                            break;
+
+                                        default:
+                                            echo __('Erstellt mit');
+                                            break;
+                                    }
+                                    ?>
+                                    :</strong><br>
                                     <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
                                 </div>
                                 <p><small>Diese Ausstellung wurde am <?php echo $publishDate; ?> veröffentlicht.</small></p>

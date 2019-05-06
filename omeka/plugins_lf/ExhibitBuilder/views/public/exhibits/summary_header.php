@@ -1,4 +1,5 @@
 <div id="header" class="header">
+    <div class="header_title"><?php echo (!empty($shorttitle))? $shorttitle : $title; ?></div>
     <svg class="icon-expand icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
         <g transform="translate(2177 -848)">

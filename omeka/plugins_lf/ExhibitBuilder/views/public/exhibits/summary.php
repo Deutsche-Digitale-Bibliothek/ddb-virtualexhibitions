@@ -5,6 +5,7 @@ if (!isset($exhibitType) || empty($exhibitType)) {
     $exhibitType = 'litfass';
 }
 $title = metadata('exhibit', 'title');
+$shorttitle = metadata('exhibit', 'shorttitle');
 $publishDate = get_option('publish-date');
 if ($publishDate) {
     $publishDate = date('d.m.Y', strtotime($publishDate));

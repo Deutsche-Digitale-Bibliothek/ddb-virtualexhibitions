@@ -17,6 +17,10 @@
 // }
 
 // typo
+body.exhibit-type-litfass_ddb {
+  font-family: $font-family-ddb-sans-serif;
+}
+
 p,
 li,
 td,
@@ -36,6 +40,18 @@ h5,
 h6 {
   font-family: $font-family-headings;
   font-weight: $font-weight-semi-bold;
+}
+
+.exhibit-type-litfass_ddb {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font-family-ddb-headings;
+    font-weight: 400;
+  }
 }
 
 h1 {
@@ -121,6 +137,18 @@ a:hover {
   }
 }
 
+.header_title {
+  flex-grow: 1;
+  text-transform: uppercase;
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
+}
+
+.exhibit-type-litfass_ddb .header {
+  font-family: $font-family-ddb-headings;
+}
+
 .header-section-bar {
   position: absolute;
   right: 0;
@@ -202,6 +230,9 @@ a:hover {
     .menu-text {
       font-size: .85rem;
       &-red {
+        margin-top: 1.25rem;
+        font-family: $font-family-ddb-headings;
+        font-size: .9375rem;
         color: #a5003b;
       }
       &-blue {
@@ -707,6 +738,10 @@ a:hover {
   }
 }
 
+.exhibit-type-litfass_ddb .media-meta .media-meta-scroll h5 {
+  font-family: $font-family-ddb-headings;
+}
+
 // controls & icons
 .scroll-controls {
   path,
@@ -861,6 +896,7 @@ a:hover {
     .next-page-link {
       position: absolute;
       bottom: 50px;
+      z-index: 4;
     }
     .credits {
       margin-bottom: 50px;
@@ -876,6 +912,45 @@ a:hover {
     }
   }
 }
+
+.exhibit-type-litfass_ddb .title-container .title-bottom .credits span {
+  font-family: $font-family-ddb-headings;
+}
+
+.titleimage {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@include media-breakpoint-up(md) {
+  .with-title-image {
+    // .titleimage {
+    //   display: block;
+    // }
+    .title-container {
+      justify-content: flex-end;
+      .title-top {
+        display: none;
+      }
+      .title-bottom {
+        .credits {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .titleimage {
+    display: none;
+  }
+}
+
 .section-title {
   // background-repeat: no-repeat;
   // background-attachment: fixed;
@@ -1006,6 +1081,17 @@ a:hover {
       margin: 0 auto 16px;
       content: " ";
       background-color: $litfassTextColor;
+    }
+  }
+}
+
+.exhibit-type-litfass_ddb {
+  .section-cite {
+    font-family: $font-family-ddb-headings;
+    blockquote {
+      &::before {
+        font-family: $font-family-ddb-headings;
+      }
     }
   }
 }

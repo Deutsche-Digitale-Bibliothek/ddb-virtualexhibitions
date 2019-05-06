@@ -48,7 +48,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
     public function editAction()
     {
-        $fileFields = array('banner', 'cover', 'titlebackground');
+        $fileFields = array('banner', 'cover', 'titlebackground', 'titleimage');
         foreach ($fileFields as $fileField) {
             if ($this->getRequest()->isPost() && isset($_FILES[$fileField]) &&
                 isset($_FILES[$fileField]['error']) && $_FILES[$fileField]['error'] == 0) {

@@ -14,6 +14,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
 {
     public $title;
     public $subtitle;
+    public $shorttitle;
     public $description;
     public $credits;
     public $featured = 0;
@@ -29,6 +30,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $team;
     public $titlebackground;
     public $titlebackgroundcolor;
+    public $titleimage;
     public $ctrl_colorscheme;
     public $colorpalette;
 

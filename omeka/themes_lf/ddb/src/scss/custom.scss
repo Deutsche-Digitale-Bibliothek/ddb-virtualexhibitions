@@ -84,12 +84,33 @@
 
 }
 
+@font-face {
+  font-family: "KarbidWeb";
+  font-weight: 400;
+  src: url("../fonts/KarbidWeb.eot");
+  src:
+    url("../fonts/KarbidWeb.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/KarbidWeb.woff") format("woff");
+}
+
+@font-face {
+  font-family: "KarbidWeb";
+  font-weight: 700;
+  src: url("../fonts/KarbidWeb-Bold.woff") format("woff");
+}
+
 // overrides
 // stylelint-disable-next-line value-keyword-case
 $font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 // stylelint-disable-next-line value-keyword-case
+$font-family-ddb-sans-serif: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+// stylelint-disable-next-line value-keyword-case
 $font-family-headings: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+// stylelint-disable-next-line value-keyword-case
+$font-family-ddb-headings: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 $litfassTextColor: #1d1d1b !default;
 
