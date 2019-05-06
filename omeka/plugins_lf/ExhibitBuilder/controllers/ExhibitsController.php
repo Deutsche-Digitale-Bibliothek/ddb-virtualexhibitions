@@ -71,6 +71,18 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             }
         }
         $_POST['institutions'] = $this->setInstitutions($exhibit);
+
+        // Update OMIM
+        if (isset($_POST['exhibit_type']) && $exhibit->exhibit_type !== $_POST['exhibit_type']) {
+            $db = $this->_helper->db->getDb();
+            $prefix = $db->prefix;
+            $exhibitNo = (int) substr($prefix, 9, -1);
+            $db->update(
+                'omim_instances',
+                array('exhibit_type' => $_POST['exhibit_type']),
+                'id = ' . $exhibitNo
+            );
+        }
         parent::editAction();
     }
 

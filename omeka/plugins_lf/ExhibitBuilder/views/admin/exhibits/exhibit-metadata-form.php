@@ -1,6 +1,34 @@
+<?php
+$currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+$selectableExhibitTypes = array(
+    'litfass' => 'Litfaß Partner Standard (Single Page Ausstellung)',
+    'litfass_featured' => 'Litfaß Partner Featured (Single Page Ausstellung)'
+);
+$allExhibitTypes = array(
+    'leporello' => 'Leporello (klassische Ausstellung)',
+    'litfass' => 'Litfaß Partner Standard (Single Page Ausstellung)',
+    'litfass_featured' => 'Litfaß Partner Featured (Single Page Ausstellung)',
+    'litfass_ddb' => 'Litfaß DDB Exhibition (Single Page Ausstellung)'
+);
+?>
 <form id="exhibit-metadata-form" method="post" class="exhibit-builder" enctype="multipart/form-data">
     <?php echo $this->formHidden('slug', $exhibit->slug); ?>
     <div class="seven columns alpha">
+    <?php if($currentuser->role === 'super' && array_key_exists($exhibit->exhibit_type, $selectableExhibitTypes)): ?>
+        <fieldset style="margin-bottom: 16px;">
+            <legend><?php echo __('Typ der Ausstellung'); ?></legend>
+            <div class="field">
+                <?php echo $this->formSelect('exhibit_type', $exhibit->exhibit_type, array(), $selectableExhibitTypes); ?>
+            </div>
+        </fieldset>
+    <?php else: ?>
+        <fieldset style="margin-bottom: 16px;">
+            <legend><?php echo __('Typ der Ausstellung'); ?></legend>
+            <div class="field"><?php
+                echo (isset($exhibit->exhibit_type) && !empty($exhibit->exhibit_type))?
+                $allExhibitTypes[$exhibit->exhibit_type] : ''; ?></div>
+        </fieldset>
+    <?php endif; ?>
         <fieldset>
             <legend><?php echo __('Exhibit Metadata'); ?></legend>
             <div class="field">
@@ -236,7 +264,6 @@
     </div>
     <div id="save" class="three columns omega panel">
         <?php echo $this->formSubmit('save_exhibit', __('Save Changes'), array('class'=>'submit big green button')); ?>
-        <?php $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser'); ?>
         <?php if($currentuser->role === 'super'): ?>
         <div id="public-featured">
             <div class="public">
@@ -244,7 +271,7 @@
                 <?php echo $this->formCheckbox('public', $exhibit->public, array(), array('1', '0')); ?>
             </div>
         </div>
-    <?php endif; ?>
+        <?php endif; ?>
     </div>
 </form>
 <script type="text/javascript" charset="utf-8">
