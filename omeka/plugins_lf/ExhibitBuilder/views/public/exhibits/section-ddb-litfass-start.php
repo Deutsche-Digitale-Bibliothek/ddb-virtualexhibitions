@@ -17,7 +17,7 @@ if ($exhibitType === 'litfass_ddb') {
     <?php echo ($titlebackground)? 'style="background-image: url(' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . ')"' . "\n" : "\n"; ?>
     id="se<?php echo $sectionCounter; ?>">
     <?php if ($titleimage): ?>
-        <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $titleimage; ?>" alt="title" class="titleimage" style="position: absolute; width: 100%; overflow: hidden; height: 100vh; z-index: 3;">
+        <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $titleimage; ?>" alt="title" class="titleimage">
         <?php endif; ?>
     <div class="title-container">
         <div class="title-top">
