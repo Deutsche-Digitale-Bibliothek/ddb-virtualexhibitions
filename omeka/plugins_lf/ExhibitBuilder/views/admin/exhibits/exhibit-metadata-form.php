@@ -10,6 +10,13 @@ $allExhibitTypes = array(
     'litfass_featured' => 'Litfaß Partner Featured (Single Page Ausstellung)',
     'litfass_ddb' => 'Litfaß DDB Exhibition (Single Page Ausstellung)'
 );
+$navColors = array(
+    'dark' => 'dunkel',
+    'light' => 'hell'
+);
+if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || empty($exhibit->nav_color))) {
+    $exhibit->nav_color = 'dark';
+}
 ?>
 <form id="exhibit-metadata-form" method="post" class="exhibit-builder" enctype="multipart/form-data">
     <?php echo $this->formHidden('slug', $exhibit->slug); ?>
@@ -55,6 +62,16 @@ $allExhibitTypes = array(
                     <?php echo $this->formText('shorttitle', $exhibit->shorttitle); ?>
                 </div>
             </div>
+            <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('nav_color', __('Farbe der Navigation')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <?php echo $this->formSelect('nav_color', $exhibit->nav_color, array(), $navColors); ?>
+                </div>
+            </div>
+            <?php endif; ?>
         </fieldset>
         <fieldset>
             <legend><?php echo __('Startkachel'); ?></legend>

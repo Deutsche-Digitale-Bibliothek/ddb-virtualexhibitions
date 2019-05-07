@@ -33,6 +33,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $titleimage;
     public $ctrl_colorscheme;
     public $colorpalette;
+    public $nav_color;
 
     protected $_related = array(
         'Pages' => 'getPages', 'TopPages' => 'getTopPages', 'Tags' => 'getTags'
