@@ -12,6 +12,8 @@
  */
 class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionController
 {
+    protected $sliderStartPageId = null;
+
     public function init()
     {
         $this->_helper->db->setDefaultModelName('Exhibit');
@@ -545,6 +547,21 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         $success = $this->processPageForm($exhibitPage, 'Edit', $exhibit);
 
         if ($success) {
+            $pageoptions = unserialize($exhibitPage->pageoptions);
+            if (isset($pageoptions['slider']) && $pageoptions['slider'] == 'start') {
+                $exhibitPage = $this->_helper->db->findById($exhibitPage->id,'ExhibitPage');
+                $db = $this->_helper->db;
+                $tbl = $db->getTable('ExhibitPage');
+                $select = $tbl->getSelect();
+                $select->where('exhibit_pages.pageoptions REGEXP ? ', '.*sliderStartPageId\";i:' . $exhibitPage->id . ';');
+                $sliderEnd = $tbl->fetchObject($select);
+                if ($sliderEnd) {
+                    $sliderEnd->title = $exhibitPage->title;
+                    $sliderEnd->pagethumbnail = $exhibitPage->pagethumbnail;
+                    $sliderEnd->backgroundcolor = $exhibitPage->backgroundcolor;
+                    $sliderEnd->save();
+                }
+            }
             $this->_helper->redirector->gotoRoute(array('action' => 'edit-page-content', 'id' => $exhibitPage->id), 'exhibitStandard');
             return;
         }
@@ -590,11 +607,18 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
                 $exhibitPage->pageoptions = serialize($_POST['pageoptions']);
             }
             if (isset($slider)) {
-                $exhibitPage->pageoptions = serialize(array('slider' => $slider));
+                if ($slider == 'end') {
+                    $exhibitPage->pageoptions = serialize(array('slider' => $slider, 'sliderStartPageId' => $this->sliderStartPageId));
+                } else {
+                    $exhibitPage->pageoptions = serialize(array('slider' => $slider));
+                }
             }
             // END Grandgeorg Websolutions
             try {
                 $success = $exhibitPage->save();
+                if (isset($slider) && $slider == 'start') {
+                    $this->sliderStartPageId = $exhibitPage->id;
+                }
                 return true;
             } catch (Exception $e) {
                 $this->_helper->flashMessenger($e->getMessage(), 'error');

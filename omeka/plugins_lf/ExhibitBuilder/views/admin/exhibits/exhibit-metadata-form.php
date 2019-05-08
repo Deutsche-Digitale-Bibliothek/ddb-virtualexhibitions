@@ -404,7 +404,20 @@ jQuery(document).ready(function($) {
             e.stopPropagation();
             alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
         }
-    })
+    });
+    $('#page-list .delete-toggle').on('click', function (e, data) {
+        if (data !== 'automark') {
+            var page = $(this).parents('.page');
+            if (page.data('slider') === 'start') {
+                var sliderEnd = page.nextAll('.slider-end').first();
+                $('.delete-toggle', sliderEnd).trigger('click', 'automark');
+            }
+            if (page.data('slider') === 'end') {
+                var sliderEnd = page.prevAll('.slider-start').first();
+                $('.delete-toggle', sliderEnd).trigger('click', 'automark');
+            }
+        }
+    });
 
 });
 jQuery(window).load(function() {

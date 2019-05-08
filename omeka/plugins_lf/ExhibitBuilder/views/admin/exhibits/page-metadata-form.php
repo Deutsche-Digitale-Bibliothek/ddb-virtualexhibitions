@@ -1,4 +1,13 @@
 <?php
+$pageoptions = unserialize($exhibit_page->pageoptions);
+if (isset($pageoptions['sliderStartPageId'])) {
+    header('Location: '
+        . WEB_DIR
+        . '/exhibits/edit-page-metadata/'
+        . $pageoptions['sliderStartPageId']
+    );
+    exit;
+}
 $title = ($actionName == 'Add') ? __('Add Page') : __('Edit Page "%s"', $exhibit_page->title);
 echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
 ?>
@@ -70,10 +79,9 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
             </div>
         </div>
     </fieldset>
-
+    <?php if (!isset($pageoptions['slider'])): ?>
     <fieldset id="layouts">
         <legend><?php echo __('Layouts'); ?></legend>
-
         <div id="layout-thumbs">
         <?php
             $layouts = exhibit_builder_get_layouts();
@@ -83,6 +91,7 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
         ?>
         </div>
     </fieldset>
+    <?php endif; ?>
     </div>
     <div id="save" class="three columns omega panel">
         <?php echo $this->formSubmit('save_page_metadata', __('Save Changes'), array('class'=>'submit big green button')); ?>
