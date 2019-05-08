@@ -15,9 +15,27 @@
 function exhibit_builder_edit_page_list($page)
 {
     $pageId = html_escape($page->id);
-    $html = '<li class="page" id="page_' . $pageId . '">'
+    $pageoptions = unserialize($page->pageoptions);
+    $dataSlider = '';
+    $titleSliderAdd = '';
+    $htmlSliderStart = '';
+    $cssSlider = '';
+    $htmlSliderEnd = '';
+    if (isset($pageoptions['slider'])) {
+        $dataSlider = ' data-slider="' . $pageoptions['slider'] . '"';
+        if ($pageoptions['slider'] === 'start') {
+            $htmlSliderStart = '<div class="slider">';
+            $titleSliderAdd = '<em> - Slider Anfang</em> ⬇';
+            $cssSlider = ' slider-start';
+        } elseif ($pageoptions['slider'] === 'end') {
+            $htmlSliderEnd = '</div>';
+            $titleSliderAdd = '<em> - Slider Ende</em> ⬆';
+            $cssSlider = ' slider-end';
+        }
+    }
+    $html = $htmlSliderEnd . '<li class="page' . $cssSlider . '" id="page_' . $pageId . '"' . $dataSlider . '>'
           . '<div class="sortable-item">'
-          . '<a href="../edit-page-content/' . $pageId . '">' . html_escape($page->title) . '</a>'
+          . '<a href="../edit-page-content/' . $pageId . '">' . html_escape($page->title) . $titleSliderAdd . '</a>'
           . '<a class="delete-toggle delete-element" href="#">' . __('Delete') . '</a>'
           . '</div>';
 
@@ -28,7 +46,7 @@ function exhibit_builder_edit_page_list($page)
         }
         $html .= '</ul>';
     }
-    $html .= '</li>';
+    $html .= '</li>' . $htmlSliderStart;
     return $html;
 }
 

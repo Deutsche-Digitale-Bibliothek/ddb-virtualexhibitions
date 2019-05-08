@@ -112,11 +112,6 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         $storedInstitutions = unserialize($exhibit->institutions);
         $allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
 
-        // var_dump($storedInstitutions);
-        // var_dump($_FILES['institution']);
-        // var_dump($_POST['institution']);
-        // die();
-
         foreach ($_POST['institution'] as $instKey => $institution) {
 
             if (isset($institution['delete']) && $institution['delete'] === '1') {
@@ -268,7 +263,6 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
     public function showajaxitemAction()
     {
 
-        // var_dump($this->view);
         $itemId = $this->_getParam('item_id');
         $item = $this->_helper->db->findById($itemId, 'Item');
 
@@ -279,9 +273,8 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
         if ($item && $exhibit->hasItem($item) ) {
 
-            //Plugin hooks
+            // Plugin hooks
             // fire_plugin_hook('show_exhibit_item',  array('item' => $item, 'exhibit' => $exhibit));
-            // var_dump($this->view);
 
             // return $this->renderExhibit(compact('exhibit', 'item'), 'item');
             $this->view->assign(compact('exhibit', 'item'));
@@ -484,9 +477,17 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             $exhibitPage->order = $childCount +1;
         }
 
-
-
-        $success = $this->processPageForm($exhibitPage, 'Add', $exhibit);
+        if ($this->getRequest()->isPost() && isset($_POST['layout']) && $_POST['layout'] === 'ddb-litfass-slider') {
+            $_POST['slug'] = exhibit_builder_generate_slug($_POST['title'] . '_' . date('Y-m-d_h-m-s') . '_start');
+            $success = $this->processPageForm($exhibitPage, 'Add', $exhibit, 'start');
+            $sliderEnd = new ExhibitPage;
+            $sliderEnd->exhibit_id = $exhibitId;
+            $sliderEnd->order = $exhibitPage->order + 1;
+            $_POST['slug'] = exhibit_builder_generate_slug($_POST['title'] . '_' . date('Y-m-d_h-m-s') . '_end');
+            $successSliderEnd = $this->processPageForm($sliderEnd, 'Add', $exhibit, 'end');
+        } else {
+            $success = $this->processPageForm($exhibitPage, 'Add', $exhibit);
+        }
 
         if ($success) {
             $this->_helper->flashMessenger(__("Changes to the exhibit's page were successfully saved!"), 'success');
@@ -551,13 +552,12 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         $this->render('page-metadata-form');
     }
 
-    protected function processPageForm($exhibitPage, $actionName, $exhibit = null)
+    protected function processPageForm($exhibitPage, $actionName, $exhibit = null, $slider = null)
     {
         $this->view->assign(compact('exhibit', 'actionName'));
         $this->view->exhibit_page = $exhibitPage;
         if ($this->getRequest()->isPost()) {
             // Grandgeorg Websolutions
-            // var_dump($_POST, $exhibitPage); die();
             $fileFields = array('pagethumbnail');
             foreach ($fileFields as $fileField) {
                 if ($this->getRequest()->isPost() && isset($_FILES[$fileField]) &&
@@ -589,7 +589,10 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             if ($this->getRequest()->isPost() && isset($_POST['pageoptions']) && is_array($_POST['pageoptions'])) {
                 $exhibitPage->pageoptions = serialize($_POST['pageoptions']);
             }
-            //  END Grandgeorg Websolutions
+            if (isset($slider)) {
+                $exhibitPage->pageoptions = serialize(array('slider' => $slider));
+            }
+            // END Grandgeorg Websolutions
             try {
                 $success = $exhibitPage->save();
                 return true;

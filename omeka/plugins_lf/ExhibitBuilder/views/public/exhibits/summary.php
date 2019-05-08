@@ -45,6 +45,10 @@ foreach (loop('exhibit_page') as $exhibitSection):
     // reset currentAttechmentMediaType
     ExhibitDdbHelper::$currentAttechmentMediaType = 'text';
     $pageoptions = unserialize($exhibitSection->pageoptions);
+    // temporarily handle sliders
+    if (isset($pageoptions['slider'])) {
+        continue;
+    }
     // get the section
     require  $dir . '/section-' . $exhibitSection->layout  . '.php';
     // set values for nav

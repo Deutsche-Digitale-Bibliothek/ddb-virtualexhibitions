@@ -423,3 +423,19 @@ fieldset .d-lonely-none {
     line-height: 1.5em;
     margin: 0;
 }
+.ui-sortable li {
+    margin-bottom: 0 !important;
+    padding: 7px 0;
+}
+.ui-sortable li.slider-start {
+    padding-bottom: 0;
+}
+.ui-sortable li.slider-end {
+    padding-top: 0;
+}
+.slider {
+    border: 1px solid #dfe0dc;
+    border-radius: 4px;
+    padding: 7px 7px;
+    background-color: #eff0eb;
+}

@@ -50,7 +50,6 @@
                                     endforeach;
                                 ?>
                                 </div>
-                                <?php // var_dump($institutions); ?>
                                 <?php $team = unserialize($exhibit->team); ?>
                                 <?php
                                 if (isset($team['description'])):
