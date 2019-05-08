@@ -430,12 +430,18 @@ fieldset .d-lonely-none {
 .ui-sortable li.slider-start {
     padding-bottom: 0;
 }
+.ui-sortable li.slider-start em {
+    color: #4C3939;
+}
 .ui-sortable li.slider-end {
     padding-top: 0;
 }
+.ui-sortable li.slider-end em {
+    color: #4C3939;
+}
 .slider {
-    border: 1px solid #dfe0dc;
+    border: 1px solid #adadab;
     border-radius: 4px;
     padding: 7px 7px;
-    background-color: #eff0eb;
+    background-color: #cecfc8;
 }

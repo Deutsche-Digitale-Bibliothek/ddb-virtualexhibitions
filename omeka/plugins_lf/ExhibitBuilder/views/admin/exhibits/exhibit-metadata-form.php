@@ -379,6 +379,33 @@ jQuery(document).ready(function($) {
         $('#titlebackgroundcolor').val(name);
     })
 
+    // slider
+    $('#save_exhibit').on('click', function(e) {
+        var sliderStart = 0;
+        var nestingError = false;
+        $('.page').each(function() {
+            if ($(this).data('slider') === 'start') {
+                sliderStart++;
+            }
+            if (sliderStart > 1) {
+                nestingError = true;
+            }
+            if ($(this).data('slider') === 'end' && sliderStart > 0) {
+                sliderStart--;
+            }
+        });
+        if (sliderStart > 0) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert('<?php echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?>');
+        }
+        if (nestingError) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
+        }
+    })
+
 });
 jQuery(window).load(function() {
     Omeka.ExhibitBuilder.wysiwyg();
