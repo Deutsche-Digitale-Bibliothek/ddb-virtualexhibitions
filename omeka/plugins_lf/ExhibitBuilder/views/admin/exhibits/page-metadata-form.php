@@ -86,7 +86,11 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
         <?php
             $layouts = exhibit_builder_get_layouts();
             foreach ($layouts as $layout) {
-                echo exhibit_builder_layout($layout);
+                if ($this->actionName !== 'Add' && $layout === 'ddb-litfass-slider') {
+                    // Do not make slider selectable in edit action
+                } else {
+                    echo exhibit_builder_layout($layout);
+                }
             }
         ?>
         </div>
