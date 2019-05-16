@@ -13,7 +13,7 @@ if ($exhibitType === 'litfass_ddb') {
 <section
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $titlebackgroundcolor; ?>"
-    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; if ($titleimage): echo ' with-title-image'; endif;?>"
+    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; if ($titleimage): echo ' with-title-image'; endif;?> tile"
     <?php echo ($titlebackground)? 'style="background-image: url(' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . ')"' . "\n" : "\n"; ?>
     id="se<?php echo $sectionCounter; ?>">
     <?php if ($titleimage): ?>

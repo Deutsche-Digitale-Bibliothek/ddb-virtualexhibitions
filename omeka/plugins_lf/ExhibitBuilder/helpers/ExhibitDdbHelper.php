@@ -1965,4 +1965,32 @@ class ExhibitDdbHelper
     {
         return $num < 10 ? '0' . $num : $num;
     }
+
+    /**
+     * Set section anchors in summary
+     *
+     * @param string $sectionAnchors
+     * @param int $sectionCounter
+     * @return string $sectionAnchors
+     */
+    public static function setSectionAnchors($sectionAnchors, $sectionCounter)
+    {
+        $sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
+        $sectionAnchors .= "'s" . $sectionCounter . "'";
+        return $sectionAnchors;
+    }
+
+    /**
+     * Set section colors in summary templates
+     *
+     * @param string $sectionColors
+     * @param string $color
+     * @return string $sectionColors
+     */
+    public static function setSectionColors($sectionColors, $color)
+    {
+        $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
+        $sectionColors .= $color;
+        return $sectionColors;
+    }
 }

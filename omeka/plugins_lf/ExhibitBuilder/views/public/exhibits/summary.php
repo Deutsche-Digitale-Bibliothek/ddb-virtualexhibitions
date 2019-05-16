@@ -19,6 +19,7 @@ $sectionCounter = 0;
 $sectionAnchors = '';
 $sectionColors = '';
 $sectionTitles = array();
+$sectionTag = 'section';
 echo head(compact('title', 'colors', 'exhibitType'), 'spa_header');
 $institutions = ExhibitDdbHelper::getInstitutions(
     metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
@@ -27,10 +28,9 @@ $institutions = ExhibitDdbHelper::getInstitutions(
 <?php
 // Title Section
 require  $dir . '/section-ddb-litfass-start.php';
-$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-$sectionAnchors .= "'s" . $sectionCounter . "'";
-$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-$sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $titlebackgroundcolor . '.hex';
+$sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
+    'litfassColorPalettes.' . $colorpalette . '.' . $titlebackgroundcolor . '.hex');
 $sectionTitles[] = [
     'title' => htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5),
     'pagethumbnail' => '',
@@ -38,38 +38,63 @@ $sectionTitles[] = [
     'menu_icon' => 'home'
 ];
 $sectionCounter++;
+
 // Sections
 $chapterCounter = 0;
+// Slider
+$inSlider = false;
+$slideCounter = 0;
 set_exhibit_pages_for_loop_by_exhibit();
 foreach (loop('exhibit_page') as $exhibitSection):
     // reset currentAttechmentMediaType
     ExhibitDdbHelper::$currentAttechmentMediaType = 'text';
     $pageoptions = unserialize($exhibitSection->pageoptions);
-    // temporarily handle sliders
-    if (isset($pageoptions['slider'])) {
-        continue;
+    // slider open
+    if (isset($pageoptions['slider']) && $pageoptions['slider'] === 'start') {
+        $inSlider = true;
+        $slideCounter = 0;
+        $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+        $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
+            'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex');
+        $sectionTitles[] = [
+            'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
+            'pagethumbnail' => $exhibitSection->pagethumbnail,
+            'type' => $exhibitSection->layout,
+            'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType //@TODO: add slider icon
+        ];
+    }
+    if (isset($pageoptions['slider']) && $pageoptions['slider'] === 'end') {
+        $inSlider = false;
+        $sectionCounter++;
     }
     // get the section
     require  $dir . '/section-' . $exhibitSection->layout  . '.php';
+
     // set values for nav
-    $sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-    $sectionAnchors .= "'s" . $sectionCounter . "'";
-    $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-    $sectionColors .= 'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex';
-    $sectionTitles[] = [
-        'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
-        'pagethumbnail' => $exhibitSection->pagethumbnail,
-        'type' => $exhibitSection->layout,
-        'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType
-    ];
-    $sectionCounter++;
+    if ($inSlider === false) {
+        $sectionTag = 'section';
+    } else {
+        $sectionTag = 'div';
+    }
+    if ($inSlider === false && (!isset($pageoptions['slider']) || $pageoptions['slider'] !== 'end')) {
+        $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+        $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
+            'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex');
+        $sectionTitles[] = [
+            'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
+            'pagethumbnail' => $exhibitSection->pagethumbnail,
+            'type' => $exhibitSection->layout,
+            'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType
+        ];
+        $sectionCounter++;
+    } else {
+        $slideCounter++;
+    }
 endforeach;
 // apparatus
 require  $dir . '/section-ddb-litfass-team.php';
-$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-$sectionAnchors .= "'s" . $sectionCounter . "'";
-$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-$sectionColors .= 'litfassColorPalettes.base.white.hex';
+$sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
 $sectionTitles[] = [
     'title' => __('Team'),
     'pagethumbnail' => '',
@@ -78,10 +103,9 @@ $sectionTitles[] = [
 ];
 $sectionCounter++;
 require  $dir . '/section-ddb-litfass-impressum.php';
-$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-$sectionAnchors .= "'s" . $sectionCounter . "'";
-$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-$sectionColors .= 'litfassColorPalettes.base.white.hex';
+// require $dir . '/slide-test.php';
+$sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
 $sectionTitles[] = [
     'title' => __('Impressum'),
     'pagethumbnail' => '',
@@ -90,10 +114,8 @@ $sectionTitles[] = [
 ];
 $sectionCounter++;
 require  $dir . '/section-ddb-litfass-datenschutz.php';
-$sectionAnchors = (empty($sectionAnchors))? '' : $sectionAnchors . ', ';
-$sectionAnchors .= "'s" . $sectionCounter . "'";
-$sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
-$sectionColors .= 'litfassColorPalettes.base.white.hex';
+$sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
 $sectionTitles[] = [
     'title' => __('Dattenschutz'),
     'pagethumbnail' => '',

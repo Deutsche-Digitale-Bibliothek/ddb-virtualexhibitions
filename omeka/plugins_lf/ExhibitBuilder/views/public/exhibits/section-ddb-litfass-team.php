@@ -2,7 +2,7 @@
 <section
     data-color-palette="base"
     data-color-section="white"
-    class="section"
+    class="section tile"
     id="se<?php echo $sectionCounter; ?>">
     <div class="section-container container-fluid">
         <div class="row">

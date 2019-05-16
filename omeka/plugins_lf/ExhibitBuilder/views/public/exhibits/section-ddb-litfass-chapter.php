@@ -3,11 +3,12 @@ $attachment = exhibit_builder_page_attachment(1);
 $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
 $chapterCounter++;
 ?>
-<section
+<<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
-    class="section section-chapter"
-    id="se<?php echo $sectionCounter; ?>"
+    <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-chapter tile"
+    id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>"
     <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . ')"' : ''; ?>>
     <div class="section-container container-fluid">
         <div class="row auto">
@@ -27,4 +28,4 @@ $chapterCounter++;
             </div>
         </div>
     </div>
-</section>
+</<?php echo $sectionTag; ?>>

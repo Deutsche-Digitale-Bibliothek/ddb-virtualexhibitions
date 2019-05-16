@@ -1,9 +1,10 @@
 <?php $attachment = exhibit_builder_page_attachment(1); ?>
-<section
+<<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
-    class="section <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?>"
-    id="se<?php echo $sectionCounter; ?>">
+    <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
+    id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>">
     <div class="section-container container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -48,4 +49,4 @@
             </div>
         </div>
     </div>
-</section>
+</<?php echo $sectionTag; ?>>

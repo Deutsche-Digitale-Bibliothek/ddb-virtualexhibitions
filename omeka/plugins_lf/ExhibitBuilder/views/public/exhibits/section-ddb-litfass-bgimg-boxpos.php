@@ -5,11 +5,12 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['boxpo
 }
 $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
 ?>
-<section
+<<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
-    class="section section-pos"
-    id="se<?php echo $sectionCounter; ?>"
+    <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-pos tile"
+    id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>"
     <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . ')"' : ''; ?>>
     <div class="section-container-pos pos-box-<?php echo $pageoptions['boxpos'] ?>">
         <div class="pos-box">
@@ -24,4 +25,4 @@ $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
             <?php endif; ?>
         </div>
     </div>
-</section>
+</<?php echo $sectionTag; ?>>

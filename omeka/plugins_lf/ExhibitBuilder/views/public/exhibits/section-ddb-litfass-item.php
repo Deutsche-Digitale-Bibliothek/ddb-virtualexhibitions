@@ -4,11 +4,12 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
     $pageoptions['align'] = 'right';
 }
 ?>
-<section
+<<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
-    class="section section-text-media <?php echo ($pageoptions['align'] === 'left')? 'section-text-media-right' : 'section-text-media-right'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?>"
-    id="se<?php echo $sectionCounter; ?>">
+    <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-text-media <?php echo ($pageoptions['align'] === 'left')? 'section-text-media-right' : 'section-text-media-right'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
+    id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>">
     <div class="section-container container-fluid">
         <div class="row">
             <div class="col-sm-12 col-media">
@@ -98,4 +99,4 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
             </div>
         </div>
     </div>
-</section>
+</<?php echo $sectionTag; ?>>

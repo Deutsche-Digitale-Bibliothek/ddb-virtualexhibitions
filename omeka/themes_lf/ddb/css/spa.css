@@ -6527,20 +6527,6 @@ a:hover {
   }
 }
 
-.fp-slide,
-.fp-slidesContainer {
-  float: left;
-}
-
-.fp-slidesContainer {
-  position: relative;
-}
-
-.fp-slide {
-  display: block;
-  height: 100%;
-}
-
 .fp-slides {
   position: relative;
   z-index: 1;
@@ -6549,13 +6535,63 @@ a:hover {
   transition: all .3s ease-out;
 }
 
+.fp-slidesContainer {
+  position: relative;
+  display: flex;
+}
+
+.fp-slide {
+  display: block;
+  height: 100%;
+}
+
 .fp-slide.fp-table {
-  display: table;
   width: 100%;
-  table-layout: fixed;
+}
+
+.slideControlWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.fp-prev {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  background-image: url("../images/icons/icon_next_page_left.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.fp-next {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  background-image: url("../images/icons/icon_next_page_right.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.slidesInfo {
+  min-width: 4rem;
+  padding: 5px 0 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.slider-color-dark .slidesInfo {
+  color: #fff;
 }
 
 .section {
+  position: relative;
   min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;

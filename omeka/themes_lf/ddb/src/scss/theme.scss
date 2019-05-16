@@ -96,6 +96,25 @@ a:hover {
   text-decoration: underline;
 }
 
+// .dark .light,
+// .light {
+//   color: $litfassTextColor;
+//   p,
+//   li,
+//   td,
+//   div,
+//   h1,
+//   h2,
+//   h3,
+//   h4,
+//   h5,
+//   h6,
+//   a,
+//   a:hover {
+//     color: $litfassTextColor;
+//   }
+// }
+
 // bootstrap
 .container-fluid {
   max-width: 1140px;
@@ -400,7 +419,6 @@ a:hover {
     }
   }
 }
-
 .fp-section {
   // position: relative;
   display: block;
@@ -408,6 +426,7 @@ a:hover {
   height: 100%;
   overflow: hidden;
 }
+
 // .fp-section.fp-table {
 // }
 .fp-tableCell {
@@ -415,12 +434,14 @@ a:hover {
   width: 100%;
   height: 100%;
 }
+
 @include media-breakpoint-down(sm) {
   .fp-section {
     /* stylelint-disable-next-line declaration-no-important */
     height: auto !important;
     min-height: 100vh;
   }
+
   .fp-tableCell {
     position: relative;
     // @TODO: test in all sections:
@@ -432,18 +453,7 @@ a:hover {
     min-height: calc(100vh - 40px);
   }
 }
-.fp-slide,
-.fp-slidesContainer {
-  float: left;
-}
-.fp-slidesContainer {
-  position: relative;
-  // float: left;
-}
-.fp-slide {
-  display: block;
-  height: 100%;
-}
+
 .fp-slides {
   position: relative;
   z-index: 1;
@@ -451,14 +461,75 @@ a:hover {
   overflow: hidden;
   transition: all .3s ease-out;
 }
+
+.fp-slidesContainer {
+  position: relative;
+  display: flex;
+  // float: left;
+}
+
+.fp-slide {
+  display: block;
+  height: 100%;
+}
+
 .fp-slide.fp-table {
-  display: table;
   width: 100%;
-  table-layout: fixed;
+}
+
+// .slide {
+// padding-bottom: 75px;
+// }
+// section {
+//   position: relative;
+// }
+
+.slideControlWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.fp-prev {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  background-image: url("../images/icons/icon_next_page_left.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.fp-next {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+  background-image: url("../images/icons/icon_next_page_right.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.slidesInfo {
+  min-width: 4rem;
+  padding: 5px 0 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.slider-color-dark {
+  .slidesInfo {
+    color: #fff;
+  }
 }
 
 // section
 .section {
+  position: relative;
   min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;

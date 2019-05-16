@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-width: 3px;
+      }
+
+      .cls-1 {
+        stroke-linecap: square;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_111_1" data-name="Symbol 111 – 1" transform="translate(-1.5 -2.5)">
+    <g id="Gruppe_605" data-name="Gruppe 605" transform="translate(3 4)">
+      <g id="Gruppe_579" data-name="Gruppe 579" transform="translate(0 0)">
+        <line id="Linie_78" data-name="Linie 78" class="cls-1" x2="10" transform="translate(10) rotate(180)"/>
+        <line id="Linie_79" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 38) rotate(180)"/>
+        <line id="Linie_80" data-name="Linie 80" class="cls-1" y1="38" transform="translate(0 38) rotate(180)"/>
+      </g>
+      <g id="Gruppe_580" data-name="Gruppe 580" transform="translate(38 38) rotate(180)">
+        <line id="Linie_78-2" data-name="Linie 78" class="cls-1" x2="10" transform="translate(10) rotate(180)"/>
+        <line id="Linie_79-2" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 38) rotate(180)"/>
+        <line id="Linie_80-2" data-name="Linie 80" class="cls-1" y1="38" transform="translate(0 38) rotate(180)"/>
+      </g>
+    </g>
+    <path id="Pfad_323" data-name="Pfad 323" class="cls-2" d="M0,0,8.291,12.063,16.807,0" transform="translate(27.269 14.5) rotate(90)"/>
+  </g>
+</svg>
