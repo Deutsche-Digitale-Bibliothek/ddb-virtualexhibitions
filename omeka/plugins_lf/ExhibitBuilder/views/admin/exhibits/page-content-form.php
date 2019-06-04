@@ -245,6 +245,7 @@
             <?php if ($exhibit_page->exists()): ?>
                 <?php echo exhibit_builder_link_to_exhibit($exhibit, __('View Public Page'), array('class' => 'big blue button', 'target' => '_blank'), $exhibit_page); ?>
             <?php endif; ?>
+            <a href="<?php echo html_escape(url('exhibits/edit/' . $exhibit['id']));?>" class="big blue button"><?php echo __('Zurück zur Ausstellungsübersicht') ?></a>
         </div>
     </div>
 </form>
