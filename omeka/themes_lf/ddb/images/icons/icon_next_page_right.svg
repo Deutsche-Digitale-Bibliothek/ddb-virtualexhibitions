@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41">
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
   <defs>
     <style>
       .cls-1, .cls-2 {
         fill: none;
-        stroke: #000;
+        stroke: #fff;
         stroke-width: 3px;
       }
 
@@ -12,19 +12,19 @@
       }
     </style>
   </defs>
-  <g id="Symbol_110_1" data-name="Symbol 110 – 1" transform="translate(-59.5 -2.5)">
-    <g id="Gruppe_605" data-name="Gruppe 605" transform="translate(99 42) rotate(180)">
+  <g id="Symbol_115_1" data-name="Symbol 115 – 1" transform="translate(-139.5 -0.5)">
+    <g id="Gruppe_605" data-name="Gruppe 605" transform="translate(171 32) rotate(180)">
       <g id="Gruppe_579" data-name="Gruppe 579" transform="translate(0 0)">
         <line id="Linie_78" data-name="Linie 78" class="cls-1" x2="10" transform="translate(10) rotate(180)"/>
-        <line id="Linie_79" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 38) rotate(180)"/>
-        <line id="Linie_80" data-name="Linie 80" class="cls-1" y1="38" transform="translate(0 38) rotate(180)"/>
+        <line id="Linie_79" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 30) rotate(180)"/>
+        <line id="Linie_80" data-name="Linie 80" class="cls-1" y1="30" transform="translate(0 30) rotate(180)"/>
       </g>
-      <g id="Gruppe_580" data-name="Gruppe 580" transform="translate(38 38) rotate(180)">
+      <g id="Gruppe_580" data-name="Gruppe 580" transform="translate(30 30) rotate(180)">
         <line id="Linie_78-2" data-name="Linie 78" class="cls-1" x2="10" transform="translate(10) rotate(180)"/>
-        <line id="Linie_79-2" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 38) rotate(180)"/>
-        <line id="Linie_80-2" data-name="Linie 80" class="cls-1" y1="38" transform="translate(0 38) rotate(180)"/>
+        <line id="Linie_79-2" data-name="Linie 79" class="cls-1" x2="10" transform="translate(10 30) rotate(180)"/>
+        <line id="Linie_80-2" data-name="Linie 80" class="cls-1" y1="30" transform="translate(0 30) rotate(180)"/>
       </g>
     </g>
-    <path id="Pfad_323" data-name="Pfad 323" class="cls-2" d="M0,0,8.291,12.063,16.807,0" transform="translate(74.731 31.5) rotate(-90)"/>
+    <path id="Pfad_323" data-name="Pfad 323" class="cls-2" d="M0,0,8.291,12.063,16.807,0" transform="translate(150.496 25.464) rotate(-90)"/>
   </g>
 </svg>

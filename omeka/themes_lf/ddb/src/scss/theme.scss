@@ -465,8 +465,14 @@ a:hover {
 .fp-slidesContainer {
   position: relative;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   // float: left;
+  @include media-breakpoint-down(sm) {
+    display: block;
+  }
 }
+
 
 .fp-slide {
   display: block;
@@ -477,8 +483,11 @@ a:hover {
   width: 100%;
 }
 
+.section-slides {
+  background-color: #333 !important;
+}
 // .slide {
-// padding-bottom: 75px;
+
 // }
 // section {
 //   position: relative;
@@ -487,36 +496,33 @@ a:hover {
 .slideControlWrapper {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 4px;
   left: 0;
   z-index: 4;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
+  line-height: 1;
 }
-
-.fp-prev {
-  width: 41px;
-  height: 41px;
+.fp-controlArrow {
+  width: 33px;
+  height: 33px;
   cursor: pointer;
-  background-image: url("../images/icons/icon_next_page_left.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
+}
+.fp-prev {
+  background-image: url("../images/icons/icon_next_page_left.svg");
 }
 
 .fp-next {
-  width: 41px;
-  height: 41px;
-  cursor: pointer;
   background-image: url("../images/icons/icon_next_page_right.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
 }
 
 .slidesInfo {
-  min-width: 4rem;
-  padding: 5px 0 0;
+  min-width: 5.5rem;
+  padding: 8px 0 0;
   font-size: 1.25rem;
   text-align: center;
 }
@@ -532,10 +538,15 @@ a:hover {
   position: relative;
   min-height: 100vh;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  // -webkit-background-attachment: fixed;
+  // background-attachment: local;
+  background-attachment: scroll;
   background-position: center center;
   background-origin: content-box;
   background-size: cover;
+  // @media (min-width: 1200px) {
+  //   background-attachment: fixed;
+  // }
 }
 
 // audio
@@ -1034,6 +1045,8 @@ a:hover {
     font-size: 3.625rem;
     line-height: 4.25rem;
     span {
+      // display: inline-block;
+      // padding: .125rem .5rem;
       padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }
@@ -1043,6 +1056,8 @@ a:hover {
     font-size: 1.75rem;
     line-height: 2.375rem;
     span {
+      // display: inline-block;
+      // padding: .125rem .5rem;
       padding: .125rem 0;
       background-color: rgba(255, 255, 255, .8);
     }

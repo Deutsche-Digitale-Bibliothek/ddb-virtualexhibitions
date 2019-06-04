@@ -6,7 +6,7 @@
   var headerHeight = 43;
   var menuScroll;
   var zoomHintShown = false;
-  var slideHeightOffset = 60;
+  var slideHeightOffset = 43;
 
   // var pubsub = (function () {
 

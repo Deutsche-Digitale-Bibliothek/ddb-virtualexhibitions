@@ -6538,6 +6538,14 @@ a:hover {
 .fp-slidesContainer {
   position: relative;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .fp-slidesContainer {
+    display: block;
+  }
 }
 
 .fp-slide {
@@ -6549,39 +6557,42 @@ a:hover {
   width: 100%;
 }
 
+.section-slides {
+  background-color: #333 !important;
+}
+
 .slideControlWrapper {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 4px;
   left: 0;
   z-index: 4;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
+  line-height: 1;
+}
+
+.fp-controlArrow {
+  width: 33px;
+  height: 33px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }
 
 .fp-prev {
-  width: 41px;
-  height: 41px;
-  cursor: pointer;
   background-image: url("../images/icons/icon_next_page_left.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
 }
 
 .fp-next {
-  width: 41px;
-  height: 41px;
-  cursor: pointer;
   background-image: url("../images/icons/icon_next_page_right.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
 }
 
 .slidesInfo {
-  min-width: 4rem;
-  padding: 5px 0 0;
+  min-width: 5.5rem;
+  padding: 8px 0 0;
   font-size: 1.25rem;
   text-align: center;
 }
@@ -6594,7 +6605,7 @@ a:hover {
   position: relative;
   min-height: 100vh;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center center;
   background-origin: content-box;
   background-size: cover;
