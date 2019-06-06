@@ -818,12 +818,27 @@
 
   function setSlideControls() {
     $('.section-slides').each(function() {
+      var sectionSlide = $(this);
       var controllWrapper = $('<div class="slideControlWrapper"></div>');
       $('.fp-prev', this).appendTo(controllWrapper);
       $(this).append(controllWrapper);
       var numSliders = $('.slide', this).length;
       var slidesInfo = $('<div class="slidesInfo"><span class="currentSlide">1</span> / ' + numSliders + '</div>');
       slidesInfo.appendTo(controllWrapper);
+      var mobileSlideControl = $('<div class="mobileSlideControl"></div>');
+      mobileSlideControl.appendTo(controllWrapper);
+      mobileSlideControl.on('click', function() {
+        if (sectionSlide.hasClass('mobile-open')) {
+          sectionSlide.removeClass('mobile-open');
+        } else {
+          sectionSlide.addClass('mobile-open');
+        }
+        if ($(this).hasClass('open')) {
+          $(this).removeClass('open');
+        } else {
+          $(this).addClass('open');
+        }
+      });
       $('.fp-next', this).appendTo(controllWrapper);
     });
   }

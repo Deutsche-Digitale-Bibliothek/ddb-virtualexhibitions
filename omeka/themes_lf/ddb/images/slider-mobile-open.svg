@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-1, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+        fill: none;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #fff;
+        fill: none;
+      }
+
+      .cls-3 {
+        stroke-width: 3px;
+        fill: none;
+      }
+
+      .cls-4 {
+        stroke-width: 2px;
+        fill: none;
+      }
+
+      .cls-5 {
+        stroke: none;
+        fill: none;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="48" height="48"/>
+    </clipPath>
+  </defs>
+  <g id="Komponente" class="cls-2">
+    <rect id="Rechteck_370" data-name="Rechteck 370" width="48" height="48"/>
+    <g id="Gruppe_2337" data-name="Gruppe 2337" transform="translate(-293 -1238.284)">
+      <path id="Pfad_1346" data-name="Pfad 1346" class="cls-3" d="M0,0,9.645,9.907,19.553,0" transform="translate(307.5 1246.284)"/>
+      <g id="Rechteck_371" data-name="Rechteck 371" class="cls-4" transform="translate(303 1271)">
+        <rect class="cls-5" width="28.325" height="7"/>
+        <rect class="cls-1" x="1" y="1" width="26.325" height="5"/>
+      </g>
+      <g id="Rechteck_372" data-name="Rechteck 372" class="cls-4" transform="translate(303 1261)">
+        <rect class="cls-5" width="28.325" height="7"/>
+        <rect class="cls-1" x="1" y="1" width="26.325" height="5"/>
+      </g>
+    </g>
+  </g>
+</svg>

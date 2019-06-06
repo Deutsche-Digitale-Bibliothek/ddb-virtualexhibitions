@@ -6557,6 +6557,31 @@ a:hover {
   width: 100%;
 }
 
+.mobileSlideControl {
+  display: none;
+  width: 48px;
+  height: 48px;
+  background-image: url("../images/slider-mobile-open.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+@media (max-width: 767.98px) {
+  .section-slides > .fp-slides > .fp-slidesContainer > .slide:not(:first-child) {
+    display: none;
+  }
+  .section-slides.mobile-open > .fp-slides > .fp-slidesContainer > .slide:not(:first-child) {
+    display: block;
+  }
+  .slideControlWrapper .fp-controlArrow,
+  .slideControlWrapper .slidesInfo {
+    display: none;
+  }
+  .mobileSlideControl {
+    display: block;
+  }
+}
+
 .section-slides {
   background-color: #333 !important;
 }
