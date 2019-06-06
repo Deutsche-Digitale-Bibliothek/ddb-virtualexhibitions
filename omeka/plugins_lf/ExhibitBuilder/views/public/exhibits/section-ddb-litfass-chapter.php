@@ -1,6 +1,7 @@
 <?php
 $attachment = exhibit_builder_page_attachment(1);
-$bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
+// $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
+$bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 $chapterCounter++;
 ?>
 <<?php echo $sectionTag; ?>

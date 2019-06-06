@@ -1961,6 +1961,15 @@ class ExhibitDdbHelper
         return $url;
     }
 
+    public static function getFullsizeImageUrl($attachment)
+    {
+        $url = '';
+        if (isset($attachment['file']) && !empty($attachment['file'])) {
+            $url = $attachment['file']->getWebPath('fullsize');
+        }
+        return $url;
+    }
+
     public static function getLeadingZeroNum(int $num)
     {
         return $num < 10 ? '0' . $num : $num;

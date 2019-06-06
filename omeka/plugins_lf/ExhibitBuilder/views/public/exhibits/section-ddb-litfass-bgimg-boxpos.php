@@ -3,7 +3,8 @@
 if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['boxpos'])) {
     $pageoptions['boxpos'] = 'mc';
 }
-$bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
+// $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
+$bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 ?>
 <<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
