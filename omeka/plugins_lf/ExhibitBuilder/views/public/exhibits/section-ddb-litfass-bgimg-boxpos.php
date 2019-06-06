@@ -15,9 +15,11 @@ $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
     <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . ')"' : ''; ?>>
     <div class="section-container-pos pos-box-<?php echo $pageoptions['boxpos'] ?>">
         <div class="pos-box">
+            <?php if ($exhibitSection->hide_title !== 1): ?>
             <h3>
                 <?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?>
             </h3>
+            <?php endif; ?>
             <?php $pageText = exhibit_builder_page_text(1); ?>
             <?php if (empty($pageText)): ?>
             <h4><i>Bitte Text eingeben ...</i></h4>

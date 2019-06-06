@@ -282,13 +282,13 @@ a:hover {
       }
     }
   }
-  .menu-scrollable {
-    // min-height: calc(100% - 40px);
-    // max-height: calc(100% - 40px);
-    // max-height: 100%;
-    // max-height: calc(100% - 1px);
-    // border-bottom: 1px solid #999;
-  }
+  // .menu-scrollable {
+  //   // min-height: calc(100% - 40px);
+  //   // max-height: calc(100% - 40px);
+  //   // max-height: 100%;
+  //   // max-height: calc(100% - 1px);
+  //   // border-bottom: 1px solid #999;
+  // }
   .menu {
     padding: 0;
     margin-bottom: 0;
@@ -393,9 +393,9 @@ a:hover {
     li.active {
       // background-color: rgba(168, 168, 168, .6);
       background-color: #447494;
-      .menu-box.menu-icon.menu-icon-transparent:not(.menu-has-image)::before {
-        // background-color: rgba(0, 0, 0, 1);
-      }
+      // .menu-box.menu-icon.menu-icon-transparent:not(.menu-has-image)::before {
+      //   // background-color: rgba(0, 0, 0, 1);
+      // }
     }
   }
 }

@@ -31,6 +31,26 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
         </div>
         <div class="field">
             <div class="two columns alpha">
+            <?php echo $this->formLabel('hide_title', __('Titel im Seiteninhalt anzeigen')); ?>
+            </div>
+            <div class="inputs five columns omega">
+                <?php
+                echo $this->formSelect(
+                    'hide_title',   // name
+                    $exhibit_page->hide_title,   // value
+                    null,                        // attribs
+                    array(
+                        0 => 'ja',
+                        1 => 'nein'
+                    ),                           // options
+                    "<br />\n"                   // listsep
+                );
+                ?>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="two columns alpha">
             <?php echo $this->formLabel('backgroundcolor', __('Hintergrundfarbe')); ?>
             </div>
             <div class="inputs five columns omega">

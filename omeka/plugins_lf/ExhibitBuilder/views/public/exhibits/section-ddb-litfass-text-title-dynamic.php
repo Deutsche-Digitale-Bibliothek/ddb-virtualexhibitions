@@ -16,7 +16,9 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['verti
     <div class="section-container container-fluid">
         <div class="row">
             <div class="col-md-6 col-title col-<?php echo $pageoptions['vertical-align'] ?><?php echo ($pageoptions['align'] === 'left')? ' order-md-last' : ''; ?>">
+                <?php if ($exhibitSection->hide_title !== 1): ?>
                 <h2><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h2>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 col-text<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
                 <div class="scroll-container">

@@ -32,7 +32,7 @@
                                         <?php endif; ?>
                                     </cite>
                                 </div>
-                                <!-- <h1><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h1> -->
+                                <?php // NO TITLE AT ALL: echo '<h1>' . htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5) . '</h1>'; ?>
                             </div>
                         </div>
                     </div>

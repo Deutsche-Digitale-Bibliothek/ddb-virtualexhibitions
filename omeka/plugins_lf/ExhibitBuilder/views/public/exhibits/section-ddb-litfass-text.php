@@ -13,7 +13,9 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
+                                <?php if ($exhibitSection->hide_title !== 1): ?>
                                 <h1><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h1>
+                                <?php endif; ?>
                                 <?php $pageText = exhibit_builder_page_text(1); ?>
                                 <?php if (empty($pageText)): ?>
                                 <h4><i>Bitte Text eingeben ...</i></h4>

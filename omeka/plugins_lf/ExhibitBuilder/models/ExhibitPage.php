@@ -18,6 +18,7 @@ class ExhibitPage extends Omeka_Record_AbstractRecord
     public $layout;
     public $slug;
     public $title;
+    public $hide_title;
     public $order;
     public $widget;
     public $pagethumbnail;
