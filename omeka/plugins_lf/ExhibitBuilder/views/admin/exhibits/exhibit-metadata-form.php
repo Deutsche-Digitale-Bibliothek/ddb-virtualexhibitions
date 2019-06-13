@@ -289,6 +289,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
         </div>
         <?php endif; ?>
+        <?php echo exhibit_builder_link_to_exhibit($exhibit, __('Ausstellung anzeigen'), array('class' => 'big blue button', 'target' => '_blank')); ?>
     </div>
 </form>
 <script type="text/javascript" charset="utf-8">
