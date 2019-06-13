@@ -25,19 +25,25 @@ if (!Omeka) {
             style_formats: [
                 { title: 'blockquote', block: 'blockquote' },
                 { title: 'cite', inline: 'cite' },
-                { title: 'Überschrift 1', block: 'h1' },
+                // { title: 'Überschrift 1', block: 'h1' },
                 { title: 'Überschrift 2', block: 'h2' },
                 { title: 'Überschrift 3', block: 'h3' },
                 { title: 'Überschrift 4', block: 'h4' },
                 { title: 'Überschrift 5', block: 'h5' },
-                { title: 'Absatz', block: 'p' }
+                { title: 'Absatz', block: 'p' },
+                // { title: 'Große Schrift', block: 'p', classes: 'typo_xxl', styles: {'font-size': '85pt' }},
+                { title: 'Große Schrift', block: 'p', classes: 'typo_xxl' },
+                // { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs', styles:  {'font-size': '14pt' }}
+                { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs' }
                 // { title: 'Red header', block: 'h1', classes: 'example1', styles: { color: '#ff0000', border: '1px solid #ff3300' } },
             ],
             autoresize_max_height: 500,
             entities: "160,nbsp,173,shy,8194,ensp,8195,emsp,8201,thinsp,8204,zwnj,8205,zwj,8206,lrm,8207,rlm",
             verify_html: false,
             add_unload_trigger: false,
-            language: 'de'
+            language: 'de',
+            forced_root_block: '',
+            force_p_newlines: true
         };
 
         tinymce.init($.extend(initParams, params));
