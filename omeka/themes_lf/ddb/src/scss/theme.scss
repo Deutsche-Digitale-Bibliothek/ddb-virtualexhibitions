@@ -1157,16 +1157,55 @@ a:hover {
   }
 }
 
+
+// quote and cite
+blockquote {
+  display: block;
+  padding: 0 0 0 18px;
+  border-left: 4px solid #c1c1c1;
+  &::before {
+    display: block;
+    width: 18px;
+    margin: 0 0 0 -18px;
+    font-size: 1px;
+    content: "\00a0\00a0";
+    border-top: 4px solid #c1c1c1;
+  }
+  &::after {
+    display: block;
+    width: 18px;
+    margin: 0 0 0 -18px;
+    font-size: 1px;
+    content: "\00a0\00a0";
+    border-bottom: 4px solid #c1c1c1;
+  }
+  p {
+    display: inline;
+  }
+  cite {
+    display: block;
+    font-size: 1rem;
+    color: #818a91;
+    &::before {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #818a91;
+      content: "\2014\00a0\00a0";
+    }
+  }
+}
+
 // section-cite template
 .section-cite {
   blockquote {
-    padding-bottom: 10px;
+    padding: 0 0 10px;
     font-family: $font-family-headings;
     font-size: 2.125rem;
     font-style: italic;
     font-weight: 500;
     // &laquo; &raquo;
     quotes: "»" "«";
+    border: none;
     p,
     div,
     li,
@@ -1178,6 +1217,8 @@ a:hover {
     }
     &::before {
       display: block;
+      width: auto;
+      margin: 0;
       font-family: $font-family-headings;
       font-size: 8.75rem;
       font-style: italic;
@@ -1186,9 +1227,18 @@ a:hover {
       text-align: center;
       // color: #ccc;
       content: open-quote;
+      border: none;
       // line-height: 0.1em;
       // margin-right: 0.25em;
       // vertical-align: -0.4em;
+    }
+    &::after {
+      display: none;
+      width: auto;
+      margin: 0;
+      font-size: 1rem;
+      content: "";
+      border: none;
     }
   }
   cite {

@@ -7198,13 +7198,55 @@ a:hover {
   padding-top: 4.25rem;
 }
 
+blockquote {
+  display: block;
+  padding: 0 0 0 18px;
+  border-left: 4px solid #c1c1c1;
+}
+
+blockquote::before {
+  display: block;
+  width: 18px;
+  margin: 0 0 0 -18px;
+  font-size: 1px;
+  content: "\00a0\00a0";
+  border-top: 4px solid #c1c1c1;
+}
+
+blockquote::after {
+  display: block;
+  width: 18px;
+  margin: 0 0 0 -18px;
+  font-size: 1px;
+  content: "\00a0\00a0";
+  border-bottom: 4px solid #c1c1c1;
+}
+
+blockquote p {
+  display: inline;
+}
+
+blockquote cite {
+  display: block;
+  font-size: 1rem;
+  color: #818a91;
+}
+
+blockquote cite::before {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #818a91;
+  content: "\2014\00a0\00a0";
+}
+
 .section-cite blockquote {
-  padding-bottom: 10px;
+  padding: 0 0 10px;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.125rem;
   font-style: italic;
   font-weight: 500;
   quotes: "»" "«";
+  border: none;
 }
 
 .section-cite blockquote p,
@@ -7220,6 +7262,8 @@ a:hover {
 
 .section-cite blockquote::before {
   display: block;
+  width: auto;
+  margin: 0;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 8.75rem;
   font-style: italic;
@@ -7227,6 +7271,16 @@ a:hover {
   line-height: 1;
   text-align: center;
   content: open-quote;
+  border: none;
+}
+
+.section-cite blockquote::after {
+  display: none;
+  width: auto;
+  margin: 0;
+  font-size: 1rem;
+  content: "";
+  border: none;
 }
 
 .section-cite cite {
