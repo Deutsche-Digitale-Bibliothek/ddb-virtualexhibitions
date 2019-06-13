@@ -56,6 +56,7 @@ foreach (loop('exhibit_page') as $exhibitSection):
         $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
         $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
             'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex');
+        ExhibitDdbHelper::$currentAttechmentMediaType = 'slider';
         $sectionTitles[] = [
             'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
             'pagethumbnail' => $exhibitSection->pagethumbnail,

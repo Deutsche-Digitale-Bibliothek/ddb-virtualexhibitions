@@ -383,6 +383,9 @@ a:hover {
           &.icon-audio::before {
             background-image: url("../images/menu_icon_audio.svg");
           }
+          &.icon-slider::before {
+            background-image: url("../images/menu_icon_slider.svg");
+          }
         }
       }
     }
@@ -487,10 +490,10 @@ a:hover {
   display: none;
   width: 48px;
   height: 48px;
+  cursor: pointer;
   background-image: url("../images/slider-mobile-open.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
-  cursor: pointer;
 }
 
 .mobileSlideControl.open {
@@ -1753,3 +1756,19 @@ i.license-or {
 // palette e
 // palette f
 // palette g
+
+
+// custom formats
+.typo_xxl {
+  font-family: $font-family-headings;
+  font-size: 5.3rem;
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.typo_xxs {
+  font-family: $font-family-headings;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.12;
+}
