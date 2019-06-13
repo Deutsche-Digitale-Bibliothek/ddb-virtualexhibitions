@@ -4,10 +4,10 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  * @package ExhibitBuilder
  */
- 
+
 /**
  * Mixin for "sluggable" records.
- * 
+ *
  * The only requirement for a record to use this mixin is that it needs a
  * field named 'slug'.
  *
@@ -60,6 +60,8 @@ class Mixin_Slug extends Omeka_Record_Mixin_AbstractMixin
         // Create a slug if one was not specified.
         if (trim($this->_record->slug) == '') {
             $seedValue = $this->_record->{$this->options['slugSeedFieldName']};
+            // add timestamp
+            $seedValue .= '_' . date('YmdHis');
         } else {
             $seedValue = $this->_record->slug;
         }
