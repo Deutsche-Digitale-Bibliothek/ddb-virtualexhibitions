@@ -104,7 +104,6 @@ $sectionTitles[] = [
 ];
 $sectionCounter++;
 require  $dir . '/section-ddb-litfass-impressum.php';
-// require $dir . '/slide-test.php';
 $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
 $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
 $sectionTitles[] = [
@@ -114,16 +113,16 @@ $sectionTitles[] = [
     'menu_icon' => 'legal'
 ];
 $sectionCounter++;
-require  $dir . '/section-ddb-litfass-datenschutz.php';
-$sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
-$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
-$sectionTitles[] = [
-    'title' => __('Dattenschutz'),
-    'pagethumbnail' => '',
-    'type' => 'privacy',
-    'menu_icon' => 'privacy'
-];
-$sectionCounter++;
+// require  $dir . '/section-ddb-litfass-datenschutz.php';
+// $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
+// $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
+// $sectionTitles[] = [
+//     'title' => __('Datenschutz'),
+//     'pagethumbnail' => '',
+//     'type' => 'privacy',
+//     'menu_icon' => 'privacy'
+// ];
+// $sectionCounter++;
 ?>
 </div>
 <?php echo foot(compact('sectionAnchors', 'sectionColors', 'colorpalette'), 'spa_footer_scripts'); ?>
