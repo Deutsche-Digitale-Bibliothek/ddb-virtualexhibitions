@@ -200,12 +200,12 @@ window.litfassColorPalettes = {
     iceblue: {
       hex: '#a6c9d9',
       type: 'light',
-      menu: true
+      menu: false
     },
     green_grey: {
       hex: '#537883',
       type: 'dark',
-      menu: false
+      menu: true
     }
   },
   ddb: {
