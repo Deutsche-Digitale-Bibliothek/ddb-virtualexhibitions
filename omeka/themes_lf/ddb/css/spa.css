@@ -6190,7 +6190,7 @@ a:hover {
   z-index: 10;
   display: flex;
   flex-wrap: nowrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   width: 100%;
   min-height: 40px;
