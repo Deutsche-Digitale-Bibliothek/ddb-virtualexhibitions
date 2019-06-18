@@ -65,7 +65,7 @@
             <?php endforeach; ?>
                 <li class="type-privacy">
                     <div class="menu-box menu-icon menu-icon-transparent icon-privacy"></div>
-                    <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" target="_blank">Datenschutz</a>
+                    <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" target="_blank"><?php echo __('Datenschutz'); ?></a>
                 </li>
             </ul>
         </div>
