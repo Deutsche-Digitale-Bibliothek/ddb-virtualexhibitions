@@ -439,6 +439,7 @@ class ExhibitDdbHelper
                     if (array_key_exists($videoId, self::$ddbVideoXml)) {
                         self::$videoDdbCount = self::$videoDdbCount + 1;
                         $output = '
+                        <div class="litfass_video_container">
                         <div id="ddb-jwp-' . $videoPalyerId . '-' . self::$videoDdbCount . '">Lade den Player ...</div>
                         <script>
                             if (typeof window.Gina == "undefined") {
@@ -529,6 +530,7 @@ class ExhibitDdbHelper
                     // }
 
                     $output .= ';</script>';
+                    $output .= '</div>';
                     break;
                 default:
                     break;

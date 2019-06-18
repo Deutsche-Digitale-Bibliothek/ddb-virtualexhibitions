@@ -7812,6 +7812,18 @@ i.license-or {
   background-image: url("../images/licenses_dark.png");
 }
 
+.litfass_video_container {
+  max-width: 469px;
+  margin: 0 auto;
+}
+
+.jwcontrolbar {
+  right: 0 !important;
+  left: 0 !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+}
+
 .typo_xxl {
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 5.3rem;
