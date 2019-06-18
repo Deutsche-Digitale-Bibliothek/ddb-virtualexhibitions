@@ -204,7 +204,7 @@
     <a href="<?php echo html_escape(url('exhibits/edit/' . $exhibit['id']));?>"><?php echo html_escape($exhibit['title']); ?></a>  &gt;
     <?php echo html_escape($title); ?>
 </div>
-<form id="page-form" method="post" action="<?php echo html_escape(url(array(
+<form id="page-form" method="post" class="disable-unsaved-warning" action="<?php echo html_escape(url(array(
     'module'=>'exhibit-builder',
     'controller'=>'exhibits',
     'action'=>'edit-page-content',
