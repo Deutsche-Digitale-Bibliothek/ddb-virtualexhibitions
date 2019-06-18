@@ -26,7 +26,8 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
             <?php echo $this->formLabel('title', __('Title')); ?>
             </div>
             <div class="inputs five columns omega">
-            <?php echo $this->formText('title', $exhibit_page->title); ?>
+            <p class="explanation"><?php echo __('Maximale Länge: 255 Zeichen'); ?></p>
+            <?php echo $this->formText('title', $exhibit_page->title, array('maxlength' => 255)); ?>
             </div>
         </div>
         <div class="field">
