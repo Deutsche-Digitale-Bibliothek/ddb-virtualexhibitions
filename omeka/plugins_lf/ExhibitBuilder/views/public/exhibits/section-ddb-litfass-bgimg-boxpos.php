@@ -3,6 +3,9 @@
 if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['boxpos'])) {
     $pageoptions['boxpos'] = 'mc';
 }
+if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['bgpos'])) {
+    $pageoptions['bgpos'] = 'mc';
+}
 // $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
 $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 ?>
@@ -12,7 +15,7 @@ $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
     <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
     class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-pos tile"
     id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>"
-    <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . ')"' : ''; ?>>
+    <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . '); background-position: ' . $pageoptions['bgpos'] . ';"' : ''; ?>>
     <div class="section-container-pos pos-box-<?php echo $pageoptions['boxpos'] ?>">
         <div class="pos-box">
             <?php if ($exhibitSection->hide_title !== 1): ?>

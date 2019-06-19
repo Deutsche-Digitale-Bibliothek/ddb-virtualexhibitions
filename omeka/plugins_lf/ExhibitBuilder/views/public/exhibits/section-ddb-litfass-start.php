@@ -2,8 +2,12 @@
 $subtitle = metadata('exhibit', 'subtitle');
 $titlebackground = metadata('exhibit', 'titlebackground');
 $titlebackgroundcolor = metadata('exhibit', 'titlebackgroundcolor');
+$titlebgpos = metadata('exhibit', 'titlebgpos');
 if (null === $titlebackgroundcolor) {
     $titlebackgroundcolor = key($colors);
+}
+if (null === $titlebgpos) {
+    $titlebgpos = 'center center';
 }
 $titleimage = null;
 if ($exhibitType === 'litfass_ddb') {
@@ -14,7 +18,7 @@ if ($exhibitType === 'litfass_ddb') {
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $titlebackgroundcolor; ?>"
     class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; if ($titleimage): echo ' with-title-image'; endif;?> tile"
-    <?php echo ($titlebackground)? 'style="background-image: url(' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . ')"' . "\n" : "\n"; ?>
+    <?php echo ($titlebackground)? 'style="background-image: url(\'' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . '\'); background-position: ' . $titlebgpos . ';"' . "\n" : "\n"; ?>
     id="se<?php echo $sectionCounter; ?>">
     <?php if ($titleimage): ?>
         <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $titleimage; ?>" alt="title" class="titleimage">

@@ -125,6 +125,33 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                 </div>
             </div>
 
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titlebgpos', __('Position des Hintergrundbildes')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                <?php
+                    echo $this->formSelect(
+                        'titlebgpos',                // name
+                        $exhibit->titlebgpos,        // value
+                        null,                        // attribs
+                        array(
+                            'left top' => 'oben links',
+                            'center top' => 'oben zentriert',
+                            'right top' => 'oben rechts',
+                            'left center' => 'mitte links',
+                            'center center' => 'mitte zentriert',
+                            'right center' => 'mitte rechts',
+                            'left bottom' => 'unten links',
+                            'center bottom' => 'unten zentriert',
+                            'right bottom' => 'unten rechts'
+                        ),                           // options
+                        "<br />\n"                   // listsep
+                    );
+                ?>
+                </div>
+            </div>
+
             <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
             <div class="field">
                 <div class="two columns alpha">

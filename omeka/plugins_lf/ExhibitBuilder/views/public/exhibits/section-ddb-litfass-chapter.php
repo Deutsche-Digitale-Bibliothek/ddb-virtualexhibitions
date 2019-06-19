@@ -3,6 +3,9 @@ $attachment = exhibit_builder_page_attachment(1);
 // $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
 $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 $chapterCounter++;
+if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['bgpos'])) {
+    $pageoptions['bgpos'] = 'mc';
+}
 ?>
 <<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
@@ -10,7 +13,7 @@ $chapterCounter++;
     <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
     class="<?php echo ($inSlider)? 'slide' : 'section'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> section-chapter tile"
     id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>"
-    <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . ')"' : ''; ?>>
+    <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . '); background-position: ' . $pageoptions['bgpos'] . ';"' : ''; ?>>
     <div class="section-container container-fluid">
         <div class="row auto">
             <div class="col-sm-3 chapter-num">
