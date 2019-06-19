@@ -8,7 +8,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
     <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
-    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-text-media <?php echo ($pageoptions['align'] === 'left')? 'section-text-media-right' : 'section-text-media-right'; ?> <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-text-media <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
     id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>">
     <div class="section-container container-fluid">
         <div class="row">
@@ -69,15 +69,15 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                         </div>
                         <?php endif; ?>
                     </div>
-                    <div class="content-media<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
-                        <div class="media-meta d-none<?php echo ($pageoptions['align'] === 'left')? '  order-md-last' : ''; ?>">
+                    <div class="content-media order-md-first">
+                        <div class="media-meta d-none order-md-last">
                             <div class="media-meta-scroll">
                                 <div class="media-meta-scroll-content">
                                     <?php echo ExhibitDdbHelper::getItemInfo($attachment, $sectionCounter); ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="media-item-container<?php echo ($pageoptions['align'] === 'left')? ' order-md-first' : ''; ?>">
+                        <div class="media-item-container order-md-first">
                             <?php
                             $attachmentMarkup = ExhibitDdbHelper::getAttachmentMarkup(
                                 $attachment,
