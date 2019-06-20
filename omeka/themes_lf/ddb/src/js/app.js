@@ -142,6 +142,7 @@
   function fpAfterLoad(from, current, direction) {
     // fires every time a section is loaded
     // console.log('loaded', from, current, direction);
+    // console.log('loaded', current);
     // console.log(current.anchor, $('#menu .active').data('menuanchor'));
     setVisitedSectionsInHeaderSectionBar(current.index);
     scrollMenu(current.anchor);
@@ -173,11 +174,19 @@
       // Fix fullpage.js setFitToSection after moving to desktop
       $.fn.fullpage.setFitToSection(true);
     }
+    // else {
+    //   $('section').css('padding-top', 0);
+    // }
   }
 
   // @TODO check if resize fires each time ...
   function fpAfterResize(width, height) {
     var isResponsive = ($(window).width() < 768)? true : false;
+    var anchor = $('#menu .active').data('menuanchor');
+    // This has no great effect at all, as anchor changes after resize ...
+    // $.fn.fullpage.silentMoveTo(anchor);
+
+    // console.log('anchor ' + anchor);
     // console.log('resize - ' +
     // 'width, width-jq, height, height-jq:',
     // width, $(window).width(), height, $(window).height());
@@ -188,7 +197,7 @@
     setScrollElementMaxHeight();
     toggleScrollControls();
     setMediaProps();
-    scrollMenu($('#menu .active').data('menuanchor'));
+    scrollMenu(anchor);
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -780,6 +789,7 @@
     $('.control-zoom').bind('click', function() {
       $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
     });
+    $('.zoomer').bind('click', generateZoomableImage);
   }
 
   function generate3D() {
@@ -838,6 +848,7 @@
       mobileSlideControl.on('click', function() {
         if (sectionSlide.hasClass('mobile-open')) {
           sectionSlide.removeClass('mobile-open');
+          $.fn.fullpage.silentMoveTo(sectionSlide.data('anchor'));
         } else {
           sectionSlide.addClass('mobile-open');
         }
