@@ -526,8 +526,8 @@
     $('.icon-info').bind('click', function (event) {
       var iconInfo = $(this);
       var controlInfo = iconInfo.parent('.control-info');
-      var mediaMeta = $('.media-meta', iconInfo.parents('.container-media'));
-      // var mediaItem = $('.media-item', iconInfo.parents('.container-media'));
+      var mediaMeta = $('.media-meta', iconInfo.parents('.tile'));
+      // var mediaMeta = $('.media-meta', iconInfo.parents('.container-media'));
       var mediaCol = iconInfo.parents('.col-media');
       var textCol = $('.col-text', iconInfo.parents('.row'));
       event.preventDefault();

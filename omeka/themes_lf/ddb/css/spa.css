@@ -6904,6 +6904,13 @@ a:hover {
   line-height: 1.555;
 }
 
+.media-meta-standalone {
+  align-self: flex-start;
+  width: 50%;
+  max-width: 508px;
+  margin-right: auto;
+}
+
 .exhibit-type-litfass_ddb .media-meta .media-meta-scroll h5 {
   font-family: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -6949,11 +6956,11 @@ a:hover {
   stroke-width: 3px;
 }
 
-.control-info .icon-info:hover {
+.control-info .icon-info.static-dark, .control-info .icon-info:hover {
   background-color: #1d1d1b;
 }
 
-.control-info .icon-info:hover .icon-info-i line {
+.control-info .icon-info.static-dark .icon-info-i line, .control-info .icon-info:hover .icon-info-i line {
   stroke: #fff;
 }
 
@@ -6973,34 +6980,46 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.zoomer .icon-zoom,
 .control-zoom .icon-zoom {
   cursor: pointer;
 }
 
+.zoomer .icon-zoom .icon-zoom-1,
+.zoomer .icon-zoom .icon-zoom-2,
+.zoomer .icon-zoom .icon-zoom-4,
 .control-zoom .icon-zoom .icon-zoom-1,
 .control-zoom .icon-zoom .icon-zoom-2,
 .control-zoom .icon-zoom .icon-zoom-4 {
   fill: none;
 }
 
+.zoomer .icon-zoom .icon-zoom-1,
+.zoomer .icon-zoom .icon-zoom-2,
 .control-zoom .icon-zoom .icon-zoom-1,
 .control-zoom .icon-zoom .icon-zoom-2 {
   stroke: #1d1d1b;
   stroke-width: 3px;
 }
 
+.zoomer .icon-zoom .icon-zoom-2,
 .control-zoom .icon-zoom .icon-zoom-2 {
   stroke-linecap: square;
 }
 
+.zoomer .icon-zoom .icon-zoom-3,
 .control-zoom .icon-zoom .icon-zoom-3 {
   stroke: none;
 }
 
+.zoomer .icon-zoom.static-dark, .zoomer .icon-zoom:hover,
+.control-zoom .icon-zoom.static-dark,
 .control-zoom .icon-zoom:hover {
   background-color: #1d1d1b;
 }
 
+.zoomer .icon-zoom.static-dark .icon-zoom-1, .zoomer .icon-zoom:hover .icon-zoom-1,
+.control-zoom .icon-zoom.static-dark .icon-zoom-1,
 .control-zoom .icon-zoom:hover .icon-zoom-1 {
   stroke: #fff;
 }
@@ -7314,6 +7333,7 @@ blockquote cite::before {
 
 @media (max-width: 767.98px) {
   .section-container-pos {
+    display: block;
     min-height: calc(100vh - 40px);
   }
 }
@@ -7321,6 +7341,7 @@ blockquote cite::before {
 .section-container-pos .pos-box {
   width: 41.66%;
   padding: 15px;
+  overflow: hidden;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -7334,6 +7355,20 @@ blockquote cite::before {
 @media (max-width: 767.98px) {
   .section-container-pos .pos-box {
     width: 100%;
+  }
+}
+
+.section-container-pos .pos-box .pos-box-scroll {
+  box-sizing: initial;
+  width: 100%;
+  max-height: calc(100vh - 175px);
+  padding-right: 34px;
+  overflow-y: scroll;
+}
+
+@media (max-width: 767.98px) {
+  .section-container-pos .pos-box .pos-box-scroll {
+    max-height: 100%;
   }
 }
 
@@ -7714,16 +7749,20 @@ i.license-or {
   stroke: rgba(0, 0, 0, 0.6);
 }
 
+.dark .zoomer .icon-zoom .icon-zoom-1,
+.dark .zoomer .icon-zoom .icon-zoom-2,
 .dark .control-zoom .icon-zoom .icon-zoom-1,
 .dark .control-zoom .icon-zoom .icon-zoom-2 {
   stroke: #fff;
   stroke-width: 3px;
 }
 
+.dark .zoomer .icon-zoom:hover,
 .dark .control-zoom .icon-zoom:hover {
   background-color: #fff;
 }
 
+.dark .zoomer .icon-zoom:hover .icon-zoom-1,
 .dark .control-zoom .icon-zoom:hover .icon-zoom-1 {
   stroke: #1d1d1b;
 }

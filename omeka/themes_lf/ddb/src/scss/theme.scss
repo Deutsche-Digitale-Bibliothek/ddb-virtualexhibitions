@@ -856,6 +856,14 @@ a:hover {
   }
 }
 
+.media-meta-standalone {
+  align-self: flex-start;
+  width: 50%;
+  max-width: 508px;
+  margin-right: auto;
+  // background-color: #fff;
+}
+
 .exhibit-type-litfass_ddb .media-meta .media-meta-scroll h5 {
   font-family: $font-family-ddb-headings;
 }
@@ -901,6 +909,7 @@ a:hover {
       stroke: $body-color;
       stroke-width: 3px;
     }
+    &.static-dark,
     &:hover {
       background-color: $body-color;
       // background-color: rgba(255, 255, 255, .6);
@@ -926,6 +935,7 @@ a:hover {
   }
 }
 
+.zoomer,
 .control-zoom {
   .icon-zoom {
     cursor: pointer;
@@ -948,6 +958,7 @@ a:hover {
     .icon-zoom-3 {
       stroke: none;
     }
+    &.static-dark,
     &:hover {
       background-color: $body-color;
       .icon-zoom-1 {
@@ -1274,11 +1285,14 @@ blockquote {
   height: 100%;
   padding: 66px;
   @include media-breakpoint-down(sm) {
+    display: block;
     min-height: calc(100vh - 40px);
   }
   .pos-box {
     width: 41.66%;
+    // max-height: 100%;
     padding: 15px;
+    overflow: hidden;
     color: #fff;
     background-color: rgba(0, 0, 0, .8);
     @include media-breakpoint-down(md) {
@@ -1286,6 +1300,16 @@ blockquote {
     }
     @include media-breakpoint-down(sm) {
       width: 100%;
+    }
+    .pos-box-scroll {
+      box-sizing: initial;
+      width: 100%;
+      max-height: calc(100vh - 175px);
+      padding-right: 34px;
+      overflow-y: scroll;
+      @include media-breakpoint-down(sm) {
+        max-height: 100%;
+      }
     }
   }
 }
@@ -1628,6 +1652,7 @@ i.license-or {
       stroke: rgba(0, 0, 0, .6);
     }
   }
+  .zoomer,
   .control-zoom {
     .icon-zoom {
       .icon-zoom-1,

@@ -1489,6 +1489,56 @@ class ExhibitDdbHelper
 
     }
 
+    public static function getZoomData($attachment)
+    {
+        if (!$attachment) { return ''; }
+
+        $file = $attachment['file'];
+        $item = $attachment['item'];
+
+        if ($file) {
+
+            // $files = $item->getFiles();
+
+            $zoomAttributes['data-zoom'] = $file->getWebPath();
+            $fileMetadata = json_decode($file['metadata']);
+
+            if (is_object($fileMetadata) &&
+                property_exists($fileMetadata, 'video') &&
+                is_object($fileMetadata->video)) {
+
+                if (property_exists($fileMetadata->video, 'resolution_x') &&
+                    $fileMetadata->video->resolution_x > 0) {
+                    $zoomAttributes['data-zoom-img-width'] = (string) $fileMetadata->video->resolution_x;
+                }
+                if (property_exists($fileMetadata->video, 'resolution_y') &&
+                    $fileMetadata->video->resolution_y > 0) {
+                    $zoomAttributes['data-zoom-img-height'] = (string) $fileMetadata->video->resolution_y;
+                }
+            }
+
+            $s_options = array();
+            if ($attachment['s_options'] && !empty($attachment['s_options'])) {
+                $zoomAttributes['data-zoomdetail'] = (string) htmlspecialchars($attachment['s_options']);
+            }
+            return self::getAttributesFromArray($zoomAttributes);
+        }
+
+        return '';
+    }
+
+    public static function getAttributesFromArray($array)
+    {
+        $result = '';
+        foreach ($array as $key => $value) {
+            if (!empty($result)) {
+                $result .= ' ';
+            }
+            $result .= $key . '="' . $value . '"';
+        }
+        return $result;
+    }
+
     /**
      * Get HTML (link to Colorbox and image) for attachments
      *
@@ -1967,7 +2017,11 @@ class ExhibitDdbHelper
     {
         $url = '';
         if (isset($attachment['file']) && !empty($attachment['file'])) {
-            $url = $attachment['file']->getWebPath('fullsize');
+            if ($attachment['file']->mime_type === 'image/gif') {
+                $url = $attachment['file']->getWebPath('original');
+            } else {
+                $url = $attachment['file']->getWebPath('fullsize');
+            }
         }
         return $url;
     }
