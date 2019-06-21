@@ -28,8 +28,18 @@
                 var imageContainer = $('#zoom-helper-image', zoomHelperContainer);
                 imageContainer.append(image);
                 zoomHelperContainer.appendTo('body');
+                var maxHeight = $(window).height() - 245;
+                var imageHeight = image.height();
+                var imageWidth = image.width();
+                var proportion = 1;
+                if (imageHeight > maxHeight) {
+                    proportion = maxHeight / imageHeight;
+                    imageHeight = maxHeight;
+                    imageWidth = imageWidth * proportion;
+                    image.css({ width: imageWidth, height: imageHeight});
+                }
                 var $canvas = $('<canvas id="zoom-helper-canvas" class="zoom-helper-canvas" width="' +
-                    image.width() + '" height="' + image.height() + '"></canvas>');
+                    imageWidth + '" height="' + imageHeight + '"></canvas>');
                 imageContainer.append($canvas);
                 var canvasOffset = $canvas.offset(),
                     ctx = $canvas[0].getContext('2d'),
@@ -51,7 +61,7 @@
                         };
                     } else {
                         currentValueJs = JSON.parse(currentValue);
-                        console.log(currentValueJs);
+                        // console.log(currentValueJs);
                         var rect = {
                             startX: $canvas.width() / 100 * currentValueJs.startX,
                             startY: $canvas.height() / 100 * currentValueJs.startY,
