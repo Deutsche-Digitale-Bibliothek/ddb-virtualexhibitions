@@ -140,6 +140,15 @@ a:hover {
   text-align: center;
   background: #333;
   box-shadow: 0 7px 6px 0 rgba(0, 0, 0, .22);
+  .nav_logo_small {
+    display: block;
+    align-self: flex-start;
+    margin-left: 1.5rem;
+    @include media-breakpoint-down(xs) {
+      position: absolute;
+      left: 0;
+    }
+  }
   .icon {
     cursor: pointer;
   }
@@ -190,6 +199,25 @@ a:hover {
   }
   .visited {
     background-color: #fff;
+  }
+}
+
+.exhibit-type-litfass_ddb.nav_color_light {
+  .header {
+    color: #1d1d1b;
+    background: #fff;
+    .icon-expand,
+    .icon-menu {
+      path,
+      line {
+        stroke: #1d1d1b;
+      }
+    }
+  }
+  .header-section-bar {
+    .visited {
+      background-color: #a5003b;
+    }
   }
 }
 
@@ -294,6 +322,7 @@ a:hover {
     padding: 0;
     margin-bottom: 0;
     line-height: 1;
+    border-top: 1px solid #999;
     a {
       // display: block;
       // padding: 1rem;
@@ -389,20 +418,97 @@ a:hover {
           }
         }
       }
-    }
-    li:last-child {
-      margin-bottom: 40px;
-      // border-bottom: 2px solid #999;
-    }
-    li.active {
-      // background-color: rgba(168, 168, 168, .6);
-      background-color: #447494;
-      // .menu-box.menu-icon.menu-icon-transparent:not(.menu-has-image)::before {
-      //   // background-color: rgba(0, 0, 0, 1);
-      // }
+      &.active {
+        background-color: #447494;
+        a {
+          font-weight: 700;
+        }
+      }
+      &.chapter {
+        font-weight: 700;
+      }
+      &:last-child {
+        margin-bottom: 40px;
+        // border-bottom: 2px solid #999;
+      }
     }
   }
 }
+
+.exhibit-type-litfass_ddb {
+  .menu-container .menu li .menu-box.menu-icon.menu-icon-transparent {
+    background-color: #fff;
+    // &::before {
+    //   // background-color: rgba(107, 106, 105, .5);
+    //   // background-color: #b7b5b3;
+    // }
+  }
+  .menu-container .menu li .menu-box.menu-icon {
+    &.icon-team::before {
+      background-color: rgba(0, 0, 0, .3);
+    }
+    &.icon-legal::before {
+      background-color: rgba(0, 0, 0, .3);
+    }
+    &.icon-privacy::before {
+      background-color: rgba(0, 0, 0, .3);
+    }
+  }
+  &.nav_color_light {
+    .menu-container {
+      .menu-header {
+        background-color: #fff;
+        a {
+          color: #1d1d1b;
+        }
+      }
+      .menu {
+        background-color: #fff;
+        li {
+          border-color: #5d5d5d;
+          &.type-team,
+          &.type-legal,
+          &.type-privacy {
+            background-color: #fff;
+          }
+          &.active {
+            background-color: #a5003b;
+            a {
+              color: #fff;
+            }
+          }
+          a {
+            color: #1d1d1b;
+          }
+        }
+      }
+    }
+  }
+  &.nav_color_dark {
+    .menu-container {
+      .menu-header {
+        background-color: #c6c6c6;
+        a {
+          color: #fff;
+        }
+      }
+      .menu {
+        background-color: #575756;
+        li {
+          &.type-team,
+          &.type-legal,
+          &.type-privacy {
+            background-color: #9d9d9c;
+          }
+          &.active {
+            background-color: #a5003b;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 // fullpage
 .section-container {

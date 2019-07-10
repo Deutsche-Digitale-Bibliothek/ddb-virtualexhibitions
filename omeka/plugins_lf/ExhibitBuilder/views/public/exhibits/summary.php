@@ -13,6 +13,7 @@ if ($publishDate) {
     $publishDate = date('d.m.Y');
 }
 $colorpalette = metadata('exhibit', 'colorpalette');
+$navcolor = metadata('exhibit', 'nav_color');
 $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
 $dir = dirname(__FILE__);
 $sectionCounter = 0;
@@ -20,7 +21,7 @@ $sectionAnchors = '';
 $sectionColors = '';
 $sectionTitles = array();
 $sectionTag = 'section';
-echo head(compact('title', 'colors', 'exhibitType'), 'spa_header');
+echo head(compact('title', 'colors', 'exhibitType', 'navcolor'), 'spa_header');
 $institutions = ExhibitDdbHelper::getInstitutions(
     metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
 ?>

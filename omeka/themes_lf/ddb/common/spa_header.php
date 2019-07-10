@@ -19,6 +19,6 @@
     ?>
     <?php queue_css_file('spa.min'); ?>
     <?php echo head_css(); ?>
-    <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors)); ?>
+    <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors), $exhibitType, $navcolor); ?>
 </head>
-<body class="exhibit-type-<?php echo $exhibitType; ?>">
+<body class="exhibit-type-<?php echo $exhibitType; ?><?php echo ($exhibitType == 'litfass_ddb')? ' nav_color_' . $navcolor : ''; ?>">
