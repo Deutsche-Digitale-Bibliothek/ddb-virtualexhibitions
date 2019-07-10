@@ -6,7 +6,11 @@
             <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
         </a>
         <p class="menu-text menu-text-red">
+        <?php if (!empty($institutions)): ?>
             <?php echo __('Eine virtuelle Ausstellung der<br>Deutschen Digitalen Bibliothek<br>in Zusammenarbeit mit'); ?>
+        <?php else: ?>
+            <?php echo __('Eine virtuelle Ausstellung der<br>Deutschen Digitalen Bibliothek'); ?>
+        <?php endif; ?>
         </p>
         <ul>
         <?php foreach ($institutions as $institution): ?>
