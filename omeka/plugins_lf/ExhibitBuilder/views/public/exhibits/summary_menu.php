@@ -42,7 +42,19 @@
             </li>
         <?php endforeach; ?>
         </ul>
-        <p class="menu-text menu-text-red">erstellt mit</p>
+        <p class="menu-text menu-text-red">
+        <?php
+        switch ($exhibitType) {
+            case 'litfass_featured':
+                echo __('unterstützt von');
+                break;
+
+            default:
+                echo __('erstellt mit');
+                break;
+        }
+        ?>
+        </p>
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
             <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
         </a>
