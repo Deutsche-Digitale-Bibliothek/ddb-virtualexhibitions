@@ -1987,6 +1987,7 @@ class ExhibitDdbHelper
             $institutions = [];
         }
         uasort($institutions, array('self', 'cmpInstitutions'));
+        $institutions = self::sanitizeInstitutions($institutions);
         return $institutions;
     }
 
@@ -2002,6 +2003,17 @@ class ExhibitDdbHelper
             return 0;
         }
         return ($a['pos'] < $b['pos']) ? -1 : 1;
+    }
+
+    public static function sanitizeInstitutions($institutions)
+    {
+        $result = [];
+        foreach ($institutions as $key => $value) {
+            if (!empty($value['name'])) {
+                $result[$key] = $value;
+            }
+        }
+        return $result;
     }
 
     public static function getOriginalImageUrl($attachment)
