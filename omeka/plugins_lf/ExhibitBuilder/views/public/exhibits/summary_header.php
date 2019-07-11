@@ -1,7 +1,7 @@
 <div id="header" class="header">
     <?php if ($exhibitType === 'litfass_ddb' && $navcolor === 'light'):  ?>
     <img src="<?php echo img('ddb-studio-logo-small.png'); ?>" alt="DDB Studio" class="nav_logo_small">
-    <?php elseif ($exhibitType === 'litfass_ddb' && $navcolor === 'light'):  ?>
+    <?php elseif ($exhibitType === 'litfass_ddb' && $navcolor === 'dark'):  ?>
     <img src="<?php echo img('ddb-studio-logo-small-inverse.png'); ?>" alt="DDB Studio" class="nav_logo_small">
     <?php endif; ?>
     <div class="header_title"><?php echo (!empty($shorttitle))? $shorttitle : $title; ?></div>
