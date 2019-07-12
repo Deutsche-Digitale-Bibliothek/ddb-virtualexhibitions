@@ -27,13 +27,14 @@ if ($exhibitType === 'litfass_ddb') {
         <div class="title-top">
             <div class="container-fluid">
                 <h1><span><?php echo $title ?></span></h1>
-                <h2><span><?php echo $subtitle ?></span></h2>
+                <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif; ?>
             </div>
         </div>
         <div class="title-bottom">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
+                        <?php if(!empty($institutions)): ?>
                         <div class="credits">
                             <span>
                                 <?php foreach ($institutions as $institution): ?>
@@ -41,6 +42,7 @@ if ($exhibitType === 'litfass_ddb') {
                                 <?php endforeach; ?>
                             </span>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="col-6">
                         <div class="next-page-link">
