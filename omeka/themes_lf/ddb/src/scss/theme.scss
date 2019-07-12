@@ -284,7 +284,7 @@ a:hover {
         color: #a5003b;
       }
       &-blue {
-        color: #447494;
+        color: #5d5d5d;
       }
     }
   }
@@ -1406,6 +1406,9 @@ blockquote {
     overflow: hidden;
     color: #fff;
     background-color: rgba(0, 0, 0, .8);
+    a {
+      color: #fff;
+    }
     @include media-breakpoint-down(md) {
       width: 50%;
     }

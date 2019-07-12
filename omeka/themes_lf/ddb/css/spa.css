@@ -147,6 +147,7 @@ abbr[data-original-title] {
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
+  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
 }
 
@@ -2262,9 +2263,9 @@ input[type="button"].btn-block {
 
 @media (min-width: 576px) {
   .card-columns {
-    -webkit-column-count: 3;
+    -moz-column-count: 3;
     column-count: 3;
-    -webkit-column-gap: 1.25rem;
+    -moz-column-gap: 1.25rem;
     column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
@@ -2305,14 +2306,12 @@ input[type="button"].btn-block {
 
 @-webkit-keyframes spinner-border {
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 
 @keyframes spinner-border {
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -2337,7 +2336,6 @@ input[type="button"].btn-block {
 
 @-webkit-keyframes spinner-grow {
   0% {
-    -webkit-transform: scale(0);
     transform: scale(0);
   }
   50% {
@@ -2347,7 +2345,6 @@ input[type="button"].btn-block {
 
 @keyframes spinner-grow {
   0% {
-    -webkit-transform: scale(0);
     transform: scale(0);
   }
   50% {
@@ -5780,6 +5777,10 @@ a.text-dark:hover, a.text-dark:focus {
   pointer-events: none;
 }
 
+[data-simplebar].simplebar-dragging .simplebar-track {
+  pointer-events: all;
+}
+
 .simplebar-scrollbar {
   position: absolute;
   right: 2px;
@@ -6365,7 +6366,7 @@ a:hover {
 }
 
 .menu-container .menu-header .menu-text-blue {
-  color: #447494;
+  color: #5d5d5d;
 }
 
 .menu-container .menu-body {
@@ -6953,7 +6954,6 @@ a:hover {
   left: 50%;
   margin-right: -50%;
   cursor: pointer;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -7460,6 +7460,10 @@ blockquote cite::before {
   overflow: hidden;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.section-container-pos .pos-box a {
+  color: #fff;
 }
 
 @media (max-width: 991.98px) {
