@@ -915,6 +915,12 @@
     });
   }
 
+  function bindHeaderLogo() {
+    $('#nav_logo_small').on('click', function() {
+      $.fn.fullpage.moveTo('s0');
+    });
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -932,6 +938,7 @@
       bindZoom();
       bind3D();
       bindEmptyClick();
+      bindHeaderLogo();
       bindCookieNotice();
     });
   }

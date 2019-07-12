@@ -1,8 +1,8 @@
 <div id="header" class="header">
     <?php if ($exhibitType === 'litfass_ddb' && $navcolor === 'light'):  ?>
-    <img src="<?php echo img('ddb-studio-logo-small.svg'); ?>" alt="DDB Studio" class="nav_logo_small">
+    <img src="<?php echo img('ddb-studio-logo-small.svg'); ?>" alt="DDB Studio" class="nav_logo_small" id="nav_logo_small">
     <?php elseif ($exhibitType === 'litfass_ddb' && $navcolor === 'dark'):  ?>
-    <img src="<?php echo img('ddb-studio-logo-small-inverse.svg'); ?>" alt="DDB Studio" class="nav_logo_small">
+    <img src="<?php echo img('ddb-studio-logo-small-inverse.svg'); ?>" alt="DDB Studio" class="nav_logo_small" id="nav_logo_small">
     <?php endif; ?>
     <div class="header_title"><?php echo (!empty($shorttitle))? $shorttitle : $title; ?></div>
     <svg class="icon-expand icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

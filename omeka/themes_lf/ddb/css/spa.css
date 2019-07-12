@@ -6208,6 +6208,7 @@ a:hover {
   display: block;
   align-self: flex-start;
   margin-left: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 575.98px) {

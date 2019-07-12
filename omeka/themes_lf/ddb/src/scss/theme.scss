@@ -144,6 +144,7 @@ a:hover {
     display: block;
     align-self: flex-start;
     margin-left: 1.5rem;
+    cursor: pointer;
     @include media-breakpoint-down(xs) {
       position: absolute;
       left: 0;
