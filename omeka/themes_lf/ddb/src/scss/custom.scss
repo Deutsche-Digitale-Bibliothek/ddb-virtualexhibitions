@@ -99,12 +99,23 @@
   src: url("../fonts/KarbidWeb-Bold.woff") format("woff");
 }
 
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=64019034-8dca-442c-bcd6-770fa1c77c0b&fontids=904604");
+@font-face{
+  font-family: "Calibri W01 Regular_904604";
+  src: url("../fonts/d4acc8cd-67f2-4139-80be-d669bb2564d7.eot?#iefix");
+  src:
+    url("../fonts/d4acc8cd-67f2-4139-80be-d669bb2564d7.eot?#iefix") format("eot"),
+    url("../fonts/367341fc-4cc6-4a79-89ad-d6c61561611e.woff2") format("woff2"),
+    url("../fonts/1ff86dd4-d3b2-4325-89bc-c6eb493cedba.woff") format("woff"),
+    url("../fonts/aa6b4b64-5ce0-48fd-887a-bece037cd9c9.ttf") format("truetype");
+}
+
 // overrides
 // stylelint-disable-next-line value-keyword-case
 $font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 // stylelint-disable-next-line value-keyword-case
-$font-family-ddb-sans-serif: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-ddb-sans-serif: "Calibri W01 Regular_904604", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 // stylelint-disable-next-line value-keyword-case
 $font-family-headings: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
