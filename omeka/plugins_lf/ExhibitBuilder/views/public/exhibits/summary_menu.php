@@ -3,7 +3,11 @@
     <div class="menu-header">
     <?php if ($exhibitType === 'litfass_ddb'): ?>
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
-            <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
+        <?php if ($navcolor === 'dark'): ?>
+            <img src="<?php echo img('ddb-studio-logo-inverse.svg'); ?>" alt="DDB Studio Logo">
+        <?php else: ?>
+            <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo">
+        <?php endif; ?>
         </a>
         <p class="menu-text menu-text-red">
         <?php if (!empty($institutions)): ?>
@@ -56,7 +60,7 @@
         ?>
         </p>
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
-            <img src="<?php echo img('ddb-studio-logo.png'); ?>" alt="DDB Studio Logo">
+            <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo">
         </a>
     <?php endif; ?>
     </div>
