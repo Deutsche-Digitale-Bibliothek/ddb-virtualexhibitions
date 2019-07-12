@@ -38,7 +38,7 @@ if ($exhibitType === 'litfass_ddb') {
                         <div class="credits">
                             <span>
                                 <?php foreach ($institutions as $institution): ?>
-                                <?php echo $institution['name']; ?><br>
+                                <?php echo (!empty($institution['name']))? $institution['name'] . '<br>' : ''; ?>
                                 <?php endforeach; ?>
                             </span>
                         </div>
