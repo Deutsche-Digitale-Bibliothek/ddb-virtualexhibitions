@@ -6668,6 +6668,7 @@ a:hover {
 }
 
 .fp-slide {
+  position: relative;
   display: block;
   height: 100%;
 }
