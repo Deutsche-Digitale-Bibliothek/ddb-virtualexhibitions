@@ -436,7 +436,7 @@ class ExhibitDdbHelper
                         $videoImage = img('video_placeholder.png');
                     }
 
-                    if (array_key_exists($videoId, self::$ddbVideoXml)) {
+                    if (array_key_exists($videoId, self::$ddbVideoXml) && isset(self::$ddbVideoXml[$videoId]['video'])) {
                         self::$videoDdbCount = self::$videoDdbCount + 1;
                         $output = '
                         <div class="litfass_video_container">
@@ -489,7 +489,6 @@ class ExhibitDdbHelper
                         if (!is_null($offsetStart)) {
                             $output .= '.onTime(function(e){
                                 if (e.position < ' . $offsetStart . ' && os' . $videoId . '.start === false) {
-                                // if (e.position < ' . $offsetStart . ') {
                                     os' . $videoId . '.start  = true;
                                     this.seek(' . $offsetStart . ');
                                 }';
@@ -507,6 +506,8 @@ class ExhibitDdbHelper
                             }
                         }
 
+                        $output .= ';</script>';
+                        $output .= '</div>';
 
                     }
 
@@ -529,8 +530,7 @@ class ExhibitDdbHelper
                     //     $output .= ';';
                     // }
 
-                    $output .= ';</script>';
-                    $output .= '</div>';
+
                     break;
                 default:
                     break;
@@ -2088,7 +2088,7 @@ class ExhibitDdbHelper
         $result = preg_replace_callback(
             '/(\[\[)([^\]\:]+)::([^\]]+)(\]\])/',
             function($matches) use ($replacements) {
-                if (array_key_exists($matches[2], $replacements)) {
+                if (is_array($replacements) && array_key_exists($matches[2], $replacements)) {
                     return $replacements[$matches[2]];
                 } else {
                     return '';
