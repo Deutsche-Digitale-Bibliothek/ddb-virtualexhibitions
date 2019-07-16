@@ -2079,4 +2079,24 @@ class ExhibitDdbHelper
         $sectionColors .= $color;
         return $sectionColors;
     }
+
+    public static function getImprint($exhibitType, $replacements)
+    {
+        $replacements = unserialize($replacements);
+        $filesDir = realpath($_SERVER['DOCUMENT_ROOT'] . '/../data');
+        $masterDoc = file_get_contents($filesDir . '/imprint_' . $exhibitType . '.html');
+        $result = preg_replace_callback(
+            '/(\[\[)([^\]\:]+)::([^\]]+)(\]\])/',
+            function($matches) use ($replacements) {
+                if (array_key_exists($matches[2], $replacements)) {
+                    return $replacements[$matches[2]];
+                } else {
+                    return '';
+                }
+            },
+            $masterDoc
+        );
+        return $result;
+    }
+
 }

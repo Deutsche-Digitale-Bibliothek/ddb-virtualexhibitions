@@ -92,9 +92,60 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
     {
         if(isset($_POST) && isset($_POST['description']) && isset($_POST['team_list'])) {
             $_POST['team'] = serialize(['description' => $_POST['description'], 'team_list' => $_POST['team_list']]);
+            unset($_POST['description']);
+            unset($_POST['team_list']);
         }
         parent::editAction();
         $this->view->storedTeam = unserialize($this->view->exhibit->team);
+    }
+
+    public function imprintAction()
+    {
+        $modelName = $this->view->singularize($this->_helper->db->getDefaultModelName());
+        $record = $this->_helper->db->findById();
+        $this->view->$modelName = $record;
+
+        $exhibitType = $this->view->exhibit->exhibit_type;
+        $filesDir = realpath($_SERVER['DOCUMENT_ROOT'] . '/../data');
+        $masterDoc = file_get_contents($filesDir . '/imprint_' . $exhibitType . '.html');
+        $fields = $this->parseImprintShortcode($masterDoc);
+        $this->view->masterDoc = $masterDoc;
+        $this->view->fields = $fields;
+
+        if ($this->getRequest()->isPost()) {
+            $_POST['imprint'] = serialize($this->handleImprintPost($fields));
+        }
+        parent::editAction();
+        $this->view->storedImprint = unserialize($this->view->exhibit->imprint);
+    }
+
+    public function parseImprintShortcode($subject)
+    {
+        preg_match_all('|(\[\[)([^\]\:]+)::([^\]]+)(\]\])|', $subject, $matches, PREG_SET_ORDER);
+        $compare = array();
+        $result = array();
+        foreach ($matches as $key => $value) {
+            if (!in_array($value[2], $compare)) {
+                array_push($compare, $value[2]);
+                array_push($result, array(
+                    'var' => $value[2],
+                    'desc' => $value[3],
+                ));
+            }
+        }
+        return $result;
+    }
+
+    public function handleImprintPost($fields)
+    {
+        $result = array();
+        foreach ($fields as $field) {
+            if (isset($_POST[$field['var']])) {
+                $result[$field['var']] = $_POST[$field['var']];
+                unset($_POST[$field['var']]);
+            }
+        }
+        return $result;
     }
 
     protected function setInstitutions($exhibit)

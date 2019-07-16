@@ -302,7 +302,6 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             <ul class="apparatus-tiles">
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/team/' . $exhibit->id); ?>"><?php echo __('Team'); ?></a></div></li>
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/imprint/' . $exhibit->id); ?>"><?php echo __('Impressum'); ?></a></div></li>
-                <li><div class="tile"><a href="<?php echo $this->url('exhibits/legal/' . $exhibit->id); ?>"><?php echo __('Datenschutz'); ?></a></div></li>
             </ul>
         </fieldset>
     </div>

@@ -1,4 +1,3 @@
-<?php // $attachment = exhibit_builder_page_attachment(1); ?>
 <section
     data-color-palette="base"
     data-color-section="white"
@@ -13,18 +12,7 @@
                         <div class="scroll-frame">
                             <div class="scroll-element">
                                 <h1><?php echo __('Impressum'); ?></h1>
-                                <p>
-                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati expedita cupiditate rem facere perferendis repellat voluptatem ab animi! Hic labore molestias officia velit non expedita ducimus nobis nihil doloremque. Temporibus!</span>
-                                    <span>Voluptatem magni, eum ipsam blanditiis minus, corporis cumque eligendi explicabo vitae quis quos optio nemo illum reiciendis quibusdam officiis facilis, cum quae dolores similique. Placeat alias tenetur quibusdam optio nulla!</span>
-                                    <span>Laboriosam dicta neque, quod quidem molestiae veritatis quaerat facilis distinctio quisquam delectus reiciendis illo facere, consectetur et quo dolores? Placeat doloribus, voluptatum labore fuga rerum quibusdam reprehenderit assumenda pariatur debitis.</span>
-                                    <span>Et deleniti, voluptas vitae cumque natus facilis a dolore sed, maxime, voluptatem quasi quibusdam nemo nesciunt ratione totam adipisci exercitationem ipsa libero architecto sit numquam sequi consequuntur quo est. Voluptatibus.</span>
-                                    <span>Explicabo, iusto sit veniam voluptate placeat, officiis molestias commodi quasi atque, deserunt aperiam dignissimos dolore quis aspernatur voluptatem vero. Dignissimos magnam saepe doloremque vitae atque corrupti quisquam debitis consequatur temporibus!</span>
-                                    <span>Ipsa, labore minima animi cum ipsum doloribus soluta dicta, atque reiciendis distinctio voluptate. Maxime porro, neque architecto deleniti nisi nobis dicta, sapiente quas officia aliquid a corporis, id sunt voluptate.</span>
-                                    <span>Sint possimus, voluptatem at dolore alias cupiditate eum sit tenetur facere vero sapiente sequi corporis est dicta pariatur deleniti ratione asperiores nemo incidunt blanditiis. Sunt beatae ullam voluptatem quae cum!</span>
-                                    <span>Velit aliquam nisi nulla sint cupiditate unde placeat iste, voluptatibus inventore consequuntur atque! Dicta minus voluptatem tempora. Qui eligendi reprehenderit libero tempore voluptate natus? Eius optio dolore laboriosam cupiditate ducimus.</span>
-                                    <span>Quia soluta fugiat, fugit perspiciatis error culpa distinctio corporis optio quasi vel suscipit quibusdam ad, laudantium nobis, sit dolores iure exercitationem repudiandae. Numquam aspernatur aperiam quasi ipsam beatae itaque in.</span>
-                                    <span>Dignissimos praesentium deleniti animi veritatis itaque iste. Fuga temporibus aliquid quos maxime, amet, in quo ex, ut velit nam at iure ab impedit. Voluptas at hic, enim animi soluta iusto?</span>
-                                </p>
+                                <?php echo $imprint; ?>
                             </div>
                         </div>
                     </div>
