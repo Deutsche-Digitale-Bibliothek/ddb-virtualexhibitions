@@ -27,8 +27,11 @@ $sectionTag = 'section';
 echo head(compact('title', 'colors', 'exhibitType', 'navcolor'), 'spa_header');
 $institutions = ExhibitDdbHelper::getInstitutions(
     metadata('exhibit', 'institutions', ['no_filter' => true, 'no_escape' => true]));
-$imprint = ExhibitDdbHelper::getImprint($exhibitType,
-    metadata('exhibit', 'imprint', ['no_filter' => true, 'no_escape' => true]));
+$imprint = ExhibitDdbHelper::getImprint(
+    $exhibitType,
+    metadata('exhibit', 'imprint', ['no_filter' => true, 'no_escape' => true]),
+    $title
+);
 ?>
 <div id="fullpage" class="fullpage">
 <?php

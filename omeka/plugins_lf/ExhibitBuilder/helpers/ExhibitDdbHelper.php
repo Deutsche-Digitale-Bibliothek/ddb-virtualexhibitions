@@ -2080,15 +2080,17 @@ class ExhibitDdbHelper
         return $sectionColors;
     }
 
-    public static function getImprint($exhibitType, $replacements)
+    public static function getImprint($exhibitType, $replacements, $title)
     {
         $replacements = unserialize($replacements);
         $filesDir = realpath($_SERVER['DOCUMENT_ROOT'] . '/../data');
         $masterDoc = file_get_contents($filesDir . '/imprint_' . $exhibitType . '.html');
         $result = preg_replace_callback(
             '/(\[\[)([^\]\:]+)::([^\]]+)(\]\])/',
-            function($matches) use ($replacements) {
-                if (is_array($replacements) && array_key_exists($matches[2], $replacements)) {
+            function($matches) use ($replacements, $title) {
+                if ($matches[2] === 'titleExhibit') {
+                    return $title;
+                } elseif (is_array($replacements) && array_key_exists($matches[2], $replacements)) {
                     return $replacements[$matches[2]];
                 } else {
                     return '';

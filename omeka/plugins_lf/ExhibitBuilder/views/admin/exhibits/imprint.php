@@ -16,6 +16,7 @@ $theme = $exhibit->theme ? Theme::getTheme($exhibit->theme) : null;
         <fieldset>
             <legend><?php echo __('Impressum'); ?></legend>
             <?php foreach($this->fields as $field): ?>
+            <?php if($field['var'] === 'titleExhibit') { continue; } ?>
             <div class="field">
                 <div class="two columns alpha">
                     <?php echo $this->formLabel($field['var'], $field['desc']); ?>
