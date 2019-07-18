@@ -4,7 +4,7 @@ echo head(array(
     'bodyclass' => 'exhibits show'));
 ?>
 
-<div class="ddb-omeka-exhibit-title"><a href="https://www.deutsche-digitale-bibliothek.de/content/exhibits/">Ausstellungen</a>&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a href="<?php echo WEB_ROOT; ?>"><span class="help-bc-active"><?php echo metadata('exhibit', 'title'); ?></span></a></div>
+<div class="ddb-omeka-exhibit-title"><a href="https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen">Ausstellungen</a>&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a href="<?php echo WEB_ROOT; ?>"><span class="help-bc-active"><?php echo metadata('exhibit', 'title'); ?></span></a></div>
 
 <nav id="exhibit-pages" class="exhibit-page-navigation-bar">
     <?php echo exhibit_builder_page_nav(); ?>
