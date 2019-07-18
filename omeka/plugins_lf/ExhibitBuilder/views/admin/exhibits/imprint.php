@@ -21,7 +21,7 @@ $theme = $exhibit->theme ? Theme::getTheme($exhibit->theme) : null;
                     <?php echo $this->formLabel($field['var'], $field['desc']); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <?php if($this->storedImprint{$field['var']}): ?>
+                    <?php if(isset($this->storedImprint{$field['var']})): ?>
                     <?php echo $this->formTextarea($field['var'], $this->storedImprint{$field['var']}); ?>
                     <?php else: ?>
                     <?php echo $this->formTextarea($field['var'], ''); ?>
