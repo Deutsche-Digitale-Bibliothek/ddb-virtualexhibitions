@@ -14,6 +14,9 @@ if ($publishDate) {
 }
 $colorpalette = metadata('exhibit', 'colorpalette');
 $navcolor = metadata('exhibit', 'nav_color');
+if (!isset($navcolor) || empty($nav_color)) {
+    $navcolor = 'dark';
+}
 $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
 $dir = dirname(__FILE__);
 $sectionCounter = 0;
