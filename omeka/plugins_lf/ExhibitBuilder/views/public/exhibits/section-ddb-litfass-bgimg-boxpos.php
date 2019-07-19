@@ -8,6 +8,13 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['bgpos
 }
 $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
+/**
+ * @NOTE: mute/unmute video with js:
+ * @see: https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video
+ * var a = document.getElementsByClassName('litfass-bg-video');
+ * a[0].muted = false;
+ * a[0].muted = true;
+ */
 ?>
 <<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
