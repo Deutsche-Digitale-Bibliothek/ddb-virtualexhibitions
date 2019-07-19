@@ -7026,6 +7026,12 @@ a:hover {
   margin-right: auto;
 }
 
+@media (max-width: 767.98px) {
+  .media-meta-standalone {
+    width: 100%;
+  }
+}
+
 .exhibit-type-litfass_ddb .media-meta .media-meta-scroll h5 {
   font-family: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -7991,7 +7997,7 @@ i.license-or {
 
 .litfass-bg-video {
   position: absolute;
-  top: 43px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -8000,6 +8006,12 @@ i.license-or {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+@media (max-width: 767.98px) {
+  .litfass-bg-video {
+    top: -43px;
+  }
 }
 
 .litfass_video_container {

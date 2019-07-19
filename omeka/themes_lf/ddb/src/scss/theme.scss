@@ -970,6 +970,9 @@ a:hover {
   max-width: 508px;
   margin-right: auto;
   // background-color: #fff;
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
 }
 
 .exhibit-type-litfass_ddb .media-meta .media-meta-scroll h5 {
@@ -1962,7 +1965,7 @@ i.license-or {
 // background videos
 .litfass-bg-video {
   position: absolute;
-  top: 43px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -1975,6 +1978,9 @@ i.license-or {
   // background-position: center center;
   // background-size: contain;
   object-fit: cover;
+  @include media-breakpoint-down(sm) {
+    top: -43px;
+  }
 }
 
 // videos
