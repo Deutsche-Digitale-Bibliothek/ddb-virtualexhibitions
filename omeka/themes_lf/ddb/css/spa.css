@@ -7450,6 +7450,8 @@ blockquote cite::before {
 }
 
 .section-container-pos {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 100%;
   height: 100%;
@@ -7570,6 +7572,13 @@ blockquote cite::before {
 
 .section-item .media-title h2 {
   margin-bottom: 0;
+}
+
+.boxpos-controls {
+  position: absolute;
+  top: 109px;
+  left: 2px;
+  z-index: 10;
 }
 
 .media-audio-image-container {
@@ -7978,6 +7987,19 @@ i.license-or {
 
 .dark i.license {
   background-image: url("../images/licenses_dark.png");
+}
+
+.litfass-bg-video {
+  position: absolute;
+  top: 43px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .litfass_video_container {

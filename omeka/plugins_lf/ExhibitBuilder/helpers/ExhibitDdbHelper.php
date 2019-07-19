@@ -540,6 +540,71 @@ class ExhibitDdbHelper
     }
 
     /**
+     * Get params for attachments used as background image or video
+     *
+     * @param array $attachment array with keys file, item, caption etc.
+     * @return array params for background attachamnts
+     */
+    public static function getBackgroundAttachment($attachment)
+    {
+        $backgroundSrc = array(
+            'type'      => '',
+            'imgSrc'    => '',
+            'videoSrc'  => '',
+            'videoMimeType' => ''
+        );
+        if (!$attachment) {
+            $backgroundSrc['type'] = 'none';
+            return $backgroundSrc;
+        }
+
+        $item = $attachment['item'];
+        $file = $attachment['file'];
+
+        if (isset($file) && !empty($file) && is_object($file)) {
+            $backgroundSrc['type'] = 'img';
+            $backgroundSrc['imgSrc'] = self::getFullsizeImageUrl($attachment);
+        }
+
+        if ($item) {
+            $videoSrc = metadata($attachment['item'], array('Item Type Metadata', 'Videoquelle'));
+            if($videoSrc !== null && !empty($videoSrc)) {
+                $matches = self::parseShortcode($videoSrc);
+                if (isset($matches[0][2]) && 'video' == $matches[0][2] && isset($matches[0][3])) {
+                    list($videoType, $videoId) = explode(":", $matches[0][3]);
+                    switch ($videoType) {
+                        case 'vimeo':
+                            $backgroundSrc['type'] = 'vimeo';
+                            $backgroundSrc['videoSrc'] = '//player.vimeo.com/video/' . $videoId . '/';
+                            break;
+                        case 'ddb':
+                            self::setVideoDdbInfo($videoId);
+                            if (!array_key_exists($videoId, self::$ddbVideoXml)) {
+                                self::getDdbVideoXml($videoId);
+                            }
+                            if (array_key_exists($videoId, self::$ddbVideoXml) &&
+                                isset(self::$ddbVideoXml[$videoId]['video'])) {
+                                $backgroundSrc['type'] = 'ddb-video';
+                                $backgroundSrc['videoSrc'] = self::$ddbVideoXml[$videoId]['video']['src'];
+                                $backgroundSrc['videoMimeType'] = self::$ddbVideoXml[$videoId]['video']['mime'];
+                            }
+                            if (array_key_exists($videoId, self::$ddbVideoXml) &&
+                                isset(self::$ddbVideoXml[$videoId]['img']) &&
+                                empty($backgroundSrc['imgSrc'])
+                            ) {
+                                $backgroundSrc['imgSrc'] = self::$ddbVideoXml[$videoId]['img']['src'];
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+        return $backgroundSrc;
+    }
+
+    /**
      * Set Vimeo video info (width, height, ...)
      *
      * @param String $videoId Video ID from shortcode
@@ -2038,7 +2103,7 @@ class ExhibitDdbHelper
     {
         $url = '';
         if (isset($attachment['file']) && !empty($attachment['file'])) {
-            if ($attachment['file']->mime_type === 'image/gif') {
+            if ($attachment['file']->mime_type === 'image/gif' || $attachment['file']->mime_type === 'image/png') {
                 $url = $attachment['file']->getWebPath('original');
             } else {
                 $url = $attachment['file']->getWebPath('fullsize');

@@ -6,8 +6,8 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['boxpo
 if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['bgpos'])) {
     $pageoptions['bgpos'] = 'mc';
 }
-// $bgImgUrl = ExhibitDdbHelper::getOriginalImageUrl($attachment);
 $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
+$bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
 ?>
 <<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
@@ -17,8 +17,14 @@ $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
     id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>"
     <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . '); background-position: ' . $pageoptions['bgpos'] . ';"' : ''; ?>>
 
+    <?php if ($bgAttachmant['type'] === 'ddb-video' && !empty($bgAttachmant['videoSrc']) && !empty($bgAttachmant['videoMimeType'])): ?>
+    <video class="litfass-bg-video" loop muted data-autoplay>
+        <source src="<?php echo $bgAttachmant['videoSrc']; ?>" type="video/<?php echo $bgAttachmant['videoMimeType']; ?>">
+    </video>
+    <?php endif; ?>
+
     <?php if ($attachment): ?>
-    <div class="boxpos-controls" style="position: absolute; left: 2px; top: 109px;">
+    <div class="boxpos-controls">
         <div class="control-info control-icon control-icon-right">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info static-dark">
                 <g class="icon-info-frame" transform="translate(-98 -31)">
@@ -86,9 +92,7 @@ $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
             <div class="pos-box-scroll">
                 <div class="pos-box-content">
                     <?php if ($exhibitSection->hide_title !== 1): ?>
-                    <h3>
-                        <?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?>
-                    </h3>
+                    <h3><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h3>
                     <?php endif; ?>
                     <?php $pageText = exhibit_builder_page_text(1); ?>
                     <?php if (empty($pageText)): ?>
