@@ -6777,6 +6777,7 @@ a:hover {
 }
 
 .scroll-container .text-content {
+  width: 100%;
   max-height: 100%;
   overflow: hidden;
 }

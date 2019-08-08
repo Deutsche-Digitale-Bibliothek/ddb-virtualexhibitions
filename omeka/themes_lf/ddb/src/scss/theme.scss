@@ -709,6 +709,9 @@ a:hover {
   justify-content: center;
   height: 100%;
   .text-content {
+    // Fix #DDBVA-525:
+    width: 100%;
+    // end fix
     max-height: 100%;
     overflow: hidden;
     .scroll-frame {
