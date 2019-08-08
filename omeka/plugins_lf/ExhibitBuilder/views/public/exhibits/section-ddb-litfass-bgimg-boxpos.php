@@ -8,13 +8,6 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['bgpos
 }
 $bgImgUrl = ExhibitDdbHelper::getFullsizeImageUrl($attachment);
 $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
-/**
- * @NOTE: mute/unmute video with js:
- * @see: https://developer.mozilla.org/de/docs/Web/HTML/Using_HTML5_audio_and_video
- * var a = document.getElementsByClassName('litfass-bg-video');
- * a[0].muted = false;
- * a[0].muted = true;
- */
 ?>
 <<?php echo $sectionTag; ?>
     data-color-palette="<?php echo $colorpalette; ?>"
@@ -58,6 +51,27 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
                 </g>
             </svg>
         </div>
+        <?php if ($bgAttachmant['type'] === 'ddb-video' && !empty($bgAttachmant['videoSrc']) && !empty($bgAttachmant['videoMimeType'])): ?>
+        <div class="control-video">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-video-audio">
+            <g>
+                <rect class="icon-video-audio-rect" width="48" height="48"/>
+                <g transform="translate(-2)">
+                <g transform="translate(-679 -756)">
+                    <path class="icon-video-audio-speaker" d="M9773.369,2828.112l10.293,10.292-10.293,10.293Z" transform="translate(10479.031 3618.698) rotate(180)"/>
+                    <rect class="icon-video-audio-speaker" width="9" height="10" transform="translate(692 775)"/>
+                </g>
+                <line class="icon-video-audio-volume" y2="10" transform="translate(30.5 19.5)"/>
+                <line class="icon-video-audio-volume" y2="5" transform="translate(35.5 21.5)"/>
+                </g>
+                <g transform="translate(-1)">
+                <line class="icon-video-audio-mute" x2="10" y2="10" transform="translate(29 19)"/>
+                <line class="icon-video-audio-mute" x2="10" y2="10" transform="translate(39 19) rotate(90)"/>
+                </g>
+            </g>
+            </svg>
+        </div>
+        <?php endif; ?>
         <?php if (false !== ($zoomImgUrl = ExhibitDdbHelper::getZoomable($attachment)) || ExhibitDdbHelper::isX3d($attachment)): ?>
         <div class="zoomer control-icon control-icon-right" <?php echo ExhibitDdbHelper::getZoomData($attachment); ?>>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom static-dark">

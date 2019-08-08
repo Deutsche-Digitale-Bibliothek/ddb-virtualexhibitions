@@ -7101,6 +7101,46 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.control-video {
+  padding: 0 .5rem;
+  margin-bottom: .25rem;
+}
+
+.control-video .icon-video-audio {
+  cursor: pointer;
+}
+
+.control-video .icon-video-audio .icon-video-audio-rect {
+  fill: #1d1d1b;
+}
+
+.control-video .icon-video-audio .icon-video-audio-speaker {
+  fill: #fff;
+}
+
+.control-video .icon-video-audio .icon-video-audio-volume,
+.control-video .icon-video-audio .icon-video-audio-mute {
+  fill: none;
+  stroke: #fff;
+}
+
+.control-video .icon-video-audio .icon-video-audio-volume {
+  display: none;
+  stroke-width: 2px;
+}
+
+.control-video .icon-video-audio .icon-video-audio-mute {
+  stroke-width: 3px;
+}
+
+.control-video .icon-video-audio.active .icon-video-audio-volume {
+  display: inline;
+}
+
+.control-video .icon-video-audio.active .icon-video-audio-mute {
+  display: none;
+}
+
 .zoomer .icon-zoom,
 .control-zoom .icon-zoom {
   cursor: pointer;

@@ -1046,6 +1046,40 @@ a:hover {
   }
 }
 
+.control-video {
+  padding: 0 .5rem;
+  margin-bottom: .25rem;
+  .icon-video-audio {
+    cursor: pointer;
+    .icon-video-audio-rect {
+      fill: #1d1d1b;
+    }
+    .icon-video-audio-speaker {
+      fill: #fff;
+    }
+    .icon-video-audio-volume,
+    .icon-video-audio-mute {
+      fill: none;
+      stroke: #fff;
+    }
+    .icon-video-audio-volume {
+      display: none;
+      stroke-width: 2px;
+    }
+    .icon-video-audio-mute {
+      stroke-width: 3px;
+    }
+    &.active {
+      .icon-video-audio-volume {
+        display: inline;
+      }
+      .icon-video-audio-mute {
+        display: none;
+      }
+    }
+  }
+}
+
 .zoomer,
 .control-zoom {
   .icon-zoom {

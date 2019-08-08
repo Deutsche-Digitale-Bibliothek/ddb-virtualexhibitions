@@ -921,6 +921,21 @@
     });
   }
 
+  function bindVideoControl() {
+    $('.icon-video-audio').on('click', function() {
+      var controlElement = $(this);
+      var tile = controlElement.parents('.tile');
+      var video = $('.litfass-bg-video', tile);
+      if (controlElement.hasClass('active')) {
+        controlElement.removeClass('active');
+        video[0].muted = true;
+      } else {
+        controlElement.addClass('active');
+        video[0].muted = false;
+      }
+    });
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -937,6 +952,7 @@
       bindTitlePageNextLink();
       bindZoom();
       bind3D();
+      bindVideoControl();
       bindEmptyClick();
       bindHeaderLogo();
       bindCookieNotice();
