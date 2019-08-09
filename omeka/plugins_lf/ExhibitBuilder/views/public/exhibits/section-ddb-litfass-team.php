@@ -2,7 +2,7 @@
 <section
     data-color-palette="base"
     data-color-section="white"
-    class="section tile"
+    class="section tile team"
     id="se<?php echo $sectionCounter; ?>">
     <div class="section-container container-fluid">
         <div class="row">
@@ -54,16 +54,14 @@
                                 ?>
                                 </div>
                             <?php endif; ?>
-                                <?php $team = unserialize($exhibit->team); ?>
-                                <?php
-                                if (isset($team['description'])):
-                                    echo $team['description'];
-                                endif;
-                                ?>
-                                <?php if (isset($team['team_list'])): ?>
+                            <?php $team = unserialize($exhibit->team); ?>
+                            <?php if (isset($team['description'])): ?>
+                                <div class="team_description"><?php echo $team['description'];?></div>
+                            <?php endif; ?>
+                            <?php if (isset($team['team_list'])): ?>
                                 <h3>Team</h3>
-                                <?php echo $team['team_list']; ?>
-                                <?php endif; ?>
+                                <div class="team_list"><?php echo $team['team_list']; ?></div>
+                            <?php endif; ?>
                                 <div class="created-width mb-5">
                                     <strong>
                                     <?php

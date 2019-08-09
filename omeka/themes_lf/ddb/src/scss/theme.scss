@@ -1533,6 +1533,23 @@ blockquote {
   }
 }
 
+// section team
+.team {
+  .team_description {
+    margin-top: 3.375rem;
+    strong,
+    h2 {
+      font-size: 1.375rem;
+    }
+  }
+  .team_list {
+    strong,
+    h2 {
+      font-size: 1.375rem;
+    }
+  }
+}
+
 // section bgimg-boxpos
 .boxpos-controls {
   position: absolute;

@@ -7621,6 +7621,20 @@ blockquote cite::before {
   margin-bottom: 0;
 }
 
+.team .team_description {
+  margin-top: 3.375rem;
+}
+
+.team .team_description strong,
+.team .team_description h2 {
+  font-size: 1.375rem;
+}
+
+.team .team_list strong,
+.team .team_list h2 {
+  font-size: 1.375rem;
+}
+
 .boxpos-controls {
   position: absolute;
   top: 109px;
