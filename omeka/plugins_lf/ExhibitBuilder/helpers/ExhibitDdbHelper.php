@@ -1686,6 +1686,7 @@ class ExhibitDdbHelper
         // add s_options
         if ($file) {
             $files = $item->getFiles();
+            $fileMetadata = json_decode($files[0]['metadata']);
 
             if ($imgZoom === true) {
 
@@ -1693,8 +1694,6 @@ class ExhibitDdbHelper
                 $imgAttributes['data-zoom'] = $files[0]->getWebPath();
 
                 // ZOOM ATTRIBS
-                $fileMetadata = json_decode($files[0]['metadata']);
-
                 if (is_object($fileMetadata) &&
                     property_exists($fileMetadata, 'video') &&
                     is_object($fileMetadata->video)) {
@@ -1752,6 +1751,13 @@ class ExhibitDdbHelper
             }
 
             self::$currentAttechmentMediaType = 'image';
+
+            // png and gif
+            if (property_exists($fileMetadata, 'mime_type') &&
+                ($fileMetadata->mime_type === 'image/gif' ||
+                $fileMetadata->mime_type === 'image/png')) {
+                    $fileOptions['imageSize'] = 'original';
+            }
             return file_markup($file, $fileOptions, null);
 
         }

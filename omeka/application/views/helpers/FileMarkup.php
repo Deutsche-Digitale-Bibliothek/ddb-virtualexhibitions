@@ -462,11 +462,18 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
 
         // Should we ever include more image sizes by default, this will be
         // easier to modify.
+
+        // Start modify Grandgeorg Websolutions:
+        // Add original
         $imgClasses = array(
             null => 'thumb',
             'thumbnail'=>'thumb',
             'square_thumbnail'=>'thumb',
-            'fullsize'=>'full');
+            'fullsize'=>'full',
+            'original'=>'original',
+        );
+        // End Grandgeorg Websolutions
+
         $imageSize = $options['imageSize'];
 
         // If we can make an image from the given image size.
