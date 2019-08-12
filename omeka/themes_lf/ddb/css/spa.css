@@ -6748,6 +6748,7 @@ a:hover {
   min-width: 5.5rem;
   padding: 8px 0 0;
   font-size: 1.25rem;
+  color: #fff;
   text-align: center;
 }
 
@@ -7554,6 +7555,10 @@ blockquote cite a {
 
 .dark blockquote cite a {
   color: #fff;
+}
+
+.section-cite .quote-container {
+  padding-bottom: 3rem;
 }
 
 .section-cite blockquote {

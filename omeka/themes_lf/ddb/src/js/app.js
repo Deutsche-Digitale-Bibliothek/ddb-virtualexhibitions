@@ -361,7 +361,6 @@
     // we could also use .text-content instead of .scroll-element
     $('.scroll-container').each(function (index) {
       var scrollContainer = $(this);
-      // if ($('.scroll-element', scrollContainer).height() < scrollContainer.height()) {
       if ($('.scroll-element', scrollContainer).prop('scrollHeight') < scrollContainer.height()) {
         $('.scroll-controls', scrollContainer).addClass('d-none');
       } else {
@@ -387,13 +386,12 @@
     $('.media-item').each(function () {
       var $mediaItem = $(this);
       var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
-      var captionHeight= $caption.height();
+      var captionHeight = $caption.height() + 10; // 10 for top margin
       if (captionHeight) {
         mediaItemMaxHeight -= captionHeight;
       }
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
-        // console.log($mediaItem);
       }
       $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
@@ -407,7 +405,6 @@
       }
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
-        // console.log($mediaItem);
       }
       $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
@@ -421,7 +418,6 @@
       }
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
-        // console.log($mediaItem);
       }
       $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
     });
@@ -863,7 +859,7 @@
   }
 
   function createCookieDiv() {
-    var div = $('<div id="cookie-law" class="cookie-law"><p>Um unser Internetangebot für Sie optimal gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung unseres Angebots erklären Sie sich hiermit einverstanden. Wenn Sie der Nutzungsanalyse widersprechen oder mehr über Cookies erfahren möchten, klicken Sie bitte auf die <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" rel="noopener" target="_blank">Datenschutzerklärung</a>.</p></div>');
+    var div = $('<div id="cookie-law" class="cookie-law"><p>Um unser Internetangebot für Sie optimal gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung unseres Angebots erklären Sie sich hiermit einverstanden. Wenn Sie mehr über Cookies erfahren möchten, klicken Sie bitte auf unsere <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" rel="noopener" target="_blank">Datenschutzerklärung</a>. Eine Widerrufsmöglichkeit gibt es <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung-zur-erhebung-persoenlicher-daten-einwilligung-und-zweck-der-datenspeicherung-und-verarbeitung" rel="noopener" target="_blank">hier</a>.</p></div>');
     var button = $('<button id="close-cookie-notice" type="button" class="close-cookie-notice close btn btn-secondary" aria-label="Close" aria-controls="cookie-notice"><span aria-hidden="true">&times;</span></button>');
     div.append(button);
     $('body').prepend(div);
@@ -946,8 +942,8 @@
       bindMenu();
       setScrollElementMaxHeight();
       bindSCrollControls();
-      toggleScrollControls();
       setMediaProps();
+      toggleScrollControls();
       bindMediaInfo();
       bindTitlePageNextLink();
       bindZoom();

@@ -674,6 +674,7 @@ a:hover {
   min-width: 5.5rem;
   padding: 8px 0 0;
   font-size: 1.25rem;
+  color: #fff;
   text-align: center;
 }
 
@@ -1445,6 +1446,9 @@ blockquote {
 
 // section-cite template
 .section-cite {
+  .quote-container {
+    padding-bottom: 3rem;
+  }
   blockquote {
     padding: 0 0 10px;
     margin-bottom: 1rem;
