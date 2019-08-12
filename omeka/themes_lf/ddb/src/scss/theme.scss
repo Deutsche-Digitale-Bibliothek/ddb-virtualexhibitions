@@ -73,6 +73,9 @@ h3 {
   margin-bottom: 50px;
   @include media-breakpoint-down(sm) {
     margin-bottom: 30px;
+    font-size: 1.5rem;
+    word-break: break-all;
+    word-break: break-word;
   }
 }
 
@@ -524,6 +527,9 @@ a:hover {
   height: 100%;
   .row {
     flex-basis: 100%;
+    // Start for issue DDBVA-425:
+    width: 100%;
+    // end
     height: 100%;
     &.auto {
       height: auto;
@@ -1245,24 +1251,38 @@ a:hover {
     margin-bottom: 20px;
     font-size: 3.625rem;
     line-height: 4.25rem;
+    @include media-breakpoint-down(sm) {
+      font-size: 2.625rem;
+    }
     span {
       // display: inline-block;
       // padding: .125rem .5rem;
       padding: .25rem .5rem;
       background-color: rgba(255, 255, 255, .8);
       box-decoration-break: clone;
+      @include media-breakpoint-down(sm) {
+        word-break: break-all;
+        word-break: break-word;
+      }
     }
   }
   h2 {
     margin: 0;
     font-size: 1.75rem;
     line-height: 2.375rem;
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+    }
     span {
       // display: inline-block;
       // padding: .125rem .5rem;
       padding: .25rem .5rem;
       background-color: rgba(255, 255, 255, .8);
       box-decoration-break: clone;
+      @include media-breakpoint-down(sm) {
+        word-break: break-all;
+        word-break: break-word;
+      }
     }
   }
 }
@@ -1374,6 +1394,11 @@ blockquote {
     // &laquo; &raquo;
     quotes: "»" "«";
     border: none;
+    @include media-breakpoint-down(sm) {
+      font-size: 1.75rem;
+      word-break: break-all;
+      word-break: break-word;
+    }
     p,
     div,
     li,
