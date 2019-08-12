@@ -7501,7 +7501,8 @@ blockquote cite a {
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.125rem;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
+  text-align: center;
   quotes: "»" "«";
   border: none;
 }
