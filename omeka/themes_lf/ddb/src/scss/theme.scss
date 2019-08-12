@@ -1350,14 +1350,15 @@ a:hover {
 blockquote {
   display: block;
   padding: 0 0 0 18px;
-  border-left: 4px solid #c1c1c1;
+  margin-bottom: 2.5rem;
+  border-left: 4px solid #1d1d1b;
   &::before {
     display: block;
     width: 18px;
     margin: 0 0 0 -18px;
     font-size: 1px;
     content: "\00a0\00a0";
-    border-top: 4px solid #c1c1c1;
+    border-top: 4px solid #1d1d1b;
   }
   &::after {
     display: block;
@@ -1365,7 +1366,7 @@ blockquote {
     margin: 0 0 0 -18px;
     font-size: 1px;
     content: "\00a0\00a0";
-    border-bottom: 4px solid #c1c1c1;
+    border-bottom: 4px solid #1d1d1b;
   }
   p {
     display: inline;
@@ -1373,12 +1374,36 @@ blockquote {
   cite {
     display: block;
     font-size: 1rem;
-    color: #818a91;
+    color: #1d1d1b; //#818a91
     &::before {
       font-size: 1rem;
       font-weight: 700;
-      color: #818a91;
+      color: #1d1d1b;
       content: "\2014\00a0\00a0";
+    }
+    a {
+      color: #1d1d1b;
+    }
+  }
+}
+
+.dark {
+  blockquote {
+    border-left: 4px solid #fff;
+    &::before {
+      border-top: 4px solid #fff;
+    }
+    &::after {
+      border-bottom: 4px solid #fff;
+    }
+    cite {
+      color: #fff;
+      &::before {
+        color: #fff;
+      }
+      a {
+        color: #fff;
+      }
     }
   }
 }
@@ -1387,6 +1412,7 @@ blockquote {
 .section-cite {
   blockquote {
     padding: 0 0 10px;
+    margin-bottom: 1rem;
     font-family: $font-family-headings;
     font-size: 2.125rem;
     font-style: italic;
