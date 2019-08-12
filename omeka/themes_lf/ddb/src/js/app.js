@@ -109,7 +109,7 @@
       paddingTop: headerHeight + 'px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu-container',
-      responsiveWidth: 768,
+      responsiveWidth: 767,
       // responsiveHeight: 0,
       // responsiveSlides: false,
       // parallax: false,
