@@ -788,6 +788,9 @@ a:hover {
   left: 0;
   z-index: 1;
   height: 90px;
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
 }
 
 // media col
@@ -1408,6 +1411,7 @@ blockquote {
   }
   cite {
     display: block;
+    margin-bottom: 1.5rem;
     text-align: center;
     // border-top: 3px solid #1d1d1b;
     &::before {

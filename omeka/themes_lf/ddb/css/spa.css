@@ -6852,6 +6852,12 @@ a:hover {
   height: 90px;
 }
 
+@media (max-width: 767.98px) {
+  .fader {
+    display: none;
+  }
+}
+
 .col-media {
   display: flex;
   align-items: center;
@@ -7476,6 +7482,7 @@ blockquote cite::before {
 
 .section-cite cite {
   display: block;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
