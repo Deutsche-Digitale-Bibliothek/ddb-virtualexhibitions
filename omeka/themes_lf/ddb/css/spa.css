@@ -7360,6 +7360,66 @@ a:hover {
   }
 }
 
+.section-title .icon-next-page .arrow-top {
+  transform: translate(288.565px, 390.565px);
+  -webkit-animation: startpage-arrow-top 1.6s linear infinite;
+  animation: startpage-arrow-top 1.6s linear infinite;
+}
+
+.section-title .icon-next-page .arrow-bottom {
+  transform: translate(288.565px, 400.565px);
+  -webkit-animation: startpage-arrow-bottom 1.6s linear infinite;
+  animation: startpage-arrow-bottom 1.6s linear infinite;
+}
+
+@-webkit-keyframes startpage-arrow-top {
+  0% {
+    transform: translate(288.565px, 390.565px);
+  }
+  50% {
+    transform: translate(288.565px, 398.565px);
+  }
+  100% {
+    transform: translate(288.565px, 390.565px);
+  }
+}
+
+@keyframes startpage-arrow-top {
+  0% {
+    transform: translate(288.565px, 390.565px);
+  }
+  50% {
+    transform: translate(288.565px, 398.565px);
+  }
+  100% {
+    transform: translate(288.565px, 390.565px);
+  }
+}
+
+@-webkit-keyframes startpage-arrow-bottom {
+  0% {
+    transform: translate(288.565px, 400.565px);
+  }
+  50% {
+    transform: translate(288.565px, 408.565px);
+  }
+  100% {
+    transform: translate(288.565px, 400.565px);
+  }
+}
+
+@keyframes startpage-arrow-bottom {
+  0% {
+    transform: translate(288.565px, 400.565px);
+  }
+  50% {
+    transform: translate(288.565px, 408.565px);
+  }
+  100% {
+    transform: translate(288.565px, 400.565px);
+  }
+}
+
 .section-text-special-01 .col-title h1 {
   margin-top: 140px;
 }

@@ -61,8 +61,8 @@ if ($exhibitType === 'litfass_ddb') {
                                     <line class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)" />
                                 </g>
                                 </g>
-                                <path class="cls-2" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 400.565)" />
-                                <path class="cls-2" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 390.565)" />
+                                <path class="cls-2 arrow-bottom" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 390.565)" />
+                                <path class="cls-2 arrow-top" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 400.565)" />
                             </g>
                             </svg>
                         </div>

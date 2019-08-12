@@ -1285,6 +1285,40 @@ a:hover {
       }
     }
   }
+  .icon-next-page {
+    .arrow-top {
+      transform: translate(288.565px, 390.565px);
+      animation: startpage-arrow-top 1.6s linear infinite;
+    }
+    .arrow-bottom {
+      transform: translate(288.565px, 400.565px);
+      animation: startpage-arrow-bottom 1.6s linear infinite;
+    }
+  }
+}
+
+@keyframes startpage-arrow-top {
+  0% {
+    transform: translate(288.565px, 390.565px);
+  }
+  50% {
+    transform: translate(288.565px, 398.565px);
+  }
+  100% {
+    transform: translate(288.565px, 390.565px);
+  }
+}
+
+@keyframes startpage-arrow-bottom {
+  0% {
+    transform: translate(288.565px, 400.565px);
+  }
+  50% {
+    transform: translate(288.565px, 408.565px);
+  }
+  100% {
+    transform: translate(288.565px, 400.565px);
+  }
 }
 
 // section-text-special-01 template
