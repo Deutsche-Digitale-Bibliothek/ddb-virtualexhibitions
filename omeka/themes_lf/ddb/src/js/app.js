@@ -195,8 +195,8 @@
     setTableCellHeight(isResponsive);
 
     setScrollElementMaxHeight();
-    toggleScrollControls();
     setMediaProps();
+    toggleScrollControls();
     scrollMenu(anchor);
   }
 
@@ -380,11 +380,11 @@
     // console.log($(window).height(), menuProps.height, height);
     // console.log('setMediaProps');
 
-    var mediaItemMaxHeight = height;
 
     // subtract individual media-item-caption height
     $('.media-item').each(function () {
       var $mediaItem = $(this);
+      var mediaItemMaxHeight = height;
       var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
       var captionHeight = $caption.height() + 10; // 10 for top margin
       if (captionHeight) {
@@ -398,8 +398,9 @@
 
     $('.media-item-3d-thumb').each(function () {
       var $mediaItem = $(this);
-      var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
-      var captionHeight= $caption.height();
+      var mediaItemMaxHeight = height;
+      var $caption = $('.media-item-caption', $(this).parents('.media-item-container'));
+      var captionHeight = $caption.height() + 10; // 10 for top margin
       if (captionHeight) {
         mediaItemMaxHeight -= captionHeight;
       }
@@ -411,8 +412,9 @@
 
     $('.media-audio-image').each(function () {
       var $mediaItem = $(this);
+      var mediaItemMaxHeight = height;
       var $caption = $('.media-item-caption', $(this).parents('.media-item-container'));
-      var captionHeight= $caption.height();
+      var captionHeight= $caption.height() + 10; // 10 for top margin
       if (captionHeight) {
         mediaItemMaxHeight -= captionHeight;
       }
