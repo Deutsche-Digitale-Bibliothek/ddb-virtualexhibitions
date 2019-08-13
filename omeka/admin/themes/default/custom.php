@@ -37,4 +37,15 @@ class AdminThemeHelper
     {
         return ExhibitDdbHelper::findItemInExhibitPage($itemId);
     }
+
+    static function getExhibitType()
+    {
+        $db = get_db();
+        $bar = get_db()->getTable('Exhibit')->findAll();
+        if (!is_array($bar) || !isset($bar[0]) || !property_exists($bar[0], 'exhibit_type') || !isset($bar{0}->exhibit_type) || empty($bar{0}->exhibit_type)) {
+            return 'leporello';
+        } else {
+            return $bar[0]->exhibit_type;
+        }
+    }
 }

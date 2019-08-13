@@ -32,6 +32,10 @@
 <!-- Stylesheets -->
 <?php echo head_css(); ?>
 
+<script>
+    var ddbExhibitType = '<?php echo AdminThemeHelper::getExhibitType(); ?>';
+</script>
+
 <!-- JavaScripts -->
 <?php echo head_js(); ?>
 

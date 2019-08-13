@@ -3,6 +3,15 @@ if (!Omeka) {
 }
 
 (function ($) {
+
+    Omeka.wysiwyg_content_css = function () {
+        if (ddbExhibitType === 'leporello') {
+            return '../../../themes/ddb/css/bundle.css';
+        } else {
+            return '../../../themes/ddb/css/spa.min.css';
+        }
+    };
+
     /**
      * Add the TinyMCE WYSIWYG editor to a page.
      * Default is to add to all textareas.
@@ -37,6 +46,7 @@ if (!Omeka) {
                 { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs' }
                 // { title: 'Red header', block: 'h1', classes: 'example1', styles: { color: '#ff0000', border: '1px solid #ff3300' } },
             ],
+            content_css : Omeka.wysiwyg_content_css(),
             autoresize_max_height: 500,
             entities: "160,nbsp,173,shy,8194,ensp,8195,emsp,8201,thinsp,8204,zwnj,8205,zwj,8206,lrm,8207,rlm",
             verify_html: false,
