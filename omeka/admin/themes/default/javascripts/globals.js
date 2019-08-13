@@ -21,6 +21,23 @@ if (!Omeka) {
      */
     Omeka.wysiwyg = function (params) {
         // Default parameters
+        var styleFormats = [
+            { title: 'blockquote', block: 'blockquote' },
+            { title: 'cite', inline: 'cite' },
+            { title: 'Überschrift 2', block: 'h2' },
+            { title: 'Überschrift 3', block: 'h3' },
+            { title: 'Überschrift 4', block: 'h4' },
+            { title: 'Überschrift 5', block: 'h5' },
+            { title: 'Absatz', block: 'p' },
+            { title: 'Große Schrift', block: 'p', classes: 'typo_xxl' },
+            { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs' }
+            // { title: 'Red header', block: 'h1', classes: 'example1', styles: { color: '#ff0000', border: '1px solid #ff3300' } },
+        ];
+        if (ddbExhibitType === 'litfass_ddb') {
+            styleFormats.push({title: 'DDB Überschrift 1', block: 'h1', classes: 'litfass_ddb' });
+            styleFormats.push({title: 'DDB Überschrift 2', block: 'h2', classes: 'litfass_ddb' });
+            styleFormats.push({title: 'DDB Überschrift 3', block: 'h3', classes: 'litfass_ddb' });
+        }
         initParams = {
             convert_urls: false,
             selector: "textarea",
@@ -32,21 +49,7 @@ if (!Omeka) {
             // toolbar: "blockquote formatselect ",
             toolbar: "bold italic underline removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | link styleselect | code fullscreen",
             plugins: "lists,link,code,paste,media,autoresize,fullscreen,help",
-            style_formats: [
-                { title: 'blockquote', block: 'blockquote' },
-                { title: 'cite', inline: 'cite' },
-                // { title: 'Überschrift 1', block: 'h1' },
-                { title: 'Überschrift 2', block: 'h2' },
-                { title: 'Überschrift 3', block: 'h3' },
-                { title: 'Überschrift 4', block: 'h4' },
-                { title: 'Überschrift 5', block: 'h5' },
-                { title: 'Absatz', block: 'p' },
-                // { title: 'Große Schrift', block: 'p', classes: 'typo_xxl', styles: {'font-size': '85pt' }},
-                { title: 'Große Schrift', block: 'p', classes: 'typo_xxl' },
-                // { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs', styles:  {'font-size': '14pt' }}
-                { title: 'kleine Schrift', block: 'p', classes: 'typo_xxs' }
-                // { title: 'Red header', block: 'h1', classes: 'example1', styles: { color: '#ff0000', border: '1px solid #ff3300' } },
-            ],
+            style_formats: styleFormats,
             content_css : Omeka.wysiwyg_content_css(),
             autoresize_max_height: 500,
             entities: "160,nbsp,173,shy,8194,ensp,8195,emsp,8201,thinsp,8204,zwnj,8205,zwj,8206,lrm,8207,rlm",

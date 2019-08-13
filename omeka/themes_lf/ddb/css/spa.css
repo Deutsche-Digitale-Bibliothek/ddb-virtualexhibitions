@@ -6142,6 +6142,13 @@ h1 {
   }
 }
 
+h1.litfass_ddb {
+  font-family: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 2.5625rem;
+  line-height: 1.268;
+  color: #a5003b;
+}
+
 h2 {
   margin-bottom: 55px;
 }
@@ -6150,6 +6157,13 @@ h2 {
   h2 {
     margin-bottom: 40px;
   }
+}
+
+h2.litfass_ddb {
+  font-family: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 2.125rem;
+  line-height: 1.294;
+  color: #a5003b;
 }
 
 h3 {
@@ -6163,6 +6177,13 @@ h3 {
     word-break: break-all;
     word-break: break-word;
   }
+}
+
+h3.litfass_ddb {
+  font-family: "KarbidWeb", "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.875rem;
+  line-height: 1.333;
+  color: #a5003b;
 }
 
 h4 {
