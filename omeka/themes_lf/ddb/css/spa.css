@@ -6805,8 +6805,23 @@ a:hover {
   margin-top: 75px;
 }
 
-.scroll-container .text-content .scroll-frame .scroll-element p:last-of-type {
-  margin-bottom: 75px;
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner {
+  margin-bottom: 4.6875rem;
+}
+
+@media (max-width: 767.98px) {
+  .scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h1,
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h2,
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h3,
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h4,
+.scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner p {
+  word-break: break-all;
+  word-break: break-word;
 }
 
 .scroll-controls {
@@ -7481,6 +7496,12 @@ a:hover {
 .section-text-special-02 .col-bottom {
   align-self: flex-end;
   padding-bottom: 4.25rem;
+}
+
+@media (max-width: 767.98px) {
+  .section-text-special-02 .col-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .section-text-special-02 .scroll-container .scroll-element {

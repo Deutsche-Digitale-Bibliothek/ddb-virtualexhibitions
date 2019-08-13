@@ -51,12 +51,14 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['verti
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                                <?php $pageText = exhibit_builder_page_text(1); ?>
-                                <?php if (empty($pageText)): ?>
-                                <h4><i>Bitte Text eingeben ...</i></h4>
-                                <?php else: ?>
-                                <?php echo $pageText; ?>
-                                <?php endif; ?>
+                                <div class="scroll-element-inner">
+                                    <?php $pageText = exhibit_builder_page_text(1); ?>
+                                    <?php if (empty($pageText)): ?>
+                                    <h4><i>Bitte Text eingeben ...</i></h4>
+                                    <?php else: ?>
+                                    <?php echo $pageText; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>

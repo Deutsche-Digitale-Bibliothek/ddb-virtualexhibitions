@@ -12,73 +12,75 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                            <?php if ($exhibitType === 'litfass_ddb'): ?>
-                                <div class="text-center">
-                                    <img src="<?php echo img('ddb-studio-logo-large.png') ?>" alt="DDB studio">
-                                    <h1><?php echo __('Eine virtuelle Ausstellung der Deutschen Digitalen Bibliothek'); ?></h1>
-                                </div>
-                                <?php if (!empty($institutions)): ?>
-                                <h3><?php echo __('in Zusammenarbeit mit'); ?></h3>
+                                <div class="scroll-element-inner">
+                                <?php if ($exhibitType === 'litfass_ddb'): ?>
+                                    <div class="text-center">
+                                        <img src="<?php echo img('ddb-studio-logo-large.png') ?>" alt="DDB studio">
+                                        <h1><?php echo __('Eine virtuelle Ausstellung der Deutschen Digitalen Bibliothek'); ?></h1>
+                                    </div>
+                                    <?php if (!empty($institutions)): ?>
+                                    <h3><?php echo __('in Zusammenarbeit mit'); ?></h3>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <h1><?php echo __('Eine virtuelle Ausstellung von'); ?></h1>
                                 <?php endif; ?>
-                            <?php else: ?>
-                                <h1><?php echo __('Eine virtuelle Ausstellung von'); ?></h1>
-                            <?php endif; ?>
-                            <?php if (!empty($institutions)): ?>
-                                <div class="row align-items-stretch justify-content-start mb-4">
-                                <?php
-                                    $institutionCount = 0;
-                                    foreach ($institutions as $institution):
-                                    echo ($institutionCount > 0 && ($institutionCount % 3) == 0)? '<div class="w-100 my-2"></div>' : '';
-                                ?>
-                                    <div class="col-4">
-                                        <div class="card" style="height:100%;">
-                                            <div class="card-body text-center" style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
-                                                <?php if (isset($institution['logo']) && !empty($institution['logo'])): ?>
-                                                <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>"
-                                                    alt="<?php echo $institution['name'] ?>"
-                                                    class="img-fluid">
-                                                <?php endif; ?>
-                                                <div class="card-text mt-4">
-                                                    <small class="text-muted">
-                                                        <a href="<?php echo $institution['url'] ?>" target="_blank" rel="noopener">
-                                                            <?php echo $institution['name'] ?>
-                                                        </a>
-                                                    </small>
+                                <?php if (!empty($institutions)): ?>
+                                    <div class="row align-items-stretch justify-content-start mb-4">
+                                    <?php
+                                        $institutionCount = 0;
+                                        foreach ($institutions as $institution):
+                                        echo ($institutionCount > 0 && ($institutionCount % 3) == 0)? '<div class="w-100 my-2"></div>' : '';
+                                    ?>
+                                        <div class="col-4">
+                                            <div class="card" style="height:100%;">
+                                                <div class="card-body text-center" style="justify-content: center;align-items: center;display: flex;flex-direction: column;">
+                                                    <?php if (isset($institution['logo']) && !empty($institution['logo'])): ?>
+                                                    <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>"
+                                                        alt="<?php echo $institution['name'] ?>"
+                                                        class="img-fluid">
+                                                    <?php endif; ?>
+                                                    <div class="card-text mt-4">
+                                                        <small class="text-muted">
+                                                            <a href="<?php echo $institution['url'] ?>" target="_blank" rel="noopener">
+                                                                <?php echo $institution['name'] ?>
+                                                            </a>
+                                                        </small>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <?php
-                                    $institutionCount++;
-                                    endforeach;
-                                ?>
-                                </div>
-                            <?php endif; ?>
-                            <?php $team = unserialize($exhibit->team); ?>
-                            <?php if (isset($team['description'])): ?>
-                                <div class="team_description"><?php echo $team['description'];?></div>
-                            <?php endif; ?>
-                            <?php if (isset($team['team_list'])): ?>
-                                <h3>Team</h3>
-                                <div class="team_list"><?php echo $team['team_list']; ?></div>
-                            <?php endif; ?>
-                                <div class="created-width mb-5">
-                                    <strong>
                                     <?php
-                                    switch ($exhibitType) {
-                                        case 'litfass_featured':
-                                            echo __('Unterstützt von');
-                                            break;
-
-                                        default:
-                                            echo __('Erstellt mit');
-                                            break;
-                                    }
+                                        $institutionCount++;
+                                        endforeach;
                                     ?>
-                                    :</strong><br>
-                                    <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
+                                    </div>
+                                <?php endif; ?>
+                                <?php $team = unserialize($exhibit->team); ?>
+                                <?php if (isset($team['description'])): ?>
+                                    <div class="team_description"><?php echo $team['description'];?></div>
+                                <?php endif; ?>
+                                <?php if (isset($team['team_list'])): ?>
+                                    <h3>Team</h3>
+                                    <div class="team_list"><?php echo $team['team_list']; ?></div>
+                                <?php endif; ?>
+                                    <div class="created-width mb-5">
+                                        <strong>
+                                        <?php
+                                        switch ($exhibitType) {
+                                            case 'litfass_featured':
+                                                echo __('Unterstützt von');
+                                                break;
+
+                                            default:
+                                                echo __('Erstellt mit');
+                                                break;
+                                        }
+                                        ?>
+                                        :</strong><br>
+                                        <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
+                                    </div>
+                                    <p><small>Diese Ausstellung wurde am <?php echo $publishDate; ?> veröffentlicht.</small></p>
                                 </div>
-                                <p><small>Diese Ausstellung wurde am <?php echo $publishDate; ?> veröffentlicht.</small></p>
                             </div>
                         </div>
                     </div>

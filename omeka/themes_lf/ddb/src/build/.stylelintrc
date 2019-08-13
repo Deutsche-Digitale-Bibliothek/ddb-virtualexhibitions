@@ -307,7 +307,7 @@
     "selector-list-comma-space-before": "never-single-line",
     "selector-max-attribute": 2,
     "selector-max-class": 8,
-    "selector-max-combinators": 4,
+    "selector-max-combinators": 6,
     "selector-max-compound-selectors": 6,
     "selector-max-empty-lines": 1,
     "selector-max-id": 1,

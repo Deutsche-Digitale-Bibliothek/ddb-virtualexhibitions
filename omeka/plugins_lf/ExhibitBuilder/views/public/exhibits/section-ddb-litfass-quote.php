@@ -13,7 +13,6 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-
                                 <div class="quote-container">
                                     <blockquote>
                                     <?php $blockquote = exhibit_builder_page_text(1); ?>

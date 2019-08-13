@@ -731,12 +731,27 @@ a:hover {
         height: 100%;
         // padding: 75px 0;
         padding-right: 17px;
+        // padding-bottom: 3rem;
         overflow-y: scroll;
         h1:first-of-type {
           margin-top: 75px;
         }
-        p:last-of-type {
-          margin-bottom: 75px;
+        // p:last-of-type {
+        //   margin-bottom: 75px;
+        // }
+        .scroll-element-inner {
+          margin-bottom: 4.6875rem;
+          @include media-breakpoint-down(sm) {
+            margin-bottom: 2.5rem;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          p {
+            word-break: break-all;
+            word-break: break-word;
+          }
         }
       }
     }
@@ -1373,6 +1388,9 @@ a:hover {
   .col-bottom {
     align-self: flex-end;
     padding-bottom: 4.25rem;
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 0;
+    }
   }
   .scroll-container {
     .scroll-element {

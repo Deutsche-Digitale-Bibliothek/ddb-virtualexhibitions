@@ -11,8 +11,10 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                                <h1><?php echo __('Impressum'); ?></h1>
-                                <?php echo $imprint; ?>
+                                <div class="scroll-element-inner">
+                                    <h1><?php echo __('Impressum'); ?></h1>
+                                    <?php echo $imprint; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
