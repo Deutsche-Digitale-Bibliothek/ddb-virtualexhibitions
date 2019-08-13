@@ -464,12 +464,13 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
         // easier to modify.
 
         // Start modify Grandgeorg Websolutions:
-        // Add original
+        // Add original and middsize
         $imgClasses = array(
             null => 'thumb',
             'thumbnail'=>'thumb',
             'square_thumbnail'=>'thumb',
             'fullsize'=>'full',
+            'middsize'=>'middsize',
             'original'=>'original',
         );
         // End Grandgeorg Websolutions

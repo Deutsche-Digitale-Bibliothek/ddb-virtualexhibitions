@@ -30,6 +30,15 @@ class Omeka_Form_AppearanceSettings extends Omeka_Form
             'required' => true
         ));
 
+        // Start Grandgeorg Websolutions
+        $this->addElement('text', 'middsize_constraint', array(
+            'label' => __('Middlesize Image Size'),
+            'description' => __('Maximum middlesize image size constraint (in pixels).'),
+            'validators' => array('Digits'),
+            'required' => true
+        ));
+        // End Grandgeorg Websolutions
+
         $this->addElement('text', 'thumbnail_constraint', array(
             'label' => __('Thumbnail Size'),
             'description' => __('Maximum thumbnail size constraint (in pixels).'),
@@ -91,7 +100,11 @@ class Omeka_Form_AppearanceSettings extends Omeka_Form
 
         $this->addDisplayGroup(
             array(
-                'fullsize_constraint', 'thumbnail_constraint',
+                'fullsize_constraint',
+                // Start Grandgeorg Websolutions
+                'middsize_constraint',
+                // End Grandgeorg Websolutions
+                'thumbnail_constraint',
                 'square_thumbnail_constraint',
             ),
             'derivative-constraints', array('legend' => __('Derivative Size Constraints'))
@@ -99,8 +112,12 @@ class Omeka_Form_AppearanceSettings extends Omeka_Form
 
         $this->addDisplayGroup(
             array(
-                'use_square_thumbnail', 'link_to_file_metadata', 'per_page_admin', 'per_page_public',
-                'show_empty_elements', 'show_element_set_headings',
+                'use_square_thumbnail',
+                'link_to_file_metadata',
+                'per_page_admin',
+                'per_page_public',
+                'show_empty_elements',
+                'show_element_set_headings',
             ),
             'display-settings', array('legend' => __('Display Settings'))
         );

@@ -1,14 +1,14 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
 /**
  * A file and its metadata.
- * 
+ *
  * @package Omeka\Record
  */
 class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Interface
@@ -122,6 +122,9 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     private static $_pathsByType = array(
         'original' => 'original',
         'fullsize' => 'fullsize',
+        // Start Grandgeorg Websolutions
+        'middsize' => 'middsize',
+        // End Grandgeorg Websolutions
         'thumbnail' => 'thumbnails',
         'square_thumbnail' => 'square_thumbnails'
     );
@@ -139,6 +142,10 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
                 return $this->getWebPath('original');
             case 'fullsize_uri':
                 return $this->getWebPath('fullsize');
+            // Start Grandgeorg Websolutions
+            case 'middsize_uri':
+                return $this->getWebPath('middsize');
+            // End Grandgeorg Websolutions
             case 'thumbnail_uri':
                 return $this->getWebPath('thumbnail');
             case 'square_thumbnail_uri':
@@ -164,7 +171,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Unset immutable properties from $_POST.
-     * 
+     *
      * @param array $post
      * @return array
      */
@@ -180,7 +187,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Before-save hook.
-     * 
+     *
      * @param array $args
      */
     protected function beforeSave($args)
@@ -192,7 +199,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * After-save hook.
-     * 
+     *
      * @param array $args
      */
     protected function afterSave($args)
@@ -212,7 +219,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Get the Item this file belongs to.
-     * 
+     *
      * @return Item
      */
     public function getItem()
@@ -255,7 +262,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Get the filename for this file's derivative images.
-     * 
+     *
      * @return string
      */
     public function getDerivativeFilename()
@@ -266,7 +273,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Determine whether this file has a thumbnail image.
-     * 
+     *
      * @return bool
      */
     public function hasThumbnail()
@@ -278,7 +285,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      * Determine whether this record has a fullsize image.
      *
      * This is an alias for hasThumbnail().
-     * 
+     *
      * @return bool
      */
     public function hasFullsize()
@@ -288,7 +295,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Get the original file's extension.
-     * 
+     *
      * @return string
      */
     public function getExtension()
@@ -297,9 +304,9 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
     }
 
     /**
-     * Set the default values that will be stored for this record in the 'files' 
+     * Set the default values that will be stored for this record in the 'files'
      * table.
-     * 
+     *
      * @param string
      */
     public function setDefaults($filepath, array $options = array())
@@ -349,6 +356,9 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         }
         $creator = Zend_Registry::get('file_derivative_creator');
         $creator->addDerivative('fullsize', get_option('fullsize_constraint'));
+        // Start Grandgeorg Websolutions
+        $creator->addDerivative('middsize', get_option('middsize_constraint'));
+        // End Grandgeorg Websolutions
         $creator->addDerivative('thumbnail', get_option('thumbnail_constraint'));
         $creator->addDerivative('square_thumbnail', get_option('square_thumbnail_constraint'));
         if ($creator->create($this->getPath('original'),
@@ -361,7 +371,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Extract ID3 metadata associated with the file.
-     * 
+     *
      * @return bool Whether getID3 was able to read the file.
      */
     public function extractMetadata()
@@ -436,7 +446,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Get a storage path for the file.
-     * 
+     *
      * @param string $type
      * @return string
      */
@@ -456,7 +466,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Set the storage object.
-     * 
+     *
      * @param Omeka_Storage $storage
      */
     public function setStorage($storage)
@@ -466,7 +476,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     /**
      * Get the storage object.
-     * 
+     *
      * @return Omeka_Storage
      */
     public function getStorage()

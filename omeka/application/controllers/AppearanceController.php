@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -12,6 +12,9 @@
 class AppearanceController extends Omeka_Controller_AbstractActionController
 {
     const DEFAULT_FULLSIZE_CONSTRAINT = 800;
+    // Start Grandgeorg Websolutions
+    const DEFAULT_MIDDSIZE_CONSTRAINT = 960;
+    // End Grandgeorg Websolutions
     const DEFAULT_THUMBNAIL_CONSTRAINT = 200;
     const DEFAULT_SQUARE_THUMBNAIL_CONSTRAINT = 200;
     const DEFAULT_PER_PAGE_ADMIN = 10;

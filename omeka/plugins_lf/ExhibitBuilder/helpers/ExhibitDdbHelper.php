@@ -1722,6 +1722,10 @@ class ExhibitDdbHelper
                 'linkToFile' => false,
                 'imgAttributes'=> $imgAttributes
             );
+            if ($imageSize === 'middsize' && is_readable(FILES_DIR . '/' . $file->getStoragePath('middsize'))) {
+                $fileOptions['imageSize'] = 'middsize';
+            }
+
 
             // audio
             $audioTypes = ['audio/mpeg', 'audio/ogg'];

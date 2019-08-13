@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -9,16 +9,16 @@
 /**
  * Standard local filesystem storage adapter.
  *
- * The default adapter; this stores files in the Omeka files directory by 
+ * The default adapter; this stores files in the Omeka files directory by
  * default, but can be set to point to a different path.
- * 
+ *
  * @package Omeka\Storage\Adapter
  */
 class Omeka_Storage_Adapter_Filesystem implements Omeka_Storage_Adapter_AdapterInterface
 {
     /**
      * Local directory where files are stored.
-     * 
+     *
      * @var string
      */
     protected $_localDir;
@@ -27,6 +27,9 @@ class Omeka_Storage_Adapter_Filesystem implements Omeka_Storage_Adapter_AdapterI
         'thumbnails',
         'square_thumbnails',
         'fullsize',
+        // Start Grandgeorg Websolutions
+        'middsize',
+        // End Grandgeorg Websolutions
         'original',
         'theme_uploads'
     );
@@ -215,6 +218,13 @@ class Omeka_Storage_Adapter_Filesystem implements Omeka_Storage_Adapter_AdapterI
     protected function _rename($source, $dest)
     {
         $destDir = dirname($dest);
+
+        // Start Grandgeorg Websolutions
+        if (!is_dir($destDir)) {
+            $made = @mkdir($destDir, 0770, true);
+        }
+        // End Grandgeorg Websolutions
+
         if (!is_writable($destDir)) {
             throw new Omeka_Storage_Exception("Destination directory is not "
                 . "writable: '$destDir'.");

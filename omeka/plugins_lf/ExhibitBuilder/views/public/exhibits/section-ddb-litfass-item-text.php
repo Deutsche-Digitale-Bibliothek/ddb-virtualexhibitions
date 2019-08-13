@@ -82,7 +82,8 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                             $attachmentMarkup = ExhibitDdbHelper::getAttachmentMarkup(
                                 $attachment,
                                 array('class' => 'media-item'),
-                                true
+                                true,
+                                'middsize'
                             );
                             ?>
                             <?php if (empty($attachmentMarkup)): ?>

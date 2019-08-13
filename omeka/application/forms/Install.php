@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -13,6 +13,9 @@ class Omeka_Form_Install extends Omeka_Form
 {
     const DEFAULT_TAG_DELIMITER = ',';
     const DEFAULT_FULLSIZE_CONSTRAINT = 800;
+    // Start Grandgeorg Websolutions
+    const DEFAULT_MIDDSIZE_CONSTRAINT = 960;
+    // End Grandgeorg Websolutions
     const DEFAULT_THUMBNAIL_CONSTRAINT = 200;
     const DEFAULT_SQUARE_THUMBNAIL_CONSTRAINT = 200;
     const DEFAULT_PER_PAGE_ADMIN = 10;
@@ -132,6 +135,16 @@ class Omeka_Form_Install extends Omeka_Form
             'required' => true
         ));
 
+        // Start Grandgeorg Websolutions
+        $this->addElement('text', 'middsize_constraint', array(
+            'label' => __('Middlesize Image Size'),
+            'description' => __('Maximum middlesize image size constraint (in pixels)'),
+            'value' => self::DEFAULT_MIDDSIZE_CONSTRAINT,
+            'validators' => array('Digits'),
+            'required' => true
+        ));
+        // End Grandgeorg Websolutions
+
         $this->addElement('text', 'thumbnail_constraint', array(
             'label' => __('Thumbnail Size'),
             'description' => __('Maximum thumbnail size constraint (in pixels)'),
@@ -187,8 +200,13 @@ class Omeka_Form_Install extends Omeka_Form
 
         $this->addDisplayGroup(
             array('administrator_email', 'site_title', 'description',
-                  'copyright', 'author', 'tag_delimiter', 'fullsize_constraint',
-                  'thumbnail_constraint', 'square_thumbnail_constraint',
+                  'copyright', 'author', 'tag_delimiter',
+                  'fullsize_constraint',
+                //   Start Grandgeorg Websolutions
+                  'middsize_constraint',
+                //   End Grandgeorg Websolutions
+                  'thumbnail_constraint',
+                  'square_thumbnail_constraint',
                   'per_page_admin', 'per_page_public', 'show_empty_elements',
                   'path_to_convert'),
             'site_settings',

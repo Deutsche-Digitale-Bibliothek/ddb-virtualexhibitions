@@ -1,7 +1,7 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
@@ -13,7 +13,7 @@ class Api_File extends Omeka_Record_Api_AbstractRecordAdapter
 {
     /**
      * Get the REST API representation for a file.
-     * 
+     *
      * @param File $record
      * @return array
      */
@@ -25,6 +25,9 @@ class Api_File extends Omeka_Record_Api_AbstractRecordAdapter
             'file_urls' => array(
                 'original' => $record->getWebPath(),
                 'fullsize' => $record->has_derivative_image ? $record->getWebPath('fullsize') : null,
+                // Start Grandgeorg Websolutions
+                'middsize' => $record->has_derivative_image ? $record->getWebPath('middsize') : null,
+                // End Grandgeorg Webesolutions
                 'thumbnail' => $record->has_derivative_image ? $record->getWebPath('thumbnail') : null,
                 'square_thumbnail' => $record->has_derivative_image ? $record->getWebPath('square_thumbnail') : null,
             ),
@@ -53,7 +56,7 @@ class Api_File extends Omeka_Record_Api_AbstractRecordAdapter
 
     /**
      * Set POST data to a file.
-     * 
+     *
      * @param File $record
      * @param mixed $data
      */
@@ -67,7 +70,7 @@ class Api_File extends Omeka_Record_Api_AbstractRecordAdapter
 
     /**
      * Set PUT data to a file.
-     * 
+     *
      * @param File $record
      * @param mixed $data
      */

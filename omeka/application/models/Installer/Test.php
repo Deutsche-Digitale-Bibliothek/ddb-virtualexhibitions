@@ -1,14 +1,14 @@
 <?php
 /**
  * Omeka
- * 
+ *
  * @copyright Copyright 2007-2012 Roy Rosenzweig Center for History and New Media
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
 /**
  * Installer for test cases that require database access.
- * 
+ *
  * @package Omeka\Install
  */
 class Installer_Test extends Installer_Default
@@ -24,6 +24,9 @@ class Installer_Test extends Installer_Default
         'thumbnail_constraint' => Omeka_Form_Install::DEFAULT_THUMBNAIL_CONSTRAINT,
         'square_thumbnail_constraint' => Omeka_Form_Install::DEFAULT_SQUARE_THUMBNAIL_CONSTRAINT,
         'fullsize_constraint' => Omeka_Form_Install::DEFAULT_FULLSIZE_CONSTRAINT,
+        // Start Grandgeorg Websolutions
+        'middsize_constraint' => Omeka_Form_Install::DEFAULT_MIDDSIZE_CONSTRAINT,
+        // End Grandgeorg Websolutions
         'per_page_admin' => Omeka_Form_Install::DEFAULT_PER_PAGE_ADMIN,
         'per_page_public' => Omeka_Form_Install::DEFAULT_PER_PAGE_PUBLIC,
         'show_empty_elements' => Omeka_Form_Install::DEFAULT_SHOW_EMPTY_ELEMENTS,
