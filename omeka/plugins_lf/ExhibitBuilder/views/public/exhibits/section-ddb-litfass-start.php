@@ -39,13 +39,14 @@ if ($exhibitType === 'litfass_ddb') {
                             <span>
                                 <?php $institutionsHtml = ''; ?>
                                 <?php foreach ($institutions as $institution): ?>
-                                <?php if (!empty($institution['name'])) {
+                                <?php
+                                if (!empty($institution['name'])) {
                                     if (!empty($institutionsHtml)) { $institutionsHtml .= '<br>'; }
                                     $institutionsHtml .= $institution['name'];
                                 }
-                                echo $institutionsHtml;
                                 ?>
                                 <?php endforeach; ?>
+                                <?php echo $institutionsHtml; ?>
                             </span>
                         </div>
                         <?php endif; ?>
