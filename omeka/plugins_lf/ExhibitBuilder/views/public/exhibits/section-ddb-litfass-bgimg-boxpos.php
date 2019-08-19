@@ -18,7 +18,10 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
     <?php echo (!empty($bgImgUrl))? ' style="background-image: url(' . $bgImgUrl . '); background-position: ' . $pageoptions['bgpos'] . ';"' : ''; ?>>
 
     <?php if ($bgAttachmant['type'] === 'ddb-video' && !empty($bgAttachmant['videoSrc']) && !empty($bgAttachmant['videoMimeType'])): ?>
-    <video class="litfass-bg-video" loop muted data-autoplay>
+    <video class="litfass-bg-video"
+        <?php echo (isset($bgAttachmant['offsetStart']))? 'data-video-offset-start="' . $bgAttachmant['offsetStart'] . '"' : '';?>
+        <?php echo (isset($bgAttachmant['offsetStop']))? 'data-video-offset-stop="' . $bgAttachmant['offsetStop'] . '"' : '';?>
+        loop muted data-autoplay>
         <source src="<?php echo $bgAttachmant['videoSrc']; ?>" type="video/<?php echo $bgAttachmant['videoMimeType']; ?>">
     </video>
     <?php endif; ?>
