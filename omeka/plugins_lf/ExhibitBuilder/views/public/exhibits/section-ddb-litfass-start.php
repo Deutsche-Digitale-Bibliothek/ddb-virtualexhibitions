@@ -57,19 +57,19 @@ if ($exhibitType === 'litfass_ddb') {
                                 class="icon-next-page title-page-next-link">
                             <g transform="translate(-276.5 -376.5)">
                                 <g transform="translate(365.5 455.5) rotate(180)">
-                                <g>
-                                    <line class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)" />
-                                    <line class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)" />
-                                    <line class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)" />
+                                    <g>
+                                        <line class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)" />
+                                        <line class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)" />
+                                        <line class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)" />
+                                    </g>
+                                    <g transform="translate(130 110) rotate(180)">
+                                        <line class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)" />
+                                        <line class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)" />
+                                        <line class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)" />
+                                    </g>
                                 </g>
-                                <g transform="translate(130 110) rotate(180)">
-                                    <line class="cls-1" x2="10" transform="translate(52.5 32.5) rotate(180)" />
-                                    <line class="cls-1" x2="10" transform="translate(52.5 77.5) rotate(180)" />
-                                    <line class="cls-1" y1="45" transform="translate(42.5 77.5) rotate(180)" />
-                                </g>
-                                </g>
-                                <path class="cls-2 arrow-bottom" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 390.565)" />
-                                <path class="cls-2 arrow-top" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 400.565)" />
+                                <path class="cls-2 arrow-bottom" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 395.565)" />
+                                <path class="cls-2 arrow-top" d="M0,0,11.744,12.063,23.807,0" transform="translate(288.565 405.565)" />
                             </g>
                             </svg>
                         </div>
