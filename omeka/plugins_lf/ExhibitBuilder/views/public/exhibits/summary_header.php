@@ -5,7 +5,7 @@
     <img src="<?php echo img('ddb-studio-logo-small-inverse.svg'); ?>" alt="DDB Studio" class="nav_logo_small" id="nav_logo_small">
     <?php endif; ?>
     <div class="header_title"><?php echo (!empty($shorttitle))? $shorttitle : $title; ?></div>
-    <svg class="icon-expand icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    <svg id="toggle-fullsize" class="toggle-fullsize icon-expand icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
         <g transform="translate(2177 -848)">
             <path fill="none" stroke="#FFFFFF" stroke-width="2" d="M-2176,856v-7h7" />

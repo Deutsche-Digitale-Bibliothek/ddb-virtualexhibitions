@@ -181,19 +181,13 @@
 
   // @TODO check if resize fires each time ...
   function fpAfterResize(width, height) {
+    customAfterResize();
+  }
+
+  function customAfterResize() {
     var isResponsive = ($(window).width() < 768)? true : false;
     var anchor = $('#menu .active').data('menuanchor');
-    // This has no great effect at all, as anchor changes after resize ...
-    // $.fn.fullpage.silentMoveTo(anchor);
-
-    // console.log('anchor ' + anchor);
-    // console.log('resize - ' +
-    // 'width, width-jq, height, height-jq:',
-    // width, $(window).width(), height, $(window).height());
-
-    // Fix fullpage.js will reset height to pixel instead of 100% after fpAfterResponsive
     setTableCellHeight(isResponsive);
-
     setScrollElementMaxHeight();
     setMediaProps();
     toggleScrollControls();
@@ -962,6 +956,48 @@
     });
   }
 
+  function openFullscreen(element) {
+    if (typeof element === 'undefined') {
+      element = document.documentElement;
+    }
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  }
+
+  function closeFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+
+  function bindFullscreen() {
+    $('#toggle-fullsize').on('click', function() {
+      var control = $(this);
+      if (control.hasClass('active')) {
+        closeFullscreen();
+        customAfterResize();
+        control.removeClass('active');
+      } else {
+        openFullscreen();
+        customAfterResize();
+        control.addClass('active');
+      }
+    });
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -982,6 +1018,7 @@
       bindVideoClipping();
       bindEmptyClick();
       bindHeaderLogo();
+      bindFullscreen();
       bindCookieNotice();
     });
   }
