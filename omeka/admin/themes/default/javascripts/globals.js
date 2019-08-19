@@ -57,7 +57,14 @@ if (!Omeka) {
             add_unload_trigger: false,
             language: 'de',
             forced_root_block: '',
-            force_p_newlines: true
+            force_p_newlines: true,
+            valid_classes: {
+                '*': '',
+                'hp': 'typo_xxl typo_xxs',
+                'h1': 'litfass_ddb',
+                'h2': 'litfass_ddb',
+                'h3': 'litfass_ddb',
+            }
         };
 
         tinymce.init($.extend(initParams, params));
