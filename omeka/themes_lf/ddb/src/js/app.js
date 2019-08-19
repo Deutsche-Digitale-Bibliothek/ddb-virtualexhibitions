@@ -934,6 +934,34 @@
     });
   }
 
+  function bindVideoClipping() {
+    $('.litfass-bg-video').each(function(index) {
+      var video = this;
+      var offsetStart = $(video).data('video-offset-start');
+      var offsetStop = $(video).data('video-offset-stop');
+      if (typeof offsetStart !== 'undefined' ||
+        typeof offsetStop !== 'undefined') {
+
+        video.ontimeupdate = function() {
+          // if (typeof offsetStart !== 'undefined' &&
+          //   video.currentTime < offsetStart) {
+
+          //   video.currentTime = offsetStart;
+          // } else
+          if (typeof offsetStop !== 'undefined' &&
+            video.currentTime > offsetStop) {
+
+            if (typeof offsetStart === 'undefined') {
+              offsetStart = 0;
+            }
+            video.currentTime = offsetStart;
+            video.play();
+          }
+        };
+      }
+    });
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -951,6 +979,7 @@
       bindZoom();
       bind3D();
       bindVideoControl();
+      bindVideoClipping();
       bindEmptyClick();
       bindHeaderLogo();
       bindCookieNotice();

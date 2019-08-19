@@ -551,7 +551,9 @@ class ExhibitDdbHelper
             'type'      => '',
             'imgSrc'    => '',
             'videoSrc'  => '',
-            'videoMimeType' => ''
+            'videoMimeType' => '',
+            'offsetStart' => null,
+            'offsetStop' => null
         );
         if (!$attachment) {
             $backgroundSrc['type'] = 'none';
@@ -578,6 +580,12 @@ class ExhibitDdbHelper
                             $backgroundSrc['videoSrc'] = '//player.vimeo.com/video/' . $videoId . '/';
                             break;
                         case 'ddb':
+                            $extended = self::getDdbVideoTimeOffset($videoId);
+                            // extract($extended, EXTR_OVERWRITE);
+                            $videoId = $extended['videoId'];
+                            $backgroundSrc['offsetStart'] = $extended['offsetStart'];
+                            $backgroundSrc['offsetStop'] = $extended['offsetStop'];
+
                             self::setVideoDdbInfo($videoId);
                             if (!array_key_exists($videoId, self::$ddbVideoXml)) {
                                 self::getDdbVideoXml($videoId);
@@ -587,6 +595,17 @@ class ExhibitDdbHelper
                                 $backgroundSrc['type'] = 'ddb-video';
                                 $backgroundSrc['videoSrc'] = self::$ddbVideoXml[$videoId]['video']['src'];
                                 $backgroundSrc['videoMimeType'] = self::$ddbVideoXml[$videoId]['video']['mime'];
+                            }
+                            // Specifying_playback_range:
+                            if (isset($backgroundSrc['offsetStart'])) {
+                                $backgroundSrc['videoSrc'] .= '#t=' . $backgroundSrc['offsetStart'];
+                            }
+                            if (isset($backgroundSrc['offsetStop'])) {
+                                if (isset($backgroundSrc['offsetStart'])) {
+                                    $backgroundSrc['videoSrc'] .= ',' . $backgroundSrc['offsetStop'];
+                                } else {
+                                    $backgroundSrc['videoSrc'] .= '#t=,' . $backgroundSrc['offsetStop'];
+                                }
                             }
                             if (array_key_exists($videoId, self::$ddbVideoXml) &&
                                 isset(self::$ddbVideoXml[$videoId]['img']) &&
