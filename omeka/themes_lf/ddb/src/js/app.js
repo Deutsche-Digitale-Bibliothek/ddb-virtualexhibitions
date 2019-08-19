@@ -187,11 +187,33 @@
   function customAfterResize() {
     var isResponsive = ($(window).width() < 768)? true : false;
     var anchor = $('#menu .active').data('menuanchor');
+    // var activeSection = $.fn.fullpage.getActiveSection();
+    // var activeSlide = $.fn.fullpage.getActiveSlide();
+    // var willmove = true;
     setTableCellHeight(isResponsive);
     setScrollElementMaxHeight();
     setMediaProps();
     toggleScrollControls();
     scrollMenu(anchor);
+
+    // console.log(activeSection);
+
+    // Unsolved: fpAfterResize() is called to late from fullpage,
+    // slide already moved to wrong one on first call
+    //
+    // setTimeout(function() {
+    //   if (willmove) {
+    //     $.fn.fullpage.silentMoveTo(activeSection.anchor);
+    //     willmove = false;
+    //   }
+    // }, 200);
+
+    // setTimeout(function() {
+    //   if (!willmove) {
+    //     willmove = true;
+    //   }
+    // }, 800);
+
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -988,11 +1010,13 @@
       var control = $(this);
       if (control.hasClass('active')) {
         closeFullscreen();
-        customAfterResize();
+        // Next would just call customAfterResize() twice as AfterResize is beeing called later anyway
+        // customAfterResize();
         control.removeClass('active');
       } else {
         openFullscreen();
-        customAfterResize();
+        // Next would just call customAfterResize() twice as AfterResize is beeing called later anyway
+        // customAfterResize();
         control.addClass('active');
       }
     });
