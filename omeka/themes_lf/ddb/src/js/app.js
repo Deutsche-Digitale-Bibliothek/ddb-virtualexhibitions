@@ -694,7 +694,7 @@
     }
     $('body').append(container);
 
-    $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '">')
+    $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '" class="zoom-image">')
       .on('load', function() {
         spinner.remove();
         var image = $(this);
@@ -707,11 +707,27 @@
           minZoom: minZoom,
           onTouch: function(e) {
             var discardClasses = ['zoom-hint-container', 'zoom-close'];
-            for (var i = 0; i < e.path.length; i++) {
-              if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
-                // if false, tells the library not to
-                // preventDefault and not to stopPropageation:
-                return false;
+            // for (var i = 0; i < e.path.length; i++) {
+            //   if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
+            //     // if false, tells the library not to
+            //     // preventDefault and not to stopPropageation:
+            //     return false;
+            //   }
+            // }
+            // return false;
+            // e.preventDefault();
+            if (e.path) {
+              for (var i = 0; i < e.path.length; i++) {
+                if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
+                  return false;
+                }
+              }
+            } else if (e.composedPath) {
+              var path = e.composedPath();
+              for (var j = 0; j < path.length; j++) {
+                if (discardClasses.indexOf(path[j]['className']) !== -1) {
+                  return false;
+                }
               }
             }
             return true;

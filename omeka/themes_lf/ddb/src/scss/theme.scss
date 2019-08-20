@@ -1894,6 +1894,13 @@ i.license-or {
   &.active {
     cursor: grabbing;
   }
+  .zoom-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 1;
+  }
 }
 .zoom-spinner-container {
   position: absolute;
