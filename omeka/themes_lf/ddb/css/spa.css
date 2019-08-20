@@ -150,9 +150,11 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
+  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
 }
 
@@ -1427,6 +1429,9 @@ pre code {
   color: #1d1d1b;
   text-align: center;
   vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -2265,7 +2270,9 @@ input[type="button"].btn-block {
 
 @media (min-width: 576px) {
   .card-columns {
+    -moz-column-count: 3;
     column-count: 3;
+    -moz-column-gap: 1.25rem;
     column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
@@ -2304,6 +2311,12 @@ input[type="button"].btn-block {
   margin-bottom: -1px;
 }
 
+@-webkit-keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes spinner-border {
   to {
     transform: rotate(360deg);
@@ -2318,6 +2331,7 @@ input[type="button"].btn-block {
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
   animation: spinner-border .75s linear infinite;
 }
 
@@ -2325,6 +2339,15 @@ input[type="button"].btn-block {
   width: 1rem;
   height: 1rem;
   border-width: 0.2em;
+}
+
+@-webkit-keyframes spinner-grow {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes spinner-grow {
@@ -2344,6 +2367,7 @@ input[type="button"].btn-block {
   background-color: currentColor;
   border-radius: 50%;
   opacity: 0;
+  -webkit-animation: spinner-grow .75s linear infinite;
   animation: spinner-grow .75s linear infinite;
 }
 
@@ -3460,6 +3484,7 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -3479,8 +3504,9 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -7226,6 +7252,7 @@ a:hover {
 .chapter-num h3 span {
   padding: .25rem .5rem;
   background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
@@ -7238,6 +7265,7 @@ a:hover {
 .chapter-title h2 span {
   padding: .25rem .5rem;
   background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
@@ -7291,6 +7319,7 @@ a:hover {
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 600;
   background-color: rgba(0, 0, 0, 0.8);
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
@@ -7341,6 +7370,7 @@ a:hover {
 .section-title h1 span {
   padding: .25rem .5rem;
   background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
@@ -7366,6 +7396,7 @@ a:hover {
 .section-title h2 span {
   padding: .25rem .5rem;
   background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
@@ -7378,12 +7409,30 @@ a:hover {
 
 .section-title .icon-next-page .arrow-top {
   transform: translate(288.565px, 395.565px);
+  -webkit-animation: startpage-arrow-top 1.6s linear infinite;
   animation: startpage-arrow-top 1.6s linear infinite;
 }
 
 .section-title .icon-next-page .arrow-bottom {
   transform: translate(288.565px, 405.565px);
+  -webkit-animation: startpage-arrow-bottom 1.6s linear infinite;
   animation: startpage-arrow-bottom 1.6s linear infinite;
+}
+
+@-webkit-keyframes startpage-arrow-top {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translate(288.565px, 395.565px);
+  }
+  40% {
+    transform: translate(288.565px, 385.565px);
+  }
+  60% {
+    transform: translate(288.565px, 390.565px);
+  }
 }
 
 @keyframes startpage-arrow-top {
@@ -7399,6 +7448,22 @@ a:hover {
   }
   60% {
     transform: translate(288.565px, 390.565px);
+  }
+}
+
+@-webkit-keyframes startpage-arrow-bottom {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translate(288.565px, 405.565px);
+  }
+  40% {
+    transform: translate(288.565px, 395.565px);
+  }
+  60% {
+    transform: translate(288.565px, 400.565px);
   }
 }
 
@@ -7964,11 +8029,13 @@ i.license-or {
   display: block;
   overflow: hidden;
   cursor: move;
+  cursor: -webkit-grab;
   cursor: grab;
   background-color: #191919;
 }
 
 .zoom-container.active {
+  cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 
@@ -7976,8 +8043,8 @@ i.license-or {
   position: absolute;
   top: 0;
   left: 0;
-  display: block;
   z-index: 1;
+  display: block;
 }
 
 .zoom-spinner-container {
@@ -8214,6 +8281,7 @@ i.license-or {
   z-index: 0;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -8272,5 +8340,4 @@ i.license-or {
   font-weight: 600;
   line-height: 1.12;
 }
-
 /*# sourceMappingURL=spa.css.map */
