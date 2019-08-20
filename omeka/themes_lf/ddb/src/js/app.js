@@ -187,33 +187,11 @@
   function customAfterResize() {
     var isResponsive = ($(window).width() < 768)? true : false;
     var anchor = $('#menu .active').data('menuanchor');
-    // var activeSection = $.fn.fullpage.getActiveSection();
-    // var activeSlide = $.fn.fullpage.getActiveSlide();
-    // var willmove = true;
     setTableCellHeight(isResponsive);
     setScrollElementMaxHeight();
     setMediaProps();
     toggleScrollControls();
     scrollMenu(anchor);
-
-    // console.log(activeSection);
-
-    // Unsolved: fpAfterResize() is called to late from fullpage,
-    // slide already moved to wrong one on first call
-    //
-    // setTimeout(function() {
-    //   if (willmove) {
-    //     $.fn.fullpage.silentMoveTo(activeSection.anchor);
-    //     willmove = false;
-    //   }
-    // }, 200);
-
-    // setTimeout(function() {
-    //   if (!willmove) {
-    //     willmove = true;
-    //   }
-    // }, 800);
-
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
@@ -517,13 +495,13 @@
 
   function setRGBColorInPalettes() {
     for (var palette in litfassColorPalettes) {
-      if (litfassColorPalettes.hasOwnProperty(palette)) {
-        for (var color in litfassColorPalettes[palette]) {
-          if (litfassColorPalettes[palette].hasOwnProperty(color)) {
-            litfassColorPalettes[palette][color]['rgb'] = hexToRgb(litfassColorPalettes[palette][color]['hex']);
-          }
-        }
+      // if (litfassColorPalettes.hasOwnProperty(palette)) {
+      for (var color in litfassColorPalettes[palette]) {
+        // if (litfassColorPalettes[palette].hasOwnProperty(color)) {
+        litfassColorPalettes[palette][color]['rgb'] = hexToRgb(litfassColorPalettes[palette][color]['hex']);
+        // }
       }
+      // }
     }
   }
 
@@ -1006,18 +984,28 @@
   }
 
   function bindFullscreen() {
-    $('#toggle-fullsize').on('click', function() {
+    $('#toggle-fullsize').on('click', function(e) {
+      e.preventDefault();
       var control = $(this);
+      var activeSection = $.fn.fullpage.getActiveSection();
+      var activeSlide = $.fn.fullpage.getActiveSlide();
+      if (activeSlide && activeSlide.item) {
+        activeSlide = ($(activeSlide.item).data('slideno') - 1);
+      } else {
+        activeSlide = 0;
+      }
       if (control.hasClass('active')) {
         closeFullscreen();
-        // Next would just call customAfterResize() twice as AfterResize is beeing called later anyway
-        // customAfterResize();
         control.removeClass('active');
+        setTimeout(function() {
+          $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
+        }, 400);
       } else {
         openFullscreen();
-        // Next would just call customAfterResize() twice as AfterResize is beeing called later anyway
-        // customAfterResize();
         control.addClass('active');
+        setTimeout(function() {
+          $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
+        }, 400);
       }
     });
   }
