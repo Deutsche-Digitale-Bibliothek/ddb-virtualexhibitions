@@ -12,7 +12,7 @@
     "panzoom": "^8.1.2",
     "popper.js": "^1.15.0",
     "shariff": "^3.2.1",
-    "simplebar": "^4.1.0"
+    "simplebar": "^3.1.5"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",

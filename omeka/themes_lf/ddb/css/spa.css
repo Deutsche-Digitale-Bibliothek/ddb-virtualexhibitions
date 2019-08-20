@@ -5675,6 +5675,10 @@ a.text-dark:hover, a.text-dark:focus {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
 }
 
 .simplebar-wrapper {
@@ -5714,7 +5718,7 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-overflow-scrolling: touch;
 }
 
-.simplebar-content-wrapper {
+.simplebar-content {
   direction: inherit;
   box-sizing: border-box !important;
   position: relative;
@@ -5723,18 +5727,12 @@ a.text-dark:hover, a.text-dark:focus {
   /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
   width: auto;
   visibility: visible;
-  overflow: auto;
+  overflow: scroll;
   /* Scroll on this element otherwise element can't have a padding applied properly */
   max-width: 100%;
   /* Not required for horizontal scroll to trigger */
   max-height: 100%;
   /* Needed for vertical scroll to trigger */
-}
-
-.simplebar-content:before,
-.simplebar-content:after {
-  content: ' ';
-  display: table;
 }
 
 .simplebar-placeholder {
@@ -5747,7 +5745,7 @@ a.text-dark:hover, a.text-dark:focus {
 .simplebar-height-auto-observer-wrapper {
   box-sizing: inherit !important;
   height: 100%;
-  width: 100%;
+  width: inherit;
   max-width: 1px;
   position: relative;
   float: left;
@@ -5784,7 +5782,6 @@ a.text-dark:hover, a.text-dark:focus {
   right: 0;
   bottom: 0;
   pointer-events: none;
-  overflow: hidden;
 }
 
 [data-simplebar].simplebar-dragging .simplebar-track {
@@ -5800,7 +5797,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .simplebar-scrollbar:before {
   position: absolute;
-  content: '';
+  content: "";
   background: black;
   border-radius: 7px;
   left: 0;
@@ -5847,7 +5844,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /* Rtl support */
-[data-simplebar-direction='rtl'] .simplebar-track.simplebar-vertical {
+[data-simplebar-direction="rtl"] .simplebar-track.simplebar-vertical {
   right: auto;
   left: 0;
 }
