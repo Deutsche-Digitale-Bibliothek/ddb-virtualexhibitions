@@ -59,6 +59,8 @@ h1 {
   line-height: 1.16;
   @include media-breakpoint-down(sm) {
     margin-bottom: 40px;
+    word-break: break-word;
+    word-wrap: break-word;
   }
   &.litfass_ddb {
     font-family: $font-family-ddb-headings;
@@ -72,6 +74,8 @@ h2 {
   margin-bottom: 55px;
   @include media-breakpoint-down(sm) {
     margin-bottom: 40px;
+    word-break: break-word;
+    word-wrap: break-word;
   }
   &.litfass_ddb {
     font-family: $font-family-ddb-headings;
@@ -86,8 +90,8 @@ h3 {
   @include media-breakpoint-down(sm) {
     margin-bottom: 30px;
     font-size: 1.5rem;
-    word-break: break-all;
     word-break: break-word;
+    word-wrap: break-word;
   }
   &.litfass_ddb {
     font-family: $font-family-ddb-headings;
@@ -101,6 +105,7 @@ h4 {
   margin-bottom: 45px;
   @include media-breakpoint-down(sm) {
     margin-bottom: 30px;
+    word-break: break-word;
   }
 }
 
@@ -108,6 +113,7 @@ h5 {
   margin-bottom: 40px;
   @include media-breakpoint-down(sm) {
     margin-bottom: 30px;
+    word-break: break-word;
   }
 }
 
