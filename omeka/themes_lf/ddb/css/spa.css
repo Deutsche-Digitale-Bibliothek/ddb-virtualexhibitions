@@ -7356,6 +7356,7 @@ a:hover {
   margin-bottom: 20px;
   font-size: 3.625rem;
   line-height: 4.25rem;
+  line-height: 1.172;
 }
 
 @media (max-width: 767.98px) {
@@ -7382,6 +7383,7 @@ a:hover {
   margin: 0;
   font-size: 1.75rem;
   line-height: 2.375rem;
+  line-height: 1.357;
 }
 
 @media (max-width: 767.98px) {
@@ -7414,6 +7416,26 @@ a:hover {
   transform: translate(288.565px, 405.565px);
   -webkit-animation: startpage-arrow-bottom 1.6s linear infinite;
   animation: startpage-arrow-bottom 1.6s linear infinite;
+}
+
+.exhibit-type-litfass_ddb .section-title h1 {
+  display: block;
+  line-height: 1.6;
+}
+
+.exhibit-type-litfass_ddb .section-title h1 span {
+  padding: 4px .5rem;
+  line-height: 1.7;
+}
+
+.exhibit-type-litfass_ddb .section-title h2 {
+  display: block;
+  line-height: 1.8;
+}
+
+.exhibit-type-litfass_ddb .section-title h2 span {
+  padding: 4px .5rem;
+  line-height: 1.9;
 }
 
 @-webkit-keyframes startpage-arrow-top {
