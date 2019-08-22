@@ -297,18 +297,19 @@ class ExhibitDdbHelper
             list(, $videoId) = explode(":", $matches[0][3]);
             switch ($videoType) {
                 case 'vimeo':
-                    self::setVideoVimeoInfo($videoId);
-                    $videoInfo = self::getVideoVimeoInfo($videoId);
-                    $currentThumbnailsize = 'thumbnail_' . $thumbnailsize;
-                    if (isset($videoInfo[0][$currentThumbnailsize]) && !empty($videoInfo[0][$currentThumbnailsize])) {
-                        if (isset($outputType) && $outputType === 'URL') {
-                            $output = $videoInfo[0][$currentThumbnailsize];
-                        } else {
-                            $output = '<img src="'
-                                . $videoInfo[0][$currentThumbnailsize] . '" alt="video" >';
+                    // we do not need thumbnails for vimeo here ...
+                    // self::setVideoVimeoInfo($videoId);
+                    // $videoInfo = self::getVideoVimeoInfo($videoId);
+                    // var_dump($videoInfo);
+                    // if (isset($videoInfo['thumbnail_url']) && !empty($videoInfo['thumbnail_url'])) {
+                    //     if (isset($outputType) && $outputType === 'URL') {
+                    //         $output = $videoInfo['thumbnail_url'];
+                    //     } else {
+                    //         $output = '<img src="'
+                    //             . $videoInfo['thumbnail_url'] . '" alt="video" >';
 
-                        }
-                    }
+                    //     }
+                    // }
                     break;
                 case 'ddb':
                     self::setVideoDdbInfo($videoId);
@@ -406,11 +407,9 @@ class ExhibitDdbHelper
             switch ($videoType) {
                 case 'vimeo':
                     self::setVideoVimeoInfo($videoId);
-                    if (!empty(self::$videoVimeoInfo)) {
-                        $output = '<iframe src="//player.vimeo.com/video/' . $videoId
-                            . '?portrait=0&amp;byline=0&amp;color=E6183C" width="469" height="264" '
-                            . 'frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>'
-                            . '</iframe>';
+                    // var_dump(self::$videoVimeoInfo);
+                    if (!empty(self::$videoVimeoInfo) && isset(self::$videoVimeoInfo{'html'})) {
+                        $output = self::$videoVimeoInfo{'html'};
                     }
                     break;
                 case 'ddb':
@@ -633,12 +632,12 @@ class ExhibitDdbHelper
     public static function setVideoVimeoInfo($videoId)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_PROXY, 'ddbproxy.deutsche-digitale-bibliothek.de:8888');
-        curl_setopt($ch, CURLOPT_URL, 'http://vimeo.com/api/v2/video/' . $videoId . '.php');
+        // curl_setopt($ch, CURLOPT_PROXY, 'ddbproxy.deutsche-digitale-bibliothek.de:8888');
+        curl_setopt($ch, CURLOPT_URL, 'https://vimeo.com/api/oembed.json?url=https://vimeo.com/' . $videoId . '');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $info = curl_exec($ch);
-        if (isset($info) && !empty($info) && $info != $videoId . ' not found.') {
-            self::$videoVimeoInfo = @unserialize($info);
+        if (isset($info) && !empty($info)) {
+            self::$videoVimeoInfo = json_decode($info, true);
         }
         curl_close($ch);
     }
