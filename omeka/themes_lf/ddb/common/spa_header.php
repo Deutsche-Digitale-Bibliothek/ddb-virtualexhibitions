@@ -17,7 +17,7 @@
     echo js_tag('vendor/jwplayer/jwplayer') . "\n";
     echo js_tag('vendor/jwplayer/key') . "\n";
     ?>
-    <?php queue_css_file('spa.min'); ?>
+    <?php queue_css_file('spa.min', 'all', false, 'css', date("YmdHis", filemtime(dirname(__FILE__) . '/../css/spa.min.css'))); ?>
     <?php echo head_css(); ?>
     <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors), $exhibitType, $navcolor); ?>
 </head>

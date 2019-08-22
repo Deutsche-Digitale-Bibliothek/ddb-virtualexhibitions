@@ -6275,6 +6275,14 @@ a:hover {
   opacity: 1;
 }
 
+.toggle-fullsize.active .arrow-head-up {
+  transform: translate(12px, 12px);
+}
+
+.toggle-fullsize.active .arrow-head-down {
+  transform: translate(-12px, -12px);
+}
+
 .header_title {
   flex-grow: 1;
   text-transform: uppercase;

@@ -8,9 +8,9 @@
     <svg id="toggle-fullsize" class="toggle-fullsize icon-expand icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
         <g transform="translate(2177 -848)">
-            <path fill="none" stroke="#FFFFFF" stroke-width="2" d="M-2176,856v-7h7" />
+            <path fill="none" class="arrow-head-up" stroke="#FFFFFF" stroke-width="2" d="M-2176,856v-7h7" />
             <line fill="none" stroke="#FFFFFF" stroke-width="2" x1="-2176" y1="849" x2="-2168" y2="857" />
-            <path fill="none" stroke="#FFFFFF" stroke-width="2" d="M-2156,862v7h-7" />
+            <path fill="none" class="arrow-head-down" stroke="#FFFFFF" stroke-width="2" d="M-2156,862v7h-7" />
             <line fill="none" stroke="#FFFFFF" stroke-width="2" x1="-2156" y1="869" x2="-2164" y2="861" />
         </g>
     </svg>

@@ -973,7 +973,8 @@
   }
 
   // function openFullscreen() {
-  //   var element = document.documentElement;
+  //   var doc = window.document;
+  //   var element = doc.documentElement;
 
   //   if (element.requestFullscreen) {
   //     element.requestFullscreen();
@@ -998,7 +999,35 @@
   //   }
   // }
 
+  function toggleFullScreen() {
+
+    var doc = window.document;
+    var docEl = doc.documentElement;
+
+    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+      requestFullScreen.call(docEl);
+    } else {
+      cancelFullScreen.call(doc);
+    }
+  }
+
   function bindFullscreen() {
+    window.addEventListener('fullscreenchange', function (event) {
+      event.stopPropagation();
+    }, true);
+    window.addEventListener('webkitfullscreenchange', function (event) {
+      event.stopPropagation();
+    }, true);
+    window.addEventListener('webkitfullscreenchange', function (event) {
+      event.stopPropagation();
+    }, true);
+    window.addEventListener('MSFullscreenChange', function (event) {
+      event.stopPropagation();
+    }, true);
+
     $('#toggle-fullsize').on('click', function(e) {
       e.preventDefault();
       var control = $(this);
@@ -1009,25 +1038,32 @@
       } else {
         activeSlide = 0;
       }
-      if (control.hasClass('active')) {
-        if (screenfull.enabled) {
-          screenfull.request();
-          // closeFullscreen();
-          control.removeClass('active');
-          setTimeout(function() {
-            $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
-          }, 400);
-        }
-      } else {
-        if (screenfull.enabled) {
-          screenfull.exit();
-          // openFullscreen();
-          control.addClass('active');
-          setTimeout(function() {
-            $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
-          }, 400);
-        }
-      }
+      toggleFullScreen();
+      setTimeout(function() {
+        $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
+      }, 400);
+      control.toggleClass('active');
+      // if (control.hasClass('active')) {
+      //   // if (screenfull.enabled) {
+      //   // screenfull.request();
+      //   // closeFullscreen();
+      //   toggleFullScreen();
+      // control.removeClass('active');
+      //   setTimeout(function() {
+      //     $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
+      //   }, 400);
+      //   // }
+      // } else {
+      //   // if (screenfull.enabled) {
+      //   // screenfull.exit();
+      //   // openFullscreen();
+      //   toggleFullScreen();
+      // control.addClass('active');
+      //   setTimeout(function() {
+      //     $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
+      //   }, 400);
+      //   // }
+      // }
     });
   }
 

@@ -10,7 +10,7 @@ echo 'window.litfassOptions = {';
     echo 'path_images: \'' . web_path_to('images') . '\', ';
 echo '};';
 echo '</script>'. "\n";
-echo js_tag('bundle.min');
+echo js_tag('bundle.min', 'javascripts', date("YmdHis", filemtime(dirname(__FILE__) . '/../javascripts/bundle.min.js')));
 ?>
 
 <!-- Piwik -->
