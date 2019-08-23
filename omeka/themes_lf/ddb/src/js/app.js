@@ -15,6 +15,8 @@
   var cookieDuration = 14;                    // Number of days before the cookie expires, and the banner reappears
   var cookieName = 'complianceCookie';        // Name of our cookie
   var cookieValue = 'on';                     // Value of cookie
+  var vimeoVideos = {};
+  var vimeoBgVideos = {};
 
   // var pubsub = (function () {
 
@@ -137,6 +139,8 @@
 
   function fpOnLeave(origin, destination, direction) {
     // console.log(origin, destination, direction);
+    playVimeoBgVideo(destination);
+    pauseVimeoBgVideo(origin);
   }
 
   function fpAfterLoad(from, current, direction) {
@@ -1067,6 +1071,74 @@
     });
   }
 
+  function setVimeoVideos() {
+    $('.litfass-vimeo-video').each(function(){
+      var videoContainer = $(this);
+      var data = {
+        id: videoContainer.data('ddb-vimeo-id'),
+        width: videoContainer.width(),
+        color: 'ef0053',
+        dnt: true,
+      };
+      var id = videoContainer.attr('id');
+      vimeoVideos[id] = new Vimeo.Player(id, data);
+      // vimeoVideos[id].setColor('#ef0053');
+    });
+  }
+
+  function setVimeoBgVideos() {
+    $('.litfass-bg-vimeo-video').each(function(){
+      var videoContainer = $(this);
+      var data = {
+        id: videoContainer.data('ddb-vimeo-id'),
+        width: videoContainer.width(),
+        color: 'ef0053',
+        // background: true,
+        controls: false,
+        autoplay: false,
+        dnt: true,
+        loop: true,
+        muted: true
+
+      };
+      var id = videoContainer.attr('id');
+      vimeoBgVideos[id] = new Vimeo.Player(id, data);
+      // vimeoBgVideos[id].setColor('#ef0053');
+      // vimeoBgVideos[id].setVolume(0);
+      // vimeoBgVideos[id].setLoop(true);
+      // vimeoBgVideos[id].getPaused()
+      //   .then(function(paused) {
+      //     if (!paused) {
+      //       vimeoBgVideos[id].pause();
+      //     }
+      //   });
+    });
+  }
+
+  function pauseVimeoBgVideo(section) {
+    var item = $(section.item);
+    var id = $('.litfass-bg-vimeo-video', item).attr('id');
+    if (typeof id !== 'undefined') {
+      for (var prop in vimeoBgVideos) {
+        if (prop === id) {
+          vimeoBgVideos[prop].pause();
+        }
+      }
+    }
+  }
+
+  function playVimeoBgVideo(section) {
+    var item = $(section.item);
+    var id = $('.litfass-bg-vimeo-video', item).attr('id');
+    if (typeof id !== 'undefined') {
+      for (var prop in vimeoBgVideos) {
+        if (prop === id) {
+          vimeoBgVideos[prop].play();
+        }
+      }
+    }
+  }
+
   function init() {
     $(function() {
       setMenuProps();
@@ -1079,6 +1151,8 @@
       bindSCrollControls();
       setMediaProps();
       toggleScrollControls();
+      setVimeoVideos();
+      setVimeoBgVideos();
       bindMediaInfo();
       bindTitlePageNextLink();
       bindZoom();

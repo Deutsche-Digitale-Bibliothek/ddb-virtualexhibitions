@@ -82,6 +82,14 @@ class ExhibitDdbHelper
 
     public static $currentAttechmentMediaType = 'text';
 
+    public static $vimeoVideoCounter = 0;
+
+    public static function getVimeoVideoCounter()
+    {
+        self::$vimeoVideoCounter = self::$vimeoVideoCounter + 1;
+        return self::$vimeoVideoCounter;
+    }
+
 
     /**
      * Main shortcode parser
@@ -407,9 +415,15 @@ class ExhibitDdbHelper
             switch ($videoType) {
                 case 'vimeo':
                     self::setVideoVimeoInfo($videoId);
-                    // var_dump(self::$videoVimeoInfo);
                     if (!empty(self::$videoVimeoInfo) && isset(self::$videoVimeoInfo{'html'})) {
-                        $output = self::$videoVimeoInfo{'html'};
+                        $counter = self::getVimeoVideoCounter();
+                        // $output = self::$videoVimeoInfo{'html'};
+                        // var_dump(self::$videoVimeoInfo);
+                        $output = '<div class="litfass-vimeo-video" ' .
+                        'id="vimeo-video-' . self::$videoVimeoInfo['video_id'] . '-c-' . $counter .  '" ' .
+                        'data-ddb-vimeo-id="' . self::$videoVimeoInfo['video_id'] . '" ' .
+                        'data-ddb-vimeo-width="' . self::$videoVimeoInfo['width'] . '" ' .
+                        '></div>';
                     }
                     break;
                 case 'ddb':
@@ -576,7 +590,11 @@ class ExhibitDdbHelper
                     switch ($videoType) {
                         case 'vimeo':
                             $backgroundSrc['type'] = 'vimeo';
-                            $backgroundSrc['videoSrc'] = '//player.vimeo.com/video/' . $videoId . '/';
+                            self::setVideoVimeoInfo($videoId);
+                            if (!empty(self::$videoVimeoInfo)) {
+                                $backgroundSrc['info'] = self::$videoVimeoInfo;
+                            }
+                            // $backgroundSrc['videoSrc'] = '//player.vimeo.com/video/' . $videoId . '/';
                             break;
                         case 'ddb':
                             $extended = self::getDdbVideoTimeOffset($videoId);

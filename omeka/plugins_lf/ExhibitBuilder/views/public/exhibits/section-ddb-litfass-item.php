@@ -8,7 +8,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $exhibitSection->backgroundcolor; ?>"
     <?php echo ($inSlider)? 'data-slideno="' . $slideCounter . '"' : ''; ?>
-    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-text-media <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
+    class="<?php echo ($inSlider)? 'slide' : 'section'; ?> section-media <?php echo $colors[$exhibitSection->backgroundcolor]['type']; ?> tile"
     id="se<?php echo $sectionCounter; ?><?php echo ($inSlider)? '-slide' . $slideCounter : ''; ?>">
     <div class="section-container container-fluid">
         <div class="row">

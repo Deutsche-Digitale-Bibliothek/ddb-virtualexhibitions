@@ -26,6 +26,16 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
     </video>
     <?php endif; ?>
 
+    <?php if ($bgAttachmant['type'] === 'vimeo'):
+    $vimeoVideoId = 'vimeo-s' . $sectionCounter . '-' . $bgAttachmant['info']['video_id'];
+    $vimeoVideoId .= ($inSlider)? '-slide-' . $slideCounter : '';
+    ?>
+    <div class="litfass-bg-vimeo-video"
+        id="<?php echo $vimeoVideoId; ?>"
+        data-ddb-vimeo-id="<?php echo $bgAttachmant['info']['video_id']; ?>"
+        data-ddb-vimeo-width="<?php echo $bgAttachmant['info']['width']; ?>"></div>
+    <?php endif; ?>
+
     <?php if ($attachment): ?>
     <div class="boxpos-controls">
         <div class="control-info control-icon control-icon-right">
