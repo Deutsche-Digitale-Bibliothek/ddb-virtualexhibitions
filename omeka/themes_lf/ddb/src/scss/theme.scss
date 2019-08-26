@@ -1122,7 +1122,8 @@ audio {
 .control-video {
   padding: 0 .5rem;
   margin-bottom: .25rem;
-  .icon-video-audio {
+  .icon-video-audio,
+  .icon-video-audio-vimeo {
     cursor: pointer;
     .icon-video-audio-rect {
       fill: #1d1d1b;

@@ -948,6 +948,22 @@
     });
   }
 
+  function bindVideoVimeoControl() {
+    $('.icon-video-audio-vimeo').on('click', function() {
+      var controlElement = $(this);
+      var tile = controlElement.parents('.tile');
+      var video = $('.litfass-bg-vimeo-video', tile);
+      var id = video.attr('id');
+      if (controlElement.hasClass('active')) {
+        controlElement.removeClass('active');
+        vimeoBgVideos[id].setVolume(0);
+      } else {
+        controlElement.addClass('active');
+        vimeoBgVideos[id].setVolume(1);
+      }
+    });
+  }
+
   function bindVideoClipping() {
     $('.litfass-bg-video').each(function(index) {
       var video = this;
@@ -1158,6 +1174,7 @@
       bindZoom();
       bind3D();
       bindVideoControl();
+      bindVideoVimeoControl();
       bindVideoClipping();
       bindEmptyClick();
       bindHeaderLogo();

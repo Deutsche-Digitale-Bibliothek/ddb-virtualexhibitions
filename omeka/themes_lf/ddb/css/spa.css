@@ -7174,38 +7174,47 @@ audio {
   margin-bottom: .25rem;
 }
 
-.control-video .icon-video-audio {
+.control-video .icon-video-audio,
+.control-video .icon-video-audio-vimeo {
   cursor: pointer;
 }
 
-.control-video .icon-video-audio .icon-video-audio-rect {
+.control-video .icon-video-audio .icon-video-audio-rect,
+.control-video .icon-video-audio-vimeo .icon-video-audio-rect {
   fill: #1d1d1b;
 }
 
-.control-video .icon-video-audio .icon-video-audio-speaker {
+.control-video .icon-video-audio .icon-video-audio-speaker,
+.control-video .icon-video-audio-vimeo .icon-video-audio-speaker {
   fill: #fff;
 }
 
 .control-video .icon-video-audio .icon-video-audio-volume,
-.control-video .icon-video-audio .icon-video-audio-mute {
+.control-video .icon-video-audio .icon-video-audio-mute,
+.control-video .icon-video-audio-vimeo .icon-video-audio-volume,
+.control-video .icon-video-audio-vimeo .icon-video-audio-mute {
   fill: none;
   stroke: #fff;
 }
 
-.control-video .icon-video-audio .icon-video-audio-volume {
+.control-video .icon-video-audio .icon-video-audio-volume,
+.control-video .icon-video-audio-vimeo .icon-video-audio-volume {
   display: none;
   stroke-width: 2px;
 }
 
-.control-video .icon-video-audio .icon-video-audio-mute {
+.control-video .icon-video-audio .icon-video-audio-mute,
+.control-video .icon-video-audio-vimeo .icon-video-audio-mute {
   stroke-width: 3px;
 }
 
-.control-video .icon-video-audio.active .icon-video-audio-volume {
+.control-video .icon-video-audio.active .icon-video-audio-volume,
+.control-video .icon-video-audio-vimeo.active .icon-video-audio-volume {
   display: inline;
 }
 
-.control-video .icon-video-audio.active .icon-video-audio-mute {
+.control-video .icon-video-audio.active .icon-video-audio-mute,
+.control-video .icon-video-audio-vimeo.active .icon-video-audio-mute {
   display: none;
 }
 
