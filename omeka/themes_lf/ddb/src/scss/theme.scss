@@ -738,6 +738,13 @@ audio {
   // @media (min-width: 1200px) {
   //   background-attachment: fixed;
   // }
+  .slide {
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-origin: content-box;
+    background-size: cover;
+  }
 }
 
 // audio

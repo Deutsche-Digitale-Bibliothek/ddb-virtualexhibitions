@@ -6806,6 +6806,14 @@ audio {
   background-size: cover;
 }
 
+.section .slide {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+}
+
 .audio-controls {
   display: block;
   margin: 0 auto;
