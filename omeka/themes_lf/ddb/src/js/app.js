@@ -139,8 +139,19 @@
 
   function fpOnLeave(origin, destination, direction) {
     // console.log(origin, destination, direction);
+
+    var $origin = $(origin.item);
+
     playVimeoBgVideo(destination);
     pauseVimeoBgVideo(origin);
+
+    if ($origin.hasClass('team') && $origin.hasClass('section')) {
+      containerScrollReset($('.scroll-element', $origin));
+    }
+    if ($origin.hasClass('imprint') && $origin.hasClass('section')) {
+      containerScrollReset($('.scroll-element', $origin));
+    }
+
   }
 
   function fpAfterLoad(from, current, direction) {
@@ -307,6 +318,10 @@
         );
       }
     }
+  }
+
+  function containerScrollReset(element) {
+    element.scrollTop(0);
   }
 
   function bindSCrollControls() {
