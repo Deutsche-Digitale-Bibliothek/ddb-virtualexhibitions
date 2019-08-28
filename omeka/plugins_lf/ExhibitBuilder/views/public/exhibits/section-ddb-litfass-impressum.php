@@ -1,6 +1,6 @@
 <section
     data-color-palette="base"
-    data-color-section="white"
+    data-color-section="lightgray"
     class="section tile imprint"
     id="se<?php echo $sectionCounter; ?>">
     <div class="section-container container-fluid">

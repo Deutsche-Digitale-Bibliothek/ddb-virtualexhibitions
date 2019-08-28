@@ -7900,6 +7900,10 @@ blockquote cite a {
   font-size: 1.375rem;
 }
 
+.imprint {
+  background-color: #eee;
+}
+
 .boxpos-controls {
   position: absolute;
   top: 109px;

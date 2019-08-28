@@ -265,6 +265,11 @@ window.litfassColorPalettes = {
       hex: '#ffffff',
       type: 'light',
       menu: false
+    },
+    lightgray: {
+      hex: '#eeeeee',
+      type: 'light',
+      menu: false
     }
   }
 };

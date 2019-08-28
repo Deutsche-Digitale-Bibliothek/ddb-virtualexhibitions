@@ -114,7 +114,7 @@ $sectionTitles[] = [
 $sectionCounter++;
 require  $dir . '/section-ddb-litfass-impressum.php';
 $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
-$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.white.hex');
+$sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors, 'litfassColorPalettes.base.lightgray.hex');
 $sectionTitles[] = [
     'title' => __('Impressum'),
     'pagethumbnail' => '',
