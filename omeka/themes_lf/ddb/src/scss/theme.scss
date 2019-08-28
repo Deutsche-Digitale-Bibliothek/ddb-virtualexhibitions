@@ -624,6 +624,7 @@ audio {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  height: 100%;
   // float: left;
   @include media-breakpoint-down(sm) {
     display: block;
@@ -686,14 +687,14 @@ audio {
 .slideControlWrapper {
   position: absolute;
   right: 0;
-  bottom: 4px;
+  bottom: 0;
   left: 0;
   z-index: 4;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  padding-top: 3px;
+  padding: 6px 0;
   line-height: 1;
   background-color: #333;
 }
