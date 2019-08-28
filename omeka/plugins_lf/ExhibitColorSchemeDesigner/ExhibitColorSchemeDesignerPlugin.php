@@ -117,15 +117,15 @@ class ExhibitColorSchemeDesignerPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function filterAdminNavigationMain($nav)
     {
-        $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
-        if($currentuser->role === 'super') {
-            $nav[] = array(
-                'label'     => __('Farbschemata für Ausstellungen'),
-                'uri'       => url('exhibit-color-scheme-designer'),
-                'resource'  => 'ExhibitColorSchemeDesigner',
-                'privilege' => 'browse'
-            );
-        }
+        // $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+        // if($currentuser->role === 'super') {
+        //     $nav[] = array(
+        //         'label'     => __('Farbschemata für Ausstellungen'),
+        //         'uri'       => url('exhibit-color-scheme-designer'),
+        //         'resource'  => 'ExhibitColorSchemeDesigner',
+        //         'privilege' => 'super'
+        //     );
+        // }
         return $nav;
     }
 

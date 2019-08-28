@@ -26,6 +26,12 @@ class ExhibitColorSchemeDesigner_IndexController extends
         return;
     }
 
+    public function browseAction()
+    {
+        // $this->_helper->redirector('browse');
+        return;
+    }
+
     public function addAction()
     {
         $model = new ExhibitColorScheme;

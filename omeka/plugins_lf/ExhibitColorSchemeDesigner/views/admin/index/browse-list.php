@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php foreach (loop('exhibit_color_schemes') as $colorScheme): ?>
+    <?php if (false): foreach (loop('exhibit_color_schemes') as $colorScheme): ?>
         <tr>
             <td>
                 <span class="name">
@@ -66,6 +66,6 @@
                 html_escape(format_date(metadata('exhibit_color_scheme', 'updated'), Zend_Date::DATETIME_SHORT))); ?>
             </td>
         </tr>
-    <?php endforeach; ?>
+    <?php endforeach; endif; ?>
     </tbody>
 </table>
