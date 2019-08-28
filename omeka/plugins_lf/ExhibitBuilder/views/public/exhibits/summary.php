@@ -14,7 +14,7 @@ if ($publishDate) {
 }
 $colorpalette = metadata('exhibit', 'colorpalette');
 $navcolor = metadata('exhibit', 'nav_color');
-if (!isset($navcolor) || empty($nav_color)) {
+if (!isset($navcolor) || empty($navcolor)) {
     $navcolor = 'dark';
 }
 $colors = ExhibitDdbHelper::getColorsFromExhibitColorPalette($colorpalette);
