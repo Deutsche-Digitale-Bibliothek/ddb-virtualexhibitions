@@ -11,10 +11,10 @@
   // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
   // Conceived by Robert Kent, James Bavington & Tom Foyster
 
-  var dropCookie = true;                      // false disables the Cookie, allowing you to style the banner
-  var cookieDuration = 14;                    // Number of days before the cookie expires, and the banner reappears
-  var cookieName = 'complianceCookie';        // Name of our cookie
-  var cookieValue = 'on';                     // Value of cookie
+  var dropCookie = true; // false disables the Cookie, allowing you to style the banner
+  var cookieDuration = 14; // Number of days before the cookie expires, and the banner reappears
+  var cookieName = 'complianceCookie'; // Name of our cookie
+  var cookieValue = 'on'; // Value of cookie
   var vimeoVideos = {};
   var vimeoBgVideos = {};
 
@@ -181,7 +181,7 @@
   }
 
   function fpAfterResponsive(isResponsive) {
-    console.log('is responsive ' + isResponsive);
+    // console.log('is responsive ' + isResponsive);
     // console.log('is responsive (< 768)? - ' +
     // 'responsive, width-jq, height-jq:',
     // isResponsive, $(window).width(), $(window).height());
@@ -201,7 +201,7 @@
   }
 
   function customAfterResize() {
-    var isResponsive = ($(window).width() < 768)? true : false;
+    var isResponsive = ($(window).width() < 768) ? true : false;
     var anchor = $('#menu .active').data('menuanchor');
     setTableCellHeight(isResponsive);
     setScrollElementMaxHeight();
@@ -257,7 +257,7 @@
     if (isResponsive) {
       $('.fp-tableCell').css('height', '100%');
     } else {
-      $('.fp-tableCell').each(function() {
+      $('.fp-tableCell').each(function () {
         var tableCell = $(this);
         // console.log(tableCell.parent('.slide'));
         if (tableCell.parent('.slide').length > 0) {
@@ -306,8 +306,7 @@
         direction === 'up' && element.scrollTop() !== 0 ||
         direction === 'down'
       ) {
-        element.animate(
-          {
+        element.animate({
             scrollTop: (element.scrollTop() + step)
           },
           10,
@@ -315,8 +314,7 @@
             if (element.hasClass('active')) {
               containerScrollDown(direction, element);
             }
-          }
-        );
+          });
       }
     }
   }
@@ -407,7 +405,9 @@
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
       }
-      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
+      $mediaItem.css({
+        'max-height': mediaItemMaxHeight + 'px'
+      });
     });
 
     $('.media-item-3d-thumb').each(function () {
@@ -421,21 +421,25 @@
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
       }
-      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
+      $mediaItem.css({
+        'max-height': mediaItemMaxHeight + 'px'
+      });
     });
 
     $('.media-audio-image').each(function () {
       var $mediaItem = $(this);
       var mediaItemMaxHeight = height;
       var $caption = $('.media-item-caption', $(this).parents('.media-item-container'));
-      var captionHeight= $caption.height() + 10; // 10 for top margin
+      var captionHeight = $caption.height() + 10; // 10 for top margin
       if (captionHeight) {
         mediaItemMaxHeight -= captionHeight;
       }
       if ($mediaItem.parents('.slide').length) {
         mediaItemMaxHeight -= slideHeightOffset;
       }
-      $mediaItem.css({ 'max-height': mediaItemMaxHeight + 'px' });
+      $mediaItem.css({
+        'max-height': mediaItemMaxHeight + 'px'
+      });
     });
 
 
@@ -487,27 +491,25 @@
       var color = section.data('colorSection');
       var fader = $('.fader', section);
       if (typeof litfassColorPalettes[palette] !== 'undefined' &&
-          typeof litfassColorPalettes[palette][color] !== 'undefined' &&
-          fader.length > 0)
-      {
+        typeof litfassColorPalettes[palette][color] !== 'undefined' &&
+        fader.length > 0) {
         fader.css({
           background: 'linear-gradient(to bottom, rgba(' +
-          litfassColorPalettes[palette][color]['rgb']['r'] + ', ' +
-          litfassColorPalettes[palette][color]['rgb']['g'] + ', ' +
-          litfassColorPalettes[palette][color]['rgb']['b'] + ', 0) 0, ' +
-          litfassColorPalettes[palette][color]['hex'] + ' 75%, ' +
-          litfassColorPalettes[palette][color]['hex'] + ' 100%)'
+            litfassColorPalettes[palette][color]['rgb']['r'] + ', ' +
+            litfassColorPalettes[palette][color]['rgb']['g'] + ', ' +
+            litfassColorPalettes[palette][color]['rgb']['b'] + ', 0) 0, ' +
+            litfassColorPalettes[palette][color]['hex'] + ' 75%, ' +
+            litfassColorPalettes[palette][color]['hex'] + ' 100%)'
         });
       }
       if (typeof litfassColorPalettes[palette] !== 'undefined' &&
         typeof litfassColorPalettes[palette][color] !== 'undefined' &&
-        section.hasClass('slide'))
-      {
+        section.hasClass('slide')) {
         section.css({
           'background-color': 'rgb(' +
-          litfassColorPalettes[palette][color]['rgb']['r'] + ', ' +
-          litfassColorPalettes[palette][color]['rgb']['g'] + ', ' +
-          litfassColorPalettes[palette][color]['rgb']['b'] + ')'
+            litfassColorPalettes[palette][color]['rgb']['r'] + ', ' +
+            litfassColorPalettes[palette][color]['rgb']['g'] + ', ' +
+            litfassColorPalettes[palette][color]['rgb']['b'] + ')'
         });
       }
     });
@@ -587,8 +589,8 @@
   }
 
   function bindEmptyClick() {
-    $(document).click(function(e) {
-      if($(e.target).closest('#menu-container').length <= 0 &&
+    $(document).click(function (e) {
+      if ($(e.target).closest('#menu-container').length <= 0 &&
         $('#menu-container').hasClass('active')
       ) {
         $('#toggle-menu').trigger('click');
@@ -682,9 +684,9 @@
     var container = $('<div id="zoom-container" class="zoom-container"></div>');
     var spinner = $(
       '<div class="zoom-spinner-container">' +
-        '<div class="spinner-border zoom-spinner text-white" role="status">' +
-          '<span class="sr-only">Lade ...</span>' +
-        '</div>' +
+      '<div class="spinner-border zoom-spinner text-white" role="status">' +
+      '<span class="sr-only">Lade ...</span>' +
+      '</div>' +
       '</div>'
     );
     if (!zoomHintShown) {
@@ -695,18 +697,18 @@
     }
     var closer = $(
       '<div class="zoom-close">' +
-        '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
-          '<g>' +
-            '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
-            '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
-          '</g>' +
-        '</svg>' +
+      '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
+      '<g>' +
+      '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
+      '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
+      '</g>' +
+      '</svg>' +
       '</div>'
     );
     if (!zoomHintShown) {
       container.append(closer, spinner, zoomHint);
       zoomHintShown = true;
-      zoomHint.on('click', function() {
+      zoomHint.on('click', function () {
         $(this).remove();
       });
     } else {
@@ -715,7 +717,7 @@
     $('body').append(container);
 
     $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '" class="zoom-image">')
-      .on('load', function() {
+      .on('load', function () {
         spinner.remove();
         var image = $(this);
         container.append(image);
@@ -725,7 +727,7 @@
           smoothScroll: false,
           maxZoom: 1,
           minZoom: minZoom,
-          onTouch: function(e) {
+          onTouch: function (e) {
             var discardClasses = ['zoom-hint-container', 'zoom-close'];
             // for (var i = 0; i < e.path.length; i++) {
             //   if (discardClasses.indexOf(e.path[i]['className']) !== -1) {
@@ -752,7 +754,7 @@
             }
             return true;
           },
-          onDoubleClick: function(e) {
+          onDoubleClick: function (e) {
             e.preventDefault();
             e.stopPropagation();
             panzoomInstance.dispose();
@@ -794,14 +796,14 @@
     // });
 
     container.trigger('click').trigger('focus');
-    closer.on('click', function(e) {
+    closer.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       panzoomInstance.dispose();
       $(this).off('click');
       container.remove();
     });
-    $(document).on('keydown.zoom', function(e) {
+    $(document).on('keydown.zoom', function (e) {
       if (e.keyCode === 27 || e.key === 'Escape') {
         e.preventDefault();
         e.stopPropagation();
@@ -814,7 +816,7 @@
 
   function bindZoom() {
     $('img.media-item').bind('click', generateZoomableImage);
-    $('.control-zoom').bind('click', function() {
+    $('.control-zoom').bind('click', function () {
       $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
     });
     $('.zoomer').bind('click', generateZoomableImage);
@@ -826,25 +828,25 @@
     var container = $('<div id="zoom-container" class="zoom-container"></div>');
     var object3D = $(
       '<x3d class="x3d" showLog="false" showStat="false">' +
-        '<scene>' +
-          '<inline url="' + caller.data('3durl') + '"> </inline>' +
-        '</scene>' +
-        '</x3d>');
+      '<scene>' +
+      '<inline url="' + caller.data('3durl') + '"> </inline>' +
+      '</scene>' +
+      '</x3d>');
     var closer = $(
       '<div class="zoom-close">' +
-        '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
-          '<g>' +
-            '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
-            '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
-          '</g>' +
-        '</svg>' +
+      '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
+      '<g>' +
+      '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
+      '<line x1="1" y1="1" x2="18" y2="18" stroke="#FFFFFF" stroke-width="2"></line>' +
+      '</g>' +
+      '</svg>' +
       '</div>'
     );
     container.append(object3D, closer);
     $('body').append(container);
     x3dom.reload();
 
-    closer.on('click', function(e) {
+    closer.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       $(this).off('click');
@@ -854,16 +856,16 @@
 
   function bind3D() {
     $('img.media-item-3d-thumb').bind('click', generate3D);
-    $('img.item-3d-thumb-icon').bind('click', function() {
+    $('img.item-3d-thumb-icon').bind('click', function () {
       $(this).siblings('img.media-item-3d-thumb').trigger('click');
     });
-    $('.control-zoom').bind('click', function() {
+    $('.control-zoom').bind('click', function () {
       $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
     });
   }
 
   function setSlideControls() {
-    $('.section-slides').each(function() {
+    $('.section-slides').each(function () {
       var sectionSlide = $(this);
       var controllWrapper = $('<div class="slideControlWrapper"></div>');
       $('.fp-prev', this).appendTo(controllWrapper);
@@ -873,7 +875,7 @@
       slidesInfo.appendTo(controllWrapper);
       var mobileSlideControl = $('<div class="mobileSlideControl"></div>');
       mobileSlideControl.appendTo(controllWrapper);
-      mobileSlideControl.on('click', function() {
+      mobileSlideControl.on('click', function () {
         if (sectionSlide.hasClass('mobile-open')) {
           sectionSlide.removeClass('mobile-open');
           $.fn.fullpage.silentMoveTo(sectionSlide.data('anchor'));
@@ -895,7 +897,7 @@
     var button = $('<button id="close-cookie-notice" type="button" class="close-cookie-notice close btn btn-secondary" aria-label="Close" aria-controls="cookie-notice"><span aria-hidden="true">&times;</span></button>');
     div.append(button);
     $('body').prepend(div);
-    button.on('click', function() {
+    button.on('click', function () {
       dispathCookie();
     });
   }
@@ -929,28 +931,28 @@
 
   function dispathCookie() {
     // Create the cookie only if the user click on "Close"
-    createCookie(cookieName,cookieValue, cookieDuration); // Create the cookie
+    createCookie(cookieName, cookieValue, cookieDuration); // Create the cookie
     // then close the window/
     var element = document.getElementById('cookie-law');
     element.parentNode.removeChild(element);
   }
 
   function bindCookieNotice() {
-    $(window).on('load', function() {
-      if(checkCookie(cookieName) != cookieValue){
+    $(window).on('load', function () {
+      if (checkCookie(cookieName) != cookieValue) {
         createCookieDiv();
       }
     });
   }
 
   function bindHeaderLogo() {
-    $('#nav_logo_small').on('click', function() {
+    $('#nav_logo_small').on('click', function () {
       $.fn.fullpage.moveTo('s0');
     });
   }
 
   function bindVideoControl() {
-    $('.icon-video-audio').on('click', function() {
+    $('.icon-video-audio').on('click', function () {
       var controlElement = $(this);
       var tile = controlElement.parents('.tile');
       var video = $('.litfass-bg-video', tile);
@@ -965,7 +967,7 @@
   }
 
   function bindVideoVimeoControl() {
-    $('.icon-video-audio-vimeo').on('click', function() {
+    $('.icon-video-audio-vimeo').on('click', function () {
       var controlElement = $(this);
       var tile = controlElement.parents('.tile');
       var video = $('.litfass-bg-vimeo-video', tile);
@@ -981,14 +983,14 @@
   }
 
   function bindVideoClipping() {
-    $('.litfass-bg-video').each(function(index) {
+    $('.litfass-bg-video').each(function (index) {
       var video = this;
       var offsetStart = $(video).data('video-offset-start');
       var offsetStop = $(video).data('video-offset-stop');
       if (typeof offsetStart !== 'undefined' ||
         typeof offsetStop !== 'undefined') {
 
-        video.ontimeupdate = function() {
+        video.ontimeupdate = function () {
           // if (typeof offsetStart !== 'undefined' &&
           //   video.currentTime < offsetStart) {
 
@@ -1064,7 +1066,7 @@
       event.stopPropagation();
     }, true);
 
-    $('#toggle-fullsize').on('click', function(e) {
+    $('#toggle-fullsize').on('click', function (e) {
       e.preventDefault();
       var control = $(this);
       var activeSection = $.fn.fullpage.getActiveSection();
@@ -1075,7 +1077,7 @@
         activeSlide = 0;
       }
       toggleFullScreen();
-      setTimeout(function() {
+      setTimeout(function () {
         $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
       }, 400);
       control.toggleClass('active');
@@ -1104,7 +1106,7 @@
   }
 
   function setVimeoVideos() {
-    $('.litfass-vimeo-video').each(function(){
+    $('.litfass-vimeo-video').each(function () {
       var videoContainer = $(this);
       var data = {
         id: videoContainer.data('ddb-vimeo-id'),
@@ -1119,7 +1121,7 @@
   }
 
   function setVimeoBgVideos() {
-    $('.litfass-bg-vimeo-video').each(function(){
+    $('.litfass-bg-vimeo-video').each(function () {
       var videoContainer = $(this);
       var data = {
         id: videoContainer.data('ddb-vimeo-id'),
@@ -1172,7 +1174,7 @@
   }
 
   function init() {
-    $(function() {
+    $(function () {
       setMenuProps();
       setRGBColorInPalettes();
       setColors();
