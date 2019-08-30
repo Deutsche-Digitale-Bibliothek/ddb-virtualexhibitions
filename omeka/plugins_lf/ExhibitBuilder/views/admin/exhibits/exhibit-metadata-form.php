@@ -178,6 +178,31 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titlelogo', __('Titellogo Startkachel')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titellogo (im SVG-Format) für die Startkachel hochalden'); ?></p>
+                    <?php
+                        $hasTitleLogo = false;
+                        if (!empty($exhibit->titlelogo) && is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlelogo)):
+                        $hasTitleLogo = true;
+                    ?>
+                    <a href="<?php echo WEB_FILES . '/layout/titlelogo/' . $exhibit->titlelogo; ?>" target="_blank">
+                        <img src="<?php echo WEB_FILES . '/layout/titlelogo/' . $exhibit->titlelogo; ?>" class="img-sm">
+                    </a>
+                    <?php endif; ?>
+                    <?php echo $this->formFile('titlelogo'); ?>
+                    <?php if ($hasTitleLogo): ?>
+                    <div class="mt-10">
+                        <?php echo $this->formCheckbox('deleteTitlelogo', 1); ?>
+                        <?php echo $this->formLabel('deleteTitlelogo', __('Titellogo entfernen'),
+                            array('class' => 'deleteCheckbox')); ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
             <?php endif; ?>
 
             <div class="field" id="gina_exhibit_metadata_theme_container">

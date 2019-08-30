@@ -10,46 +10,48 @@ if (null === $titlebgpos) {
     $titlebgpos = 'center center';
 }
 $titleimage = null;
+$titlelogo = null;
 if ($exhibitType === 'litfass_ddb') {
     $titleimage = metadata('exhibit', 'titleimage');
+    $titlelogo = metadata('exhibit', 'titlelogo');
 }
 ?>
 <section
     data-color-palette="<?php echo $colorpalette; ?>"
     data-color-section="<?php echo $titlebackgroundcolor; ?>"
-    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type']; if ($titleimage): echo ' with-title-image'; endif;?> tile"
-    <?php echo ($titlebackground)? 'style="background-image: url(\'' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . '\'); background-position: ' . $titlebgpos . ';"' . "\n" : "\n"; ?>
+    class="section section-title <?php echo $colors[$titlebackgroundcolor]['type'];if ($titleimage): echo ' with-title-image';endif; ?> tile"
+    <?php echo ($titlebackground) ? 'style="background-image: url(\'' . WEB_FILES . '/layout/titlebackground/' . $titlebackground . '\'); background-position: ' . $titlebgpos . ';"' . "\n" : "\n"; ?>
     id="se<?php echo $sectionCounter; ?>">
     <?php if ($titleimage): ?>
         <img src="<?php echo WEB_FILES . '/layout/titleimage/' . $titleimage; ?>" alt="title" class="titleimage">
-        <?php endif; ?>
+        <?php endif;?>
     <div class="title-container">
         <div class="title-top">
             <div class="container-fluid">
                 <h1><span><?php echo $title ?></span></h1>
-                <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif; ?>
+                <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif;?>
             </div>
         </div>
         <div class="title-bottom">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
-                        <?php if(!empty($institutions)): ?>
+                        <?php if (!empty($institutions)): ?>
                         <div class="credits">
                             <span>
-                                <?php $institutionsHtml = ''; ?>
+                                <?php $institutionsHtml = '';?>
                                 <?php foreach ($institutions as $institution): ?>
                                 <?php
-                                if (!empty($institution['name'])) {
-                                    if (!empty($institutionsHtml)) { $institutionsHtml .= '<br>'; }
-                                    $institutionsHtml .= $institution['name'];
-                                }
-                                ?>
-                                <?php endforeach; ?>
+if (!empty($institution['name'])) {
+    if (!empty($institutionsHtml)) {$institutionsHtml .= '<br>';}
+    $institutionsHtml .= $institution['name'];
+}
+?>
+                                <?php endforeach;?>
                                 <?php echo $institutionsHtml; ?>
                             </span>
                         </div>
-                        <?php endif; ?>
+                        <?php endif;?>
                     </div>
                     <div class="col-6">
                         <div class="next-page-link">

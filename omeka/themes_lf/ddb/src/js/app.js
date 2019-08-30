@@ -111,7 +111,7 @@
       paddingTop: headerHeight + 'px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu-container',
-      responsiveWidth: 767,
+      responsiveWidth: 767, // 767,
       // responsiveHeight: 0,
       // responsiveSlides: false,
       // parallax: false,
@@ -181,6 +181,7 @@
   }
 
   function fpAfterResponsive(isResponsive) {
+    console.log('is responsive ' + isResponsive);
     // console.log('is responsive (< 768)? - ' +
     // 'responsive, width-jq, height-jq:',
     // isResponsive, $(window).width(), $(window).height());

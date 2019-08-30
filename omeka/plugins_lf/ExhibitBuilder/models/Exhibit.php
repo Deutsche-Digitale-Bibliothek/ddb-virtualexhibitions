@@ -33,12 +33,13 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $titlebackgroundcolor;
     public $titlebgpos;
     public $titleimage;
+    public $titlelogo;
     public $ctrl_colorscheme;
     public $colorpalette;
     public $nav_color;
 
     protected $_related = array(
-        'Pages' => 'getPages', 'TopPages' => 'getTopPages', 'Tags' => 'getTags'
+        'Pages' => 'getPages', 'TopPages' => 'getTopPages', 'Tags' => 'getTags',
     );
 
     public function _initializeMixins()
@@ -57,15 +58,15 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
 
     protected function _validate()
     {
-        if (!strlen((string)$this->title)) {
+        if (!strlen((string) $this->title)) {
             $this->addError('title', __('An exhibit must be given a title.'));
         }
 
-        if (strlen((string)$this->title) > 255) {
+        if (strlen((string) $this->title) > 255) {
             $this->addError('title', __('The title for an exhibit must be 255 characters or less.'));
         }
 
-        if (strlen((string)$this->theme) > 30) {
+        if (strlen((string) $this->theme) > 30) {
             $this->addError('theme', __('The name of your theme must be 30 characters or less.'));
         }
     }
@@ -73,8 +74,8 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     protected function _delete()
     {
         //get all the pages and delete them
-        $pages = $this->getTable('ExhibitPage')->findBy(array('exhibit'=>$this->id));
-        foreach($pages as $page) {
+        $pages = $this->getTable('ExhibitPage')->findBy(array('exhibit' => $this->id));
+        foreach ($pages as $page) {
             $page->delete();
         }
         $this->deleteTaggings();
@@ -160,7 +161,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
             return array();
         }
 
-        return $this->getTable('ExhibitPage')->findBy(array('exhibit'=>$this->id, 'topOnly'=>true, 'sort_field'=>'order'));
+        return $this->getTable('ExhibitPage')->findBy(array('exhibit' => $this->id, 'topOnly' => true, 'sort_field' => 'order'));
     }
 
     public function countTopPages()
@@ -169,9 +170,8 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
             return 0;
         }
 
-        return $this->getTable('ExhibitPage')->count(array('exhibit'=>$this->id, 'topOnly'=>true));
+        return $this->getTable('ExhibitPage')->count(array('exhibit' => $this->id, 'topOnly' => true));
     }
-
 
     public function getTopPageBySlug($slug)
     {
@@ -183,10 +183,9 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
 
     }
 
-
     public function getPagesCount($topOnly = true)
     {
-        return $this->getTable('ExhibitPage')->count(array('exhibit'=>$this->id, 'topOnly'=>$topOnly));
+        return $this->getTable('ExhibitPage')->count(array('exhibit' => $this->id, 'topOnly' => $topOnly));
     }
 
     /**
@@ -198,10 +197,10 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public function hasItem(Item $item)
     {
         if (!$item->exists()) {
-           throw new InvalidArgumentException("Item does not exist (is not persisted).");
+            throw new InvalidArgumentException("Item does not exist (is not persisted).");
         }
         if (!$this->exists()) {
-           throw new RuntimeException("Cannot call hasItem() on a new (non-persisted) exhibit.");
+            throw new RuntimeException("Cannot call hasItem() on a new (non-persisted) exhibit.");
         }
         return $this->getTable()->exhibitHasItem($this->id, $item->id);
     }
@@ -225,7 +224,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
             $themeName = $this->theme;
         }
 
-        $themeName = (string)$themeName;
+        $themeName = (string) $themeName;
         if ($themeName == '' || empty($this->theme_options)) {
             return array();
         }
