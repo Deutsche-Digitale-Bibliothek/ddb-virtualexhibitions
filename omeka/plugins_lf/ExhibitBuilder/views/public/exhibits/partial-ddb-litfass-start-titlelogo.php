@@ -4,23 +4,19 @@
         <div class="col-md-9">
             <div class="title-container">
                 <div class="title-top">
-                    <div class="container-fluid">
-                        <h1><span><?php echo $title ?></span></h1>
-                        <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif;?>
-                    </div>
+                    <h1><span><?php echo $title ?></span></h1>
+                    <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif;?>
                 </div>
                 <div class="title-bottom">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <?php if (!empty($institutions)): ?>
-                                <div class="credits">
-                                    <span>
-                                        <?php echo ExhibitDdbHelper::getInstitutionsHtml($institutions); ?>
-                                    </span>
-                                </div>
-                                <?php endif;?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php if (!empty($institutions)): ?>
+                            <div class="credits">
+                                <span>
+                                    <?php echo ExhibitDdbHelper::getInstitutionsHtml($institutions); ?>
+                                </span>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
