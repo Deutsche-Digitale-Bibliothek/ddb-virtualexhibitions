@@ -285,7 +285,7 @@ audio {
   background-color: rgb(93, 93, 93);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
   transition: right .25s ease-in-out;
-  @media (max-width: 419.98px){
+  @media (max-width: 419.98px) {
     width: 360px;
   }
   &.active {
@@ -587,9 +587,12 @@ audio {
 // .fp-section.fp-table {
 // }
 .fp-tableCell {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
+  // should we do this:
+  overflow: hidden;
 }
 
 @include media-breakpoint-down(sm) {
@@ -1241,28 +1244,38 @@ audio {
 
 // title template
 .title-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   height: 100%;
   min-height: calc(100vh - 40px);
+  @include media-breakpoint-down(sm) {
+    height: auto;
+    min-height: fit-content;
+  }
   .title-top {
     width: 100%;
   }
   .title-bottom {
     align-self: flex-end;
     width: 100%;
-    .next-page-link {
-      position: absolute;
-      bottom: 50px;
-      z-index: 4;
-    }
+    // .next-page-link {
+    //   position: absolute;
+    //   bottom: 50px;
+    //   z-index: 4;
+    // }
     .credits {
+      padding-right: 39px;
       margin-bottom: 50px;
       font-size: 1.125rem;
       line-height: 2rem;
       color: #fff;
+      @include media-breakpoint-down(sm) {
+        margin: 3rem 0 80px;
+        // margin-bottom: 100px;
+      }
       span {
         padding: .25rem .5rem;
         font-family: $font-family-headings;
@@ -1271,6 +1284,12 @@ audio {
         box-decoration-break: clone;
       }
     }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .titlelogo-partial .title-container .title-bottom .credits {
+    margin: 3rem 0;
   }
 }
 
@@ -1286,7 +1305,56 @@ audio {
   height: 100vh;
   overflow: hidden;
 }
-
+.titlelogo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 100%;
+  @include media-breakpoint-down(sm) {
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  .titlelogo {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    max-height: 137px;
+    // @include media-breakpoint-down(sm) {
+    //   margin-bottom: 100px;
+    // }
+  }
+  &.titlelogo-top {
+    .titlelogo {
+      margin-top: 140px;
+      @include media-breakpoint-down(sm) {
+        margin-top: 0;
+      }
+      @include media-breakpoint-down(md) {
+        margin-top: 2.7rem;
+      }
+      @media (max-height: 768px) {
+        margin-top: 2.7rem;
+      }
+    }
+  }
+  &.titlelogo-middle {
+    // @include media-breakpoint-down(sm) {
+    justify-content: center;
+    // }
+  }
+  &.titlelogo-bottom {
+    @include media-breakpoint-up(md) {
+      justify-content: flex-end;
+    }
+    .titlelogo {
+      margin-bottom: 50px;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
 @include media-breakpoint-up(md) {
   .with-title-image {
     // .titleimage {
@@ -1324,7 +1392,12 @@ audio {
     font-size: 3.625rem;
     line-height: 4.25rem;
     line-height: 1.172;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
+      margin-top: 2rem;
+      font-size: 2.625rem;
+    }
+    @media (max-height: 768px) {
+      margin-top: 2rem;
       font-size: 2.625rem;
     }
     span {
@@ -1343,7 +1416,7 @@ audio {
     font-size: 1.75rem;
     line-height: 2.375rem;
     line-height: 1.357;
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 1.25rem;
     }
     span {
@@ -1358,6 +1431,15 @@ audio {
     }
   }
   .icon-next-page {
+    // margin-left: -39px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    z-index: 4;
+    margin-left: -24px;
+    @include media-breakpoint-down(sm) {
+      bottom: 25px;
+    }
     .arrow-top {
       transform: translate(288.565px, 395.565px);
       animation: startpage-arrow-top 1.6s linear infinite;
@@ -2129,9 +2211,7 @@ i.license-or {
   //   }
   // }
   .icon-next-page {
-    cursor: pointer;
     background-color: rgba(0, 0, 0, .6);
-
     .cls-1,
     .cls-2 {
       fill: none;

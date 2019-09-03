@@ -34,6 +34,7 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
     public $titlebgpos;
     public $titleimage;
     public $titlelogo;
+    public $titlelogopos;
     public $ctrl_colorscheme;
     public $colorpalette;
     public $nav_color;

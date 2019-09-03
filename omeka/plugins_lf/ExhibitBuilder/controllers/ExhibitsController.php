@@ -66,12 +66,28 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             }
         }
         $exhibit = $this->_helper->db->findById();
+
         if (isset($_POST['deleteTitlebackground']) && $_POST['deleteTitlebackground'] === '1') {
             $_POST['titlebackground'] = '';
             if (is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)) {
                 unlink(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground);
             }
         }
+
+        if (isset($_POST['deleteTitleimage']) && $_POST['deleteTitleimage'] === '1') {
+            $_POST['titleimage'] = '';
+            if (is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titlebackground)) {
+                unlink(FILES_DIR . '/layout/titleimage/' . $exhibit->titlebackground);
+            }
+        }
+
+        if (isset($_POST['deleteTitlelogo']) && $_POST['deleteTitlelogo'] === '1') {
+            $_POST['titlelogo'] = '';
+            if (is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlebackground)) {
+                unlink(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlebackground);
+            }
+        }
+
         $_POST['institutions'] = $this->setInstitutions($exhibit);
 
         // Update OMIM

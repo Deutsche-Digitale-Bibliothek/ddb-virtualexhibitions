@@ -203,6 +203,28 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php endif; ?>
                 </div>
             </div>
+            <!--  -->
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('titlelogopos', __('Position des Titellogos')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                <?php
+                    echo $this->formSelect(
+                        'titlelogopos',                // name
+                        $exhibit->titlelogopos,        // value
+                        null,                        // attribs
+                        array(
+                            'top' => 'oben',
+                            'middle' => 'mitte',
+                            'bottom' => 'unten'
+                        ),                           // options
+                        "<br />\n"                   // listsep
+                    );
+                ?>
+                </div>
+            </div>
+            <!--  -->
             <?php endif; ?>
 
             <div class="field" id="gina_exhibit_metadata_theme_container">

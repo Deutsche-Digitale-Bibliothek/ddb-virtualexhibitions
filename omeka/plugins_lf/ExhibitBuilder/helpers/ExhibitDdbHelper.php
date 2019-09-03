@@ -2212,4 +2212,21 @@ class ExhibitDdbHelper
         return $result;
     }
 
+    public static function getInstitutionsHtml($institutions)
+    {
+        if (!isset($institutions) || !is_array($institutions)) {
+            $institutions = array();
+        }
+        $html = '';
+        foreach ($institutions as $institution) {
+            if (!empty($institution['name'])) {
+                if (!empty($html)) {
+                    $html .= '<br>';
+                }
+                $html .= $institution['name'];
+            }
+        }
+        return $html;
+    }
+
 }
