@@ -6,9 +6,9 @@
   var headerHeight = 43;
   var menuScroll;
   var zoomHintShown = false;
-  var slideHeightOffset = 43;
+  var slideHeightOffset = 45;
 
-  // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
+  // Creates 'Implied Consent' EU Cookie Law Banner v:2.4
   // Conceived by Robert Kent, James Bavington & Tom Foyster
 
   var dropCookie = true; // false disables the Cookie, allowing you to style the banner
@@ -17,6 +17,7 @@
   var cookieValue = 'on'; // Value of cookie
   var vimeoVideos = {};
   var vimeoBgVideos = {};
+  // var lastVerticalDiretion = null;
 
   // var pubsub = (function () {
 
@@ -54,6 +55,11 @@
   // })();
 
   function initFullPage() {
+    var responsiveWidth = 768;
+    if (options.is_ipad) {
+      // $('section').css('border', '5px solid #060');
+      responsiveWidth = 0;
+    }
     $('#fullpage').fullpage({
 
       licenseKey: '8B69A3A7-6EE14CEB-AB786AF1-5C9D1AB6',
@@ -72,7 +78,7 @@
 
       // Scrolling
       // css3: true,
-      // scrollingSpeed: 1500,
+      scrollingSpeed: 500,
       autoScrolling: false,
       fitToSection: true,
       fitToSectionDelay: 500,
@@ -111,7 +117,8 @@
       paddingTop: headerHeight + 'px',
       // paddingBottom: '10px',
       fixedElements: '#header, #menu-container',
-      responsiveWidth: 768, // 768,
+      responsiveWidth: responsiveWidth, // 768,
+
       // responsiveHeight: 0,
       // responsiveSlides: false,
       // parallax: false,
@@ -122,6 +129,7 @@
       // slideSelector: '.slide',
 
       // lazyLoading: true,
+      // foo: 'bar',
 
       // events
       onLeave: fpOnLeave,
@@ -138,6 +146,10 @@
   }
 
   function fpOnLeave(origin, destination, direction) {
+    // This callback is fired once the user leaves a section,
+    // in the transition to the new section.
+    // Returning false will cancel the move before it takes place.
+
     // console.log(origin, destination, direction);
 
     var $origin = $(origin.item);
@@ -152,13 +164,42 @@
       containerScrollReset($('.scroll-element', $origin));
     }
 
+    // if (options.is_ipad && direction === 'up') {
+    // $.fn.fullpage.setFitToSection(true);
+    // }
+
+    // if (direction !== lastVerticalDiretion) {
+    //   // console.log('We have a new direction. It\'s now ' +
+    //   //   direction + '. Used to be ' + lastVerticalDiretion);
+    //   if (options.is_ipad) {
+    //     dipatchNewDirection(direction, lastVerticalDiretion);
+    //   }
+    //   lastVerticalDiretion = direction;
+    // } else {
+    //   // console.log('Still on: ' + lastVerticalDiretion);
+    // }
+
   }
 
+
   function fpAfterLoad(from, current, direction) {
-    // fires every time a section is loaded
+    // Fires every time a section is loaded i.e.
+    // Callback fired once the sections have been loaded,
+    // after the scrolling has ended.
+
     // console.log('loaded', from, current, direction);
-    // console.log('loaded', current);
-    // console.log(current.anchor, $('#menu .active').data('menuanchor'));
+
+    // if (direction !== lastVerticalDiretion) {
+    //   // console.log('We have a new direction. It\'s now ' +
+    //   //   direction + '. Used to be ' + lastVerticalDiretion);
+    //   if (options.is_ipad) {
+    //     dipatchNewDirection(direction, lastVerticalDiretion);
+    //   }
+    //   lastVerticalDiretion = direction;
+    // } else {
+    //   // console.log('Still on: ' + lastVerticalDiretion);
+    // }
+
     setVisitedSectionsInHeaderSectionBar(current.index);
     scrollMenu(current.anchor);
   }
@@ -181,27 +222,33 @@
   }
 
   function fpAfterResponsive(isResponsive) {
-    // console.log('is responsive ' + isResponsive);
-    // console.log('is responsive (< 768)? - ' +
-    // 'responsive, width-jq, height-jq:',
-    // isResponsive, $(window).width(), $(window).height());
+    // console.log('is responsive? ' + isResponsive);
+
     setTableCellHeight(isResponsive);
-    if (!isResponsive) {
-      // Fix fullpage.js setFitToSection after moving to desktop
+    if (!isResponsive || options.is_ipad) {
       $.fn.fullpage.setFitToSection(true);
+      // $.fn.fullpage.fitToSection();
     }
     // else {
-    //   $('section').css('padding-top', 0);
+    //   $('#header').css('background', '#6c6');
     // }
   }
 
-  // @TODO check if resize fires each time ...
   function fpAfterResize(width, height) {
+    // Fires only if 20% of window height changes!
+    // Make sure to PATCH resizeActions(line 2642 cons.) in fullpage.js
+    // to change this behaviour
+
+    // $('#header').css('background', '#060');
+
     customAfterResize();
   }
 
   function customAfterResize() {
     var isResponsive = ($(window).width() < 768) ? true : false;
+    if (options.is_ipad) {
+      isResponsive = false;
+    }
     var anchor = $('#menu .active').data('menuanchor');
     setTableCellHeight(isResponsive);
     setScrollElementMaxHeight();
@@ -211,15 +258,41 @@
   }
 
   function fpAfterSlideLoad(section, origin, destination, direction) {
+    // Fires each time a slide is entered, but not from vertical to slide #0
     // console.log('fpAfterSlideLoad', section, origin, destination, direction);
-    // console.log($(destination.item), $(destination.item).data('slideno'));
+
+    // if (options.is_ipad || true) {
+      // $.fn.fullpage.setFitToSection(true);
+      // $.fn.fullpage.silentMoveTo(section.anchor, destination.index );
+      // $.fn.fullpage.fitToSection();
+    // }
+
     var parent = $(destination.item).parents('.section-slides');
     $('.currentSlide', parent).html($(destination.item).data('slideno'));
   }
 
   function fpOnSlideLeave(section, origin, destination, direction) {
+    // Fires each time a slide is left, but not from vertical to slide #0
     // console.log('fpOnSlideLeave', destination);
   }
+
+  // function dipatchNewDirection(newdir, olddir) {
+
+  //   // console.log('We have a new direction. It\'s now ' +
+  //   // newdir + '. Used to be ' + olddir);
+
+  //   // if (newdir === 'down') {
+
+  //   // }
+
+  //   // if (olddir) {
+  //     // do we care about current global scrolling?
+  //     // fullpage_api.reBuild();
+  //     // setTimeout(function() {
+  //     // }, 1200);
+  //   // }
+
+  // }
 
   function initScrollMenu() {
     new SimpleBar($('#menu-scrollable')[0], {
@@ -253,27 +326,8 @@
   }
 
   function setTableCellHeight(isResponsive) {
-    // console.log('setTableCellHeight');
-    if (isResponsive) {
+    if (isResponsive && !options.is_ipad) {
       $('.fp-tableCell').css('height', '100%');
-    } else {
-      $('.fp-tableCell').each(function () {
-        var tableCell = $(this);
-        // console.log(tableCell.parent('.slide'));
-        if (tableCell.parent('.slide').length > 0) {
-          // console.log(tableCell.parents('.section').height(), (tableCell.parents('.section').height() - headerHeight - slideHeightOffset));
-          tableCell.css('height', function () {
-            return (tableCell.parents('.section').height() - slideHeightOffset) + 'px';
-          });
-        } else {
-          tableCell.css('height', function () {
-            return (tableCell.parents('.section').height()) + 'px';
-          });
-        }
-      });
-      // $('.fp-tableCell').css('height', function () {
-      //   return ($(this).parent('.section').height() - headerHeight) + 'px';
-      // });
     }
   }
 
@@ -306,15 +360,15 @@
         direction === 'up' && element.scrollTop() !== 0 ||
         direction === 'down'
       ) {
-        element.animate({
-            scrollTop: (element.scrollTop() + step)
-          },
+        element.animate(
+          { scrollTop: (element.scrollTop() + step) },
           10,
           function () {
             if (element.hasClass('active')) {
               containerScrollDown(direction, element);
             }
-          });
+          }
+        );
       }
     }
   }
@@ -398,7 +452,8 @@
       var $mediaItem = $(this);
       var mediaItemMaxHeight = height;
       var $caption = $('.media-item-caption', $(this).parent('.media-item-container'));
-      var captionHeight = $caption.height() + 10; // 10 for top margin
+      var captionHeight = $caption.height() + 20; // 20 for top & bottom margin
+      captionHeight += 40; // nicer layout on skyscraper sized elements ...
       if (captionHeight) {
         mediaItemMaxHeight -= captionHeight;
       }

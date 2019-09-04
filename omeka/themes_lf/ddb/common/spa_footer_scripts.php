@@ -1,6 +1,8 @@
 <?php require __DIR__ . DIRECTORY_SEPARATOR . 'spa_zoom_hint.php';  ?>
 <script type="text/javascript" src="<?php echo WEB_PLUGIN; ?>/X3d/views/shared/javascripts/x3dom.js"></script>
 <?php
+$userAgentIpad = (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false)? 'false' : 'true';
+
 echo js_tag('options.min') . "\n";
 echo '<script type="text/javascript">' . "\n";
 echo 'window.litfassOptions = {';
@@ -8,6 +10,7 @@ echo 'window.litfassOptions = {';
     echo 'sectionsColor: [' . $sectionColors . '], ';
     echo 'palette: \'' . $colorpalette . '\', ';
     echo 'path_images: \'' . web_path_to('images') . '\', ';
+    echo 'is_ipad: ' . $userAgentIpad;
 echo '};';
 echo '</script>'. "\n";
 echo js_tag('bundle.min', 'javascripts', date("YmdHis", filemtime(dirname(__FILE__) . '/../javascripts/bundle.min.js')));

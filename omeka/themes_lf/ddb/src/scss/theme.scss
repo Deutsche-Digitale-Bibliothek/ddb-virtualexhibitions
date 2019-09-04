@@ -16,6 +16,12 @@
 //   }
 // }
 
+html.fp-enabled,
+.fp-enabled body {
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 // typo
 body.exhibit-type-litfass_ddb {
   font-family: $font-family-ddb-sans-serif;
@@ -565,6 +571,7 @@ audio {
   justify-content: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   .row {
     flex-basis: 100%;
     // Start for issue DDBVA-425:
@@ -576,11 +583,11 @@ audio {
     }
   }
 }
-.fp-section {
+.fp-section.fp-table {
   // position: relative;
   display: block;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   overflow: hidden;
 }
 
@@ -591,7 +598,6 @@ audio {
   display: block;
   width: 100%;
   height: 100%;
-  // should we do this:
   overflow: hidden;
 }
 
@@ -610,7 +616,8 @@ audio {
     align-items: center;
     justify-content: center;
     // ++++++++++++++++++++++++++++
-    min-height: calc(100vh - 40px);
+    overflow: visible;
+    // min-height: calc(100vh - 40px);
   }
 }
 
@@ -733,7 +740,7 @@ audio {
 // section
 .section {
   position: relative;
-  min-height: 100vh;
+  // min-height: 100vh;
   background-repeat: no-repeat;
   // -webkit-background-attachment: fixed;
   // background-attachment: local;
@@ -965,6 +972,10 @@ audio {
   }
 }
 
+.slide .col-media {
+  margin-bottom: 45px;
+}
+
 // the full col height scroll from image top aproach (will not work)
 // .col-media {
 //   display: flex;
@@ -1003,7 +1014,7 @@ audio {
 }
 .media-item-caption {
   // padding-right: .5rem;
-  margin-top: .625rem;
+  margin: .625rem 0;
   font-size: .75rem;
   font-weight: 500;
   text-align: center;
@@ -1250,7 +1261,8 @@ audio {
   align-items: flex-start;
   justify-content: space-between;
   height: 100%;
-  min-height: calc(100vh - 40px);
+  // min-height: calc(100vh - 40px);
+  overflow: hidden;
   @include media-breakpoint-down(sm) {
     height: auto;
     min-height: fit-content;
@@ -1749,6 +1761,7 @@ blockquote {
   .pos-box {
     width: 41.66%;
     // max-height: 100%;
+    height: 100%;
     padding: 15px;
     overflow: hidden;
     color: #fff;
