@@ -17,7 +17,14 @@
   var cookieValue = 'on'; // Value of cookie
   var vimeoVideos = {};
   var vimeoBgVideos = {};
-  // var lastVerticalDiretion = null;
+
+  var testmode = false;
+
+  // for iPad
+  var lastVerticalDiretion = null;
+  var lastScrollTop = null;
+  var currentVerticalDiretion = null;
+  var rebuildCued = false;
 
   // var pubsub = (function () {
 
@@ -56,10 +63,16 @@
 
   function initFullPage() {
     var responsiveWidth = 768;
+    var fitToSectionDelay = 500;
+    var fitToSection = true;
+
+    // Do not mess around with iPad timings!
     if (options.is_ipad) {
-      // $('section').css('border', '5px solid #060');
       responsiveWidth = 0;
+      fitToSectionDelay = 450;
+      fitToSection = true;
     }
+
     $('#fullpage').fullpage({
 
       licenseKey: '8B69A3A7-6EE14CEB-AB786AF1-5C9D1AB6',
@@ -80,8 +93,8 @@
       // css3: true,
       scrollingSpeed: 500,
       autoScrolling: false,
-      fitToSection: true,
-      fitToSectionDelay: 500,
+      fitToSection: fitToSection,
+      fitToSectionDelay: fitToSectionDelay,
       // scrollBar: false,
       // easing: 'easeInOutCubic',
       // easingcss3: 'ease',
@@ -129,7 +142,8 @@
       // slideSelector: '.slide',
 
       // lazyLoading: true,
-      // foo: 'bar',
+
+      isIpad: options.is_ipad,
 
       // events
       onLeave: fpOnLeave,
@@ -164,23 +178,107 @@
       containerScrollReset($('.scroll-element', $origin));
     }
 
-    // if (options.is_ipad && direction === 'up') {
-    // $.fn.fullpage.setFitToSection(true);
-    // }
-
     // if (direction !== lastVerticalDiretion) {
-    //   // console.log('We have a new direction. It\'s now ' +
-    //   //   direction + '. Used to be ' + lastVerticalDiretion);
-    //   if (options.is_ipad) {
-    //     dipatchNewDirection(direction, lastVerticalDiretion);
-    //   }
-    //   lastVerticalDiretion = direction;
-    // } else {
-    //   // console.log('Still on: ' + lastVerticalDiretion);
+    //   console.log('We have a new direction. It\'s now ' +
+    //     direction + '. Used to be ' + lastVerticalDiretion);
     // }
 
   }
 
+  function bindWindowScroll() {
+    $(window).scroll(function () {
+      var st = $(this).scrollTop();
+      if (st > lastScrollTop) {
+        currentVerticalDiretion = 'down';
+      } else {
+        currentVerticalDiretion = 'up';
+      }
+      lastScrollTop = st;
+    });
+  }
+
+  function bindWindowResize () {
+    $(window).resize(function() {
+      if (currentVerticalDiretion !== lastVerticalDiretion) {
+        // console.log('We have a new direction. It\'s now ' +
+        // currentVerticalDiretion + '. Used to be ' + lastVerticalDiretion);
+        dipatchNewDirection();
+        lastVerticalDiretion = currentVerticalDiretion;
+      }
+    });
+  }
+
+  function handleIpad () {
+    if (options.is_ipad) {
+      bindWindowScroll();
+      bindWindowResize();
+    }
+  }
+
+  function dipatchNewDirection() {
+
+    var handleScroll = (function (currentTop) {
+
+      var checkTop = currentTop;
+      var checkTop2 = currentTop;
+      var isScrolling = true;
+
+      function checkScrolling () {
+        if (isScrolling) {
+          setTimeout(function() {
+            var newTop = $(window).scrollTop();
+            // console.log('check', newTop, checkTop);
+            if (newTop !== checkTop) {
+              checkTop = newTop;
+              checkScrolling();
+            } else {
+              isScrolling = false;
+              // double check ...
+              if (newTop !== checkTop2) {
+                checkTop2 = newTop;
+                checkScrolling();
+              } else {
+                isScrolling = false;
+              }
+            }
+          }, 240);
+        }
+      }
+
+      function getIsScrolling () {
+        return isScrolling;
+      }
+
+      return Object.freeze({
+        getIsScrolling: getIsScrolling,
+        checkScrolling: checkScrolling
+      });
+
+    })($(window).scrollTop());
+
+    function tryRebuild() {
+      rebuildCued = true;
+      setTimeout(function() {
+        if (handleScroll.getIsScrolling()) {
+          // console.log('scrolling ...');
+          tryRebuild();
+        } else {
+          rebuildCued = false;
+          // console.log('rebuilding ...');
+          // console.log('outer index', $.fn.fullpage.getActiveSection()['index']);
+          setTimeout(function() {
+            $.fn.fullpage.reBuild(true);
+          }, 860);
+        }
+      }, 240);
+    }
+
+    if (!rebuildCued) {
+      handleScroll.checkScrolling();
+      tryRebuild();
+    }
+
+  }
 
   function fpAfterLoad(from, current, direction) {
     // Fires every time a section is loaded i.e.
@@ -190,14 +288,8 @@
     // console.log('loaded', from, current, direction);
 
     // if (direction !== lastVerticalDiretion) {
-    //   // console.log('We have a new direction. It\'s now ' +
-    //   //   direction + '. Used to be ' + lastVerticalDiretion);
-    //   if (options.is_ipad) {
-    //     dipatchNewDirection(direction, lastVerticalDiretion);
-    //   }
-    //   lastVerticalDiretion = direction;
-    // } else {
-    //   // console.log('Still on: ' + lastVerticalDiretion);
+    //   console.log('We have a new direction. It\'s now ' +
+    //   direction + '. Used to be ' + lastVerticalDiretion);
     // }
 
     setVisitedSectionsInHeaderSectionBar(current.index);
@@ -262,9 +354,9 @@
     // console.log('fpAfterSlideLoad', section, origin, destination, direction);
 
     // if (options.is_ipad || true) {
-      // $.fn.fullpage.setFitToSection(true);
-      // $.fn.fullpage.silentMoveTo(section.anchor, destination.index );
-      // $.fn.fullpage.fitToSection();
+    //   $.fn.fullpage.setFitToSection(true);
+    //   $.fn.fullpage.silentMoveTo(section.anchor, destination.index );
+    //   $.fn.fullpage.fitToSection();
     // }
 
     var parent = $(destination.item).parents('.section-slides');
@@ -275,24 +367,6 @@
     // Fires each time a slide is left, but not from vertical to slide #0
     // console.log('fpOnSlideLeave', destination);
   }
-
-  // function dipatchNewDirection(newdir, olddir) {
-
-  //   // console.log('We have a new direction. It\'s now ' +
-  //   // newdir + '. Used to be ' + olddir);
-
-  //   // if (newdir === 'down') {
-
-  //   // }
-
-  //   // if (olddir) {
-  //     // do we care about current global scrolling?
-  //     // fullpage_api.reBuild();
-  //     // setTimeout(function() {
-  //     // }, 1200);
-  //   // }
-
-  // }
 
   function initScrollMenu() {
     new SimpleBar($('#menu-scrollable')[0], {
@@ -1228,6 +1302,13 @@
     }
   }
 
+  function initTestmode() {
+    if (testmode) {
+      $('#header').css('background-color', '#c30');
+      $('#header .header_title').css('color', 'white').html('... Development Test aktiv, bitte später validieren! ...');
+    }
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -1253,6 +1334,8 @@
       bindHeaderLogo();
       bindFullscreen();
       bindCookieNotice();
+      handleIpad();
+      initTestmode();
     });
   }
 
