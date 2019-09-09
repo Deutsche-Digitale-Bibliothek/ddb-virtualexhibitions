@@ -105,7 +105,19 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
         <legend><?php echo __('Layouts'); ?></legend>
         <div id="layout-thumbs">
         <?php
-            $layouts = exhibit_builder_get_layouts();
+            // $layouts = exhibit_builder_get_layouts();
+            // var_dump( $layouts);
+            $layouts = array(
+                'ddb-litfass-item-text',
+                'ddb-litfass-item',
+                'ddb-litfass-text',
+                'ddb-litfass-text-title',
+                'ddb-litfass-text-title-dynamic',
+                'ddb-litfass-bgimg-boxpos',
+                'ddb-litfass-quote',
+                'ddb-litfass-chapter',
+                'ddb-litfass-slider'
+            );
             foreach ($layouts as $layout) {
                 if ($this->actionName !== 'Add' && $layout === 'ddb-litfass-slider') {
                     // Do not make slider selectable in edit action
