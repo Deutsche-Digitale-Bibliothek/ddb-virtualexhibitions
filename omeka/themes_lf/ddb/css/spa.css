@@ -6111,6 +6111,11 @@ x3d:hover,
   align-items: center;
 }
 
+.no-js .section,
+.no-js .slide {
+  min-height: 100vh;
+}
+
 .noscript-cont {
   width: 100%;
   padding: 1.5rem 0 0;

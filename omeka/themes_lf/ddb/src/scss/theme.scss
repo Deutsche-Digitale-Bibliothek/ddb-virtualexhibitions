@@ -26,10 +26,16 @@
   z-index: 999999;
   display: none;
 }
-.no-js .noscript {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.no-js {
+  .noscript {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .section,
+  .slide {
+    min-height: 100vh;
+  }
 }
 .noscript-cont {
   width: 100%;
@@ -40,6 +46,7 @@
   opacity: .95;
 }
 
+// general
 html.fp-enabled,
 .fp-enabled body {
   overflow: hidden;
