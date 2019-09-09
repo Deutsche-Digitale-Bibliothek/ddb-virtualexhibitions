@@ -27,7 +27,8 @@ endif; ?>
 
 <?php // Retrieve the latest version of Omeka by pinging the Omeka server. ?>
 <?php $userRole = current_user()->role; ?>
-<?php if ($userRole == 'super' || $userRole == 'admin'): ?>
+<!-- not this time  - Grandgeorg Websolutions: -->
+<?php if (($userRole == 'super' || $userRole == 'admin') && false): ?>
 <?php $latestVersion = latest_omeka_version(); ?>
       <?php if ($latestVersion and version_compare(OMEKA_VERSION, $latestVersion, '<')): ?>
             <div id="flash">
@@ -39,6 +40,7 @@ endif; ?>
             </div>
       <?php endif; ?>
 <?php endif; ?>
+<!-- :not this time - Grandgeorg Websolutions -->
 
 <section id="stats">
     <?php foreach ($stats as $statInfo): ?>
