@@ -16,6 +16,30 @@
 //   }
 // }
 
+// noscript
+.noscript {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999999;
+  display: none;
+}
+.no-js .noscript {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.noscript-cont {
+  width: 100%;
+  padding: 1.5rem 0 0;
+  background-color: #c6c6c6;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  opacity: .95;
+}
+
 html.fp-enabled,
 .fp-enabled body {
   overflow: hidden;

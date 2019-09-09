@@ -21,4 +21,26 @@
     <?php echo head_css(); ?>
     <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors), $exhibitType, $navcolor); ?>
 </head>
-<body class="exhibit-type-<?php echo $exhibitType; ?><?php echo ($exhibitType == 'litfass_ddb')? ' nav_color_' . $navcolor : ''; ?>">
+<body class="no-js exhibit-type-<?php echo $exhibitType; ?><?php echo ($exhibitType == 'litfass_ddb')? ' nav_color_' . $navcolor : ''; ?>">
+<script>
+    !function(){var e=document.getElementsByTagName("body")[0];e.className=e.className.replace(/\bno-js\b/g,"")}();
+</script>
+<div class="noscript">
+  <div class="noscript-cont">
+    <div class="container-fluid">
+      <div>
+        <h2>JavaScript Required</h2>
+        <p>
+            We're sorry, but this virtual exhibition cannot be viewed properly without JavaScript enabled.
+            Please consider enabling JavaScript or installing a JavaScript capable browser.
+        </p>
+        <p>
+            If you're interested in DDBstudio, the virtual exhibition platform provided by the
+            German Digital Library,<br>
+            please visit <a href="https://pro.deutsche-digitale-bibliothek.de/ddbstudio"
+            target="_blank" rel="noopener">this page</a> (in German).
+        </p>
+      </div>
+    </div>
+  </div>
+</div class="noscript">
