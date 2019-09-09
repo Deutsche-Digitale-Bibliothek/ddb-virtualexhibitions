@@ -7400,6 +7400,14 @@ audio {
   box-decoration-break: clone;
 }
 
+.titlelogo-partial {
+  height: 100%;
+}
+
+.titlelogo-partial > .row {
+  height: 100%;
+}
+
 @media (max-width: 767.98px) {
   .titlelogo-partial .title-container .title-bottom .credits {
     margin: 3rem 0;

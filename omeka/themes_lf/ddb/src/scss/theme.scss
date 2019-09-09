@@ -1323,6 +1323,13 @@ audio {
   }
 }
 
+.titlelogo-partial {
+  height: 100%;
+  & > .row {
+    height: 100%;
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .titlelogo-partial .title-container .title-bottom .credits {
     margin: 3rem 0;
