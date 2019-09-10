@@ -78,7 +78,7 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
                 <?php echo $this->formLabel('pagethumbnail', __('Page Navigation Thumbnail')); ?>
             </div>
             <div class="five columns omega inputs">
-                 <p class="explanation"><?php echo sprintf(
+                <p class="explanation"><?php echo sprintf(
                      __('Minimum size for image (width x height) is %d x %d pixel'), 92, 71); ?></p>
                 <?php if (!empty($exhibit_page->pagethumbnail) &&
                     is_file(FILES_DIR . '/layout/pagethumbnail/' . $exhibit_page->pagethumbnail)): ?>

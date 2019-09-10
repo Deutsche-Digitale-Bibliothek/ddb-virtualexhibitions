@@ -50,7 +50,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
     public function editAction()
     {
-        $fileFields = array('banner', 'cover', 'titlebackground', 'titleimage', 'titlelogo');
+        $fileFields = array('banner', 'cover', 'titlebackground', 'titleimage', 'titlelogo', 'startpagethumbnail');
         foreach ($fileFields as $fileField) {
             if ($this->getRequest()->isPost() && isset($_FILES[$fileField]) &&
                 isset($_FILES[$fileField]['error']) && $_FILES[$fileField]['error'] == 0) {
@@ -76,15 +76,22 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
         if (isset($_POST['deleteTitleimage']) && $_POST['deleteTitleimage'] === '1') {
             $_POST['titleimage'] = '';
-            if (is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titlebackground)) {
-                unlink(FILES_DIR . '/layout/titleimage/' . $exhibit->titlebackground);
+            if (is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titleimage)) {
+                unlink(FILES_DIR . '/layout/titleimage/' . $exhibit->titleimage);
             }
         }
 
         if (isset($_POST['deleteTitlelogo']) && $_POST['deleteTitlelogo'] === '1') {
             $_POST['titlelogo'] = '';
-            if (is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlebackground)) {
-                unlink(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlebackground);
+            if (is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlelogo)) {
+                unlink(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlelogo);
+            }
+        }
+
+        if (isset($_POST['deleteStartpagethumbnail']) && $_POST['deleteStartpagethumbnail'] === '1') {
+            $_POST['startpagethumbnail'] = '';
+            if (is_file(FILES_DIR . '/layout/startpagethumbnail/' . $exhibit->startpagethumbnail)) {
+                unlink(FILES_DIR . '/layout/startpagethumbnail/' . $exhibit->startpagethumbnail);
             }
         }
 

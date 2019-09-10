@@ -2589,3 +2589,37 @@ button.remove_search {
 #search-form.with-advanced button {
     right: 0;
 }
+
+.fe-menu-box-container {
+    position: relative;
+    background-color: #5d5d5d;
+    width: 95px;
+    height: 65px;
+    margin-bottom: 10px;
+}
+.fe-menu-box {
+    width: 95px;
+    height: 65px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    background-size: cover;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.fe-menu-box::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.6);
+}
+.fe-menu-box.icon-home::before {
+    background-image: url(../../../../themes/ddb/images/menu_icon_home.svg);
+}

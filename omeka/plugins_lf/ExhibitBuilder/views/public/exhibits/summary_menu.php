@@ -72,7 +72,10 @@
                 <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>"
                 <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : 'class="type-' . $sectionTitle['type'] . '"'; ?>>
                     <?php if($sectionKey == 0): ?>
-                    <div class="menu-box menu-icon menu-icon-transparent icon-home"></div>
+                    <?php $startpagethumbnail = metadata('exhibit', 'startpagethumbnail'); ?>
+                    <div class="menu-box menu-icon menu-icon-transparent icon-home"
+                    <?php echo (isset($startpagethumbnail) && !empty($startpagethumbnail))? 'style="background-image:url('
+                        . WEB_FILES . '/layout/startpagethumbnail/' . $startpagethumbnail . ');"' : ''; ?>></div>
                     <?php elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'): $menuChapterCounter++; ?>
                     <div class="menu-box menu-number"><?php echo ExhibitDdbHelper::getLeadingZeroNum($menuChapterCounter); ?></div>
                     <?php else: ?>

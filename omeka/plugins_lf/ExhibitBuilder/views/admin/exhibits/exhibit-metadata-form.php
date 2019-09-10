@@ -152,6 +152,46 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                 </div>
             </div>
 
+            <div class="field">
+                <div class="two columns alpha">
+                    <?php echo $this->formLabel('startpagethumbnail', __('Hintergrundbild für die Startkachel in der Seitennavigation')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                    <p class="explanation">
+                        <?php echo __('Falls gewünscht, hier ein Bild für den Hintergrund der Startkachel in der Seitennavigation hochalden.'); ?><br>
+                        <?php echo sprintf(
+                            __('Empfohlene Mindestgröße des Bildes (Breite x Höhe) sind %d x %d Pixel.'), 95, 65); ?><br>
+                        <?php echo sprintf(
+                            __('Empfohlene Maximalgröße des Bildes (Breite x Höhe) sind %d x %d Pixel.'), 190, 130); ?><br>
+                    </p>
+                    <?php
+                        $hasStartpagethumbnail = false;
+                        if (!empty($exhibit->startpagethumbnail) && is_file(FILES_DIR
+                            . '/layout/startpagethumbnail/' . $exhibit->startpagethumbnail)):
+                        $hasStartpagethumbnail = true;
+                    ?>
+                    <div class="fe-menu-box-container">
+                        <div class="fe-menu-box icon-home"
+                            style="background-image:url(<?php echo WEB_FILES
+                            . '/layout/startpagethumbnail/'
+                            . $exhibit->startpagethumbnail; ?>)"></div>
+                    </div>
+                    <?php else: ?>
+                    <div class="fe-menu-box-container">
+                        <div class="fe-menu-box icon-home"></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php echo $this->formFile('startpagethumbnail'); ?>
+                    <?php if ($hasStartpagethumbnail): ?>
+                    <div class="mt-10">
+                        <?php echo $this->formCheckbox('deleteStartpagethumbnail', 1); ?>
+                        <?php echo $this->formLabel('deleteStartpagethumbnail', __('Hintergrundbild entfernen'),
+                            array('class' => 'deleteCheckbox')); ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
             <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
             <div class="field">
                 <div class="two columns alpha">
