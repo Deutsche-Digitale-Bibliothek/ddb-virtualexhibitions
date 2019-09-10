@@ -212,6 +212,8 @@
     if (options.is_ipad) {
       bindWindowScroll();
       bindWindowResize();
+      // $('#header').css('background-color', '#c30');
+      // $('#header .header_title').css('color', 'white').html('... Development Test aktiv, bitte später validieren! ...');
     }
   }
 
@@ -1349,6 +1351,15 @@
     }
   }
 
+  function handleMac() {
+    if('platform' in navigator) {
+      var mac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+      if (mac) {
+        $('body').addClass('mac');
+      }
+    }
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -1375,6 +1386,7 @@
       bindFullscreen();
       bindCookieNotice();
       handleIpad();
+      handleMac();
       initTestmode();
     });
   }

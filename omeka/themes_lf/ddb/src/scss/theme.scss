@@ -824,8 +824,11 @@ audio {
   // background-attachment: local;
   background-attachment: scroll;
   background-position: center center;
-  background-origin: content-box;
+  background-clip: padding-box;
+  background-origin: padding-box;
   background-size: cover;
+  // background-origin: padding-box;
+
   // @media (min-width: 1200px) {
   //   background-attachment: fixed;
   // }
@@ -833,8 +836,14 @@ audio {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
-    background-origin: content-box;
-    background-size: cover;
+    // background-origin: content-box;
+    background-clip: padding-box;
+    // background-clip: border;
+    // -webkit-background-clip:  border;
+    background-origin: padding-box;
+    // background-origin: border;
+    // -webkit-background-origin: border;
+    // background-size: cover;
   }
 }
 
@@ -1487,8 +1496,9 @@ audio {
     margin-top: 120px;
     margin-bottom: 20px;
     font-size: 3.625rem;
-    line-height: 4.25rem;
-    line-height: 1.172;
+    // line-height: 4.25rem;
+    // line-height: 1.172;
+    line-height: 1.24;
     @include media-breakpoint-down(md) {
       margin-top: 2rem;
       font-size: 2.625rem;
@@ -1511,8 +1521,9 @@ audio {
   h2 {
     margin: 0;
     font-size: 1.75rem;
-    line-height: 2.375rem;
-    line-height: 1.357;
+    // line-height: 2.375rem;
+    // line-height: 1.357;
+    line-height: 1.45;
     @include media-breakpoint-down(md) {
       font-size: 1.25rem;
     }
@@ -1544,6 +1555,17 @@ audio {
     .arrow-bottom {
       transform: translate(288.565px, 405.565px);
       animation: startpage-arrow-bottom 1.6s linear infinite;
+    }
+  }
+}
+
+.mac {
+  .section-title {
+    h1 {
+      line-height: 1.6;
+    }
+    h2 {
+      line-height: 1.9;
     }
   }
 }

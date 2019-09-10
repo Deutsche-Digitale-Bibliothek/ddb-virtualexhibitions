@@ -555,7 +555,7 @@
                     if(isFunction( options.afterReBuild ) && !resizing){
                         options.afterReBuild.call(container);
                     }
-                  }, 200);
+                  }, 450);
                 }
                 // Grandgeorg Websolutions End
             }

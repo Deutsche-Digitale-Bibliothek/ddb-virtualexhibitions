@@ -6888,7 +6888,8 @@ audio {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
-  background-origin: content-box;
+  background-clip: padding-box;
+  background-origin: padding-box;
   background-size: cover;
 }
 
@@ -6896,8 +6897,8 @@ audio {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
-  background-origin: content-box;
-  background-size: cover;
+  background-clip: padding-box;
+  background-origin: padding-box;
 }
 
 .audio-controls {
@@ -7564,8 +7565,7 @@ audio {
   margin-top: 120px;
   margin-bottom: 20px;
   font-size: 3.625rem;
-  line-height: 4.25rem;
-  line-height: 1.172;
+  line-height: 1.24;
 }
 
 @media (max-width: 991.98px) {
@@ -7599,8 +7599,7 @@ audio {
 .section-title h2 {
   margin: 0;
   font-size: 1.75rem;
-  line-height: 2.375rem;
-  line-height: 1.357;
+  line-height: 1.45;
 }
 
 @media (max-width: 991.98px) {
@@ -7647,6 +7646,14 @@ audio {
   transform: translate(288.565px, 405.565px);
   -webkit-animation: startpage-arrow-bottom 1.6s linear infinite;
   animation: startpage-arrow-bottom 1.6s linear infinite;
+}
+
+.mac .section-title h1 {
+  line-height: 1.6;
+}
+
+.mac .section-title h2 {
+  line-height: 1.9;
 }
 
 .exhibit-type-litfass_ddb .section-title h1 {
