@@ -6354,6 +6354,14 @@ audio {
   opacity: 1;
 }
 
+.toggle-fullsize .arrow-head-up {
+  transform: translate(0, 0);
+}
+
+.toggle-fullsize .arrow-head-down {
+  transform: translate(0, 0);
+}
+
 .toggle-fullsize.active .arrow-head-up {
   transform: translate(12px, 12px);
 }

@@ -1182,22 +1182,52 @@
   }
 
   function bindFullscreen() {
+    var controlButton = $('#toggle-fullsize');
     window.addEventListener('fullscreenchange', function (event) {
       event.stopPropagation();
+      if (controlButton.hasClass('active')) {
+        controlButton.removeClass('active');
+      } else {
+        controlButton.addClass('active');
+      }
+    }, true);
+    window.addEventListener('mozfullscreenchange', function (event) {
+      event.stopPropagation();
+      if (controlButton.hasClass('active')) {
+        controlButton.removeClass('active');
+      } else {
+        controlButton.addClass('active');
+      }
     }, true);
     window.addEventListener('webkitfullscreenchange', function (event) {
       event.stopPropagation();
-    }, true);
-    window.addEventListener('webkitfullscreenchange', function (event) {
-      event.stopPropagation();
+      if (controlButton.hasClass('active')) {
+        controlButton.removeClass('active');
+      } else {
+        controlButton.addClass('active');
+      }
     }, true);
     window.addEventListener('MSFullscreenChange', function (event) {
       event.stopPropagation();
+      if (controlButton.hasClass('active')) {
+        controlButton.removeClass('active');
+      } else {
+        controlButton.addClass('active');
+      }
     }, true);
+    // window.addEventListener('webkitendfullscreen', function (event) {
+    //   event.stopPropagation();
+    //   if (controlButton.hasClass('active')) {
+    //     controlButton.removeClass('active');
+    //   } else {
+    //     controlButton.addClass('active');
+    //   }
+    // }, true);
 
-    $('#toggle-fullsize').on('click', function (e) {
+
+    controlButton.on('click', function (e) {
       e.preventDefault();
-      var control = $(this);
+      // var control = $(this);
       var activeSection = $.fn.fullpage.getActiveSection();
       var activeSlide = $.fn.fullpage.getActiveSlide();
       if (activeSlide && activeSlide.item) {
@@ -1209,7 +1239,17 @@
       setTimeout(function () {
         $.fn.fullpage.moveTo(activeSection.anchor, activeSlide);
       }, 400);
-      control.toggleClass('active');
+
+
+      // control.toggleClass('active');
+
+      // if (controlButton.hasClass('active')) {
+      //   controlButton.removeClass('active');
+      // } else {
+      //   controlButton.addClass('active');
+      // }
+
+
       // if (control.hasClass('active')) {
       //   // if (screenfull.enabled) {
       //   // screenfull.request();
