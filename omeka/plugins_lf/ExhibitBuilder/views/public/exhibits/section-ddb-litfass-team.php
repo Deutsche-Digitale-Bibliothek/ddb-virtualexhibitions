@@ -57,11 +57,11 @@
                                 <?php endif; ?>
                                 <?php $team = unserialize($exhibit->team); ?>
                                 <?php if (isset($team['description'])): ?>
-                                    <div class="team_description"><?php echo $team['description'];?></div>
+                                    <div class="team_description ctxt"><?php echo $team['description'];?></div>
                                 <?php endif; ?>
                                 <?php if (isset($team['team_list'])): ?>
                                     <h3>Team</h3>
-                                    <div class="team_list"><?php echo $team['team_list']; ?></div>
+                                    <div class="team_list ctxt"><?php echo $team['team_list']; ?></div>
                                 <?php endif; ?>
                                     <div class="created-width mb-5">
                                         <strong>

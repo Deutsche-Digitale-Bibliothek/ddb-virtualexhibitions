@@ -132,7 +132,7 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
         </div>
         <div class="pos-box">
             <div class="pos-box-scroll">
-                <div class="pos-box-content">
+                <div class="pos-box-content ctxt">
                     <?php if ($exhibitSection->hide_title !== 1): ?>
                     <h3><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h3>
                     <?php endif; ?>

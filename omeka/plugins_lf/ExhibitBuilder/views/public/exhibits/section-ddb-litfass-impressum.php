@@ -11,7 +11,7 @@
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                                <div class="scroll-element-inner">
+                                <div class="scroll-element-inner ctxt">
                                     <h1><?php echo __('Impressum'); ?></h1>
                                     <?php echo $imprint; ?>
                                 </div>

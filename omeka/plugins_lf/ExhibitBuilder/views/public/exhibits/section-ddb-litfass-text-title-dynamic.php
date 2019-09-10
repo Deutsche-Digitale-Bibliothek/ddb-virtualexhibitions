@@ -51,7 +51,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['verti
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                                <div class="scroll-element-inner">
+                                <div class="scroll-element-inner ctxt">
                                     <?php $pageText = exhibit_builder_page_text(1); ?>
                                     <?php if (empty($pageText)): ?>
                                     <h4><i>Bitte Text eingeben ...</i></h4>

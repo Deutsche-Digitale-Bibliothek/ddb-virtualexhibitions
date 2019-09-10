@@ -130,7 +130,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                         <div class="fader"></div>
                         <div class="scroll-frame">
                             <div class="scroll-element">
-                                <div class="scroll-element-inner">
+                                <div class="scroll-element-inner ctxt">
                                     <?php if ($exhibitSection->hide_title !== 1): ?>
                                     <h1><?php echo htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5); ?></h1>
                                     <?php endif; ?>
