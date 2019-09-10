@@ -6899,6 +6899,7 @@ audio {
   background-position: center center;
   background-clip: padding-box;
   background-origin: padding-box;
+  background-size: cover;
 }
 
 .audio-controls {
