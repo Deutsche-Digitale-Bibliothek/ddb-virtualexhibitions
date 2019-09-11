@@ -7378,7 +7378,7 @@ audio {
 .chapter-title h2 {
   font-size: 3.125rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.24;
 }
 
 .chapter-title h2 span {
@@ -7386,6 +7386,18 @@ audio {
   background-color: rgba(255, 255, 255, 0.8);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+.exhibit-type-litfass_ddb .chapter-title h2 {
+  line-height: 1.3;
+}
+
+.mac .chapter-title h2 {
+  line-height: 1.55;
+}
+
+.mac.exhibit-type-litfass_ddb .chapter-title h2 {
+  line-height: 1.8;
 }
 
 .dark .chapter-num h2,
@@ -7465,6 +7477,10 @@ audio {
   .titlelogo-partial .title-container .title-bottom .credits {
     margin: 3rem 0;
   }
+}
+
+.mac .title-container .title-bottom .credits {
+  line-height: 1.9;
 }
 
 .exhibit-type-litfass_ddb .title-container .title-bottom .credits {

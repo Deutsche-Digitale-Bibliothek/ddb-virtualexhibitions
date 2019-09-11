@@ -74,10 +74,10 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             <?php endif; ?>
         </fieldset>
         <fieldset>
-            <legend><?php echo __('Startkachel'); ?></legend>
+            <legend><?php echo __('Startseite'); ?></legend>
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('titlebackgroundcolor', __('Hintergrundfarbe Startkachel')); ?>
+                    <?php echo $this->formLabel('titlebackgroundcolor', __('Hintergrundfarbe Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
                     <?php
@@ -86,7 +86,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                         $values = ExhibitDdbHelper::getColornamesFromExhibitColorPalette($colorpalette);
                     ?>
                     <p class="explanation">
-                        <?php echo __('Hintergrundfarbe der Startkachel'); ?>
+                        <?php echo __('Hintergrundfarbe der Startseite'); ?>
                     </p>
                     <div class="clearfix example-color-box-container">
                     <?php foreach ($colors as $color): ?>
@@ -103,10 +103,10 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
 
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('titlebackground', __('Hintergrundbild Startkachel')); ?>
+                    <?php echo $this->formLabel('titlebackground', __('Hintergrundbild Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startkachel hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startseite hochalden'); ?></p>
                     <?php
                         $hasTitlebackground = false;
                         if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
@@ -154,11 +154,11 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
 
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('startpagethumbnail', __('Hintergrundbild für die Startkachel in der Seitennavigation')); ?>
+                    <?php echo $this->formLabel('startpagethumbnail', __('Hintergrundbild für die Startseite in der Seitennavigation')); ?>
                 </div>
                 <div class="five columns omega inputs">
                     <p class="explanation">
-                        <?php echo __('Falls gewünscht, hier ein Bild für den Hintergrund der Startkachel in der Seitennavigation hochalden.'); ?><br>
+                        <?php echo __('Falls gewünscht, hier ein Bild für den Hintergrund der Startseite in der Seitennavigation hochalden.'); ?><br>
                         <?php echo sprintf(
                             __('Empfohlene Mindestgröße des Bildes (Breite x Höhe) sind %d x %d Pixel.'), 95, 65); ?><br>
                         <?php echo sprintf(
@@ -195,10 +195,10 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('titleimage', __('Titelbild Startkachel')); ?>
+                    <?php echo $this->formLabel('titleimage', __('Titelbild Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titelbild im SVG-Format für die Startkachel hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titelbild im SVG-Format für die Startseite hochalden'); ?></p>
                     <?php
                         $hasTitleimage = false;
                         if (!empty($exhibit->titleimage) && is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titleimage)):
@@ -220,10 +220,10 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('titlelogo', __('Titellogo Startkachel')); ?>
+                    <?php echo $this->formLabel('titlelogo', __('Titellogo Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titellogo (im SVG-Format) für die Startkachel hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titellogo (im SVG-Format) für die Startseite hochalden'); ?></p>
                     <?php
                         $hasTitleLogo = false;
                         if (!empty($exhibit->titlelogo) && is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlelogo)):
@@ -371,7 +371,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
         </fieldset>
         <fieldset>
-            <legend><?php echo __('Seitenkacheln'); ?></legend>
+            <legend><?php echo __('Ausstellungsseiten'); ?></legend>
             <div id="pages-list-container">
                 <?php if (!$exhibit->TopPages): ?>
                     <p><?php echo __('There are no pages.'); ?></p>
@@ -385,7 +385,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
         </fieldset>
         <fieldset>
-            <legend><?php echo __('Apparatkacheln'); ?></legend>
+            <legend><?php echo __('Sandardseiten'); ?></legend>
             <ul class="apparatus-tiles">
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/team/' . $exhibit->id); ?>"><?php echo __('Team'); ?></a></div></li>
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/imprint/' . $exhibit->id); ?>"><?php echo __('Impressum'); ?></a></div></li>
