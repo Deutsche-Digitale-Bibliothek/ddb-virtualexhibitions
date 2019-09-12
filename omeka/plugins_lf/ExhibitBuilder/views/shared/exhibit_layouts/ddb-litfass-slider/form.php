@@ -1,1 +1,1 @@
-<p><?php echo __('Die Inhalte sind die, in der Übersicht der Ausstellung gesetzten, Seitenkacheln zwischen Anfang und Ende des Sliders.'); ?></p>
+<p><?php echo __('Die Inhalte sind die, in der Übersicht der Ausstellung gesetzten, Ausstellungsseiten zwischen Anfang und Ende des Sliders.'); ?></p>

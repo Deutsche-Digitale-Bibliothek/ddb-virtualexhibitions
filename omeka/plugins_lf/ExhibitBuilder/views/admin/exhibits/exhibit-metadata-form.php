@@ -1,14 +1,14 @@
 <?php
 $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
 $selectableExhibitTypes = array(
-    'litfass' => 'Litfaß Partner Standard (Single Page Ausstellung)',
-    'litfass_featured' => 'Litfaß Partner Featured (Single Page Ausstellung)'
+    'litfass' => 'Litfaß Partner Standard',
+    'litfass_featured' => 'Litfaß Partner Featured'
 );
 $allExhibitTypes = array(
-    'leporello' => 'Leporello (klassische Ausstellung)',
-    'litfass' => 'Litfaß Partner Standard (Single Page Ausstellung)',
-    'litfass_featured' => 'Litfaß Partner Featured (Single Page Ausstellung)',
-    'litfass_ddb' => 'Litfaß DDB Exhibition (Single Page Ausstellung)'
+    'leporello' => 'Leporello',
+    'litfass' => 'Litfaß Partner Standard',
+    'litfass_featured' => 'Litfaß Partner Featured',
+    'litfass_ddb' => 'Litfaß DDB Exhibition'
 );
 $navColors = array(
     'dark' => 'dunkel',
@@ -65,7 +65,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             <?php if ($exhibit->exhibit_type === 'litfass_ddb'): ?>
             <div class="field">
                 <div class="two columns alpha">
-                    <?php echo $this->formLabel('nav_color', __('Farbe der Navigation')); ?>
+                    <?php echo $this->formLabel('nav_color', __('Farbschema der Navigation')); ?>
                 </div>
                 <div class="five columns omega inputs">
                     <?php echo $this->formSelect('nav_color', $exhibit->nav_color, array(), $navColors); ?>
@@ -106,7 +106,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php echo $this->formLabel('titlebackground', __('Hintergrundbild Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startseite hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startseite hochladen'); ?></p>
                     <?php
                         $hasTitlebackground = false;
                         if (!empty($exhibit->titlebackground) &&
@@ -162,7 +162,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                 </div>
                 <div class="five columns omega inputs">
                     <p class="explanation">
-                        <?php echo __('Falls gewünscht, hier ein Bild für den Hintergrund der Startseite in der Seitennavigation hochalden.'); ?><br>
+                        <?php echo __('Falls gewünscht, hier ein Bild für den Hintergrund der Startseite in der Seitennavigation hochladen.'); ?><br>
                         <?php echo sprintf(
                             __('Empfohlene Mindestgröße des Bildes (Breite x Höhe) sind %d x %d Pixel.'), 95, 65); ?><br>
                         <?php echo sprintf(
@@ -202,7 +202,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php echo $this->formLabel('titleimage', __('Titelbild Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titelbild im SVG-Format für die Startseite hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titelbild im SVG-Format für die Startseite hochladen'); ?></p>
                     <?php
                         $hasTitleimage = false;
                         if (!empty($exhibit->titleimage) && is_file(FILES_DIR . '/layout/titleimage/' . $exhibit->titleimage)):
@@ -227,7 +227,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php echo $this->formLabel('titlelogo', __('Titellogo Startseite')); ?>
                 </div>
                 <div class="five columns omega inputs">
-                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titellogo (im SVG-Format) für die Startseite hochalden'); ?></p>
+                    <p class="explanation"><?php echo __('Falls gewünscht, hier ein Titellogo (im SVG- oder PNG-Format) für die Startseite hochladen'); ?></p>
                     <?php
                         $hasTitleLogo = false;
                         if (!empty($exhibit->titlelogo) && is_file(FILES_DIR . '/layout/titlelogo/' . $exhibit->titlelogo)):
@@ -260,7 +260,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                         null,                        // attribs
                         array(
                             'top' => 'oben',
-                            'middle' => 'mitte',
+                            'middle' => 'mittig',
                             'bottom' => 'unten'
                         ),                           // options
                         "<br />\n"                   // listsep
@@ -330,7 +330,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                             <?php echo $this->formLabel('institution[' . $instKey . '][logo]', __('Logo der Institution')); ?>
                         </div>
                         <div class="five columns omega inputs">
-                            <p class="explanation"><?php echo __('Logo der teilhabenden Institution hochalden'); ?></p>
+                            <p class="explanation"><?php echo __('Logo der teilhabenden Institution hochladen'); ?></p>
                             <?php if (!empty($institution['logo']) && is_file(FILES_DIR . '/layout/institutionlogo/' . $institution['logo'])): ?>
                             <a href="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" target="_blank">
                                 <img src="<?php echo WEB_FILES . '/layout/institutionlogo/' . $institution['logo']; ?>" class="img-sm">
@@ -389,7 +389,7 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
         </fieldset>
         <fieldset>
-            <legend><?php echo __('Sandardseiten'); ?></legend>
+            <legend><?php echo __('Standardseiten'); ?></legend>
             <ul class="apparatus-tiles">
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/team/' . $exhibit->id); ?>"><?php echo __('Team'); ?></a></div></li>
                 <li><div class="tile"><a href="<?php echo $this->url('exhibits/imprint/' . $exhibit->id); ?>"><?php echo __('Impressum'); ?></a></div></li>
@@ -421,7 +421,7 @@ jQuery(document).ready(function($) {
         url: '<?php echo htmlentities(__('URL der Institution'), ENT_QUOTES); ?>',
         urlExpl: '<?php echo htmlentities(__('URL / Website der teilhabenden Institution'), ENT_QUOTES); ?>',
         logo: '<?php echo htmlentities(__('Logo der Institution'), ENT_QUOTES); ?>',
-        logoExpl: '<?php echo htmlentities(__('Logo der teilhabenden Institution hochalden'), ENT_QUOTES); ?>',
+        logoExpl: '<?php echo htmlentities(__('Logo der teilhabenden Institution hochladen'), ENT_QUOTES); ?>',
         logoDel: '<?php echo htmlentities(__('Logo entfernen'), ENT_QUOTES); ?>',
         pos: '<?php echo htmlentities(__('Position der Institution'), ENT_QUOTES); ?>',
         posExpl: '<?php echo htmlentities(__('Position der teilhabenden Institution in der Seitenanzeige. Hier kann eine Zahl eingegeben werden - je kleiner sie ist, desto weiter vorne steht die Institution.'), ENT_QUOTES); ?>'
