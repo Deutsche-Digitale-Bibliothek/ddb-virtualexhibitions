@@ -14,7 +14,7 @@ $theme = $exhibit->theme ? Theme::getTheme($exhibit->theme) : null;
     <?php echo $this->formHidden('slug', $exhibit->slug); ?>
     <div class="seven columns alpha">
         <fieldset>
-            <legend><?php echo __('Teamkachel'); ?></legend>
+            <legend><?php echo __('Teamseite'); ?></legend>
             <div class="field">
                 <div class="two columns alpha">
                     <?php echo $this->formLabel('description', __('Beschreibung')); ?>

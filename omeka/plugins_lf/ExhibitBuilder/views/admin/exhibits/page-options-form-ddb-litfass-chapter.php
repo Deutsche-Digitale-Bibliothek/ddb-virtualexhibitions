@@ -20,9 +20,9 @@
                     'left top' => 'oben links',
                     'center top' => 'oben zentriert',
                     'right top' => 'oben rechts',
-                    'left center' => 'mitte links',
-                    'center center' => 'mitte zentriert',
-                    'right center' => 'mitte rechts',
+                    'left center' => 'mittig links',
+                    'center center' => 'mittig zentriert',
+                    'right center' => 'mittig rechts',
                     'left bottom' => 'unten links',
                     'center bottom' => 'unten zentriert',
                     'right bottom' => 'unten rechts'

@@ -2896,8 +2896,8 @@ function snippet($text, $startPos, $endPos, $append = '…')
     $startPosOffset = $startPos - $textLength;
     $startPos = !$startPos || $startPosOffset > $textLength
                 ? 0
-                : ($useMbString 
-                    ? mb_strrpos($text, ' ', $startPosOffset, 'UTF-8') 
+                : ($useMbString
+                    ? mb_strrpos($text, ' ', $startPosOffset, 'UTF-8')
                     : strrpos($text, ' ', $startPosOffset)
                 );
 
@@ -2908,13 +2908,13 @@ function snippet($text, $startPos, $endPos, $append = '…')
     $endPosOffset = $endPos - $textLength;
     $endPos = $endPos >= $textLength || $endPosOffset > $textLength
               ? $textLength
-              : ($useMbString 
+              : ($useMbString
                     ? mb_strrpos($text, ' ', $endPosOffset, 'UTF-8')
                     : strrpos($text, ' ', $endPosOffset)
                 );
 
     // Set the snippet by getting its substring.
-    $snippet = $useMbString 
+    $snippet = $useMbString
         ? mb_substr($text, $startPos, $endPos - $startPos, 'UTF-8')
         : substr($text, $startPos, $endPos - $startPos);
 

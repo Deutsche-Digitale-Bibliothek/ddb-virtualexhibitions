@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Omeka\n"
 "Report-Msgid-Bugs-To: omeka-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-11-26 14:33-0500\n"
-"PO-Revision-Date: 2019-03-14 19:12+0100\n"
+"PO-Revision-Date: 2019-09-12 15:19+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/omeka/omeka/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -1307,7 +1307,7 @@ msgstr "Neue Dateien hinzufügen"
 #: admin/themes/default/items/files-form.php:24
 #, php-format
 msgid "The maximum file size is %s."
-msgstr "Die maximale Dateigröße ist %s. <br>Hier bitte ausschließlich Bild-Dateien (.jpg, .png, .tiff) und Audio-Dateien (.mp3, .ogg) einbinden. Keine pdf-Dateien verwenden."
+msgstr "Die maximale Dateigröße ist %s. <br>Hier bitte ausschließlich Bild-Dateien (.jpg, .png, .gif) und Audio-Dateien (.mp3, .ogg) einbinden. Bitte keine PDF-Dateien verwenden."
 
 #: admin/themes/default/items/files-form.php:27
 msgid "Find a File"
@@ -3677,7 +3677,7 @@ msgid "Beschreibung Metadatenfeld Beschreibung"
 msgstr ""
 
 msgid "Beschreibung Metadatenfeld Kurzbeschreibung"
-msgstr "<em>Im Unterschied zum Inhalt von „Beschreibung“ im Frontend sichtbar: in der Lightbox NUR dann, wenn keine Bildunterschrift auf der Ausstellungs-Seite angelegt ist – auf der Objekt-Seite</em>"
+msgstr "Im Unterschied zum Inhalt von „Beschreibung“ im Frontend sichtbar."
 
 msgid "Beschreibung Metadatenfeld Name der Institution"
 msgstr "<strong>Pflichtfeld</strong><br>Institution, die das Original besitzt"
@@ -3692,7 +3692,7 @@ msgid "Beschreibung Metadatenfeld Link zum Objekt bei der datengebenden Institut
 msgstr "Bitte NUR dann ausfüllen, wenn das Objekt NICHT in der Deutschen Digitalen Bibliothek zu finden ist. Andernfalls unbedingt leer lassen!"
 
 msgid "Beschreibung Metadatenfeld Videoquelle"
-msgstr "Sie können Videos aus der DDB oder von Vimeo nutzen. Optional können Sie einen Ausschnitt des Videos zeigen.<br>Bitte nutzen Sie den Video-Shortcode-Helfer (Button links)."
+msgstr "Sie können Videos aus der DDB oder von Vimeo nutzen. Für DDB-Videos können Sie optional einen Ausschnitt des Videos zeigen.<br>Bitte nutzen Sie den Video-Shortcode-Helfer (Button links)."
 
 msgid "Beschreibung Metadatenfeld Rechtsstatus"
 msgstr "<strong>Pflichtfeld</strong><br>Angabe von Lizenz oder Rechtehinweis"
@@ -3728,7 +3728,7 @@ msgid "Beschreibung Metadatenfeld Identifikator"
 msgstr "Information, die nötig ist, um das Objekt im Bestand der datengebenden Institution zu finden: Signatur, Inventarnummer, ..."
 
 msgid "Beschreibung Metadatenfeld Copyright"
-msgstr "Hier die Copyrightangaben passend zum Rechtsstatus angeben"
+msgstr "Hier die Quelle passend zum Rechtsstatus angeben"
 
 msgid "Beschreibung Metadatenfeld Anmerkungen"
 msgstr ""

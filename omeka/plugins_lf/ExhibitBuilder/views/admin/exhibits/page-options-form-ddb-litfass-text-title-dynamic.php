@@ -41,7 +41,7 @@
                 null,                        // attribs
                 array(
                     'top' => 'oben',
-                    'center' => 'mitte',
+                    'center' => 'mittig',
                     'bottom' => 'unten'
                 ),                           // options
                 "<br />\n"                   // listsep

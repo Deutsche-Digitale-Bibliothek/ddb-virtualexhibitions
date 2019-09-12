@@ -43,7 +43,7 @@ echo flash();
             <?php if ($file->has_derivative_image): ?>
             <li><a href="<?php echo metadata($file, 'fullsize_uri'); ?>"><?php echo __('Fullsize'); ?></a></li>
             <!-- Start Grandgeorg Websolutions -->
-            <li><a href="<?php echo metadata($file, 'middsize_uri'); ?>"><?php echo __('middsize'); ?></a></li>
+            <li><a href="<?php echo metadata($file, 'middsize_uri'); ?>"><?php echo __('Mittlere Größe'); ?></a></li>
             <!-- End Grandgeorg Websolutions -->
             <li><a href="<?php echo metadata($file, 'thumbnail_uri'); ?>"><?php echo __('Thumbnail'); ?></a></li>
             <li><a href="<?php echo metadata($file, 'square_thumbnail_uri'); ?>"><?php echo __('Square Thumbnail'); ?></a></li>

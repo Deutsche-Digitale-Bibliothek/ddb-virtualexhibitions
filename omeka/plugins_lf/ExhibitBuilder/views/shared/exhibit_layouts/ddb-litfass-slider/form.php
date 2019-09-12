@@ -1,1 +1,1 @@
-<p><?php echo __('Die Inhalte sind die, in der Übersicht der Ausstellung gesetzten, Ausstellungsseiten zwischen Anfang und Ende des Sliders.'); ?></p>
+<p><?php echo __('In der Liste der Ausstellungsseiten erscheint ein Balken mit dem Zusatz „Anfang eines Sliders ⬇“ und einer mit dem Zusatz „Ende eines Sliders ⬆“. Seiten, die zwischen diesen Rahmen-Elementen platziert werden, erscheinen im Frontend im Slider-Format.'); ?></p>
