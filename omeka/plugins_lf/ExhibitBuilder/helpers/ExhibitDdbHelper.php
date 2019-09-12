@@ -2229,4 +2229,23 @@ class ExhibitDdbHelper
         return $html;
     }
 
+
+    public static function getBrowserLanguage()
+    {
+        $acceptLang = ['de', 'en'];
+        foreach (explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']) as $lang) {
+            $pattern = '/^(?P<primarytag>[a-zA-Z]{2,8})'.
+            '(?:-(?P<subtag>[a-zA-Z]{2,8}))?(?:(?:;q=)'.
+            '(?P<quantifier>\d\.\d))?$/';
+            $splits = array();
+            if (preg_match($pattern, $lang, $splits)) {
+                if (in_array($splits['primarytag'], $acceptLang)) {
+                    return $splits['primarytag'];
+                }
+            }
+        }
+        return 'en';
+
+    }
+
 }

@@ -22,6 +22,7 @@
     <?php queue_css_file('spa.min', 'all', false, 'css', date("YmdHis", filemtime(dirname(__FILE__) . '/../css/spa.min.css'))); ?>
     <?php echo head_css(); ?>
     <?php echo ExhibitDdbHelper::getSpaCss(ExhibitDdbHelper::getMenuColor($colors), $exhibitType, $navcolor); ?>
+    <?php $browserLang = ExhibitDdbHelper::getBrowserLanguage(); ?>
 </head>
 <body class="no-js exhibit-type-<?php echo $exhibitType; ?><?php echo ($exhibitType == 'litfass_ddb')? ' nav_color_' . $navcolor : ''; ?>">
 <script>
@@ -31,6 +32,19 @@
   <div class="noscript-cont">
     <div class="container-fluid">
       <div>
+        <?php if ($browserLang === 'de'): ?>
+        <h2>JavaScript ist in deinem Browser deaktiviert</h2>
+        <p>
+            Bitte aktiviere JavaScript in deinem Browser oder installiere einen Browser, der JavaScript unterstützt,
+            um diese virtuelle Ausstellung anschauen zu können.
+        </p>
+        <p>
+            Weitere Informationen zu DDBstudio, der virtuellen Ausstellungsplattform der
+            Deutschen Digitalen Bibliothek findest du
+            <a href="https://pro.deutsche-digitale-bibliothek.de/ddbstudio"
+            target="_blank" rel="noopener">hier</a>.
+        </p>
+        <?php else: ?>
         <h2>JavaScript Required</h2>
         <p>
             We're sorry, but this virtual exhibition cannot be viewed properly without JavaScript enabled.
@@ -42,6 +56,7 @@
             please visit <a href="https://pro.deutsche-digitale-bibliothek.de/ddbstudio"
             target="_blank" rel="noopener">this page</a> (in German).
         </p>
+        <?php endif; ?>
       </div>
     </div>
   </div>
