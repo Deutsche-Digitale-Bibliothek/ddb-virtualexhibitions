@@ -639,6 +639,12 @@ audio {
 
 
 // fullpage
+
+.fullpage {
+  will-change: opacity;
+  transition: opacity 1s;
+}
+
 .section-container {
   display: flex;
   // flex-direction:

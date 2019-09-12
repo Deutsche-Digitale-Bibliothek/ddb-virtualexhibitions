@@ -34,6 +34,11 @@ $imprint = ExhibitDdbHelper::getImprint(
 );
 ?>
 <div id="fullpage" class="fullpage">
+<script>
+(function() {
+    document.getElementById('fullpage').style.opacity = 0;
+})();
+</script>
 <?php
 // Title Section
 require  $dir . '/section-ddb-litfass-start.php';

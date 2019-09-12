@@ -1364,6 +1364,10 @@
     }
   }
 
+  function revealFullpage() {
+    $('#fullpage').css('opacity', 1);
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -1392,6 +1396,7 @@
       handleIpad();
       handleMac();
       initTestmode();
+      revealFullpage();
     });
   }
 

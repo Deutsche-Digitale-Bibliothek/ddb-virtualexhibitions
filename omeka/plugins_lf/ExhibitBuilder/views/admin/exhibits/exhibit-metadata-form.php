@@ -109,10 +109,14 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <p class="explanation"><?php echo __('Falls gewünscht, hier ein Hintergrundbild für die Startseite hochalden'); ?></p>
                     <?php
                         $hasTitlebackground = false;
-                        if (!empty($exhibit->titlebackground) && is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
+                        if (!empty($exhibit->titlebackground) &&
+                            is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)):
                         $hasTitlebackground = true;
                     ?>
-                    <a href="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" target="_blank"><img src="<?php echo WEB_FILES . '/layout/titlebackground/' . $exhibit->titlebackground; ?>" class="img-sm"></a>
+                    <a href="<?php echo WEB_FILES . '/layout/titlebackground/'
+                        . $exhibit->titlebackground; ?>" target="_blank">
+                        <img src="<?php echo WEB_FILES . '/layout/titlebackground/'
+                        . $exhibit->titlebackground; ?>" class="img-sm"></a>
                     <?php endif; ?>
                     <?php echo $this->formFile('titlebackground'); ?>
                     <?php if ($hasTitlebackground): ?>

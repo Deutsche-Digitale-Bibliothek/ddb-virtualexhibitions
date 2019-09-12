@@ -6725,6 +6725,11 @@ audio {
   background-color: #a5003b;
 }
 
+.fullpage {
+  will-change: opacity;
+  transition: opacity 1s;
+}
+
 .section-container {
   display: flex;
   align-content: stretch;
