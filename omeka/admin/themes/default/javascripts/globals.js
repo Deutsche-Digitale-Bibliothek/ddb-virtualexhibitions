@@ -47,7 +47,7 @@ if (!Omeka) {
             branding: false,
             toolbar_items_size: "small",
             // toolbar: "blockquote formatselect ",
-            toolbar: "bold italic underline removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | link styleselect | code fullscreen",
+            toolbar: "bold italic underline removeformat | alignleft aligncenter alignright alignjustify | bullist numlist | link unlink styleselect | code fullscreen",
             plugins: "lists,link,code,paste,media,autoresize,fullscreen,help",
             style_formats: styleFormats,
             content_css : Omeka.wysiwyg_content_css(),
