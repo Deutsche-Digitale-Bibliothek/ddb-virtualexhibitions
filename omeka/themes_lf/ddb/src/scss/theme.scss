@@ -879,7 +879,8 @@ audio {
       height: 100%;
       overflow: hidden;
       .scroll-element {
-        box-sizing: initial !important;
+        // box-sizing: initial !important;
+        box-sizing: content-box !important;
         width: 100%;
         height: 100%;
         // padding: 75px 0;
@@ -1119,7 +1120,8 @@ audio {
   // background-color: #fff;
   background-color: rgba(255, 255, 255, .6);
   .media-meta-scroll {
-    box-sizing: initial;
+    // box-sizing: initial;
+    box-sizing: content-box;
     width: 100%;
     overflow-y: scroll;
     p,
@@ -1944,7 +1946,8 @@ blockquote {
       width: 100%;
     }
     .pos-box-scroll {
-      box-sizing: initial;
+      // box-sizing: initial;
+      box-sizing: content-box;
       width: 100%;
       max-height: calc(100vh - 175px);
       padding-right: 34px;

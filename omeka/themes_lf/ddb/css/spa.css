@@ -6935,7 +6935,7 @@ audio {
 }
 
 .scroll-container .text-content .scroll-frame .scroll-element {
-  box-sizing: initial !important;
+  box-sizing: content-box !important;
   width: 100%;
   height: 100%;
   padding-right: 17px;
@@ -7152,7 +7152,7 @@ audio {
 }
 
 .media-meta .media-meta-scroll {
-  box-sizing: initial;
+  box-sizing: content-box;
   width: 100%;
   overflow-y: scroll;
 }
@@ -8050,7 +8050,7 @@ blockquote cite a {
 }
 
 .section-container-pos .pos-box .pos-box-scroll {
-  box-sizing: initial;
+  box-sizing: content-box;
   width: 100%;
   max-height: calc(100vh - 175px);
   padding-right: 34px;
