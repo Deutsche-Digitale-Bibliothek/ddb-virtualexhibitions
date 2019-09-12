@@ -403,7 +403,11 @@
 
   function setTableCellHeight(isResponsive) {
     if (isResponsive && !options.is_ipad) {
-      $('.fp-tableCell').css('height', '100%');
+      $('.fp-tableCell').css({
+        'height': '100%',
+        // make sure tableCell does not collapse if content is short:
+        'min-height': ($(window).height() - headerHeight) + 'px'
+      });
     }
   }
 
