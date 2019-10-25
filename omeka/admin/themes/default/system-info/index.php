@@ -31,5 +31,14 @@ echo head(array('title' => $title, 'bodyclass' => 'system-info')); ?>
         <td><?php echo ini_get('memory_limit'); ?></td>
     </tr>
 </table>
+<?php if (current_user()->role === 'super'): ?>
+<h2>phpinfo</h2>
+<?php
+ob_start();
+phpinfo();
+$phpinfo = base64_encode(ob_get_clean());
+?>
+<iframe src="data:text/html;base64,<?php echo $phpinfo; ?>" style="width:100%;height:100vh;max-height:800px;border: 1px solid #999;"></iframe>
+<?php endif; ?>
 <?php fire_plugin_hook('admin_system_info', array('system_info' => $info, 'view' => $this)); ?>
 <?php echo foot();
