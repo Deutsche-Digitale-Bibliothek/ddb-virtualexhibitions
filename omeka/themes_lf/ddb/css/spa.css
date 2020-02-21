@@ -6128,6 +6128,7 @@ x3d:hover,
 html.fp-enabled,
 .fp-enabled body {
   overflow: hidden;
+  overflow-y: auto;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -7193,7 +7194,7 @@ audio {
   line-height: 1.555;
 }
 
-.section[data-color-section='white'] .media-meta {
+.section[data-color-section="white"] .media-meta {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
