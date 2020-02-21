@@ -6910,6 +6910,7 @@ audio {
 .audio-controls {
   display: block;
   margin: 0 auto;
+  max-width: 485px;
 }
 
 .scroll-container {
