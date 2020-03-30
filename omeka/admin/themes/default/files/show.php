@@ -92,6 +92,10 @@ echo flash();
     </div>
     <?php endif; ?>
 
+    <div class="panel">
+        <h4><?php echo __('Output Formats'); ?></h4>
+        <?php echo output_format_list(); ?>
+    </div>
     <?php fire_plugin_hook('admin_files_show_sidebar', array('file' => $file, 'view' => $this)); ?>
 </section>
 
