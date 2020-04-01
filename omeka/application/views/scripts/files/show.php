@@ -18,6 +18,11 @@ $fileTitle = __('File #%s', metadata('file', 'id')) . $fileTitle;
 </div>
 
 <aside id="sidebar">
+    <div id="item-metadata">
+        <h2><?php echo __('Item'); ?></h2>
+        <?php echo link_to_item(null, array(), 'show', $file->getItem()); ?>
+    </div><!-- end item-metadata -->
+
     <div id="format-metadata">
         <h2><?php echo __('Format Metadata'); ?></h2>
         <div id="original-filename" class="element">

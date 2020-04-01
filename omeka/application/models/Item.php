@@ -398,8 +398,8 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      */
     public function previous()
     {
-        $previousItem = apply_filters('item_previous', null, array('item' => $this));
-        if ($previousItem) {
+        $previousItem = apply_filters('item_previous', false, array('item' => $this));
+        if ($previousItem !== false) {
             return $previousItem;
         }
         return $this->getDb()->getTable('Item')->findPrevious($this);
@@ -413,8 +413,8 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
      */
     public function next()
     {
-        $nextItem = apply_filters('item_next', null, array('item' => $this));
-        if ($nextItem) {
+        $nextItem = apply_filters('item_next', false, array('item' => $this));
+        if ($nextItem !== false) {
             return $nextItem;
         }
         return $this->getDb()->getTable('Item')->findNext($this);
@@ -431,9 +431,9 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         $db = $this->getDb();
 
         $sql = "
-        SELECT COUNT(f.id)
-        FROM $db->File f
-        WHERE f.item_id = ?
+        SELECT COUNT(f.id) 
+        FROM $db->File f 
+        WHERE f.item_id = ? 
         AND f.has_derivative_image = 1";
 
         $count = $db->fetchOne($sql, array((int) $this->id));
