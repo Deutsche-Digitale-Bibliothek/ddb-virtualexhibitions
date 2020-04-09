@@ -52,7 +52,6 @@ $formAttributes['method'] = 'GET';
                     @$rows['joiner'],
                     array(
                         'title' => __("Search Joiner"),
-                        'id' => null,
                         'class' => 'advanced-search-joiner'
                     ),
                     array(
@@ -65,7 +64,6 @@ $formAttributes['method'] = 'GET';
                     @$rows['element_id'],
                     array(
                         'title' => __("Search Field"),
-                        'id' => null,
                         'class' => 'advanced-search-element'
                     ),
                     get_table_options('Element', null, array(
@@ -79,7 +77,6 @@ $formAttributes['method'] = 'GET';
                     @$rows['type'],
                     array(
                         'title' => __("Search Type"),
-                        'id' => null,
                         'class' => 'advanced-search-type'
                     ),
                     label_table_options(array(
@@ -101,7 +98,6 @@ $formAttributes['method'] = 'GET';
                     array(
                         'size' => '20',
                         'title' => __("Search Terms"),
-                        'id' => null,
                         'class' => 'advanced-search-terms'
                     )
                 );
