@@ -498,7 +498,7 @@ jQuery(document).ready(function($) {
     })
 
     // slider
-    $('#save_exhibit').on('click', function(e) {
+    $('#exhibit-metadata-form').submit(function (e) {
         var sliderStart = 0;
         var nestingError = false;
         $('.page').each(function() {
@@ -516,13 +516,41 @@ jQuery(document).ready(function($) {
             e.preventDefault();
             e.stopPropagation();
             alert('<?php echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?>');
+            return false;
         }
         if (nestingError) {
             e.preventDefault();
             e.stopPropagation();
             alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
+            return false;
         }
     });
+
+    // $('#save_exhibit').on('click', function(e) {
+    //     var sliderStart = 0;
+    //     var nestingError = false;
+    //     $('.page').each(function() {
+    //         if ($(this).data('slider') === 'start') {
+    //             sliderStart++;
+    //         }
+    //         if (sliderStart > 1) {
+    //             nestingError = true;
+    //         }
+    //         if ($(this).data('slider') === 'end' && sliderStart > 0) {
+    //             sliderStart--;
+    //         }
+    //     });
+    //     if (sliderStart > 0) {
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         alert('<?php echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?>');
+    //     }
+    //     if (nestingError) {
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
+    //     }
+    // });
     $('#page-list .delete-toggle').on('click', function (e, data) {
         if (data !== 'automark') {
             var page = $(this).parents('.page');
