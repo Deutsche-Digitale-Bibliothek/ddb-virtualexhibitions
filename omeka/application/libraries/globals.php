@@ -1156,9 +1156,10 @@ function head_js($includeDefaults = true)
         $dir = 'javascripts';
         $headScript->prependScript('jQuery.noConflict();')
                    ->prependScript('window.jQuery.ui || document.write(' . js_escape(js_tag('vendor/jquery-ui')) . ')')
-                   ->prependFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
+                //    ->prependFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
                    ->prependScript('window.jQuery || document.write(' . js_escape(js_tag('vendor/jquery')) . ')')
-                   ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
+                //    ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+                   ;
     }
     return $headScript;
 }
@@ -2899,8 +2900,8 @@ function snippet($text, $startPos, $endPos, $append = '…')
     $startPosOffset = $startPos - $textLength;
     $startPos = !$startPos || $startPosOffset > $textLength
                 ? 0
-                : ($useMbString 
-                    ? mb_strrpos($text, ' ', $startPosOffset, 'UTF-8') 
+                : ($useMbString
+                    ? mb_strrpos($text, ' ', $startPosOffset, 'UTF-8')
                     : strrpos($text, ' ', $startPosOffset)
                 );
 
@@ -2911,13 +2912,13 @@ function snippet($text, $startPos, $endPos, $append = '…')
     $endPosOffset = $endPos - $textLength;
     $endPos = $endPos >= $textLength || $endPosOffset > $textLength
               ? $textLength
-              : ($useMbString 
+              : ($useMbString
                     ? mb_strrpos($text, ' ', $endPosOffset, 'UTF-8')
                     : strrpos($text, ' ', $endPosOffset)
                 );
 
     // Set the snippet by getting its substring.
-    $snippet = $useMbString 
+    $snippet = $useMbString
         ? mb_substr($text, $startPos, $endPos - $startPos, 'UTF-8')
         : substr($text, $startPos, $endPos - $startPos);
 
