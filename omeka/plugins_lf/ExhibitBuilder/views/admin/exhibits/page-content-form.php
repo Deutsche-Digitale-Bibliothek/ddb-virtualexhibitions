@@ -52,7 +52,7 @@
 
                     var inputField = $('#' + element.data('zoom-helperfor'));
                     var currentValue = inputField.val();
-                    if (currentValue === '') {
+                    if (typeof currentValue === 'undefined' || currentValue === '') {
                         var rect = {
                             startX: $canvas.width() / 4,
                             startY: $canvas.height() / 4,
