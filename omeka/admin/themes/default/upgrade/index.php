@@ -11,7 +11,7 @@
     queue_css_file('media/768min', 'only screen and (min-width: 768px) and (max-width: 959px)');
     queue_css_file('media/767max', 'only screen and (max-width: 767px)');
     queue_css_file('media/479max', 'only screen and (max-width: 479px)');
-    queue_css_url('//fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Cabin:400,700,400italic,700italic');
+    // queue_css_url('//fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|Cabin:400,700,400italic,700italic');
 
     queue_js_file(array('vendor/respond', 'vendor/modernizr', 'vendor/selectivizr', 'globals'));
 ?>
@@ -26,18 +26,18 @@
 <body id="upgrade">
 
     <div class="container container-sixteen">
-    
+
         <section id="content" class="eight columns offset-by-four">
-        
-        <h1><?php echo __('Upgrade Your Omeka Database'); ?></h1> 
+
+        <h1><?php echo __('Upgrade Your Omeka Database'); ?></h1>
         <p>
             <?php echo __('Your Omeka database is not compatible with your current version of Omeka.'); ?>
             <?php echo __('Please back up your existing database and then click the button to upgrade.'); ?>
         </p>
         <?php echo link_to('upgrade', 'migrate', __('Upgrade Database'), array('id' => 'upgrade-database-link', 'class'=>'big green button')); ?>
-        
+
         </section>
-    
+
     </div>
 
 </body>
