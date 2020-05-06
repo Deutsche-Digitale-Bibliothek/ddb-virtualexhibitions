@@ -198,6 +198,7 @@
   }
 
   function bindWindowResize () {
+    // For iPad ...
     $(window).resize(function() {
       if (currentVerticalDiretion !== lastVerticalDiretion) {
         // console.log('We have a new direction. It\'s now ' +
@@ -216,6 +217,11 @@
       // $('#header .header_title').css('color', 'white').html('... Development Test aktiv, bitte später validieren! ...');
     }
   }
+
+  // function bindCustomWindowResize () {
+  //   // fpAfterResize will not fire on small window changes, so use this one ...
+  //   $(window).resize(function() {});
+  // }
 
   function dipatchNewDirection() {
 
@@ -303,7 +309,7 @@
 
     // we could put functioncalls from init() here e.g.
     // setScrollElementMaxHeight();
-    // bindSCrollControls();
+    // bindScrollControls();
     // toggleScrollControls();
     // setMediaProps();
     // bindMediaInfo();
@@ -334,6 +340,8 @@
     // to change this behaviour
 
     // $('#header').css('background', '#060');
+
+    // console.log('resize:' + width + 'x' + height);
 
     customAfterResize();
   }
@@ -457,7 +465,48 @@
     element.scrollTop(0);
   }
 
-  function bindSCrollControls() {
+  function bindMetaScrollControlls() {
+    // mouse events
+    $('.meta-scroll-arrow-down').bind('mousedown', function (event) {
+      event.preventDefault();
+      var scrollElement = $('.media-meta-scroll', $(this).parents('.tile'));
+      scrollElement.addClass('active');
+      containerScrollDown('down', scrollElement);
+
+    });
+    $('.meta-scroll-arrow-up').bind('mousedown', function (event) {
+      event.preventDefault();
+      var scrollElement = $('.media-meta-scroll', $(this).parents('.tile'));
+      scrollElement.addClass('active');
+      containerScrollDown('up', scrollElement);
+    });
+    $(window).bind('mouseup', function () {
+      if ($('.media-meta-scroll').hasClass('active')) {
+        $('.media-meta-scroll').removeClass('active');
+      }
+    });
+    // touch events
+    $('.meta-scroll-arrow-down').bind('touchstart', function (event) {
+      event.preventDefault();
+      var scrollElement = $('.media-meta-scroll', $(this).parents('.tile'));
+      scrollElement.addClass('active');
+      containerScrollDown('down', scrollElement);
+
+    });
+    $('.meta-scroll-arrow-up').bind('touchstart', function (event) {
+      event.preventDefault();
+      var scrollElement = $('.media-meta-scroll', $(this).parents('.tile'));
+      scrollElement.addClass('active');
+      containerScrollDown('up', scrollElement);
+    });
+    $(window).bind('touchend', function () {
+      if ($('.media-meta-scroll').hasClass('active')) {
+        $('.media-meta-scroll').removeClass('active');
+      }
+    });
+  }
+
+  function bindScrollControls() {
     // mouse events
     $('.scroll-arrow-down').bind('mousedown', function (event) {
       event.preventDefault();
@@ -675,8 +724,10 @@
     $('.icon-info').bind('click', function (event) {
       var iconInfo = $(this);
       var controlInfo = iconInfo.parent('.control-info');
+      var metaScrollControls = controlInfo.siblings('.meta-scroll-controls');
       var mediaMeta = $('.media-meta', iconInfo.parents('.tile'));
-      // var mediaMeta = $('.media-meta', iconInfo.parents('.container-media'));
+      var mediaMetaScroll = $('.media-meta-scroll', mediaMeta);
+      var mediaMetaScrollContent = $('.media-meta-scroll-content', mediaMetaScroll);
       var mediaCol = iconInfo.parents('.col-media');
       var textCol = $('.col-text', iconInfo.parents('.row'));
       event.preventDefault();
@@ -687,6 +738,7 @@
         // mediaItem.removeClass('d-none');
         textCol.removeClass('hidden');
         mediaCol.removeClass('active');
+        metaScrollControls.addClass('d-none');
       } else {
         iconInfo.addClass('active');
         controlInfo.addClass('active');
@@ -694,6 +746,11 @@
         // mediaItem.addClass('d-none');
         textCol.addClass('hidden');
         mediaCol.addClass('active');
+        setTimeout(function () {
+          if (mediaMetaScrollContent.height() > mediaMetaScroll.height()) {
+            metaScrollControls.removeClass('d-none');
+          }
+        }, 200);
       }
     });
   }
@@ -1377,7 +1434,7 @@
       initFullPage();
       bindMenu();
       setScrollElementMaxHeight();
-      bindSCrollControls();
+      bindScrollControls();
       setMediaProps();
       toggleScrollControls();
       setVimeoVideos();
@@ -1397,6 +1454,8 @@
       handleMac();
       initTestmode();
       revealFullpage();
+      bindMetaScrollControlls();
+      // bindCustomWindowResize();
     });
   }
 

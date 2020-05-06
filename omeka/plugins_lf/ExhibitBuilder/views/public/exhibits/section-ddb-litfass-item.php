@@ -68,6 +68,21 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                             </svg>
                         </div>
                         <?php endif; ?>
+                        <div class="meta-scroll-controls d-none<?php echo ($pageoptions['align'] === 'right')? ' meta-scroll-controls-left' : ''; ?>">
+                            <svg version="1.1" class="meta-scroll-arrow-up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="13px" viewBox="0 0 22 13" enable-background="new 0 0 22 13" xml:space="preserve">
+                                <path d="M20.61,12.04l-9.65-9.91l-9.91,9.91"></path>
+                            </svg>
+                            <br>
+                            <svg version="1.1" class="meta-scroll-mouse" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23px" height="34px" viewBox="0 0 23 34" enable-background="new 0 0 23 34" xml:space="preserve">
+                                <path d="M1.52,11.17c0,0-1.55-9.71,9.93-9.71
+                                c11.48,0,9.93,9.71,9.93,9.71v11.58c0,0-0.64,9.71-9.93,9.71s-9.93-9.71-9.93-9.71V11.17z"></path>
+                                <line stroke-linecap="round" x1="11.51" y1="10.28" x2="11.51" y2="15.67"></line>
+                            </svg>
+                            <br>
+                            <svg version="1.1" class="meta-scroll-arrow-down" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="13px" viewBox="-0 1 22 13" enable-background="new 0 1 22 13" xml:space="preserve">
+                                <path d="M1.05,2.13l9.65,9.91l9.91-9.91"></path>
+                            </svg>
+                        </div>
                     </div>
                     <div class="content-media order-md-first">
                         <div class="media-meta d-none order-md-last">

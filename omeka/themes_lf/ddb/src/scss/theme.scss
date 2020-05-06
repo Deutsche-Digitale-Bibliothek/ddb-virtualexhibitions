@@ -937,6 +937,29 @@ audio {
   }
 }
 
+// .control-meta-scroll
+.meta-scroll-controls {
+  padding: 0 0 0 1.4rem;
+  .meta-scroll-arrow-up {
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
+  .meta-scroll-arrow-down {
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  .meta-scroll-arrow-up:hover path,
+  .meta-scroll-arrow-down:hover path {
+    stroke: #fff;
+  }
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+  &.meta-scroll-controls-left {
+    padding: 0 0 0 .8rem;
+  }
+}
+
 // .section-text-media-left {
 //   .col-media {
 //     .container-media {
@@ -1178,7 +1201,8 @@ audio {
 }
 
 // controls & icons
-.scroll-controls {
+.scroll-controls,
+.meta-scroll-controls {
   path,
   line {
     fill: none;
@@ -1187,6 +1211,12 @@ audio {
   }
 }
 
+.meta-scroll-controls-fill {
+  path,
+  line {
+    fill: #fff !important;
+  }
+}
 
 .control-info {
   g line {
@@ -2330,7 +2360,8 @@ i.license-or {
   .media-meta {
     background-color: rgba(0, 0, 0, .2);
   }
-  .scroll-controls {
+  .scroll-controls,
+  .meta-scroll-controls {
     path,
     line {
       fill: none;
@@ -2338,8 +2369,16 @@ i.license-or {
       stroke-width: 3px;
     }
     .scroll-arrow-up:hover path,
-    .scroll-arrow-down:hover path {
+    .scroll-arrow-down:hover path,
+    .meta-scroll-arrow-up:hover path,
+    .meta-scroll-arrow-down:hover path {
       stroke: rgba(0, 0, 0, .6);
+    }
+  }
+  .meta-scroll-controls-fill {
+    path,
+    line {
+      fill: $body-color !important;
     }
   }
   .zoomer,
