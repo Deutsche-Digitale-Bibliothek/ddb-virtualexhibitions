@@ -27,7 +27,7 @@ $metadataDisplayFields = array(
     'Typ', 'Teil von', 'Beschreibung', 'Kurzbeschreibung',
     'Thema', 'Beteiligte Personen und Organisationen',
     'Zeit', 'Ort', 'Maße/Umfang', 'Material/Technik',
-    'Sprache', 'Identifikator', 'Anmerkungen', 'Förderung',
+    'Sprache', 'Identifikator', 'Förderung',
     'Rechtsstatus'
 );
 
