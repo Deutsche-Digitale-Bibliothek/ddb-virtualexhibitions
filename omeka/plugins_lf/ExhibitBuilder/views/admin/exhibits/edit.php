@@ -11,6 +11,6 @@
 
 <?php echo flash(); ?>
 <?php $theme = $exhibit->theme ? Theme::getTheme($exhibit->theme) : null; ?>
-<?php echo common('exhibit-metadata-form', array('exhibit' => $exhibit, 'theme' => $theme), 'exhibits'); ?>
+<?php echo common('exhibit-metadata-form', array('exhibit' => $exhibit, 'theme' => $theme, 'options' => $options), 'exhibits'); ?>
 
 <?php echo foot(); ?>

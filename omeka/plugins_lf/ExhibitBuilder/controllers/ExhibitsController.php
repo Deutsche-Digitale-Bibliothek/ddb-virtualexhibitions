@@ -50,6 +50,8 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
     public function editAction()
     {
+        $options = unserialize(get_option('exhibit_options'));
+        $this->view->options = $options;
         $fileFields = array('banner', 'cover', 'titlebackground', 'titleimage', 'titlelogo', 'startpagethumbnail');
         foreach ($fileFields as $fileField) {
             if ($this->getRequest()->isPost() && isset($_FILES[$fileField]) &&
@@ -107,6 +109,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
                 array('exhibit_type' => $_POST['exhibit_type']),
                 'id = ' . $exhibitNo
             );
+        }
+
+        // set options
+        if ($this->getRequest()->isPost() && $options['hide_title'] !== $_POST['hide_title']) {
+            // unset($options['foo']);
+            // $options['exhibit_options'] = array('hide_title' => $_POST['hide_title']);
+            set_option('exhibit_options', serialize(array('hide_title' => $_POST['hide_title'])));
+            // var_dump($options);
+
         }
         parent::editAction();
     }
@@ -425,7 +436,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         if (!$exhibit) {
             throw new Omeka_Controller_Exception_404;
         }
-
+        $this->view->exhibit_options = unserialize(get_option('exhibit_options'));
         fire_plugin_hook('show_exhibit', array('exhibit' => $exhibit));
         $this->renderExhibit(compact('exhibit'), 'summary');
     }

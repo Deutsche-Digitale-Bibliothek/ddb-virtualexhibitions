@@ -48,6 +48,25 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
             </div>
             <div class="field">
                 <div class="two columns alpha">
+                    <?php echo $this->formLabel('hide_title', __('Titel im Seiteninhalt anzeigen')); ?>
+                </div>
+                <div class="five columns omega inputs">
+                <?php
+                echo $this->formSelect(
+                    'hide_title',                   // name
+                    $options,                       // value
+                    null,                           // attribs
+                    array(
+                        0 => 'ja',
+                        1 => 'nein'
+                    ),                              // options
+                    "<br />\n"                      // listsep
+                );
+                ?>
+                </div>
+            </div>
+            <div class="field">
+                <div class="two columns alpha">
                     <?php echo $this->formLabel('subtitle', __('Untertitel')); ?>
                 </div>
                 <div class="five columns omega inputs">

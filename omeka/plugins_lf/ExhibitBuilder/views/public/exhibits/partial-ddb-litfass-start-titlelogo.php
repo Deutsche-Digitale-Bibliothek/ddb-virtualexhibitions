@@ -4,7 +4,9 @@
         <div class="col-md-9">
             <div class="title-container">
                 <div class="title-top">
+                    <?php if (!isset($exhibit_options['hide_title']) || $exhibit_options['hide_title'] == '0'): ?>
                     <h1><span><?php echo $title ?></span></h1>
+                    <?php endif;?>
                     <?php if (!empty($subtitle)): ?><h2><span><?php echo $subtitle ?></span></h2><?php endif;?>
                 </div>
                 <div class="title-bottom">
