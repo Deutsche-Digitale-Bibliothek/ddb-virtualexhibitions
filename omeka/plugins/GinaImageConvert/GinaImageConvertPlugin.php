@@ -16,7 +16,12 @@
 class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
-        'before_save_file'
+        'before_save_file',
+        'define_routes'
+    );
+
+    protected $_filters = array(
+        'admin_navigation_main'
     );
 
     protected static $convertedFiles = array();
@@ -24,6 +29,7 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * @param array $args Args with (File-) Record
      * @return void
+     *
      */
     public function hookBeforeSaveFile($args)
     {
@@ -130,5 +136,78 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
         file_put_contents(__DIR__ . '/log.txt', date('Y-m-d H.i:s') . ' ' . $type . ': ' . $file . ' ' . $msg . "\n", FILE_APPEND);
     }
 
+    /**
+     * Add the routes
+     *
+     * @param Zend_Controller_Router_Rewrite $router
+     */
+    public function hookDefineRoutes($args)
+    {
+        // Don't add these routes on the public side to avoid conflicts.
+        if (!is_admin_theme()) {
+            return;
+        }
+
+        $router = $args['router'];
+
+        $router->addRoute(
+            'gina-image-convert',
+            new Zend_Controller_Router_Route(
+                '/gina-image-convert/compress',
+                array(
+                    'module'     => 'gina-image-convert',
+                    'controller' => 'compress',
+                    'action'     => 'index',
+                    // 'id'         => null
+                )
+            )
+        );
+
+        $router->addRoute(
+            'gina-image-convert-showlog',
+            new Zend_Controller_Router_Route(
+                '/gina-image-convert/showlog',
+                array(
+                    'module'     => 'gina-image-convert',
+                    'controller' => 'compress',
+                    'action'     => 'showlog',
+                )
+            )
+        );
+
+        $router->addRoute(
+            'gina-image-convert-compressfile',
+            new Zend_Controller_Router_Route(
+                '/gina-image-convert/compressfile/:id',
+                array(
+                    'module'     => 'gina-image-convert',
+                    'controller' => 'compress',
+                    'action'     => 'file',
+                    'id'         => null
+                )
+            )
+        );
+
+    }
+
+    /**
+     * Modify the admin navigation
+     *
+     * @param array $navArray The array of navigation links
+     * @return array
+     */
+    public function filterAdminNavigationMain($navArray)
+    {
+        $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser');
+
+        if ($currentuser['role'] === 'super') {
+            $navArray[] = array(
+                'label' => __('Bilder Koprimieren'),
+                'uri' => url('gina-image-convert/compress'),
+                'visible' => true
+            );
+        }
+        return $navArray;
+    }
 
 }

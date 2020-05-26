@@ -12,6 +12,7 @@
                     <?php $currentuser = Zend_Registry::get('bootstrap')->getResource('currentuser'); ?>
                     <?php if ($currentuser->role === 'super'): ?>
                         <li><?php echo link_to($file, 'edit', __('Edit'), array('class'=>'edit')); ?></li>
+                        <li><a href="<?php echo url('/gina-image-convert/compressfile/' . $file['id']); ?>"><?php echo __('Komprimieren'); ?></a></li>
                     <?php endif; ?>
                         <li><a href="#" class="delete"><?php echo __('Delete '); ?></a> <?php echo $this->formCheckbox('delete_files[]', $file->id, array('checked' => false)); ?></li>
                     </ul>
