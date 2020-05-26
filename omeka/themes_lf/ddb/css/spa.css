@@ -7120,7 +7120,6 @@ audio {
 .scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h3,
 .scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner h4,
 .scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner p {
-  word-break: break-all;
   word-break: break-word;
 }
 
@@ -7820,7 +7819,6 @@ audio {
 
 @media (max-width: 767.98px) {
   .section-title h1 span {
-    word-break: break-all;
     word-break: break-word;
   }
 }
@@ -7846,7 +7844,6 @@ audio {
 
 @media (max-width: 767.98px) {
   .section-title h2 span {
-    word-break: break-all;
     word-break: break-word;
   }
 }
@@ -8145,7 +8142,6 @@ blockquote cite a {
 @media (max-width: 767.98px) {
   .section-cite blockquote {
     font-size: 1.75rem;
-    word-break: break-all;
     word-break: break-word;
   }
 }
