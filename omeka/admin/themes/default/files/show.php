@@ -13,7 +13,7 @@ echo flash();
 ?>
 
 <section class="seven columns alpha">
-    <?php echo file_markup($file); ?>
+    <?php echo file_markup($file, array('imageSize' => 'thumbnail')); ?>
 
     <?php echo all_element_texts('file'); ?>
 
