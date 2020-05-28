@@ -1,12 +1,12 @@
-<?php $ddbStudioLink = 'https://pro.deutsche-digitale-bibliothek.de/ddbstudio'; ?>
+<?php $ddbStudioLink = 'https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen'; ?>
 <nav class="menu-container" id="menu-container">
     <div class="menu-header">
     <?php if ($exhibitType === 'litfass_ddb'): ?>
-        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
+        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener" target="_blank">
         <?php if ($navcolor === 'dark'): ?>
-            <img src="<?php echo img('ddb-studio-logo-inverse.svg'); ?>" alt="DDB Studio Logo">
+            <img src="<?php echo img('3_DDB_Logo_2_s_pos_RGB_R_96dpi.png'); ?>" alt="DDB Studio Logo">
         <?php else: ?>
-            <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo">
+            <img src="<?php echo img('3_DDB_Logo_2_s_pos_RGB_R_96dpi.png'); ?>" alt="DDB Studio Logo">
         <?php endif; ?>
         </a>
         <p class="menu-text menu-text-red">
@@ -46,7 +46,7 @@
             </li>
         <?php endforeach; ?>
         </ul>
-        <p class="menu-text menu-text-red">
+        <!-- <p class="menu-text menu-text-red">
         <?php
         switch ($exhibitType) {
             case 'litfass_featured':
@@ -54,13 +54,25 @@
                 break;
 
             default:
-                echo __('erstellt mit');
+                echo __('Ein Service von Deutsche Digitale Bibliothek');
                 break;
         }
         ?>
-        </p>
+        </p> -->
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
-            <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo">
+            <!-- <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo"> -->
+
+            <?php
+            switch ($exhibitType) {
+                case 'litfass_featured':
+                    echo '<img src="' . img('2_ddb_api_dt_rot.png') . '" alt="Unterstützt von Deutsche Digitale Bibliothek">';
+                    break;
+
+                default:
+                    echo '<img src="' . img('1_dbb_siegel_de_service_rot_invert.png') . '" alt="Ein Service von Deutsche Digitale Bibliothek">';
+                    break;
+            }
+        ?>
         </a>
     <?php endif; ?>
     </div>
