@@ -46,22 +46,7 @@
             </li>
         <?php endforeach; ?>
         </ul>
-        <!-- <p class="menu-text menu-text-red">
-        <?php
-        switch ($exhibitType) {
-            case 'litfass_featured':
-                echo __('unterstützt von');
-                break;
-
-            default:
-                echo __('Ein Service von Deutsche Digitale Bibliothek');
-                break;
-        }
-        ?>
-        </p> -->
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
-            <!-- <img src="<?php echo img('ddb-studio-logo.svg'); ?>" alt="DDB Studio Logo"> -->
-
             <?php
             switch ($exhibitType) {
                 case 'litfass_featured':
