@@ -63,21 +63,24 @@
                                     <h3>Team</h3>
                                     <div class="team_list ctxt"><?php echo $team['team_list']; ?></div>
                                 <?php endif; ?>
-                                    <div class="created-width mb-5">
+                                    <div class="created-width mb-5 row">
+                                        <div class="col-6">
                                         <strong>
                                         <?php
-                                        switch ($exhibitType) {
-                                            case 'litfass_featured':
-                                                echo __('Unterstützt von');
-                                                break;
-
-                                            default:
-                                                echo __('Erstellt mit');
-                                                break;
-                                        }
+                                        echo __('Erstellt mit');
+                                        // to split wording: switch ($exhibitType) case 'litfass_featured'
                                         ?>
                                         :</strong><br>
-                                        <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
+                                        <a href="https://pro.deutsche-digitale-bibliothek.de/ddbstudio" target="_blank" rel="noopener">
+                                            <img src="<?php echo img('ddb-studio-logo-small.png') ?>" alt="DDB Studio">
+                                        </a>
+                                        </div>
+                                        <div class="col-6">
+                                        <strong><?php echo __('Ein Service von'); ?>:</strong><br>
+                                        <a href="https://www.deutsche-digitale-bibliothek.de/" target="_blank" rel="noopener">
+                                            <img src="<?php echo img('logo.png') ?>" alt="DDB Studio">
+                                        </a>
+                                        </div>
                                     </div>
                                     <p><small>Diese Ausstellung wurde am <?php echo $publishDate; ?> veröffentlicht.</small></p>
                                 </div>
