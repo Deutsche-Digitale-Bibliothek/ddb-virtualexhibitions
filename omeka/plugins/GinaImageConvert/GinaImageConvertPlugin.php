@@ -202,7 +202,7 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
 
         if ($currentuser['role'] === 'super') {
             $navArray[] = array(
-                'label' => __('Bilder Koprimieren'),
+                'label' => __('Bilder Komprimieren'),
                 'uri' => url('gina-image-convert/compress'),
                 'visible' => true
             );
