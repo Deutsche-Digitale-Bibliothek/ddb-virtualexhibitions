@@ -1602,7 +1602,7 @@ class ExhibitDdbHelper
 
             // $files = $item->getFiles();
 
-            $zoomAttributes['data-zoom'] = $file->getWebPath();
+            $zoomAttributes['data-zoom'] = self::getCompressedOriginalWebPath($file);
             $fileMetadata = json_decode($file['metadata']);
 
             if (is_object($fileMetadata) &&
@@ -1627,6 +1627,21 @@ class ExhibitDdbHelper
         }
 
         return '';
+    }
+
+    public static function getCompressedOriginalWebPath($file)
+    {
+        $compfile = FILES_DIR .
+            DIRECTORY_SEPARATOR .
+            'original_compressed' .
+            DIRECTORY_SEPARATOR .
+            $file->filename;
+
+        if (is_file($compfile)) {
+            return WEB_FILES . '/original_compressed/' . $file->filename;
+        } else {
+            return $file->getWebPath();
+        }
     }
 
     public static function getAttributesFromArray($array)
@@ -1728,7 +1743,7 @@ class ExhibitDdbHelper
             if ($imgZoom === true) {
 
                 $imgAttributes['title'] = false;
-                $imgAttributes['data-zoom'] = $files[0]->getWebPath();
+                $imgAttributes['data-zoom'] = self::getCompressedOriginalWebPath($files[0]);
 
                 // ZOOM ATTRIBS
                 if (is_object($fileMetadata) &&
