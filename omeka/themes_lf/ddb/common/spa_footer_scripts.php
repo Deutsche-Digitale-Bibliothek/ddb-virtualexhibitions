@@ -3,7 +3,8 @@
 <?php
 $userAgentIpad = (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false)? 'false' : 'true';
 
-echo js_tag('options.min') . "\n";
+// echo js_tag('options.min') . "\n";
+echo '<script type="text/javascript" src="' . url('exhibits/colorpalettesjs') . '" charset="utf-8"></script>';
 echo '<script type="text/javascript">' . "\n";
 echo 'window.litfassOptions = {';
     echo 'anchors: [' . $sectionAnchors . '], ';

@@ -372,6 +372,61 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         }
     }
 
+    public function colorpalettesjsAction()
+    {
+        if (is_admin_theme()) {
+            $this->_helper->redirector('index', 'index');
+        }
+        $response = $this->getResponse();
+        $request = $this->getRequest();
+
+        // $response->setHeader('Content-Type', 'application/json', true);
+        $response->setHeader('Content-Type', 'application/javascript', true);
+
+        $db = $this->_helper->db->getTable('ExhibitColorPalette');
+        $colors = $db->findAll();
+
+        $js = 'window.litfassColorPalettes = {';
+        $palette = '';
+        $basePalette = false;
+        $newPalette = true;
+        foreach ($colors as $color) {
+            if ($palette !== $color->palette) {
+                if (!empty($palette)) {
+                    $js .= '},';
+                }
+                $js .= $color->palette . ': {';
+                $palette = $color->palette;
+                $newPalette = true;
+            } else {
+                $newPalette = false;
+            }
+            $menu = ($color->menu == 0)? 'false' : 'true';
+            if (!$newPalette) {
+                $js .= ',';
+            }
+            $js .= $color->color . ': {';
+            $js .= 'hex: \'' . $color->hex . '\',';
+            $js .= 'type: \'' . $color->type . '\',';
+            $js .= 'menu: ' . $menu;
+            $js .= '}';
+            if ($color->palette == 'base') {
+                $basePalette = true;
+            }
+        }
+        $js .= '}';
+        if (!$basePalette) {
+            $js .= ', base: {';
+            $js .= 'white: {hex: \'#ffffff\',type: \'light\',menu: false},';
+            $js .= 'lightgray: {hex: \'#eeeeee\',type: \'light\',menu: false}}';
+        }
+        $js .= '};';
+        // $json = Zend_Json::encode($colors);
+        $response->setBody($js);
+        $response->sendResponse();
+        exit;
+    }
+
     public function itemContainerAction()
     {
         $itemId = (int)$this->_getParam('item_id');
