@@ -379,7 +379,6 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         }
         $response = $this->getResponse();
         $request = $this->getRequest();
-
         // $response->setHeader('Content-Type', 'application/json', true);
         $response->setHeader('Content-Type', 'application/javascript', true);
 
@@ -509,7 +508,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         extract($vars);
         $this->view->assign($vars);
 
-        /* If we don't pass a valid value to $toRender, thow an exception. */
+        /* If we don't pass a valid value to $toRender, throw an exception. */
         if (!in_array($toRender, array('show', 'summary', 'item'))) {
             throw new Exception( 'You gotta render some stuff because whatever!' );
         }
