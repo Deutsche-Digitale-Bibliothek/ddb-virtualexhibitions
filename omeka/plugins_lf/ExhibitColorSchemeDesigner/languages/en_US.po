@@ -1,69 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Plugin ZlbRelationsMediaStory\n"
+"Project-Id-Version: Plugin ExhibitColorSchemeDesigner\n"
 "POT-Creation-Date: 2015-02-23 15:43+0100\n"
-"PO-Revision-Date: 2015-02-23 15:43+0100\n"
+"PO-Revision-Date: 2020-06-05 10:38+0200\n"
 "Last-Translator: Viktor Grandgeorg <viktor@grandgeog.de>\n"
-"Language-Team: zlb & Culture to Go\n"
+"Language-Team: Culture to Go\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
-
-#: ../ZlbRelationsMediaStoryPlugin.php:272
-msgid "Geschichten"
-msgstr "Stories"
-
-#: ../ZlbRelationsMediaStoryPlugin.php:276
-msgid "Medienobjekte"
-msgstr "Media objects"
-
-#: ../zlb_item_relations_media_story_form.php:1
-msgid ""
-"Hier können Sie dieses Medienobjekt mit einer bereits angelegten Geschichte "
-"verknüpfen."
-msgstr "Here you can relate this media object to an existing story."
-
-#: ../zlb_item_relations_media_story_form.php:6
-msgid "nicht verknüpft"
-msgstr "Not related"
-
-#: ../zlb_item_relations_media_story_form.php:13
-msgid "Titel"
-msgstr "Title"
-
-#: ../zlb_item_relations_media_story_form.php:14
-#, fuzzy
-msgid "ID"
-msgstr "ID"
-
-#: ../zlb_item_relations_media_story_form.php:15
-msgid "Erfassungsdatum"
-msgstr "Entry date"
-
-#: ../zlb_item_relations_media_story_form.php:16
-msgid "Auszug"
-msgstr "Excerpt"
-
-#: ../views/admin/common/zlb-item-relations-media-story-show.php:2
-msgid "Verknüpfung mit Geschichte"
-msgstr "Relation with story"
-
-#: ../views/admin/common/zlb-item-relations-media-story-show.php:5
-msgid "Es ist keine Verknüpfung angelegt."
-msgstr "Nor relation established."
-
-#: ../views/public/common/zlb-item-relations-media-story-show-story.php:69
-#: ../views/public/common/zlb-item-relations-media-story-show-story.php:84
-#, fuzzy
-msgid "zum&nbsp;Objekt"
-msgstr "go&nbsp;to&nbsp;object"
-
-#: ../views/shared/common/zlb-item-relations-media-story-advanced-search.php:7
-msgid "Nur Objekte mit Verknüpfung zu Geschichte mit der ID"
-msgstr "Only objects related to the story with ID"

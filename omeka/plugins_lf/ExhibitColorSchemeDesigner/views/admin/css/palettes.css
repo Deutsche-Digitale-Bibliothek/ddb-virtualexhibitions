@@ -1,0 +1,7 @@
+.palette_hex_show {
+    margin-top: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f3f3f3;
+    padding: 0.25rem;
+    border-radius: 4px;
+}

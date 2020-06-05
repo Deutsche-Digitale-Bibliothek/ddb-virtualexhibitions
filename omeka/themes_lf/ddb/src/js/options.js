@@ -271,5 +271,32 @@ window.litfassColorPalettes = {
       type: 'light',
       menu: false
     }
+  },
+  custom_5ed78f34c4a25_viktor1: {
+    rot: {
+      hex: '#800000',
+      type: 'dark',
+      menu: false
+    },
+    gruen: {
+      hex: '#006334',
+      type: 'dark',
+      menu: true
+    },
+    hell_blau: {
+      hex: '#00b6c2',
+      type: 'light',
+      menu: false
+    },
+    dunkel_blau: {
+      hex: '#002991',
+      type: 'dark',
+      menu: false
+    },
+    orange: {
+      hex: '#f7ae58',
+      type: 'light',
+      menu: false
+    },
   }
 };
