@@ -8,6 +8,11 @@ echo head($head);
 echo flash();
 ?>
 <h2>Hier können Sie die Farbpalette der Ausstellung anpassen.</h2>
+<p class="alertbox">
+    Beachten Sie: Wenn Sie Farben löschen oder Farbnamen ändern,
+    müssen die Hintergrundfarbe bei den jeweiligen Ausstellungsseiten und die Hintergrundfarbe der Startseite
+    in der Ausstellung ggf. neu zugewiesen werden. Es kommt sonst zu einer fehlerhafter Darstellung der Ausstellung.
+</p>
 <form id="exhibit-color-scheme-designer-form" method="post" enctype="multipart/form-data">
     <?php echo $this->formHidden('exhibit-color-scheme-designer_colorpalette', $colorpalette); ?>
     <div id="colorRepeaters">
