@@ -84,6 +84,8 @@ class ExhibitDdbHelper
 
     public static $vimeoVideoCounter = 0;
 
+    public static $colorPalettes = null;
+
     public static function getVimeoVideoCounter()
     {
         self::$vimeoVideoCounter = self::$vimeoVideoCounter + 1;
@@ -2202,9 +2204,53 @@ class ExhibitDdbHelper
      */
     public static function setSectionColors($sectionColors, $color)
     {
+        $color = self::checkColorInPalette($color);
         $sectionColors = (empty($sectionColors))? '' : $sectionColors . ',';
         $sectionColors .= $color;
         return $sectionColors;
+    }
+
+    /**
+     * Check if selectd color is in color palette
+     *
+     * If color is not in palette return fallback menu color.
+     *
+     * @param string $color
+     * @return string $color
+     */
+    public static function checkColorInPalette($color)
+    {
+        if (!isset(self::$colorPalettes) || empty(self::$colorPalettes)) {
+            self::setColorPalettes();
+        }
+        $colorParts = explode('.', $color);
+        $mainColor = '';
+
+        foreach (self::$colorPalettes as $palette) {
+            if ($palette->palette === $colorParts[1] &&
+                $palette->color === $colorParts[2]
+            ) {
+                return $color;
+            } elseif ($palette->palette === $colorParts[1] &&
+                $palette->menu == 1) {
+                $mainColor = $palette->color;
+            }
+        }
+        return $colorParts[0] . '.' .
+            $colorParts[1] . '.' .
+            $mainColor . '.' .
+            $colorParts[3];
+    }
+
+    /**
+     * Set self::$colorPalettes from db
+     *
+     * @return void
+     */
+    public static function setColorPalettes()
+    {
+        $db = get_db();
+        self::$colorPalettes = $db->getTable('ExhibitColorPalette')->findAll();
     }
 
     public static function getImprint($exhibitType, $replacements, $title)
