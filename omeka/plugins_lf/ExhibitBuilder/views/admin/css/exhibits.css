@@ -307,6 +307,8 @@ button#page_metadata_form {
     border: 1px solid #000;
     cursor: pointer;
     font-size: 12px;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .field label.deleteCheckbox,
