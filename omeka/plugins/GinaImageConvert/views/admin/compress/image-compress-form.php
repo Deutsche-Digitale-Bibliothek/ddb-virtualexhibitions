@@ -49,6 +49,30 @@
             <?php echo $this->formText('compress_original_loops', $params['compress_original_loops']); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('compress_original_method', __('Methode')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Methode zur Vorhersage der wahrgenommenen Qualität')
+                    . '<ul>'
+                    . '<li>' . __('SSIM - Structural similarity') . '</li>'
+                    . '<li>' . __('MS-SSIM - Multi-scale structural similarity') . '</li>'
+                    . '</ul>';
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress_original_method',             // name
+                $params['compress_original_method'],    // value
+                null,                                   // attribs
+                array(
+                    'ssim' => 'SSIM',
+                    'ms-ssim' => 'MS-SSIM'
+                )                                       // options
+            ); ?>
+        </div>
+    </div>
 </fieldset>
 
 <fieldset>
@@ -100,6 +124,30 @@
                     . __('Der Wert sollte 10 nicht übersteigen, Standard ist 6.'); ?>
             </p>
             <?php echo $this->formText('compress_fullsize_loops', $params['compress_fullsize_loops']); ?>
+        </div>
+    </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('compress_fullsize_method', __('Methode')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Methode zur Vorhersage der wahrgenommenen Qualität')
+                    . '<ul>'
+                    . '<li>' . __('SSIM - Structural similarity') . '</li>'
+                    . '<li>' . __('MS-SSIM - Multi-scale structural similarity') . '</li>'
+                    . '</ul>';
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress_fullsize_method',             // name
+                $params['compress_fullsize_method'],    // value
+                null,                                   // attribs
+                array(
+                    'ssim' => 'SSIM',
+                    'ms-ssim' => 'MS-SSIM'
+                )                                       // options
+            ); ?>
         </div>
     </div>
 </fieldset>
@@ -155,6 +203,30 @@
             <?php echo $this->formText('compress_middsize_loops', $params['compress_middsize_loops']); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('compress_middsize_method', __('Methode')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Methode zur Vorhersage der wahrgenommenen Qualität')
+                    . '<ul>'
+                    . '<li>' . __('SSIM - Structural similarity') . '</li>'
+                    . '<li>' . __('MS-SSIM - Multi-scale structural similarity') . '</li>'
+                    . '</ul>';
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress_middsize_method',             // name
+                $params['compress_middsize_method'],    // value
+                null,                                   // attribs
+                array(
+                    'ssim' => 'SSIM',
+                    'ms-ssim' => 'MS-SSIM'
+                )                                       // options
+            ); ?>
+        </div>
+    </div>
 </fieldset>
 
 <fieldset>
@@ -206,6 +278,30 @@
                     . __('Der Wert sollte 10 nicht übersteigen, Standard ist 6.'); ?>
             </p>
             <?php echo $this->formText('compress_thumbnails_loops', $params['compress_thumbnails_loops']); ?>
+        </div>
+    </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('compress_thumbnails_method', __('Methode')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Methode zur Vorhersage der wahrgenommenen Qualität')
+                    . '<ul>'
+                    . '<li>' . __('SSIM - Structural similarity') . '</li>'
+                    . '<li>' . __('MS-SSIM - Multi-scale structural similarity') . '</li>'
+                    . '</ul>';
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress_thumbnails_method',           // name
+                $params['compress_thumbnails_method'],  // value
+                null,                                   // attribs
+                array(
+                    'ssim' => 'SSIM',
+                    'ms-ssim' => 'MS-SSIM'
+                )                                       // options
+            ); ?>
         </div>
     </div>
 </fieldset>
@@ -260,6 +356,30 @@
                     . __('Der Wert sollte 10 nicht übersteigen, Standard ist 6.'); ?>
             </p>
             <?php echo $this->formText('compress_square_thumbnails_loops', $params['compress_square_thumbnails_loops']); ?>
+        </div>
+    </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel('compress_square_thumbnails_method', __('Methode')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Methode zur Vorhersage der wahrgenommenen Qualität')
+                    . '<ul>'
+                    . '<li>' . __('SSIM - Structural similarity') . '</li>'
+                    . '<li>' . __('MS-SSIM - Multi-scale structural similarity') . '</li>'
+                    . '</ul>';
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress_square_thumbnails_method',            // name
+                $params['compress_square_thumbnails_method'],   // value
+                null,                                           // attribs
+                array(
+                    'ssim' => 'SSIM',
+                    'ms-ssim' => 'MS-SSIM'
+                )                                               // options
+            ); ?>
         </div>
     </div>
 </fieldset>

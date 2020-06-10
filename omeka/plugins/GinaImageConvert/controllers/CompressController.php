@@ -133,6 +133,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         if (!isset($params['compressall_loops']) || empty($params['compressall_loops'])) {
             $params['compressall_loops'] = '6';
         }
+        // if (!isset($params['compressall_method']) || empty($params['compressall_method'])) {
+        //     $params['compressall_method'] = 'ssim';
+        // }
         return $params;
     }
 
@@ -159,6 +162,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         if (!isset($params['compress_original_loops']) || empty($params['compress_original_loops'])) {
             $params['compress_original_loops'] = '6';
         }
+        if (!isset($params['compress_original_method']) || empty($params['compress_original_method'])) {
+            $params['compress_original_method'] = 'ssim';
+        }
 
         if (!isset($params['compress_fullsize_target']) || empty($params['compress_fullsize_target'])) {
             $params['compress_fullsize_target'] = '0.9999';
@@ -171,6 +177,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         }
         if (!isset($params['compress_fullsize_loops']) || empty($params['compress_fullsize_loops'])) {
             $params['compress_fullsize_loops'] = '6';
+        }
+        if (!isset($params['compress_fullsize_method']) || empty($params['compress_fullsize_method'])) {
+            $params['compress_fullsize_method'] = 'ssim';
         }
 
         if (!isset($params['compress_middsize_target']) || empty($params['compress_middsize_target'])) {
@@ -185,6 +194,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         if (!isset($params['compress_middsize_loops']) || empty($params['compress_middsize_loops'])) {
             $params['compress_middsize_loops'] = '6';
         }
+        if (!isset($params['compress_middsize_method']) || empty($params['compress_middsize_method'])) {
+            $params['compress_middsize_method'] = 'ssim';
+        }
 
         if (!isset($params['compress_thumbnails_target']) || empty($params['compress_thumbnails_target'])) {
             $params['compress_thumbnails_target'] = '0.9999';
@@ -198,6 +210,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         if (!isset($params['compress_thumbnails_loops']) || empty($params['compress_thumbnails_loops'])) {
             $params['compress_thumbnails_loops'] = '6';
         }
+        if (!isset($params['compress_thumbnails_method']) || empty($params['compress_thumbnails_method'])) {
+            $params['compress_thumbnails_method'] = 'ssim';
+        }
 
         if (!isset($params['compress_square_thumbnails_target']) || empty($params['compress_square_thumbnails_target'])) {
             $params['compress_square_thumbnails_target'] = '0.9999';
@@ -210,6 +225,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         }
         if (!isset($params['compress_square_thumbnails_loops']) || empty($params['compress_square_thumbnails_loops'])) {
             $params['compress_square_thumbnails_loops'] = '6';
+        }
+        if (!isset($params['compress_square_thumbnails_method']) || empty($params['compress_square_thumbnails_method'])) {
+            $params['compress_square_thumbnails_method'] = 'ssim';
         }
 
         return $params;

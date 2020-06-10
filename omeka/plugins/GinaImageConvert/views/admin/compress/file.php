@@ -20,6 +20,9 @@
             <h4><?php echo __('Direct Links'); ?></h4>
             <ul>
                 <li><a href="<?php echo metadata($dbFile, 'uri'); ?>"><?php echo __('Original'); ?></a></li>
+                <?php if (is_file(FILES_DIR . DIRECTORY_SEPARATOR . 'original_compressed' . DIRECTORY_SEPARATOR . $dbFile->filename)): ?>
+                <li><a href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>"><?php echo __('Original komprimiert'); ?></a></li>
+                <?php endif; ?>
                 <?php if ($dbFile->has_derivative_image): ?>
                 <li><a href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>"><?php echo __('Fullsize'); ?></a></li>
                 <li><a href="<?php echo metadata($dbFile, 'middsize_uri'); ?>"><?php echo __('Mittlere Größe'); ?></a></li>
@@ -65,6 +68,10 @@
                                 <th>Anzahl der Versuchsläufe</th>
                                 <td><?php echo $log['params']['compress_' . $filekey . '_loops']; ?></td>
                             </tr>
+                            <tr>
+                                <th>Verwendete Methode</th>
+                                <td><?php echo $log['params']['compress_' . $filekey . '_method']; ?></td>
+                            </tr>
                         </table>
                     </td>
                     <td><?php echo $filelog['time']; ?></td>
@@ -81,7 +88,7 @@
 </div>
 <?php endif; ?>
 <div style="clear:both;" class="clearfix">
-    <form id="gina-image-compressall-form" method="post" enctype="multipart/form-data" oninput="document.getElementById('x').innerText=parseInt(a.value)">
+    <form id="gina-image-compressall-form" method="post" enctype="multipart/form-data">
         <div class="seven columns alpha">
             <?php echo common('image-compress-form', array('params' => $params), 'compress'); ?>
         </div>

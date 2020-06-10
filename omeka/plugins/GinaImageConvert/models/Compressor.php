@@ -70,10 +70,11 @@ class Compressor
     public function getRecompressCommand($in, $out, $type)
     {
         return 'jpeg-recompress'
-        . ' --target '  . $this->options['compress_' . $type . '_target']
-        . ' --min '     . $this->options['compress_' . $type . '_min']
-        . ' --max '     . $this->options['compress_' . $type . '_max']
-        . ' --loops '   . $this->options['compress_' . $type . '_loops']
+        . ' --target '   . $this->options['compress_' . $type . '_target']
+        . ' --min '      . $this->options['compress_' . $type . '_min']
+        . ' --max '      . $this->options['compress_' . $type . '_max']
+        . ' --loops '    . $this->options['compress_' . $type . '_loops']
+        . ' --method '   . $this->options['compress_' . $type . '_method']
         . ' --accurate --strip '
         . $in
         . ' '
