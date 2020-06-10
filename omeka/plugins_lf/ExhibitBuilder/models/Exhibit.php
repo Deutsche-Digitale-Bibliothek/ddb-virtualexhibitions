@@ -95,7 +95,9 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
         if ($args['post']) {
             //Add the tags after the form has been saved
             $post = $args['post'];
-            $this->applyTagString($post['tags']);
+            if (isset($post['tags'])) {
+                $this->applyTagString($post['tags']);
+            }
             if (isset($post['pages-hidden'])) {
                 parse_str($post['pages-hidden'], $pageData);
                 $this->_savePages($pageData['page']);
@@ -128,7 +130,8 @@ class Exhibit extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_I
             }
 
             if (!isset($ordersByParent[$parentId])) {
-                $order = $ordersByParent[$parentId] = 0;
+                $ordersByParent[$parentId] = 0;
+                $order = $ordersByParent[$parentId];
             } else {
                 $order = ++$ordersByParent[$parentId];
             }
