@@ -448,3 +448,10 @@ fieldset .d-lonely-none {
     padding: 7px 7px;
     background-color: #cecfc8;
 }
+
+.hide-caption .caption-container {
+    display: none;
+}
+.hide-caption .options-container {
+    clear: both;
+}
