@@ -33,7 +33,7 @@ echo flash();
                             Erlaubt sind Kleinbuchstaben a-z (ohne Umlaute), Zahlen sowie "_" und "-"
                         </p>
                         <input type="text" class="form-control palette_color" id="palette_color_<?php echo $colorKey; ?>"
-                            name="palette[<?php echo $colorKey; ?>][color]" value="<?php echo $color->color; ?>" required>
+                            name="palette[<?php echo $colorKey; ?>][color]" value="<?php echo $color->color; ?>" required maxlength="128">
                     </div>
                 </div>
                 <div class="field">
@@ -42,7 +42,7 @@ echo flash();
                     </div>
                     <div class="five columns omega inputs">
                         <input type="color" value="<?php echo $color->hex; ?>" class="form-control" id="palette_hex_<?php echo $colorKey; ?>"
-                        name="palette[<?php echo $colorKey; ?>][hex]" required>
+                        name="palette[<?php echo $colorKey; ?>][hex]" required maxlength="7">
                         <div class="palette_hex_show"><?php echo $color->hex; ?></div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ echo flash();
                                     'Erlaubt sind Kleinbuchstaben a-z (ohne Umlaute), Zahlen sowie "_" und "-"' +
                                 '</p>' +
                                 '<input type="text" class="form-control palette_color" id="palette_color_' + colorCounter + '" ' +
-                                    'name="palette[' + colorCounter + '][color]">' +
+                                    'name="palette[' + colorCounter + '][color]" required maxlength="128">' +
                             '</div>' +
                         '</div>' +
                         '<div class="field">' +
@@ -127,7 +127,7 @@ echo flash();
                             '</div>' +
                             '<div class="five columns omega inputs">' +
                                 '<input type="color" value="#666666" class="form-control" id="palette_hex_' + colorCounter + '" ' +
-                                'name="palette[' + colorCounter + '][hex]">' +
+                                'name="palette[' + colorCounter + '][hex]" required maxlength="7">' +
                                 '<div class="palette_hex_show">#666666</div>' +
                             '</div>' +
                         '</div>' +
