@@ -2224,7 +2224,7 @@ class ExhibitDdbHelper
             self::setColorPalettes();
         }
         $colorParts = explode('.', $color);
-        $mainColor = '';
+        $mainColor = 'white';
 
         foreach (self::$colorPalettes as $palette) {
             if ($palette->palette === $colorParts[1] &&
