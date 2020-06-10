@@ -1,3 +1,11 @@
+/*!
+ * DDB Litfaß Theme App
+ *
+ * Copyright Viktor Grandgeorg, Deutsche Digitale Bibliothek
+ * Released under Apache License Version 2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
 (function ($, options, litfassColorPalettes) {
 
   'use strict';
