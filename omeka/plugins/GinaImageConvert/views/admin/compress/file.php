@@ -19,15 +19,55 @@
         <div id="file-links" class="panel">
             <h4><?php echo __('Direct Links'); ?></h4>
             <ul>
-                <li><a href="<?php echo metadata($dbFile, 'uri'); ?>"><?php echo __('Original'); ?></a></li>
-                <?php if (is_file(FILES_DIR . DIRECTORY_SEPARATOR . 'original_compressed' . DIRECTORY_SEPARATOR . $dbFile->filename)): ?>
-                <li><a href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>"><?php echo __('Original komprimiert'); ?></a></li>
+                <?php if (isset($fileSizes['original'])): ?>
+                <li>
+                    <a href="<?php echo metadata($dbFile, 'uri'); ?>">
+                        <?php echo __('Original'); ?>
+                        <?php echo $fileSizes['original']; ?> KB
+                    </a>
+                </li>
+                <?php endif; ?>
+                <?php if (isset($fileSizes['original_compressed'])): ?>
+                <li>
+                    <a href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>">
+                        <?php echo __('Original komprimiert'); ?>
+                        <?php echo $fileSizes['original_compressed']; ?> KB
+                    </a>
+                </li>
                 <?php endif; ?>
                 <?php if ($dbFile->has_derivative_image): ?>
-                <li><a href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>"><?php echo __('Fullsize'); ?></a></li>
-                <li><a href="<?php echo metadata($dbFile, 'middsize_uri'); ?>"><?php echo __('Mittlere Größe'); ?></a></li>
-                <li><a href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>"><?php echo __('Thumbnail'); ?></a></li>
-                <li><a href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>"><?php echo __('Square Thumbnail'); ?></a></li>
+                    <?php if (isset($fileSizes['fullsize'])): ?>
+                    <li>
+                        <a href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>">
+                            <?php echo __('Fullsize'); ?>
+                            <?php echo $fileSizes['fullsize']; ?> KB
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if (isset($fileSizes['middsize'])): ?>
+                    <li>
+                        <a href="<?php echo metadata($dbFile, 'middsize_uri'); ?>">
+                            <?php echo __('Mittlere Größe'); ?>
+                            <?php echo $fileSizes['middsize']; ?> KB
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if (isset($fileSizes['thumbnails'])): ?>
+                    <li>
+                        <a href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>">
+                            <?php echo __('Thumbnail'); ?>
+                            <?php echo $fileSizes['thumbnails']; ?> KB
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if (isset($fileSizes['square_thumbnails'])): ?>
+                    <li>
+                        <a href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>">
+                            <?php echo __('Square Thumbnail'); ?>
+                            <?php echo $fileSizes['square_thumbnails']; ?> KB
+                        </a>
+                    </li>
+                    <?php endif; ?>
                 <?php endif; ?>
             </ul>
         </div>

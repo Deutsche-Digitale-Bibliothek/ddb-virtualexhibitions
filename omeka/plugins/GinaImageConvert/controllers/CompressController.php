@@ -96,6 +96,7 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             return;
         }
         $this->view->dbFile = $dbFile;
+        $this->view->fileSizes = $this->getFileSizes($dbFile);
 
         $params = $this->getFileCompressParams();
         $this->view->params = $params;
@@ -108,7 +109,28 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             $compressor->main();
             $this->view->log = $compressor->getLog();
         }
+    }
 
+    protected function getFileSizes($dbFile)
+    {
+        $types = array(
+            'original',
+            'original_compressed',
+            'fullsize',
+            'middsize',
+            'thumbnails',
+            'square_thumbnails'
+        );
+        $sizes = array();
+        foreach ($types as $type) {
+            if (is_file(FILES_DIR . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $dbFile->filename)) {
+                $sizes[$type] = round(
+                    (filesize(FILES_DIR . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $dbFile->filename) / 1024),
+                    2
+                );
+            }
+        }
+        return $sizes;
     }
 
     protected function getCompressParams()
