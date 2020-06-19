@@ -857,7 +857,7 @@ audio {
 // audio
 .audio-controls {
   display: block;
-  max-width: 485px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -2676,3 +2676,37 @@ i.license-or {
 // [data-simplebar] {
 //   overflow: auto;
 // }
+
+// accessebility
+.jump-to-navigation {
+  position: fixed;
+  top: 64px;
+  left: 16px;
+  z-index: 99999;
+}
+.jump-to-navigation-control {
+  position: fixed;
+  top: 64px;
+  left: 16px;
+  z-index: 99999;
+  display: block;
+  line-height: 1;
+  text-decoration: none;
+  &:not(:focus) {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    clip-path: inset(100%);
+  }
+  &:focus {
+    width: auto;
+    height: auto;
+    padding: .25rem;
+    clip: auto; // !important
+    color: #fff;
+    background-color: #333;
+  }
+}

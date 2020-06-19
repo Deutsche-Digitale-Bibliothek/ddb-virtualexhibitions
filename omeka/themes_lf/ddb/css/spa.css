@@ -7101,7 +7101,7 @@ audio {
 
 .audio-controls {
   display: block;
-  max-width: 455px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
