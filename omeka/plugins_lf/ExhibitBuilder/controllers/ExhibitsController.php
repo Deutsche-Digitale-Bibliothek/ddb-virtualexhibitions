@@ -404,7 +404,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             if (!$newPalette) {
                 $js .= ',';
             }
-            $js .= $color->color . ': {';
+            $js .= '\'' . $color->color . '\': {';
             $js .= 'hex: \'' . $color->hex . '\',';
             $js .= 'type: \'' . $color->type . '\',';
             $js .= 'menu: ' . $menu;

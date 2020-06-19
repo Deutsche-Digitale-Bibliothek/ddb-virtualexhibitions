@@ -41,7 +41,7 @@ class ExhibitColorSchemeDesigner_IndexController extends Omeka_Controller_Abstra
 
             // save
             foreach ($params['palette'] as $newColorKey => $newColor) {
-                $newColor['color'] = preg_replace('/[^a-z0-9_\-]/', '', strtolower($newColor['color']));
+                $newColor['color'] = $this->filterColorName($newColor['color']);
                 if (!empty($newColor['color'])) {
                     $dbNewColor = new ExhibitColorPalette();
                     $dbNewColor->palette = $params['exhibit-color-scheme-designer_colorpalette'];
@@ -61,4 +61,15 @@ class ExhibitColorSchemeDesigner_IndexController extends Omeka_Controller_Abstra
             $this->_helper->redirector->gotoUrl('exhibit-color-scheme-designer');
         }
     }
+
+    public function filterColorName($color)
+    {
+        $color = preg_replace('/[^a-z0-9_\-]/', '', strtolower($color));
+        if (preg_match('/^[0-9]+/', $color)) {
+            $color = 'c' . $color;
+        }
+        return $color;
+    }
+
+
 }
