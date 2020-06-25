@@ -8639,9 +8639,9 @@ i.license-or {
 }
 
 .zoom-hint-container .zoom-hint .zoom-hint-close:focus {
-  outline-color: #808080;
-  outline-style: solid;
   outline-width: thin;
+  outline-style: solid;
+  outline-color: #808080;
 }
 
 .zoom-hint-container .zoom-hint .zoom-hint-content {
@@ -8956,5 +8956,9 @@ i.license-or {
   clip: auto;
   color: #fff;
   background-color: #333;
+}
+
+.zoom-container:focus {
+  outline: none;
 }
 /*# sourceMappingURL=spa.css.map */

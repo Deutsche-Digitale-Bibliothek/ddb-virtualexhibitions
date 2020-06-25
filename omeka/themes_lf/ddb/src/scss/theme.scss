@@ -2726,3 +2726,7 @@ i.license-or {
     background-color: #333;
   }
 }
+
+.zoom-container:focus {
+  outline: none;
+}

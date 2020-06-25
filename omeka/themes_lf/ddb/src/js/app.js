@@ -1110,7 +1110,7 @@
   function generate3D() {
     var caller = $(this);
     var url = caller.data('3durl');
-    var container = $('<div id="zoom-container" class="zoom-container"></div>');
+    var container = $('<div id="zoom-container" class="zoom-container" tabindex="0"></div>');
     var object3D = $(
       '<x3d class="x3d" showLog="false" showStat="false">' +
       '<scene>' +
@@ -1130,11 +1130,32 @@
     container.append(object3D, closer);
     $('body').append(container);
     x3dom.reload();
+    var x3domCanvas = $('.x3dom-canvas', container);
+    x3domCanvas.focus();
+
+    x3domCanvas.on('keydown', function (e) {
+      if (e.which === 9) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+
+    // close on escape
+    container.on('keydown', function (e) {
+      if (e.which === 27) {
+        e.preventDefault();
+        e.stopPropagation();
+        closer.off('click');
+        x3domCanvas.off('keydown');
+        $(this).remove();
+      }
+    });
 
     closer.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       $(this).off('click');
+      x3domCanvas.off('keydown');
       container.remove();
     });
   }
@@ -1144,8 +1165,10 @@
     $('img.item-3d-thumb-icon').bind('click', function () {
       $(this).siblings('img.media-item-3d-thumb').trigger('click');
     });
-    $('.control-zoom').bind('click', function () {
-      $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
+    $('.control-zoom').bind('click keydown', function (event) {
+      if (event.which === 13 || event.which === 1) {
+        $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
+      }
     });
   }
 
