@@ -39,7 +39,7 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
     <?php if ($attachment): ?>
     <div class="boxpos-controls">
         <div class="control-info control-icon control-icon-right">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info static-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info static-dark" tabindex="0">
                 <g class="icon-info-frame" transform="translate(-98 -31)">
                     <g transform="translate(57)">
                         <g>
@@ -95,7 +95,7 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
         <?php endif; ?>
         <?php if (false !== ($zoomImgUrl = ExhibitDdbHelper::getZoomable($attachment)) || ExhibitDdbHelper::isX3d($attachment)): ?>
         <div class="zoomer control-icon control-icon-right" <?php echo ExhibitDdbHelper::getZoomData($attachment); ?>>
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom static-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom static-dark" tabindex="0">
                 <g transform="translate(-21 -84)">
                     <g transform="translate(-216.5 -429.5)">
                         <line class="icon-zoom-1" y2="10" transform="translate(259.5 529.5)" />

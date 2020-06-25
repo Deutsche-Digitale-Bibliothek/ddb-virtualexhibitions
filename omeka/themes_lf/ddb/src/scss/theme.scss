@@ -219,10 +219,21 @@ a:hover {
 //   }
 // }
 
-video,
-audio {
-  outline: none;
-}
+// video,
+// audio {
+// Cannot set outline to none because of accessebility
+// outline: none;
+// }
+
+// focus - outline
+// e.g.
+
+// svg.icon-info.active:focus {
+//   outline-color: white;
+//   outline-style: solid;
+//   outline-width: thin;
+//   outline-offset: -3px;
+// }
 
 // bootstrap
 .container-fluid {
@@ -2314,6 +2325,11 @@ i.license-or {
       line-height: 18px;
       cursor: pointer;
       background-color: rgba(0, 0, 0, .85);
+      &:focus {
+        outline-width: thin;
+        outline-style: solid;
+        outline-color: #808080;
+      }
     }
     .zoom-hint-content {
       background-color: rgba(0, 0, 0, .85);
@@ -2682,13 +2698,13 @@ i.license-or {
   position: fixed;
   top: 64px;
   left: 16px;
-  z-index: 99999;
+  z-index: 20;
 }
 .jump-to-navigation-control {
   position: fixed;
   top: 64px;
   left: 16px;
-  z-index: 99999;
+  z-index: 20;
   display: block;
   line-height: 1;
   text-decoration: none;

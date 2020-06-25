@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="zoom-hint-close">
+    <div class="zoom-hint-close" tabindex="0">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">
             <g>
                 <line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>

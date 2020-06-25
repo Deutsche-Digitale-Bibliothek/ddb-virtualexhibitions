@@ -310,6 +310,12 @@
 
     setVisitedSectionsInHeaderSectionBar(current.index);
     scrollMenu(current.anchor);
+
+    // We have to focus on navigation after navigating with keyboard (enter),
+    // otherwhise focus will be outside for fullapge ...
+    $('#jump-to-navigation').focus();
+
+
   }
 
   function fpAfterRender() {
@@ -729,36 +735,37 @@
   }
 
   function bindMediaInfo() {
-    $('.icon-info').bind('click', function (event) {
-      var iconInfo = $(this);
-      var controlInfo = iconInfo.parent('.control-info');
-      var metaScrollControls = controlInfo.siblings('.meta-scroll-controls');
-      var mediaMeta = $('.media-meta', iconInfo.parents('.tile'));
-      var mediaMetaScroll = $('.media-meta-scroll', mediaMeta);
-      var mediaMetaScrollContent = $('.media-meta-scroll-content', mediaMetaScroll);
-      var mediaCol = iconInfo.parents('.col-media');
-      var textCol = $('.col-text', iconInfo.parents('.row'));
-      event.preventDefault();
-      if (iconInfo.hasClass('active')) {
-        iconInfo.removeClass('active');
-        controlInfo.removeClass('active');
-        mediaMeta.addClass('d-none');
-        // mediaItem.removeClass('d-none');
-        textCol.removeClass('hidden');
-        mediaCol.removeClass('active');
-        metaScrollControls.addClass('d-none');
-      } else {
-        iconInfo.addClass('active');
-        controlInfo.addClass('active');
-        mediaMeta.removeClass('d-none');
-        // mediaItem.addClass('d-none');
-        textCol.addClass('hidden');
-        mediaCol.addClass('active');
-        setTimeout(function () {
-          if (mediaMetaScrollContent.height() > mediaMetaScroll.height()) {
-            metaScrollControls.removeClass('d-none');
-          }
-        }, 200);
+    $('.icon-info').bind('click keydown', function (event) {
+      if (event.which === 13 || event.which === 1) {
+        // console.log(event.which);
+        var iconInfo = $(this);
+        var controlInfo = iconInfo.parent('.control-info');
+        var metaScrollControls = controlInfo.siblings('.meta-scroll-controls');
+        var mediaMeta = $('.media-meta', iconInfo.parents('.tile'));
+        var mediaMetaScroll = $('.media-meta-scroll', mediaMeta);
+        var mediaMetaScrollContent = $('.media-meta-scroll-content', mediaMetaScroll);
+        var mediaCol = iconInfo.parents('.col-media');
+        var textCol = $('.col-text', iconInfo.parents('.row'));
+        event.preventDefault();
+        if (iconInfo.hasClass('active')) {
+          iconInfo.removeClass('active');
+          controlInfo.removeClass('active');
+          mediaMeta.addClass('d-none');
+          textCol.removeClass('hidden');
+          mediaCol.removeClass('active');
+          metaScrollControls.addClass('d-none');
+        } else {
+          iconInfo.addClass('active');
+          controlInfo.addClass('active');
+          mediaMeta.removeClass('d-none');
+          textCol.addClass('hidden');
+          mediaCol.addClass('active');
+          setTimeout(function () {
+            if (mediaMetaScrollContent.height() > mediaMetaScroll.height()) {
+              metaScrollControls.removeClass('d-none');
+            }
+          }, 200);
+        }
       }
     });
   }
@@ -772,20 +779,76 @@
   }
 
   function bindMenu() {
+    var menuContainer = $('#menu-container');
+    var menuControl = $('#toggle-menu');
+    var icon = menuControl.find('g');
+
+    function openMenu() {
+      menuControl.addClass('active');
+      menuContainer.addClass('active');
+      icon.toggleClass('active');
+    }
+
+    function closeMenu() {
+      menuControl.removeClass('active');
+      menuContainer.removeClass('active');
+      icon.toggleClass('active');
+    }
+
+    function toggleMenu() {
+      // icon.toggleClass('active');
+      if (menuContainer.hasClass('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
     $('#toggle-menu').click(function (e) {
       e.preventDefault();
       e.stopPropagation();
-      $(this).find('g').toggleClass('active');
-      var menuContainer = $('#menu-container');
-      var menuControll = $(this);
-      if (menuContainer.hasClass('active')) {
-        menuControll.removeClass('active');
-        menuContainer.removeClass('active');
-      } else {
-        menuControll.addClass('active');
-        menuContainer.addClass('active');
+      toggleMenu();
+    });
+
+    // open when browsing with keyboard tab navigation
+    $('#jump-to-navigation-control').on('keydown', function(e) {
+      if(e.which == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        // icon.toggleClass('active');
+        if (menuContainer.hasClass('active')) {
+          closeMenu();
+        } else {
+          openMenu();
+          $('#menu li.active a').focus();
+        }
+      } else if (e.which === 9) {
+        e.preventDefault();
+        // do not stop propagation here as fullpage needs to know
+        $('.section.active').focus();
+        // console.log('focus');
       }
     });
+
+    // close on escape (key=27) and on Enter (key=13)
+    menuContainer.on('keydown', function(e) {
+      if (e.which == 27 && menuContainer.hasClass('active')) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+        $('#jump-to-navigation-control').focus();
+      } else if (e.which == 13 && menuContainer.hasClass('active')) {
+        closeMenu();
+        // Jump to navigation-control, if active menu item was selected as
+        // fullpage will not do anything (will not fire fpAfterLoad())
+        if ($(e.target).parent().hasClass('active')) {
+          $('#jump-to-navigation-control').focus();
+        }
+      }
+    });
+
+
+
   }
 
   function bindEmptyClick() {
@@ -878,10 +941,12 @@
 
 
   function generateZoomableImage() {
+    if ($('#zoom-container').length > 0) {
+      return;
+    }
     var panzoomInstance;
     var caller = $(this);
-    // console.log(caller);
-    var container = $('<div id="zoom-container" class="zoom-container"></div>');
+    var container = $('<div id="zoom-container" class="zoom-container" tabindex="0"></div>');
     var spinner = $(
       '<div class="zoom-spinner-container">' +
       '<div class="spinner-border zoom-spinner text-white" role="status">' +
@@ -907,7 +972,7 @@
     );
     if (!zoomHintShown) {
       container.append(closer, spinner, zoomHint);
-      zoomHintShown = true;
+      // zoomHintShown = true;
       zoomHint.on('click', function () {
         $(this).remove();
       });
@@ -987,6 +1052,24 @@
         // window.testzoom = panzoomInstance;
       });
 
+    if (!zoomHintShown) {
+      zoomHintShown = true;
+      var zoomHintClose = $('.zoom-hint-close', zoomHint);
+      zoomHintClose.focus();
+      zoomHintClose.on('keydown', function (e) {
+        e.preventDefault();
+        if (e.which === 13) {
+          $(this).off('keydown');
+          container.trigger('click').trigger('focus');
+          zoomHint.remove();
+        }
+      });
+    } else {
+      $('#zoom-container').focus();
+      // container.trigger('click'); // .trigger('focus');
+      // container.focus();
+      // console.log(document.activeElement);
+    }
     // toggle cursor - does not work in chrome:
     // container.on('mousedown', function (e) {
     //   $(this).addClass('active');
@@ -995,7 +1078,7 @@
     //   $(this).removeClass('active');
     // });
 
-    container.trigger('click').trigger('focus');
+    // container.trigger('click').trigger('focus');
     closer.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -1016,8 +1099,10 @@
 
   function bindZoom() {
     $('img.media-item').bind('click', generateZoomableImage);
-    $('.control-zoom').bind('click', function () {
-      $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
+    $('.control-zoom').bind('click keydown', function (event) {
+      if (event.which === 13 || event.which === 1) {
+        $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
+      }
     });
     $('.zoomer').bind('click', generateZoomableImage);
   }
@@ -1094,7 +1179,7 @@
 
   function createCookieDiv() {
     var div = $('<div id="cookie-law" class="cookie-law"><p>Um unser Internetangebot für Sie optimal gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung unseres Angebots erklären Sie sich hiermit einverstanden. Wenn Sie mehr über Cookies erfahren möchten, klicken Sie bitte auf unsere <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" rel="noopener" target="_blank">Datenschutzerklärung</a>. Eine Widerrufsmöglichkeit gibt es <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung#cookies" rel="noopener" target="_blank">hier</a>.</p></div>');
-    var button = $('<button id="close-cookie-notice" type="button" class="close-cookie-notice close btn btn-secondary" aria-label="Close" aria-controls="cookie-notice"><span aria-hidden="true">&times;</span></button>');
+    var button = $('<button id="close-cookie-notice" type="button" class="close-cookie-notice close btn btn-secondary" aria-label="Schließen" aria-controls="cookie-law"><span aria-hidden="true">&times;</span></button>');
     div.append(button);
     $('body').prepend(div);
     button.on('click', function () {

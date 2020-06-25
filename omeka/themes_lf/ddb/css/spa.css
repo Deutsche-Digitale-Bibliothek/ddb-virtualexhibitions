@@ -6484,11 +6484,6 @@ a:hover {
   text-decoration: underline;
 }
 
-video,
-audio {
-  outline: none;
-}
-
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   max-width: 1140px;
 }
@@ -8643,6 +8638,12 @@ i.license-or {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
+.zoom-hint-container .zoom-hint .zoom-hint-close:focus {
+  outline-color: #808080;
+  outline-style: solid;
+  outline-width: thin;
+}
+
 .zoom-hint-container .zoom-hint .zoom-hint-content {
   background-color: rgba(0, 0, 0, 0.85);
 }
@@ -8924,14 +8925,14 @@ i.license-or {
   position: fixed;
   top: 64px;
   left: 16px;
-  z-index: 99999;
+  z-index: 20;
 }
 
 .jump-to-navigation-control {
   position: fixed;
   top: 64px;
   left: 16px;
-  z-index: 99999;
+  z-index: 20;
   display: block;
   line-height: 1;
   text-decoration: none;

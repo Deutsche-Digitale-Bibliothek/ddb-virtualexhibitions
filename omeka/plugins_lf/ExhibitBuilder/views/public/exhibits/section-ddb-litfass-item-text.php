@@ -16,7 +16,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                 <div class="container-media">
                     <div class="content-controls<?php echo ($pageoptions['align'] === 'left')? ' order-md-last' : ''; ?>">
                         <div class="control-info control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-info" tabindex="0">
                                 <g class="icon-info-frame" transform="translate(-98 -31)">
                                     <g transform="translate(57)">
                                         <g>
@@ -43,7 +43,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                         </div>
                         <?php if (false !== ($zoomImgUrl = ExhibitDdbHelper::getZoomable($attachment)) || ExhibitDdbHelper::isX3d($attachment)): ?>
                         <div class="control-zoom control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom" tabindex="0">
                                 <g transform="translate(-21 -84)">
                                     <g transform="translate(-216.5 -429.5)">
                                         <line class="icon-zoom-1" y2="10" transform="translate(259.5 529.5)" />

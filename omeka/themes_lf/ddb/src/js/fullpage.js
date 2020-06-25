@@ -228,7 +228,7 @@
         var scrollBarHandler;
 
         // taken from https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
-        var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+        var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio';
 
         //cheks for passive event support
         var g_supportsPassive = false;
@@ -2309,17 +2309,20 @@
             var focusableElements = getFocusables(getSlideOrSection($(SECTION_ACTIVE_SEL)[0]));
 
             function preventAndFocusFirst(e){
+                // console.log('preventAndFocusFirst');
                 preventDefault(e);
                 return focusableElements[0] ? focusableElements[0].focus() : null;
             }
 
             //outside any section or slide? Let's not hijack the tab!
             if(isFocusOutside(e)){
+              // console.log('outside');
                 return;
             }
 
             //is there an element with focus?
             if(activeElement){
+                // console.log('activeElement', activeElement);
                 if(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) == null){
                     activeElement = preventAndFocusFirst(e);
                 }
@@ -2327,6 +2330,7 @@
 
             //no element if focused? Let's focus the first one of the section/slide
             else{
+              // console.log('NO activeElement');
                 preventAndFocusFirst(e);
             }
 
@@ -2335,6 +2339,9 @@
             if(!isShiftPressed && activeElement == focusableElements[focusableElements.length - 1] ||
                 isShiftPressed && activeElement == focusableElements[0]
             ){
+                // console.log('prevented');
+                var jumpNav = document.getElementById('jump-to-navigation-control');
+                jumpNav.focus();
                 preventDefault(e);
             }
         }
@@ -2361,6 +2368,7 @@
             var destinationItemSlide = nullOrSlide(closest(focusDestination, SLIDE_SEL));
             var destinationItemSection = nullOrSection(closest(focusDestination, SECTION_SEL));
 
+            // console.log(destinationItemSlide, destinationItemSection);
             return !destinationItemSlide && !destinationItemSection;
         }
 

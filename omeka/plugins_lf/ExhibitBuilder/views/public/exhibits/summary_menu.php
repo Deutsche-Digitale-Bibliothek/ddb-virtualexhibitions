@@ -1,5 +1,5 @@
 <?php $ddbStudioLink = 'https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen'; ?>
-<nav class="menu-container" id="menu-container">
+<nav class="menu-container" id="menu-container" role="navigation" aria-label="Hauptnavigation">
     <div class="menu-header">
     <?php if ($exhibitType === 'litfass_ddb'): ?>
         <a href="<?php echo $ddbStudioLink; ?>" rel="noopener" target="_blank">
@@ -63,9 +63,11 @@
     </div>
     <div class="menu-body">
         <div id="menu-scrollable" class="menu-scrollable">
-            <ul id="menu" class="menu">
+            <ul id="menu" class="menu" aria-label="Seitennavigation">
             <?php $menuChapterCounter = 0; ?>
+            <?php $menuTabIndex = 100; ?>
             <?php foreach ($sectionTitles as $sectionKey => $sectionTitle): ?>
+                <?php $menuTabIndex = $menuTabIndex + $sectionKey; ?>
                 <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>"
                 <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : 'class="type-' . $sectionTitle['type'] . '"'; ?>>
                     <?php if($sectionKey == 0): ?>

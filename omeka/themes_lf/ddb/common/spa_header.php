@@ -60,4 +60,9 @@
       </div>
     </div>
   </div>
-</div class="noscript">
+</div>
+<nav aria-label="Sprunglinks" id="jump-to-navigation" class="jump-to-navigation" tabindex="0">
+    <a href="#menu" id="jump-to-navigation-control" class="jump-to-navigation-control">
+      Zur Navigation springen
+    </a>
+</nav>
