@@ -96,19 +96,19 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             return;
         }
         $this->view->dbFile = $dbFile;
-        $this->view->fileSizes = $this->getFileSizes($dbFile);
 
         $params = $this->getFileCompressParams();
         $this->view->params = $params;
         $docompress = $this->_request->getParam('compress_submit', null);
 
         if ($docompress) {
-            // var_dump($params);
             require __DIR__ . '/../models/Compressor.php';
             $compressor = new Compressor($dbFile->filename, FILES_DIR, $params);
             $compressor->main();
             $this->view->log = $compressor->getLog();
         }
+        // Make sure to get filsizes after compression
+        $this->view->fileSizes = $this->getFileSizes($dbFile);
     }
 
     protected function getFileSizes($dbFile)
