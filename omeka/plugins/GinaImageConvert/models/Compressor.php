@@ -18,6 +18,7 @@ class Compressor
     public $options = null;
     public $dirs = array();
     public $log = array();
+    public $maxQuality = 90;
 
     public function __construct($filename, $filesdir, $options)
     {
@@ -57,7 +58,7 @@ class Compressor
         $this->compressSized('fullsize', 1920, 1080);
         $this->compressSized('middsize', 960, 960);
         $this->compressSized('thumbnails', 360, 360);
-        $this->compress('square_thumbnails', 'square_thumbnails', 'square_thumbnails');
+        $this->compressSized('square_thumbnails', 360, 360, true);
     }
 
     public function checkOriginalCompressedDir()
@@ -114,29 +115,28 @@ class Compressor
         }
     }
 
-    public function compressSized($type, $width, $height)
+    public function compressSized($type, $width, $height, $crop = false)
     {
-        $ext = array('jpg', 'jpeg');
+        $ext = array('jpg', 'jpeg', 'png');
+        $fileExtension = strtolower(pathinfo($this->filename, PATHINFO_EXTENSION));
+        $filename = pathinfo($this->filename, PATHINFO_FILENAME);
 
         if (is_file($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename) &&
-            in_array(
-                strtolower(
-                    pathinfo($this->filename, PATHINFO_EXTENSION)
-                ),
-                $ext
-            )
-        ) {
+            in_array($fileExtension, $ext)) {
 
             $this->resizeImage(
                 $this->dirs['original'],
                 $this->dirs[$type],
                 $this->filename,
+                $filename,
                 $width,
-                $height
+                $height,
+                $crop
             );
             $file = $this->dirs[$type]
                 . DIRECTORY_SEPARATOR
-                . $this->filename;
+                . $filename . '.jpg';
+                // . $this->filename;
 
             $recompress = $recompress = $this->getRecompressCommand($file, $file, $type);
             $output = array();
@@ -151,7 +151,7 @@ class Compressor
         }
     }
 
-    public function resizeImage($srcDir, $outDir, $file, $width, $height)
+    public function resizeImage($srcDir, $outDir, $file, $filename, $width, $height, $crop = false)
     {
         if(extension_loaded('imagick')) {
             $img = new Imagick($srcDir . DIRECTORY_SEPARATOR . $file);
@@ -165,18 +165,21 @@ class Compressor
 
             // make max Quality selectable?
             $quality = $img->getImageCompressionQuality();
-            // echo $file . ' - ' . $quality . "\n";
-            if ($quality > 75) {
-                $quality = 75;
+            if ($quality === 0 || $quality > $this->maxQuality) {
+                $quality = $this->maxQuality;
             }
 
-            // imagick::FILTER_LANCZOS, slow but good ...
-            $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+            if ($crop === true) {
+                $img->cropThumbnailImage($width, $height);
+            } else {
+                // imagick::FILTER_LANCZOS, slow but good ...
+                $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+            }
 
             $img->setImageCompression(Imagick::COMPRESSION_JPEG);
             $img->setImageCompressionQuality($quality);
 
-            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $file);
+            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $filename . '.jpg');
             $img->clear();
             $img->destroy();
         }

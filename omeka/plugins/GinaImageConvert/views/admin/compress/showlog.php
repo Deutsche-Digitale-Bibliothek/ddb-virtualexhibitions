@@ -67,7 +67,7 @@
                     Datei: <?php echo $file['file']; ?><br>
                     <?php endif; ?>
                     <img style="max-width:120px;max-height:120px;"
-                        src="<?php echo WEB_FILES . '/thumbnails/' . $file['file']; ?>"
+                        src="<?php echo WEB_FILES . '/thumbnails/' . pathinfo($file['file'], PATHINFO_FILENAME) . '.jpg'; ?>"
                         alt="<?php echo $file['file']; ?>">
                 </td>
                 <td><?php echo $file['time']; ?></td>

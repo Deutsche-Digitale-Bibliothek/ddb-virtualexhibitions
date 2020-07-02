@@ -9,6 +9,7 @@ class Compressor
     public $options = null;
     public $dirs = array();
     public $log = array();
+    public $maxQuality = 90;
 
     public function __construct($slug = '')
     {
@@ -76,7 +77,7 @@ class Compressor
         $this->compressSized('fullsize', 1920, 1080);
         $this->compressSized('middsize', 960, 960);
         $this->compressSized('thumbnails', 360, 360);
-        $this->compress('square_thumbnails', 'square_thumbnails', false);
+        $this->compressSized('square_thumbnails', 360, 360, true);
         file_put_contents($this->stateFile, 'off');
     }
 
@@ -139,77 +140,45 @@ class Compressor
         }
     }
 
-    public function compressSized($type, $width, $height)
+    public function compressSized($type, $width, $height, $crop = false)
     {
         $ext = array('jpg', 'jpeg');
         $extadd = array('png', 'gif');
         $iterator = new DirectoryIterator($this->dirs['original']);
         foreach ($iterator as $entry) {
-            if ($entry->isFile() &&
-                in_array(
-                    strtolower(
-                        pathinfo($entry->getFilename(), PATHINFO_EXTENSION)
-                    ),
-                    $ext
-                )
+
+            $fileExtension = strtolower(pathinfo($entry->getFilename(), PATHINFO_EXTENSION));
+            $filename = pathinfo($entry->getFilename(), PATHINFO_FILENAME);
+
+            if (
+                ($entry->isFile() && in_array($fileExtension, $ext)) ||
+                ($entry->isFile() && in_array($fileExtension, $extadd))
             ) {
 
                 $this->resizeImage(
                     $this->dirs['original'],
                     $this->dirs[$type],
                     $entry->getFilename(),
+                    $filename,
                     $width,
-                    $height
+                    $height,
+                    $crop
                 );
                 $file = $this->dirs[$type]
                     . DIRECTORY_SEPARATOR
-                    . $entry->getFilename();
+                    . $filename . '.jpg';
 
                 $recompress = $recompress = $this->getRecompressCommand($file, $file);
                 $output = array();
                 $retval = false;
                 exec($recompress, $output, $retval);
 
-                // $this->log[] = array(
-                //     'file' => $entry->getFilename(),
-                //     'time' => date('Y.m.d. H:i:s'),
-                //     'error' => $retval,
-                //     'compress' => $output
-                // );
-            } elseif (
-                file_exists(
-                    $this->dirs[$type] . DIRECTORY_SEPARATOR .
-                    pathinfo($entry->getFilename(), PATHINFO_FILENAME) . '.jpg'
-                )
-                &&
-                in_array(
-                    strtolower(
-                        pathinfo($entry->getFilename(), PATHINFO_EXTENSION)
-                    ),
-                    $extadd
-                )
-            ) {
-                $this->resizeImage(
-                    $this->dirs[$type],
-                    $this->dirs[$type],
-                    pathinfo($entry->getFilename(), PATHINFO_FILENAME) . '.jpg',
-                    $width,
-                    $height
-                );
-                $file = $this->dirs[$type]
-                    . DIRECTORY_SEPARATOR
-                    . $entry->getFilename();
-
-                $recompress = $recompress = $this->getRecompressCommand($file, $file);
-                $output = array();
-                $retval = false;
-                exec($recompress, $output, $retval);
             }
         }
         // $this->writeLogfile();
     }
 
-    public function resizeImage($srcDir, $outDir, $file, $width, $height)
+    public function resizeImage($srcDir, $outDir, $file, $filename, $width, $height, $crop = false)
     {
         if(extension_loaded('imagick')) {
             $img = new Imagick($srcDir . DIRECTORY_SEPARATOR . $file);
@@ -224,17 +193,21 @@ class Compressor
             // make max Quality selectable?
             $quality = $img->getImageCompressionQuality();
             // echo $file . ' - ' . $quality . "\n";
-            if ($quality > 75) {
-                $quality = 75;
+            if ($quality > $this->maxQuality) {
+                $quality = $this->maxQuality;
             }
 
-            // imagick::FILTER_LANCZOS, slow but good ...
-            $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+            if ($crop === true) {
+                $img->cropThumbnailImage($width, $height);
+            } else {
+                // imagick::FILTER_LANCZOS, slow but good ...
+                $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+            }
 
             $img->setImageCompression(Imagick::COMPRESSION_JPEG);
             $img->setImageCompressionQuality($quality);
 
-            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $file);
+            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $filename . '.jpg');
             $img->clear();
             $img->destroy();
         }

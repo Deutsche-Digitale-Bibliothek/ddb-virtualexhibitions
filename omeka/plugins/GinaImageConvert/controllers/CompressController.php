@@ -44,10 +44,13 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
                 $compressor = __DIR__ . '/../compressor.php';
                 exec('php ' . $compressor . ' --slug ' . $slug . ' >/dev/null 2>/dev/null &');
 
-                $this->_helper->flashMessenger('Komprimierungsprozess erfolgreich gestartet...', 'success');
+                $this->_helper->flashMessenger(
+                    'Komprimierungsprozess erfolgreich gestartet...', 'success');
                 $this->_helper->redirector('index', 'compress', 'gina-image-convert');
             } else {
-                $this->_helper->flashMessenger('Serverfehler: Datei compress_state.txt konnte nicht geschrieben werden.', 'error');
+                $this->_helper->flashMessenger(
+                    'Serverfehler: Datei compress_state.txt konnte nicht geschrieben werden.',
+                    'error');
                 $this->_helper->redirector('index', 'compress', 'gina-image-convert');
             }
         }
@@ -62,7 +65,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             $checkState = file_get_contents($stateFile);
         }
         if ($checkState === 'on') {
-            $this->_helper->flashMessenger('Logdatei kann nicht ausgewertet werden, da der Komprimierungsprozess im Gange ist.', 'error');
+            $this->_helper->flashMessenger(
+                'Logdatei kann nicht ausgewertet werden, da der ' .
+                'Komprimierungsprozess im Gange ist.', 'error');
             $this->_helper->redirector('index', 'compress', 'gina-image-convert');
             return;
         }
@@ -76,7 +81,9 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
     {
         $id = $this->_request->getParam('id', null);
         if (!isset($id) || empty($id)) {
-            $this->_helper->flashMessenger('Sie müssen eine Bilddatei zur Komprimierung auswählen!', 'error');
+            $this->_helper->flashMessenger(
+                'Sie müssen eine Bilddatei zur Komprimierung auswählen!',
+                'error');
             $this->_helper->redirector(null, null, 'items');
             return;
         }
@@ -85,13 +92,19 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         $db = $this->_helper->db->getDb();
         $dbFile = $db->getTable('File')->find($id);
         if (!isset($dbFile) || empty($dbFile)) {
-            $this->_helper->flashMessenger('Ausgewählte Bilddatei konnte nicht gefunden werden!', 'error');
+            $this->_helper->flashMessenger(
+                'Ausgewählte Bilddatei konnte nicht gefunden werden!',
+                'error');
             $this->_helper->redirector(null, null, 'items');
             return;
         }
 
-        if ($dbFile->mime_type !== 'image/jpeg') {
-            $this->_helper->flashMessenger('Derzeit können nur Bilddateien vom Typ JPEG rekomprimiert werden! Die Datei hat den Typ ' . $dbFile->mime_type, 'error');
+        $mimes = array('image/jpeg', 'image/png');
+        if (!in_array($dbFile->mime_type, $mimes)) {
+            $this->_helper->flashMessenger(
+                'Derzeit können nur Bilddateien vom Typ JPEG und PNG ' .
+                'rekomprimiert werden! Die Datei hat den Typ ' .
+                $dbFile->mime_type, 'error');
             $this->_helper->redirector(null, null, 'items');
             return;
         }
@@ -123,11 +136,18 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         );
         $sizes = array();
         foreach ($types as $type) {
-            if (is_file(FILES_DIR . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $dbFile->filename)) {
-                $sizes[$type] = round(
-                    (filesize(FILES_DIR . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $dbFile->filename) / 1024),
-                    2
-                );
+            if ($type === 'original' || $type === 'original_compressed') {
+                $file = FILES_DIR . DIRECTORY_SEPARATOR .
+                        $type . DIRECTORY_SEPARATOR .
+                        $dbFile->filename;
+            } else {
+                $file = FILES_DIR . DIRECTORY_SEPARATOR .
+                        $type . DIRECTORY_SEPARATOR .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) .
+                        '.jpg';
+            }
+            if (is_file($file)) {
+                $sizes[$type] = round((filesize($file) / 1024), 2);
             }
         }
         return $sizes;
@@ -143,19 +163,29 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             $params['action'],
             $params['compressall_submit']
         );
-        if (!isset($params['compressall_target']) || empty($params['compressall_target'])) {
+        if (!isset($params['compressall_target']) ||
+            empty($params['compressall_target'])
+        ) {
             $params['compressall_target'] = '0.9999';
         }
-        if (!isset($params['compressall_min']) || empty($params['compressall_min'])) {
+        if (!isset($params['compressall_min']) ||
+            empty($params['compressall_min'])
+        ) {
             $params['compressall_min'] = '40';
         }
-        if (!isset($params['compressall_max']) || empty($params['compressall_max'])) {
+        if (!isset($params['compressall_max']) ||
+            empty($params['compressall_max'])
+        ) {
             $params['compressall_max'] = '95';
         }
-        if (!isset($params['compressall_loops']) || empty($params['compressall_loops'])) {
+        if (!isset($params['compressall_loops']) ||
+            empty($params['compressall_loops'])
+        ) {
             $params['compressall_loops'] = '6';
         }
-        // if (!isset($params['compressall_method']) || empty($params['compressall_method'])) {
+        // if (!isset($params['compressall_method']) ||
+        //     empty($params['compressall_method'])
+        // ) {
         //     $params['compressall_method'] = 'ssim';
         // }
         return $params;

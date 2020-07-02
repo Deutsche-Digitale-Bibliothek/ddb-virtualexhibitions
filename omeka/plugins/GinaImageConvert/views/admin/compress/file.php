@@ -21,7 +21,8 @@
             <ul>
                 <?php if (isset($fileSizes['original'])): ?>
                 <li>
-                    <a href="<?php echo metadata($dbFile, 'uri'); ?>">
+                    <a target="_blank" rel="noopener"
+                        href="<?php echo metadata($dbFile, 'uri'); ?>">
                         <?php echo __('Original'); ?>
                         <?php echo $fileSizes['original']; ?> KB
                     </a>
@@ -29,7 +30,8 @@
                 <?php endif; ?>
                 <?php if (isset($fileSizes['original_compressed'])): ?>
                 <li>
-                    <a href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>">
+                    <a target="_blank" rel="noopener"
+                        href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>">
                         <?php echo __('Original komprimiert'); ?>
                         <?php echo $fileSizes['original_compressed']; ?> KB
                     </a>
@@ -38,7 +40,8 @@
                 <?php if ($dbFile->has_derivative_image): ?>
                     <?php if (isset($fileSizes['fullsize'])): ?>
                     <li>
-                        <a href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>">
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>">
                             <?php echo __('Fullsize'); ?>
                             <?php echo $fileSizes['fullsize']; ?> KB
                         </a>
@@ -46,7 +49,8 @@
                     <?php endif; ?>
                     <?php if (isset($fileSizes['middsize'])): ?>
                     <li>
-                        <a href="<?php echo metadata($dbFile, 'middsize_uri'); ?>">
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo metadata($dbFile, 'middsize_uri'); ?>">
                             <?php echo __('Mittlere Größe'); ?>
                             <?php echo $fileSizes['middsize']; ?> KB
                         </a>
@@ -54,7 +58,8 @@
                     <?php endif; ?>
                     <?php if (isset($fileSizes['thumbnails'])): ?>
                     <li>
-                        <a href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>">
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>">
                             <?php echo __('Thumbnail'); ?>
                             <?php echo $fileSizes['thumbnails']; ?> KB
                         </a>
@@ -62,7 +67,8 @@
                     <?php endif; ?>
                     <?php if (isset($fileSizes['square_thumbnails'])): ?>
                     <li>
-                        <a href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>">
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>">
                             <?php echo __('Square Thumbnail'); ?>
                             <?php echo $fileSizes['square_thumbnails']; ?> KB
                         </a>
@@ -71,6 +77,19 @@
                 <?php endif; ?>
             </ul>
         </div>
+        <?php if ($dbFile->mime_type === 'image/png'): ?>
+        <div class="panel">
+            <p>
+                Bei dem Originalbild handelt es sich um eine PNG-Datei.
+                Hier werden nur die JPEG-Derivate &bdquo;Volle Größe&ldquo;,
+                &bdquo;Mittlere Größe&ldquo;, &bdquo;Vorschau&ldquo; und
+                &bdquo;Quadratische Vorschau&ldquo; komprimiert. Diese werden
+                aber in der Ausstellung nicht verwendet, da JPEG-Bilder über
+                keine Alphatransparenz verfügen.
+                Es wird stattdessen immer das Original verwendet.
+            </p>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 <?php if (isset($log) && !empty($log)): ?>
