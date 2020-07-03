@@ -34,6 +34,17 @@
                         href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>">
                         <?php echo __('Original komprimiert'); ?>
                         <?php echo $fileSizes['original_compressed']; ?> KB
+                        <?php if (isset($fileSizesOld['original_compressed'])): ?>
+                        <?php if ($fileSizesOld['original_compressed'] === $fileSizes['original_compressed']): ?>
+                        <span style="color: #666;">
+                        <?php elseif ($fileSizesOld['original_compressed'] > $fileSizes['original_compressed']): ?>
+                        <span style="color: #060;">
+                        <?php else: ?>
+                        <span style="color: #e00;">
+                        <?php endif; ?>
+                        (vorher <?php echo $fileSizesOld['original_compressed']; ?> KB)
+                        </span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <?php endif; ?>
@@ -44,6 +55,17 @@
                             href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>">
                             <?php echo __('Fullsize'); ?>
                             <?php echo $fileSizes['fullsize']; ?> KB
+                            <?php if (isset($fileSizesOld['fullsize'])): ?>
+                            <?php if ($fileSizesOld['fullsize'] === $fileSizes['fullsize']): ?>
+                            <span style="color: #666;">
+                            <?php elseif ($fileSizesOld['fullsize'] > $fileSizes['fullsize']): ?>
+                            <span style="color: #060;">
+                            <?php else: ?>
+                            <span style="color: #e00;">
+                            <?php endif; ?>
+                            (vorher <?php echo $fileSizesOld['fullsize']; ?> KB)
+                            </span>
+                            <?php endif; ?>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -53,6 +75,17 @@
                             href="<?php echo metadata($dbFile, 'middsize_uri'); ?>">
                             <?php echo __('Mittlere Größe'); ?>
                             <?php echo $fileSizes['middsize']; ?> KB
+                            <?php if (isset($fileSizesOld['middsize'])): ?>
+                            <?php if ($fileSizesOld['middsize'] === $fileSizes['middsize']): ?>
+                            <span style="color: #666;">
+                            <?php elseif ($fileSizesOld['middsize'] > $fileSizes['middsize']): ?>
+                            <span style="color: #060;">
+                            <?php else: ?>
+                            <span style="color: #e00;">
+                            <?php endif; ?>
+                            (vorher <?php echo $fileSizesOld['middsize']; ?> KB)
+                            </span>
+                            <?php endif; ?>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -62,6 +95,17 @@
                             href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>">
                             <?php echo __('Thumbnail'); ?>
                             <?php echo $fileSizes['thumbnails']; ?> KB
+                            <?php if (isset($fileSizesOld['thumbnails'])): ?>
+                            <?php if ($fileSizesOld['thumbnails'] === $fileSizes['thumbnails']): ?>
+                            <span style="color: #666;">
+                            <?php elseif ($fileSizesOld['thumbnails'] > $fileSizes['thumbnails']): ?>
+                            <span style="color: #060;">
+                            <?php else: ?>
+                            <span style="color: #e00;">
+                            <?php endif; ?>
+                                (vorher <?php echo $fileSizesOld['thumbnails']; ?> KB)
+                            </span>
+                            <?php endif; ?>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -71,6 +115,17 @@
                             href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>">
                             <?php echo __('Square Thumbnail'); ?>
                             <?php echo $fileSizes['square_thumbnails']; ?> KB
+                            <?php if (isset($fileSizesOld['square_thumbnails'])): ?>
+                            <?php if ($fileSizesOld['square_thumbnails'] === $fileSizes['square_thumbnails']): ?>
+                            <span style="color: #666;">
+                            <?php elseif ($fileSizesOld['square_thumbnails'] > $fileSizes['square_thumbnails']): ?>
+                            <span style="color: #060;">
+                            <?php else: ?>
+                            <span style="color: #e00;">
+                            <?php endif; ?>
+                            (vorher <?php echo $fileSizesOld['square_thumbnails']; ?> KB)
+                            </span>
+                            <?php endif; ?>
                         </a>
                     </li>
                     <?php endif; ?>
