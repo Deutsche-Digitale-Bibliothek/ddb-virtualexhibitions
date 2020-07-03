@@ -90,12 +90,13 @@ class Compressor
 
     public function getRecompressCommand($in, $out)
     {
+        // Do not use --strip option, as it will remove ICC profiles'
         return 'jpeg-recompress'
         . ' --target '  . $this->options['params']['compressall_target']
         . ' --min '     . $this->options['params']['compressall_min']
         . ' --max '     . $this->options['params']['compressall_max']
         . ' --loops '   . $this->options['params']['compressall_loops']
-        . ' --accurate --strip '
+        . ' --accurate '
         . $in
         . ' '
         . $out
