@@ -2,18 +2,18 @@
 
 class Compressor
 {
-    public $slug = '';
+    public $dir = '';
     public $basePath = '';
     public $stateFile = '';
     public $logFile = '';
     public $options = null;
     public $dirs = array();
     public $log = array();
-    public $maxQuality = 90;
+    // public $maxQuality = 90;
 
-    public function __construct($slug = '')
+    public function __construct($dir = '')
     {
-        $this->slug = $slug;
+        $this->dir = $dir;
         $this->setBasePath();
         $this->setStateFile();
         $this->setLogFile();
@@ -23,12 +23,9 @@ class Compressor
 
     public function setBasePath()
     {
-        $this->basePath = realpath(
-            __DIR__ .
-            '/../../../../public/' .
-            $this->slug .
-            '/files'
-        );
+        if (is_dir($this->dir)) {
+            $this->basePath = $this->dir;
+        }
     }
 
     public function setStateFile()
@@ -60,25 +57,33 @@ class Compressor
     public function setDirs()
     {
         $basePath = $this->basePath . DIRECTORY_SEPARATOR;
-        $this->dirs = array(
-            'original' => $basePath . 'original',
-            'original_compressed' => $basePath . 'original_compressed',
-            'fullsize' => $basePath . 'fullsize',
-            'middsize' => $basePath . 'middsize',
-            'square_thumbnails' => $basePath . 'square_thumbnails',
-            'thumbnails' => $basePath . 'thumbnails',
-        );
+        foreach ($this->options['params'] as $type => $option) {
+            $this->dirs[$type] = $basePath . $type;
+        }
+        $this->dirs['original_compressed'] = $basePath . 'original_compressed';
+
+        // $this->dirs = array(
+        //     'original' => $basePath . 'original',
+        //     'original_compressed' => $basePath . 'original_compressed',
+        //     'fullsize' => $basePath . 'fullsize',
+        //     'middsize' => $basePath . 'middsize',
+        //     'square_thumbnails' => $basePath . 'square_thumbnails',
+        //     'thumbnails' => $basePath . 'thumbnails',
+        // );
     }
 
     public function main()
     {
         $this->checkOriginalCompressedDir();
-        $this->compress('original', 'original_compressed', true);
-        $this->compressSized('fullsize', 1920, 1080);
-        $this->compressSized('middsize', 960, 960);
-        $this->compressSized('thumbnails', 360, 360);
-        $this->compressSized('square_thumbnails', 360, 360, true);
+        foreach ($this->options['params'] as $type => $option) {
+            if ($type === 'original') {
+                $this->compress($type, 'original_compressed', $type, true);
+            } else {
+                $this->compressSized($type, true);
+            }
+        }
         file_put_contents($this->stateFile, 'off');
+        $this->writeLogfile();
     }
 
     public function checkOriginalCompressedDir()
@@ -88,14 +93,15 @@ class Compressor
         }
     }
 
-    public function getRecompressCommand($in, $out)
+    public function getRecompressCommand($in, $out, $type)
     {
         // Do not use --strip option, as it will remove ICC profiles'
         return 'jpeg-recompress'
-        . ' --target '  . $this->options['params']['compressall_target']
-        . ' --min '     . $this->options['params']['compressall_min']
-        . ' --max '     . $this->options['params']['compressall_max']
-        . ' --loops '   . $this->options['params']['compressall_loops']
+        . ' --target '  . $this->options['params'][$type]['recompress_target']
+        . ' --min '     . $this->options['params'][$type]['recompress_min']
+        . ' --max '     . $this->options['params'][$type]['recompress_max']
+        . ' --loops '   . $this->options['params'][$type]['recompress_loops']
+        . ' --method '  . $this->options['params'][$type]['recompress_method']
         . ' --accurate '
         . $in
         . ' '
@@ -103,7 +109,7 @@ class Compressor
         . ' 2>&1';
     }
 
-    public function compress($intype, $outtype, $log)
+    public function compress($intype, $outtype, $type, $log)
     {
         $ext = array('jpg', 'jpeg');
         $iterator = new DirectoryIterator($this->dirs[$intype]);
@@ -120,15 +126,15 @@ class Compressor
                     . DIRECTORY_SEPARATOR
                     . $entry->getFilename();
 
-                $recompress = $this->getRecompressCommand($entry->getPathname(), $outfile);
+                $recompress = $this->getRecompressCommand($entry->getPathname(), $outfile, $type);
                 $output = array();
                 $retval = false;
                 exec($recompress, $output, $retval);
 
                 if ($log) {
-                    $this->log[] = array(
+                    $this->log[$entry->getFilename()][$outtype] = array(
                         'file' => $entry->getFilename(),
-                        'time' => date('Y.m.d. H:i:s'),
+                        'time' => date('Y.m.d H:i:s'),
                         'error' => $retval,
                         'compress' => $output
 
@@ -136,12 +142,9 @@ class Compressor
                 }
             }
         }
-        if ($log) {
-            $this->writeLogfile();
-        }
     }
 
-    public function compressSized($type, $width, $height, $crop = false)
+    public function compressSized($type, $log)
     {
         $ext = array('jpg', 'jpeg');
         $extadd = array('png', 'gif');
@@ -149,7 +152,6 @@ class Compressor
         foreach ($iterator as $entry) {
 
             $fileExtension = strtolower(pathinfo($entry->getFilename(), PATHINFO_EXTENSION));
-            $filename = pathinfo($entry->getFilename(), PATHINFO_FILENAME);
 
             if (
                 ($entry->isFile() && in_array($fileExtension, $ext)) ||
@@ -157,58 +159,70 @@ class Compressor
             ) {
 
                 $this->resizeImage(
-                    $this->dirs['original'],
-                    $this->dirs[$type],
-                    $entry->getFilename(),
-                    $filename,
-                    $width,
-                    $height,
-                    $crop
+                    $type,
+                    $entry->getFilename()
                 );
                 $file = $this->dirs[$type]
                     . DIRECTORY_SEPARATOR
-                    . $filename . '.jpg';
+                    . pathinfo($entry->getFilename(), PATHINFO_FILENAME)
+                    . '.jpg';
 
-                $recompress = $recompress = $this->getRecompressCommand($file, $file);
+                $recompress = $this->getRecompressCommand($file, $file, $type);
                 $output = array();
                 $retval = false;
                 exec($recompress, $output, $retval);
+
+                if ($log) {
+                    $this->log[$entry->getFilename()][$type] = array(
+                        'time' => date('Y.m.d H:i:s'),
+                        'error' => $retval,
+                        'compress' => $output
+
+                    );
+                }
 
             }
         }
         // $this->writeLogfile();
     }
 
-    public function resizeImage($srcDir, $outDir, $file, $filename, $width, $height, $crop = false)
+    public function resizeImage($type, $file)
     {
         if(extension_loaded('imagick')) {
-            $img = new Imagick($srcDir . DIRECTORY_SEPARATOR . $file);
+            $img = new Imagick($this->dirs['original'] . DIRECTORY_SEPARATOR . $file);
 
-            // removeExif
+            // remove Exif etc. but keep ICC
             $profiles = $img->getImageProfiles('icc', true);
             $img->stripImage();
             if (isset($profiles) && !empty($profiles) && isset($profiles['icc'])) {
                 $img->profileImage('icc', $profiles['icc']);
             }
 
-            // make max Quality selectable?
             $quality = $img->getImageCompressionQuality();
-            // echo $file . ' - ' . $quality . "\n";
-            if ($quality > $this->maxQuality) {
-                $quality = $this->maxQuality;
+            if ($quality === 0 ||
+                $quality > (int) $this->options['params'][$type]['resize_max_quality']
+            ) {
+                $quality = (int) $this->options['params'][$type]['resize_max_quality'];
             }
 
-            if ($crop === true) {
-                $img->cropThumbnailImage($width, $height);
+            if ($this->options['params'][$type]['resize_square'] === '1') {
+                $img->cropThumbnailImage(
+                    $this->options['params'][$type]['resize_width'],
+                    $this->options['params'][$type]['resize_width']);
             } else {
-                // imagick::FILTER_LANCZOS, slow but good ...
-                $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+                $img->resizeImage(
+                    $this->options['params'][$type]['resize_width'],
+                    $this->options['params'][$type]['resize_height'],
+                    Imagick::FILTER_LANCZOS, 1, true);
             }
 
             $img->setImageCompression(Imagick::COMPRESSION_JPEG);
             $img->setImageCompressionQuality($quality);
 
-            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $filename . '.jpg');
+            $img->writeImage(
+                $this->dirs[$type] . DIRECTORY_SEPARATOR .
+                pathinfo($file, PATHINFO_FILENAME) . '.jpg'
+            );
             $img->clear();
             $img->destroy();
         }
@@ -218,7 +232,7 @@ class Compressor
     {
         $log = array(
             'start' => $this->options['start'],
-            'end' => date('Y.m.d. H:i:s'),
+            'end' => date('Y.m.d H:i:s'),
             'params' => $this->options['params'],
             'files' => $this->log
         );
@@ -226,19 +240,19 @@ class Compressor
     }
 }
 
-$shortopts = "s:";
-$longopts  = array("slug:");
+$shortopts = "d:";
+$longopts  = array("dir:");
 $options = getopt($shortopts, $longopts);
-$slug = null;
-if (isset($options['slug'])) {
-    $slug = $options['slug'];
-} elseif (isset($options['s'])) {
-    $slug = $options['s'];
+$dir = null;
+if (isset($options['dir'])) {
+    $dir = $options['dir'];
+} elseif (isset($options['d'])) {
+    $dir = $options['d'];
 }
-if (!isset($slug)) {
+if (!isset($dir)) {
     exit(1);
 } else {
-    $compressor = new Compressor($slug);
+    $compressor = new Compressor($dir);
     $compressor->main();
 }
 ?>

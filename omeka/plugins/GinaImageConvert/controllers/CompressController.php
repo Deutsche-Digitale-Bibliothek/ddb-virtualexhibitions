@@ -17,11 +17,11 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
 
     public function indexAction()
     {
-        $params = $this->getCompressParams();
+        $params = $this->getFileCompressParams();
         $this->view->params = $params;
         $compressall = $this->_request->getParam('compressall_submit', null);
-        $stateFile = BASE_DIR . '/files/compress_state.txt';
-        $logFile = BASE_DIR . '/files/compress.log';
+        $stateFile = FILES_DIR . '/compress_state.txt';
+        $logFile = FILES_DIR . '/compress.log';
         if (is_file($logFile)) {
             $this->view->logfileExists = true;
         } else {
@@ -38,11 +38,11 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
                 // ... do the compress ...
                 $logContent = array(
                     'start' => date('Y.m.d H:i:s'),
-                    'params' => $params
+                    'params' => $params['compress']
                 );
                 file_put_contents($logFile, json_encode($logContent));
                 $compressor = __DIR__ . '/../compressor.php';
-                exec('php ' . $compressor . ' --slug ' . $slug . ' >/dev/null 2>/dev/null &');
+                exec('php ' . $compressor . ' --dir ' . FILES_DIR . ' >/dev/null 2>/dev/null &');
 
                 $this->_helper->flashMessenger(
                     'Komprimierungsprozess erfolgreich gestartet...', 'success');
@@ -58,8 +58,8 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
 
     public function showlogAction()
     {
-        $stateFile = BASE_DIR . '/files/compress_state.txt';
-        $logFile = BASE_DIR . '/files/compress.log';
+        $stateFile = FILES_DIR . '/compress_state.txt';
+        $logFile = FILES_DIR . '/compress.log';
         $checkState = 'off';
         if (is_file($stateFile) && is_readable($stateFile)) {
             $checkState = file_get_contents($stateFile);
@@ -72,6 +72,20 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             return;
         }
         $db = $this->_helper->db->getDb();
+        $this->view->showOptions = array(
+            'recompress_target' => 'Ziel-Qualität',
+            'recompress_min' => 'Minimum JPEG Qualität',
+            'recompress_max' => 'Maximum JPEG Qualität',
+            'recompress_loops' => 'Anzahl der Versuchsläufe',
+            'recompress_method' => 'Methode'
+        );
+        $this->view->sizeNames = array(
+            'original_compressed' => 'Original (original compressed)',
+            'fullsize' => 'Detailansicht (fullsize)',
+            'middsize' => 'Mittlere Größe (middsize)',
+            'thumbnails' => 'Vorschaubilder (thumbnails)',
+            'square_thumbnails' => 'quadratische Vorschaubilder (square thumbnails)'
+        );
         $this->view->dbFiles = $db->getTable('File')->findAll();
         $this->view->logfile = json_decode(file_get_contents($logFile), true);
 
@@ -174,44 +188,6 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
     protected function getDefaultConfig()
     {
         return require dirname(__FILE__) . '/../default_config.php';
-    }
-
-    protected function getCompressParams()
-    {
-        $params = $this->_request->getParams();
-        unset(
-            $params['admin'],
-            $params['module'],
-            $params['controller'],
-            $params['action'],
-            $params['compressall_submit']
-        );
-        if (!isset($params['compressall_target']) ||
-            empty($params['compressall_target'])
-        ) {
-            $params['compressall_target'] = '0.9999';
-        }
-        if (!isset($params['compressall_min']) ||
-            empty($params['compressall_min'])
-        ) {
-            $params['compressall_min'] = '40';
-        }
-        if (!isset($params['compressall_max']) ||
-            empty($params['compressall_max'])
-        ) {
-            $params['compressall_max'] = '95';
-        }
-        if (!isset($params['compressall_loops']) ||
-            empty($params['compressall_loops'])
-        ) {
-            $params['compressall_loops'] = '6';
-        }
-        // if (!isset($params['compressall_method']) ||
-        //     empty($params['compressall_method'])
-        // ) {
-        //     $params['compressall_method'] = 'ssim';
-        // }
-        return $params;
     }
 
     protected function getFileCompressParams()
