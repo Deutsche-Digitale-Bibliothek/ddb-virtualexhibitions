@@ -17,6 +17,7 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
         // 'before_save_file',
+        'after_delete_file',
         'define_routes',
         'config_form',
         'config',
@@ -49,6 +50,25 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
     //         }
     //     }
     // }
+
+    /**
+     * @param array $args Args with (File-) Record
+     * @return void
+     *
+     */
+    public function hookAfterDeleteFile($args)
+    {
+        if (isset($args['record']) &&
+            isset($args['record']->filename) &&
+            !empty($args['record']->filename)
+        ){
+            $path = realpath(FILES_DIR . '/original_compressed');
+            $file = $path . '/' . $args['record']->filename;
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
 
     /**
      * @param $file string absolute path to file
@@ -198,7 +218,7 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookConfigForm()
     {
         $params['gina_image_convert'] = $this->getDefaultConfig();
-        $options = unserialize(get_option('gina_image_convertx'));
+        $options = unserialize(get_option('gina_image_convert'));
         if (isset($options) && !empty($options) && $options !== false) {
             $params['gina_image_convert'] = $this->mergeOptions($params['gina_image_convert'], $options);
         }
