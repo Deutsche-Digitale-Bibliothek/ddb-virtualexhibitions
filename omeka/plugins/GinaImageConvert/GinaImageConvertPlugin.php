@@ -16,8 +16,10 @@
 class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
-        'before_save_file',
-        'define_routes'
+        // 'before_save_file',
+        'define_routes',
+        'config_form',
+        'config',
     );
 
     protected $_filters = array(
@@ -31,22 +33,22 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
      * @return void
      *
      */
-    public function hookBeforeSaveFile($args)
-    {
-        if (isset($args['record'])
-            && property_exists($args['record'], 'filename')
-            && !empty($args{'record'}->filename)
-            && !$args{'record'}->stored)
-        {
-            // $dir = $args{'record'}->getStorage()->getTempDir();
-            // $file = $dir . '/' . $args{'record'}->filename;
-            $file = $args{'record'}->getPath('original');
-            if (isset($file) && !empty($file)) {
-                $this->validateSize($file, $args);
-                $this->removeExif($file, false);
-            }
-        }
-    }
+    // public function hookBeforeSaveFile($args)
+    // {
+    //     if (isset($args['record'])
+    //         && property_exists($args['record'], 'filename')
+    //         && !empty($args{'record'}->filename)
+    //         && !$args{'record'}->stored)
+    //     {
+    //         // $dir = $args{'record'}->getStorage()->getTempDir();
+    //         // $file = $dir . '/' . $args{'record'}->filename;
+    //         $file = $args{'record'}->getPath('original');
+    //         if (isset($file) && !empty($file)) {
+    //             $this->validateSize($file, $args);
+    //             $this->removeExif($file, false);
+    //         }
+    //     }
+    // }
 
     /**
      * @param $file string absolute path to file
@@ -188,6 +190,54 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
             )
         );
 
+    }
+
+    /**
+     * Display the plugin config form.
+     */
+    public function hookConfigForm()
+    {
+        $params['gina_image_convert'] = $this->getDefaultConfig();
+        $options = unserialize(get_option('gina_image_convertx'));
+        if (isset($options) && !empty($options) && $options !== false) {
+            $params['gina_image_convert'] = $this->mergeOptions($params['gina_image_convert'], $options);
+        }
+        require dirname(__FILE__) . '/config_form.php';
+    }
+
+    public function getDefaultConfig()
+    {
+        return require dirname(__FILE__) . '/default_config.php';
+    }
+
+    public function mergeOptions($params, $options)
+    {
+        $result = array();
+        foreach ($params as $sizeKey => $sizeParams) {
+            foreach ($sizeParams as $key => $param) {
+                if (!isset($options[$sizeKey][$key]) ||
+                    (empty($options[$sizeKey][$key]) && $options[$sizeKey][$key] !== 0)
+                ) {
+                    $result[$sizeKey][$key] = $param;
+                } else {
+                    $result[$sizeKey][$key] = $options[$sizeKey][$key];
+                }
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Processes the configuration form.
+     *
+     * @return void
+     */
+    public function hookConfig($args)
+    {
+        $post = $args['post'];
+        if (isset($post['gina_image_convert']) && !empty($post['gina_image_convert'])) {
+            set_option('gina_image_convert', serialize($post['gina_image_convert']));
+        }
     }
 
     /**
