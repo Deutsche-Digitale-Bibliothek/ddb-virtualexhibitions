@@ -117,7 +117,7 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
         if ($docompress) {
             $this->view->fileSizesOld = $this->getFileSizes($dbFile);
             require __DIR__ . '/../models/Compressor.php';
-            $compressor = new Compressor($dbFile->filename, FILES_DIR, $params);
+            $compressor = new Compressor($dbFile->filename, FILES_DIR, $params['compress']);
             $compressor->main();
             $this->view->log = $compressor->getLog();
         }
@@ -152,6 +152,28 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             }
         }
         return $sizes;
+    }
+
+    public function mergeOptions($params, $options)
+    {
+        $result = array();
+        foreach ($params as $sizeKey => $sizeParams) {
+            foreach ($sizeParams as $key => $param) {
+                if (!isset($options[$sizeKey][$key]) ||
+                    (empty($options[$sizeKey][$key]) && $options[$sizeKey][$key] !== 0)
+                ) {
+                    $result[$sizeKey][$key] = $param;
+                } else {
+                    $result[$sizeKey][$key] = $options[$sizeKey][$key];
+                }
+            }
+        }
+        return $result;
+    }
+
+    protected function getDefaultConfig()
+    {
+        return require dirname(__FILE__) . '/../default_config.php';
     }
 
     protected function getCompressParams()
@@ -203,87 +225,23 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             $params['compress_submit']
         );
 
-        if (!isset($params['compress_original_target']) || empty($params['compress_original_target'])) {
-            $params['compress_original_target'] = '0.9999';
-        }
-        if (!isset($params['compress_original_min']) || empty($params['compress_original_min'])) {
-            $params['compress_original_min'] = '40';
-        }
-        if (!isset($params['compress_original_max']) || empty($params['compress_original_max'])) {
-            $params['compress_original_max'] = '95';
-        }
-        if (!isset($params['compress_original_loops']) || empty($params['compress_original_loops'])) {
-            $params['compress_original_loops'] = '6';
-        }
-        if (!isset($params['compress_original_method']) || empty($params['compress_original_method'])) {
-            $params['compress_original_method'] = 'ssim';
+        $options = $this->mergeOptions(
+            $this->getDefaultConfig(),
+            unserialize(get_option('gina_image_convert'))
+        );
+
+        $compressParams = array('compress' => array());
+        foreach ($options as $sizeKey => $sizeOptions) {
+            foreach ($sizeOptions as $key => $option) {
+                if (isset($params['compress'][$sizeKey][$key]) && !empty($params['compress'][$sizeKey][$key])) {
+                    $compressParams['compress'][$sizeKey][$key] = $params['compress'][$sizeKey][$key];
+                } else {
+                    $compressParams['compress'][$sizeKey][$key] = $option;
+                }
+            }
         }
 
-        if (!isset($params['compress_fullsize_target']) || empty($params['compress_fullsize_target'])) {
-            $params['compress_fullsize_target'] = '0.9999';
-        }
-        if (!isset($params['compress_fullsize_min']) || empty($params['compress_fullsize_min'])) {
-            $params['compress_fullsize_min'] = '40';
-        }
-        if (!isset($params['compress_fullsize_max']) || empty($params['compress_fullsize_max'])) {
-            $params['compress_fullsize_max'] = '95';
-        }
-        if (!isset($params['compress_fullsize_loops']) || empty($params['compress_fullsize_loops'])) {
-            $params['compress_fullsize_loops'] = '6';
-        }
-        if (!isset($params['compress_fullsize_method']) || empty($params['compress_fullsize_method'])) {
-            $params['compress_fullsize_method'] = 'ssim';
-        }
-
-        if (!isset($params['compress_middsize_target']) || empty($params['compress_middsize_target'])) {
-            $params['compress_middsize_target'] = '0.9999';
-        }
-        if (!isset($params['compress_middsize_min']) || empty($params['compress_middsize_min'])) {
-            $params['compress_middsize_min'] = '40';
-        }
-        if (!isset($params['compress_middsize_max']) || empty($params['compress_middsize_max'])) {
-            $params['compress_middsize_max'] = '95';
-        }
-        if (!isset($params['compress_middsize_loops']) || empty($params['compress_middsize_loops'])) {
-            $params['compress_middsize_loops'] = '6';
-        }
-        if (!isset($params['compress_middsize_method']) || empty($params['compress_middsize_method'])) {
-            $params['compress_middsize_method'] = 'ssim';
-        }
-
-        if (!isset($params['compress_thumbnails_target']) || empty($params['compress_thumbnails_target'])) {
-            $params['compress_thumbnails_target'] = '0.9999';
-        }
-        if (!isset($params['compress_thumbnails_min']) || empty($params['compress_thumbnails_min'])) {
-            $params['compress_thumbnails_min'] = '40';
-        }
-        if (!isset($params['compress_thumbnails_max']) || empty($params['compress_thumbnails_max'])) {
-            $params['compress_thumbnails_max'] = '95';
-        }
-        if (!isset($params['compress_thumbnails_loops']) || empty($params['compress_thumbnails_loops'])) {
-            $params['compress_thumbnails_loops'] = '6';
-        }
-        if (!isset($params['compress_thumbnails_method']) || empty($params['compress_thumbnails_method'])) {
-            $params['compress_thumbnails_method'] = 'ssim';
-        }
-
-        if (!isset($params['compress_square_thumbnails_target']) || empty($params['compress_square_thumbnails_target'])) {
-            $params['compress_square_thumbnails_target'] = '0.9999';
-        }
-        if (!isset($params['compress_square_thumbnails_min']) || empty($params['compress_square_thumbnails_min'])) {
-            $params['compress_square_thumbnails_min'] = '40';
-        }
-        if (!isset($params['compress_square_thumbnails_max']) || empty($params['compress_square_thumbnails_max'])) {
-            $params['compress_square_thumbnails_max'] = '95';
-        }
-        if (!isset($params['compress_square_thumbnails_loops']) || empty($params['compress_square_thumbnails_loops'])) {
-            $params['compress_square_thumbnails_loops'] = '6';
-        }
-        if (!isset($params['compress_square_thumbnails_method']) || empty($params['compress_square_thumbnails_method'])) {
-            $params['compress_square_thumbnails_method'] = 'ssim';
-        }
-
-        return $params;
+        return $compressParams;
     }
 
     protected function getSlug()

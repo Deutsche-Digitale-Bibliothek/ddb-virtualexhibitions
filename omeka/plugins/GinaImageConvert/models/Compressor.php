@@ -41,24 +41,31 @@ class Compressor
     public function setDirs()
     {
         $basePath = $this->basePath . DIRECTORY_SEPARATOR;
-        $this->dirs = array(
-            'original' => $basePath . 'original',
-            'original_compressed' => $basePath . 'original_compressed',
-            'fullsize' => $basePath . 'fullsize',
-            'middsize' => $basePath . 'middsize',
-            'square_thumbnails' => $basePath . 'square_thumbnails',
-            'thumbnails' => $basePath . 'thumbnails',
-        );
+        foreach ($this->options as $type => $option) {
+            $this->dirs[$type] = $basePath . $type;
+        }
+        $this->dirs['original_compressed'] = $basePath . 'original_compressed';
+
+        // $this->dirs = array(
+        //     'original' => $basePath . 'original',
+        //     'original_compressed' => $basePath . 'original_compressed',
+        //     'fullsize' => $basePath . 'fullsize',
+        //     'middsize' => $basePath . 'middsize',
+        //     'thumbnails' => $basePath . 'thumbnails',
+        //     'square_thumbnails' => $basePath . 'square_thumbnails'
+        // );
     }
 
     public function main()
     {
         $this->checkOriginalCompressedDir();
-        $this->compress('original', 'original_compressed', 'original');
-        $this->compressSized('fullsize', 1920, 1080);
-        $this->compressSized('middsize', 960, 960);
-        $this->compressSized('thumbnails', 360, 360);
-        $this->compressSized('square_thumbnails', 360, 360, true);
+        foreach ($this->options as $sizeKey => $sizeOptions) {
+            if ($sizeKey === 'original') {
+                $this->compress($sizeKey, 'original_compressed', $sizeKey);
+            } else {
+                $this->compressSized($sizeKey);
+            }
+        }
     }
 
     public function checkOriginalCompressedDir()
@@ -72,11 +79,11 @@ class Compressor
     {
         // Do not use --strip option, as it will remove ICC profiles'
         return 'jpeg-recompress'
-        . ' --target '   . $this->options['compress_' . $type . '_target']
-        . ' --min '      . $this->options['compress_' . $type . '_min']
-        . ' --max '      . $this->options['compress_' . $type . '_max']
-        . ' --loops '    . $this->options['compress_' . $type . '_loops']
-        . ' --method '   . $this->options['compress_' . $type . '_method']
+        . ' --target '   . $this->options[$type]['recompress_target']
+        . ' --min '      . $this->options[$type]['recompress_min']
+        . ' --max '      . $this->options[$type]['recompress_max']
+        . ' --loops '    . $this->options[$type]['recompress_loops']
+        . ' --method '   . $this->options[$type]['recompress_method']
         . ' --accurate '
         . $in
         . ' '
@@ -116,7 +123,7 @@ class Compressor
         }
     }
 
-    public function compressSized($type, $width, $height, $crop = false)
+    public function compressSized($type)
     {
         $ext = array('jpg', 'jpeg', 'png');
         $fileExtension = strtolower(pathinfo($this->filename, PATHINFO_EXTENSION));
@@ -125,21 +132,13 @@ class Compressor
         if (is_file($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename) &&
             in_array($fileExtension, $ext)) {
 
-            $this->resizeImage(
-                $this->dirs['original'],
-                $this->dirs[$type],
-                $this->filename,
-                $filename,
-                $width,
-                $height,
-                $crop
-            );
+            $this->resizeImage($type);
+
             $file = $this->dirs[$type]
                 . DIRECTORY_SEPARATOR
                 . $filename . '.jpg';
-                // . $this->filename;
 
-            $recompress = $recompress = $this->getRecompressCommand($file, $file, $type);
+            $recompress = $this->getRecompressCommand($file, $file, $type);
             $output = array();
             $retval = false;
             exec($recompress, $output, $retval);
@@ -152,35 +151,43 @@ class Compressor
         }
     }
 
-    public function resizeImage($srcDir, $outDir, $file, $filename, $width, $height, $crop = false)
+    public function resizeImage($type)
     {
         if(extension_loaded('imagick')) {
-            $img = new Imagick($srcDir . DIRECTORY_SEPARATOR . $file);
+            $img = new Imagick($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename);
 
-            // removeExif
+            // remove Exif etc. but keep ICC
             $profiles = $img->getImageProfiles('icc', true);
             $img->stripImage();
             if (isset($profiles) && !empty($profiles) && isset($profiles['icc'])) {
                 $img->profileImage('icc', $profiles['icc']);
             }
 
-            // make max Quality selectable?
             $quality = $img->getImageCompressionQuality();
-            if ($quality === 0 || $quality > $this->maxQuality) {
-                $quality = $this->maxQuality;
+            if ($quality === 0 ||
+                $quality > (int) $this->options[$type]['resize_max_quality']
+            ) {
+                $quality = (int) $this->options[$type]['resize_max_quality'];
             }
 
-            if ($crop === true) {
-                $img->cropThumbnailImage($width, $height);
+            if ($this->options[$type]['resize_square'] === '1') {
+                $img->cropThumbnailImage(
+                    $this->options[$type]['resize_width'],
+                    $this->options[$type]['resize_width']);
             } else {
-                // imagick::FILTER_LANCZOS, slow but good ...
-                $img->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+                $img->resizeImage(
+                    $this->options[$type]['resize_width'],
+                    $this->options[$type]['resize_height'],
+                    Imagick::FILTER_LANCZOS, 1, true);
             }
 
             $img->setImageCompression(Imagick::COMPRESSION_JPEG);
             $img->setImageCompressionQuality($quality);
 
-            $img->writeImage($outDir . DIRECTORY_SEPARATOR . $filename . '.jpg');
+            $img->writeImage(
+                $this->dirs[$type] . DIRECTORY_SEPARATOR .
+                pathinfo($this->filename, PATHINFO_FILENAME) . '.jpg'
+            );
             $img->clear();
             $img->destroy();
         }

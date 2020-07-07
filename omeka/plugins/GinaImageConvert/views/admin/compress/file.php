@@ -168,23 +168,23 @@
                         <table>
                             <tr>
                                 <th>Ziel-Qualität</th>
-                                <td><?php echo $log['params']['compress_' . $filekey . '_target']; ?></td>
+                                <td><?php echo $log['params'][$filekey]['recompress_target']; ?></td>
                             </tr>
                             <tr>
                                 <th>Minimum JPEG Qualität</th>
-                                <td><?php echo $log['params']['compress_' . $filekey . '_min']; ?></td>
+                                <td><?php echo $log['params'][$filekey]['recompress_min']; ?></td>
                             </tr>
                             <tr>
                                 <th>Maximum JPEG Qualität</th>
-                                <td><?php echo $log['params']['compress_' . $filekey . '_max']; ?></td>
+                                <td><?php echo $log['params'][$filekey]['recompress_max']; ?></td>
                             </tr>
                             <tr>
                                 <th>Anzahl der Versuchsläufe</th>
-                                <td><?php echo $log['params']['compress_' . $filekey . '_loops']; ?></td>
+                                <td><?php echo $log['params'][$filekey]['recompress_loops']; ?></td>
                             </tr>
                             <tr>
                                 <th>Verwendete Methode</th>
-                                <td><?php echo $log['params']['compress_' . $filekey . '_method']; ?></td>
+                                <td><?php echo $log['params'][$filekey]['recompress_method']; ?></td>
                             </tr>
                         </table>
                     </td>
