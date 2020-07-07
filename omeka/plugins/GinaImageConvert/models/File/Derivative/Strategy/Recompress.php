@@ -142,6 +142,7 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
                 Zend_Log::ERR);
             return false;
         }
+        $this->checkOriginalCompressedDir(FILES_DIR . '/original_compressed/');
         $destPath = FILES_DIR . '/original_compressed/' . pathinfo($sourcePath, PATHINFO_BASENAME);
         copy($sourcePath, $destPath);
 
@@ -154,12 +155,19 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
         return true;
     }
 
+    public function checkOriginalCompressedDir($dir)
+    {
+        if (!is_dir($dir)) {
+            mkdir($dir, 0755);
+        }
+    }
+
     public function resizeImage($sourcePath, $destPath, $type)
     {
         if(extension_loaded('imagick')) {
             $img = new Imagick($sourcePath);
 
-            // removeExif
+            // remove Exif etc. but keep ICC
             $profiles = $img->getImageProfiles('icc', true);
             $img->stripImage();
             if (isset($profiles) && !empty($profiles) && isset($profiles['icc'])) {
@@ -167,7 +175,9 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
             }
 
             $quality = $img->getImageCompressionQuality();
-            if ($quality > (int) $this->recompressOptions[$type]['resize_max_quality']) {
+            if ($quality === 0 ||
+                $quality > (int) $this->recompressOptions[$type]['resize_max_quality']
+            ) {
                 $quality = (int) $this->recompressOptions[$type]['resize_max_quality'];
             }
 
