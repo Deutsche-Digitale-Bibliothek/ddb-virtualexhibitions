@@ -18,7 +18,7 @@ class Compressor
     public $options = null;
     public $dirs = array();
     public $log = array();
-    public $maxQuality = 90;
+    // public $maxQuality = 90;
 
     public function __construct($filename, $filesdir, $options)
     {
@@ -127,7 +127,6 @@ class Compressor
     {
         $ext = array('jpg', 'jpeg', 'png');
         $fileExtension = strtolower(pathinfo($this->filename, PATHINFO_EXTENSION));
-        $filename = pathinfo($this->filename, PATHINFO_FILENAME);
 
         if (is_file($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename) &&
             in_array($fileExtension, $ext)) {
@@ -136,7 +135,7 @@ class Compressor
 
             $file = $this->dirs[$type]
                 . DIRECTORY_SEPARATOR
-                . $filename . '.jpg';
+                . pathinfo($this->filename, PATHINFO_FILENAME) . '.jpg';
 
             $recompress = $this->getRecompressCommand($file, $file, $type);
             $output = array();
