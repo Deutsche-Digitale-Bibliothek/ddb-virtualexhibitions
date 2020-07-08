@@ -80,11 +80,11 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             'recompress_method' => 'Methode'
         );
         $this->view->sizeNames = array(
-            'original_compressed' => 'Original (original compressed)',
-            'fullsize' => 'Detailansicht (fullsize)',
+            'original_compressed' => 'Original komprimiert (original compressed)',
+            'fullsize' => 'Volle Größe (fullsize)',
             'middsize' => 'Mittlere Größe (middsize)',
-            'thumbnails' => 'Vorschaubilder (thumbnails)',
-            'square_thumbnails' => 'quadratische Vorschaubilder (square thumbnails)'
+            'thumbnails' => 'Vorschau (thumbnails)',
+            'square_thumbnails' => 'Quadratische Vorschau (square thumbnails)'
         );
         $this->view->dbFiles = $db->getTable('File')->findAll();
         $this->view->logfile = json_decode(file_get_contents($logFile), true);

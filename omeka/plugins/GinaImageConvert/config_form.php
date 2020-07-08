@@ -5,7 +5,7 @@
 
 <!-- original (compressed) -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Original - (original compressed)'); ?></legend>
+    <legend><?php echo __('Original komprimiert (original compressed)'); ?></legend>
     <h4><?php echo __('Neukompression'); ?></h4>
     <div class="field">
         <div class="two columns alpha">
@@ -106,7 +106,7 @@
 
 <!-- fullsize -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Detailansicht - (fullsize)'); ?></legend>
+    <legend><?php echo __('Volle Größe (fullsize)'); ?></legend>
     <h4><?php echo __('Größenanpassung'); ?></h4>
     <div class="field">
         <div class="two columns alpha">
@@ -277,7 +277,7 @@
 
 <!-- middsize -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für "Middlesize"'); ?></legend>
+    <legend><?php echo __('Mittlere Größe (middsize)'); ?></legend>
     <h4><?php echo __('Größenanpassung'); ?></h4>
     <div class="field">
         <div class="two columns alpha">
@@ -449,7 +449,7 @@
 
 <!-- thumbnails -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Vorschaubilder (thumbnails)'); ?></legend>
+    <legend><?php echo __('Vorschau (thumbnails)'); ?></legend>
     <h4><?php echo __('Größenanpassung'); ?></h4>
     <div class="field">
         <div class="two columns alpha">
@@ -620,7 +620,7 @@
 
 <!-- square_thumbnails -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für quadratische Vorschaubilder (square thumbnails)'); ?></legend>
+    <legend><?php echo __('Quadratische Vorschau (square thumbnails)'); ?></legend>
     <h4><?php echo __('Größenanpassung'); ?></h4>
     <div class="field">
         <div class="two columns alpha">

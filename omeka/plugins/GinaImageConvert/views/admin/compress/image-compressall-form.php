@@ -1,6 +1,6 @@
 <!-- original (compressed) -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Original - (original compressed)'); ?></legend>
+    <legend><?php echo __('Original komprimiert (original compressed)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
             <?php echo $this->formLabel(
@@ -100,7 +100,7 @@
 
 <!-- fullsize -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Detailansicht - (fullsize)'); ?></legend>
+    <legend><?php echo __('Volle Größe (fullsize)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
             <?php echo $this->formLabel(
@@ -200,7 +200,7 @@
 
 <!-- middsize -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für "Middlesize"'); ?></legend>
+    <legend><?php echo __('Mittlere Größe (middsize)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
             <?php echo $this->formLabel(
@@ -301,7 +301,7 @@
 
 <!-- thumbnails -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für Vorschaubilder (thumbnails)'); ?></legend>
+    <legend><?php echo __('Vorschau (thumbnails)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
             <?php echo $this->formLabel(
@@ -401,7 +401,7 @@
 
 <!-- square_thumbnails -->
 <fieldset>
-    <legend><?php echo __('Einstellungen für quadratische Vorschaubilder (square thumbnails)'); ?></legend>
+    <legend><?php echo __('Quadratische Vorschau (square thumbnails)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
             <?php echo $this->formLabel(
