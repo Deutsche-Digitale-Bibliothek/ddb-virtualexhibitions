@@ -1,14 +1,6 @@
-# ddb-va
+# Customized Omeka Version for virtual exhibitions of the Deutsche Digitale Bibliothek
 
-
-## Repository for DDB Omeka Updates
-
-Repository contents should be placed under ```/lib``` path in all installations.
-To initially clone the repository, delete all files under /lib and then issue the command:
-```
-git clone https://github.com/Deutsche-Digitale-Bibliothek/ddb-va.git .
-```
-(Do not miss the dot at the end)
+Repository contents i.e. the directory ```omeka``` must be placed (or symlinked) under ```/lib``` path in all installations.
 
 ## Omeka Version 2.7.1
 
