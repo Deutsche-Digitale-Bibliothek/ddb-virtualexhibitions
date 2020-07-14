@@ -1,4 +1,4 @@
-# Customized Omeka Version for virtual exhibitions of the Deutsche Digitale Bibliothek
+# Customized Omeka version for virtual exhibitions of the Deutsche Digitale Bibliothek
 
 Repository contents i.e. the directory ```omeka``` must be placed (or symlinked) under ```/lib``` path in all installations.
 
