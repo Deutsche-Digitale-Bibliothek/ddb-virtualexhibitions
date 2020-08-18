@@ -847,7 +847,11 @@
       }
     });
 
-
+    menuContainer.on('click', function(e) {
+      if ($(window).width() < 480) {
+        toggleMenu();
+      }
+    });
 
   }
 
@@ -1022,7 +1026,9 @@
           onDoubleClick: function (e) {
             e.preventDefault();
             e.stopPropagation();
-            panzoomInstance.dispose();
+            if (typeof panzoomInstance !== 'undefined') {
+              panzoomInstance.dispose();
+            }
             container.remove();
           }
         });
@@ -1082,7 +1088,9 @@
     closer.on('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      panzoomInstance.dispose();
+      if (typeof panzoomInstance !== 'undefined') {
+        panzoomInstance.dispose();
+      }
       $(this).off('click');
       container.remove();
     });
@@ -1091,7 +1099,9 @@
         e.preventDefault();
         e.stopPropagation();
         $(document).off('.zoom');
-        panzoomInstance.dispose();
+        if (typeof panzoomInstance !== 'undefined') {
+          panzoomInstance.dispose();
+        }
         container.remove();
       }
     });
