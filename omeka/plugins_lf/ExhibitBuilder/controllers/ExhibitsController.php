@@ -426,6 +426,131 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
         exit;
     }
 
+    public function manifestAction()
+    {
+        if (is_admin_theme()) {
+            $this->_helper->redirector('index', 'index');
+        }
+        $response = $this->getResponse();
+        $request = $this->getRequest();
+
+        $response->setHeader('Content-Type', 'application/json', true);
+
+        // $exhibit = $this->_findByExhibitSlug(substr($request->getBaseUrl(), 1));
+        $exhibit = $this->_findByExhibitSlug(substr(PUBLIC_BASE_URL, 1));
+
+        $manifest = new stdClass;
+        $manifest->short_name = $exhibit->shorttitle;
+        $manifest->name = $exhibit->title;
+        $manifest->lang = 'de';
+        $manifest->description = 'DDB Virtual Exhibition';
+        $manifest->start_url = PUBLIC_BASE_URL . '/';
+        $manifest->background_color = '#333333';
+        $manifest->theme_color = '#333333';
+        $manifest->dir = 'ltr';
+        $manifest->display = 'standalone';
+        $manifest->orientation = 'any';
+
+        $icon1024 = new stdClass;
+        $icon1024->src = 'themes/ddb/images/icons/app/1024x1024.png';
+        $icon1024->type = 'image/png';
+        $icon1024->sizes = '1024x1024';
+        $icon1024->purpose = 'any maskable';
+
+        $icon512 = new stdClass;
+        $icon512->src = 'themes/ddb/images/icons/app/512x512.png';
+        $icon512->type = 'image/png';
+        $icon512->sizes = '512x512';
+
+        $icon192 = new stdClass;
+        $icon192->src = 'themes/ddb/images/icons/app/192x192.png';
+        $icon192->type = 'image/png';
+        $icon192->sizes = '192x192';
+
+        $icon180 = new stdClass;
+        $icon180->src = 'themes/ddb/images/icons/app/180x180.png';
+        $icon180->type = 'image/png';
+        $icon180->sizes = '180x180';
+
+        $icon152 = new stdClass;
+        $icon152->src = 'themes/ddb/images/icons/app/152x152.png';
+        $icon152->type = 'image/png';
+        $icon152->sizes = '152x152';
+
+        $icon144 = new stdClass;
+        $icon144->src = 'themes/ddb/images/icons/app/144x144.png';
+        $icon144->type = 'image/png';
+        $icon144->sizes = '144x144';
+
+        $icon120 = new stdClass;
+        $icon120->src = 'themes/ddb/images/icons/app/120x120.png';
+        $icon120->type = 'image/png';
+        $icon120->sizes = '120x120';
+
+        $icon114 = new stdClass;
+        $icon114->src = 'themes/ddb/images/icons/app/114x114.png';
+        $icon114->type = 'image/png';
+        $icon114->sizes = '114x114';
+
+        $icon96 = new stdClass;
+        $icon96->src = 'themes/ddb/images/icons/app/96x96.png';
+        $icon96->type = 'image/png';
+        $icon96->sizes = '96x96';
+
+        $icon76 = new stdClass;
+        $icon76->src = 'themes/ddb/images/icons/app/76x76.png';
+        $icon76->type = 'image/png';
+        $icon76->sizes = '76x76';
+
+        $icon72 = new stdClass;
+        $icon72->src = 'themes/ddb/images/icons/app/72x72.png';
+        $icon72->type = 'image/png';
+        $icon72->sizes = '72x72';
+
+        $icon60 = new stdClass;
+        $icon60->src = 'themes/ddb/images/icons/app/60x60.png';
+        $icon60->type = 'image/png';
+        $icon60->sizes = '60x60';
+
+        $icon57 = new stdClass;
+        $icon57->src = 'themes/ddb/images/icons/app/57x57.png';
+        $icon57->type = 'image/png';
+        $icon57->sizes = '57x57';
+
+        $icon32 = new stdClass;
+        $icon32->src = 'themes/ddb/images/icons/app/32x32.png';
+        $icon32->type = 'image/png';
+        $icon32->sizes = '32x32';
+
+        $icon16 = new stdClass;
+        $icon16->src = 'themes/ddb/images/icons/app/16x16.png';
+        $icon16->type = 'image/png';
+        $icon16->sizes = '16x16';
+
+        $manifest->icons = array(
+            $icon1024,
+            $icon512,
+            $icon192,
+            $icon180,
+            $icon152,
+            $icon144,
+            $icon120,
+            $icon114,
+            $icon96,
+            $icon76,
+            $icon72,
+            $icon60,
+            $icon57,
+            $icon32,
+            $icon16
+        );
+
+        $json = Zend_Json::encode($manifest);
+        $response->setBody($json);
+        $response->sendResponse();
+        exit;
+    }
+
     public function itemContainerAction()
     {
         $itemId = (int)$this->_getParam('item_id');

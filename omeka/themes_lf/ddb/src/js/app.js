@@ -1534,7 +1534,8 @@
   function initTestmode() {
     if (testmode) {
       $('#header').css('background-color', '#c30');
-      $('#header .header_title').css('color', 'white').html('... Development Test aktiv, bitte später validieren! ...');
+      $('#header .header_title').css('color', 'white')
+        .html('... Development Test aktiv, bitte später validieren! ...');
     }
   }
 
@@ -1549,6 +1550,32 @@
 
   function revealFullpage() {
     $('#fullpage').css('opacity', 1);
+  }
+
+  function bindServiceWorker() {
+
+    var swDeferredPrompt;
+    var pwaInstallpromptBtn = document.getElementById('pwa-installprompt-btn');
+    var pwaInstallprompt = document.getElementById('pwa-installprompt');
+
+    if (options.has_sw) {
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('sw.js');
+        });
+      }
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        swDeferredPrompt = e;
+        pwaInstallprompt.style.display='block';
+      });
+      pwaInstallpromptBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        swDeferredPrompt.prompt(e);
+        pwaInstallprompt.style.display='none';
+      });
+    }
   }
 
   function init() {
@@ -1582,6 +1609,7 @@
       revealFullpage();
       bindMetaScrollControlls();
       // bindCustomWindowResize();
+      bindServiceWorker();
     });
   }
 

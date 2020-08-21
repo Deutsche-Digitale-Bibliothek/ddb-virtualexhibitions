@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="format-detection" content="telephone=no">
+
+    <?php if (file_exists(BASE_DIR . '/sw.js')): ?>
+    <link rel="manifest" href="<?php echo WEB_ROOT; ?>/manifest">
+    <meta name="theme-color" content="#333333">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <link rel="apple-touch-icon" href="<?php echo WEB_THEME; ?>/ddb/images/icons/app/192x192.png">
+    <?php endif; ?>
+    <link href="<?php echo img('favicon.ico'); ?>" rel="shortcut icon">
+    <meta name="format-detection" content="telephone=no">
     <?php
         if (isset($title)) { $titleParts[] = strip_formatting($title); }
         $titleParts[] = option('site_title');
     ?>
     <title><?php echo implode(' &middot; ', $titleParts); ?></title>
-    <link href="<?php echo img('favicon.ico'); ?>" rel="shortcut icon">
     <?php if ( $description = option('description')): ?>
     <meta name="description" content="<?php echo $description; ?>">
     <?php endif; ?>

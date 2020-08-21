@@ -237,7 +237,7 @@ function exhibit_builder_define_acl($args)
     $acl->addResource('ExhibitBuilder_Exhibits');
 
     $acl->allow(null, 'ExhibitBuilder_Exhibits',
-        array('show', 'summary', 'showitem', 'browse', 'tags', 'colorpalettesjs'));
+        array('show', 'summary', 'showitem', 'browse', 'tags', 'colorpalettesjs', 'manifest'));
 
     // Allow contributors everything but editAll and deleteAll.
     $acl->allow('contributor', 'ExhibitBuilder_Exhibits',

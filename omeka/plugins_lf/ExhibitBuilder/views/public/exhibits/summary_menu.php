@@ -90,6 +90,10 @@
                     <a href="https://www.deutsche-digitale-bibliothek.de/content/datenschutzerklaerung" rel="noopener" target="_blank"><?php echo __('Datenschutz'); ?></a>
                 </li>
             </ul>
+            <div class="pwa-installprompt" id="pwa-installprompt">
+                <p>Installieren Sie diese Ausstellung als App auf Ihrem Gerät!</p>
+                <button class="pwa-installprompt-btn" id="pwa-installprompt-btn">Jetzt Installieren</button>
+            </div>
         </div>
     </div>
 </nav>

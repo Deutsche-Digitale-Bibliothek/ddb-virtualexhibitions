@@ -8960,4 +8960,37 @@ i.license-or {
 .zoom-container:focus {
   outline: none;
 }
+
+.pwa-installprompt {
+  display: none;
+  max-width: 320px;
+  padding: 10px;
+  margin: -25px auto 40px;
+  text-align: center;
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.pwa-installprompt p {
+  margin-bottom: 1rem;
+}
+
+.pwa-installprompt-btn {
+  padding: 6px 12px;
+  margin-bottom: 0;
+  line-height: 1.42857;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #747474;
+  border: 1px solid #747474;
+  border-radius: 4px;
+}
 /*# sourceMappingURL=spa.css.map */
