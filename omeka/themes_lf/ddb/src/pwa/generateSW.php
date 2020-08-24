@@ -65,7 +65,7 @@ foreach ($files as $file) {
     $path = __DIR__ . '/../../../../' . $file;
   }
   if ($path) {
-    $precache .= '    {"revision":"' . md5(file_get_contents($path)) . '","url":"' . $pathPrefix . $file . '"},' . "\n";
+    $precache .= '    {"revision":"' . md5_file($path) . '","url":"' . $pathPrefix . $file . '"},' . "\n";
   }
 }
 $precache .= '  ]';
