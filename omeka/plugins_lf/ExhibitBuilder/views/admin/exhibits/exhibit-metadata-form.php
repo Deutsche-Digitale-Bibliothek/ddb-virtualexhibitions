@@ -520,21 +520,25 @@ jQuery(document).ready(function($) {
     $('#exhibit-metadata-form').submit(function (e) {
         var sliderStart = 0;
         var nestingError = false;
+        var startId = null;
         $('.page').each(function() {
             if ($(this).data('slider') === 'start') {
                 sliderStart++;
+                startId = $(this).data('pageid');
             }
             if (sliderStart > 1) {
                 nestingError = true;
             }
-            if ($(this).data('slider') === 'end' && sliderStart > 0) {
+            if ($(this).data('slider') === 'end' && sliderStart > 0 && $(this).data('sliderstartpageid') === startId) {
                 sliderStart--;
             }
         });
         if (sliderStart > 0) {
             e.preventDefault();
             e.stopPropagation();
-            alert('<?php echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?>');
+            alert('<?php
+                echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?> <?php
+                echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
             return false;
         }
         if (nestingError) {
@@ -545,42 +549,48 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // $('#save_exhibit').on('click', function(e) {
-    //     var sliderStart = 0;
-    //     var nestingError = false;
-    //     $('.page').each(function() {
-    //         if ($(this).data('slider') === 'start') {
-    //             sliderStart++;
-    //         }
-    //         if (sliderStart > 1) {
-    //             nestingError = true;
-    //         }
-    //         if ($(this).data('slider') === 'end' && sliderStart > 0) {
-    //             sliderStart--;
-    //         }
-    //     });
-    //     if (sliderStart > 0) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //         alert('<?php echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?>');
-    //     }
-    //     if (nestingError) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-    //         alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
-    //     }
-    // });
     $('#page-list .delete-toggle').on('click', function (e, data) {
         if (data !== 'automark') {
             var page = $(this).parents('.page');
             if (page.data('slider') === 'start') {
-                var sliderEnd = page.nextAll('.slider-end').first();
+                var sliderEnd = $('#page-list .slider-end[data-sliderstartpageid="' + page.data('pageid') + '"]');
                 $('.delete-toggle', sliderEnd).trigger('click', 'automark');
             }
             if (page.data('slider') === 'end') {
-                var sliderEnd = page.prevAll('.slider-start').first();
-                $('.delete-toggle', sliderEnd).trigger('click', 'automark');
+                var sliderStart = $('#page-list #page_' + page.data('sliderstartpageid'));
+                $('.delete-toggle', sliderStart).trigger('click', 'automark');
             }
+        }
+    });
+    $('.sortable').on('sortupdate', function(e, ui) {
+        var item = $(ui.item[0]);
+        if (!item.data('slider')) {
+            var prev = item.prev('.slider');
+            if (prev.length > 0) {
+                item.appendTo(prev);
+            }
+            var next = item.next('.slider');
+            if (next.length > 0) {
+                item.prependTo(next);
+            }
+        } else if (item.data('slider') === 'start') {
+            $('#page-list > .slider').each(function() {
+                var slider = $(this);
+                if (slider.prev('.slider-start').length === 0) {
+                    if (slider.children().length === 0) {
+                        slider.remove();
+                    } else {
+                        slider.children().insertAfter(slider);
+                        slider.remove();
+                    }
+                }
+            });
+            if (item.prev('.slider-start').length > 0) {
+                item.insertBefore(item.prev('.slider-start'));
+            }
+            $('<div class="slider"></div>').insertAfter(item);
+        } else if (item.data('slider') === 'end' && item.parent('.slider').length === 1) {
+            item.insertAfter(item.parent('.slider'));
         }
     });
 

@@ -16,18 +16,19 @@ function exhibit_builder_edit_page_list($page)
 {
     $pageId = html_escape($page->id);
     $pageoptions = unserialize($page->pageoptions);
-    $dataSlider = '';
+    $dataSlider = ' data-pageid="' . $pageId . '"';
     $titleSliderAdd = '';
     $htmlSliderStart = '';
     $cssSlider = '';
     $htmlSliderEnd = '';
     if (isset($pageoptions['slider'])) {
-        $dataSlider = ' data-slider="' . $pageoptions['slider'] . '"';
+        $dataSlider .= ' data-slider="' . $pageoptions['slider'] . '"';
         if ($pageoptions['slider'] === 'start') {
             $htmlSliderStart = '<div class="slider">';
             $titleSliderAdd = '<em> - Slider Anfang</em> ⬇';
             $cssSlider = ' slider-start';
         } elseif ($pageoptions['slider'] === 'end') {
+            $dataSlider .= ' data-sliderstartpageid="' . $pageoptions['sliderStartPageId'] . '"';
             $htmlSliderEnd = '</div>';
             $titleSliderAdd = '<em> - Slider Ende</em> ⬆';
             $cssSlider = ' slider-end';
@@ -48,6 +49,53 @@ function exhibit_builder_edit_page_list($page)
     }
     $html .= '</li>' . $htmlSliderStart;
     return $html;
+}
+
+function exhibit_builder_sanize_exhibit_pages($exhibit) {
+    $sanePages = array();
+    $sliderStarted = false;
+    foreach($exhibit->TopPages as $pageIndex => $page) {
+        $pageoptions = unserialize($page->pageoptions);
+        if (isset($pageoptions['slider']) &&
+            $pageoptions['slider'] === 'start' &&
+            $sliderStarted === false)
+        {
+            $hasEnd = false;
+            foreach($exhibit->TopPages as $searchPageIndex => $searchPage) {
+                $searchPageOptions = unserialize($searchPage->pageoptions);
+                if (isset($searchPageOptions['slider']) &&
+                    $searchPageOptions['slider'] === 'start' &&
+                    $searchPage->order > $page->order
+                ) {
+                    $page->delete();
+                    break;
+                }
+                if (isset($searchPageOptions['slider']) &&
+                    $searchPageOptions['slider'] === 'end' &&
+                    $searchPageOptions['sliderStartPageId'] === $page->id
+                ) {
+                    $hasEnd = true;
+                    break;
+                }
+            }
+            if ($hasEnd) {
+                $sliderStarted = $page->id;
+                $sanePages[] = $page;
+            } else {
+                $page->delete();
+            }
+        } elseif(isset($pageoptions['slider']) && $pageoptions['slider'] === 'end') {
+            if ($sliderStarted && $sliderStarted === $pageoptions['sliderStartPageId']) {
+                $sanePages[] = $page;
+                $sliderStarted = false;
+            } else {
+                $page->delete();
+            }
+        } else {
+            $sanePages[] = $page;
+        }
+    }
+    return $sanePages;
 }
 
 /**
