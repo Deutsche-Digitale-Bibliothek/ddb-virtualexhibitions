@@ -187,9 +187,33 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
                     $this->recompressOptions[$type]['resize_width']
                 );
             } else {
+
+                /**
+                 * Note: The behavior of the parameter bestfit (param no. 5) changed in Imagick 3.0.0.
+                 * Before this version given dimensions 400x400 an image of dimensions
+                 * 200x150 would be left untouched. In Imagick 3.0.0 and later the image
+                 * would be scaled up to size 400x300 as this is the "best fit" for the given dimensions.
+                 *
+                 * But we do not want to blow up images, so we check dimensions first.
+                 */
+
+                $srcWidth = $img->getImageWidth();
+                $srcHeight = $img->getImageHeight();
+
+                if ($srcWidth > $this->recompressOptions[$type]['resize_width'] ||
+                    $srcHeight > $this->recompressOptions[$type]['resize_height'])
+                {
+                    $targetWidth = $this->recompressOptions[$type]['resize_width'];
+                    $targetHeight = $this->recompressOptions[$type]['resize_height'];
+                } else {
+                    $targetWidth = $srcWidth;
+                    $targetHeight = $srcHeight;
+                }
+
+
                 $img->resizeImage(
-                    $this->recompressOptions[$type]['resize_width'],
-                    $this->recompressOptions[$type]['resize_height'],
+                    $targetWidth,
+                    $targetHeight,
                     Imagick::FILTER_LANCZOS, 1, true
                 );
             }
