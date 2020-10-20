@@ -399,6 +399,10 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
         if(0 < count($args) && is_array($args[0])) {
             $extras = array_shift($args);
             $extras = (array) $extras;
+        } else {
+            // Grandgeorg Websolutions:
+            $extras = array();
+            // :Grandgeorg Websolutions
         }
 
         $attributes = compact('rel', 'type', 'href', 'media', 'conditionalStylesheet', 'extras');
