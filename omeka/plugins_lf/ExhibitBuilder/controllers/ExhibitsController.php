@@ -13,10 +13,33 @@
 class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionController
 {
     protected $sliderStartPageId = null;
+    protected $compressor;
 
     public function init()
     {
         $this->_helper->db->setDefaultModelName('Exhibit');
+    }
+
+    public function setCompressor() {
+        if (!isset($this->compressor) || empty($this->compressor)) {
+            require_once __DIR__ . '/../../GinaImageConvert/models/CompressSingle.php';
+            $this->compressor = new CompressSingle();
+        }
+    }
+
+    public function emptyDir($dir)
+    {
+        if (is_dir($dir)) {
+            $entries = scandir($dir);
+            foreach ($entries as $entry) {
+                if ($entry != "." && $entry != ".." &&
+                    !is_dir($dir . DIRECTORY_SEPARATOR . $entry) &&
+                    !is_link($dir . DIRECTORY_SEPARATOR . $entry))
+                {
+                    unlink($dir . DIRECTORY_SEPARATOR . $entry);
+                }
+            }
+        }
     }
 
     public function _getBrowseRecordsPerPage($pluralName = null)
@@ -62,8 +85,18 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
                 if (!is_dir(FILES_DIR . '/layout/' . $fileField)) {
                     mkdir(FILES_DIR . '/layout/' . $fileField, 0755, true);
                 }
+
+                $this->emptyDir(FILES_DIR . '/layout/' . $fileField);
+                $this->emptyDir(FILES_DIR . '/layout/' . $fileField . '/compressed');
+
                 if (move_uploaded_file($uploadedFile['tmp_name'], FILES_DIR . '/layout/' . $fileField . '/' . $fileName)) {
                     $_POST[$fileField] = $fileName;
+                    $this->setCompressor();
+                    $this->compressor->run(
+                        FILES_DIR . '/layout/' . $fileField . '/' . $fileName,
+                        FILES_DIR . '/layout/' . $fileField . '/compressed',
+                        array('resize' => true, 'compress' => 'auto')
+                    );
                 }
             }
         }
@@ -73,7 +106,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             $_POST['titlebackground'] = '';
             if (is_file(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground)) {
                 unlink(FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground);
+                $this->emptyDir(FILES_DIR . '/layout/titlebackground/compressed');
             }
+        } elseif (isset($_POST['compressTitlebackground'])) {
+            $this->setCompressor();
+            $this->compressor->run(
+                FILES_DIR . '/layout/titlebackground/' . $exhibit->titlebackground,
+                FILES_DIR . '/layout/titlebackground/compressed',
+                array('resize' => true, 'compress' => 'auto')
+            );
         }
 
         if (isset($_POST['deleteTitleimage']) && $_POST['deleteTitleimage'] === '1') {
@@ -90,6 +131,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             }
         }
 
+        // @TODO: compress startpage thumbnail
         if (isset($_POST['deleteStartpagethumbnail']) && $_POST['deleteStartpagethumbnail'] === '1') {
             $_POST['startpagethumbnail'] = '';
             if (is_file(FILES_DIR . '/layout/startpagethumbnail/' . $exhibit->startpagethumbnail)) {

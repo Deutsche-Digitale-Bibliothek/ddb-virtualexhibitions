@@ -30,15 +30,36 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
         $this->setRecompressOptions();
 
         // $data = 'hit -' .
-        //     ' $sourcePath: ' . $sourcePath .
-        //     ' $destPath: ' . $destPath .
-        //     ' $type: ' . $type .
-        //     ' $sizeConstraint: ' . $sizeConstraint .
-        //     ' $mimeType: ' . $mimeType .
-        //     ' options: ' . implode(',' . $this->getOptions()) .
-        //     ' recompressOptions: ' . serialize($this->recompressOptions) .
-        //     "\n";
+            // ' $sourcePath: ' . $sourcePath . "\n" .
+            // ' $destPath: ' . $destPath . "\n" .
+            // ' $type: ' . $type . "\n" .
+            // ' $sizeConstraint: ' . $sizeConstraint . "\n" .
+            // ' $mimeType: ' . $mimeType . "\n" .
+            // ' resize_width: ' . $this->recompressOptions[$type]['resize_width'] . "\n" .
+            // ' resize_height: ' . $this->recompressOptions[$type]['resize_height'] . "\n" .
+            // ' resize_square: ' . $this->recompressOptions[$type]['resize_square'] . "\n" .
+            // ' webp_quality: ' . $this->recompressOptions[$type]['webp_quality'] . "\n" .
+            // ' FILES_DIR: ' . FILES_DIR . "\n" .
+            // ' options: ' . implode(',' . $this->getOptions()) . "\n" .
+            // ' recompressOptions: ' . serialize($this->recompressOptions) . "\n" .
+            // "\n\n";
         // file_put_contents(__DIR__ . '/log.log', $data, FILE_APPEND);
+
+        // PNG to WEBP
+        if ($mimeType === 'image/png') {
+
+            $options = array(
+                'resize_width' => $this->recompressOptions[$type]['resize_width'],
+                'resize_height' => $this->recompressOptions[$type]['resize_height'],
+                'resize_square' => $this->recompressOptions[$type]['resize_square'],
+                'webp_quality' => $this->recompressOptions[$type]['webp_quality'],
+                'type' => $type
+            );
+
+            require_once __DIR__ . '/../../../Webp.php';
+            $webp = new Webp();
+            $webp->run($sourcePath, $destPath, $options);
+        }
 
         if ($mimeType !== 'image/jpeg' || !$this->recompressInstalled) {
             return $this->legacyCreate($sourcePath, $destPath, $type, $sizeConstraint, $mimeType);

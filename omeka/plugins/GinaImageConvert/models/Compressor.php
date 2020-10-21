@@ -19,6 +19,7 @@ class Compressor
     public $dirs = array();
     public $log = array();
     // public $maxQuality = 90;
+    public $webp;
 
     public function __construct($filename, $filesdir, $options)
     {
@@ -26,6 +27,7 @@ class Compressor
         $this->setBasePath($filesdir);
         $this->setOptions($options);
         $this->setDirs();
+        $this->setWebp();
     }
 
     public function setBasePath($filesdir)
@@ -54,6 +56,14 @@ class Compressor
         //     'thumbnails' => $basePath . 'thumbnails',
         //     'square_thumbnails' => $basePath . 'square_thumbnails'
         // );
+    }
+
+    public function setWebp()
+    {
+        if (!isset($this->webp) || empty($this->webp)) {
+            require_once __DIR__ . '/Webp.php';
+            $this->webp = new Webp();
+        }
     }
 
     public function main()
@@ -125,11 +135,13 @@ class Compressor
 
     public function compressSized($type)
     {
-        $ext = array('jpg', 'jpeg', 'png');
+        // $ext = array('jpg', 'jpeg', 'png');
+        $ext = array('jpg', 'jpeg');
         $fileExtension = strtolower(pathinfo($this->filename, PATHINFO_EXTENSION));
 
         if (is_file($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename) &&
-            in_array($fileExtension, $ext)) {
+            in_array($fileExtension, $ext))
+        {
 
             $this->resizeImage($type);
 
@@ -147,6 +159,23 @@ class Compressor
                 'error' => $retval,
                 'compress' => $output
             );
+        }
+
+        // PNG to WEBP
+        if (is_file($this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename) &&
+            $fileExtension === 'png')
+        {
+            $options = array(
+                'resize_width' => $this->options[$type]['resize_width'],
+                'resize_height' => $this->options[$type]['resize_height'],
+                'resize_square' => $this->options[$type]['resize_square'],
+                'webp_quality' => $this->options[$type]['webp_quality'],
+                'type' => $type
+            );
+            $sourcePath = $this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename;
+            $destPath = $this->dirs[$type] . DIRECTORY_SEPARATOR . $type . '_' . $this->filename;
+            $this->webp->run($sourcePath, $destPath, $options);
+
         }
     }
 
@@ -174,10 +203,34 @@ class Compressor
                     $this->options[$type]['resize_width'],
                     $this->options[$type]['resize_width']);
             } else {
+
+                /**
+                 * Note: The behavior of the parameter bestfit (param no. 5) changed in Imagick 3.0.0.
+                 * Before this version given dimensions 400x400 an image of dimensions
+                 * 200x150 would be left untouched. In Imagick 3.0.0 and later the image
+                 * would be scaled up to size 400x300 as this is the "best fit" for the given dimensions.
+                 *
+                 * But we do not want to blow up images, so we check dimensions first.
+                 */
+
+                $srcWidth = $img->getImageWidth();
+                $srcHeight = $img->getImageHeight();
+
+                if ($srcWidth > $this->options[$type]['resize_width'] ||
+                    $srcHeight > $this->options[$type]['resize_height'])
+                {
+                    $targetWidth = $this->options[$type]['resize_width'];
+                    $targetHeight = $this->options[$type]['resize_height'];
+                } else {
+                    $targetWidth = $srcWidth;
+                    $targetHeight = $srcHeight;
+                }
+
                 $img->resizeImage(
-                    $this->options[$type]['resize_width'],
-                    $this->options[$type]['resize_height'],
-                    Imagick::FILTER_LANCZOS, 1, true);
+                    $targetWidth,
+                    $targetHeight,
+                    Imagick::FILTER_LANCZOS, 1, true
+                );
             }
 
             $img->setImageCompression(Imagick::COMPRESSION_JPEG);

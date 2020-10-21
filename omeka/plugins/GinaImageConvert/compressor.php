@@ -10,6 +10,7 @@ class Compressor
     public $dirs = array();
     public $log = array();
     // public $maxQuality = 90;
+    public $webp;
 
     public function __construct($dir = '')
     {
@@ -19,6 +20,7 @@ class Compressor
         $this->setLogFile();
         $this->setOptions();
         $this->setDirs();
+        $this->setWebp();
     }
 
     public function setBasePath()
@@ -70,6 +72,14 @@ class Compressor
         //     'square_thumbnails' => $basePath . 'square_thumbnails',
         //     'thumbnails' => $basePath . 'thumbnails',
         // );
+    }
+
+    public function setWebp()
+    {
+        if (!isset($this->webp) || empty($this->webp)) {
+            require_once __DIR__ . '/models/Webp.php';
+            $this->webp = new Webp($this->basePath);
+        }
     }
 
     public function main()
@@ -147,11 +157,13 @@ class Compressor
     public function compressSized($type, $log)
     {
         $ext = array('jpg', 'jpeg');
-        $extadd = array('png', 'gif');
+        // $extadd = array('png', 'gif');
+        $extadd = array();
         $iterator = new DirectoryIterator($this->dirs['original']);
         foreach ($iterator as $entry) {
 
-            $fileExtension = strtolower(pathinfo($entry->getFilename(), PATHINFO_EXTENSION));
+            $fileName = $entry->getFilename();
+            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
             if (
                 ($entry->isFile() && in_array($fileExtension, $ext)) ||
@@ -160,11 +172,11 @@ class Compressor
 
                 $this->resizeImage(
                     $type,
-                    $entry->getFilename()
+                    $fileName
                 );
                 $file = $this->dirs[$type]
                     . DIRECTORY_SEPARATOR
-                    . pathinfo($entry->getFilename(), PATHINFO_FILENAME)
+                    . pathinfo($fileName, PATHINFO_FILENAME)
                     . '.jpg';
 
                 $recompress = $this->getRecompressCommand($file, $file, $type);
@@ -173,7 +185,7 @@ class Compressor
                 exec($recompress, $output, $retval);
 
                 if ($log) {
-                    $this->log[$entry->getFilename()][$type] = array(
+                    $this->log[$fileName][$type] = array(
                         'time' => date('Y.m.d H:i:s'),
                         'error' => $retval,
                         'compress' => $output
@@ -182,6 +194,21 @@ class Compressor
                 }
 
             }
+
+            // PNG to WEBP
+            if ($entry->isFile() && $fileExtension === 'png') {
+                $options = array(
+                    'resize_width'  => $this->options['params'][$type]['resize_width'],
+                    'resize_height' => $this->options['params'][$type]['resize_height'],
+                    'resize_square' => $this->options['params'][$type]['resize_square'],
+                    'webp_quality'  => $this->options['params'][$type]['webp_quality'],
+                    'type'          => $type
+                );
+                $sourcePath = $this->dirs['original'] . DIRECTORY_SEPARATOR . $fileName;
+                $destPath = $this->dirs[$type] . DIRECTORY_SEPARATOR . $type . '_xxx_' . $fileName;
+                $this->webp->run($sourcePath, $destPath, $options);
+            }
+
         }
         // $this->writeLogfile();
     }

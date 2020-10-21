@@ -140,6 +140,9 @@ if ($exhibit->exhibit_type === 'litfass_ddb' && (!isset($exhibit->nav_color) || 
                     <?php echo $this->formFile('titlebackground'); ?>
                     <?php if ($hasTitlebackground): ?>
                     <div class="mt-10">
+                        <?php echo $this->formSubmit('compressTitlebackground', __('Hintergrundbild erneut komprimieren'), array('class' => 'blue')); ?>
+                    </div>
+                    <div class="mt-10">
                         <?php echo $this->formCheckbox('deleteTitlebackground', 1); ?>
                         <?php echo $this->formLabel('deleteTitlebackground', __('Hintergrundbild entfernen'),
                             array('class' => 'deleteCheckbox')); ?>

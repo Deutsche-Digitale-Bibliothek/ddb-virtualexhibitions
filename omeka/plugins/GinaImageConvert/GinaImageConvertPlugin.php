@@ -67,6 +67,25 @@ class GinaImageConvertPlugin extends Omeka_Plugin_AbstractPlugin
             if (is_file($file)) {
                 unlink($file);
             }
+
+            // webp
+            $ext = pathinfo($args['record']->filename, PATHINFO_EXTENSION);
+            if ($ext === 'png') {
+                $filename = pathinfo($args['record']->filename, PATHINFO_FILENAME);
+                $subDirs = array(
+                    'fullsize',
+                    'middsize',
+                    'original_compressed',
+                    'square_thumbnails',
+                    'thumbnails'
+                );
+                foreach ($subDirs as $subDir) {
+                    $file = FILES_DIR . '/' . $subDir . '/' . $filename . '.webp';
+                    if (is_file($file)) {
+                        unlink($file);
+                    }
+                }
+            }
         }
     }
 

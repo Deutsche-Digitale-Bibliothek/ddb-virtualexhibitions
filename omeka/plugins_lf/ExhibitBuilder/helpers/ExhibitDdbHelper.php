@@ -1637,14 +1637,24 @@ class ExhibitDdbHelper
 
     public static function getCompressedOriginalWebPath($file)
     {
-        $compfile = FILES_DIR .
-            DIRECTORY_SEPARATOR .
-            'original_compressed' .
-            DIRECTORY_SEPARATOR .
-            $file->filename;
+        $fileMetadata = null;
+        if (isset($file['metadata'])) {
+            $fileMetadata = json_decode($file['metadata']);
+        }
 
-        if (is_file($compfile)) {
+        if (isset($fileMetadata) &&
+            property_exists($fileMetadata, 'mime_type') &&
+            $fileMetadata->mime_type === 'image/png' &&
+            is_file(FILES_DIR . DIRECTORY_SEPARATOR .'original_compressed' .
+                DIRECTORY_SEPARATOR . pathinfo($file->filename, PATHINFO_FILENAME) . '.webp'))
+        {
+            return WEB_FILES . '/original_compressed/' . pathinfo($file->filename, PATHINFO_FILENAME) . '.webp';
+
+        } elseif (is_file(FILES_DIR . DIRECTORY_SEPARATOR . 'original_compressed' .
+            DIRECTORY_SEPARATOR . $file->filename))
+        {
             return WEB_FILES . '/original_compressed/' . $file->filename;
+
         } else {
             return $file->getWebPath();
         }
@@ -1775,11 +1785,14 @@ class ExhibitDdbHelper
                 }
 
             }
+
+            // image & general
             $fileOptions = array(
                 'imageSize' => 'fullsize',
                 'linkToFile' => false,
                 'imgAttributes'=> $imgAttributes
             );
+
             if ($imageSize === 'middsize' && is_readable(FILES_DIR . '/' . $file->getStoragePath('middsize'))) {
                 $fileOptions['imageSize'] = 'middsize';
             }
@@ -1812,16 +1825,33 @@ class ExhibitDdbHelper
                 return $audioImage. $html . '</audio>';
             }
 
+            // image
             self::$currentAttechmentMediaType = 'image';
 
-            // png and gif
+            // gif
             if (property_exists($fileMetadata, 'mime_type') &&
-                ($fileMetadata->mime_type === 'image/gif' ||
-                $fileMetadata->mime_type === 'image/png')) {
+                $fileMetadata->mime_type === 'image/gif')
+            {
+                $fileOptions['imageSize'] = 'original';
+            }
+
+            if (property_exists($fileMetadata, 'mime_type') &&
+                $fileMetadata->mime_type === 'image/png')
+            {
+                $info = pathinfo($file->filename);
+                if (is_file(FILES_DIR . '/' . $fileOptions['imageSize'] . '/' . $info['filename'] . '.webp')) {
+                    $html = '<picture>' .
+                        '<source srcset="' . WEB_FILES . '/' . $fileOptions['imageSize'] . '/' . $info['filename'] . '.webp' . '" type="image/webp">' .
+                        '<source srcset="' . WEB_FILES . '/original/' . $file->filename . '" type="image/png">';
                     $fileOptions['imageSize'] = 'original';
+                    $html .= file_markup($file, $fileOptions, null) .
+                        '</picture>';
+                    return $html;
+                } else {
+                    $fileOptions['imageSize'] = 'original';
+                }
             }
             return file_markup($file, $fileOptions, null);
-
         }
         // END add s_options
 
@@ -2171,8 +2201,12 @@ class ExhibitDdbHelper
     {
         $url = '';
         if (isset($attachment['file']) && !empty($attachment['file'])) {
-            if ($attachment['file']->mime_type === 'image/gif' || $attachment['file']->mime_type === 'image/png') {
+            if ($attachment['file']->mime_type === 'image/gif') {
                 $url = $attachment['file']->getWebPath('original');
+            } elseif ($attachment['file']->mime_type === 'image/png') {
+                $url = $attachment['file']->getWebPath('fullsize');
+                $ext = pathinfo($url, PATHINFO_EXTENSION);
+                $url = preg_replace('/' . $ext . '$/', 'webp', $url);
             } else {
                 $url = $attachment['file']->getWebPath('fullsize');
             }
