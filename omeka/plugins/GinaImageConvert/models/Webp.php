@@ -11,7 +11,8 @@
 class Webp
 {
 
-    public $basePath = '';
+    protected $basePath = '';
+    protected $log = array();
 
     public function __construct($basePath = '')
     {
@@ -26,59 +27,68 @@ class Webp
     {
         if ($this->isCwebpInstalled()) {
 
-            // strip ext
-            $destExt = pathinfo($destPath, PATHINFO_EXTENSION);
-            $destPath = preg_replace('/' . $destExt . '$/', '', $destPath);
-
             // orig ext
             $sourceExt = pathinfo($sourcePath, PATHINFO_EXTENSION);
 
-            // resize
-            $this->resize($sourcePath, $destPath, $sourceExt, $options);
+            if (isset($options['type']) && $options['type'] !== 'original') {
 
-            // gen webp
-            $webp = $this->getWebpCommand(
-                $destPath . $sourceExt,
-                $destPath . 'webp',
-                $options['webp_quality']
-            );
-            $output = array();
-            $retval = false;
-            exec($webp, $output, $retval);
-            if (0 !== $retval) {
-                // log
-            }
+                // strip ext
+                $destExt = pathinfo($destPath, PATHINFO_EXTENSION);
+                $destPath = preg_replace('/' . $destExt . '$/', '', $destPath);
 
-            // unlink resized
-            unlink($destPath . $sourceExt);
+                // resize
+                $this->resize($sourcePath, $destPath, $sourceExt, $options);
 
-            // move
-            if (isset($options['type'])) {
-                $this->move(
+                // gen webp
+                $this->runWebpCmd($this->getWebpCommand(
+                    $destPath . $sourceExt,
                     $destPath . 'webp',
-                    pathinfo($sourcePath, PATHINFO_FILENAME) . '.webp',
-                    $options['type']
-                );
-            }
+                    $options['webp_quality']
+                ), $options['type']);
 
-            // original compressed
-            if (isset($options['type']) && $options['type'] === 'fullsize') {
+                // unlink resized
+                unlink($destPath . $sourceExt);
+
+                // move
+                if (isset($options['type'])) {
+                    $this->move(
+                        $destPath . 'webp',
+                        pathinfo($sourcePath, PATHINFO_FILENAME) . '.webp',
+                        $options['type']
+                    );
+                }
+
+            } elseif (isset($options['type']) && $options['type'] === 'original') {
                 $this->setOrigCompressedDir();
                 $origCompressedPath = preg_replace('/' . $sourceExt . '$/', 'webp', $sourcePath);
-                $webp = $this->getWebpCommand(
+                $this->runWebpCmd($this->getWebpCommand(
                     $sourcePath,
                     $origCompressedPath,
                     $options['webp_quality']
-                );
-                exec($webp);
+                ), $options['type']);
                 $this->move(
                     $origCompressedPath,
                     pathinfo($sourcePath, PATHINFO_FILENAME) . '.webp',
                     'original_compressed'
                 );
             }
-
         }
+    }
+
+    protected function runWebpCmd($cmd, $type)
+    {
+        $output = array();
+        $retval = false;
+        exec($cmd, $output, $retval);
+        $output = preg_replace('/Saving file.*/', '', $output);
+        $output = preg_replace('/File\:.*/', '', $output);
+        $output = array_filter($output);
+        // array_push($output, $cmd);
+        $this->log[$type] = array(
+            'time' => date('Y.m.d. H:i:s'),
+            'error' => $retval,
+            'compress' => $output
+        );
     }
 
     protected function isCwebpInstalled()
@@ -140,6 +150,7 @@ class Webp
 
     protected function getWebpCommand($in, $out, $quality)
     {
+        // keep in mind that -alpha_q is dominant if alpha channel is set ..
         return 'cwebp'
         . ' -q '  . $quality . ' '
         . $in
@@ -161,4 +172,13 @@ class Webp
         }
     }
 
+    public function getLog()
+    {
+        return $this->log;
+    }
+
+    public function resetLog()
+    {
+        $this->log = array();
+    }
 }

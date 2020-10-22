@@ -49,7 +49,8 @@
             foreach ($dbFiles as $dbFile) {
                 if ($dbFile->filename === $filename) {
                     $currentId = $dbFile->id;
-                    $currenDbFile = $dbFile;
+                    $currentDbFile = $dbFile;
+                    // $currentMimeType = $dbFile->mime_type;
                     break;
                 }
             }
@@ -62,45 +63,79 @@
                     <?php if ($currentId): ?>
                     <div class="panel" style="text-align:left;">
                         <h4><?php echo __('Item'); ?></h4>
-                        <p><?php echo link_to_item(null, array(), 'show', $currenDbFile->getItem()); ?></p>
+                        <p><?php echo link_to_item(null, array(), 'show', $currentDbFile->getItem()); ?></p>
                     </div>
                     <div class="panel" style="text-align:left;">
                         <h4><?php echo __('Direct Links'); ?></h4>
                         <ul>
                             <li>
                                 <a target="_blank" rel="noopener"
-                                    href="<?php echo metadata($currenDbFile, 'uri'); ?>">
+                                    href="<?php echo metadata($currentDbFile, 'uri'); ?>">
                                     <?php echo __('Original'); ?>
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" rel="noopener"
-                                    href="<?php echo WEB_FILES . '/original_compressed/' . $currenDbFile->filename; ?>">
+                                    href="<?php
+                                    if ($currentDbFile->mime_type === 'image/png') {
+                                        echo WEB_FILES . '/fullsize/' .
+                                            pathinfo($currentDbFile->filename, PATHINFO_FILENAME) . '.webp';
+                                    } else {
+                                        echo WEB_FILES . '/original_compressed/' . $currentDbFile->filename;
+                                    }
+                                    ?>">
                                     <?php echo __('Original komprimiert'); ?>
                                 </a>
                             </li>
-                            <?php if ($currenDbFile->has_derivative_image): ?>
+                            <?php if ($currentDbFile->has_derivative_image): ?>
                                 <li>
-                                    <a target="_blank" rel="noopener"
-                                        href="<?php echo metadata($currenDbFile, 'fullsize_uri'); ?>">
+                                    <a target="_blank" rel="noopener" href="<?php
+                                        if ($currentDbFile->mime_type === 'image/png') {
+                                            echo WEB_FILES . '/fullsize/' .
+                                                pathinfo($currentDbFile->filename, PATHINFO_FILENAME) . '.webp';
+                                        } else {
+                                            echo metadata($currentDbFile, 'fullsize_uri');
+                                        }
+                                        ?>">
                                         <?php echo __('Fullsize'); ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener"
-                                        href="<?php echo metadata($currenDbFile, 'middsize_uri'); ?>">
+                                        href="<?php
+                                        if ($currentDbFile->mime_type === 'image/png') {
+                                            echo WEB_FILES . '/middsize/' .
+                                                pathinfo($currentDbFile->filename, PATHINFO_FILENAME) . '.webp';
+                                        } else {
+                                            echo metadata($currentDbFile, 'middsize_uri');
+                                        }
+                                        ?>">
                                         <?php echo __('Mittlere Größe'); ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener"
-                                        href="<?php echo metadata($currenDbFile, 'thumbnail_uri'); ?>">
+                                        href="<?php
+                                        if ($currentDbFile->mime_type === 'image/png') {
+                                            echo WEB_FILES . '/thumbnails/' .
+                                                pathinfo($currentDbFile->filename, PATHINFO_FILENAME) . '.webp';
+                                        } else {
+                                            echo metadata($currentDbFile, 'thumbnail_uri');
+                                        }
+                                        ?>">
                                         <?php echo __('Thumbnail'); ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a target="_blank" rel="noopener"
-                                        href="<?php echo metadata($currenDbFile, 'square_thumbnail_uri'); ?>">
+                                        href="<?php
+                                        if ($currentDbFile->mime_type === 'image/png') {
+                                            echo WEB_FILES . '/square_thumbnails/' .
+                                                pathinfo($currentDbFile->filename, PATHINFO_FILENAME) . '.webp';
+                                        } else {
+                                            echo metadata($currentDbFile, 'square_thumbnail_uri');
+                                        }
+                                        ?>">
                                         <?php echo __('Square Thumbnail'); ?>
                                     </a>
                                 </li>

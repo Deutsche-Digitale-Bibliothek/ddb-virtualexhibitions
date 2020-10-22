@@ -124,12 +124,24 @@ class Compressor
             $output = array();
             $retval = false;
             exec($recompress, $output, $retval);
-
             $this->log[$type] = array(
                 'time' => date('Y.m.d. H:i:s'),
                 'error' => $retval,
                 'compress' => $output
             );
+        } elseif (is_file($this->dirs[$intype] . DIRECTORY_SEPARATOR . $this->filename) &&
+            strtolower(pathinfo($this->filename, PATHINFO_EXTENSION)) === 'png')
+        {
+            $options = array(
+                'resize_width' => $this->options[$type]['resize_width'],
+                'resize_height' => $this->options[$type]['resize_height'],
+                'resize_square' => $this->options[$type]['resize_square'],
+                'webp_quality' => $this->options[$type]['webp_quality'],
+                'type' => $type
+            );
+            $sourcePath = $this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename;
+            $destPath = '';
+            $this->webp->run($sourcePath, $destPath, $options);
         }
     }
 
@@ -247,9 +259,14 @@ class Compressor
 
     public function getLog()
     {
+        if (empty($this->log)) {
+            $files = $this->webp->getLog();
+        } else {
+            $files = $this->log;
+        }
         return array(
             'params' => $this->options,
-            'files' => $this->log
+            'files' => $files
         );
     }
 }

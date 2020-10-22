@@ -77,7 +77,8 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             'recompress_min' => 'Minimum JPEG Qualität',
             'recompress_max' => 'Maximum JPEG Qualität',
             'recompress_loops' => 'Anzahl der Versuchsläufe',
-            'recompress_method' => 'Methode'
+            'recompress_method' => 'Methode',
+            'webp_quality' => 'Webp-Qualität'
         );
         $this->view->sizeNames = array(
             'original_compressed' => 'Original komprimiert (original compressed)',

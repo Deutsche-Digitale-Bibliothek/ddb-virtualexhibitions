@@ -124,14 +124,9 @@ class Compressor
         $ext = array('jpg', 'jpeg');
         $iterator = new DirectoryIterator($this->dirs[$intype]);
         foreach ($iterator as $entry) {
-            if ($entry->isFile() &&
-                in_array(
-                    strtolower(
-                        pathinfo($entry->getFilename(), PATHINFO_EXTENSION)
-                    ),
-                    $ext
-                )
-            ) {
+            if ($entry->isFile() && in_array(strtolower(
+                pathinfo($entry->getFilename(), PATHINFO_EXTENSION)), $ext))
+            {
                 $outfile = $this->dirs[$outtype]
                     . DIRECTORY_SEPARATOR
                     . $entry->getFilename();
@@ -149,6 +144,24 @@ class Compressor
                         'compress' => $output
 
                     );
+                }
+            } elseif (is_file($this->dirs[$intype] . DIRECTORY_SEPARATOR . $this->filename) &&
+                strtolower(pathinfo($this->filename, PATHINFO_EXTENSION)) === 'png')
+            {
+                $options = array(
+                    'resize_width' => $this->options[$type]['resize_width'],
+                    'resize_height' => $this->options[$type]['resize_height'],
+                    'resize_square' => $this->options[$type]['resize_square'],
+                    'webp_quality' => $this->options[$type]['webp_quality'],
+                    'type' => $type
+                );
+                $sourcePath = $this->dirs['original'] . DIRECTORY_SEPARATOR . $this->filename;
+                $destPath = '';
+                $this->webp->run($sourcePath, $destPath, $options);
+                if ($log) {
+                    $webpLog = $this->webp->getLog();
+                    $this->log[$entry->getFilename()][$outtype] = array_merge($webpLog[$type], array('file' => $entry->getFilename()));
+                    $this->webp->resetLog();
                 }
             }
         }
@@ -205,8 +218,13 @@ class Compressor
                     'type'          => $type
                 );
                 $sourcePath = $this->dirs['original'] . DIRECTORY_SEPARATOR . $fileName;
-                $destPath = $this->dirs[$type] . DIRECTORY_SEPARATOR . $type . '_xxx_' . $fileName;
+                $destPath = $this->dirs[$type] . DIRECTORY_SEPARATOR . $type . '_' . $fileName;
                 $this->webp->run($sourcePath, $destPath, $options);
+                if ($log) {
+                    $webpLog = $this->webp->getLog();
+                    $this->log[$entry->getFilename()][$type] = array_merge($webpLog[$type], array('file' => $entry->getFilename()));
+                    $this->webp->resetLog();
+                }
             }
 
         }

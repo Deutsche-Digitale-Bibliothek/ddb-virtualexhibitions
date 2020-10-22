@@ -102,6 +102,23 @@
             ); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $view->formLabel(
+                'gina_image_convert[original][webp_quality]',
+                __('Webp-Qualität')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <p class="explanation">
+                <?php echo __('Webp-Qualität einstellen.') . ' '
+                    . __('Bereich zwichen 0 und 100, Standard ist 75.'); ?>
+            </p>
+            <?php echo $view->formText(
+                'gina_image_convert[original][webp_quality]',
+                $params['gina_image_convert']['original']['webp_quality'],
+                array('required' => 'required')); ?>
+        </div>
+    </div>
 </fieldset>
 
 <!-- fullsize -->
@@ -273,6 +290,23 @@
             ); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $view->formLabel(
+                'gina_image_convert[fullsize][webp_quality]',
+                __('Webp-Qualität')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <p class="explanation">
+                <?php echo __('Webp-Qualität einstellen.') . ' '
+                    . __('Bereich zwichen 0 und 100, Standard ist 75.'); ?>
+            </p>
+            <?php echo $view->formText(
+                'gina_image_convert[fullsize][webp_quality]',
+                $params['gina_image_convert']['fullsize']['webp_quality'],
+                array('required' => 'required')); ?>
+        </div>
+    </div>
 </fieldset>
 
 <!-- middsize -->
@@ -442,6 +476,23 @@
                     'ms-ssim' => 'MS-SSIM'
                 )                                                               // options
             ); ?>
+        </div>
+    </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $view->formLabel(
+                'gina_image_convert[middsize][webp_quality]',
+                __('Webp-Qualität')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <p class="explanation">
+                <?php echo __('Webp-Qualität einstellen.') . ' '
+                    . __('Bereich zwichen 0 und 100, Standard ist 75.'); ?>
+            </p>
+            <?php echo $view->formText(
+                'gina_image_convert[middsize][webp_quality]',
+                $params['gina_image_convert']['middsize']['webp_quality'],
+                array('required' => 'required')); ?>
         </div>
     </div>
 </fieldset>
@@ -616,6 +667,23 @@
             ); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $view->formLabel(
+                'gina_image_convert[thumbnails][webp_quality]',
+                __('Webp-Qualität')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <p class="explanation">
+                <?php echo __('Webp-Qualität einstellen.') . ' '
+                    . __('Bereich zwichen 0 und 100, Standard ist 75.'); ?>
+            </p>
+            <?php echo $view->formText(
+                'gina_image_convert[thumbnails][webp_quality]',
+                $params['gina_image_convert']['thumbnails']['webp_quality'],
+                array('required' => 'required')); ?>
+        </div>
+    </div>
 </fieldset>
 
 <!-- square_thumbnails -->
@@ -785,6 +853,23 @@
                     'ms-ssim' => 'MS-SSIM'
                 )                                                               // options
             ); ?>
+        </div>
+    </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $view->formLabel(
+                'gina_image_convert[square_thumbnails][webp_quality]',
+                __('Webp-Qualität')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <p class="explanation">
+                <?php echo __('Webp-Qualität einstellen.') . ' '
+                    . __('Bereich zwichen 0 und 100, Standard ist 75.'); ?>
+            </p>
+            <?php echo $view->formText(
+                'gina_image_convert[square_thumbnails][webp_quality]',
+                $params['gina_image_convert']['square_thumbnails']['webp_quality'],
+                array('required' => 'required')); ?>
         </div>
     </div>
 </fieldset>

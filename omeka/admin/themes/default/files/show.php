@@ -34,6 +34,8 @@ echo flash();
     <div id="item-metadata" class="panel">
         <h4><?php echo __('Item'); ?></h4>
         <p><?php echo link_to_item(null, array(), 'show', $file->getItem()); ?></p>
+        <h4><?php echo __('Komprimierung'); ?></h4>
+        <p><a href="<?php echo url('/gina-image-convert/compressfile/' . $file['id']); ?>"><?php echo __('Bild komprimieren'); ?></a></p>
     </div>
 
     <div id="file-links" class="panel">

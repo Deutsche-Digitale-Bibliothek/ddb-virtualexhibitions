@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <?php endif; ?>
-                <?php if (isset($fileSizes['original_compressed'])): ?>
+                <?php if (isset($fileSizes['original_compressed']) && $dbFile->mime_type !== 'image/png'): ?>
                 <li>
                     <a target="_blank" rel="noopener"
                         href="<?php echo WEB_FILES . '/original_compressed/' . $dbFile->filename; ?>">
@@ -47,9 +47,20 @@
                         <?php endif; ?>
                     </a>
                 </li>
+                <?php elseif($dbFile->mime_type === 'image/png' && is_file(FILES_DIR . '/original_compressed/' .
+                    pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp')): ?>
+                <li>
+                    <a target="_blank" rel="noopener"
+                        href="<?php echo WEB_FILES . '/original_compressed/' .
+                            pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp'; ?>">
+                        <?php echo __('Original komprimiert'); ?>
+                        <?php echo round((filesize(FILES_DIR . '/original_compressed/' .
+                    pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp') / 1024), 2); ?> KB
+                    </a>
+                </li>
                 <?php endif; ?>
                 <?php if ($dbFile->has_derivative_image): ?>
-                    <?php if (isset($fileSizes['fullsize'])): ?>
+                    <?php if (isset($fileSizes['fullsize']) && $dbFile->mime_type !== 'image/png'): ?>
                     <li>
                         <a target="_blank" rel="noopener"
                             href="<?php echo metadata($dbFile, 'fullsize_uri'); ?>">
@@ -68,8 +79,19 @@
                             <?php endif; ?>
                         </a>
                     </li>
+                    <?php elseif($dbFile->mime_type === 'image/png' && is_file(FILES_DIR . '/fullsize/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp')): ?>
+                    <li>
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo WEB_FILES . '/fullsize/' .
+                                pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp'; ?>">
+                            <?php echo __('Fullsize'); ?>
+                            <?php echo round((filesize(FILES_DIR . '/fullsize/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp') / 1024), 2); ?> KB
+                        </a>
+                    </li>
                     <?php endif; ?>
-                    <?php if (isset($fileSizes['middsize'])): ?>
+                    <?php if (isset($fileSizes['middsize']) && $dbFile->mime_type !== 'image/png'): ?>
                     <li>
                         <a target="_blank" rel="noopener"
                             href="<?php echo metadata($dbFile, 'middsize_uri'); ?>">
@@ -88,8 +110,19 @@
                             <?php endif; ?>
                         </a>
                     </li>
+                    <?php elseif($dbFile->mime_type === 'image/png' && is_file(FILES_DIR . '/middsize/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp')): ?>
+                    <li>
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo WEB_FILES . '/middsize/' .
+                                pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp'; ?>">
+                            <?php echo __('Mittlere Größe'); ?>
+                            <?php echo round((filesize(FILES_DIR . '/middsize/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp') / 1024), 2); ?> KB
+                        </a>
+                    </li>
                     <?php endif; ?>
-                    <?php if (isset($fileSizes['thumbnails'])): ?>
+                    <?php if (isset($fileSizes['thumbnails']) && $dbFile->mime_type !== 'image/png'): ?>
                     <li>
                         <a target="_blank" rel="noopener"
                             href="<?php echo metadata($dbFile, 'thumbnail_uri'); ?>">
@@ -108,8 +141,19 @@
                             <?php endif; ?>
                         </a>
                     </li>
+                    <?php elseif($dbFile->mime_type === 'image/png' && is_file(FILES_DIR . '/thumbnails/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp')): ?>
+                    <li>
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo WEB_FILES . '/thumbnails/' .
+                                pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp'; ?>">
+                            <?php echo __('Thumbnail'); ?>
+                            <?php echo round((filesize(FILES_DIR . '/thumbnails/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp') / 1024), 2); ?> KB
+                        </a>
+                    </li>
                     <?php endif; ?>
-                    <?php if (isset($fileSizes['square_thumbnails'])): ?>
+                    <?php if (isset($fileSizes['square_thumbnails']) && $dbFile->mime_type !== 'image/png'): ?>
                     <li>
                         <a target="_blank" rel="noopener"
                             href="<?php echo metadata($dbFile, 'square_thumbnail_uri'); ?>">
@@ -128,6 +172,17 @@
                             <?php endif; ?>
                         </a>
                     </li>
+                    <?php elseif($dbFile->mime_type === 'image/png' && is_file(FILES_DIR . '/square_thumbnails/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp')): ?>
+                    <li>
+                        <a target="_blank" rel="noopener"
+                            href="<?php echo WEB_FILES . '/square_thumbnails/' .
+                                pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp'; ?>">
+                            <?php echo __('Square Thumbnail'); ?>
+                            <?php echo round((filesize(FILES_DIR . '/square_thumbnails/' .
+                        pathinfo($dbFile->filename, PATHINFO_FILENAME) . '.webp') / 1024), 2); ?> KB
+                        </a>
+                    </li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>
@@ -136,12 +191,7 @@
         <div class="panel">
             <p>
                 Bei dem Originalbild handelt es sich um eine PNG-Datei.
-                Hier werden nur die JPEG-Derivate &bdquo;Volle Größe&ldquo;,
-                &bdquo;Mittlere Größe&ldquo;, &bdquo;Vorschau&ldquo; und
-                &bdquo;Quadratische Vorschau&ldquo; komprimiert. Diese werden
-                aber in der Ausstellung nicht verwendet, da JPEG-Bilder über
-                keine Alphatransparenz verfügen.
-                Es wird stattdessen immer das Original verwendet.
+                Bei der Komprimierung werden Dateien im WEBP-Format erstellt.
             </p>
         </div>
         <?php endif; ?>
@@ -166,6 +216,12 @@
                 <tr>
                     <td>
                         <table>
+                        <?php if ($dbFile->mime_type === 'image/png'): ?>
+                            <tr>
+                                <th>Ziel-Qualität</th>
+                                <td><?php echo $log['params'][$filekey]['webp_quality']; ?></td>
+                            </tr>
+                        <?php else: ?>
                             <tr>
                                 <th>Ziel-Qualität</th>
                                 <td><?php echo $log['params'][$filekey]['recompress_target']; ?></td>
@@ -186,6 +242,7 @@
                                 <th>Verwendete Methode</th>
                                 <td><?php echo $log['params'][$filekey]['recompress_method']; ?></td>
                             </tr>
+                        <?php endif; ?>
                         </table>
                     </td>
                     <td><?php echo $filelog['time']; ?></td>
@@ -204,7 +261,11 @@
 <div style="clear:both;" class="clearfix">
     <form id="gina-image-compressall-form" method="post" enctype="multipart/form-data">
         <div class="seven columns alpha">
+            <?php if ($dbFile->mime_type === 'image/png'): ?>
+            <?php echo common('image-compress-form-webp', array('params' => $params), 'compress'); ?>
+            <?php else: ?>
             <?php echo common('image-compress-form', array('params' => $params), 'compress'); ?>
+            <?php endif; ?>
         </div>
         <div id="save" class="three columns omega">
             <?php echo $this->formSubmit('compress_submit', __('Bild komprimieren'), array('class'=>'submit big green button')); ?>
