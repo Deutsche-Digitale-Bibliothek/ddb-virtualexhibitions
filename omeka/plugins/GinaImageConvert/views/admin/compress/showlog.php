@@ -15,7 +15,7 @@
     </tr>
     <?php foreach ($logfile['params'] as $type => $options): ?>
     <tr>
-        <th><?php echo $type; ?></th>
+        <th><?php echo $type == 'original' ? 'original_compressed' : $type; ?></th>
         <td>
             <table>
                 <tr>
