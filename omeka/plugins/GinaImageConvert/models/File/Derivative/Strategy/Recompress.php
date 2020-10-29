@@ -59,6 +59,11 @@ class File_Derivative_Strategy_Recompress extends Omeka_File_Derivative_Abstract
             require_once __DIR__ . '/../../../Webp.php';
             $webp = new Webp();
             $webp->run($sourcePath, $destPath, $options);
+
+            if ($type === 'fullsize') {
+                $options['type'] = 'original';
+                $webp->run($sourcePath, '', $options);
+            }
         }
 
         if ($mimeType !== 'image/jpeg' || !$this->recompressInstalled) {
