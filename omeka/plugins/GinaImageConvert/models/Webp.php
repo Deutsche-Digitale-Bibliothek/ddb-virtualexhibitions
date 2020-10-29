@@ -163,6 +163,11 @@ class Webp
     {
         $to = $this->basePath . '/' . $type . '/' . $filename;
         rename($from, $to);
+        // if (is_file($from)) {
+        //     usleep(100000); // 0.1 sec
+        //     copy($from, $to);
+        //     unlink($from);
+        // }
     }
 
     protected function setOrigCompressedDir()
