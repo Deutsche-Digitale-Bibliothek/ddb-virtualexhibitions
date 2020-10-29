@@ -133,9 +133,6 @@ class Compressor
             strtolower(pathinfo($this->filename, PATHINFO_EXTENSION)) === 'png')
         {
             $options = array(
-                'resize_width' => $this->options[$type]['resize_width'],
-                'resize_height' => $this->options[$type]['resize_height'],
-                'resize_square' => $this->options[$type]['resize_square'],
                 'webp_quality' => $this->options[$type]['webp_quality'],
                 'type' => $type
             );
