@@ -1115,6 +1115,13 @@
       }
     });
     $('.zoomer').bind('click', generateZoomableImage);
+    $('.zoomer').bind('keydown', function (e) {
+      if (e.which === 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).trigger('click');
+      }
+    });
   }
 
   function generate3D() {
