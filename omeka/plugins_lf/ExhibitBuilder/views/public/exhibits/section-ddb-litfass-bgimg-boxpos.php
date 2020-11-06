@@ -73,7 +73,7 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
                 !empty($bgAttachmant['info'])
             )): ?>
         <div class="control-video">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+            <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" width="48" height="48" viewBox="0 0 48 48"
                 class="icon-video-audio<?php echo ($bgAttachmant['type'] === 'vimeo')? '-vimeo' : ''; ?>">
             <g>
                 <rect class="icon-video-audio-rect" width="48" height="48"/>

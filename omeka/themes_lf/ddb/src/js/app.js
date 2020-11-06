@@ -1270,22 +1270,32 @@
   }
 
   function bindVideoControl() {
-    $('.icon-video-audio').on('click', function () {
-      var controlElement = $(this);
-      var tile = controlElement.parents('.tile');
-      var video = $('.litfass-bg-video', tile);
-      if (controlElement.hasClass('active')) {
-        controlElement.removeClass('active');
-        video[0].muted = true;
-      } else {
-        controlElement.addClass('active');
-        video[0].muted = false;
+    $('.icon-video-audio').on('click keydown', function (e) {
+      if (e.type == 'click' || e.type == 'keydown' && e.which == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        var controlElement = $(this);
+        var tile = controlElement.parents('.tile');
+        var video = $('.litfass-bg-video', tile);
+        if (controlElement.hasClass('active')) {
+          controlElement.removeClass('active');
+          video[0].muted = true;
+        } else {
+          controlElement.addClass('active');
+          video[0].muted = false;
+        }
       }
     });
   }
 
   function bindVideoVimeoControl() {
-    $('.icon-video-audio-vimeo').on('click', function () {
+    $('.icon-video-audio-vimeo').on('click keydown', toggleVimeoVideoControl);
+  }
+
+  function toggleVimeoVideoControl(e) {
+    if (e.type == 'click' || e.type == 'keydown' && e.which == 13) {
+      e.preventDefault();
+      e.stopPropagation();
       var controlElement = $(this);
       var tile = controlElement.parents('.tile');
       var video = $('.litfass-bg-vimeo-video', tile);
@@ -1297,7 +1307,7 @@
         controlElement.addClass('active');
         vimeoBgVideos[id].setVolume(1);
       }
-    });
+    }
   }
 
   function bindVideoClipping() {
