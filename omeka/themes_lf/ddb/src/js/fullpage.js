@@ -2340,9 +2340,18 @@
                 isShiftPressed && activeElement == focusableElements[0]
             ){
                 // console.log('prevented');
-                var jumpNav = document.getElementById('jump-to-navigation-control');
-                jumpNav.focus();
-                preventDefault(e);
+                // console.log(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL);
+
+                if (document.querySelector(SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) !== null) {
+                  var prev = document.querySelector(SECTION_ACTIVE_SEL + ' .fp-prev');
+                  prev.focus();
+                  preventDefault(e);
+                } else {
+                  var jumpNav = document.getElementById('jump-to-navigation-control');
+                  jumpNav.focus();
+                  preventDefault(e);
+                }
+
             }
         }
 
@@ -2431,7 +2440,7 @@
             var activeElement = document.activeElement;
             var isMediaFocused = matches(activeElement, 'video') || matches(activeElement, 'audio');
 
-            //do nothing if we can not scroll or we are not using horizotnal key arrows.
+            //do nothing if we can not scroll or we are not using horizontal key arrows.
             if(!canScroll && [37,39].indexOf(e.keyCode) < 0){
                 return;
             }

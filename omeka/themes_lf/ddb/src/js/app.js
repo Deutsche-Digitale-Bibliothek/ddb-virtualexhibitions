@@ -1193,7 +1193,7 @@
     $('.section-slides').each(function () {
       var sectionSlide = $(this);
       var controllWrapper = $('<div class="slideControlWrapper"></div>');
-      $('.fp-prev', this).appendTo(controllWrapper);
+      $('.fp-prev', this).attr('tabindex', '0').appendTo(controllWrapper);
       $(this).append(controllWrapper);
       var numSliders = $('.slide', this).length;
       var slidesInfo = $('<div class="slidesInfo"><span class="currentSlide">1</span> / ' + numSliders + '</div>');
@@ -1213,8 +1213,43 @@
           $(this).addClass('open');
         }
       });
-      $('.fp-next', this).appendTo(controllWrapper);
+      $('.fp-next', this).attr('tabindex', '0').appendTo(controllWrapper);
     });
+
+    $('.fp-prev').on('keydown', function(e) {
+      if(e.which == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).trigger('click');
+      } else if(e.shiftKey && e.keyCode == 9) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('#jump-to-navigation-control').focus();
+      } else if (e.which === 9) {
+        // e.preventDefault();
+        // $('.section.active').focus();
+      }
+    });
+
+    $('.fp-next').on('keydown', function(e) {
+      if(e.which == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).trigger('click');
+      } else if(e.shiftKey && e.keyCode == 9) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).siblings('.fp-prev').focus();
+      } else if (e.which === 9) {
+        e.preventDefault();
+        e.stopPropagation();
+        // $('.section.active').focus();
+        $('#jump-to-navigation-control').focus();
+      }
+    });
+
+
+
   }
 
   function createCookieDiv() {
