@@ -2310,7 +2310,7 @@
             var focusableElements = getFocusables(getSlideOrSection($(SECTION_ACTIVE_SEL)[0]));
 
             function preventAndFocusFirst(e){
-                // console.log('preventAndFocusFirst');
+                // console.log('preventAndFocusFirst', focusableElements[0]);
                 preventDefault(e);
                 return focusableElements[0] ? focusableElements[0].focus() : null;
             }
@@ -2323,10 +2323,16 @@
 
             //is there an element with focus?
             if(activeElement){
-                // console.log('activeElement', activeElement);
+                var slideOfElement = closest(activeElement, '.fp-slide');
                 if(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) == null){
                     activeElement = preventAndFocusFirst(e);
-                }
+              // Grandgeorg Websolutions:
+              } else if(slideOfElement && !slideOfElement.classList.contains('active')) {
+                // console.log('element in slider', slideOfElement, focusableElements[0]);
+                preventDefault(e);
+                focusableElements[0].focus();
+              }
+              // :Grandgeorg Websolutions
             }
 
             //no element if focused? Let's focus the first one of the section/slide
