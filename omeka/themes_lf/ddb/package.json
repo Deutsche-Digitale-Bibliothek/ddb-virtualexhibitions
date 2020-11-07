@@ -29,8 +29,8 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0",
-    "uglify-es": "^3.3.9",
-    "uglify-js": "^3.11.4",
+    "terser": "^5.3.8",
+    "uglify-js": "^3.11.5",
     "workbox-cli": "^5.1.4"
   },
   "sass": "src/scss/custom.scss",
@@ -49,7 +49,7 @@
     "js-minify-options": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/options.min.js src/js/options.js",
     "js-main": "npm-run-all js-lint js-minify js-minify-options",
     "watch-js-main": "nodemon --watch src/js/ --ext js --exec \"npm run js-main\"",
-    "sw-minify": "uglifyjs --compress --mangle --comments \"/^!/\" --output javascripts/sw.min.js javascripts/sw.js",
+    "sw-minify": "terser --compress --mangle --comments \"/^!/\" --output javascripts/sw.min.js javascripts/sw.js",
     "sw-generate": "php src/pwa/generateSW.php",
     "sw-main": "npm-run-all --sequential sw-generate sw-minify"
   }
