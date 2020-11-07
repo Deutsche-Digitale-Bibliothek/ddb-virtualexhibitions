@@ -2240,6 +2240,7 @@
 
         //Sliding with arrow keys, both, vertical and horizontal
         function keydownHandler(e) {
+          // console.log("hit key", e, options.keyboardScrolling, options.autoScrolling);
             clearTimeout(keydownId);
 
             var activeElement = document.activeElement;
@@ -2249,10 +2250,10 @@
             if(keyCode === 9){
                 onTab(e);
             }
-
+            // Grandgeorg Websolutions add: || [37,39].indexOf(keyCode) > -1
             else if(!matches(activeElement, 'textarea') && !matches(activeElement, 'input') && !matches(activeElement, 'select') &&
                 activeElement.getAttribute('contentEditable') !== "true" && activeElement.getAttribute('contentEditable') !== '' &&
-                options.keyboardScrolling && options.autoScrolling){
+                options.keyboardScrolling && (options.autoScrolling || [37,39].indexOf(keyCode) > -1)){
 
                 //preventing the scroll with arrow keys & spacebar & Page Up & Down keys
                 var keyControls = [40, 38, 32, 33, 34];
@@ -2441,7 +2442,11 @@
             var isMediaFocused = matches(activeElement, 'video') || matches(activeElement, 'audio');
 
             //do nothing if we can not scroll or we are not using horizontal key arrows.
-            if(!canScroll && [37,39].indexOf(e.keyCode) < 0){
+            // Grandgeorg Websolutions:
+            // if(!canScroll && [37,39].indexOf(e.keyCode) < 0){
+            if(!canScroll){
+            // :Grandgeorg Websolutions
+            // console.log("can't scroll");
                 return;
             }
 
@@ -2488,6 +2493,7 @@
 
                 //left
                 case 37:
+                    // console.log('left', isScrollAllowed.k.left);
                     if(isScrollAllowed.k.left){
                         moveSlideLeft();
                     }

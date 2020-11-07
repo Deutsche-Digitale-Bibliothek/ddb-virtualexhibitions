@@ -101,6 +101,8 @@
       // css3: true,
       scrollingSpeed: 500,
       autoScrolling: false,
+      // if autoScrolling is true set:
+      // jQuery(".scroll-element").on("touchmove", function(e) { e.stopPropagation(); });
       fitToSection: fitToSection,
       fitToSectionDelay: fitToSectionDelay,
       // scrollBar: false,
