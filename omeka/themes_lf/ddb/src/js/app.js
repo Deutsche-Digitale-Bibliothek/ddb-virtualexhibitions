@@ -850,7 +850,7 @@
           // console.log('hit the same tab', document.activeElement);
         }
       }
-      if (e.keyCode === 9 && $(document.activeElement).text() === 'Datenschutz') {
+      if (e.keyCode === 9 && $(document.activeElement).text() === 'Datenschutz' && !window.event.shiftKey) {
         closeMenu();
         if ($('#cookie-law').length) {
           e.preventDefault();
