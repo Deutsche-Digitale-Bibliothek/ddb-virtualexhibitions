@@ -979,7 +979,7 @@
       zoomHint.append(zoomHintHelper);
     }
     var closer = $(
-      '<div class="zoom-close">' +
+      '<div class="zoom-close" tabindex="0">' +
       '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
       '<g>' +
       '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
@@ -997,6 +997,15 @@
     } else {
       container.append(closer, spinner);
     }
+
+    // capture tab
+    container.on('keydown', function(e){
+      if ($(e.target).hasClass('zoom-close') && e.keyCode === 9) {
+        e.stopPropagation();
+        e.preventDefault();
+        // console.log('prevented');
+      }
+    });
     $('body').append(container);
 
     $('<img src="' + caller.data('zoom') + '" alt="' + caller.attr('alt') + '" class="zoom-image">')
@@ -1043,6 +1052,7 @@
             if (typeof panzoomInstance !== 'undefined') {
               panzoomInstance.dispose();
             }
+            container.off('keydown');
             container.remove();
           }
         });
@@ -1106,7 +1116,22 @@
         panzoomInstance.dispose();
       }
       $(this).off('click');
+      $(this).off('keydown');
+      container.off('keydown');
       container.remove();
+    });
+    closer.on('keydown', function (e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof panzoomInstance !== 'undefined') {
+          panzoomInstance.dispose();
+        }
+        $(this).off('click');
+        $(this).off('keydown');
+        container.off('keydown');
+        container.remove();
+      }
     });
     $(document).on('keydown.zoom', function (e) {
       if (e.keyCode === 27 || e.key === 'Escape') {
@@ -1116,6 +1141,7 @@
         if (typeof panzoomInstance !== 'undefined') {
           panzoomInstance.dispose();
         }
+        container.off('keydown');
         container.remove();
       }
     });
@@ -1123,7 +1149,7 @@
 
   function bindZoom() {
     $('img.media-item').bind('click', generateZoomableImage);
-    $('.control-zoom').bind('click keydown', function (event) {
+    $('.control_e-zoom').bind('click keydown', function (event) {
       if (event.which === 13 || event.which === 1) {
         $('.content-media .media-item', $(this).parents('.container-media')).trigger('click');
       }
@@ -1149,7 +1175,7 @@
       '</scene>' +
       '</x3d>');
     var closer = $(
-      '<div class="zoom-close">' +
+      '<div class="zoom-close" tabindex="0">' +
       '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18">' +
       '<g>' +
       '<line x1="1" y1="18" x2="18" y2="1" stroke="#FFFFFF" stroke-width="2"></line>' +
@@ -1159,6 +1185,13 @@
       '</div>'
     );
     container.append(object3D, closer);
+    // capture tab
+    container.on('keydown', function(e){
+      if ($(e.target).hasClass('zoom-close') && e.keyCode === 9) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    });
     $('body').append(container);
     x3dom.reload();
     var x3domCanvas = $('.x3dom-canvas', container);
@@ -1166,8 +1199,9 @@
 
     x3domCanvas.on('keydown', function (e) {
       if (e.which === 9) {
-        e.preventDefault();
-        e.stopPropagation();
+        // e.preventDefault();
+        // e.stopPropagation();
+
       }
     });
 
@@ -1178,6 +1212,7 @@
         e.stopPropagation();
         closer.off('click');
         x3domCanvas.off('keydown');
+        $(this).off('keydown');
         $(this).remove();
       }
     });
@@ -1187,18 +1222,42 @@
       e.stopPropagation();
       $(this).off('click');
       x3domCanvas.off('keydown');
+      container.off('keydown');
       container.remove();
+    });
+
+    closer.on('keydown', function (e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).off('click');
+        x3domCanvas.off('keydown');
+        container.off('keydown');
+        container.remove();
+      }
     });
   }
 
   function bind3D() {
     $('img.media-item-3d-thumb').bind('click', generate3D);
-    $('img.item-3d-thumb-icon').bind('click', function () {
+    $('img.item-3d-thumb-icon').bind('click', function() {
       $(this).siblings('img.media-item-3d-thumb').trigger('click');
     });
-    $('.control-zoom').bind('click keydown', function (event) {
-      if (event.which === 13 || event.which === 1) {
-        $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
+    $('.control_e-x3d').bind('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('.content-media .media-item-3d-thumb', $(this).parents('.container-media')).trigger('click');
+    });
+    $('.control_e-x3d').bind('keydown', function(e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('x3d');
+        var caller = $(this);
+        // setTimeout seems wired here but otherwise x3d will go to fullscreen
+        setTimeout(function() {
+          $('.content-media img.item-3d-thumb-icon', caller.parents('.container-media')).trigger('click');
+        }, 200);
       }
     });
   }

@@ -8617,12 +8617,6 @@ i.license-or {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
-.zoom-hint-container .zoom-hint .zoom-hint-close:focus {
-  outline-width: thin;
-  outline-style: solid;
-  outline-color: #808080;
-}
-
 .zoom-hint-container .zoom-hint .zoom-hint-content {
   background-color: rgba(0, 0, 0, 0.85);
 }
@@ -8898,6 +8892,10 @@ i.license-or {
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.12;
+}
+
+:focus {
+  outline: 0;
 }
 
 .tabnav :focus {

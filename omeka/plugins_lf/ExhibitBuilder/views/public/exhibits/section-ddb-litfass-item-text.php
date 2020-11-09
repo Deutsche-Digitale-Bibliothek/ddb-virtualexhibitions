@@ -42,7 +42,7 @@ if (!isset($pageoptions) || false === $pageoptions || !isset($pageoptions['align
                             </svg>
                         </div>
                         <?php if (false !== ($zoomImgUrl = ExhibitDdbHelper::getZoomable($attachment)) || ExhibitDdbHelper::isX3d($attachment)): ?>
-                        <div class="control-zoom control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
+                        <div class="control-zoom<?php echo (ExhibitDdbHelper::isX3d($attachment)) ? ' control_e-x3d' : ' control_e-zoom'; ?> control-icon<?php echo ($pageoptions['align'] === 'left')? ' control-icon-right' : ' control-icon-left'; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon-zoom" tabindex="0">
                                 <g transform="translate(-21 -84)">
                                     <g transform="translate(-216.5 -429.5)">

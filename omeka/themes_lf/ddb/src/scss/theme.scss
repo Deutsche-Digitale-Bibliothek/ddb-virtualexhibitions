@@ -2325,11 +2325,11 @@ i.license-or {
       line-height: 18px;
       cursor: pointer;
       background-color: rgba(0, 0, 0, .85);
-      &:focus {
-        outline-width: thin;
-        outline-style: solid;
-        outline-color: #808080;
-      }
+      // &:focus {
+      //   outline-width: thin;
+      //   outline-style: solid;
+      //   outline-color: #808080;
+      // }
     }
     .zoom-hint-content {
       background-color: rgba(0, 0, 0, .85);
@@ -2694,7 +2694,10 @@ i.license-or {
 // }
 
 // accessebility
-// .tabnav .jump-to-navigation .jump-to-navigation-control :focus {
+:focus {
+  outline: 0;
+}
+
 .tabnav :focus {
   outline-width: 2px;
   outline-style: solid;
