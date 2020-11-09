@@ -2694,8 +2694,8 @@ i.license-or {
 // }
 
 // accessebility
-.tabnav :focus,
-.tabnav .jump-to-navigation .jump-to-navigation-control :focus {
+// .tabnav .jump-to-navigation .jump-to-navigation-control :focus {
+.tabnav :focus {
   outline-width: 2px;
   outline-style: solid;
   outline-color: #a5003b;
@@ -2708,7 +2708,8 @@ i.license-or {
   outline-color: #000;
   outline-offset: 2px;
 }
-.tabnav .jump-to-navigation:focus {
+.tabnav .jump-to-navigation:focus,
+.tabnav .jump-to-navigation .jump-to-navigation-control:focus {
   outline: none;
 }
 .jump-to-navigation {
@@ -2719,9 +2720,9 @@ i.license-or {
 }
 .jump-to-navigation-control {
   // position: fixed;
-  top: 64px;
-  left: 16px;
-  z-index: 20;
+  // top: 64px;
+  // left: 16px;
+  // z-index: 20;
   display: block;
   line-height: 1;
   text-decoration: none;
@@ -2737,7 +2738,7 @@ i.license-or {
   &:focus {
     width: auto;
     height: auto;
-    padding: .25rem;
+    padding: .4rem;
     clip: auto; // !important
     color: #fff;
     background-color: #333;

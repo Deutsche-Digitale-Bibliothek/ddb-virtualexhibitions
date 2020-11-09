@@ -850,6 +850,15 @@
           // console.log('hit the same tab', document.activeElement);
         }
       }
+      if (e.keyCode === 9 && $(document.activeElement).text() === 'Datenschutz') {
+        closeMenu();
+        if ($('#cookie-law').length) {
+          e.preventDefault();
+          e.stopPropagation();
+          $('#close-cookie-notice').focus();
+        }
+        // console.log('hit menu tab', document.activeElement);
+      }
     });
 
     menuContainer.on('click', function(e) {
@@ -1642,8 +1651,13 @@
     }
   }
 
+  function globalKeydown(e) {
+    console.log('foo', e, document.activeElement);
+  }
+
   function bindAccessibility() {
     window.addEventListener('keydown', setTabNav);
+    // addEventListener('keydown', globalKeydown);
   }
 
   function init() {

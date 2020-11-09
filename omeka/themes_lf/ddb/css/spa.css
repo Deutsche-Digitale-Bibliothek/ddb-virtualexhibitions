@@ -8900,8 +8900,7 @@ i.license-or {
   line-height: 1.12;
 }
 
-.tabnav :focus,
-.tabnav .jump-to-navigation .jump-to-navigation-control :focus {
+.tabnav :focus {
   outline-width: 2px;
   outline-style: solid;
   outline-color: #a5003b;
@@ -8915,7 +8914,8 @@ i.license-or {
   outline-offset: 2px;
 }
 
-.tabnav .jump-to-navigation:focus {
+.tabnav .jump-to-navigation:focus,
+.tabnav .jump-to-navigation .jump-to-navigation-control:focus {
   outline: none;
 }
 
@@ -8927,9 +8927,6 @@ i.license-or {
 }
 
 .jump-to-navigation-control {
-  top: 64px;
-  left: 16px;
-  z-index: 20;
   display: block;
   line-height: 1;
   text-decoration: none;
@@ -8949,7 +8946,7 @@ i.license-or {
 .jump-to-navigation-control:focus {
   width: auto;
   height: auto;
-  padding: .25rem;
+  padding: .4rem;
   clip: auto;
   color: #fff;
   background-color: #333;

@@ -2319,7 +2319,7 @@
 
             //outside any section or slide? Let's not hijack the tab!
             if(isFocusOutside(e)){
-              // console.log('outside');
+                // console.log('outside', e);
                 return;
             }
 
