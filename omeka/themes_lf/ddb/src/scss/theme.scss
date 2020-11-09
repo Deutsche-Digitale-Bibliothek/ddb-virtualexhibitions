@@ -653,7 +653,7 @@ a:hover {
 // fullpage
 
 .fullpage {
-  will-change: opacity;
+  // will-change: opacity;
   transition: opacity 1s;
 }
 
@@ -2694,6 +2694,23 @@ i.license-or {
 // }
 
 // accessebility
+.tabnav :focus,
+.tabnav .jump-to-navigation .jump-to-navigation-control :focus {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #a5003b;
+  outline-offset: 2px;
+}
+.tabnav .menu :focus {
+  outline-width: 2px;
+  outline-style: solid;
+  //@todo: depend on light or dark theme in header styles:
+  outline-color: #000;
+  outline-offset: 2px;
+}
+.tabnav .jump-to-navigation:focus {
+  outline: none;
+}
 .jump-to-navigation {
   position: fixed;
   top: 64px;
@@ -2701,7 +2718,7 @@ i.license-or {
   z-index: 20;
 }
 .jump-to-navigation-control {
-  position: fixed;
+  // position: fixed;
   top: 64px;
   left: 16px;
   z-index: 20;

@@ -844,7 +844,10 @@
         // Jump to navigation-control, if active menu item was selected as
         // fullpage will not do anything (will not fire fpAfterLoad())
         if ($(e.target).parent().hasClass('active')) {
+          e.preventDefault();
+          e.stopPropagation();
           $('#jump-to-navigation-control').focus();
+          // console.log('hit the same tab', document.activeElement);
         }
       }
     });
@@ -1632,6 +1635,17 @@
     }
   }
 
+  function setTabNav(e) {
+    if (e.keyCode === 9) {
+      document.body.classList.add('tabnav');
+      window.removeEventListener('keydown', setTabNav);
+    }
+  }
+
+  function bindAccessibility() {
+    window.addEventListener('keydown', setTabNav);
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -1640,6 +1654,7 @@
       initScrollMenu();
       initFullPage();
       bindMenu();
+      bindAccessibility();
       setScrollElementMaxHeight();
       bindScrollControls();
       setMediaProps();

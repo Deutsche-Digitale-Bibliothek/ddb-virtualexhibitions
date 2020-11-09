@@ -2309,6 +2309,8 @@
             var activeElement = document.activeElement;
             var focusableElements = getFocusables(getSlideOrSection($(SECTION_ACTIVE_SEL)[0]));
 
+            // console.log('onTab - focusableElements', focusableElements);
+
             function preventAndFocusFirst(e){
                 // console.log('preventAndFocusFirst', focusableElements[0]);
                 preventDefault(e);
