@@ -1651,9 +1651,9 @@
     }
   }
 
-  function globalKeydown(e) {
-    console.log('foo', e, document.activeElement);
-  }
+  // function globalKeydown(e) {
+  //   console.log('foo', e, document.activeElement);
+  // }
 
   function bindAccessibility() {
     window.addEventListener('keydown', setTabNav);
