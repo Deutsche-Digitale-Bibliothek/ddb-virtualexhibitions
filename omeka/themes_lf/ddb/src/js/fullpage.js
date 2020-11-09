@@ -2318,8 +2318,16 @@
             }
 
             //outside any section or slide? Let's not hijack the tab!
-            if(isFocusOutside(e)){
-                // console.log('outside', e);
+            // console.log(document.getElementById("fullpage").lastChild);
+            // console.log(document.querySelector('#fullpage .section.active'));
+            // console.log(isFocusOutside(e));
+            // console.log(document.getElementById("fullpage").lastChild !== document.querySelector('#fullpage .section.active'));
+            // console.log(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL));
+            if(isFocusOutside(e) &&
+              (document.getElementById("fullpage").lastChild !== document.querySelector('#fullpage .section.active') ||
+              closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) === null)
+              ){
+                // console.log(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL));
                 return;
             }
 
@@ -2328,13 +2336,13 @@
                 var slideOfElement = closest(activeElement, '.fp-slide');
                 if(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) == null){
                     activeElement = preventAndFocusFirst(e);
-              // Grandgeorg Websolutions:
-              } else if(slideOfElement && !slideOfElement.classList.contains('active')) {
-                // console.log('element in slider', slideOfElement, focusableElements[0]);
-                preventDefault(e);
-                focusableElements[0].focus();
-              }
-              // :Grandgeorg Websolutions
+                // Grandgeorg Websolutions:
+                } else if(slideOfElement && !slideOfElement.classList.contains('active')) {
+                    // console.log('element in slider', slideOfElement, focusableElements[0]);
+                    preventDefault(e);
+                    focusableElements[0].focus();
+                }
+                // :Grandgeorg Websolutions
             }
 
             //no element if focused? Let's focus the first one of the section/slide
@@ -2352,13 +2360,13 @@
                 // console.log(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL);
 
                 if (document.querySelector(SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) !== null) {
-                  var prev = document.querySelector(SECTION_ACTIVE_SEL + ' .fp-prev');
-                  prev.focus();
-                  preventDefault(e);
+                    var prev = document.querySelector(SECTION_ACTIVE_SEL + ' .fp-prev');
+                    prev.focus();
+                    preventDefault(e);
                 } else {
-                  var jumpNav = document.getElementById('jump-to-navigation-control');
-                  jumpNav.focus();
-                  preventDefault(e);
+                    var jumpNav = document.getElementById('jump-to-navigation-control');
+                    jumpNav.focus();
+                    preventDefault(e);
                 }
 
             }
