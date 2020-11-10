@@ -356,6 +356,9 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             $exhibitSlug = $this->_getParam('slug');
         }
         $exhibit = $this->_helper->db->getTable()->findBySlug($exhibitSlug);
+        if (!$exhibit) {
+            $exhibit = $this->_helper->db->getTable()->find(1);
+        }
         return $exhibit;
     }
 
@@ -478,8 +481,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
         $response->setHeader('Content-Type', 'application/json', true);
 
-        // $exhibit = $this->_findByExhibitSlug(substr($request->getBaseUrl(), 1));
         $exhibit = $this->_findByExhibitSlug(substr(PUBLIC_BASE_URL, 1));
+
+        if (is_object($exhibit)) {
+            $shorttitle = $exhibit->shorttitle;
+            $name = $exhibit->title;
+        } else {
+            $shorttitle = substr(PUBLIC_BASE_URL, 1);
+            $name = substr(PUBLIC_BASE_URL, 1);
+        }
 
         $manifest = new stdClass;
         $manifest->short_name = $exhibit->shorttitle;
