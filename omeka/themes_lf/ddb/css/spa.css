@@ -7008,7 +7008,7 @@ a:hover {
 }
 
 .section-slides {
-  background-color: #333 !important;
+  background-color: #333;
 }
 
 .slideControlWrapper {
@@ -7114,6 +7114,7 @@ a:hover {
 }
 
 .scroll-container .text-content .scroll-frame .scroll-element .scroll-element-inner {
+  padding-top: 1rem;
   margin-bottom: 5.625rem;
 }
 

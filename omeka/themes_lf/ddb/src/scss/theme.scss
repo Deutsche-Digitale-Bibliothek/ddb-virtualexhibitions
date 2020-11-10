@@ -781,7 +781,8 @@ a:hover {
 }
 
 .section-slides {
-  background-color: #333 !important;
+  // background-color: #333 !important;
+  background-color: #333;
 }
 // .slide {
 
@@ -907,6 +908,7 @@ a:hover {
         //   margin-bottom: 75px;
         // }
         .scroll-element-inner {
+          padding-top: 1rem;
           margin-bottom: 5.625rem;
           @include media-breakpoint-down(sm) {
             margin-bottom: 2.5rem;

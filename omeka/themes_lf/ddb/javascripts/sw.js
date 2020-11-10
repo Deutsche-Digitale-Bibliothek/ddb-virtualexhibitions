@@ -15,7 +15,7 @@ if (workbox) {
     {"revision":null,"url":self.registration.scope + "manifest"},
     {"revision":"00000000000000000000000000000002","url":self.registration.scope},
     {"revision":"00000000000000000000000000000001","url":self.registration.scope + "exhibits/colorpalettesjs"},
-    {"revision":null,"url":"themes/ddb/css/spa.min.css?v=20201109170910"},
+    {"revision":null,"url":"themes/ddb/css/spa.min.css?v=20201110123536"},
     {"revision":null,"url":"themes/ddb/javascripts/bundle.min.js?v=20201110001514"},
     {"revision":"1b79051db915bd98eff66eb565a797df","url":"themes/ddb/javascripts/vendor/jwplayer/jwplayer.html5.js"},
     {"revision":"b3877f5f9d80e807dd2b97a5a39841d1","url":"themes/ddb/images/favicon.ico"},
