@@ -13,15 +13,15 @@ if (workbox) {
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
   workbox.routing.registerRoute(
-    /(.*)\.(?:png|gif|jpg|svg|ico)/,
+    /(.*)\.(?:png|gif|jpg|svg|ico|webp)/,
     new workbox.strategies.CacheFirst({
       cacheName: "images",
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 500,
           maxAgeSeconds: 365 * 24 * 60 * 60, // 1 Year
-        }),
-      ],
+        })
+      ]
     })
   );
 
@@ -33,8 +33,8 @@ if (workbox) {
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 500,
           maxAgeSeconds: 365 * 24 * 60 * 60, // 1 Year
-        }),
-      ],
+        })
+      ]
     })
   );
 
@@ -44,17 +44,17 @@ if (workbox) {
       cacheName: 'audio',
       plugins: [
         new workbox.cacheableResponse.CacheableResponsePlugin({statuses: [200]}),
-        new workbox.rangeRequests.RangeRequestsPlugin(),
-      ],
-    }),
+        new workbox.rangeRequests.RangeRequestsPlugin()
+      ]
+    })
   );
 
   workbox.routing.registerRoute(
     /(.*)piwik\.(?:js|php)/,
     new workbox.strategies.NetworkOnly({
       cacheName: 'network',
-      plugins: [],
-    }),
+      plugins: []
+    })
   );
 
   workbox.routing.setDefaultHandler(new workbox.strategies.StaleWhileRevalidate());
@@ -62,10 +62,9 @@ if (workbox) {
   workbox.routing.setCatchHandler(({event}) => {
     switch (event.request.destination) {
       case 'image':
-      return caches.match(FALLBACK_IMAGE_URL);
-    break;
-    default:
-      return Response.error();
+        return caches.match(FALLBACK_IMAGE_URL);
+      default:
+        return Response.error();
     }
   });
 
