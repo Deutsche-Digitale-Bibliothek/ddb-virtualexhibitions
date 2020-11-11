@@ -1,8 +1,9 @@
 <?php $ddbStudioLink = 'https://www.deutsche-digitale-bibliothek.de/content/journal/ausstellungen'; ?>
 <nav class="menu-container" id="menu-container" role="navigation" aria-label="Hauptnavigation">
     <div class="menu-header">
+    <?php $lnkCounter = 0; ?>
     <?php if ($exhibitType === 'litfass_ddb'): ?>
-        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener" target="_blank">
+        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener" target="_blank" class="tab-top-nav-out">
         <?php if ($navcolor === 'dark'): ?>
             <img src="<?php echo img('3_DDB_Logo_2_s_pos_RGB_R_96dpi.png'); ?>" alt="DDB Studio Logo">
         <?php else: ?>
@@ -37,16 +38,17 @@
         <?php foreach ($institutions as $institution): ?>
             <li>
                 <?php if (!empty($institution['url'])): ?>
-                <a target="_blank" rel="noopener" href="<?php echo strip_tags($institution['url']); ?>">
+                <a target="_blank" rel="noopener" href="<?php echo strip_tags($institution['url']); ?>"<?php echo $lnkCounter === 0 ? ' class="tab-top-nav-out"' : ''; ?>>
                 <?php endif; ?>
                 <?php echo strip_tags($institution['name']); ?>
                 <?php if (!empty($institution['url'])): ?>
                 </a>
                 <?php endif; ?>
             </li>
+            <?php $lnkCounter++; ?>
         <?php endforeach; ?>
         </ul>
-        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener">
+        <a href="<?php echo $ddbStudioLink; ?>" rel="noopener"<?php echo $lnkCounter === 0 ? ' class="tab-top-nav-out"' : ''; ?>>
             <?php
             switch ($exhibitType) {
                 case 'litfass_featured':

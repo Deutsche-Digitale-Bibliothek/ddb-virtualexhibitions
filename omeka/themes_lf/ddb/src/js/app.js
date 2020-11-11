@@ -852,7 +852,8 @@
           // console.log('hit the same tab', document.activeElement);
         }
       }
-      if (e.keyCode === 9 && $(document.activeElement).text() === 'Datenschutz' && !window.event.shiftKey) {
+      if ((e.keyCode === 9 && $(document.activeElement).text() === 'Datenschutz' && !window.event.shiftKey) ||
+          (e.keyCode === 9 && $(document.activeElement).hasClass('tab-top-nav-out') && window.event.shiftKey)) {
         closeMenu();
         if ($('#cookie-law').length) {
           e.preventDefault();
