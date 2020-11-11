@@ -26,16 +26,6 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
     </video>
     <?php endif; ?>
 
-    <?php if ($bgAttachmant['type'] === 'vimeo'):
-    $vimeoVideoId = 'vimeo-s' . $sectionCounter . '-' . $bgAttachmant['info']['video_id'];
-    $vimeoVideoId .= ($inSlider)? '-slide-' . $slideCounter : '';
-    ?>
-    <div class="litfass-bg-vimeo-video"
-        id="<?php echo $vimeoVideoId; ?>"
-        data-ddb-vimeo-id="<?php echo $bgAttachmant['info']['video_id']; ?>"
-        data-ddb-vimeo-width="<?php echo $bgAttachmant['info']['width']; ?>"></div>
-    <?php endif; ?>
-
     <?php if ($attachment): ?>
     <div class="boxpos-controls">
         <div class="control-info control-icon control-icon-right">
@@ -137,6 +127,18 @@ $bgAttachmant = ExhibitDdbHelper::getBackgroundAttachment($attachment);
         </div>
     </div>
     <?php endif; ?>
+
+    <?php if ($bgAttachmant['type'] === 'vimeo'):
+    $vimeoVideoId = 'vimeo-s' . $sectionCounter . '-' . $bgAttachmant['info']['video_id'];
+    $vimeoVideoId .= ($inSlider)? '-slide-' . $slideCounter : '';
+    ?>
+    <div class="litfass-bg-vimeo-video" id="<?php echo $vimeoVideoId; ?>"
+        data-ddb-vimeo-id="<?php echo $bgAttachmant['info']['video_id']; ?>"
+        data-ddb-vimeo-width="<?php echo $bgAttachmant['info']['width']; ?>">
+        <div class="recapute-tab" tabindex="0"></div>
+    </div>
+    <?php endif; ?>
+
     <div class="section-container-pos pos-box-<?php echo $pageoptions['boxpos'] ?>">
         <div class="media-meta media-meta-standalone d-none">
             <div class="media-meta-scroll">
