@@ -1138,22 +1138,32 @@ class ExhibitDdbHelper
         }
 
         // shariff
+        $allowedShareTerms = array(
+            '[[license:CC-PD-M1]]',
+            '[[license:CC-PD-U1]]',
+            '[[license:CC-BY-SA-3.0-DEU]]',
+            '[[license:CC-BY-SA-4.0-INT]]',
+            '[[license:G-VW]]',
+            '[[license:G-NUG-KKN]]'
+        );
         $mediaUrl = '';
         if (isset($attachment['file'])) {
             $mediaUrl = 'data-media-url="' . $attachment['file']->getWebPath('fullsize') . '"';
         }
-        $markup .= '<div class="shariff"
-            data-backend-url="null"
-            data-button-style="icon"
-            data-lang="de"'
-            . $mediaUrl .
-            'data-orientation="horizontal"
-            data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;pinterest&quot;,&quot;tumblr&quot;]"
-            data-theme="white"
-            data-title="' . htmlentities($metadata['Titel']) . '"
-            data-url="' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
-                . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '#s' . $sectionCounter . '"
-        ></div>';
+        if (in_array($metadata['Rechtsstatus'], $allowedShareTerms)) {
+            $markup .= '<div class="shariff"
+                data-backend-url="null"
+                data-button-style="icon"
+                data-lang="de"'
+                . $mediaUrl .
+                'data-orientation="horizontal"
+                data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;pinterest&quot;,&quot;tumblr&quot;]"
+                data-theme="white"
+                data-title="' . htmlentities($metadata['Titel']) . '"
+                data-url="' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")
+                    . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '#s' . $sectionCounter . '"
+            ></div>';
+        }
 
         // var_dump($attachment);
         return $markup;
