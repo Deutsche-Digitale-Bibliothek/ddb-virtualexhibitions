@@ -6671,7 +6671,6 @@ a:hover {
 
 .menu-container .menu-body {
   display: flex;
-  flex: 0 1 auto;
   width: 100%;
   overflow-y: hidden;
 }
@@ -6692,6 +6691,12 @@ a:hover {
   background: #aaa;
   border-radius: 0;
   opacity: 1;
+}
+
+.menu-container .spacex {
+  display: block;
+  height: 150px;
+  background-color: #252525;
 }
 
 .menu-container .menu {
@@ -6818,10 +6823,6 @@ a:hover {
 
 .menu-container .menu li.chapter {
   font-weight: 700;
-}
-
-.menu-container .menu li:last-child {
-  margin-bottom: 40px;
 }
 
 .exhibit-type-litfass_ddb .menu-container .menu li .menu-box.menu-icon.menu-icon-transparent {
@@ -8957,13 +8958,10 @@ i.license-or {
 
 .pwa-installprompt {
   display: none;
-  max-width: 320px;
-  padding: 10px;
-  margin: -25px auto 40px;
+  padding: 20px 10px 10px;
+  margin: 0;
   text-align: center;
   background-color: #252525;
-  border: 1px solid #333;
-  border-radius: 4px;
 }
 
 .pwa-installprompt p {

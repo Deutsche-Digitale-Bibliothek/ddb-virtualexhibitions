@@ -430,7 +430,7 @@ a:hover {
   }
   .menu-body {
     display: flex;
-    flex: 0 1 auto;
+    // flex: 0 1 auto;
     width: 100%;
     // This may not be necessary:
     // height: 100%;
@@ -457,7 +457,16 @@ a:hover {
   //   // max-height: 100%;
   //   // max-height: calc(100% - 1px);
   //   // border-bottom: 1px solid #999;
+  // padding-bottom: 134px;
   // }
+  .spacex {
+    display: block;
+    height: 150px;
+    background-color: #252525;
+    // @media (max-height: 768px) {
+    //   height: 250px;
+    // }
+  }
   .menu {
     padding: 0;
     margin-bottom: 0;
@@ -567,10 +576,10 @@ a:hover {
       &.chapter {
         font-weight: 700;
       }
-      &:last-child {
-        margin-bottom: 40px;
-        // border-bottom: 2px solid #999;
-      }
+      // &:last-child {
+      // margin-bottom: 40px;
+      // border-bottom: 2px solid #999;
+      // }
     }
   }
 }
@@ -2757,13 +2766,14 @@ i.license-or {
 // PWA
 .pwa-installprompt {
   display: none;
-  max-width: 320px;
-  padding: 10px;
-  margin: -25px auto 40px;
+  // display: block;
+  // max-width: 320px;
+  padding: 20px 10px 10px;
+  margin: 0;
   text-align: center;
   background-color: #252525;
-  border: 1px solid #333;
-  border-radius: 4px;
+  // border: 1px solid #333;
+  // border-radius: 4px;
   p {
     margin-bottom: 1rem;
   }

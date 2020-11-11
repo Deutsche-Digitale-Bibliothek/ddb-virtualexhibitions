@@ -94,6 +94,7 @@
                 <p>Installieren Sie diese Ausstellung als App auf Ihrem Gerät!</p>
                 <button class="pwa-installprompt-btn" id="pwa-installprompt-btn">Jetzt Installieren</button>
             </div>
+            <div class="spacex"></div>
         </div>
     </div>
 </nav>
