@@ -425,7 +425,7 @@ class ExhibitDdbHelper
                         'id="vimeo-video-' . self::$videoVimeoInfo['video_id'] . '-c-' . $counter .  '" ' .
                         'data-ddb-vimeo-id="' . self::$videoVimeoInfo['video_id'] . '" ' .
                         'data-ddb-vimeo-width="' . self::$videoVimeoInfo['width'] . '" ' .
-                        '></div>';
+                        '></div><div class="recapute-tab" tabindex="0"></div>';
                     }
                     break;
                 case 'ddb':

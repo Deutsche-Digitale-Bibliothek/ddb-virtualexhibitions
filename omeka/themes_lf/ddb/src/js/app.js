@@ -395,9 +395,11 @@
   }
 
   function initScrollMenu() {
-    new SimpleBar($('#menu-scrollable')[0], {
-      autoHide: true
-    });
+    // new SimpleBar($('#menu-scrollable')[0], {
+    //   autoHide: true
+    // });
+    new SimpleBar(document.getElementById('menu-scrollable'),
+      { autoHide: false });
     menuScroll = $('#menu-scrollable .simplebar-content');
   }
 
@@ -1719,6 +1721,12 @@
     // addEventListener('keydown', globalKeydown);
   }
 
+  function bindRecapureTab() {
+    $('.recapute-tab').on('focus', function() {
+      $('#jump-to-navigation-control').focus();
+    });
+  }
+
   function init() {
     $(function () {
       setMenuProps();
@@ -1751,6 +1759,7 @@
       revealFullpage();
       bindMetaScrollControlls();
       // bindCustomWindowResize();
+      bindRecapureTab();
       bindServiceWorker();
     });
   }
