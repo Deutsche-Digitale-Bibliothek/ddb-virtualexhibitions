@@ -32,6 +32,15 @@ $imprint = ExhibitDdbHelper::getImprint(
     metadata('exhibit', 'imprint', ['no_filter' => true, 'no_escape' => true]),
     $title
 );
+$attachmentThumbnailPageTypes = array(
+    'ddb-litfass-bgimg-boxpos',
+    'ddb-litfass-item',
+    'ddb-litfass-item-text',
+    'ddb-litfass-quote',
+    'ddb-litfass-text',
+    'ddb-litfass-text-title',
+    'ddb-litfass-text-title-dynamic'
+);
 ?>
 <div id="fullpage" class="fullpage">
 <script>
@@ -95,11 +104,20 @@ foreach (loop('exhibit_page') as $exhibitSection):
         $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionCounter);
         $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
             'litfassColorPalettes.' . $colorpalette . '.' . $exhibitSection->backgroundcolor . '.hex');
+
+        $attachmentThumbnail = '';
+        if (isset($attachment) && isset($attachment['file']) &&
+            (!isset($exhibitSection->pagethumbnail) || empty($exhibitSection->pagethumbnail)) &&
+            in_array($exhibitSection->layout, $attachmentThumbnailPageTypes)
+        ) {
+            $attachmentThumbnail = $attachment['file']->getWebPath('thumbnail');
+        }
         $sectionTitles[] = [
             'title' => htmlspecialchars(strip_tags($exhibitSection->title), ENT_QUOTES | ENT_HTML5),
             'pagethumbnail' => $exhibitSection->pagethumbnail,
             'type' => $exhibitSection->layout,
-            'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType
+            'menu_icon' => ExhibitDdbHelper::$currentAttechmentMediaType,
+            'attachmentThumbnail' => $attachmentThumbnail,
         ];
         $sectionCounter++;
     } else {

@@ -67,9 +67,7 @@
         <div id="menu-scrollable" class="menu-scrollable">
             <ul id="menu" class="menu" aria-label="Seitennavigation">
             <?php $menuChapterCounter = 0; ?>
-            <?php $menuTabIndex = 100; ?>
             <?php foreach ($sectionTitles as $sectionKey => $sectionTitle): ?>
-                <?php $menuTabIndex = $menuTabIndex + $sectionKey; ?>
                 <li data-menuanchor="s<?php echo $sectionKey; ?>" id="menuanchor-s<?php echo $sectionKey; ?>"
                 <?php echo ($sectionTitle['type'] === 'ddb-litfass-chapter')? ' class="chapter"' : 'class="type-' . $sectionTitle['type'] . '"'; ?>>
                     <?php if($sectionKey == 0): ?>
@@ -79,10 +77,14 @@
                         . WEB_FILES . '/layout/startpagethumbnail/' . $startpagethumbnail . ');"' : ''; ?>></div>
                     <?php elseif ($sectionTitle['type'] === 'ddb-litfass-chapter'): $menuChapterCounter++; ?>
                     <div class="menu-box menu-number"><?php echo ExhibitDdbHelper::getLeadingZeroNum($menuChapterCounter); ?></div>
+                    <?php elseif (!empty($sectionTitle['pagethumbnail'])): ?>
+                    <div class="menu-box menu-icon menu-icon-transparent icon-<?php echo $sectionTitle['menu_icon']; ?>"
+                    <?php echo 'style="background-image:url(' . WEB_FILES . '/layout/pagethumbnail/' .
+                        $sectionTitle['pagethumbnail'] . ');"'; ?>></div>
                     <?php else: ?>
                     <div class="menu-box menu-icon menu-icon-transparent icon-<?php echo $sectionTitle['menu_icon']; ?>"
-                    <?php echo (!empty($sectionTitle['pagethumbnail']))? 'style="background-image:url('
-                        . WEB_FILES . '/layout/pagethumbnail/' . $sectionTitle['pagethumbnail'] . ');"' : ''; ?>></div>
+                    <?php echo (!empty($sectionTitle['attachmentThumbnail']))? 'style="background-image:url(' .
+                        $sectionTitle['attachmentThumbnail'] . ');"' : ''; ?>></div>
                     <?php endif; ?>
                     <a href="#s<?php echo $sectionKey; ?>"><?php echo $sectionTitle['title']; ?></a>
                 </li>
