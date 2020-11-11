@@ -1141,9 +1141,10 @@ class ExhibitDdbHelper
         $allowedShareTerms = array(
             '[[license:CC-PD-M1]]',
             '[[license:CC-PD-U1]]',
+            '[[license:CC-BY-3.0-DEU]]',
+            '[[license:CC-BY-4.0-INT]]',
             '[[license:CC-BY-SA-3.0-DEU]]',
             '[[license:CC-BY-SA-4.0-INT]]',
-            '[[license:G-VW]]',
             '[[license:G-NUG-KKN]]'
         );
         $mediaUrl = '';
