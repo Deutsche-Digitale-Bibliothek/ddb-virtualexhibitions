@@ -91,12 +91,15 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
                 if (move_uploaded_file($uploadedFile['tmp_name'], FILES_DIR . '/layout/' . $fileField . '/' . $fileName)) {
                     $_POST[$fileField] = $fileName;
-                    $this->setCompressor();
-                    $this->compressor->run(
-                        FILES_DIR . '/layout/' . $fileField . '/' . $fileName,
-                        FILES_DIR . '/layout/' . $fileField . '/compressed',
-                        array('resize' => true, 'compress' => 'auto')
-                    );
+                    // We can have svg when $fileField === 'titleimage' but then do not compress;
+                    if (strtolower(pathinfo($fileName, PATHINFO_EXTENSION)) !== 'svg') {
+                        $this->setCompressor();
+                        $this->compressor->run(
+                            FILES_DIR . '/layout/' . $fileField . '/' . $fileName,
+                            FILES_DIR . '/layout/' . $fileField . '/compressed',
+                            array('resize' => true, 'compress' => 'auto')
+                        );
+                    }
                 }
             }
         }
