@@ -2715,6 +2715,10 @@ i.license-or {
   outline-color: #a5003b;
   outline-offset: 2px;
 }
+
+.tabnav .section[data-color-section="red_80"] :focus {
+  outline-color: #1d1d1b;
+}
 .tabnav .menu :focus {
   outline-width: 2px;
   outline-style: solid;
