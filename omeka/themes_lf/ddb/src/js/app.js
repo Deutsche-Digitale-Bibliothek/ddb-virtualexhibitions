@@ -751,6 +751,7 @@
         var mediaCol = iconInfo.parents('.col-media');
         var textCol = $('.col-text', iconInfo.parents('.row'));
         event.preventDefault();
+        // event.stopPropagation();
         if (iconInfo.hasClass('active')) {
           iconInfo.removeClass('active');
           controlInfo.removeClass('active');

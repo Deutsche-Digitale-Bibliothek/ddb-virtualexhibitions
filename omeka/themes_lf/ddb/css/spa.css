@@ -7220,7 +7220,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  transition: all .5s;
 }
 
 .col-media .container-media {
@@ -7273,7 +7272,7 @@ a:hover {
 
 .col-media.active .content-media {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .col-media.active .content-media .media-meta,

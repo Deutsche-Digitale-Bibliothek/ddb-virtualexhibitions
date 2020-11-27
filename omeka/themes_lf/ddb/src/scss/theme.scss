@@ -1025,7 +1025,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  transition: all .5s;
+  // Not possible because of tabindex:
+  // transition: all .5s;
   .container-media {
     display: flex;
     align-items: flex-start;
@@ -1062,6 +1063,11 @@ a:hover {
   .content-media {
     // BEGIN TEST
     width: 100%;
+    // Not possible because of tabindex:
+    // .media-meta,
+    // .media-item-container {
+    //   transition: width .5s;
+    // }
     .media-item-container {
       width: 100%;
       .jwplayer {
@@ -1076,7 +1082,9 @@ a:hover {
     .content-media {
       display: flex;
       // align-items: center;
-      align-items: flex-start;
+      // switch to stretch for nicer poistioning of media elements:
+      // align-items: flex-start;
+      align-items: stretch;
       // background-color: rgba(255, 255, 255, .6);
 
       .media-meta,
