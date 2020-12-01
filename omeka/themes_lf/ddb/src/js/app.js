@@ -119,7 +119,7 @@
       // offsetSections: false,
       // resetSliders: true,
       // fadingEffect: false,
-      // normalScrollElements: '#element1, .element2',
+      // normalScrollElements: '.icon-info',
       // scrollOverflow: false,
       // scrollOverflowReset: false,
       // scrollOverflowOptions: null,
