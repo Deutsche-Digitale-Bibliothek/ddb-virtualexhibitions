@@ -549,8 +549,8 @@ jQuery(document).ready(function($) {
                 e.stopPropagation();
                 addForce();
                 alert('<?php
-                    echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?> <?php
-                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!');
+                    echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immer vor dem Ende sein!') . ' ';
+                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!') . ' ';
                     echo __('Klicken Sie erneut auf') . ' "' . __('Save Changes') . '" '
                         . __('um dennoch zu speichern. Achtung: Dabei können Slider gelöscht werden!');
                 ?>');
@@ -561,7 +561,7 @@ jQuery(document).ready(function($) {
                 e.stopPropagation();
                 addForce();
                 alert('<?php
-                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!');
+                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!') . ' ';
                     echo __('Klicken Sie erneut auf') . ' "' . __('Save Changes') . '" '
                         . __('um dennoch zu speichern. Achtung: Dabei können Slider gelöscht werden!');
                 ?>');
