@@ -55,7 +55,7 @@ $sectionAnchors = ExhibitDdbHelper::setSectionAnchors($sectionAnchors, $sectionC
 $sectionColors = ExhibitDdbHelper::setSectionColors($sectionColors,
     'litfassColorPalettes.' . $colorpalette . '.' . $titlebackgroundcolor . '.hex');
 $sectionTitles[] = [
-    'title' => htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5),
+    'title' => htmlspecialchars(strip_tags($title), ENT_QUOTES | ENT_HTML5, null, false),
     'pagethumbnail' => '',
     'type' => 'ddb-litfass-start',
     'menu_icon' => 'home'
