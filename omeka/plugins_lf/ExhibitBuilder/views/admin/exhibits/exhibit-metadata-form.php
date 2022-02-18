@@ -524,31 +524,49 @@ jQuery(document).ready(function($) {
         var sliderStart = 0;
         var nestingError = false;
         var startId = null;
-        $('.page').each(function() {
-            if ($(this).data('slider') === 'start') {
-                sliderStart++;
-                startId = $(this).data('pageid');
-            }
-            if (sliderStart > 1) {
-                nestingError = true;
-            }
-            if ($(this).data('slider') === 'end' && sliderStart > 0 && $(this).data('sliderstartpageid') === startId) {
-                sliderStart--;
-            }
-        });
-        if (sliderStart > 0) {
-            e.preventDefault();
-            e.stopPropagation();
-            alert('<?php
-                echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?> <?php
-                echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
-            return false;
+        var saveButton = $('#save_exhibit', event.target);
+        var force = saveButton.data('force');
+        function addForce() {
+            saveButton.removeClass('green').addClass('red').data('force', true);
         }
-        if (nestingError) {
-            e.preventDefault();
-            e.stopPropagation();
-            alert('<?php echo __('Es ist nicht möglich Slider ineinander zu schachteln!'); ?>');
-            return false;
+        if (typeof force === 'undefined') {
+            $('.page').each(function() {
+                if ($(this).data('slider') === 'start') {
+                    sliderStart++;
+                    startId = $(this).data('pageid');
+                }
+                if ($(this).data('slider') === 'end' && sliderStart > 0 && $(this).data('sliderstartpageid') === startId) {
+                    sliderStart--;
+                }
+                if (sliderStart > 1) {
+                    nestingError = true;
+                } else {
+                    nestingError = false;
+                }
+            });
+            if (sliderStart > 0) {
+                e.preventDefault();
+                e.stopPropagation();
+                addForce();
+                alert('<?php
+                    echo __('Falsche Sortierung des Sliders! Der Anfang des Sliders muss immmer vor dem Ende sein!'); ?> <?php
+                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!');
+                    echo __('Klicken Sie erneut auf') . ' "' . __('Save Changes') . '" '
+                        . __('um dennoch zu speichern. Achtung: Dabei können Slider gelöscht werden!');
+                ?>');
+                return false;
+            }
+            if (nestingError) {
+                e.preventDefault();
+                e.stopPropagation();
+                addForce();
+                alert('<?php
+                    echo __('Es ist nicht möglich Slider ineinander zu schachteln!');
+                    echo __('Klicken Sie erneut auf') . ' "' . __('Save Changes') . '" '
+                        . __('um dennoch zu speichern. Achtung: Dabei können Slider gelöscht werden!');
+                ?>');
+                return false;
+            }
         }
     });
 
