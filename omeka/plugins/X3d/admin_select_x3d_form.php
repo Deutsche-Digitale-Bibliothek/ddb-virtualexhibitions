@@ -25,7 +25,7 @@
     <tr>
         <td><?php echo ('Vorschaubild'); ?></td>
         <td>
-            <img src="<?php echo $x3dWebdir . '/sq_' . $x3d->thumbnail; ?>" alt="<?php echo __('Vorschaubild'); ?>" style="width:200px; height:auto;">
+            <img src="<?php echo $x3dWebdir . '/or_' . $x3d->thumbnail; ?>" alt="<?php echo __('Vorschaubild'); ?>" style="width:200px; height:auto;">
         </td>
     </tr>
     <?php endif; ?>

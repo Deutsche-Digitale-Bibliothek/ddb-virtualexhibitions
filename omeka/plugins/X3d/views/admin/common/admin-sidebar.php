@@ -21,7 +21,7 @@
             <?php endif; ?>
             <?php if (file_exists($x3dDir . DIRECTORY_SEPARATOR . 'or_' . $x3d->thumbnail)): ?>
                 <li>Vorschaubild: <br>
-                    <img src="<?php echo $x3dWebdir . '/sq_' . $x3d->thumbnail; ?>" alt="<?php echo __('Vorschaubild'); ?>" style="width:200px; height:auto;">
+                    <img src="<?php echo $x3dWebdir . '/or_' . $x3d->thumbnail; ?>" alt="<?php echo __('Vorschaubild'); ?>" style="width:200px; height:auto;">
                 </li>
             </tr>
             <?php endif; ?>
