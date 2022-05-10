@@ -134,10 +134,38 @@ class GinaImageConvert_CompressController extends Omeka_Controller_AbstractActio
             require __DIR__ . '/../models/Compressor.php';
             $compressor = new Compressor($dbFile->filename, FILES_DIR, $params['compress']);
             $compressor->main();
+            if ($params['compress']['original']['strip_meta'] === '1') {
+                $filepath = FILES_DIR . DIRECTORY_SEPARATOR . 'original_compressed' . DIRECTORY_SEPARATOR . $dbFile->filename;
+                $type_os = substr(trim(exec('file -b ' . trim(escapeshellarg($filepath)))), 0, 255);
+                $dbFile->type_os = $type_os;
+                $dbFile->metadata = $this->getMetadata($filepath);
+                $dbFile->save();
+            }
             $this->view->log = $compressor->getLog();
         }
         // Make sure to get filsizes after compression
         $this->view->fileSizes = $this->getFileSizes($dbFile);
+    }
+
+    protected function getMetadata($filepath)
+    {
+        require_once 'getid3/getid3.php';
+        $id3 = new getID3;
+        $id3->encoding = 'UTF-8';
+        $id3->Analyze($filepath);
+        getid3_lib::CopyTagsToComments($id3->info);
+        $metadata = array();
+        $keys = array(
+            'mime_type', 'audio', 'video', 'comments', 'comments_html',
+            'iptc', 'jpg'
+        );
+        foreach ($keys as $key) {
+            if (array_key_exists($key, $id3->info)) {
+                $metadata[$key] = $id3->info[$key];
+            }
+        }
+
+        return json_encode($metadata);
     }
 
     protected function getFileSizes($dbFile)

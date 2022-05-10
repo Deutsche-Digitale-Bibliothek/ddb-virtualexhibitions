@@ -1653,7 +1653,7 @@ class ExhibitDdbHelper
             $fileMetadata = json_decode($file['metadata']);
         }
 
-        if (isset($fileMetadata) &&
+        if (isset($fileMetadata) && !empty($fileMetadata) &&
             property_exists($fileMetadata, 'mime_type') &&
             $fileMetadata->mime_type === 'image/png' &&
             is_file(FILES_DIR . DIRECTORY_SEPARATOR .'original_compressed' .

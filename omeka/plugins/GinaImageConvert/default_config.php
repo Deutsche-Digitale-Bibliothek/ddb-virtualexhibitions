@@ -6,7 +6,8 @@ return array(
         'recompress_max' => '95',
         'recompress_loops' => '6',
         'recompress_method' => 'ssim',
-        'webp_quality' => 75
+        'webp_quality' => 75,
+        'strip_meta' => 0
     ),
     'fullsize' => array(
         'resize_max_quality' => '100',
@@ -18,7 +19,8 @@ return array(
         'recompress_max' => '95',
         'recompress_loops' => '6',
         'recompress_method' => 'ssim',
-        'webp_quality' => 75
+        'webp_quality' => 75,
+        'strip_meta' => 0
     ),
     'middsize' => array(
         'resize_max_quality' => '100',
@@ -30,7 +32,8 @@ return array(
         'recompress_max' => '95',
         'recompress_loops' => '6',
         'recompress_method' => 'ssim',
-        'webp_quality' => 75
+        'webp_quality' => 75,
+        'strip_meta' => 0
     ),
     'thumbnails' => array(
         'resize_max_quality' => '100',
@@ -42,7 +45,8 @@ return array(
         'recompress_max' => '95',
         'recompress_loops' => '6',
         'recompress_method' => 'ssim',
-        'webp_quality' => 75
+        'webp_quality' => 75,
+        'strip_meta' => 0
     ),
     'square_thumbnails' => array(
         'resize_max_quality' => '100',
@@ -54,6 +58,7 @@ return array(
         'recompress_max' => '95',
         'recompress_loops' => '6',
         'recompress_method' => 'ssim',
-        'webp_quality' => 75
+        'webp_quality' => 75,
+        'strip_meta' => 0
     )
 );

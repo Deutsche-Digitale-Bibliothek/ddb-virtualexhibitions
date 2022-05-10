@@ -96,6 +96,28 @@
             ); ?>
         </div>
     </div>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel(
+                'compress[original][strip_meta]',
+                __('Metadaten löschen')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Empfohlen, wenn es Probleme mit dem Bild gibt z.B. beim Zoom. Achtung, Farbprofile werden ebenso gelöscht.');
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress[original][strip_meta]',              // name
+                $params['compress']['original']['strip_meta'], // value
+                null,                                                           // attribs
+                array(
+                    '0' => 'Nein',
+                    '1' => 'Ja'
+                )                                                               // options
+            ); ?>
+        </div>
+    </div>
 </fieldset>
 
 <!-- fullsize -->
