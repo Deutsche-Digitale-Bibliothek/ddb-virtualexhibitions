@@ -1,5 +1,28 @@
 <!-- original (compressed) -->
 <fieldset>
+    <legend><?php echo __('Allgemein'); ?></legend>
+    <div class="field">
+        <div class="two columns alpha">
+            <?php echo $this->formLabel(
+                'compress[original][strip_meta]',
+                __('Metadaten löschen')); ?>
+        </div>
+        <div class="five columns omega inputs">
+            <div class="explanation">
+                <?php echo __('Empfohlen, wenn es Probleme mit dem Bild gibt z.B. beim Zoom. Achtung, Farbprofile werden ebenso gelöscht.');
+                ?>
+            </div>
+            <?php echo $this->formSelect(
+                'compress[original][strip_meta]',
+                $params['compress']['original']['strip_meta'],
+                null,
+                array(
+                    '0' => 'Nein',
+                    '1' => 'Ja'
+                )
+            ); ?>
+        </div>
+    </div>
     <legend><?php echo __('Original komprimiert (original compressed)'); ?></legend>
     <div class="field">
         <div class="two columns alpha">
@@ -92,28 +115,6 @@
                 array(
                     'ssim' => 'SSIM',
                     'ms-ssim' => 'MS-SSIM'
-                )                                                               // options
-            ); ?>
-        </div>
-    </div>
-    <div class="field">
-        <div class="two columns alpha">
-            <?php echo $this->formLabel(
-                'compress[original][strip_meta]',
-                __('Metadaten löschen')); ?>
-        </div>
-        <div class="five columns omega inputs">
-            <div class="explanation">
-                <?php echo __('Empfohlen, wenn es Probleme mit dem Bild gibt z.B. beim Zoom. Achtung, Farbprofile werden ebenso gelöscht.');
-                ?>
-            </div>
-            <?php echo $this->formSelect(
-                'compress[original][strip_meta]',              // name
-                $params['compress']['original']['strip_meta'], // value
-                null,                                                           // attribs
-                array(
-                    '0' => 'Nein',
-                    '1' => 'Ja'
                 )                                                               // options
             ); ?>
         </div>
