@@ -2365,7 +2365,12 @@
                     preventDefault(e);
                 } else {
                     var jumpNav = document.getElementById('jump-to-navigation-control');
-                    jumpNav.focus();
+                    var cookieNotice = document.getElementById('close-cookie-notice');
+                    if (cookieNotice) {
+                        cookieNotice.focus();
+                    } else if (jumpNav) {
+                      jumpNav.focus();
+                    }
                     preventDefault(e);
                 }
 
