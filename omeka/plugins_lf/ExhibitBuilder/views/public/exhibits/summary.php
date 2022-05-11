@@ -1,4 +1,8 @@
 <?php
+if (false !== strstr($_SERVER['REQUEST_URI'], '/exhibits/show/')) {
+    header('Location: ' . WEB_DIR . '/', true, 301);
+    exit();
+}
 // ------------- MAIN SINGLE PAGE TEMPLATE -------------
 $exhibitType = metadata('exhibit', 'exhibit_type');
 if (!isset($exhibitType) || empty($exhibitType)) {
