@@ -372,6 +372,10 @@ img { border: 0; }
         padding: 5px 10px;
     }
 
+    input[type=text]:disabled {
+        background: #eee;
+    }
+
         input[type=text].big {
             padding: .375em;
         }

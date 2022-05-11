@@ -417,14 +417,14 @@ class ExhibitDdbHelper
             switch ($videoType) {
                 case 'vimeo':
                     self::setVideoVimeoInfo($videoId);
+                    $extended = self::getDdbVideoTimeOffset($videoId);
                     if (!empty(self::$videoVimeoInfo) && isset(self::$videoVimeoInfo{'html'})) {
                         $counter = self::getVimeoVideoCounter();
-                        // $output = self::$videoVimeoInfo{'html'};
-                        // var_dump(self::$videoVimeoInfo);
                         $output = '<div class="litfass-vimeo-video" ' .
                         'id="vimeo-video-' . self::$videoVimeoInfo['video_id'] . '-c-' . $counter .  '" ' .
                         'data-ddb-vimeo-id="' . self::$videoVimeoInfo['video_id'] . '" ' .
                         'data-ddb-vimeo-width="' . self::$videoVimeoInfo['width'] . '" ' .
+                        (isset($extended['offsetStart']) ? 'data-ddb-vimeo-offset-start="' . $extended['offsetStart'] . '" ' : '') .
                         '></div><div class="recapute-tab" tabindex="0"></div>';
                     }
                     break;
@@ -651,6 +651,9 @@ class ExhibitDdbHelper
      */
     public static function setVideoVimeoInfo($videoId)
     {
+        $extended = self::getDdbVideoTimeOffset($videoId);
+        extract($extended, EXTR_OVERWRITE);
+
         $ch = curl_init();
         // curl_setopt($ch, CURLOPT_PROXY, 'ddbproxy.deutsche-digitale-bibliothek.de:8888');
         if (!isset($_SERVER['PROXY_ENV'])) {

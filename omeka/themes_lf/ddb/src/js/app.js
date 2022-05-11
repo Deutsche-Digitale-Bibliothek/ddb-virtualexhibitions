@@ -1606,6 +1606,9 @@
       };
       var id = videoContainer.attr('id');
       vimeoVideos[id] = new Vimeo.Player(id, data);
+      if (videoContainer.data('ddb-vimeo-offset-start')) {
+        vimeoVideos[id].setCurrentTime(videoContainer.data('ddb-vimeo-offset-start'));
+      }
       // vimeoVideos[id].setColor('#ef0053');
     });
   }

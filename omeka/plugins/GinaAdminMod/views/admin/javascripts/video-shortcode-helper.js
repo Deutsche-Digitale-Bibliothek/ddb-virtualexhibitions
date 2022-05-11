@@ -77,6 +77,15 @@ jQuery(document).ready(function($) {
         return valid;
     }
 
+    function dispatchVideoType() {
+        if (videoShortcodeType.val() === 'vimeo') {
+            videoShortcodeStop.attr('disabled', 'disabled');
+            videoShortcodeStop.val(null);
+        } else {
+            videoShortcodeStop.removeAttr('disabled');
+        }
+    }
+
     videoShortcodeDialog = $("#video-shortcode-dialog-form").dialog({
         autoOpen: false,
         height: 450,
@@ -104,7 +113,11 @@ jQuery(document).ready(function($) {
         $('#video-shortcode-helper').click(function(e) {
             e.preventDefault();
             populateDialog();
+            dispatchVideoType();
             videoShortcodeDialog.dialog("open");
+        });
+        videoShortcodeType.on("change", function() {
+            dispatchVideoType();
         });
     }, 1000);
 
