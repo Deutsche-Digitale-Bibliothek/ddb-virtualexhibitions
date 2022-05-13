@@ -12,9 +12,9 @@ class Api_ExhibitPageEntry extends Omeka_Record_Api_AbstractRecordAdapter
                 'url' => self::getResourceUrl("/exhibit_page_entries/{$record->id}"),
                 'caption' => $record->caption,
                 'order' => $record->order,
-                's_options' => $record->S_options
+                's_options' => json_decode($record->s_options)
                 );
-        
+
         $representation['page'] = array(
                 'id' => $record->page_id,
                 'resource' => 'exhibit_pages',
@@ -23,7 +23,7 @@ class Api_ExhibitPageEntry extends Omeka_Record_Api_AbstractRecordAdapter
 
         //check if item is visible to user
         $item = $db->getTable('Item')->find($record->item_id);
-        
+
         if($record->item_id && is_allowed($item, 'show')) {
             $representation['item'] = array(
                     'id' => $record->item_id,
@@ -33,7 +33,7 @@ class Api_ExhibitPageEntry extends Omeka_Record_Api_AbstractRecordAdapter
         } else {
             $representation['item'] = null;
         }
-         
+
         //check if file is visible
         $file = $db->getTable('File')->find($record->file_id);
         if($record->file_id && is_allowed($file, 'show')) {
@@ -44,19 +44,19 @@ class Api_ExhibitPageEntry extends Omeka_Record_Api_AbstractRecordAdapter
                     );
         } else {
             $representation['file'] = null;
-        }        
+        }
         return $representation;
     }
-    
+
     // Set data to a record during a POST request.
     public function setPostData(Omeka_Record_AbstractRecord $record, $data)
     {
         // Set properties directly to a new record.
     }
-    
+
     // Set data to a record during a PUT request.
     public function setPutData(Omeka_Record_AbstractRecord $record, $data)
     {
         // Set properties directly to an existing record.
-    }    
+    }
 }

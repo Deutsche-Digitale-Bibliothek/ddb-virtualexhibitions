@@ -529,5 +529,11 @@ function exhibit_builder_api_resources($apiResources)
             'index_params' => array('page_id', 'item_id')
     );
 
+    $apiResources['color_palettes'] = array(
+        'record_type' => 'ExhibitColorPalette',
+        'actions' => array('get', 'index'),
+        'index_params' => array('palette', 'color')
+    );
+
     return $apiResources;
 }
