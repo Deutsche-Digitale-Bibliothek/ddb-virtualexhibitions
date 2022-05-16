@@ -15,7 +15,7 @@ class Api_Exhibit extends Omeka_Record_Api_AbstractRecordAdapter
         $representation['credits'] = $record->credits;
         $representation['featured'] = (bool) $record->featured;
         $representation['public'] = (bool) $record->public;
-        $representation['exhibit_type'] = (bool) $record->exhibit_type;
+        $representation['exhibit_type'] = $record->exhibit_type;
         $representation['theme'] = $record->theme;
         $representation['institutions'] = unserialize($record->institutions);
         $representation['imprint'] = unserialize($record->imprint);
