@@ -8,7 +8,7 @@
   "dependencies": {
     "@vimeo/player": "^2.14.1",
     "bootstrap": "^4.5.3",
-    "fullpage.js": "^3.0.9",
+    "fullpage.js": "^4.0.5",
     "jquery": "^3.5.1",
     "panzoom": "^8.7.5",
     "popper.js": "^1.16.1",
